@@ -7,15 +7,16 @@ Usage: python rss2email.py feedfile action [options]
   action [options]:
 	new (create new feedfile)
 	run
-	add url name from to
+	add feedurl youremail
 	list
-	delete num
+	delete n
 """
-__version__ = "2.0"
+__version__ = "2.1"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
-					 "Brian Lalor (blalor@ithacabands.org)"]
+					 "Brian Lalor (blalor@ithacabands.org)",
+					 "Joey Hess"]
 
 ### Vaguely Customizable Options ###
 
@@ -39,6 +40,17 @@ def send(fr, to, message):
 	os.popen2(["/usr/sbin/sendmail", to])[0].write(message)
 
 ### End of Options ###
+
+# Read options from config file if present.
+import sys
+sys.path.append(".")
+try:
+	import config
+	DEFAULT_FROM = config.DEFAULT_FROM
+	TRUST_GUID = config.TRUST_GUID
+	TREAT_DESCRIPTION_AS_HTML = config.TREAT_DESCRIPTION_AS_HTML
+except:
+	pass
 
 from html2text import html2text, expandEntities
 import feedparser
@@ -108,7 +120,7 @@ def run():
 		c, ert = result['channel'], 'errorreportsto'
 		
 		headers = "From: "
-		if c.has_key('title'): headers += e(c, 'title')
+		if c.has_key('title'): headers += e(c, 'title') + ' '
 		if c.has_key(ert) and c[ert].startswith('mailto:'):
 			fr = c[ert][8:]
 		else:
@@ -137,12 +149,13 @@ def run():
 				
 			message = (headers
 					   + "\nSubject: " + title
-					   + "\nDate:" + time.strftime("%a, %d %b %Y %H:%M:%S -0000", time.gmtime())
+					   + "\nDate: " + time.strftime("%a, %d %b %Y %H:%M:%S -0000", time.gmtime())
+					   + "\nUser-Agent: rss2email"
 					   + "\n")
-	
-			if link: message += "\nURL: " + link + "\n"
 			
-			message += "\n" + content
+			message += "\n" + content.strip() + "\n"
+			
+			if link: message += "\nURL: " + link + "\n"
 			
 			send(fr, f.to, message)
 	
@@ -167,7 +180,6 @@ def delete(n):
 	unlock(feeds, ff2)
 
 if __name__ == "__main__":
-	import sys
 	if len(sys.argv) < 3: print __doc__
 	else: 
 		feedfile, action = sys.argv[1], sys.argv[2]
