@@ -10,12 +10,11 @@ Usage:
   list
   delete n
 """
-__version__ = "2.511"
+__version__ = "2.52"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
-___contributors__ = ["Dean Jackson (dino@grorg.org)", 
-                     "Brian Lalor (blalor@ithacabands.org)",
-                     "Joey Hess", 'Matej Cepl']
+___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
+                     "Matej Cepl", "Martin 'Joey' Schulze"]
 
 ### Vaguely Customizable Options ###
 
@@ -63,25 +62,34 @@ SMTP_SEND = 0
 
 SMTP_SERVER = "smtp.yourisp.net:25"
 
+# Set this to add a bonus header to all emails (start with '\n').
+BONUS_HEADER = ''
+# Example: BONUS_HEADER = '\nApproved: joe@bob.org'
+
+# Set this to override From addresses. Keys are feed URLs, values are new titles.
+OVERRIDE_FROM = {}
+
 # Note: You can also override the send function.
 def send(fr, to, message):
 	if SMTP_SEND:
 		smtpserver.sendmail(fr, [to], message)
 	else:
-		i, o = os.popen2(["/usr/sbin/sendmail", to])
-		i.write(message)
-		i.close(); o.close()
-		del i, o
+ 		i, o = os.popen2(["/usr/sbin/sendmail", to])
+ 		i.write(message)
+ 		i.close(); o.close()
+ 		del i, o
+
 
 ## html2text options ##
 
-# 1: Use Unicode characters
-# 0: Use ASCII psuedo-replacements
+# Use Unicode characters instead of their ascii psuedo-replacements
 UNICODE_SNOB = 0
 
-# 1: Put the links after each paragraph
-# 0: Put all links at the end
+# Put the links after each paragraph instead of at the end.
 LINKS_EACH_PARAGRAPH = 0
+
+# Wrap long lines at position. 0 for no wrapping. (Requires Python 2.3.)
+BODY_WIDTH = 0
 
 ### Load the Options ###
 
@@ -95,37 +103,42 @@ except:
 	
 ### Import Modules ###
 
-import cPickle as pickle, fcntl, md5, time, os, traceback, urllib2, sys
+import cPickle as pickle, fcntl, md5, time, os, traceback, urllib2, sys, types
 import socket; socket_errors = []
 for e in ['error', 'gaierror']:
 	if hasattr(socket, e): socket_errors.append(getattr(socket, e))
-if QP_REQUIRED: import mimify; from StringIO import StringIO as SIO
+import mimify; from StringIO import StringIO as SIO; mimify.CHARSET = 'utf-8'
 if SMTP_SEND: import smtplib; smtpserver = smtplib.SMTP(SMTP_SERVER)
 else: smtpserver = None
 
 import feedparser
 feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.aaronsw.com/2002/rss2email/"
 
-import html2text
+import html2text as h2t
 
-html2text.UNICODE_SNOB = UNICODE_SNOB
-html2text.LINKS_EACH_PARAGRAPH = LINKS_EACH_PARAGRAPH
-html2text = html2text.html2text
+h2t.UNICODE_SNOB = UNICODE_SNOB
+h2t.LINKS_EACH_PARAGRAPH = LINKS_EACH_PARAGRAPH
+h2t.BODY_WIDTH = BODY_WIDTH
+html2text = h2t.html2text
 
 ### Utility Functions ###
 
 warn = sys.stderr
 
 def isstr(f): return isinstance(f, type('')) or isinstance(f, type(u''))
-def ishtml(t): return type(t) is tuple
+def ishtml(t): return type(t) is type(())
 def contains(a,b): return a.find(b) != -1
 def unu(s): # I / freakin' hate / that unicode
-	if type(s) is unicode: return s.encode('utf-8')
+	if type(s) is types.UnicodeType: return s.encode('utf-8')
 	else: return s
 
 def quote822(s):
 	"""Quote names in email according to RFC822."""
 	return '"' + unu(s).replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+def header7bit(s):
+	"""QP_CORRUPT headers."""
+	return mimify.mime_encode_header(s + ' ')[:-1]
 
 ### Parsing Utilities ###
 
@@ -145,7 +158,10 @@ def getContent(entry, HTMLOK=0):
 	#    pick the one in the "best" language.
 	#  * HACK: hardcoded HTMLOK, should take a tuple of media types
 	
-	if entry.get('content', []):
+	if entry.get('summary_detail', {}):
+		entry.content = entry.get('content', []) + [entry.summary_detail]
+	
+	if entry.content:
 		if HTMLOK:
 			for c in entry.content:
 				if contains(c.type, 'html'): return ('HTML', c.value)
@@ -160,11 +176,6 @@ def getContent(entry, HTMLOK=0):
 		
 		return entry.content[0].value	
 	
-	if entry.get('summary_detail', {}):
-		s = entry.summary_detail.value
-		if contains(entry.summary_detail.type, 'html'): s = html2text(s)
-		return s
-
 	return ""
 
 def getID(entry):
@@ -177,18 +188,24 @@ def getID(entry):
 	if 'link' in entry: return entry.link
 	if 'title' in entry: return md5.new(unu(entry.title)).hexdigest()
 
-def getName(feed, entry):
+def getName(r, entry):
 	"""Get the best name."""
+
+	feed = r.feed
+	if r.url in OVERRIDE_FROM.keys():
+		return unu(OVERRIDE_FROM[r.url])
 	
 	name = feed.get('title', '')
 	
 	if 'name' in entry.get('author_detail', []): # normally {} but py2.1
-		if name: name += ", "
-		name +=  entry.author_detail.name
+		if entry.author_detail.name:
+			if name: name += ", "
+			name +=  entry.author_detail.name
 
 	elif 'name' in feed.get('author_detail', []):
-		if name: name += ", "
-		name += feed.author_detail.name
+		if feed.author_detail.name:
+			if name: name += ", "
+			name += feed.author_detail.name
 	
 	return name
 
@@ -225,18 +242,18 @@ def load(lock=1):
 	feedfileObject = open(feedfile, 'r')
 	feeds = pickle.load(feedfileObject)
 	if lock:
-		fcntl.flock(feedfileObject, fcntl.LOCK_EX)
+		fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
 		#HACK: to deal with lock caching
 		feedfileObject = open(feedfile, 'r')
 		feeds = pickle.load(feedfileObject)
-		fcntl.flock(feedfileObject, fcntl.LOCK_EX)
+		fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
 
 	return feeds, feedfileObject
 
 def unlock(feeds, feedfileObject):
 	pickle.dump(feeds, open(feedfile+'.tmp', 'w'))
 	os.rename(feedfile+'.tmp', feedfile)
-	fcntl.flock(feedfileObject, fcntl.LOCK_UN)
+	fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_UN)
 
 ### Program Functions ###
 
@@ -292,6 +309,16 @@ def run(num=None):
 
 					elif hasattr(socket, 'timeout') and exc_type == socket.timeout:
 						print >>warn, "W: timed out on", f.url
+					
+					elif exc_type == IOError:
+						print >>warn, "W:", r.bozo_exception, f.url
+					
+					elif hasattr(feedparser, 'zlib') and exc_type == feedparser.zlib.error:
+						print >>warn, "W: broken compression", f.url
+					
+					elif exc_type in socket_errors:
+						exc_reason = r.bozo_exception.args[1]
+						print >>warn, "W:", exc_reason, f.url
 
 					elif exc_type == urllib2.URLError:
 						if r.bozo_exception.reason.__class__ in socket_errors:
@@ -299,11 +326,17 @@ def run(num=None):
 						else:
 							exc_reason = r.bozo_exception.reason
 						print >>warn, "W:", exc_reason, f.url
+					
+					elif exc_type == KeyboardInterrupt:
+						raise r.bozo_exception
 
 					else:
 						print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
 						print >>warn, "E:", r.get("bozo_exception", "can't process"), f.url
 						print >>warn, r
+						print >>warn, "feedparser", feedparser.__version__
+						print >>warn, "html2text", h2t.__version__
+						print >>warn, "Python", sys.version
 						print >>warn, "=== END HERE ==="
 					continue
 				
@@ -343,15 +376,17 @@ def run(num=None):
 					content = getContent(entry, HTMLOK=HTML_MAIL)
 					
 					link = unu(entry.get('link', ""))
+					print entry.link
 
 					from_addr = unu(getEmail(r.feed, entry))
 
 					message = (
-					"From: " + quote822(getName(r.feed, entry)) + " <"+from_addr+">" +
-					"\nTo: " + unu(f.to or default_to) + # set a default email!
-					"\nSubject: " + title +
+					"From: " + quote822(header7bit(getName(r, entry))) + " <"+from_addr+">" +
+					"\nTo: " + header7bit(unu(f.to or default_to)) + # set a default email!
+					"\nSubject: " + header7bit(title) +
 					"\nDate: " + time.strftime("%a, %d %b %Y %H:%M:%S -0000", datetime) +
 					"\nUser-Agent: rss2email" + # really should be X-Mailer 
+					BONUS_HEADER +
 					"\nContent-Type: ")         # but backwards-compatibility
 					
 					if ishtml(content):
@@ -369,7 +404,6 @@ def run(num=None):
 					message += '; charset="utf-8"\n\n' + content + "\n"
 
 					if QP_REQUIRED:
-						mimify.CHARSET = 'utf-8'
 						ins, outs = SIO(message), SIO()
 						mimify.mimify(ins, outs)
 						message = outs.getvalue()
@@ -379,10 +413,15 @@ def run(num=None):
 					f.seen[frameid] = id
 					
 				f.etag, f.modified = r.get('etag', None), r.get('modified', None)
+			except KeyboardInterrupt:
+				raise
 			except:
 				print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
 				print >>warn, "E: could not parse", f.url
 				traceback.print_exc(file=warn)
+				print >>warn, "feedparser", feedparser.__version__
+				print >>warn, "html2text", h2t.__version__
+				print >>warn, "Python", sys.version
 				print>>warn, "=== END HERE ==="
 				continue
 
