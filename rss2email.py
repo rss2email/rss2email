@@ -12,7 +12,7 @@ Usage: python rss2email.py feedfile action [options]
 	list
 	delete n
 """
-__version__ = "2.23"
+__version__ = "2.24"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -38,7 +38,10 @@ TREAT_DESCRIPTION_AS_HTML = 1
 QP_REQUIRED = 0
 
 def send(fr, to, message):
-	os.popen2(["/usr/sbin/sendmail", to])[0].write(message)
+	i, o = os.popen2(["/usr/sbin/sendmail", to])
+	i.write(message)
+	i.close(); o.close()
+	del i, o
 	
 # def send(fr, to, message):
 # 	import smtplib
