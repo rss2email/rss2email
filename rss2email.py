@@ -10,7 +10,7 @@ Usage:
   list
   delete n
 """
-__version__ = "2.5"
+__version__ = "2.51"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -95,7 +95,10 @@ except:
 	
 ### Import Modules ###
 
-import cPickle as pickle, fcntl, md5, time, os, traceback, socket, urllib2, sys
+import cPickle as pickle, fcntl, md5, time, os, traceback, urllib2, sys
+import socket; socket_errors = []
+for e in ['error', 'gaierror']:
+	if hasattr(socket, e): socket_errors.append(getattr(socket, e))
 if QP_REQUIRED: import mimify; from StringIO import StringIO as SIO
 if SMTP_SEND: import smtplib; smtpserver = smtplib.SMTP(SMTP_SERVER)
 else: smtpserver = None
@@ -280,18 +283,23 @@ def run(num=None):
 				if http_status != 304 and not r.entries and not r.get('version', ''):
 					if http_status not in [200, 302]: 
 						print >>warn, "W: error", http_status, f.url
+
 					elif contains(http_headers.get('content-type', 'rss'), 'html'):
 						print >>warn, "W: looks like HTML", f.url
+
 					elif http_headers.get('content-length', '1') == '0':
 						print >>warn, "W: empty page", f.url
-					elif exc_type == socket.timeout:
+
+					elif hasattr(socket, 'timeout') and exc_type == socket.timeout:
 						print >>warn, "W: timed out on", f.url
+
 					elif exc_type == urllib2.URLError:
-						if r.bozo_exception.reason.__class__ is socket.gaierror:
+						if r.bozo_exception.reason.__class__ in socket_errors:
 							exc_reason = r.bozo_exception.reason.args[1]
 						else:
 							exc_reason = r.bozo_exception.reason
 						print >>warn, "W:", exc_reason, f.url
+
 					else:
 						print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
 						print >>warn, "E:", r.get("bozo_exception", "can't process"), f.url
