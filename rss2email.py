@@ -12,7 +12,7 @@ Usage: python rss2email.py feedfile action [options]
 	list
 	delete n
 """
-__version__ = "2.24"
+__version__ = "2.25"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -68,6 +68,9 @@ def e(obj, val):
 	x = expandEntities(obj[val])
 	if type(x) is unicode: x = x.encode('utf-8')
 	return x.strip()
+
+def quoteEmailName(s):
+	return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 def getContent(item, url):
 	if item.has_key('content') and item['content']:
@@ -134,7 +137,7 @@ def run():
 		c, ert = result['channel'], 'errorreportsto'
 		
 		headers = "From: "
-		if c.has_key('title'): headers += e(c, 'title') + ' '
+		if c.has_key('title'): headers += quoteEmailName(e(c, 'title')) + ' '
 		if c.has_key(ert) and c[ert].startswith('mailto:'):
 			fr = c[ert][8:]
 		else:
