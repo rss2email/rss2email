@@ -12,7 +12,7 @@ Usage: python rss2email.py feedfile action [options]
 	list
 	delete n
 """
-__version__ = "2.28"
+__version__ = "2.3"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -76,8 +76,9 @@ import cPickle as pickle, fcntl, md5, time, os, traceback
 if QP_REQUIRED: import mimify; from StringIO import StringIO as SIO
 def isstr(f): return isinstance(f, type('')) or isinstance(f, type(u''))
 
-def e(obj, val):
-	x = expandEntities(obj[val])
+def e(obj, val, ee=1):
+	x = obj[val]
+	if ee: x = expandEntities(x)
 	if type(x) is unicode: x = x.encode('utf-8')
 	return x.strip()
 
@@ -87,30 +88,30 @@ def quoteEmailName(s):
 def getContent(item, url):
 	if item.has_key('content') and item['content']:
 		for c in item['content']:
-			if c['type'] == 'text/plain': return c['value']
+			if c['type'] == 'text/plain': return e(c, 'value')
 
 		for c in item['content']:
 			if c['type'].find('html') != -1:
-				return html2text(c['value'], c['base'])
+				return html2text(e(c, 'value', ee=0), c['base'])
 		
-		return item['content'][0]['value']
+		return e(item['content'][0], 'value')
 			
 	if item.has_key('description'): 
 		if TREAT_DESCRIPTION_AS_HTML:
-			return html2text(item['description'], url)
+			return html2text(e(item, 'description', ee=0), url)
 		else:
-			return item['description']
+			return e(item, 'description')
 	
-	if item.has_key('summary'): return item['summary']
+	if item.has_key('summary'): return e(item, 'summary')
 	return ""
 
 def getID(item, content):
 	if TRUST_GUID:
-		if item.has_key('id') and item['id']: return item['id']
+		if item.has_key('id') and item['id']: return e(item, 'id')
 
 	if content: return md5.new(content).hexdigest()
-	if item.has_key('link'): return item['link']
-	if item.has_key('title'): return md5.new(item['title']).hexdigest()
+	if item.has_key('link'): return e(item, 'link')
+	if item.has_key('title'): return md5.new(e(item, 'title')).hexdigest()
 
 class Feed:
 	def __init__(self, url, to):
@@ -120,11 +121,18 @@ class Feed:
 def load(lock=1):
 	ff2 = open(feedfile, 'r')
 	feeds = pickle.load(ff2)
-	if lock: fcntl.flock(ff2, fcntl.LOCK_EX)
+	if lock:
+		fcntl.flock(ff2, fcntl.LOCK_EX)
+		#HACK: to deal with lock caching
+		ff2 = open(feedfile, 'r')
+		feeds = pickle.load(ff2)
+		fcntl.flock(ff2, fcntl.LOCK_EX)
+
 	return feeds, ff2
 
 def unlock(feeds, ff2):
-	pickle.dump(feeds, open(feedfile, 'w'))
+	pickle.dump(feeds, open(feedfile+'.tmp', 'w'))
+	os.rename(feedfile+'.tmp', feedfile)
 	fcntl.flock(ff2, fcntl.LOCK_UN)
 	
 def add(url, to=None):
@@ -136,83 +144,88 @@ def add(url, to=None):
 
 def run():
 	feeds, ff2 = load()
-
-	if isstr(feeds[0]): default_to = feeds[0]; ifeeds = feeds[1:]
-	else: ifeeds = feeds
-	
-	for f in ifeeds:
-		if VERBOSE: print "Processing", f.url
-		try: result = feedparser.parse(f.url, f.etag, f.modified)
-		except:
-			print "E: could not parse", f.url
-			traceback.print_exc()
-			continue
+	try:
+		if isstr(feeds[0]): default_to = feeds[0]; ifeeds = feeds[1:]
+		else: ifeeds = feeds
 		
-		if result.has_key('status') and result['status'] == 301: f.url = result['url']
-		
-		if result.has_key('encoding'): enc = result['encoding']
-		else: enc = 'utf-8'
-		
-		c, ert = result['channel'], 'errorreportsto'
-		
-		headers = "From: "
-		if c.has_key('title'): headers += quoteEmailName(e(c, 'title')) + ' '
-		if FORCE_FROM and c.has_key(ert) and c[ert].startswith('mailto:'):
-			fr = c[ert][7:]
-		else:
-			fr = DEFAULT_FROM
-		
-		headers += '<'+fr+'>'
+		for f in ifeeds:
+			try: 
+				if VERBOSE: print "Processing", f.url
+				result = feedparser.parse(f.url, f.etag, f.modified)
 				
-		headers += "\nTo: " + (f.to or default_to) # set a default email!
-		if not QP_REQUIRED:
-			headers += '\nContent-Type: text/plain; charset="' + enc + '"'
-		
-		if not result['items'] and ((not result.has_key('status') or (result.has_key('status') and result['status'] != 304))):
-			print "W: no items; invalid feed? (" + f.url + ")"
-			continue
-	
-		for i in result['items']:
-			content = getContent(i, f.url)
-			id = getID(i, content)
-		
-			if i.has_key('link') and i['link']: frameid = link = e(i, 'link')
-			else: frameid = id; link = None
+				if result.has_key('status') and result['status'] == 301: f.url = result['url']
+				
+				if result.has_key('encoding'): enc = result['encoding']
+				else: enc = 'utf-8'
+				
+				c, ert = result['channel'], 'errorreportsto'
+				
+				headers = "From: "
+				if c.has_key('title'): headers += quoteEmailName(e(c, 'title')) + ' '
+				if FORCE_FROM and c.has_key(ert) and c[ert].startswith('mailto:'):
+					fr = c[ert][7:]
+				else:
+					fr = DEFAULT_FROM
+				
+				headers += '<'+fr+'>'
+						
+				headers += "\nTo: " + (f.to or default_to) # set a default email!
+				if not QP_REQUIRED:
+					headers += '\nContent-Type: text/plain; charset="' + enc + '"'
+				
+				if not result['items'] and ((not result.has_key('status') or (result.has_key('status') and result['status'] != 304))):
+					print "W: no items; invalid feed? (" + f.url + ")"
+					continue
 			
-			if f.seen.has_key(frameid) and f.seen[frameid] == id:
-				continue # have seen
-	
-			if i.has_key('title'): title = e(i, 'title')
-			else: title = content[:70].replace("\n", " ")
+				for i in result['items']:
+					content = getContent(i, f.url)
+					id = getID(i, content)
+				
+					if i.has_key('link') and i['link']: link = e(i, 'link')
+					else: link = None
+					
+					if i.has_key('id') and i['id']: frameid = e(i, 'id')
+					else: frameid = id
+					
+					if f.seen.has_key(frameid) and f.seen[frameid] == id:
+						continue # have seen
 			
-			if DATE_HEADER and i.has_key('date_parsed'):
-				datetime = i['date_parsed']	
-			else:
-				datetime = time.gmtime()
+					if i.has_key('title'): title = e(i, 'title')
+					else: title = content[:70].replace("\n", " ")
+					
+					if DATE_HEADER and i.has_key('date_parsed'):
+						datetime = i['date_parsed']	
+					else:
+						datetime = time.gmtime()
+					
+					message = (headers
+							   + "\nSubject: " + title
+							   + "\nDate: " + time.strftime("%a, %d %b %Y %H:%M:%S -0000", datetime)
+							   + "\nUser-Agent: rss2email"
+							   + "\n")
+					
+					message += "\n" + content.strip() + "\n"
+					
+					if link: message += "\nURL: " + link + "\n"
+					
+					if QP_REQUIRED:
+						mimify.CHARSET = enc
+						ins, outs = SIO(message), SIO()
+						mimify.mimify(ins, outs); outs.seek(0)
+						message = outs.read()
+					
+					send(fr, (f.to or default_to), message)
 			
-			message = (headers
-					   + "\nSubject: " + title
-					   + "\nDate: " + time.strftime("%a, %d %b %Y %H:%M:%S -0000", datetime)
-					   + "\nUser-Agent: rss2email"
-					   + "\n")
-			
-			message += "\n" + content.strip() + "\n"
-			
-			if link: message += "\nURL: " + link + "\n"
-			
-			if QP_REQUIRED:
-				mimify.CHARSET = enc
-				ins, outs = SIO(message), SIO()
-				mimify.mimify(ins, outs); outs.seek(0)
-				message = outs.read()
-			
-			send(fr, (f.to or default_to), message)
-	
-			f.seen[frameid] = id
-			
-		f.etag, f.modified = result.get('etag', None), result.get('modified', None)
-	
-	unlock(feeds, ff2)
+					f.seen[frameid] = id
+					
+				f.etag, f.modified = result.get('etag', None), result.get('modified', None)
+			except:
+				print "E: could not parse", f.url
+				traceback.print_exc()
+				continue
+
+	finally:		
+		unlock(feeds, ff2)
 
 def list():
 	feeds, ff2 = load(lock=0)
