@@ -12,7 +12,7 @@ Usage: python rss2email.py feedfile action [options]
 	list
 	delete n
 """
-__version__ = "2.21"
+__version__ = "2.22"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -51,10 +51,7 @@ def send(fr, to, message):
 import sys
 sys.path.append(".")
 try:
-	import config
-	DEFAULT_FROM = config.DEFAULT_FROM
-	TRUST_GUID = config.TRUST_GUID
-	TREAT_DESCRIPTION_AS_HTML = config.TREAT_DESCRIPTION_AS_HTML
+	from config import *
 except:
 	pass
 
