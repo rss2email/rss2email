@@ -12,7 +12,7 @@ Usage: python rss2email.py feedfile action [options]
 	list
 	delete n
 """
-__version__ = "2.26"
+__version__ = "2.27"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -31,6 +31,10 @@ FORCE_FROM = 0
 # 1: Receive one email per post
 # 0: Receive an email every time a post changes
 TRUST_GUID = 1
+
+# 1: Generate Date header based on item's date, when possible
+# 0: Generate Date header based on time sent
+DATE_HEADER = 0
 
 # 1: Treat the contents of <description> as HTML
 # 0: Send the contents of <description> as is, without conversion
@@ -68,7 +72,7 @@ except:
 
 from html2text import html2text, expandEntities
 import feedparser
-import cPickle as pickle, fcntl, md5, time, os
+import cPickle as pickle, fcntl, md5, time, os, traceback
 if QP_REQUIRED: import mimify; from StringIO import StringIO as SIO
 def isstr(f): return isinstance(f, type('')) or isinstance(f, type(u''))
 
@@ -113,10 +117,10 @@ class Feed:
 		self.url, self.etag, self.modified, self.seen = url, None, None, {}
 		self.to = to		
 
-def load():
+def load(lock=1):
 	ff2 = open(feedfile, 'r')
 	feeds = pickle.load(ff2)
-	fcntl.flock(ff2, fcntl.LOCK_EX)
+	if lock: fcntl.flock(ff2, fcntl.LOCK_EX)
 	return feeds, ff2
 
 def unlock(feeds, ff2):
@@ -138,9 +142,13 @@ def run():
 	
 	for f in ifeeds:
 		if VERBOSE: print "Processing", f.url
-		result = feedparser.parse(f.url, f.etag, f.modified)
+		try: result = feedparser.parse(f.url, f.etag, f.modified)
+		except:
+			print "E: could not parse", f.url
+			traceback.print_exc()
+			continue
 		
-		if result['status'] == 301: f.url = result['url']
+		if result.has_key('status') and result['status'] == 301: f.url = result['url']
 		
 		if result.has_key('encoding'): enc = result['encoding']
 		else: enc = 'utf-8'
@@ -176,10 +184,15 @@ def run():
 	
 			if i.has_key('title'): title = e(i, 'title')
 			else: title = content[:70].replace("\n", " ")
-				
+			
+			if DATE_HEADER and i.has_key('date_parsed'):
+				datetime = i['date_parsed']	
+			else:
+				datetime = time.gmtime()
+			
 			message = (headers
 					   + "\nSubject: " + title
-					   + "\nDate: " + time.strftime("%a, %d %b %Y %H:%M:%S -0000", time.gmtime())
+					   + "\nDate: " + time.strftime("%a, %d %b %Y %H:%M:%S -0000", datetime)
 					   + "\nUser-Agent: rss2email"
 					   + "\n")
 			
@@ -202,7 +215,7 @@ def run():
 	unlock(feeds, ff2)
 
 def list():
-	feeds, ff2 = load()
+	feeds, ff2 = load(lock=0)
 	
 	if isstr(feeds[0]):
 		default_to = feeds[0]; ifeeds = feeds[1:]; i=1
@@ -211,8 +224,6 @@ def list():
 	for f in ifeeds:
 		print `i`+':', f.url, '('+(f.to or ('default: '+default_to))+')'
 		i+= 1
-
-	unlock(feeds, ff2)
 
 def delete(n):
 	feeds, ff2 = load()
