@@ -5,18 +5,19 @@ http://www.aaronsw.com/2002/rss2email
 Usage: python rss2email.py feedfile action [options]
   feedfile: name of the file to store feed info in
   action [options]:
-	new (create new feedfile)
+	new [youremail] (create new feedfile)
+	email [yournewemail] (update defauly email)
 	run
-	add feedurl youremail
+	add feedurl [youremail]
 	list
 	delete n
 """
-__version__ = "2.1"
+__version__ = "2.2"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
 					 "Brian Lalor (blalor@ithacabands.org)",
-					 "Joey Hess"]
+					 "Joey Hess", 'Matej Cepl']
 
 ### Vaguely Customizable Options ###
 
@@ -55,6 +56,8 @@ except:
 from html2text import html2text, expandEntities
 import feedparser
 import cPickle as pickle, fcntl, md5, time, os
+
+def isstr(f): return isinstance(f, type('')) or isinstance(f, type(u''))
 
 def e(obj, val):
 	x = expandEntities(obj[val])
@@ -104,14 +107,20 @@ def unlock(feeds, ff2):
 	pickle.dump(feeds, open(feedfile, 'w'))
 	fcntl.flock(ff2, fcntl.LOCK_UN)
 	
-def add(url, to):
+def add(url, to=None):
 	feeds, ff2 = load()
+	if not isstr(feeds[0]) and to is None:
+		raise 'NoEmail', "Run `email newaddr` or `add url addr`."
 	feeds.append(Feed(url, to))
 	unlock(feeds, ff2)
 
 def run():
-	feeds, ff2 = load()	
-	for f in feeds:
+	feeds, ff2 = load()
+
+	if isstr(feeds[0]): default_to = feeds[0]; ifeeds = feeds[1:]
+	else: ifeeds = feeds
+	
+	for f in ifeeds:
 		result = feedparser.parse(f.url, f.etag, f.modified)
 		
 		if result.has_key('encoding'): enc = result['encoding']
@@ -127,7 +136,8 @@ def run():
 			fr = DEFAULT_FROM
 		
 		headers += '<'+fr+'>'
-		headers += "\nTo: " + f.to
+				
+		headers += "\nTo: " + (f.to or default_to) # set a default email!
 		headers += "\nContent-type: text/plain; charset=" + enc
 		
 		if not result['items'] and ((not result.has_key('status') or (result.has_key('status') and result['status'] != 304))):
@@ -167,9 +177,13 @@ def run():
 
 def list():
 	feeds, ff2 = load()
-	i = 0
-	for f in feeds:
-		print `i`+':', f.url, '('+f.to+')'
+	
+	if isstr(feeds[0]):
+		default_to = feeds[0]; ifeeds = feeds[1:]; i=1
+		print "default email:", default_to
+	else: ifeeds = feeds; i = 0
+	for f in ifeeds:
+		print `i`+':', f.url, '('+(f.to or ('default: '+default_to))+')'
 		i+= 1
 
 	unlock(feeds, ff2)
@@ -178,6 +192,12 @@ def delete(n):
 	feeds, ff2 = load()
 	feeds = feeds[:n] + feeds[n+1:]
 	unlock(feeds, ff2)
+	
+def email(addr):
+	feeds, ff2 = load()
+	if isstr(feeds[0]): feeds[0] = addr
+	else: feeds = [addr] + feeds
+	unlock(feeds, ff2)
 
 if __name__ == "__main__":
 	if len(sys.argv) < 3: print __doc__
@@ -185,8 +205,14 @@ if __name__ == "__main__":
 		feedfile, action = sys.argv[1], sys.argv[2]
 		
 		if action == "run": run()
+		elif action == "email":
+			email(sys.argv[3])
+			print "Warning: Feed IDs may have changed. Run `list` before `delete`."
 		elif action == "add": add(*sys.argv[3:])
-		elif action == "new": pickle.dump([], open(feedfile, 'w'))
+		elif action == "new": 
+			if len(sys.argv) == 4: d = [sys.argv[3]]
+			else: d = []
+			pickle.dump(d, open(feedfile, 'w'))
 		elif action == "list": list()
 		elif action == "delete": delete(int(sys.argv[3]))
 		else:
