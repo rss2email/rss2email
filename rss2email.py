@@ -12,7 +12,7 @@ Usage: python rss2email.py feedfile action [options]
 	list
 	delete n
 """
-__version__ = "2.22"
+__version__ = "2.23"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -151,7 +151,7 @@ def run():
 			content = getContent(i, f.url)
 			id = getID(i, content)
 		
-			if i.has_key('link'): frameid = link = e(i, 'link')
+			if i.has_key('link') and i['link']: frameid = link = e(i, 'link')
 			else: frameid = id; link = None
 			
 			if f.seen.has_key(frameid) and f.seen[frameid] == id:
