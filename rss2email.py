@@ -6,13 +6,13 @@ Usage: python rss2email.py feedfile action [options]
   feedfile: name of the file to store feed info in
   action [options]:
 	new [youremail] (create new feedfile)
-	email [yournewemail] (update defauly email)
+	email [yournewemail] (update default email)
 	run
 	add feedurl [youremail]
 	list
 	delete n
 """
-__version__ = "2.25"
+__version__ = "2.26"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -23,6 +23,10 @@ ___contributors__ = ["Dean Jackson (dino@grorg.org)",
 
 # The email address messages are from by default:
 DEFAULT_FROM = "bozo@dev.null"
+
+# 1: Only use the DEFAULT_FROM address.
+# 0: Use the email address specified by the feed, when possible.
+FORCE_FROM = 0
 
 # 1: Receive one email per post
 # 0: Receive an email every time a post changes
@@ -36,6 +40,10 @@ TREAT_DESCRIPTION_AS_HTML = 1
 # 0: Send message in 8-bits
 # http://cr.yp.to/smtp/8bitmime.html
 QP_REQUIRED = 0
+
+# 1: Name feeds as they're being processed.
+# 0: Keep quiet.
+VERBOSE = 0
 
 def send(fr, to, message):
 	i, o = os.popen2(["/usr/sbin/sendmail", to])
@@ -129,7 +137,10 @@ def run():
 	else: ifeeds = feeds
 	
 	for f in ifeeds:
+		if VERBOSE: print "Processing", f.url
 		result = feedparser.parse(f.url, f.etag, f.modified)
+		
+		if result['status'] == 301: f.url = result['url']
 		
 		if result.has_key('encoding'): enc = result['encoding']
 		else: enc = 'utf-8'
@@ -139,7 +150,7 @@ def run():
 		headers = "From: "
 		if c.has_key('title'): headers += quoteEmailName(e(c, 'title')) + ' '
 		if c.has_key(ert) and c[ert].startswith('mailto:'):
-			fr = c[ert][8:]
+			fr = c[ert][7:]
 		else:
 			fr = DEFAULT_FROM
 		
