@@ -7,12 +7,12 @@ Usage: python rss2email.py feedfile action [options]
   action [options]:
 	new [youremail] (create new feedfile)
 	email [yournewemail] (update default email)
-	run
+	run [--no-send]
 	add feedurl [youremail]
 	list
 	delete n
 """
-__version__ = "2.27"
+__version__ = "2.28"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -157,7 +157,7 @@ def run():
 		
 		headers = "From: "
 		if c.has_key('title'): headers += quoteEmailName(e(c, 'title')) + ' '
-		if c.has_key(ert) and c[ert].startswith('mailto:'):
+		if FORCE_FROM and c.has_key(ert) and c[ert].startswith('mailto:'):
 			fr = c[ert][7:]
 		else:
 			fr = DEFAULT_FROM
@@ -236,22 +236,38 @@ def email(addr):
 	else: feeds = [addr] + feeds
 	unlock(feeds, ff2)
 
-if __name__ == "__main__":
-	if len(sys.argv) < 3: print __doc__
-	else: 
-		feedfile, action = sys.argv[1], sys.argv[2]
+if __name__ == '__main__':
+	ie, args = "InputError", sys.argv
+	try:
+		if len(args) < 3: raise ie, "insufficient args"
+		feedfile, action, args = args[1], args[2], args[3:]
 		
-		if action == "run": run()
+		if action == "run": 
+			if args and args[0] == "--no-send":
+				def send(x,y,z):
+					if VERBOSE: print 'Not sending', (
+					[x for x in z.splitlines() if x.startswith("Subject:")][0])
+			run()
+
 		elif action == "email":
-			email(sys.argv[3])
-			print "Warning: Feed IDs may have changed. Run `list` before `delete`."
-		elif action == "add": add(*sys.argv[3:])
+			email(args[0])
+			print "W: Feed IDs may have changed. Run `list` before `delete`."
+
+		elif action == "add": add(*args)
+
 		elif action == "new": 
-			if len(sys.argv) == 4: d = [sys.argv[3]]
+			if len(args) == 1: d = [args[0]]
 			else: d = []
 			pickle.dump(d, open(feedfile, 'w'))
+
 		elif action == "list": list()
-		elif action == "delete": delete(int(sys.argv[3]))
+
+		elif action == "delete": delete(int(args[0]))
+
 		else:
-			print __doc__
-		
+			raise ie, "invalid action"
+			
+	except ie, e:
+		print "E:", e
+		print
+		print __doc__
