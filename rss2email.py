@@ -12,7 +12,7 @@ Usage: python rss2email.py feedfile action [options]
 	list
 	delete n
 """
-__version__ = "2.2"
+__version__ = "2.21"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -32,13 +32,18 @@ TRUST_GUID = 1
 # 0: Send the contents of <description> as is, without conversion
 TREAT_DESCRIPTION_AS_HTML = 1
 
-# def send(fr, to, message):
-# 	import smtplib
-# 	s = smtplib.SMTP("vorpal.notabug.com:26")
-# 	s.sendmail(fr, to, message)
+# 1: Apply Q-P conversion (required for some MUAs)
+# 0: Send message in 8-bits
+# http://cr.yp.to/smtp/8bitmime.html
+QP_REQUIRED = 0
 
 def send(fr, to, message):
 	os.popen2(["/usr/sbin/sendmail", to])[0].write(message)
+	
+# def send(fr, to, message):
+# 	import smtplib
+# 	s = smtplib.SMTP("vorpal.notabug.com:26")
+# 	s.sendmail(fr, [to], message)
 
 ### End of Options ###
 
@@ -56,7 +61,7 @@ except:
 from html2text import html2text, expandEntities
 import feedparser
 import cPickle as pickle, fcntl, md5, time, os
-
+if QP_REQUIRED: import mimify; from StringIO import StringIO as SIO
 def isstr(f): return isinstance(f, type('')) or isinstance(f, type(u''))
 
 def e(obj, val):
@@ -86,7 +91,7 @@ def getContent(item, url):
 
 def getID(item, content):
 	if TRUST_GUID:
-		if item.has_key('id'): return item['id']
+		if item.has_key('id') and item['id']: return item['id']
 
 	if content: return md5.new(content).hexdigest()
 	if item.has_key('link'): return item['link']
@@ -138,7 +143,8 @@ def run():
 		headers += '<'+fr+'>'
 				
 		headers += "\nTo: " + (f.to or default_to) # set a default email!
-		headers += "\nContent-type: text/plain; charset=" + enc
+		if not QP_REQUIRED:
+			headers += '\nContent-Type: text/plain; charset="' + enc + '"'
 		
 		if not result['items'] and ((not result.has_key('status') or (result.has_key('status') and result['status'] != 304))):
 			print "W: no items; invalid feed? (" + f.url + ")"
@@ -167,7 +173,13 @@ def run():
 			
 			if link: message += "\nURL: " + link + "\n"
 			
-			send(fr, f.to, message)
+			if QP_REQUIRED:
+				mimify.CHARSET = enc
+				ins, outs = SIO(message), SIO()
+				mimify.mimify(ins, outs); outs.seek(0)
+				message = outs.read()
+			
+			send(fr, (f.to or default_to), message)
 	
 			f.seen[frameid] = id
 			
