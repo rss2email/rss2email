@@ -12,7 +12,7 @@ Usage: python rss2email.py feedfile action [options]
 	list
 	delete n
 """
-__version__ = "2.31"
+__version__ = "2.32"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -137,7 +137,7 @@ def unlock(feeds, ff2):
 	
 def add(url, to=None):
 	feeds, ff2 = load()
-	if not isstr(feeds[0]) and to is None:
+	if feeds and not isstr(feeds[0]) and to is None:
 		raise 'NoEmail', "Run `email newaddr` or `add url addr`."
 	feeds.append(Feed(url, to))
 	unlock(feeds, ff2)
@@ -145,7 +145,7 @@ def add(url, to=None):
 def run():
 	feeds, ff2 = load()
 	try:
-		if isstr(feeds[0]): default_to = feeds[0]; ifeeds = feeds[1:]
+		if feeds and isstr(feeds[0]): default_to = feeds[0]; ifeeds = feeds[1:]
 		else: ifeeds = feeds
 		
 		for f in ifeeds:
@@ -230,7 +230,7 @@ def run():
 def list():
 	feeds, ff2 = load(lock=0)
 	
-	if isstr(feeds[0]):
+	if feeds and isstr(feeds[0]):
 		default_to = feeds[0]; ifeeds = feeds[1:]; i=1
 		print "default email:", default_to
 	else: ifeeds = feeds; i = 0
@@ -245,7 +245,7 @@ def delete(n):
 	
 def email(addr):
 	feeds, ff2 = load()
-	if isstr(feeds[0]): feeds[0] = addr
+	if feeds and isstr(feeds[0]): feeds[0] = addr
 	else: feeds = [addr] + feeds
 	unlock(feeds, ff2)
 
