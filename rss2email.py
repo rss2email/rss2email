@@ -10,7 +10,7 @@ Usage:
   list
   delete n
 """
-__version__ = "2.51"
+__version__ = "2.511"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson (dino@grorg.org)", 
@@ -241,7 +241,7 @@ def unlock(feeds, feedfileObject):
 ### Program Functions ###
 
 def add(*args):
-	if len(args) == 2 and contains(args[1], '@') and not contain(args[1], '://'):
+	if len(args) == 2 and contains(args[1], '@') and not contains(args[1], '://'):
 		urls, to = [args[0]], args[1]
 	else:
 		urls, to = args, None
