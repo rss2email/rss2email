@@ -10,7 +10,7 @@ Usage:
   list
   delete n
 """
-__version__ = "2.53"
+__version__ = "2.54"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
@@ -157,23 +157,25 @@ def getContent(entry, HTMLOK=0):
 	#    pick the one in the "best" language.
 	#  * HACK: hardcoded HTMLOK, should take a tuple of media types
 	
-	if entry.get('summary_detail', {}):
-		entry.content = entry.get('content', []) + [entry.summary_detail]
+	conts = entry.get('content', [])
 	
-	if entry.get('content', []):
+	if entry.get('summary_detail', {}):
+		conts += [entry.summary_detail]
+	
+	if conts:
 		if HTMLOK:
-			for c in entry.content:
+			for c in conts:
 				if contains(c.type, 'html'): return ('HTML', c.value)
 	
-		for c in entry.content:
+		for c in conts:
 			if c.type == 'text/plain': return c.value
 	
 		if not HTMLOK: # Only need to convert to text if HTML isn't OK
-			for c in entry.content:
+			for c in conts:
 				if contains(c.type, 'html'):
 					return html2text(c.value)
 		
-		return entry.content[0].value	
+		return conts[0].value	
 	
 	return ""
 
@@ -333,6 +335,7 @@ def run(num=None):
 						print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
 						print >>warn, "E:", r.get("bozo_exception", "can't process"), f.url
 						print >>warn, r
+						print >>warn, "rss2email", __version__
 						print >>warn, "feedparser", feedparser.__version__
 						print >>warn, "html2text", h2t.__version__
 						print >>warn, "Python", sys.version
@@ -417,6 +420,7 @@ def run(num=None):
 				print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
 				print >>warn, "E: could not parse", f.url
 				traceback.print_exc(file=warn)
+				print >>warn, "rss2email", __version__
 				print >>warn, "feedparser", feedparser.__version__
 				print >>warn, "html2text", h2t.__version__
 				print >>warn, "Python", sys.version
