@@ -10,7 +10,7 @@ Usage:
   list
   delete n
 """
-__version__ = "2.52"
+__version__ = "2.53"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
@@ -78,7 +78,6 @@ def send(fr, to, message):
  		i.write(message)
  		i.close(); o.close()
  		del i, o
-
 
 ## html2text options ##
 
@@ -161,7 +160,7 @@ def getContent(entry, HTMLOK=0):
 	if entry.get('summary_detail', {}):
 		entry.content = entry.get('content', []) + [entry.summary_detail]
 	
-	if entry.content:
+	if entry.get('content', []):
 		if HTMLOK:
 			for c in entry.content:
 				if contains(c.type, 'html'): return ('HTML', c.value)
@@ -376,8 +375,7 @@ def run(num=None):
 					content = getContent(entry, HTMLOK=HTML_MAIL)
 					
 					link = unu(entry.get('link', ""))
-					print entry.link
-
+					
 					from_addr = unu(getEmail(r.feed, entry))
 
 					message = (
@@ -422,7 +420,7 @@ def run(num=None):
 				print >>warn, "feedparser", feedparser.__version__
 				print >>warn, "html2text", h2t.__version__
 				print >>warn, "Python", sys.version
-				print>>warn, "=== END HERE ==="
+				print >>warn, "=== END HERE ==="
 				continue
 
 	finally:		
