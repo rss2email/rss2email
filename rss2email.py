@@ -10,7 +10,7 @@ Usage:
   list
   delete n
 """
-__version__ = "2.54"
+__version__ = "2.55"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
@@ -373,7 +373,7 @@ def run(num=None):
 					if DATE_HEADER:
 						for datetype in DATE_HEADER_ORDER:
 							kind = datetype+"_parsed"
-							if kind in entry: datetime = entry[kind]
+							if kind in entry and entry[kind]: datetime = entry[kind]
 						
 					content = getContent(entry, HTMLOK=HTML_MAIL)
 					
