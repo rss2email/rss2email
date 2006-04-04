@@ -10,11 +10,11 @@ Usage:
   list
   delete n
 """
-__version__ = "2.55"
+__version__ = "2.56"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
-                     "Matej Cepl", "Martin 'Joey' Schulze"]
+                     "Matej Cepl", "Martin 'Joey' Schulze", "Marcel Ackermann (http://www.DreamFlasher.de)", "Lindsey Smith (lindsey.smith@gmail.com)" ]
 
 ### Vaguely Customizable Options ###
 
@@ -61,6 +61,9 @@ USE_PUBLISHER_EMAIL = 0
 SMTP_SEND = 0
 
 SMTP_SERVER = "smtp.yourisp.net:25"
+AUTHREQUIRED = 0 # if you need to use SMTP AUTH set to 1
+SMTP_USER = ' username'  # for SMTP AUTH, set SMTP username here
+SMTP_PASS = 'password'  # for SMTP AUTH, set SMTP password here
 
 # Set this to add a bonus header to all emails (start with '\n').
 BONUS_HEADER = ''
@@ -72,7 +75,11 @@ OVERRIDE_FROM = {}
 # Note: You can also override the send function.
 def send(fr, to, message):
 	if SMTP_SEND:
-		smtpserver.sendmail(fr, [to], message)
+		import smtplib
+		session = smtplib.SMTP(SMTP_SERVER)
+		if AUTHREQUIRED:
+			session.login(SMTP_USER, SMTP_PASS)
+		session.sendmail(fr, [to], message)	
 	else:
  		i, o = os.popen2(["/usr/sbin/sendmail", to])
  		i.write(message)
@@ -102,7 +109,14 @@ except:
 	
 ### Import Modules ###
 
-import cPickle as pickle, fcntl, md5, time, os, traceback, urllib2, sys, types
+import cPickle as pickle, md5, time, os, traceback, urllib2, sys, types
+unix = 0
+try:
+	import fcntl
+	unix = 1
+except:
+	pass
+		
 import socket; socket_errors = []
 for e in ['error', 'gaierror']:
 	if hasattr(socket, e): socket_errors.append(getattr(socket, e))
@@ -243,18 +257,21 @@ def load(lock=1):
 	feedfileObject = open(feedfile, 'r')
 	feeds = pickle.load(feedfileObject)
 	if lock:
-		fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
+		if unix: fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
 		#HACK: to deal with lock caching
 		feedfileObject = open(feedfile, 'r')
 		feeds = pickle.load(feedfileObject)
-		fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
+		if unix: fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
 
 	return feeds, feedfileObject
 
 def unlock(feeds, feedfileObject):
-	pickle.dump(feeds, open(feedfile+'.tmp', 'w'))
-	os.rename(feedfile+'.tmp', feedfile)
-	fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_UN)
+	if not unix: 
+		pickle.dump(feeds, open(feedfile, 'w'))
+	else:	
+		pickle.dump(feeds, open(feedfile+'.tmp', 'w'))
+		os.rename(feedfile+'.tmp', feedfile)
+		fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_UN)
 
 ### Program Functions ###
 
@@ -384,7 +401,7 @@ def run(num=None):
 					message = (
 					"From: " + quote822(header7bit(getName(r, entry))) + " <"+from_addr+">" +
 					"\nTo: " + header7bit(unu(f.to or default_to)) + # set a default email!
-					"\nSubject: " + header7bit(title) +
+					"\nSubject: " + unu(html2text(header7bit(title))).strip() +
 					"\nDate: " + time.strftime("%a, %d %b %Y %H:%M:%S -0000", datetime) +
 					"\nUser-Agent: rss2email" + # really should be X-Mailer 
 					BONUS_HEADER +
@@ -401,7 +418,7 @@ def run(num=None):
 					else:
 						message += "text/plain"
 						content = unu(content).strip() + "\n\nURL: "+link
-					
+						
 					message += '; charset="utf-8"\n\n' + content + "\n"
 
 					if QP_REQUIRED:
@@ -419,6 +436,7 @@ def run(num=None):
 			except:
 				print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
 				print >>warn, "E: could not parse", f.url
+				#if title: print >>warn, "Entry entitled: ", title 
 				traceback.print_exc(file=warn)
 				print >>warn, "rss2email", __version__
 				print >>warn, "feedparser", feedparser.__version__
@@ -456,6 +474,7 @@ def email(addr):
 if __name__ == '__main__':
 	ie, args = "InputError", sys.argv
 	try:
+		if VERBOSE: print 'args == %s' % args
 		if len(args) < 3: raise ie, "insufficient args"
 		feedfile, action, args = args[1], args[2], args[3:]
 		
@@ -492,3 +511,5 @@ if __name__ == '__main__':
 		print "E:", e
 		print
 		print __doc__
+
+
