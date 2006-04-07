@@ -3,10 +3,10 @@
 http://www.aaronsw.com/2002/rss2email
 
 Usage:
-  new [youremail] (create new feedfile)
-  email [yournewemail] (update default email)
+  new [emailaddress] (create new feedfile)
+  email newemailaddress (update default email)
   run [--no-send] [num]
-  add feedurl [youremail]
+  add feedurl [emailaddress]
   list
   delete n
 """
@@ -14,7 +14,9 @@ __version__ = "2.56"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
-                     "Matej Cepl", "Martin 'Joey' Schulze", "Marcel Ackermann (http://www.DreamFlasher.de)", "Lindsey Smith (lindsey.smith@gmail.com)" ]
+                     "Matej Cepl", "Martin 'Joey' Schulze", 
+                     "Marcel Ackermann (http://www.DreamFlasher.de)", 
+                     "Lindsey Smith (lindsey.smith@gmail.com)" ]
 
 ### Vaguely Customizable Options ###
 
@@ -57,12 +59,12 @@ VERBOSE = 0
 USE_PUBLISHER_EMAIL = 0
 
 # 1: Use SMTP_SERVER to send mail.
-# 0: Call /usr/bin/sendmail to send mail.
+# 0: Call /usr/sbin/sendmail to send mail.
 SMTP_SEND = 0
 
 SMTP_SERVER = "smtp.yourisp.net:25"
 AUTHREQUIRED = 0 # if you need to use SMTP AUTH set to 1
-SMTP_USER = ' username'  # for SMTP AUTH, set SMTP username here
+SMTP_USER = 'username'  # for SMTP AUTH, set SMTP username here
 SMTP_PASS = 'password'  # for SMTP AUTH, set SMTP password here
 
 # Set this to add a bonus header to all emails (start with '\n').
@@ -73,18 +75,41 @@ BONUS_HEADER = ''
 OVERRIDE_FROM = {}
 
 # Note: You can also override the send function.
-def send(fr, to, message):
+def send(fr, to, message, smtpserver=None):
 	if SMTP_SEND:
-		import smtplib
-		session = smtplib.SMTP(SMTP_SERVER)
-		if AUTHREQUIRED:
-			session.login(SMTP_USER, SMTP_PASS)
-		session.sendmail(fr, [to], message)	
+		if not smtpserver: 
+			import smtplib; 
+			try:
+				smtpserver = smtplib.SMTP(SMTP_SERVER)
+			except KeyboardInterrupt:
+				raise
+			except Exception, e:
+				print >>warn, ""
+				print >>warn, ('Fatal error: could not connect to mail server "%s"' % SMTP_SERVER)
+				if hasattr(e, 'reason'):
+					print >>warn, "Reason:", e.reason
+				sys.exit(1)
+					
+			if AUTHREQUIRED:
+				try:
+					smtpserver.login(SMTP_USER, SMTP_PASS)
+				except KeyboardInterrupt:
+					raise
+				except Exception, e:
+					print >>warn, ""
+					print >>warn, ('Fatal error: could not authenticate with mail server "%s" as user "%s"' % (SMTP_SERVER, SMTP_USER))
+					if hasattr(e, 'reason'):
+						print >>warn, "Reason:", e.reason
+					sys.exit(1)
+					
+		smtpserver.sendmail(fr, [to], message)	
+		return smtpserver
 	else:
  		i, o = os.popen2(["/usr/sbin/sendmail", to])
  		i.write(message)
  		i.close(); o.close()
  		del i, o
+ 		return None
 
 ## html2text options ##
 
@@ -121,8 +146,6 @@ import socket; socket_errors = []
 for e in ['error', 'gaierror']:
 	if hasattr(socket, e): socket_errors.append(getattr(socket, e))
 import mimify; from StringIO import StringIO as SIO; mimify.CHARSET = 'utf-8'
-if SMTP_SEND: import smtplib; smtpserver = smtplib.SMTP(SMTP_SERVER)
-else: smtpserver = None
 
 import feedparser
 feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.aaronsw.com/2002/rss2email/"
@@ -151,7 +174,11 @@ def quote822(s):
 
 def header7bit(s):
 	"""QP_CORRUPT headers."""
-	return mimify.mime_encode_header(s + ' ')[:-1]
+	#return mimify.mime_encode_header(s + ' ')[:-1]
+	# XXX due to mime_encode_header bug
+	import re
+	p = re.compile('=\n([^ \t])');
+	return p.sub(r'\1', mimify.mime_encode_header(s + ' ')[:-1])
 
 ### Parsing Utilities ###
 
@@ -254,7 +281,15 @@ class Feed:
 		self.to = to		
 
 def load(lock=1):
-	feedfileObject = open(feedfile, 'r')
+	if not os.path.exists(feedfile):
+		print 'Feedfile "%s" does not exist.  If you\'re using r2e for the first time, you' % feedfile
+		print "have to run 'r2e new' first."
+		sys.exit(1)
+	try:
+		feedfileObject = open(feedfile, 'r')
+	except IOError, e:
+		print "Feedfile could not be opened: %s" % e
+		sys.exit(1)
 	feeds = pickle.load(feedfileObject)
 	if lock:
 		if unix: fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
@@ -282,8 +317,10 @@ def add(*args):
 		urls, to = args, None
 	
 	feeds, feedfileObject = load()
-	if feeds and not isstr(feeds[0]) and to is None:
-		raise 'NoEmail', "Run `email newaddr` or `add url addr`."
+	if (feeds and not isstr(feeds[0]) and to is None) or (not len(feeds) and to is None):
+		print "No email address has been defined. Please run 'r2e email emailaddress' or"
+		print "'r2e add url emailaddress'."
+		sys.exit(1)
 	for url in urls: feeds.append(Feed(url, to))
 	unlock(feeds, feedfileObject)
 
@@ -292,10 +329,13 @@ def run(num=None):
 	try:
 		# We store the default to address as the first item in the feeds list.
 		# Here we take it out and save it for later.
+		default_to = ""
 		if feeds and isstr(feeds[0]): default_to = feeds[0]; ifeeds = feeds[1:] 
 		else: ifeeds = feeds
 		
 		if num: ifeeds = [feeds[num]]
+		
+		smtpserver = None
 		
 		for f in ifeeds:
 			try: 
@@ -345,6 +385,9 @@ def run(num=None):
 							exc_reason = r.bozo_exception.reason
 						print >>warn, "W:", exc_reason, f.url
 					
+					elif exc_type == AttributeError:
+						print >>warn, "W:", r.bozo_exception, f.url
+					
 					elif exc_type == KeyboardInterrupt:
 						raise r.bozo_exception
 
@@ -375,7 +418,12 @@ def run(num=None):
 					# and we don't need to do anything more.
 					
 					if f.seen.has_key(frameid) and f.seen[frameid] == id: continue
-										
+
+					if not (f.to or default_to):
+						print "No default email address defined. Please run 'r2e email emailaddress'"
+						print "Ignoring feed %s" % f.url
+						break
+					
 					if 'title_detail' in entry and entry.title_detail:
 						title = entry.title_detail.value
 						if contains(entry.title_detail.type, 'html'):
@@ -425,18 +473,17 @@ def run(num=None):
 						ins, outs = SIO(message), SIO()
 						mimify.mimify(ins, outs)
 						message = outs.getvalue()
-					
-					send(from_addr, (f.to or default_to), message)
+						
+					smtpserver = send(from_addr, (f.to or default_to), message, smtpserver)
 			
 					f.seen[frameid] = id
 					
 				f.etag, f.modified = r.get('etag', None), r.get('modified', None)
-			except KeyboardInterrupt:
+			except (KeyboardInterrupt, SystemExit):
 				raise
 			except:
 				print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
 				print >>warn, "E: could not parse", f.url
-				#if title: print >>warn, "Entry entitled: ", title 
 				traceback.print_exc(file=warn)
 				print >>warn, "rss2email", __version__
 				print >>warn, "feedparser", feedparser.__version__
@@ -447,9 +494,12 @@ def run(num=None):
 
 	finally:		
 		unlock(feeds, feedfileObject)
+		if smtpserver:
+			smtpserver.quit()
 
 def list():
 	feeds, feedfileObject = load(lock=0)
+	default_to = ""
 	
 	if feeds and isstr(feeds[0]):
 		default_to = feeds[0]; ifeeds = feeds[1:]; i=1
@@ -457,12 +507,20 @@ def list():
 	else: ifeeds = feeds; i = 0
 	for f in ifeeds:
 		print `i`+':', f.url, '('+(f.to or ('default: '+default_to))+')'
+		if not (f.to or default_to):
+			print "   W: Please define a default address with 'r2e email emailaddress'"
 		i+= 1
 
 def delete(n):
 	feeds, feedfileObject = load()
-	feeds = feeds[:n] + feeds[n+1:]
-	print >>warn, "W: feed IDs may have changed, list before deleting again"
+	if n == 0:
+		print >>warn, "W: ID has to be equal to or higher than 1"
+	elif n >= len(feeds):
+		print >>warn, "W: no such feed"
+	else:
+		feeds = feeds[:n] + feeds[n+1:]
+		if n != len(feeds):
+			print >>warn, "W: feed IDs have changed, list before deleting again"
 	unlock(feeds, feedfileObject)
 	
 def email(addr):
@@ -474,21 +532,22 @@ def email(addr):
 if __name__ == '__main__':
 	ie, args = "InputError", sys.argv
 	try:
-		if VERBOSE: print 'args == %s' % args
 		if len(args) < 3: raise ie, "insufficient args"
 		feedfile, action, args = args[1], args[2], args[3:]
 		
 		if action == "run": 
 			if args and args[0] == "--no-send":
-				def send(x,y,z):
-					if VERBOSE: print 'Not sending', (
-					[x for x in z.splitlines() if x.startswith("Subject:")][0])
+				def send(x,y,z,w=None):
+					if VERBOSE: print 'Not sending', ([x for x in z.splitlines() if x.startswith("Subject:")][0])
 
 			if args and args[-1].isdigit(): run(int(args[-1]))
 			else: run()
 
 		elif action == "email":
-			email(args[0])
+			if not args:
+				raise ie, "Action '%s' requires an argument" % action
+			else:
+				email(args[0])
 
 		elif action == "add": add(*args)
 
@@ -499,17 +558,23 @@ if __name__ == '__main__':
 
 		elif action == "list": list()
 
-		elif action == "delete": delete(int(args[0]))
+		elif action in ("help", "--help", "-h"): print __doc__
+
+		elif action == "delete":
+			if not args:
+				raise ie, "Action '%s' requires an argument" % action
+			elif args[0].isdigit():
+				delete(int(args[0]))
+			else:
+				raise ie, "Action '%s' requires a number as its argument" % action
 
 		else:
 			raise ie, "invalid action"
-		
-		if smtpserver:
-			smtpserver.quit()
 		
 	except ie, e:
 		print "E:", e
 		print
 		print __doc__
+
 
 
