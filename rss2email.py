@@ -10,7 +10,7 @@ Usage:
   list
   delete n
 """
-__version__ = "2.59"
+__version__ = "2.60"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
@@ -138,11 +138,7 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 	for hdr in extraheaders.keys():
 		msg[hdr] = Header(unicode(extraheaders[hdr], header_charset))
 		
-	# Re-add quotes around sender_name because formataddr() seems to eat it
 	fromhdr = formataddr((sender_name, sender_addr))
-	if (sender_name != '') and (fromhdr[0] != '"'):
-	    addrindex = fromhdr.rfind('<')
-	    fromhdr = '"' + fromhdr[0:addrindex-1] + '" ' + fromhdr[addrindex:]
 	msg['From'] = fromhdr
 		
 	msg_as_string = msg.as_string()
@@ -216,7 +212,8 @@ import cPickle as pickle, md5, time, os, traceback, urllib2, sys, types
 unix = 0
 try:
 	import fcntl
-	unix = 1
+	if sys.version.find('sunos') != -1:
+		unix = 1
 except:
 	pass
 		
@@ -353,7 +350,7 @@ def getName(r, entry):
 
 	if 'name' in entry.get('author_detail', []): # normally {} but py2.1
 		if entry.author_detail.name:
-			if name: name += ", "
+			if name: name += ": "
 			det=entry.author_detail.name
 			try:
 			    name +=  entry.author_detail.name
