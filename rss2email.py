@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """rss2email: get RSS feeds emailed to you
-http://www.aaronsw.com/2002/rss2email
+http://rss2email.infogami.com
 
 Usage:
   new [emailaddress] (create new feedfile)
@@ -10,7 +10,7 @@ Usage:
   list
   delete n
 """
-__version__ = "2.60"
+__version__ = "2.61"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
@@ -84,6 +84,10 @@ STYLE_SHEET='h1 {font: 18pt Georgia, "Times New Roman";} body {font: 12pt Arial;
 # If you have an HTTP Proxy set this in the format 'http://your.proxy.here:8080/'
 PROXY=""
 
+# To most correctly encode emails with international characters, we iterate through the list below and use the first character set that works
+# Eventually (and theoretically) ISO-8859-1 and UTF-8 are our catch-all failsafes
+CHARSET_LIST='US-ASCII', 'BIG5', 'ISO-2022-JP', 'ISO-8859-1', 'UTF-8'
+
 from email.MIMEText import MIMEText
 from email.Header import Header
 from email.Utils import parseaddr, formataddr
@@ -101,8 +105,8 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 	The email will be properly MIME encoded and delivered though SMTP to
 	localhost port 25.  This is easy to change if you want something different.
 	
-	The charset of the email will be the first one out of US-ASCII, ISO-8859-1
-	and UTF-8 that can represent all the characters occurring in the email.
+	The charset of the email will be the first one out of the list
+	that can represent all the characters occurring in the email.
 	"""
 
 	# Header class is smart enough to try US-ASCII, then the charset we
@@ -110,7 +114,7 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 	header_charset = 'ISO-8859-1'
 	
 	# We must choose the body charset manually
-	for body_charset in 'US-ASCII', 'ISO-8859-1', 'UTF-8':
+	for body_charset in CHARSET_LIST:
 	    try:
 	        body.encode(body_charset)
 	    except UnicodeError:
@@ -150,7 +154,6 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 	if SMTP_SEND:
 		if not smtpserver: 
 			import smtplib
-			from smtplib import SMTP
 			
 			try:
 				smtpserver = smtplib.SMTP(SMTP_SERVER)
@@ -165,6 +168,9 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 					
 			if AUTHREQUIRED:
 				try:
+					smtpserver.ehlo()
+					smtpserver.starttls()
+					smtpserver.ehlo()
 					smtpserver.login(SMTP_USER, SMTP_PASS)
 				except KeyboardInterrupt:
 					raise
@@ -212,7 +218,7 @@ import cPickle as pickle, md5, time, os, traceback, urllib2, sys, types
 unix = 0
 try:
 	import fcntl
-	if sys.version.find('sunos') != -1:
+	if sys.version.find('sunos') == -1:
 		unix = 1
 except:
 	pass
@@ -236,6 +242,8 @@ html2text = h2t.html2text
 
 import threading
 class TimeoutError(Exception): pass
+
+class InputError(Exception): pass
 
 def timelimit(timeout, function):
 #    def internal(function):
@@ -335,7 +343,7 @@ def getID(entry):
 		if 'id' in entry and entry.id: return entry.id
 
 	content = getContent(entry)
-	if content: return md5.new(unu(content)).hexdigest()
+	if content and content != "\n": return md5.new(unu(content)).hexdigest()
 	if 'link' in entry: return entry.link
 	if 'title' in entry: return md5.new(unu(entry.title)).hexdigest()
 
@@ -561,7 +569,7 @@ def run(num=None):
 					else:
 						title = getContent(entry)[:70]
 
-					title = title.replace("\n", " ")
+					title = title.replace("\n", " ").strip()
 					
 					datetime = time.gmtime()
 
@@ -577,7 +585,7 @@ def run(num=None):
 					name = getName(r, entry)
 					fromhdr = '"'+ name + '" <' + from_addr + ">"
 					tohdr = (f.to or default_to)
-					subjecthdr = html2text(title).strip()
+					subjecthdr = title
 					datehdr = time.strftime("%a, %d %b %Y %H:%M:%S -0000", datetime)
 					useragenthdr = "rss2email"
 					extraheaders = {'Date': datehdr, 'User-Agent': useragenthdr}
@@ -693,9 +701,9 @@ def email(addr):
 	unlock(feeds, feedfileObject)
 
 if __name__ == '__main__':
-	ie, args = "InputError", sys.argv
+	args = sys.argv
 	try:
-		if len(args) < 3: raise ie, "insufficient args"
+		if len(args) < 3: raise InputError, "insufficient args"
 		feedfile, action, args = args[1], args[2], args[3:]
 		
 		if action == "run": 
@@ -708,7 +716,7 @@ if __name__ == '__main__':
 
 		elif action == "email":
 			if not args:
-				raise ie, "Action '%s' requires an argument" % action
+				raise InputError, "Action '%s' requires an argument" % action
 			else:
 				email(args[0])
 
@@ -725,16 +733,16 @@ if __name__ == '__main__':
 
 		elif action == "delete":
 			if not args:
-				raise ie, "Action '%s' requires an argument" % action
+				raise InputError, "Action '%s' requires an argument" % action
 			elif args[0].isdigit():
 				delete(int(args[0]))
 			else:
-				raise ie, "Action '%s' requires a number as its argument" % action
+				raise InputError, "Action '%s' requires a number as its argument" % action
 
 		else:
-			raise ie, "invalid action"
+			raise InputError, "Invalid action"
 		
-	except ie, e:
+	except InputError, e:
 		print "E:", e
 		print
 		print __doc__
