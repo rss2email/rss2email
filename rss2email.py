@@ -10,7 +10,7 @@ Usage:
   list
   delete n
 """
-__version__ = "2.61"
+__version__ = "2.62"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
@@ -218,8 +218,7 @@ import cPickle as pickle, md5, time, os, traceback, urllib2, sys, types
 unix = 0
 try:
 	import fcntl
-	if sys.version.find('sunos') == -1:
-		unix = 1
+	unix = 1
 except:
 	pass
 		
@@ -351,7 +350,7 @@ def getName(r, entry):
 	"""Get the best name."""
 
 	feed = r.feed
-	if r.url in OVERRIDE_FROM.keys():
+	if hasattr(r, "url") and r.url in OVERRIDE_FROM.keys():
 		return OVERRIDE_FROM[r.url]
 	
 	name = feed.get('title', '')
