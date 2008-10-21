@@ -10,9 +10,9 @@ Usage:
   list
   delete n
 """
-__version__ = "2.62"
+__version__ = "2.64"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
-__copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2."
+__copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2 or 3."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
                      "Matej Cepl", "Martin 'Joey' Schulze", 
                      "Marcel Ackermann (http://www.DreamFlasher.de)", 
@@ -117,7 +117,7 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 	for body_charset in CHARSET_LIST:
 	    try:
 	        body.encode(body_charset)
-	    except UnicodeError:
+	    except (UnicodeError, LookupError):
 	        pass
 	    else:
 	        break
@@ -185,10 +185,23 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 		return smtpserver
 
 	else:
-		i, o = os.popen2(["/usr/sbin/sendmail", recipient])
-		i.write(msg_as_string)
-		i.close(); o.close()
-		del i, o
+		try:
+			i, o = os.popen2(["/usr/sbin/sendmail", recipient])
+			i.write(msg_as_string)
+			i.close(); o.close()
+			del i, o
+		except:
+			print '''Error attempting to send email via sendmail. Possibly you need to configure your config.py to use a SMTP server? Please refer to the rss2email documentation or website (http://rss2email.infogami.com) for complete documentation of config.py. The options below may suffice for configuring email:
+# 1: Use SMTP_SERVER to send mail.
+# 0: Call /usr/sbin/sendmail to send mail.
+SMTP_SEND = 0
+
+SMTP_SERVER = "smtp.yourisp.net:25"
+AUTHREQUIRED = 0 # if you need to use SMTP AUTH set to 1
+SMTP_USER = 'username'  # for SMTP AUTH, set SMTP username here
+SMTP_PASS = 'password'  # for SMTP AUTH, set SMTP password here
+'''
+			sys.exit(1)
 		return None
 
 ## html2text options ##
@@ -412,11 +425,15 @@ def load(lock=1):
 		sys.exit(1)
 	feeds = pickle.load(feedfileObject)
 	if lock:
-		if unix: fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
+		locktype = 0
+		if unix:
+			locktype = fcntl.LOCK_EX
+			if (sys.platform.find('sunos')): locktype = fcntl.LOCK_SH
+			fcntl.flock(feedfileObject.fileno(), locktype)
 		#HACK: to deal with lock caching
 		feedfileObject = open(feedfile, 'r')
 		feeds = pickle.load(feedfileObject)
-		if unix: fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_EX)
+		if unix: fcntl.flock(feedfileObject.fileno(), locktype)
 
 	return feeds, feedfileObject
 
@@ -463,17 +480,19 @@ def run(num=None):
 		else: ifeeds = feeds
 		
 		if num: ifeeds = [feeds[num]]
+		feednum = 0
 		
 		smtpserver = None
 		
 		for f in ifeeds:
 			try: 
-				if VERBOSE: print >>warn, "I: Processing", f.url
+				feednum += 1
+				if VERBOSE: print >>warn, 'I: Processing [%d] "%s"' % (feednum, f.url)
 				r = {}
 				try:
 					r = timelimit(FEED_TIMEOUT, parse)(f.url, f.etag, f.modified)
 				except TimeoutError:
-					print >>warn, 'W: feed "%s" timed out' % f.url
+					print >>warn, 'W: feed [%d] "%s" timed out' % (feednum, f.url)
 					continue
 				
 				# Handle various status conditions, as required
@@ -491,42 +510,42 @@ def run(num=None):
 				exc_type = r.get("bozo_exception", Exception()).__class__
 				if http_status != 304 and not r.get('version', ''):
 					if http_status not in [200, 302]: 
-						print >>warn, "W: error", http_status, f.url
+						print >>warn, "W: error %d [%d] %s" % (http_status, feednum, f.url)
 
 					elif contains(http_headers.get('content-type', 'rss'), 'html'):
-						print >>warn, "W: looks like HTML", f.url
+						print >>warn, "W: looks like HTML [%d] %s"  % (feednum, f.url)
 
 					elif http_headers.get('content-length', '1') == '0':
-						print >>warn, "W: empty page", f.url
+						print >>warn, "W: empty page [%d] %s" % (feednum, f.url)
 
 					elif hasattr(socket, 'timeout') and exc_type == socket.timeout:
-						print >>warn, "W: timed out on", f.url
+						print >>warn, "W: timed out on [%d] %s" % (feednum, f.url)
 					
 					elif exc_type == IOError:
-						print >>warn, "W:", r.bozo_exception, f.url
+						print >>warn, 'W: "%s" [%d] %s' % (r.bozo_exception, feednum, f.url)
 					
 					elif hasattr(feedparser, 'zlib') and exc_type == feedparser.zlib.error:
-						print >>warn, "W: broken compression", f.url
+						print >>warn, "W: broken compression [%d] %s" % (feednum, f.url)
 					
 					elif exc_type in socket_errors:
 						exc_reason = r.bozo_exception.args[1]
-						print >>warn, "W:", exc_reason, f.url
+						print >>warn, "W: %s [%d] %s" % (exc_reason, feednum, f.url)
 
 					elif exc_type == urllib2.URLError:
 						if r.bozo_exception.reason.__class__ in socket_errors:
 							exc_reason = r.bozo_exception.reason.args[1]
 						else:
 							exc_reason = r.bozo_exception.reason
-						print >>warn, "W:", exc_reason, f.url
+						print >>warn, "W: %s [%d] %s" % (exc_reason, feednum, f.url)
 					
 					elif exc_type == AttributeError:
-						print >>warn, "W:", r.bozo_exception, f.url
+						print >>warn, "W: %s [%d] %s" % (r.bozo_exception, feednum, f.url)
 					
 					elif exc_type == KeyboardInterrupt:
 						raise r.bozo_exception
 						
 					elif r.bozo:
-						print >>warn, 'E: error in "%s" feed (%s)' % (f.url, r.get("bozo_exception", "can't process"))
+						print >>warn, 'E: error in [%d] "%s" feed (%s)' % (feednum, f.url, r.get("bozo_exception", "can't process"))
 
 					else:
 						print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
@@ -745,6 +764,4 @@ if __name__ == '__main__':
 		print "E:", e
 		print
 		print __doc__
-
-
 
