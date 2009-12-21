@@ -8,15 +8,19 @@ Usage:
   run [--no-send] [num]
   add feedurl [emailaddress]
   list
+  reset
   delete n
 """
-__version__ = "2.65"
-__author__ = "Lindsey Smith (rss2email@aaronsw.com)"
+__version__ = "2.66"
+__author__ = "Lindsey Smith (lindsey@allthingsrss.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2 or 3."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
                      "Matej Cepl", "Martin 'Joey' Schulze", 
                      "Marcel Ackermann (http://www.DreamFlasher.de)", 
                      "Lindsey Smith", "Aaron Swartz (original author)" ]
+
+import urllib2
+urllib2.install_opener(urllib2.build_opener())
 
 ### Vaguely Customizable Options ###
 
@@ -167,6 +171,7 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 			except Exception, e:
 				print >>warn, ""
 				print >>warn, ('Fatal error: could not connect to mail server "%s"' % SMTP_SERVER)
+				print >>warn, ('Check your config.py file to confirm that SMTP_SERVER and other mail server settings are configured properly')
 				if hasattr(e, 'reason'):
 					print >>warn, "Reason:", e.reason
 				sys.exit(1)
@@ -182,6 +187,7 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 				except Exception, e:
 					print >>warn, ""
 					print >>warn, ('Fatal error: could not authenticate with mail server "%s" as user "%s"' % (SMTP_SERVER, SMTP_USER))
+					print >>warn, ('Check your config.py file to confirm that SMTP_SERVER and other mail server settings are configured properly')
 					if hasattr(e, 'reason'):
 						print >>warn, "Reason:", e.reason
 					sys.exit(1)
@@ -241,7 +247,7 @@ if QP_REQUIRED:
 
 ### Import Modules ###
 
-import cPickle as pickle, time, os, traceback, urllib2, sys, types, subprocess
+import cPickle as pickle, time, os, traceback, sys, types, subprocess
 hash = ()
 try:
 	import hashlib
@@ -268,7 +274,7 @@ for e in ['error', 'gaierror']:
 #DEPRECATED mimify.CHARSET = 'utf-8'
 
 import feedparser
-feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.aaronsw.com/2002/rss2email/"
+feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.allthingsrss.com/rss2email/"
 
 import html2text as h2t
 
@@ -517,11 +523,12 @@ def run(num=None):
 						continue
 				
 				http_status = r.get('status', 200)
+				if VERBOSE > 1: print >>warn, "I: http status", http_status
 				http_headers = r.get('headers', {
 				  'content-type': 'application/rss+xml', 
 				  'content-length':'1'})
 				exc_type = r.get("bozo_exception", Exception()).__class__
-				if http_status != 304 and not r.get('version', ''):
+				if http_status != 304 and not r.entries and not r.get('version', ''):
 					if http_status not in [200, 302]: 
 						print >>warn, "W: error %d [%d] %s" % (http_status, feednum, f.url)
 
@@ -561,7 +568,9 @@ def run(num=None):
 						print >>warn, 'E: error in [%d] "%s" feed (%s)' % (feednum, f.url, r.get("bozo_exception", "can't process"))
 
 					else:
-						print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
+						print >>warn, "=== rss2email encountered a problem with this feed ==="
+						print >>warn, "=== See the rss2email FAQ at http://www.allthingsrss.com/rss2email/ for assistance ==="
+						print >>warn, "=== If this occurs repeatedly, send this to lindsey@allthingsrss.com ==="
 						print >>warn, "E:", r.get("bozo_exception", "can't process"), f.url
 						print >>warn, r
 						print >>warn, "rss2email", __version__
@@ -619,7 +628,7 @@ def run(num=None):
 					subjecthdr = title
 					datehdr = time.strftime("%a, %d %b %Y %H:%M:%S -0000", datetime)
 					useragenthdr = "rss2email"
-					extraheaders = {'Date': datehdr, 'User-Agent': useragenthdr}
+					extraheaders = {'Date': datehdr, 'User-Agent': useragenthdr, 'X-RSS-Feed': f.url, 'X-RSS-ID': id}
 					if BONUS_HEADER != '':
 						for hdr in BONUS_HEADER.strip().splitlines():
 							pos = hdr.strip().find(':')
@@ -650,9 +659,9 @@ def run(num=None):
 						if hasattr(entry,'enclosures'):
 							for enclosure in entry.enclosures:
 								if (hasattr(enclosure, 'url') and enclosure.url != ""):
-									content += ('<br/>Enclosure: <a href="'+unu(enclosure.url)+'">'+unu(enclosure.url)+"</a>\n")
+									content += ('<br/>Enclosure: <a href="'+enclosure.url+'">'+enclosure.url+"</a>\n")
 								if (hasattr(enclosure, 'src') and enclosure.src != ""):
-									content += ('<br/>Enclosure: <a href="'+unu(enclosure.src)+'">'+unu(enclosure.src)+'</a><br/><img src="'+unu(enclosure.src)+'"\n')
+									content += ('<br/>Enclosure: <a href="'+enclosure.src+'">'+enclosure.src+'</a><br/><img src="'+enclosure.src+'"\n')
 						content += '</p></div>\n'
 						content += "\n\n</body></html>"
 					else:	
@@ -667,7 +676,7 @@ def run(num=None):
 							if hasattr(entry,'enclosures'):
 								for enclosure in entry.enclosures:
 									if enclosure.url != "":
-										content += ('Enclosure: <a href="'+unu(enclosure.url)+'">'+unu(enclosure.url)+"</a><br/>\n")
+										content += ('Enclosure: <a href="'+enclosure.url+'">'+enclosure.url+"</a><br/>\n")
 							
 							content += ("\n</body></html>")
 						else:
@@ -675,7 +684,7 @@ def run(num=None):
 							if hasattr(entry,'enclosures'):
 								for enclosure in entry.enclosures:
 									if enclosure.url != "":
-										content += ('\nEnclosure: '+unu(enclosure.url)+"\n")
+										content += ('\nEnclosure: ' + enclosure.url + "\n")
 
 					smtpserver = send(fromhdr, tohdr, subjecthdr, content, contenttype, extraheaders, smtpserver)
 			
@@ -685,7 +694,9 @@ def run(num=None):
 			except (KeyboardInterrupt, SystemExit):
 				raise
 			except:
-				print >>warn, "=== SEND THE FOLLOWING TO rss2email@aaronsw.com ==="
+				print >>warn, "=== rss2email encountered a problem with this feed ==="
+				print >>warn, "=== See the rss2email FAQ at http://www.allthingsrss.com/rss2email/ for assistance ==="
+				print >>warn, "=== If this occurs repeatedly, send this to lindsey@allthingsrss.com ==="
 				print >>warn, "E: could not parse", f.url
 				traceback.print_exc(file=warn)
 				print >>warn, "rss2email", __version__
@@ -725,6 +736,19 @@ def delete(n):
 		feeds = feeds[:n] + feeds[n+1:]
 		if n != len(feeds):
 			print >>warn, "W: feed IDs have changed, list before deleting again"
+	unlock(feeds, feedfileObject)
+	
+def reset():
+	feeds, feedfileObject = load()
+	if feeds and isstr(feeds[0]):
+		ifeeds = feeds[1:]
+	else: ifeeds = feeds
+	for f in ifeeds:
+		if VERBOSE: print "Resetting %d already seen items" % len(f.seen)
+		f.seen = {}
+		f.etag = None
+		f.modified = None
+	
 	unlock(feeds, feedfileObject)
 	
 def email(addr):
@@ -771,6 +795,8 @@ if __name__ == '__main__':
 				delete(int(args[0]))
 			else:
 				raise InputError, "Action '%s' requires a number as its argument" % action
+
+		elif action == "reset": reset()
 
 		else:
 			raise InputError, "Invalid action"
