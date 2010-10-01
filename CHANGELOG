@@ -1,3 +1,8 @@
+v2.68 (2010-10-01)
+    * Added ability to pause/resume checking of individual feeds through pause and unpause commands
+	* Added ability to import and export OPML feed lists through importopml and exportopml commands
+
+	
 v2.67 (2010-09-21)
     * Fixed entries that include an id which is blank (i.e., an empty string) were being resent 
     * Fixed some entries not being sent by email because they had bad From headers	
