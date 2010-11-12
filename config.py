@@ -1,4 +1,4 @@
-### Vaguely Customizable Options ###
+### Options for configuring rss2email ###
 
 # The email address messages are from by default:
 DEFAULT_FROM = "bozo@dev.null.invalid"
@@ -49,12 +49,35 @@ AUTHREQUIRED = 0 # if you need to use SMTP AUTH set to 1
 SMTP_USER = 'username'  # for SMTP AUTH, set SMTP username here
 SMTP_PASS = 'password'  # for SMTP AUTH, set SMTP password here
 
+# Connect to the SMTP server using SSL
+
+SMTP_SSL = 0
+
+
+
 # Set this to add a bonus header to all emails (start with '\n').
 BONUS_HEADER = ''
 # Example: BONUS_HEADER = '\nApproved: joe@bob.org'
 
 # Set this to override From addresses. Keys are feed URLs, values are new titles.
 OVERRIDE_FROM = {}
+
+# Set this to override From email addresses. Keys are feed URLs, values are new emails.
+
+OVERRIDE_EMAIL = {}
+
+
+
+# Set this to default From email addresses. Keys are feed URLs, values are new email addresses.
+
+DEFAULT_EMAIL = {}
+
+
+# Only use the email from address rather than friendly name plus email address
+
+NO_FRIENDLY_NAME = 0
+
+
 
 # Set this to override the timeout (in seconds) for feed server response
 FEED_TIMEOUT = 60

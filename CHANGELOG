@@ -1,7 +1,13 @@
+v2.69 (2010-11-12)
+	* Added support for connecting to SMTP server via SSL, see SMTP_SSL option
+	* Improved backwards compatibility by fixing issue with listing feeds when run with older Python versions
+	* Added selective feed email overrides through OVERRIDE_EMAIL and DEFAULT_EMAIL options
+	* Added NO_FRIENDLY_NAME to from from address only without the friendly name
+	* Added X-RSS-URL header in each message with the link to the original item
+
 v2.68 (2010-10-01)
     * Added ability to pause/resume checking of individual feeds through pause and unpause commands
 	* Added ability to import and export OPML feed lists through importopml and exportopml commands
-
 	
 v2.67 (2010-09-21)
     * Fixed entries that include an id which is blank (i.e., an empty string) were being resent 
