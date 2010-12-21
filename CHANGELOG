@@ -1,3 +1,7 @@
+v2.70 (2010-12-21)
+* Improved handling of given feed email addresses to prevent mail servers rejecting poorly formed Froms
+* Added X-RSS-TAGS header that lists any tags provided by an entry, which will be helpful in filtering incoming messages
+
 v2.69 (2010-11-12)
 	* Added support for connecting to SMTP server via SSL, see SMTP_SSL option
 	* Improved backwards compatibility by fixing issue with listing feeds when run with older Python versions
