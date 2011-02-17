@@ -1,0 +1,122 @@
+v2.70 (2010-12-21)
+* Improved handling of given feed email addresses to prevent mail servers rejecting poorly formed Froms
+* Added X-RSS-TAGS header that lists any tags provided by an entry, which will be helpful in filtering incoming messages
+
+v2.69 (2010-11-12)
+	* Added support for connecting to SMTP server via SSL, see SMTP_SSL option
+	* Improved backwards compatibility by fixing issue with listing feeds when run with older Python versions
+	* Added selective feed email overrides through OVERRIDE_EMAIL and DEFAULT_EMAIL options
+	* Added NO_FRIENDLY_NAME to from from address only without the friendly name
+	* Added X-RSS-URL header in each message with the link to the original item
+
+v2.68 (2010-10-01)
+    * Added ability to pause/resume checking of individual feeds through pause and unpause commands
+	* Added ability to import and export OPML feed lists through importopml and exportopml commands
+	
+v2.67 (2010-09-21)
+    * Fixed entries that include an id which is blank (i.e., an empty string) were being resent 
+    * Fixed some entries not being sent by email because they had bad From headers	
+    * Fixed From headers with HTML entities encoded twice
+    * Compatibility changes to support most recent development versions of feedparser
+    * Compatibility changes to support Google Reader feeds
+	
+v2.66 (2009-12-21)
+
+    * Complete packaging of all necessary source files (rss2email, html2text, feedparser, r2e, etc.) into one bundle
+      o Included a more complete config.py with all options
+      o Default to HTML mail and CSS results 
+    * Added 'reset' command to erase history of already seen entries
+    * Changed project email to 'lindsey@allthingsrss.com' and project homepage to 'http://www.allthingsrss.com/rss2email/'
+    * Made exception and error output text more useful
+    * Added X-RSS-Feed and X-RSS-ID headers to each email for easier filtering
+    * Improved enclosure handling
+    * Fixed MacOS compatibility issues
+
+v2.65 (2009-01-05)
+
+    * Fixed warnings caused by Python v2.6 (using hashlib, removing mimify, etc.)
+    * Deprecated QP_REQUIRED option as this is more than likely no longer needed and part of what triggered Python warnings
+    * Fixed unicode errors in certain post headers
+    * Attempted to incorporate Debian/Ubuntu patches into the mainstream release
+    * Support img type enclosures
+    * No file locking for SunOS
+
+v2.64 (2008-10-21)
+
+    * Bug-fix version
+          o Gracefully handle missing charsets
+          o Friendlier and more useful message if sendmail isn't installed
+          o SunOS locking fix
+
+v2.63 (2008-06-13)
+
+    * Bug-fix version and license change:
+          o Licensed under GPL 2 & 3 now
+          o Display feed number in warning and error message lines
+          o Fix for unicode handling problem with certain entry titles
+
+v2.62 (2008-01-14)
+
+    * Bug-fix version:
+          o Simplified SunOS fix
+          o Local feeds (/home/user/file.xml) should work
+
+v2.61 (2007-12-07)
+
+    * Bug-fix version:
+          o Now really compatible with SunOS
+          o Don't wrap long subject headers
+          o New parameter CHARSET_LIST to override or supplement the order in which charsets are tried against an entry
+          o Don't use blank content to generate id
+          o Using GMail as mail server should work
+
+v2.60 (2006-08-25)
+
+    * Small bug-fix version:
+          o Now compatible with SunOS
+          o Correctly handle international character sets in email From
+
+v2.59 (2006-06-09)
+
+    * Finally added oft-requested support for enclosures. Any enclosures, such as a podcast MP3, will be listed under the entry URL
+    * Made feed timeout compatible with Python versions 2.2 and higher, instead of v2.4 only
+    * Added optional, configurable CSS styling to HTML mail. Set USE_CSS_STYLING=1 in your config.py to enable this. If you want to tweak the look, modify STYLE_SHEET.
+    * Improved empty feed checking
+    * Improved invalid feed messages
+    * Unfortunately, rss2email is no longer compatible with Python v2.1. Two of the most serious lingering issues with rss2email were waiting forever for non-responsive feeds and its inablility to properly handle feeds with international characters. To properly fix these once and for all, rss2email now depends on functionality that was not available until Python v2.2. Hopefully this does not unduly inconvenience anyone that has not yet upgraded to a more current version of Python.
+
+v2.58 (2006-05-11)
+
+    * Total rewrite of email code that should fix encoding problems
+    * Added configurable timeout for nonresponsive feeds
+    * Fixed incorrectly using text summary_detail instead of html content
+    * Fixed bug with deleting feed 0 if no default email was set
+    * Print name of feed that is being deleted
+
+v2.57 (2006-04-07)
+
+    * Integrated Joey Hess's patches
+       o First, a patch that makes delete more reliable, so it no longer allows you to remove the default email address ('feed' 0) and thereby hose your feed file, or 'remove' entries that don't exist without warning; and so it only says IDs have changed when they really have. Originally from http://bugs.debian.org/313101
+       o Next a patch that avoids a backtrace if there's no email address defined, and outputs a less scary error message.
+       o Next, a simple change to the usage; since the "email" subcommand always needs a parameter, don't mark it as optional.
+       o And, avoid a backtrace if the email subcommand does get run w/o a parameter.
+       o And also avoid backtraces if delete is run w/o a parameter. Also adds support for --help.
+       o Simple change, make a comment match reality (/usr/sbin/sendmail)
+       o This avoids another backtrace, this time if there's no feed file yet. [load()]
+       o Add a handler for the AttributeError exception, which feedparser can throw. Beats crashing..
+       o Next, four hunks that make it more robust if no default email address is set and feeds are added w/o an email address. This patch originally comes from http://bugs.debian.org/310485 which has some examples.
+       o Finally, this works around a bug in mimify that causes it to add a newline to the subject header if it contains very long words. Details at http://bugs.debian.org/320185. Note that Tatsuya Kinoshita has a larger patch torard the end of that bug report that deals with some other problems in this area, Aaron has seen that patch before and said it "looks pretty reasonable".
+    * add() catches error case on first feed add and no email address is set
+    * Made "emailaddress" consistent param label throughout
+    * Error message improvements
+    * Deleted problematic "if title" line
+    * Deleted space in front of SMTP_USER
+    * Only logs into SMTP server once
+    * Added exception handling around SMTP server connect and login attempt
+    * Broke contributors across multiple lines
+
+v2.56 (2006-04-04)
+
+    * SMTP AUTH support added
+    * Windows support
+    * Fixed bug with HTML in titles

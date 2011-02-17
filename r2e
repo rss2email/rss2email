@@ -1,0 +1,2 @@
+#!/bin/sh
+python rss2email.py feeds.dat $*

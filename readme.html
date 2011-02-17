@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>Getting Started With rss2email</title>
+</head>
+<body>
+<h1>Getting Started With rss2email</h1>
+
+<p style="color: green;">We highly recommend that you subscribe to the rss2email project feed so you can keep up to date with the latest version, bugfixes and features: <a href="http://feeds.feedburner.com/allthingsrss/hJBr">http://feeds.feedburner.com/allthingsrss/hJBr</a></p>
+<p><a href="#windows">Instructions for Windows Users</a><br/>
+<a href="#unix">Instructions for UNIX Users</a><br/>
+<a href="#customizeit">Customizing rss2email</a></p>
+
+
+<h2 id="windows">Instructions for Windows Users</h2>
+
+<h3>Requirements</h3>
+
+<p>Before you install rss2email, you'll need to make sure that a few things are in place. First, is that a version of <a href="http://www.python.org">Python</a> 2.x installed. Second, determine your outgoing email server's address. That should be all you need.</p>
+
+<h3>Download</h3>
+
+<ol>
+<li>Create a new folder</li>
+<li>Download the latest rss2email .ZIP file and unzip to the new folder
+</ol>
+  
+<h3>Configure</h3>
+
+<p>Edit the <code>config.py</code> file and fill in your outoing email server's details. If your server requires you to login, change <code>"AUTHREQUIRED = 0"</code> to <code>"AUTHREQUIRED = 1"</code> and enter your email username and password.</p>
+
+<h3>Install</h3>
+
+<p>From the command line, change to the folder you created. Now create a new feed database to send updates to your email address:</p>
+
+<blockquote>
+  <p><code>r2e new you@yourdomain.com</code></p>
+</blockquote>
+
+<p>Subscribe to some feeds:</p>
+
+<blockquote>
+  <p><code>r2e add http://feeds.feedburner.com/allthingsrss/hJBr</code></p>
+</blockquote>
+
+<p>That's the feed to be notified when there's a new version of rss2email. Repeat this for each feed you want to subscribe to.</p>
+
+<p>When you run rss2email, it emails you about every story it hasn't seen before. But the first time you run it, that will be every story. To avoid this, you can ask rss2email not to send you any stories the first time you run it:</p>
+
+<blockquote>
+  <p><code>r2e run --no-send</code></p>
+</blockquote>
+
+<p>Then later, you can ask it to email you new stories:</p>
+
+<blockquote>
+  <p><code>r2e run</code></p>
+
+</blockquote>
+
+<p>If you get an error message "Sender domain must exist", add a line to <code>config.py</code> like this:</p>
+
+<blockquote>
+  <p><code>DEFAULT_FROM = rss2email@yoursite.com</code></p>
+</blockquote>
+
+<p>You can make the email address whatever you want, but your mail server requires that the yoursite.com part actually exists.</p>
+
+<h3>Automating rss2email</h3>
+
+<p>More than likely you will want rss2email to run automatically at a regular interval. Under Windows this is can be easily accomplished using the Windows Task Scheduler. This site has a nice <a href="http://www.iopus.com/guides/winscheduler.htm">tutorial</a> on it. Just select r2e.bat as the program to run. Once you've created the task, double click on it in the task list and change the Run entry so that "run" comes after r2e.bat. For example, if you installed rss2email in the C:\rss2email folder, then you would change the Run entry from "C:\rss2email\r2e.bat" to "C:\rss2email\r2e.bat run".</p>
+
+<p>Now jump down to the section on <a href="#customizeit">customizing rss2email</a> to your needs.</p>
+
+<h3>Upgrading to a new version</h3>
+<p>Simply replace all of the files from the .ZIP package to your install directory <strong style="color: red;">EXCEPT config.py</strong></p>
+
+<h2 id="unix">Instructions for UNIX/Linux Users</h2>
+
+<h3>Requirements</h3>
+
+<p>Before you install rss2email, you'll need to make sure that a few things are in place. First, is a version of <a href="http://www.python.org">Python</a> 2.x installed. Second, is whether you have sendmail (or a compatible replacement like postfix) installed. If sendmail isn't installed, determine your outgoing email server's address. That should be all you need.</p>
+
+<h3>Download</h3>
+
+<p>A quick way to get rss2email going is using pre-made packages. Here are releases for <a href="http://packages.debian.org/cgi-bin/search_packages.pl?searchon=names&amp;version=all&amp;exact=1&amp;keywords=rss2email">Debian</a> Linux, <a href="http://packages.ubuntu.com/search?keywords=rss2email&searchon=names&section=all">Ubuntu</a> Linux and <a href="ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-current/pkgsrc/mail/rss2email/README.html">NetBSD</a>.</p>
+
+<p>If you are unable to use these packages or you want the latest and greatest version, here's what you do:</p>
+
+<blockquote><code>
+Unarchive (probably 'tar -xzf') the rss2email .tar.gz package to [folder where you want rss2email files to live] <br>
+cd [yourfolder] <br>
+chmod +x r2e
+</code></blockquote>
+
+<h3>Install</h3>
+
+<p>Create a new feed database with your target email address:</p>
+
+<blockquote>
+  <p><code>./r2e new you@yourdomain.com</code></p>
+</blockquote>
+
+<p>Subscribe to some feeds:</p>
+
+<blockquote>
+  <p><code>./r2e add http://feeds.feedburner.com/allthingsrss/hJBr</code></p>
+
+</blockquote>
+
+<p>That's the feed to be notified when there's a new version of rss2email. Repeat this for each feed you want to subscribe to.</p>
+
+<p>When you run rss2email, it emails you about every story it hasn't seen before. But the first time you run it, that will be every story. To avoid this, you can ask rss2email not to send you any stories the first time you run it:</p>
+
+<blockquote>
+  <p><code>./r2e run --no-send</code></p>
+</blockquote>
+
+<p>Then later, you can ask it to email you new stories:</p>
+
+<blockquote>
+  <p><code>./r2e run</code></p>
+</blockquote>
+
+<p>You probably want to set things up so that this command is run repeatedly. (One good way is via a cron job.)</p>
+
+<p>If you get an error message "Sender domain must exist", add a line to <code>config.py</code> like this:</p>
+
+<blockquote>
+  <p><code>DEFAULT_FROM = rss2email@yoursite.com</code></p>
+</blockquote>
+
+<p>You can make the email address whatever you want, but your mail server requires that the yoursite.com part actually exists.</p>
+
+<h3>Upgrading to a new version</h3>
+<p>Simply replace all of the files from the .tar.gz package to your install directory <strong style="color: red;">EXCEPT config.py</strong></p>
+
+
+
+<h1 id="customizeit">Customize rss2email</h1>
+
+<p>There are a number of options, described in full at the top of rss2email.py file, to customize the way rss2email behaves. If you want to change something, edit the <code>config.py</code> file. If you're not using rss2email under Windows, you'll have to create this file if it doesn't already exist.</p>
+
+<p>For example, if you want to receive HTML mail, instead of having entries converted to plain text:</p>
+
+<blockquote>
+  <p><code>HTML_MAIL = 1</code></p>
+
+</blockquote>
+
+<p>To be notified every time a post changes, instead of just when it's first posted:</p>
+
+<blockquote>
+  <p><code>TRUST_GUID = 0</code></p>
+</blockquote>
+
+<p>And to make the emails look as if they were sent when the item was posted:</p>
+
+<blockquote>
+  <p><code>DATE_HEADER = 1</code></p>
+  
+</body>
+</html>  
+  
