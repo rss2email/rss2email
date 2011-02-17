@@ -1,3 +1,5 @@
 config.py
 temp/*
 Old/*
+feeds.dat
+*.pyc
