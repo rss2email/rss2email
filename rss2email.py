@@ -446,7 +446,7 @@ def getEmail(r, entry):
 		
 	if FORCE_FROM: return DEFAULT_FROM
 	
-	if r.url in OVERRIDE_EMAIL.keys():
+	if hasattr(r, "url") and r.url in OVERRIDE_EMAIL.keys():
 		return validateEmail(OVERRIDE_EMAIL[r.url], DEFAULT_FROM)
 	
 	if 'email' in entry.get('author_detail', []):
@@ -462,7 +462,7 @@ def getEmail(r, entry):
 		if feed.get("errorreportsto", ''):
 			return validateEmail(feed.errorreportsto, DEFAULT_FROM)
 			
-	if r.url in DEFAULT_EMAIL.keys():
+	if hasattr(r, "url") and r.url in DEFAULT_EMAIL.keys():
 		return DEFAULT_EMAIL[r.url]
 	return DEFAULT_FROM
 
