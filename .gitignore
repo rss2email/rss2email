@@ -3,3 +3,4 @@ temp/*
 Old/*
 feeds.dat
 *.pyc
+build/*
