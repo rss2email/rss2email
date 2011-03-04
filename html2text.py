@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """html2text: Turn HTML into equivalent Markdown-structured text."""
-__version__ = "2.37"
+__version__ = "3.01"
 __author__ = "Aaron Swartz (me@aaronsw.com)"
 __copyright__ = "(C) 2004-2008 Aaron Swartz. GNU GPL 3."
 __contributors__ = ["Martin 'Joey' Schulze", "Ricardo Reyes", "Kevin Jay North"]
@@ -8,11 +8,29 @@ __contributors__ = ["Martin 'Joey' Schulze", "Ricardo Reyes", "Kevin Jay North"]
 # TODO:
 #   Support decoded entities with unifiable.
 
-if not hasattr(__builtins__, 'True'): True, False = 1, 0
-import re, sys, urllib, htmlentitydefs, codecs, StringIO, types
-import sgmllib
-import urlparse
-sgmllib.charref = re.compile('&#([xX]?[0-9a-fA-F]+)[^0-9a-fA-F]')
+try:
+    True
+except NameError:
+    setattr(__builtins__, 'True', 1)
+    setattr(__builtins__, 'False', 0)
+
+def has_key(x, y):
+    if hasattr(x, 'has_key'): return x.has_key(y)
+    else: return y in x
+
+try:
+    import htmlentitydefs
+    import urlparse
+    import HTMLParser
+except ImportError: #Python3
+    import html.entities as htmlentitydefs
+    import urllib.parse as urlparse
+    import html.parser as HTMLParser
+try: #Python3
+    import urllib.request as urllib
+except:
+    import urllib
+import re, sys, codecs, types
 
 try: from textwrap import wrap
 except: pass
@@ -64,15 +82,22 @@ def charref(name):
     if not UNICODE_SNOB and c in unifiable_n.keys():
         return unifiable_n[c]
     else:
-        return unichr(c)
+        try:
+            return unichr(c)
+        except NameError: #Python3
+            return chr(c)
 
 def entityref(c):
     if not UNICODE_SNOB and c in unifiable.keys():
         return unifiable[c]
     else:
         try: name2cp(c)
-        except KeyError: return "&" + c
-        else: return unichr(name2cp(c))
+        except KeyError: return "&" + c + ';'
+        else:
+            try:
+                return unichr(name2cp(c))
+            except NameError: #Python3
+                return chr(name2cp(c))
 
 def replaceEntities(s):
     s = s.group(1)
@@ -83,14 +108,6 @@ def replaceEntities(s):
 r_unescape = re.compile(r"&(#?[xX]?(?:[0-9a-fA-F]+|\w{1,8}));")
 def unescape(s):
     return r_unescape.sub(replaceEntities, s)
-    
-def fixattrs(attrs):
-    # Fix bug in sgmllib.py
-    if not attrs: return attrs
-    newattrs = []
-    for attr in attrs:
-        newattrs.append((attr[0], unescape(attr[1])))
-    return newattrs
 
 ### End Entity Nonsense ###
 
@@ -133,13 +150,16 @@ def hn(tag):
             if n in range(1, 10): return n
         except ValueError: return 0
 
-class _html2text(sgmllib.SGMLParser):
+class _html2text(HTMLParser.HTMLParser):
     def __init__(self, out=None, baseurl=''):
-        sgmllib.SGMLParser.__init__(self)
+        HTMLParser.HTMLParser.__init__(self)
         
         if out is None: self.out = self.outtextf
         else: self.out = out
-        self.outtext = u''
+        try:
+            self.outtext = unicode()
+        except NameError: # Python3
+            self.outtext = str()
         self.quiet = 0
         self.p_p = 0
         self.outcount = 0
@@ -162,7 +182,7 @@ class _html2text(sgmllib.SGMLParser):
         self.outtext += s
     
     def close(self):
-        sgmllib.SGMLParser.close(self)
+        HTMLParser.HTMLParser.close(self)
         
         self.pbr()
         self.o('', 0, 'end')
@@ -175,10 +195,10 @@ class _html2text(sgmllib.SGMLParser):
     def handle_entityref(self, c):
         self.o(entityref(c))
             
-    def unknown_starttag(self, tag, attrs):
+    def handle_starttag(self, tag, attrs):
         self.handle_tag(tag, attrs, 1)
     
-    def unknown_endtag(self, tag):
+    def handle_endtag(self, tag):
         self.handle_tag(tag, None, 0)
         
     def previousIndex(self, attrs):
@@ -187,16 +207,16 @@ class _html2text(sgmllib.SGMLParser):
  
             If the set of attributes is not found, returns None
         """
-        if not attrs.has_key('href'): return None
+        if not has_key(attrs, 'href'): return None
         
         i = -1
         for a in self.a:
             i += 1
             match = 0
             
-            if a.has_key('href') and a['href'] == attrs['href']:
-                if a.has_key('title') or attrs.has_key('title'):
-                        if (a.has_key('title') and attrs.has_key('title') and
+            if has_key(a, 'href') and a['href'] == attrs['href']:
+                if has_key(a, 'title') or has_key(attrs, 'title'):
+                        if (has_key(a, 'title') and has_key(attrs, 'title') and
                             a['title'] == attrs['title']):
                             match = True
                 else:
@@ -205,7 +225,7 @@ class _html2text(sgmllib.SGMLParser):
             if match: return i
 
     def handle_tag(self, tag, attrs, start):
-        attrs = fixattrs(attrs)
+        #attrs = fixattrs(attrs)
     
         if hn(tag):
             self.p()
@@ -246,7 +266,7 @@ class _html2text(sgmllib.SGMLParser):
                 
                 self.abbr_title = None
                 self.abbr_data = ''
-                if attrs.has_key('title'):
+                if has_key(attrs, 'title'):
                     self.abbr_title = attrs['title']
             else:
                 if self.abbr_title != None:
@@ -259,7 +279,7 @@ class _html2text(sgmllib.SGMLParser):
                 attrsD = {}
                 for (x, y) in attrs: attrsD[x] = y
                 attrs = attrsD
-                if attrs.has_key('href') and not (SKIP_INTERNAL_LINKS and attrs['href'].startswith('#')): 
+                if has_key(attrs, 'href') and not (SKIP_INTERNAL_LINKS and attrs['href'].startswith('#')): 
                     self.astack.append(attrs)
                     self.o("[")
                 else:
@@ -276,13 +296,13 @@ class _html2text(sgmllib.SGMLParser):
                             a['count'] = self.acount
                             a['outcount'] = self.outcount
                             self.a.append(a)
-                        self.o("][" + `a['count']` + "]")
+                        self.o("][" + str(a['count']) + "]")
         
         if tag == "img" and start:
             attrsD = {}
             for (x, y) in attrs: attrsD[x] = y
             attrs = attrsD
-            if attrs.has_key('src'):
+            if has_key(attrs, 'src'):
                 attrs['href'] = attrs['src']
                 alt = attrs.get('alt', '')
                 i = self.previousIndex(attrs)
@@ -295,7 +315,7 @@ class _html2text(sgmllib.SGMLParser):
                     self.a.append(attrs)
                 self.o("![")
                 self.o(alt)
-                self.o("]["+`attrs['count']`+"]")
+                self.o("]["+ str(attrs['count']) +"]")
         
         if tag == 'dl' and start: self.p()
         if tag == 'dt' and not start: self.pbr()
@@ -319,7 +339,7 @@ class _html2text(sgmllib.SGMLParser):
                 if li['name'] == "ul": self.o("* ")
                 elif li['name'] == "ol":
                     li['num'] += 1
-                    self.o(`li['num']`+". ")
+                    self.o(str(li['num'])+". ")
                 self.start = 1
             else:
                 self.pbr()
@@ -388,8 +408,8 @@ class _html2text(sgmllib.SGMLParser):
                 newa = []
                 for link in self.a:
                     if self.outcount > link['outcount']:
-                        self.out("   ["+`link['count']`+"]: " + urlparse.urljoin(self.baseurl, link['href'])) 
-                        if link.has_key('title'): self.out(" ("+link['title']+")")
+                        self.out("   ["+ str(link['count']) +"]: " + urlparse.urljoin(self.baseurl, link['href'])) 
+                        if has_key(link, 'title'): self.out(" ("+link['title']+")")
                         self.out("\n")
                     else:
                         newa.append(link)
@@ -413,7 +433,7 @@ class _html2text(sgmllib.SGMLParser):
     
     def unknown_decl(self, data): pass
 
-def wrapwrite(text): sys.stdout.write(text.encode('utf8'))
+def wrapwrite(text): sys.stdout.write(text)
 
 def html2text_file(html, out=wrapwrite, baseurl=''):
     h = _html2text(out, baseurl)
@@ -428,7 +448,7 @@ if __name__ == "__main__":
     baseurl = ''
     if sys.argv[1:]:
         arg = sys.argv[1]
-        if arg.startswith('http://'):
+        if arg.startswith('http://') or arg.startswith('https://'):
             baseurl = arg
             j = urllib.urlopen(baseurl)
             try:
@@ -444,8 +464,10 @@ if __name__ == "__main__":
             encoding = 'utf8'
             if len(sys.argv) > 2:
                 encoding = sys.argv[2]
-            data = open(arg, 'r').read().decode(encoding)
+            try: #Python3
+                data = open(arg, 'r', encoding=encoding).read()
+            except TypeError:
+                data = open(arg, 'r').read().decode(encoding)
     else:
-        data = sys.stdin.read().decode('utf8')
+        data = sys.stdin.read()
     wrapwrite(html2text(data, baseurl))
-
