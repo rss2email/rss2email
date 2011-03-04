@@ -507,7 +507,11 @@ def unlock(feeds, feedfileObject):
 	if not unix: 
 		pickle.dump(feeds, open(feedfile, 'w'))
 	else:	
-		pickle.dump(feeds, open(feedfile+'.tmp', 'w'))
+		fd = open(feedfile+'.tmp', 'w')
+		pickle.dump(feeds, fd)
+		fd.flush()
+		os.fsync(fd.fileno())
+		fd.close()
 		os.rename(feedfile+'.tmp', feedfile)
 		fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_UN)
 
@@ -731,7 +735,10 @@ def run(num=None):
 								if ('rel' in extralink) and extralink['rel'] == u'via':
 									extraurl = extralink['href']
 									extraurl = extraurl.replace('http://www.google.com/reader/public/atom/', 'http://www.google.com/reader/view/')
-									content += '<br/>Via: <a href="'+extraurl+'">'+extralink['title']+'</a>\n'
+									viatitle = extraurl
+									if ('title' in extralink):
+									    viatitle = extralink['title']
+									content += '<br/>Via: <a href="'+extraurl+'">'+viatitle+'</a>\n'
 						content += '</p></div>\n'
 						content += "\n\n</body></html>"
 					else:	
