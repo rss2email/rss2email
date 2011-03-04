@@ -10,7 +10,7 @@ Required: Python 2.4 or later
 Recommended: CJKCodecs and iconv_codec <http://cjkpython.i18n.org/>
 """
 
-__version__ = "5.0"
+__version__ = "5.0.1"
 __license__ = """Copyright (c) 2002-2008, Mark Pilgrim, All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -747,7 +747,7 @@ class _FeedParserMixin:
 
     def mapContentType(self, contentType):
         contentType = contentType.lower()
-        if contentType == 'text':
+        if contentType == 'text' or contentType == 'plain':
             contentType = 'text/plain'
         elif contentType == 'html':
             contentType = 'text/html'
@@ -1971,6 +1971,14 @@ class _BaseHTMLProcessor(sgmllib.SGMLParser):
         '''Return processed HTML as a single string'''
         return ''.join([str(p) for p in self.pieces])
 
+    def parse_declaration(self, i):
+        try:
+            return sgmllib.SGMLParser.parse_declaration(self, i)
+        except sgmllib.SGMLParseError:
+            # escape the doctype declaration and continue parsing
+            self.handle_data('&lt;')
+            return i+1
+
 class _LooseFeedParser(_FeedParserMixin, _BaseHTMLProcessor):
     def __init__(self, baseuri, baselang, encoding, entities):
         sgmllib.SGMLParser.__init__(self)
@@ -2476,9 +2484,10 @@ def _makeSafeAbsoluteURI(base, rel=None):
     if not base:
         return rel or u''
     if not rel:
-        if base.strip().split(':', 1)[0] not in ACCEPTABLE_URI_SCHEMES:
-            return u''
-        return base
+        scheme = urlparse.urlparse(base)[0]
+        if not scheme or scheme in ACCEPTABLE_URI_SCHEMES:
+            return base
+        return u''
     uri = _urljoin(base, rel)
     if uri.strip().split(':', 1)[0] not in ACCEPTABLE_URI_SCHEMES:
         return u''
@@ -2666,6 +2675,9 @@ class _HTMLSanitizer(_BaseHTMLProcessor):
         for key, value in self.normalize_attrs(attrs):
             if key in acceptable_attributes:
                 key=keymap.get(key,key)
+                # make sure the uri uses an acceptable uri scheme
+                if key == u'href':
+                    value = _makeSafeAbsoluteURI(value)
                 clean_attrs.append((key,value))
             elif key=='style':
                 clean_value = self.sanitize_style(value)
@@ -2720,6 +2732,18 @@ class _HTMLSanitizer(_BaseHTMLProcessor):
               clean.append(prop + ': ' + value + ';')
 
         return ' '.join(clean)
+
+    def parse_comment(self, i, report=1):
+        ret = _BaseHTMLProcessor.parse_comment(self, i, report)
+        if ret >= 0:
+            return ret
+        # if ret == -1, this may be a malicious attempt to circumvent
+        # sanitization, or a page-destroying unclosed comment
+        match = re.compile(r'--[^>]*>').search(self.rawdata, i+4)
+        if match:
+            return match.end()
+        # unclosed comment; deliberately fail to handle_data()
+        return len(self.rawdata)
 
 
 def _sanitizeHTML(htmlSource, encoding, _type):
