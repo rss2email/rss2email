@@ -1,3 +1,10 @@
+v2.71 (2011-03-04)
+    * Upgraded to feedparser v5.01! (http://code.google.com/p/feedparser/)
+    * Upgrade to html2text v3.01! (https://github.com/aaronsw/html2text)
+    * Potentialy safer method for writing feeds.dat on UNIX
+    * Handle via links with no title attribute
+    * Handle attributes more cleanly with OVERRIDE_EMAIL and DEFAULT_EMAIL
+
 v2.70 (2010-12-21)
     * Improved handling of given feed email addresses to prevent mail servers rejecting poorly formed Froms
     * Added X-RSS-TAGS header that lists any tags provided by an entry, which will be helpful in filtering incoming messages
