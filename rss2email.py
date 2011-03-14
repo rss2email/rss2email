@@ -15,7 +15,7 @@ Usage:
   opmlexport
   opmlimport filename
 """
-__version__ = "2.70"
+__version__ = "2.72"
 __author__ = "Lindsey Smith (lindsey@allthingsrss.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2 or 3."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
@@ -295,6 +295,7 @@ for e in ['error', 'gaierror']:
 
 import feedparser
 feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.allthingsrss.com/rss2email/"
+feedparser.SANITIZE_HTML = 0
 
 import html2text as h2t
 
@@ -406,7 +407,8 @@ def getID(entry):
 	if 'title' in entry: return hash(unu(entry.title)).hexdigest()
 
 def getName(r, entry):
-	"""Get the best name."""
+	"""Get the best name.
+	NEEDS UNIT TESTS"""
 
 	if NO_FRIENDLY_NAME: return ''
 
@@ -435,12 +437,13 @@ def getName(r, entry):
 def validateEmail(email, planb):
 	"""Do a basic quality check on email address, but return planb if email doesn't appear to be well-formed"""
 	email_parts = email.split('@')
-	if len(email_parts) != 2:
+	if (len(email_parts) != 2) or not email_parts[0] or not email_parts[1]:
 		return planb
 	return email
 	
 def getEmail(r, entry):
-	"""Get the best email_address. If the best guess isn't well-formed (something@somthing.com), use DEFAULT_FROM instead"""
+	"""Get the best email_address. If the best guess isn't well-formed (something@somthing.com), use DEFAULT_FROM instead.
+	NEEDS UNIT TESTS"""
 	
 	feed = r.feed
 		
