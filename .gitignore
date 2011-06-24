@@ -4,3 +4,4 @@ Old/*
 feeds.dat
 *.pyc
 build/*
+*.sublime-project
