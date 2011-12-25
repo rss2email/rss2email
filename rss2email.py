@@ -839,7 +839,7 @@ def opmlimport(importfile):
 	importfileObject = None
 	print 'Importing feeds from', importfile
 	if not os.path.exists(importfile):
-		print 'OPML import file "%s" does not exist.' % feedfile
+		print 'OPML import file "%s" does not exist.' % importfile
 	try:
 		importfileObject = open(importfile, 'r')
 	except IOError, e:
