@@ -83,6 +83,8 @@ for e in ['error', 'gaierror']:
 class RSS2EmailError (Exception):
     def log(self):
         LOG.error(str(self))
+        if self.__cause__ is not None:
+            LOG.error('cause: {}'.format(e.__cause__))
 
 
 class TimeoutError (RSS2EmailError):
@@ -147,8 +149,6 @@ class SendmailError (RSS2EmailError):
 
     def log(self):
         super(SendmailError, self).log()
-        if self.__cause__ is not None:
-            LOG.error('cause: {}'.format(e.__cause__))
         LOG.warning((
                 'Error attempting to send email via sendmail. You may need '
                 'to configure rss2email to use an SMTP server. Please refer '
@@ -168,6 +168,32 @@ class InvalidFeedName (FeedError):
     def __init__(self, name, **kwargs):
         message = "invalid feed name '{}'".format(name)
         super(InvalidFeedName, self).__init__(message=message, **kwargs)
+
+
+class FeedsError (RSS2EmailError):
+    def __init__(self, feeds, message=None):
+        if message is None:
+            message = 'error with feeds'
+        super(FeedsError, self).__init__(message)
+        self.feeds = feeds
+
+
+class DataFileError (FeedsError):
+    def __init__(self, feeds):
+        message = 'problem with the feed data file {}'.format(feeds.datafile)
+        super(DataFileError, self).__init__(feeds=feeds, message=message)
+
+
+class NoDataFile (DataFileError):
+    def __init__(self, feeds):
+        message = 'feed data file {} does not exist'.format(feeds.datafile)
+        super(NoDataFile, self).__init__(feeds=feeds, message=message)
+
+    def log(self):
+        super(NoDataFile, self).log()
+        LOG.warning(
+            "if you're using r2e for the first time, you have to run "
+            "'r2e new' first.")
 
 
 class Config (_configparser.ConfigParser):
@@ -725,7 +751,7 @@ class Feed (object):
             key = self._configured_attribute_translations[attr]
             value = getattr(self, attr)
             if (attr in self._non_default_configured_attributes or
-                value != default[key]):
+                value not in [default[key], None]):
                 data[key] = value
         self.config[self.section] = data
 
@@ -761,46 +787,132 @@ class Feed (object):
         self.section = 'feed.{}'.format(self.name)
 
 
-def load(lock=1):
-    if not os.path.exists(feedfile):
-        print 'Feedfile "%s" does not exist.  If you\'re using r2e for the first time, you' % feedfile
-        print "have to run 'r2e new' first."
-        sys.exit(1)
-    try:
-        feedfileObject = open(feedfile, 'r')
-    except IOError, e:
-        print "Feedfile could not be opened: %s" % e
-        sys.exit(1)
-    feeds = pickle.load(feedfileObject)
+class Feeds (list):
+    """Utility class for rss2email activity.
 
-    if lock:
+    >>> import pickle
+    >>> import tempfile
+
+    Setup a temporary directory to load.
+
+    >>> tmpdir = tempfile.TemporaryDirectory(prefix='rss2email-test-')
+    >>> configfile = _os.path.join(tmpdir.name, 'config')
+    >>> with open(configfile, 'w') as f:
+    ...     count = f.write('[DEFAULT]\\n')
+    ...     count = f.write('to = a@b.com\\n')
+    ...     count = f.write('[feed.f1]\\n')
+    ...     count = f.write('url = http://a.net/feed.atom\\n')
+    ...     count = f.write('to = x@y.net\\n')
+    ...     count = f.write('[feed.f2]\\n')
+    ...     count = f.write('url = http://b.com/rss.atom\\n')
+    >>> datafile = _os.path.join(tmpdir.name, 'feeds.dat')
+    >>> with open(datafile, 'wb') as f:
+    ...     pickle.dump([
+    ...             Feed(name='f1'),
+    ...             Feed(name='f2'),
+    ...             ], f)
+
+    >>> feeds = Feeds(configdir=tmpdir.name)
+    >>> feeds.load()
+    >>> for feed in feeds:
+    ...     print(feed)
+    <Feed f1 http://a.net/feed.atom -> x@y.net>
+    <Feed f2 http://b.com/rss.atom -> a@b.com>
+
+    Tweak the feed configuration and save.
+
+    >>> feeds[0].to = None
+    >>> feeds.save()
+    >>> print(open(configfile, 'r').read().rstrip('\\n'))
+    ... # doctest: +REPORT_UDIFF, +ELLIPSIS
+    [DEFAULT]
+    from = bozo@dev.null.invalid
+    ...
+    verbose = warning
+    <BLANKLINE>
+    [feed.f1]
+    url = http://a.net/feed.atom
+    <BLANKLINE>
+    [feed.f2]
+    url = http://b.com/rss.atom
+
+    Cleanup the temporary directory.
+
+    >>> tmpdir.cleanup()
+    """
+    def __init__(self, configdir=None, datafile=None, configfiles=None,
+                 config=None):
+        super(Feeds, self).__init__()
+        if configdir is None:
+            configdir = _os.path.expanduser(_os.path.join(
+                    '~', '.config', 'rss2email'))
+        if datafile is None:
+            datafile = _os.path.join(configdir, 'feeds.dat')
+        self.datafile = datafile
+        if configfiles is None:
+            configfiles = [_os.path.join(configdir, 'config')]
+        self.configfiles = configfiles
+        if config is None:
+            config = CONFIG
+        self.config = config
+        self._datafile_lock = None
+
+    def __pop__(self, index=-1):
+        feed = self.pop(index=index)
+        if feed.section in self.config:
+            self.config.pop(feed.section)
+        return feed
+
+    def clear(self):
+        while self:
+            self.pop(0)
+
+    def load(self, lock=True):
+        self.read_configfiles = self.config.read(self.configfiles)
+        self._load_feeds(lock=lock)
+
+    def _load_feeds(self, lock):
+        if not _os.path.exists(self.datafile):
+            raise NoDataFile(feeds=self)
+        try:
+            self._datafile_lock = open(self.datafile, 'rb')
+        except IOError as e:
+            raise DataFileError(feeds=self) from e
+
         locktype = 0
-        if unix:
-            locktype = fcntl.LOCK_EX
-            fcntl.flock(feedfileObject.fileno(), locktype)
-        #HACK: to deal with lock caching
-        feedfileObject = open(feedfile, 'r')
-        feeds = pickle.load(feedfileObject)
-        if unix:
-            fcntl.flock(feedfileObject.fileno(), locktype)
-    if feeds:
-        for feed in feeds[1:]:
-            if not hasattr(feed, 'active'):
-                feed.active = True
+        if lock and UNIX:
+            locktype = _fcntl.LOCK_EX
+            _fcntl.flock(self._datafile_lock.fileno(), locktype)
 
-    return feeds, feedfileObject
+        self.clear()
+        self.extend(_pickle.load(self._datafile_lock))
 
-def unlock(feeds, feedfileObject):
-    if not unix:
-        pickle.dump(feeds, open(feedfile, 'w'))
-    else:
-        fd = open(feedfile+'.tmp', 'w')
-        pickle.dump(feeds, fd)
-        fd.flush()
-        os.fsync(fd.fileno())
-        fd.close()
-        os.rename(feedfile+'.tmp', feedfile)
-        fcntl.flock(feedfileObject.fileno(), fcntl.LOCK_UN)
+        if locktype == 0:
+            self._datafile_lock.close()
+            self._datafile_lock = None
+
+        for feed in self:
+            feed.load_from_config(self.config)
+
+    def save(self):
+        for feed in self:
+            feed.save_to_config()
+        with open(self.configfiles[-1], 'w') as f:
+            self.config.write(f)
+        self._save_feeds()
+
+    def _save_feeds(self):
+        if UNIX:
+            tmpfile = self.datafile + '.tmp'
+            with open(tmpfile, 'wb') as f:
+                _pickle.dump(list(self), f)
+            _os.rename(tmpfile, self.datafile)
+            if self._datafile_lock is not None:
+                self._datafile_lock.close()  # release the lock
+                self._datafile_lock = None
+        else:
+            _pickle.dump(list(self), open(self.datafile, 'wb'))
+
 
 #@timelimit(FEED_TIMEOUT)
 def parse(url, etag, modified):
