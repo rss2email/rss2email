@@ -30,6 +30,8 @@ ___contributors__ = [
     'Aaron Swartz (original author)',
     ]
 
+import collections as _collections
+import configparser as _configparser
 from email.mime.text import MIMEText as _MIMEText
 from email.header import Header as _Header
 from email.utils import parseaddr as _parseaddr
@@ -64,91 +66,129 @@ import html2text as _html2text
 hash = hashlib.md5
 urllib2.install_opener(urllib2.build_opener())
 
-### Vaguely Customizable Options ###
 
-# The email address messages are from by default:
-DEFAULT_FROM = "bozo@dev.null.invalid"
+class Config (_configparser.ConfigParser):
+    def __init__(self, **kwargs):
+        super(Config, self).__init__(dict_type=_collections.OrderedDict)
 
-# 1: Send text/html messages when possible.
-# 0: Convert HTML to plain text.
-HTML_MAIL = 0
 
-# 1: Only use the DEFAULT_FROM address.
-# 0: Use the email address specified by the feed, when possible.
-FORCE_FROM = 0
+CONFIG = Config()
 
-# 1: Receive one email per post.
-# 0: Receive an email every time a post changes.
-TRUST_GUID = 1
+# setup defaults for feeds that don't customize
+CONFIG['DEFAULT'] = _collections.OrderedDict((
+        ### Addressing
+        # The email address messages are from by default
+        ('from', 'bozo@dev.null.invalid'),
+        # True: Only use the 'from' address.
+        # False: Use the email address specified by the feed, when possible.
+        ('force-from', str(False)),
+        # True: Use the publisher's email if you can't find the author's.
+        # False: Just use the 'from' email instead.
+        ('use-publisher-email', str(False)),
+        # Only use the feed email address rather than friendly name
+        # plus email address
+        ('friendly-name', str(True)),
+        # Set this to override From addresses.
+        ('override-from', str(False)),
+        # Set this to default To email addresses.
+        ('to', ''),
+        # Set this to override To email addresses.
+        ('override-to', False),
 
-# 1: Generate Date header based on item's date, when possible.
-# 0: Generate Date header based on time sent.
-DATE_HEADER = 0
+        ### Fetching
+        # Set an HTTP proxy (e.g. 'http://your.proxy.here:8080/')
+        ('proxy', ''),
+        # Set the timeout (in seconds) for feed server response
+        ('feed-timeout', str(60)),
 
-# A tuple consisting of some combination of
-# ('issued', 'created', 'modified', 'expired')
-# expressing ordered list of preference in dates
-# to use for the Date header of the email.
-DATE_HEADER_ORDER = ('modified', 'issued', 'created')
+        ### Processing
+        # True: Generate Date header based on item's date, when possible.
+        # False: Generate Date header based on time sent.
+        ('date-header', str(False)),
+        # A comma-delimited list of some combination of
+        # ('issued', 'created', 'modified', 'expired')
+        # expressing ordered list of preference in dates
+        # to use for the Date header of the email.
+        ('date-header-order', 'modified, issued, created, expired'),
+        # Set this to add a bonus header to all emails (start with '\n').
+        # Example: bonus-header = '\nApproved: joe@bob.org'
+        ('bonus-header', ''),
+        # True: Receive one email per post.
+        # False: Receive an email every time a post changes.
+        ('trust-guid', str(True)),
+        # To most correctly encode emails with international
+        # characters, we iterate through the list below and use the
+        # first character set that works Eventually (and
+        # theoretically) UTF-8 is our catch-all failsafe.
+        ('charsets', 'US-ASCII, BIG5, ISO-2022-JP, ISO-8859-1, UTF-8'),
+        ## HTML conversion
+        # True: Send text/html messages when possible.
+        # False: Convert HTML to plain text.
+        ('html-mail', str(False)),
+        # Optional CSS styling
+        ('use-css', str(False)),
+        ('css', (
+                'h1 {\n'
+                '  font: 18pt Georgia, "Times New Roman";\n'
+                '}\n'
+                'body {\n'
+                '  font: 12pt Arial;\n'
+                '}\n'
+                'a:link {\n'
+                '  font: 12pt Arial;\n'
+                '  font-weight: bold;\n'
+                '  color: #0000cc;\n'
+                '}\n'
+                'blockquote {\n'
+                '  font-family: monospace;\n'
+                '}\n'
+                '.header {\n'
+                '  background: #e0ecff;\n'
+                '  border-bottom: solid 4px #c3d9ff;\n'
+                '  padding: 5px;\n'
+                '  margin-top: 0px;\n'
+                '  color: red;\n'
+                '}\n'
+                '.header a {\n'
+                '  font-size: 20px;\n'
+                '  text-decoration: none;\n'
+                '}\n'
+                '.footer {\n'
+                '  background: #c3d9ff;\n'
+                '  border-top: solid 4px #c3d9ff;\n'
+                '  padding: 5px;\n'
+                '  margin-bottom: 0px;\n'
+                '}\n'
+                '#entry {\n'
+                '  border: solid 4px #c3d9ff;\n'
+                '}\n'
+                '#body {\n'
+                '  margin-left: 5px;\n'
+                '  margin-right: 5px;\n'
+                '}\n')),
+        ## html2text options
+        # Use Unicode characters instead of their ascii psuedo-replacements
+        ('unicode-snob': str(False)),
+        # Put the links after each paragraph instead of at the end.
+        ('link-after-each-paragraph', str(False)),
+        # Wrap long lines at position. 0 for no wrapping.
+        ('body-width', str(0)),
 
-# 1: Apply Q-P conversion (required for some MUAs).
-# 0: Send message in 8-bits.
-# http://cr.yp.to/smtp/8bitmime.html
-#DEPRECATED
-QP_REQUIRED = 0
-#DEPRECATED
+        ### Mailing
+        # True: Use SMTP_SERVER to send mail.
+        # False: Call /usr/sbin/sendmail to send mail.
+        ('use-smtp', str(False)),
+        ('smtp-server', 'smtp.yourisp.net:25'),
+        ('smtp-auth', str(False)),      # set to True to use SMTP AUTH
+        ('smtp-username', 'username'),  # username for SMTP AUTH
+        ('smtp-password', 'password'),  # password for SMTP AUTH
+        ('smtp-ssl', str(False)),       # Connect to the SMTP server using SSL
 
-# 1: Name feeds as they're being processed.
-# 0: Keep quiet.
-VERBOSE = 0
+        ### Miscellaneous
+        # Verbosity (one of 'error', 'warning', 'info', or 'debug').
+        ('verbose', 'warning'),
+        ))
 
-# 1: Use the publisher's email if you can't find the author's.
-# 0: Just use the DEFAULT_FROM email instead.
-USE_PUBLISHER_EMAIL = 0
-
-# 1: Use SMTP_SERVER to send mail.
-# 0: Call /usr/sbin/sendmail to send mail.
-SMTP_SEND = 0
-
-SMTP_SERVER = "smtp.yourisp.net:25"
-AUTHREQUIRED = 0 # if you need to use SMTP AUTH set to 1
-SMTP_USER = 'username'  # for SMTP AUTH, set SMTP username here
-SMTP_PASS = 'password'  # for SMTP AUTH, set SMTP password here
-
-# Connect to the SMTP server using SSL
-SMTP_SSL = 0
-
-# Set this to add a bonus header to all emails (start with '\n').
-BONUS_HEADER = ''
-# Example: BONUS_HEADER = '\nApproved: joe@bob.org'
-
-# Set this to override From addresses. Keys are feed URLs, values are new titles.
-OVERRIDE_FROM = {}
-
-# Set this to override From email addresses. Keys are feed URLs, values are new emails.
-OVERRIDE_EMAIL = {}
-
-# Set this to default From email addresses. Keys are feed URLs, values are new email addresses.
-DEFAULT_EMAIL = {}
-
-# Only use the email from address rather than friendly name plus email address
-NO_FRIENDLY_NAME = 0
-
-# Set this to override the timeout (in seconds) for feed server response
-FEED_TIMEOUT = 60
-
-# Optional CSS styling
-USE_CSS_STYLING = 0
-STYLE_SHEET='h1 {font: 18pt Georgia, "Times New Roman";} body {font: 12pt Arial;} a:link {font: 12pt Arial; font-weight: bold; color: #0000cc} blockquote {font-family: monospace; }  .header { background: #e0ecff; border-bottom: solid 4px #c3d9ff; padding: 5px; margin-top: 0px; color: red;} .header a { font-size: 20px; text-decoration: none; } .footer { background: #c3d9ff; border-top: solid 4px #c3d9ff; padding: 5px; margin-bottom: 0px; } #entry {border: solid 4px #c3d9ff; } #body { margin-left: 5px; margin-right: 5px; }'
-
-# If you have an HTTP Proxy set this in the format 'http://your.proxy.here:8080/'
-PROXY=""
-
-# To most correctly encode emails with international characters, we iterate through the list below and use the first character set that works
-# Eventually (and theoretically) ISO-8859-1 and UTF-8 are our catch-all failsafes
-CHARSET_LIST='US-ASCII', 'BIG5', 'ISO-2022-JP', 'ISO-8859-1', 'UTF-8'
-
-# Note: You can also override the send function.
 
 def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtpserver=None):
     """Send an email.
@@ -270,17 +310,6 @@ SMTP_PASS = 'password'  # for SMTP AUTH, set SMTP password here
 '''
             sys.exit(1)
         return None
-
-## html2text options ##
-
-# Use Unicode characters instead of their ascii psuedo-replacements
-UNICODE_SNOB = 0
-
-# Put the links after each paragraph instead of at the end.
-LINKS_EACH_PARAGRAPH = 0
-
-# Wrap long lines at position. 0 for no wrapping. (Requires Python 2.3.)
-BODY_WIDTH = 0
 
 ### Load the Options ###
 
