@@ -51,20 +51,20 @@ import urllib.request as _urllib_request
 import xml.dom.minidom as _minidom
 import xml.sax.saxutils as _saxutils
 
-unix = 0
+UNIX = False
 try:
     import fcntl as _fcntl
-# A pox on SunOS file locking methods
-    if (sys.platform.find('sunos') == -1):
-        unix = 1
+    # A pox on SunOS file locking methods
+    if 'sunos' not in sys.platform:
+        UNIX = True
 except:
     pass
 
 import feedparser as _feedparser
 import html2text as _html2text
 
-hash = hashlib.md5
-urllib2.install_opener(urllib2.build_opener())
+
+_urllib_request.install_opener(_urllib_request.build_opener())
 
 
 class Config (_configparser.ConfigParser):
