@@ -74,6 +74,9 @@ _SOCKET_ERRORS = tuple(_SOCKET_ERRORS)
 
 
 class RSS2EmailError (Exception):
+    def __init__(self, message):
+        super(RSS2EmailError, self).__init__(message)
+
     def log(self):
         LOG.error(str(self))
         if self.__cause__ is not None:
@@ -90,14 +93,14 @@ class TimeoutError (RSS2EmailError):
             else:
                 message = '{} second timeout exceeded'.format(
                     time_limited_function.timeout)
-        super(TimeoutError, self).__init__(message)
+        super(TimeoutError, self).__init__(message=message)
         self.time_limited_function = time_limited_function
 
 
 class NoValidEncodingError (ValueError, RSS2EmailError):
     def __init__(self, string, encodings):
-        msg = 'no valid encoding for {} in {}'.format(string, encodings)
-        super(NoValidEncodingError, self).__init__(msg)
+        message = 'no valid encoding for {} in {}'.format(string, encodings)
+        super(NoValidEncodingError, self).__init__(message=message)
         self.string = string
         self.encodings = encodings
 
@@ -106,7 +109,7 @@ class SMTPConnectionError (ValueError, RSS2EmailError):
     def __init__(self, server, message=None):
         if message is None:
             message = 'could not connect to mail server {}'.format(server)
-        super(SMTPConnectionError, self).__init__(message)
+        super(SMTPConnectionError, self).__init__(message=message)
         self.server = server
 
     def log(self):
@@ -135,7 +138,7 @@ class SendmailError (RSS2EmailError):
             message = 'sendmail exited with code {}'.format(status)
         else:
             message = ''
-        super(SendmailError, self).__init__(message)
+        super(SendmailError, self).__init__(message=message)
         self.status = status
         self.stdout = stdout
         self.stderr = stderr
@@ -153,7 +156,7 @@ class FeedError (RSS2EmailError):
     def __init__(self, feed, message=None):
         if message is None:
             message = 'error with feed {}'.format(feed.name)
-        super(FeedError, self).__init__(message)
+        super(FeedError, self).__init__(message=message)
         self.feed = feed
 
 
@@ -201,10 +204,10 @@ class HTTPError (ProcessingError):
 
 
 class FeedsError (RSS2EmailError):
-    def __init__(self, feeds=None, message=None):
+    def __init__(self, feeds=None, message=None, **kwargs):
         if message is None:
             message = 'error with feeds'
-        super(FeedsError, self).__init__(message)
+        super(FeedsError, self).__init__(message=message, **kwargs)
         self.feeds = feeds
 
 
