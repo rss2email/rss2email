@@ -1,21 +1,9 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
-"""rss2email: get RSS feeds emailed to you
-http://rss2email.infogami.com
 
-Usage:
-  new [emailaddress] (create new feedfile)
-  email newemailaddress (update default email)
-  run [--no-send] [num]
-  add feedurl [emailaddress]
-  list
-  reset
-  delete n
-  pause n
-  unpause n
-  opmlexport
-  opmlimport filename
+"""rss2email: get RSS feeds emailed to you
 """
+
 __version__ = '2.71'
 __url__ = 'http://rss2email.infogami.com'
 __author__ = 'Lindsey Smith (lindsey@allthingsrss.com)'
@@ -179,8 +167,10 @@ class FeedsError (RSS2EmailError):
 
 
 class DataFileError (FeedsError):
-    def __init__(self, feeds):
-        message = 'problem with the feed data file {}'.format(feeds.datafile)
+    def __init__(self, feeds, message=None):
+        if message is None:
+            message = 'problem with the feed data file {}'.format(
+                feeds.datafile)
         super(DataFileError, self).__init__(feeds=feeds, message=message)
 
 
@@ -194,6 +184,24 @@ class NoDataFile (DataFileError):
         LOG.warning(
             "if you're using r2e for the first time, you have to run "
             "'r2e new' first.")
+
+
+class NoToEmailAddress (FeedsError):
+    def __init__(self, **kwargs):
+        message = 'no target email address has been defined'
+        super(NoToEmailAddress, self).__init__(message=message, **kwargs)
+
+    def log(self):
+        super(NoToEmailAddress, self).log()
+        LOG.warning(
+            "please run 'r2e email emailaddress' or "
+            "'r2e add name url emailaddress'.")
+
+
+class OPMLReadError (RSS2EmailError):
+    def __init__(self, **kwargs):
+        message = 'error reading OPML'
+        super(RSS2EmailError, self).__init__(message=message, **kwargs)
 
 
 class Config (_configparser.ConfigParser):
@@ -238,6 +246,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('feed-timeout', str(60)),
 
         ### Processing
+        # True: Fetch, process, and email feeds.
+        # False: Don't fetch, process, or email feeds
+        ('active', str(True)),
         # True: Generate Date header based on item's date, when possible.
         # False: Generate Date header based on time sent.
         ('date-header', str(False)),
@@ -1055,24 +1066,58 @@ class Feeds (list):
         else:
             _pickle.dump(list(self), open(self.datafile, 'wb'))
 
+    def new_feed(self, name=None, prefix='feed-', **kwargs):
+        """Return a new feed, possibly auto-generating a name.
+
+        >>> feeds = Feeds()
+        >>> print(feeds.new_feed(name='my-feed'))
+        my-feed (None -> a@b.com)
+        >>> print(feeds.new_feed())
+        feed-0 (None -> a@b.com)
+        >>> print(feeds.new_feed())
+        feed-1 (None -> a@b.com)
+        """
+        if name is None:
+            i = 0
+            while True:
+                name = '{}{}'.format(prefix, i)
+                feed_names = [feed.name for feed in self]
+                if name not in feed_names:
+                    break
+                i += 1
+        feed = Feed(name=name, **kwargs)
+        self.append(feed)
+        return feed
+
 
 ### Program Functions ###
 
-def add(*args):
-    if len(args) == 2 and contains(args[1], '@') and not contains(args[1], '://'):
-        urls, to = [args[0]], args[1]
+def cmd_new(feeds, args):
+    "Create a new feed database."
+    if args.email:
+        LOG.info('set the default target email to {}'.format(args.email))
+        feeds.config['DEFAULT']['to'] = args.email
+    feeds.save()
+
+def cmd_email(feeds, args):
+    "Update the default target email address"
+    if not args.email:
+        LOG.info('unset the default target email')
     else:
-        urls, to = args, None
+        LOG.info('set the default target email to {}'.format(args.email))
+    feeds.config['DEFAULT']['to'] = args.email
+    feeds.save()
 
-    feeds, feedfileObject = load()
-    if (feeds and not isstr(feeds[0]) and to is None) or (not len(feeds) and to is None):
-        print "No email address has been defined. Please run 'r2e email emailaddress' or"
-        print "'r2e add url emailaddress'."
-        sys.exit(1)
-    for url in urls: feeds.append(Feed(url, to))
-    unlock(feeds, feedfileObject)
+def cmd_add(feeds, args):
+    "Add a new feed to the database"
+    feed = feeds.new_feed(name=args.name, url=args.url, to=args.email)
+    LOG.info('add new feed {}'.format(feed))
+    if not feed.to:
+        raise NoToEmailAddress(feeds=feeds)
+    feeds.save()
 
-def run(num=None):
+def cmd_run(feeds, args):
+    "Fetch feeds and send entry emails."
     feeds, feedfileObject = load()
     smtpserver = None
     try:
@@ -1328,163 +1373,214 @@ def run(num=None):
         if smtpserver:
             smtpserver.quit()
 
-def list():
-    feeds, feedfileObject = load(lock=0)
-    default_to = ""
+def cmd_list(feeds, args):
+    "List all the feeds in the database"
+    for i,feed in enumerate(feeds):
+        if feed.active:
+            active_char = '*'
+        else:
+            active_char = ' '
+        print('{}: [{}] {}'.format(i, active_char, feed))
 
-    if feeds and isstr(feeds[0]):
-        default_to = feeds[0]; ifeeds = feeds[1:]; i=1
-        print "default email:", default_to
-    else: ifeeds = feeds; i = 0
-    for f in ifeeds:
-        active = ('[ ]', '[*]')[f.active]
-        print `i`+':',active, f.url, '('+(f.to or ('default: '+default_to))+')'
-        if not (f.to or default_to):
-            print "   W: Please define a default address with 'r2e email emailaddress'"
-        i+= 1
-
-def opmlexport():
-    feeds, feedfileObject = load(lock=0)
-
-    if feeds:
-        print '<?xml version="1.0" encoding="UTF-8"?>\n<opml version="1.0">\n<head>\n<title>rss2email OPML export</title>\n</head>\n<body>'
-        for f in feeds[1:]:
-            url = xml.sax.saxutils.escape(f.url)
-            print '<outline type="rss" text="%s" xmlUrl="%s"/>' % (url, url)
-        print '</body>\n</opml>'
-
-def opmlimport(importfile):
-    importfileObject = None
-    print 'Importing feeds from', importfile
-    if not os.path.exists(importfile):
-        print 'OPML import file "%s" does not exist.' % feedfile
-    try:
-        importfileObject = open(importfile, 'r')
-    except IOError, e:
-        print "OPML import file could not be opened: %s" % e
-        sys.exit(1)
-    try:
-        dom = xml.dom.minidom.parse(importfileObject)
-        newfeeds = dom.getElementsByTagName('outline')
-    except:
-        print 'E: Unable to parse OPML file'
-        sys.exit(1)
-
-    feeds, feedfileObject = load(lock=1)
-
-    for f in newfeeds:
-        if f.hasAttribute('xmlUrl'):
-            feedurl = f.getAttribute('xmlUrl')
-            print 'Adding %s' % xml.sax.saxutils.unescape(feedurl)
-            feeds.append(Feed(feedurl, None))
-
-    unlock(feeds, feedfileObject)
-
-def delete(n):
-    feeds, feedfileObject = load()
-    if (n == 0) and (feeds and isstr(feeds[0])):
-        print >>warn, "W: ID has to be equal to or higher than 1"
-    elif n >= len(feeds):
-        print >>warn, "W: no such feed"
+def _cmd_set_active(feeds, args, active=True):
+    "Shared by `cmd_pause` and `cmd_unpause`."
+    if active:
+        action = 'unpause'
     else:
-        print >>warn, "W: deleting feed %s" % feeds[n].url
-        feeds = feeds[:n] + feeds[n+1:]
-        if n != len(feeds):
-            print >>warn, "W: feed IDs have changed, list before deleting again"
-    unlock(feeds, feedfileObject)
+        action = 'pause'
+    if not args.index:
+        args.index = range(len(feeds))
+    for index in args.index:
+        feed = feeds.index(index)
+        LOG.info('{} feed {}'.format(action, feed))
+        feed.active = active
+    feeds.save()
 
-def toggleactive(n, active):
-    feeds, feedfileObject = load()
-    if (n == 0) and (feeds and isstr(feeds[0])):
-        print >>warn, "W: ID has to be equal to or higher than 1"
-    elif n >= len(feeds):
-        print >>warn, "W: no such feed"
+def cmd_pause(feeds, args):
+    "Pause a feed (disable fetching)"
+    _cmd_set_active(feeds=feeds, args=args, active=False)
+
+def cmd_unpause(feeds, args):
+    "Unpause a feed (enable fetching)"
+    _cmd_set_active(feeds=feeds, args=args, active=True)
+
+def cmd_delete(feeds, args):
+    "Remove a feed from the database"
+    to_remove = []
+    for index in args.index:
+        feed = feeds.index(index)
+        to_remove.append(feed)
+    for feed in to_remove:
+        LOG.info('deleting feed {}'.format(feed))
+        feeds.remove(feed)
+    feeds.save()
+
+def cmd_reset(feeds, args):
+    "Forget dynamic feed data (e.g. to re-send old entries)"
+    if not args.index:
+        args.index = range(len(feeds))
+    for index in args.index:
+        feed = feeds.index(index)
+        LOG.info('resetting feed {}'.format(feed))
+        feed.reset()
+    feeds.save()
+
+def cmd_opmlimport(feeds, args):
+    "Import configuration from OPML."
+    if args.file:
+        LOG.info('importing feeds from {}'.format(args.file))
+        f = open(args.file, 'rb')
     else:
-        action = ('Pausing', 'Unpausing')[active]
-        print >>warn, "%s feed %s" % (action, feeds[n].url)
-        feeds[n].active = active
-    unlock(feeds, feedfileObject)
+        LOG.info('importing feeds from stdin')
+        f = _sys.stdin
+    try:
+        dom = _minidom.parse(f)
+        new_feeds = dom.getElementsByTagName('outline')
+    except Exception as e:
+        raise OPMLReadError() from e
+    if args.file:
+        f.close()
+    for feed in new_feeds:
+        if feed.hasAttribute('xmlUrl'):
+            url = _saxutils.unescape(feed.getAttribute('xmlUrl'))
+            feed = feeds.new_feed(url=url)
+            LOG.info('add new feed {}'.format(feed))
+    feeds.save()
 
-def reset():
-    feeds, feedfileObject = load()
-    if feeds and isstr(feeds[0]):
-        ifeeds = feeds[1:]
-    else: ifeeds = feeds
-    for f in ifeeds:
-        if VERBOSE: print "Resetting %d already seen items" % len(f.seen)
-        f.seen = {}
-        f.etag = None
-        f.modified = None
+def cmd_opmlexport(feeds, args):
+    "Export configuration to OPML."
+    if args.file:
+        LOG.info('exporting feeds to {}'.format(args.file))
+        f = open(args.file, 'rb')
+    else:
+        LOG.info('exporting feeds to stdout')
+        f = _sys.stdout
+    f.write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<opml version="1.0">\n'
+        '<head>\n'
+        '<title>rss2email OPML export</title>\n'
+        '</head>\n'
+        '<body>\n')
+    for feed in feeds:
+        url = _saxutils.escape(feed.url)
+        f.write('<outline type="rss" text="{0}" xmlUrl="{0}"/>'.format(url))
+    f.write(
+        '</body>\n'
+        '</opml>\n')
+    if args.file:
+        f.close()
 
-    unlock(feeds, feedfileObject)
-
-def email(addr):
-    feeds, feedfileObject = load()
-    if feeds and isstr(feeds[0]): feeds[0] = addr
-    else: feeds = [addr] + feeds
-    unlock(feeds, feedfileObject)
 
 if __name__ == '__main__':
-    args = sys.argv
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__, version=__version__)
+
+    parser.add_argument(
+        '-c', '--config', metavar='PATH', nargs='*',
+        help='path to the configuration file')
+    parser.add_argument(
+        '-d', '--data', metavar='PATH',
+        help='path to the feed data file')
+    parser.add_argument(
+        '-V', '--verbose', default=0, action='count',
+        help='increment verbosity')
+    subparsers = parser.add_subparsers(title='commands')
+
+    new_parser = subparsers.add_parser(
+        'new', help=cmd_new.__doc__.splitlines()[0])
+    new_parser.set_defaults(func=cmd_new)
+    new_parser.add_argument(
+        'email', nargs='?',
+        help='default target email for the new feed database')
+
+    email_parser = subparsers.add_parser(
+        'email', help=cmd_email.__doc__.splitlines()[0])
+    email_parser.set_defaults(func=cmd_email)
+    email_parser.add_argument(
+        'email', default='',
+        help='default target email for the email feed database')
+
+    add_parser = subparsers.add_parser(
+        'add', help=cmd_add.__doc__.splitlines()[0])
+    add_parser.set_defaults(func=cmd_add)
+    add_parser.add_argument(
+        'name', help='name of the new feed')
+    add_parser.add_argument(
+        'url', help='location of the new feed')
+    add_parser.add_argument(
+        'email', nargs='?',
+        help='target email for the new feed')
+
+    run_parser = subparsers.add_parser(
+        'run', help=cmd_run.__doc__.splitlines()[0])
+    run_parser.set_defaults(func=cmd_run)
+    run_parser.add_argument(
+        '-n', '--no-send', dest='send',
+        default=True, action='store_const', const=False,
+        help="fetch feeds, but don't send email")
+    run_parser.add_argument(
+        'index', nargs='*',
+        help='feeds to fetch (defaults to fetching all feeds)')
+
+    list_parser = subparsers.add_parser(
+        'list', help=cmd_list.__doc__.splitlines()[0])
+    list_parser.set_defaults(func=cmd_list)
+
+    pause_parser = subparsers.add_parser(
+        'pause', help=cmd_pause.__doc__.splitlines()[0])
+    pause_parser.set_defaults(func=cmd_pause)
+    pause_parser.add_argument(
+        'index', nargs='*',
+        help='feeds to pause (defaults to pausing all feeds)')
+
+    unpause_parser = subparsers.add_parser(
+        'unpause', help=cmd_unpause.__doc__.splitlines()[0])
+    unpause_parser.set_defaults(func=cmd_unpause)
+    unpause_parser.add_argument(
+        'index', nargs='*',
+        help='feeds to ununpause (defaults to pausing all feeds)')
+
+    delete_parser = subparsers.add_parser(
+        'delete', help=cmd_delete.__doc__.splitlines()[0])
+    delete_parser.set_defaults(func=cmd_delete)
+    delete_parser.add_argument(
+        'index', nargs='+',
+        help='feeds to delete')
+
+    reset_parser = subparsers.add_parser(
+        'reset', help=cmd_reset.__doc__.splitlines()[0])
+    reset_parser.set_defaults(func=cmd_reset)
+    reset_parser.add_argument(
+        'index', nargs='*',
+        help='feeds to reset (defaults to resetting all feeds)')
+
+    opmlimport_parser = subparsers.add_parser(
+        'opmlimport', help=cmd_opmlimport.__doc__.splitlines()[0])
+    opmlimport_parser.set_defaults(func=cmd_opmlimport)
+    opmlimport_parser.add_argument(
+        'file', metavar='PATH', nargs='?',
+        help='path for imported OPML (defaults to stdin)')
+
+    opmlexport_parser = subparsers.add_parser(
+        'opmlexport', help=cmd_opmlexport.__doc__.splitlines()[0])
+    opmlexport_parser.set_defaults(func=cmd_opmlexport)
+    opmlexport_parser.add_argument(
+        'file', metavar='PATH', nargs='?',
+        help='path for exported OPML (defaults to stdout)')
+
+    args = parser.parse_args()
+
+    if args.verbose:
+        LOG.setLevel(max(_logging.DEBUG, _logging.ERROR - 10 * args.verbose))
+
     try:
-        if len(args) < 3: raise InputError, "insufficient args"
-        feedfile, action, args = args[1], args[2], args[3:]
-
-        if action == "run":
-            if args and args[0] == "--no-send":
-                def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtpserver=None):
-                    if VERBOSE: print 'Not sending:', unu(subject)
-
-            if args and args[-1].isdigit(): run(int(args[-1]))
-            else: run()
-
-        elif action == "email":
-            if not args:
-                raise InputError, "Action '%s' requires an argument" % action
-            else:
-                email(args[0])
-
-        elif action == "add": add(*args)
-
-        elif action == "new":
-            if len(args) == 1: d = [args[0]]
-            else: d = []
-            pickle.dump(d, open(feedfile, 'w'))
-
-        elif action == "list": list()
-
-        elif action in ("help", "--help", "-h"): print __doc__
-
-        elif action == "delete":
-            if not args:
-                raise InputError, "Action '%s' requires an argument" % action
-            elif args[0].isdigit():
-                delete(int(args[0]))
-            else:
-                raise InputError, "Action '%s' requires a number as its argument" % action
-
-        elif action in ("pause", "unpause"):
-            if not args:
-                raise InputError, "Action '%s' requires an argument" % action
-            elif args[0].isdigit():
-                active = (action == "unpause")
-                toggleactive(int(args[0]), active)
-            else:
-                raise InputError, "Action '%s' requires a number as its argument" % action
-
-        elif action == "reset": reset()
-
-        elif action == "opmlexport": opmlexport()
-
-        elif action == "opmlimport":
-            if not args:
-                raise InputError, "OPML import '%s' requires a filename argument" % action
-            opmlimport(args[0])
-
-        else:
-            raise InputError, "Invalid action"
-
-    except InputError, e:
-        print "E:", e
-        print
-        print __doc__
+        feeds = Feeds(datafile=args.data, configfiles=args.config)
+        if args.func != cmd_new:
+            lock = args.func not in [cmd_list, cmd_opmlexport]
+            feeds.load(lock=lock)
+        args.func(feeds=feeds, args=args)
+    except RSS2EmailError as e:
+        e.log()
+        _sys.exit(1)
