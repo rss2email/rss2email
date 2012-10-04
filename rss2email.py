@@ -647,7 +647,6 @@ class Feed (object):
 
     >>> feed.from_email = 'a@b.com'
     >>> feed.save_to_config()
-    >>> section = feed.config[feed.section]
     >>> feed.config.write(sys.stdout)  # doctest: +REPORT_UDIFF, +ELLIPSIS
     [DEFAULT]
     from = bozo@dev.null.invalid
@@ -679,6 +678,7 @@ class Feed (object):
 
     Cleanup `CONFIG`.
 
+    >>> CONFIG['DEFAULT']['to'] = ''
     >>> test_section = CONFIG.pop('feed.test-feed')
     """
     _name_regexp = _re.compile('^[a-zA-Z0-9._-]+$')
@@ -780,11 +780,11 @@ class Feed (object):
         for attr in self._configured_attributes:
             key = self._configured_attribute_translations[attr]
             value = getattr(self, attr)
-            if (attr in self._non_default_configured_attributes or
-                value is not None):
+            if value is not None:
                 value = self._get_configured_option_value(
                     attribute=attr, value=value)
-                if value != default[key]:
+                if (attr in self._non_default_configured_attributes or
+                    value != default[key]):
                     data[key] = value
         self.config[self.section] = data
 
@@ -797,25 +797,25 @@ class Feed (object):
             data = self.config[self.section]
         else:
             data = self.config['DEFAULT']
-        for key in self._non_default_configured_attributes:
-            if key not in data:
-                data[key] = ''
         keys = sorted(data.keys())
         expected = sorted(self._configured_attribute_translations.values())
         if keys != expected:
             for key in expected:
-                if key not in keys:
+                if (key not in keys and
+                    key not in self._non_default_configured_attributes):
                     raise ValueError('missing key: {}'.format(key))
             for key in keys:
                 if key not in expected:
                     raise ValueError('extra key: {}'.format(key))
-            raise ValueError(self.config)
         data = dict(
             (self._configured_attribute_inverse_translations[k],
              self._get_configured_attribute_value(
                   attribute=self._configured_attribute_inverse_translations[k],
                   key=k, data=data))
             for k in data.keys())
+        for attr in self._non_default_configured_attributes:
+            if attr not in data:
+                data[attr] = None
         self.__dict__.update(data)
 
     def _get_configured_option_value(self, attribute, value):
@@ -897,8 +897,21 @@ class Feeds (list):
     >>> feeds.load()
     >>> for feed in feeds:
     ...     print(feed)
-    <Feed f1 http://a.net/feed.atom -> x@y.net>
-    <Feed f2 http://b.com/rss.atom -> a@b.com>
+    f1 (http://a.net/feed.atom -> x@y.net)
+    f2 (http://b.com/rss.atom -> a@b.com)
+
+    You can index feeds by array index or by feed name.
+
+    >>> feeds[0]
+    <Feed f1 (http://a.net/feed.atom -> x@y.net)>
+    >>> feeds[-1]
+    <Feed f2 (http://b.com/rss.atom -> a@b.com)>
+    >>> feeds['f1']
+    <Feed f1 (http://a.net/feed.atom -> x@y.net)>
+    >>> feeds['missing']
+    Traceback (most recent call last):
+      ...
+    IndexError: missing
 
     Tweak the feed configuration and save.
 
@@ -938,24 +951,61 @@ class Feeds (list):
         self.config = config
         self._datafile_lock = None
 
+    def __getitem__(self, key):
+        for feed in self:
+            if feed.name == key:
+                return feed
+        try:
+            index = int(key)
+        except ValueError as e:
+            raise IndexError(key) from e
+        return super(Feeds, self).__getitem__(index)
+
+    def __append__(self, feed):
+        feed.load_from_config(self.config)
+        feed = super(Feeds, self).append(feed)
+
     def __pop__(self, index=-1):
-        feed = self.pop(index=index)
+        feed = super(Feeds, self).pop(index=index)
         if feed.section in self.config:
             self.config.pop(feed.section)
         return feed
+
+    def index(self, index):
+        if isinstance(index, int):
+            return self[index]
+        elif isinstance(index, str):
+            try:
+                index = int(index)
+            except ValueError:
+                pass
+            else:
+                return self.index(index)
+            for feed in self:
+                if feed.name == index:
+                    return feed
+        super(Feeds, self).index(index)
+
+    def remove(self, feed):
+        super(Feeds, self).remove(feed)
+        if feed.section in self.config:
+            self.config.pop(feed.section)
 
     def clear(self):
         while self:
             self.pop(0)
 
     def load(self, lock=True):
+        LOG.debug('load feed configuration from {}'.format(self.configfiles))
         if self.configfiles:
             self.read_configfiles = self.config.read(self.configfiles)
         else:
             self.read_configfiles = []
+        LOG.debug('loaded confguration from {}'.format(self.read_configfiles))
         self._load_feeds(lock=lock)
 
     def _load_feeds(self, lock):
+        LOG.debug('load feed data from {}'.format(self.datafile))
         if not _os.path.exists(self.datafile):
             raise NoDataFile(feeds=self)
         try:
@@ -979,13 +1029,21 @@ class Feeds (list):
             feed.load_from_config(self.config)
 
     def save(self):
+        LOG.debug('save feed configuration to {}'.format(self.configfiles[-1]))
         for feed in self:
             feed.save_to_config()
+        dirname = _os.path.dirname(self.configfiles[-1])
+        if not _os.path.isdir(dirname):
+            _os.makedirs(dirname)
         with open(self.configfiles[-1], 'w') as f:
             self.config.write(f)
         self._save_feeds()
 
     def _save_feeds(self):
+        LOG.debug('save feed data to {}'.format(self.datafile))
+        dirname = _os.path.dirname(self.datafile)
+        if not _os.path.isdir(dirname):
+            _os.makedirs(dirname)
         if UNIX:
             tmpfile = self.datafile + '.tmp'
             with open(tmpfile, 'wb') as f:
