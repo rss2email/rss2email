@@ -37,6 +37,7 @@ from email.header import Header as _Header
 from email.utils import parseaddr as _parseaddr
 from email.utils import formataddr as _formataddr
 import hashlib as _hashlib
+import logging as _logging
 import os as _os
 import pickle as _pickle
 import smtplib as _smtplib
@@ -62,6 +63,11 @@ except:
 
 import feedparser as _feedparser
 import html2text as _html2text
+
+
+LOG = _logging.getLogger('rss2email')
+LOG.addHandler(_logging.StreamHandler())
+LOG.setLevel(_logging.ERROR)
 
 
 _urllib_request.install_opener(_urllib_request.build_opener())
