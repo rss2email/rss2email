@@ -1,2 +1,2 @@
 #!/bin/sh
-python3 rss2email.py feeds.dat $*
+python3 rss2email.py -c config -d feeds.dat $*
