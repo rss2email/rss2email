@@ -30,35 +30,36 @@ ___contributors__ = [
     'Aaron Swartz (original author)',
     ]
 
-from email.MIMEText import MIMEText
-from email.Header import Header
-from email.Utils import parseaddr, formataddr
-import hashlib
-import cPickle as pickle
-import os
-import smtplib
-import socket
-import subprocess
-import sys
-import threading
-import time
-import traceback
-import types
-import urllib2
-import xml.dom.minidom
-import xml.sax.saxutils
+from email.mime.text import MIMEText as _MIMEText
+from email.header import Header as _Header
+from email.utils import parseaddr as _parseaddr
+from email.utils import formataddr as _formataddr
+import hashlib as _hashlib
+import os as _os
+import pickle as _pickle
+import smtplib as _smtplib
+import socket as _socket
+import subprocess as _subprocess
+import sys as _sys
+import threading as _threading
+import time as _time
+import traceback as _traceback
+import types as _types
+import urllib.request as _urllib_request
+import xml.dom.minidom as _minidom
+import xml.sax.saxutils as _saxutils
 
 unix = 0
 try:
-    import fcntl
+    import fcntl as _fcntl
 # A pox on SunOS file locking methods
     if (sys.platform.find('sunos') == -1):
         unix = 1
 except:
     pass
 
-import feedparser
-import html2text as h2t
+import feedparser as _feedparser
+import html2text as _html2text
 
 hash = hashlib.md5
 urllib2.install_opener(urllib2.build_opener())
