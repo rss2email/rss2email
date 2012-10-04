@@ -15,13 +15,20 @@ Usage:
   opmlexport
   opmlimport filename
 """
-__version__ = "2.71"
-__author__ = "Lindsey Smith (lindsey@allthingsrss.com)"
-__copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2 or 3."
-___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess",
-                     "Matej Cepl", "Martin 'Joey' Schulze",
-                     "Marcel Ackermann (http://www.DreamFlasher.de)",
-                     "Lindsey Smith (maintainer)", "Erik Hetzner", "Aaron Swartz (original author)" ]
+__version__ = '2.71'
+__author__ = 'Lindsey Smith (lindsey@allthingsrss.com)'
+__copyright__ = '(C) 2004 Aaron Swartz. GNU GPL 2 or 3.'
+___contributors__ = [
+    'Dean Jackson',
+    'Brian Lalor',
+    'Joey Hess',
+    'Matej Cepl',
+    "Martin 'Joey' Schulze",
+    'Marcel Ackermann (http://www.DreamFlasher.de)',
+    'Lindsey Smith (maintainer)',
+    'Erik Hetzner',
+    'Aaron Swartz (original author)',
+    ]
 
 import urllib2
 urllib2.install_opener(urllib2.build_opener())
