@@ -890,7 +890,10 @@ class Feeds (list):
             self.pop(0)
 
     def load(self, lock=True):
-        self.read_configfiles = self.config.read(self.configfiles)
+        if self.configfiles:
+            self.read_configfiles = self.config.read(self.configfiles)
+        else:
+            self.read_configfiles = []
         self._load_feeds(lock=lock)
 
     def _load_feeds(self, lock):
