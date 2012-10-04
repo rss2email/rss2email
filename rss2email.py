@@ -71,8 +71,12 @@ LOG = _logging.getLogger('rss2email')
 LOG.addHandler(_logging.StreamHandler())
 LOG.setLevel(_logging.ERROR)
 
-
+_feedparser.USER_AGENT = 'rss2email/{} +{}'.format(__version__, __url__)
 _urllib_request.install_opener(_urllib_request.build_opener())
+_SOCKET_ERRORS = []
+for e in ['error', 'gaierror']:
+    if hasattr(_socket, e):
+        _SOCKET_ERRORS.append(getattr(_socket, e))
 
 
 class RSS2EmailError (Exception):
@@ -404,23 +408,6 @@ def send(sender, recipient, message, config=None, section='DEFAULT'):
     else:
         sendmail_send(sender, recipient, message)
 
-### Load the Options ###
-
-# Read options from config file if present.
-sys.path.insert(0,".")
-try:
-    from config import *
-except:
-    pass
-
-warn = sys.stderr
-
-socket_errors = []
-for e in ['error', 'gaierror']:
-    if hasattr(socket, e): socket_errors.append(getattr(socket, e))
-
-feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.allthingsrss.com/rss2email/"
-
 
 ### Utility Functions ###
 
@@ -715,12 +702,12 @@ def run(num=None):
                     elif hasattr(feedparser, 'zlib') and exc_type == feedparser.zlib.error:
                         print >>warn, "W: broken compression [%d] %s" % (feednum, f.url)
 
-                    elif exc_type in socket_errors:
+                    elif exc_type in _SOCKET_ERRORS:
                         exc_reason = r.bozo_exception.args[1]
                         print >>warn, "W: %s [%d] %s" % (exc_reason, feednum, f.url)
 
                     elif exc_type == urllib2.URLError:
-                        if r.bozo_exception.reason.__class__ in socket_errors:
+                        if r.bozo_exception.reason.__class__ in _SOCKET_ERRORS:
                             exc_reason = r.bozo_exception.reason.args[1]
                         else:
                             exc_reason = r.bozo_exception.reason
