@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 """rss2email: get RSS feeds emailed to you
 http://rss2email.infogami.com
 
