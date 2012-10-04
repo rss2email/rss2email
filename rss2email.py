@@ -639,7 +639,7 @@ class Feed (object):
     >>> feed = Feed(
     ...    name='test-feed', url='http://example.com/feed.atom', to='a@b.com')
     >>> print(feed)
-    <Feed test-feed http://example.com/feed.atom -> a@b.com>
+    test-feed (http://example.com/feed.atom -> a@b.com)
     >>> feed.section
     'feed.test-feed'
     >>> feed.from_email
@@ -714,13 +714,40 @@ class Feed (object):
     _configured_attribute_inverse_translations = dict(
         (v,k) for k,v in _configured_attribute_translations.items())
 
+    # hints for value conversion
+    _boolean_attributes = [
+        'force_from',
+        'use_publisher_email',
+        'friendly_name',
+        'override_from',
+        'override_to',
+        'active',
+        'date_header',
+        'trust_guid',
+        'html_mail',
+        'use_css',
+        'unicode_snob',
+        'links_after_each_paragraph',
+        'use_smtp',
+        'smtp_ssl',
+        ]
+
+    _integer_attributes = [
+        'feed_timeout',
+        'body_width',
+        ]
+
+    _list_attributes = [
+        'date_header_order',
+        'encodings',
+        ]
+
     def __init__(self, name=None, url=None, to=None, config=None):
-        self.__setstate__({
-                'name': name,
-                'etag': None,
-                'modified': None,
-                'seen': {},
-                })
+        self._set_name(name=name)
+        self.reset()
+        self.__setstate__(dict(
+                (attr, getattr(self, attr))
+                for attr in self._dynamic_attributes))
         self.load_from_config(config)
         if url:
             self.url = url
@@ -728,7 +755,10 @@ class Feed (object):
             self.to = to
 
     def __str__(self):
-        return '<Feed {} {} -> {}>'.format(self.name, self.url, self.to)
+        return '{} ({} -> {})'.format(self.name, self.url, self.to)
+
+    def __repr__(self):
+        return '<Feed {}>'.format(str(self))
 
     def __getstate__(self):
         "Save dyamic attributes"
@@ -751,8 +781,11 @@ class Feed (object):
             key = self._configured_attribute_translations[attr]
             value = getattr(self, attr)
             if (attr in self._non_default_configured_attributes or
-                value not in [default[key], None]):
-                data[key] = value
+                value is not None):
+                value = self._get_configured_option_value(
+                    attribute=attr, value=value)
+                if value != default[key]:
+                    data[key] = value
         self.config[self.section] = data
 
     def load_from_config(self, config=None):
@@ -760,12 +793,13 @@ class Feed (object):
         if config is None:
             config = CONFIG
         self.config = CONFIG
-        data = dict(self.config['DEFAULT'])
         if self.section in self.config:
-            data.update(self.config[self.section])
+            data = self.config[self.section]
+        else:
+            data = self.config['DEFAULT']
         for key in self._non_default_configured_attributes:
             if key not in data:
-                data[key] = None
+                data[key] = ''
         keys = sorted(data.keys())
         expected = sorted(self._configured_attribute_translations.values())
         if keys != expected:
@@ -776,9 +810,34 @@ class Feed (object):
                 if key not in expected:
                     raise ValueError('extra key: {}'.format(key))
             raise ValueError(self.config)
-        data = dict((self._configured_attribute_inverse_translations[k],v)
-                    for k,v in data.items())
+        data = dict(
+            (self._configured_attribute_inverse_translations[k],
+             self._get_configured_attribute_value(
+                  attribute=self._configured_attribute_inverse_translations[k],
+                  key=k, data=data))
+            for k in data.keys())
         self.__dict__.update(data)
+
+    def _get_configured_option_value(self, attribute, value):
+        if value and attribute in self._list_attributes:
+            return ', '.join(value)
+        return str(value)
+
+    def _get_configured_attribute_value(self, attribute, key, data):
+        if attribute in self._boolean_attributes:
+            return data.getboolean(key)
+        elif attribute in self._integer_attributes:
+            return data.getint(key)
+        elif attribute in self._list_attributes:
+            return [x.strip() for x in data[key].split(',')]
+        return data[key]
+
+    def reset(self):
+        """Reset dynamic data
+        """
+        self.etag = None
+        self.modified = None
+        self.seen = {}
 
     def _set_name(self, name):
         if not self._name_regexp.match(name):
