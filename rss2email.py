@@ -84,6 +84,20 @@ class RSS2EmailError (Exception):
         LOG.error(str(self))
 
 
+class TimeoutError (RSS2EmailError):
+    def __init__(self, time_limited_function, message=None):
+        if message is None:
+            if time_limited_function.error is not None:
+                message = (
+                    'error while running time limited function: {}'.format(
+                        time_limited_function.error[1]))
+            else:
+                message = '{} second timeout exceeded'.format(
+                    time_limited_function.timeout)
+        super(TimeoutError, self).__init__(message)
+        self.time_limited_function = time_limited_function
+
+
 class NoValidEncodingError (ValueError, RSS2EmailError):
     def __init__(self, string, encodings):
         msg = 'no valid encoding for {} in {}'.format(string, encodings)
@@ -132,7 +146,7 @@ class SendmailError (RSS2EmailError):
 
     def log(self):
         super(SendmailError, self).log()
-        if hasattr(self, '__cause__'):
+        if self.__cause__ is not None:
             LOG.error('cause: {}'.format(e.__cause__))
         LOG.warning((
                 'Error attempting to send email via sendmail. You may need '
@@ -409,42 +423,56 @@ def send(sender, recipient, message, config=None, section='DEFAULT'):
         sendmail_send(sender, recipient, message)
 
 
-### Utility Functions ###
+class TimeLimitedFunction (_threading.Thread):
+    """Run `function` with a time limit of `timeout` seconds.
 
-class TimeoutError(Exception): pass
+    >>> import time
+    >>> def sleeping_return(sleep, x):
+    ...     time.sleep(sleep)
+    ...     return x
+    >>> TimeLimitedFunction(0.5, sleeping_return)(0.1, 'x')
+    'x'
+    >>> TimeLimitedFunction(0.5, sleeping_return)(10, 'y')
+    Traceback (most recent call last):
+      ...
+    rss2email.TimeoutError: 0.5 second timeout exceeded
+    >>> TimeLimitedFunction(0.5, time.sleep)('x')
+    Traceback (most recent call last):
+      ...
+    rss2email.TimeoutError: error while running time limited function: a float is required
+    """
+    def __init__(self, timeout, target, **kwargs):
+        super(TimeLimitedFunction, self).__init__(target=target, **kwargs)
+        self.setDaemon(True)  # daemon kwarg only added in Python 3.3.
+        self.timeout = timeout
+        self.result = None
+        self.error = None
 
-class InputError(Exception): pass
+    def run(self):
+        """Based on Thread.run().
 
-def timelimit(timeout, function):
-#    def internal(function):
-        def internal2(*args, **kw):
-            """
-            from http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473878
-            """
-            class Calculator(threading.Thread):
-                def __init__(self):
-                    threading.Thread.__init__(self)
-                    self.result = None
-                    self.error = None
+        We add handling for self.result and self.error.
+        """
+        try:
+            if self._target:
+                self.result = self._target(*self._args, **self._kwargs)
+        except:
+            self.error = _sys.exc_info()
+        finally:
+            # Avoid a refcycle if the thread is running a function with
+            # an argument that has a member that points to the thread.
+            del self._target, self._args, self._kwargs
 
-                def run(self):
-                    try:
-                        self.result = function(*args, **kw)
-                    except:
-                        self.error = sys.exc_info()
-
-            c = Calculator()
-            c.setDaemon(True) # don't hold up exiting
-            c.start()
-            c.join(timeout)
-            if c.isAlive():
-                raise TimeoutError
-            if c.error:
-                raise c.error[0], c.error[1]
-            return c.result
-        return internal2
-#    return internal
-
+    def __call__(self, *args, **kwargs):
+        self._args = args
+        self._kwargs = kwargs
+        self.start()
+        self.join(self.timeout)
+        if self.error:
+            raise TimeoutError(time_limited_function=self) from self.error[1]
+        elif self.isAlive():
+            raise TimeoutError(time_limited_function=self)
+        return self.result
 
 def isstr(f): return isinstance(f, type('')) or isinstance(f, type(u''))
 def ishtml(t): return type(t) is type(())
