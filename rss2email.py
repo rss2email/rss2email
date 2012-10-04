@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- encoding: utf-8 -*-
 """rss2email: get RSS feeds emailed to you
 http://rss2email.infogami.com
 
@@ -16,6 +17,7 @@ Usage:
   opmlimport filename
 """
 __version__ = '2.71'
+__url__ = 'http://rss2email.infogami.com'
 __author__ = 'Lindsey Smith (lindsey@allthingsrss.com)'
 __copyright__ = '(C) 2004 Aaron Swartz. GNU GPL 2 or 3.'
 ___contributors__ = [
@@ -73,6 +75,68 @@ LOG.setLevel(_logging.ERROR)
 _urllib_request.install_opener(_urllib_request.build_opener())
 
 
+class RSS2EmailError (Exception):
+    def log(self):
+        LOG.error(str(self))
+
+
+class NoValidEncodingError (ValueError, RSS2EmailError):
+    def __init__(self, string, encodings):
+        msg = 'no valid encoding for {} in {}'.format(string, encodings)
+        super(NoValidEncodingError, self).__init__(msg)
+        self.string = string
+        self.encodings = encodings
+
+
+class SMTPConnectionError (ValueError, RSS2EmailError):
+    def __init__(self, server, message=None):
+        if message is None:
+            message = 'could not connect to mail server {}'.format(server)
+        super(SMTPConnectionError, self).__init__(message)
+        self.server = server
+
+    def log(self):
+        super(SMTPConnectionError, self).log()
+        LOG.warning(
+            'check your config file to confirm that smtp-server and other '
+            'mail server settings are configured properly')
+        if hasattr(e.__cause__, 'reason'):
+            LOG.error('reason: {}'.format(e.__cause__.reason))
+
+
+class SMTPAuthenticationError (SMTPConnectionError):
+    def __init__(self, server, username):
+        message = (
+            'could not authenticate with mail server {} as user {}'.format(
+                server, username))
+        super(SMTPConnectionError, self).__init__(
+            server=server, message=message)
+        self.server = server
+        self.username = username
+
+
+class SendmailError (RSS2EmailError):
+    def __init__(self, status=None, stdout=None, stderr=None):
+        if status:
+            message = 'sendmail exited with code {}'.format(status)
+        else:
+            message = ''
+        super(SendmailError, self).__init__(message)
+        self.status = status
+        self.stdout = stdout
+        self.stderr = stderr
+
+    def log(self):
+        super(SendmailError, self).log()
+        if hasattr(self, '__cause__'):
+            LOG.error('cause: {}'.format(e.__cause__))
+        LOG.warning((
+                'Error attempting to send email via sendmail. You may need '
+                'to configure rss2email to use an SMTP server. Please refer '
+                'to the rss2email documentation or website ({}) for complete '
+                'documentation.').format(__url__))
+
+
 class Config (_configparser.ConfigParser):
     def __init__(self, **kwargs):
         super(Config, self).__init__(dict_type=_collections.OrderedDict)
@@ -83,6 +147,7 @@ class Config (_configparser.ConfigParser):
         _html2text.LINKS_EACH_PARAGRAPH = self.getboolean(
             section, 'links-after-each-paragaph', fallback=False)
         _html2text.BODY_WIDTH = self.getint(section, 'body-width', fallback=0)
+
 
 CONFIG = Config()
 
@@ -132,7 +197,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # characters, we iterate through the list below and use the
         # first character set that works Eventually (and
         # theoretically) UTF-8 is our catch-all failsafe.
-        ('charsets', 'US-ASCII, BIG5, ISO-2022-JP, ISO-8859-1, UTF-8'),
+        ('encodings', 'US-ASCII, BIG5, ISO-2022-JP, ISO-8859-1, UTF-8'),
         ## HTML conversion
         # True: Send text/html messages when possible.
         # False: Convert HTML to plain text.
@@ -202,122 +267,142 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ))
 
 
-def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtpserver=None):
-    """Send an email.
+def guess_encoding(string, encodings=('US-ASCII', 'UTF-8')):
+    """Find an encodign capable of encoding `string`.
+
+    >>> guess_encoding('alpha', encodings=('US-ASCII', 'UTF-8'))
+    'US-ASCII'
+    >>> guess_encoding('α', encodings=('US-ASCII', 'UTF-8'))
+    'UTF-8'
+    >>> guess_encoding('α', encodings=('US-ASCII', 'ISO-8859-1'))
+    Traceback (most recent call last):
+      ...
+    rss2email.NoValidEncodingError: no valid encoding for α in ('US-ASCII', 'ISO-8859-1')
+    """
+    for encoding in encodings:
+        try:
+            string.encode(encoding)
+        except (UnicodeError, LookupError):
+            pass
+        else:
+            return encoding
+    raise NoValidEncodingError(string=string, encodings=encodings)
+
+def get_message(sender, recipient, subject, body, content_type,
+                extra_headers=None, config=None, section='DEFAULT'):
+    """Generate a `Message` instance.
 
     All arguments should be Unicode strings (plain ASCII works as well).
 
     Only the real name part of sender and recipient addresses may contain
     non-ASCII characters.
 
-    The email will be properly MIME encoded and delivered though SMTP to
-    localhost port 25.  This is easy to change if you want something different.
+    The email will be properly MIME encoded.
 
     The charset of the email will be the first one out of the list
     that can represent all the characters occurring in the email.
+
+    >>> message = get_message(
+    ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
+    ...     subject='Testing',
+    ...     body='Hello, world!\\n',
+    ...     content_type='plain',
+    ...     extra_headers={'Approved': 'joe@bob.org'})
+    >>> print(message.as_string())  # doctest: +REPORT_UDIFF
+    MIME-Version: 1.0
+    Content-Type: text/plain; charset="us-ascii"
+    Content-Transfer-Encoding: 7bit
+    From: John <jdoe@a.com>
+    To: =?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>
+    Subject: Testing
+    Approved: joe@bob.org
+    <BLANKLINE>
+    Hello, world!
+    <BLANKLINE>
     """
-
-    # Header class is smart enough to try US-ASCII, then the charset we
-    # provide, then fall back to UTF-8.
-    header_charset = 'ISO-8859-1'
-
-    # We must choose the body charset manually
-    for body_charset in CHARSET_LIST:
-        try:
-            body.encode(body_charset)
-        except (UnicodeError, LookupError):
-            pass
-        else:
-            break
+    if config is None:
+        config = CONFIG
+    encodings = [
+        x.strip() for x in config.get(section, 'encodings').split(',')]
 
     # Split real name (which is optional) and email address parts
-    sender_name, sender_addr = parseaddr(sender)
-    recipient_name, recipient_addr = parseaddr(recipient)
+    sender_name,sender_addr = _parseaddr(sender)
+    recipient_name,recipient_addr = _parseaddr(recipient)
+
+    sender_encoding = guess_encoding(sender_name, encodings)
+    recipient_encoding = guess_encoding(recipient_name, encodings)
+    subject_encoding = guess_encoding(subject, encodings)
+    body_encoding = guess_encoding(body, encodings)
 
     # We must always pass Unicode strings to Header, otherwise it will
     # use RFC 2047 encoding even on plain ASCII strings.
-    sender_name = str(Header(unicode(sender_name), header_charset))
-    recipient_name = str(Header(unicode(recipient_name), header_charset))
+    sender_name = str(_Header(sender_name, sender_encoding).encode())
+    recipient_name = str(_Header(recipient_name, recipient_encoding).encode())
 
     # Make sure email addresses do not contain non-ASCII characters
-    sender_addr = sender_addr.encode('ascii')
-    recipient_addr = recipient_addr.encode('ascii')
+    sender_addr.encode('ascii')
+    recipient_addr.encode('ascii')
 
     # Create the message ('plain' stands for Content-Type: text/plain)
-    msg = MIMEText(body.encode(body_charset), contenttype, body_charset)
-    msg['To'] = formataddr((recipient_name, recipient_addr))
-    msg['Subject'] = Header(unicode(subject), header_charset)
-    for hdr in extraheaders.keys():
-        try:
-            msg[hdr] = Header(unicode(extraheaders[hdr], header_charset))
-        except:
-            msg[hdr] = Header(extraheaders[hdr])
+    message = _MIMEText(body, content_type, body_encoding)
+    message['From'] = _formataddr((sender_name, sender_addr))
+    message['To'] = _formataddr((recipient_name, recipient_addr))
+    message['Subject'] = _Header(subject, subject_encoding)
+    for key,value in extra_headers.items():
+        encoding = guess_encoding(value, encodings)
+        message[key] = _Header(value, encoding)
+    return message
 
-    fromhdr = formataddr((sender_name, sender_addr))
-    msg['From'] = fromhdr
-
-    msg_as_string = msg.as_string()
-
-    if SMTP_SEND:
-        if not smtpserver:
-            try:
-                if SMTP_SSL:
-                    smtpserver = smtplib.SMTP_SSL()
-                else:
-                    smtpserver = smtplib.SMTP()
-                smtpserver.connect(SMTP_SERVER)
-            except KeyboardInterrupt:
-                raise
-            except Exception, e:
-                print >>warn, ""
-                print >>warn, ('Fatal error: could not connect to mail server "%s"' % SMTP_SERVER)
-                print >>warn, ('Check your config.py file to confirm that SMTP_SERVER and other mail server settings are configured properly')
-                if hasattr(e, 'reason'):
-                    print >>warn, "Reason:", e.reason
-                sys.exit(1)
-
-            if AUTHREQUIRED:
-                try:
-                    smtpserver.ehlo()
-                    if not SMTP_SSL: smtpserver.starttls()
-                    smtpserver.ehlo()
-                    smtpserver.login(SMTP_USER, SMTP_PASS)
-                except KeyboardInterrupt:
-                    raise
-                except Exception, e:
-                    print >>warn, ""
-                    print >>warn, ('Fatal error: could not authenticate with mail server "%s" as user "%s"' % (SMTP_SERVER, SMTP_USER))
-                    print >>warn, ('Check your config.py file to confirm that SMTP_SERVER and other mail server settings are configured properly')
-                    if hasattr(e, 'reason'):
-                        print >>warn, "Reason:", e.reason
-                    sys.exit(1)
-
-        smtpserver.sendmail(sender, recipient, msg_as_string)
-        return smtpserver
-
+def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
+    if config is None:
+        config = CONFIG
+    server = CONFIG.get(section, 'smtp-server')
+    ssl = CONFIG.getboolean(section, 'smtp-ssl')
+    if ssl:
+        smtp = _smtplib.SMTP_SSL()
     else:
+        smtp = _smtplib.SMTP()
+        smtp.ehlo()
+    try:
+        smtp.connect(SMTP_SERVER)
+    except KeyboardInterrupt:
+        raise
+    except Exception as e:
+        raise SMTPConnectionError(server=server) from e
+    if CONFIG.getboolean(section, 'smtp-auth'):
+        username = CONFIG.get(section, 'smtp-username')
+        password = CONFIG.get(section, 'smtp-password')
         try:
-            p = subprocess.Popen(["/usr/sbin/sendmail", recipient], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-            p.communicate(msg_as_string)
-            status = p.returncode
-            assert status != None, "just a sanity check"
-            if status != 0:
-                print >>warn, ""
-                print >>warn, ('Fatal error: sendmail exited with code %s' % status)
-                sys.exit(1)
-        except:
-            print '''Error attempting to send email via sendmail. Possibly you need to configure your config.py to use a SMTP server? Please refer to the rss2email documentation or website (http://rss2email.infogami.com) for complete documentation of config.py. The options below may suffice for configuring email:
-# 1: Use SMTP_SERVER to send mail.
-# 0: Call /usr/sbin/sendmail to send mail.
-SMTP_SEND = 0
+            if not ssl:
+                smtp.starttls()
+            smtp.login(username, password)
+        except KeyboardInterrupt:
+            raise
+        except Exception as e:
+            raise SMTPAuthenticationError(server=server, username=username)
+    smtp.send_message(message, sender, [recipient])
+    smtp.quit()
 
-SMTP_SERVER = "smtp.yourisp.net:25"
-AUTHREQUIRED = 0 # if you need to use SMTP AUTH set to 1
-SMTP_USER = 'username'  # for SMTP AUTH, set SMTP username here
-SMTP_PASS = 'password'  # for SMTP AUTH, set SMTP password here
-'''
-            sys.exit(1)
-        return None
+def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
+    if config is None:
+        config = CONFIG
+    try:
+        p = _subprocess.Popen(
+            ['/usr/sbin/sendmail', recipient],
+            stdin=_subprocess.PIPE, stdout=_subprocess.PIPE,
+            stderr=_subprocess.PIPE)
+        stdout,stderr = p.communicate(message.as_string())
+        status = p.wait()
+        if status:
+            raise SendmailError(status=status, stdout=stdout, stderr=stderr)
+    except Exception as e:
+        raise SendmailError() from e
+
+def send(sender, recipient, message, config=None, section='DEFAULT'):
+    if configSMTP_SEND:
+        smtp_send(sender, recipient, message)
+    else:
+        sendmail_send(sender, recipient, message)
 
 ### Load the Options ###
 
