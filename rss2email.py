@@ -71,6 +71,12 @@ class Config (_configparser.ConfigParser):
     def __init__(self, **kwargs):
         super(Config, self).__init__(dict_type=_collections.OrderedDict)
 
+    def _setup(self, section='DEFAULT'):
+        _html2text.UNICODE_SNOB = self.getboolean(
+            section, 'unicode-snob', fallback=False)
+        _html2text.LINKS_EACH_PARAGRAPH = self.getboolean(
+            section, 'links-after-each-paragaph', fallback=False)
+        _html2text.BODY_WIDTH = self.getint(section, 'body-width', fallback=0)
 
 CONFIG = Config()
 
@@ -168,9 +174,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
                 '}\n')),
         ## html2text options
         # Use Unicode characters instead of their ascii psuedo-replacements
-        ('unicode-snob': str(False)),
+        ('unicode-snob', str(False)),
         # Put the links after each paragraph instead of at the end.
-        ('link-after-each-paragraph', str(False)),
+        ('links-after-each-paragraph', str(False)),
         # Wrap long lines at position. 0 for no wrapping.
         ('body-width', str(0)),
 
@@ -331,11 +337,6 @@ for e in ['error', 'gaierror']:
 
 feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.allthingsrss.com/rss2email/"
 
-
-h2t.UNICODE_SNOB = UNICODE_SNOB
-h2t.LINKS_EACH_PARAGRAPH = LINKS_EACH_PARAGRAPH
-h2t.BODY_WIDTH = BODY_WIDTH
-html2text = h2t.html2text
 
 ### Utility Functions ###
 
