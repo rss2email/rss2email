@@ -61,8 +61,7 @@ import html2text as _html2text
 
 LOG = _logging.getLogger('rss2email')
 LOG.addHandler(_logging.StreamHandler())
-#LOG.setLevel(_logging.ERROR)
-LOG.setLevel(_logging.DEBUG)
+LOG.setLevel(_logging.ERROR)
 
 _feedparser.USER_AGENT = 'rss2email/{} +{}'.format(__version__, __url__)
 _urllib_request.install_opener(_urllib_request.build_opener())
