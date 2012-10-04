@@ -251,10 +251,6 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
     msg['From'] = fromhdr
 
     msg_as_string = msg.as_string()
-#DEPRECATED     if QP_REQUIRED:
-#DEPRECATED         ins, outs = SIO(msg_as_string), SIO()
-#DEPRECATED         mimify.mimify(ins, outs)
-#DEPRECATED         msg_as_string = outs.getvalue()
 
     if SMTP_SEND:
         if not smtpserver:
@@ -327,9 +323,6 @@ except:
     pass
 
 warn = sys.stderr
-
-if QP_REQUIRED:
-    print >>warn, "QP_REQUIRED has been deprecated in rss2email."
 
 socket_errors = []
 for e in ['error', 'gaierror']:
