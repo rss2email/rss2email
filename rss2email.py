@@ -42,6 +42,7 @@ import hashlib as _hashlib
 import logging as _logging
 import os as _os
 import pickle as _pickle
+import re as _re
 import smtplib as _smtplib
 import socket as _socket
 import subprocess as _subprocess
@@ -153,6 +154,20 @@ class SendmailError (RSS2EmailError):
                 'to configure rss2email to use an SMTP server. Please refer '
                 'to the rss2email documentation or website ({}) for complete '
                 'documentation.').format(__url__))
+
+
+class FeedError (RSS2EmailError):
+    def __init__(self, feed, message=None):
+        if message is None:
+            message = 'error with feed {}'.format(feed.name)
+        super(FeedError, self).__init__(message)
+        self.feed = feed
+
+
+class InvalidFeedName (FeedError):
+    def __init__(self, name, **kwargs):
+        message = "invalid feed name '{}'".format(name)
+        super(InvalidFeedName, self).__init__(message=message, **kwargs)
 
 
 class Config (_configparser.ConfigParser):
@@ -273,8 +288,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # True: Use SMTP_SERVER to send mail.
         # False: Call /usr/sbin/sendmail to send mail.
         ('use-smtp', str(False)),
-        ('smtp-server', 'smtp.yourisp.net:25'),
-        ('smtp-auth', str(False)),      # set to True to use SMTP AUTH
+        ('smtp-server', 'smtp.yourisp.net:25'),        ('smtp-auth', str(False)),      # set to True to use SMTP AUTH
         ('smtp-username', 'username'),  # username for SMTP AUTH
         ('smtp-password', 'password'),  # password for SMTP AUTH
         ('smtp-ssl', str(False)),       # Connect to the SMTP server using SSL
@@ -474,7 +488,6 @@ class TimeLimitedFunction (_threading.Thread):
             raise TimeoutError(time_limited_function=self)
         return self.result
 
-### Parsing Utilities ###
 
 def getContent(entry, HTMLOK=0):
     """Select the best content from an entry, deHTMLizing if necessary.
@@ -590,13 +603,163 @@ def getEmail(r, entry):
         return DEFAULT_EMAIL[r.url]
     return DEFAULT_FROM
 
-### Simple Database of Feeds ###
 
-class Feed:
-    def __init__(self, url, to):
-        self.url, self.etag, self.modified, self.seen = url, None, None, {}
-        self.active = True
-        self.to = to
+class Feed (object):
+    """Utility class for feed manipulation and storage.
+
+    >>> import pickle
+    >>> import sys
+
+    >>> feed = Feed(
+    ...    name='test-feed', url='http://example.com/feed.atom', to='a@b.com')
+    >>> print(feed)
+    <Feed test-feed http://example.com/feed.atom -> a@b.com>
+    >>> feed.section
+    'feed.test-feed'
+    >>> feed.from_email
+    'bozo@dev.null.invalid'
+
+    >>> feed.from_email = 'a@b.com'
+    >>> feed.save_to_config()
+    >>> section = feed.config[feed.section]
+    >>> feed.config.write(sys.stdout)  # doctest: +REPORT_UDIFF, +ELLIPSIS
+    [DEFAULT]
+    from = bozo@dev.null.invalid
+    ...
+    verbose = warning
+    <BLANKLINE>
+    [feed.test-feed]
+    url = http://example.com/feed.atom
+    from = a@b.com
+    to = a@b.com
+    <BLANKLINE>
+
+    >>> feed.etag = 'dummy etag'
+    >>> string = pickle.dumps(feed)
+    >>> feed = pickle.loads(string)
+    >>> feed.load_from_config(config=CONFIG)
+    >>> feed.etag
+    'dummy etag'
+    >>> feed.url
+    'http://example.com/feed.atom'
+
+    Names can only contain ASCII letters, digits, and '._-'.  Here the
+    invalid space causes an exception:
+
+    >>> Feed(name='invalid name')
+    Traceback (most recent call last):
+      ...
+    rss2email.InvalidFeedName: invalid feed name 'invalid name'
+
+    Cleanup `CONFIG`.
+
+    >>> test_section = CONFIG.pop('feed.test-feed')
+    """
+    _name_regexp = _re.compile('^[a-zA-Z0-9._-]+$')
+
+    # saved/loaded from feed.dat using __getstate__/__setstate__.
+    _dynamic_attributes = [
+        'name',
+        'etag',
+        'modified',
+        'seen',
+        ]
+
+    ## saved/loaded from ConfigParser instance
+    # attributes that aren't in DEFAULT
+    _non_default_configured_attributes = [
+        'url',
+        ]
+    # attributes that are in DEFAULT
+    _default_configured_attributes = [
+        key.replace('-', '_') for key in CONFIG['DEFAULT'].keys()]
+    _default_configured_attributes[
+        _default_configured_attributes.index('from')
+        ] = 'from_email'  # `from` is a Python keyword
+    # all attributes that are saved/loaded from .config
+    _configured_attributes = (
+        _non_default_configured_attributes + _default_configured_attributes)
+    # attribute name -> .config option
+    _configured_attribute_translations = dict(
+        (attr,attr) for attr in _non_default_configured_attributes)
+    _configured_attribute_translations.update(dict(
+            zip(_default_configured_attributes, CONFIG['DEFAULT'].keys())))
+    # .config option -> attribute name
+    _configured_attribute_inverse_translations = dict(
+        (v,k) for k,v in _configured_attribute_translations.items())
+
+    def __init__(self, name=None, url=None, to=None, config=None):
+        self.__setstate__({
+                'name': name,
+                'etag': None,
+                'modified': None,
+                'seen': {},
+                })
+        self.load_from_config(config)
+        if url:
+            self.url = url
+        if to:
+            self.to = to
+
+    def __str__(self):
+        return '<Feed {} {} -> {}>'.format(self.name, self.url, self.to)
+
+    def __getstate__(self):
+        "Save dyamic attributes"
+        return dict(
+            (key,getattr(self,key)) for key in self._dynamic_attributes)
+
+    def __setstate__(self, state):
+        "Restore dynamic attributes"
+        keys = sorted(state.keys())
+        if keys != sorted(self._dynamic_attributes):
+            raise ValueError(state)
+        self._set_name(name=state['name'])
+        self.__dict__.update(state)
+
+    def save_to_config(self):
+        "Save configured attributes"
+        data = _collections.OrderedDict()
+        default = self.config['DEFAULT']
+        for attr in self._configured_attributes:
+            key = self._configured_attribute_translations[attr]
+            value = getattr(self, attr)
+            if (attr in self._non_default_configured_attributes or
+                value != default[key]):
+                data[key] = value
+        self.config[self.section] = data
+
+    def load_from_config(self, config=None):
+        "Restore configured attributes"
+        if config is None:
+            config = CONFIG
+        self.config = CONFIG
+        data = dict(self.config['DEFAULT'])
+        if self.section in self.config:
+            data.update(self.config[self.section])
+        for key in self._non_default_configured_attributes:
+            if key not in data:
+                data[key] = None
+        keys = sorted(data.keys())
+        expected = sorted(self._configured_attribute_translations.values())
+        if keys != expected:
+            for key in expected:
+                if key not in keys:
+                    raise ValueError('missing key: {}'.format(key))
+            for key in keys:
+                if key not in expected:
+                    raise ValueError('extra key: {}'.format(key))
+            raise ValueError(self.config)
+        data = dict((self._configured_attribute_inverse_translations[k],v)
+                    for k,v in data.items())
+        self.__dict__.update(data)
+
+    def _set_name(self, name):
+        if not self._name_regexp.match(name):
+            raise InvalidFeedName(name=name, feed=self)
+        self.name = name
+        self.section = 'feed.{}'.format(self.name)
+
 
 def load(lock=1):
     if not os.path.exists(feedfile):
