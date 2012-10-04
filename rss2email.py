@@ -786,6 +786,28 @@ class Feed (object):
         self.name = name
         self.section = 'feed.{}'.format(self.name)
 
+    def fetch(self):
+        """Fetch and parse a feed using feedparser.
+
+        >>> feed = Feed(
+        ...    name='test-feed',
+        ...    url='http://feeds.feedburner.com/allthingsrss/hJBr')
+        >>> parsed = feed.fetch()
+        >>> parsed.status
+        200
+        """
+        if self.section in self.config:
+            config = self.config[self.section]
+        else:
+            config = self.config['DEFAULT']
+        proxy = config['proxy']
+        timeout = config.getint('feed-timeout')
+        kwargs = {}
+        if proxy:
+            kwargs['handlers'] = [_urllib_request.ProxyHandler({'http':proxy})]
+        f = TimeLimitedFunction(timeout, _feedparser.parse)
+        return f(self.url, self.etag, modified=self.modified, **kwargs)
+
 
 class Feeds (list):
     """Utility class for rss2email activity.
@@ -912,15 +934,6 @@ class Feeds (list):
                 self._datafile_lock = None
         else:
             _pickle.dump(list(self), open(self.datafile, 'wb'))
-
-
-#@timelimit(FEED_TIMEOUT)
-def parse(url, etag, modified):
-    if PROXY == '':
-        return feedparser.parse(url, etag, modified)
-    else:
-        proxy = urllib2.ProxyHandler( {"http":PROXY} )
-        return feedparser.parse(url, etag, modified, handlers = [proxy])
 
 
 ### Program Functions ###
