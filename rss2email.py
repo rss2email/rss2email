@@ -30,7 +30,37 @@ ___contributors__ = [
     'Aaron Swartz (original author)',
     ]
 
+from email.MIMEText import MIMEText
+from email.Header import Header
+from email.Utils import parseaddr, formataddr
+import hashlib
+import cPickle as pickle
+import os
+import smtplib
+import socket
+import subprocess
+import sys
+import threading
+import time
+import traceback
+import types
 import urllib2
+import xml.dom.minidom
+import xml.sax.saxutils
+
+unix = 0
+try:
+    import fcntl
+# A pox on SunOS file locking methods
+    if (sys.platform.find('sunos') == -1):
+        unix = 1
+except:
+    pass
+
+import feedparser
+import html2text as h2t
+
+hash = hashlib.md5
 urllib2.install_opener(urllib2.build_opener())
 
 ### Vaguely Customizable Options ###
@@ -117,10 +147,6 @@ PROXY=""
 # Eventually (and theoretically) ISO-8859-1 and UTF-8 are our catch-all failsafes
 CHARSET_LIST='US-ASCII', 'BIG5', 'ISO-2022-JP', 'ISO-8859-1', 'UTF-8'
 
-from email.MIMEText import MIMEText
-from email.Header import Header
-from email.Utils import parseaddr, formataddr
-
 # Note: You can also override the send function.
 
 def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtpserver=None):
@@ -185,8 +211,6 @@ def send(sender, recipient, subject, body, contenttype, extraheaders=None, smtps
 
     if SMTP_SEND:
         if not smtpserver:
-            import smtplib
-
             try:
                 if SMTP_SSL:
                     smtpserver = smtplib.SMTP_SSL()
@@ -260,7 +284,6 @@ BODY_WIDTH = 0
 ### Load the Options ###
 
 # Read options from config file if present.
-import sys
 sys.path.insert(0,".")
 try:
     from config import *
@@ -272,49 +295,20 @@ warn = sys.stderr
 if QP_REQUIRED:
     print >>warn, "QP_REQUIRED has been deprecated in rss2email."
 
-### Import Modules ###
-
-import cPickle as pickle, time, os, traceback, sys, types, subprocess
-hash = ()
-try:
-    import hashlib
-    hash = hashlib.md5
-except ImportError:
-    import md5
-    hash = md5.new
-
-unix = 0
-try:
-    import fcntl
-# A pox on SunOS file locking methods
-    if (sys.platform.find('sunos') == -1):
-        unix = 1
-except:
-    pass
-
-import socket; socket_errors = []
+socket_errors = []
 for e in ['error', 'gaierror']:
     if hasattr(socket, e): socket_errors.append(getattr(socket, e))
 
-#DEPRECATED import mimify
-#DEPRECATED from StringIO import StringIO as SIO
-#DEPRECATED mimify.CHARSET = 'utf-8'
-
-import feedparser
 feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.allthingsrss.com/rss2email/"
 
-import html2text as h2t
 
 h2t.UNICODE_SNOB = UNICODE_SNOB
 h2t.LINKS_EACH_PARAGRAPH = LINKS_EACH_PARAGRAPH
 h2t.BODY_WIDTH = BODY_WIDTH
 html2text = h2t.html2text
 
-from types import *
-
 ### Utility Functions ###
 
-import threading
 class TimeoutError(Exception): pass
 
 class InputError(Exception): pass
@@ -819,7 +813,6 @@ def list():
         i+= 1
 
 def opmlexport():
-    import xml.sax.saxutils
     feeds, feedfileObject = load(lock=0)
 
     if feeds:
@@ -840,7 +833,6 @@ def opmlimport(importfile):
         print "OPML import file could not be opened: %s" % e
         sys.exit(1)
     try:
-        import xml.dom.minidom
         dom = xml.dom.minidom.parse(importfileObject)
         newfeeds = dom.getElementsByTagName('outline')
     except:
@@ -848,8 +840,6 @@ def opmlimport(importfile):
         sys.exit(1)
 
     feeds, feedfileObject = load(lock=1)
-
-    import xml.sax.saxutils
 
     for f in newfeeds:
         if f.hasAttribute('xmlUrl'):
