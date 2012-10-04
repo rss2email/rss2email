@@ -55,7 +55,7 @@ address. That should be all you need.</p>
 
 <p>Edit the configuration file and fill in your outoing email server's
 details. If your server requires you to login,
-change <code>AUTHREQUIRED = 0</code> to <code>AUTHREQUIRED = 1</code>
+change <code>smtp-auth = False</code> to <code>smtp-auth = True</code>
 and enter your email username and password.</p>
 
 <h3>Install</h3>
@@ -183,21 +183,21 @@ exist.</p>
 entries converted to plain text:</p>
 
 <pre>
-HTML_MAIL = 1
+html-mail = True
 </pre>
 
 <p>To be notified every time a post changes, instead of just when it's
 first posted:</p>
 
 <pre>
-TRUST_GUID = 0
+trust-guid = True
 </pre>
 
 <p>And to make the emails look as if they were sent when the item was
 posted:</p>
 
 <pre>
-DATE_HEADER = 1
+date-header = True
 </pre>
 
 </body>
