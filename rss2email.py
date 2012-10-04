@@ -15,7 +15,7 @@ Usage:
   opmlexport
   opmlimport filename
 """
-__version__ = "2.70"
+__version__ = "2.71"
 __author__ = "Lindsey Smith (lindsey@allthingsrss.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2 or 3."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
