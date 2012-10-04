@@ -474,13 +474,6 @@ class TimeLimitedFunction (_threading.Thread):
             raise TimeoutError(time_limited_function=self)
         return self.result
 
-def isstr(f): return isinstance(f, type('')) or isinstance(f, type(u''))
-def ishtml(t): return type(t) is type(())
-def contains(a,b): return a.find(b) != -1
-def unu(s): # I / freakin' hate / that unicode
-    if type(s) is types.UnicodeType: return s.encode('utf-8')
-    else: return s
-
 ### Parsing Utilities ###
 
 def getContent(entry, HTMLOK=0):
