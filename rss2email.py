@@ -17,6 +17,7 @@ __contributors__ = [
     'Marcel Ackermann (http://www.DreamFlasher.de)',
     'Lindsey Smith (maintainer)',
     'Erik Hetzner',
+    'W. Trevor King',
     'Aaron Swartz (original author)',
     ]
 
