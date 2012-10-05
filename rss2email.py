@@ -813,7 +813,7 @@ class Feed (object):
 
     def _check_for_errors(self, parsed):
         warned = False
-        status = parsed.status
+        status = getattr(parsed, 'status', 200)
         LOG.debug('HTTP status {}'.format(status))
         if status == 301:
             LOG.info('redirect {} from {} to {}'.format(
