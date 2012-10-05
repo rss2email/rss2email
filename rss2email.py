@@ -1154,8 +1154,11 @@ class Feed (object):
 
     def _send(self, sender, message):
         LOG.info('send message for {}'.format(self))
+        section = self.section
+        if section not in self.config:
+            section = 'DEFAULT'
         send(sender=sender, recipient=self.to, message=message,
-             config=self.config, section=self.section)
+             config=self.config, section=section)
 
     def run(self, send=True):
         """Fetch and process the feed, mailing entry emails.
