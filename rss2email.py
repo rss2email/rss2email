@@ -500,7 +500,7 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
             ['/usr/sbin/sendmail', recipient],
             stdin=_subprocess.PIPE, stdout=_subprocess.PIPE,
             stderr=_subprocess.PIPE)
-        stdout,stderr = p.communicate(message.as_string())
+        stdout,stderr = p.communicate(message.as_string().encode('ascii'))
         status = p.wait()
         if status:
             raise SendmailError(status=status, stdout=stdout, stderr=stderr)
