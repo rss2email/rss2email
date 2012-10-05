@@ -1,0 +1,45 @@
+Run tests with::
+
+  $ PYTHONPATH=. ./test/test.py
+
+Which looks for any ``*/feed.*`` files and processes them using each
+``*.config`` file in the feed's directory.  The output messages are
+saved (not mailed) and compared with the expected output for that
+feed/config pair.  For example, with a directory structure like::
+
+  test
+  |-- README
+  |-- allthingsrss
+  |   |-- 1.config
+  |   |-- 1.expected
+  |   |-- 2.config
+  |   |-- 2.expected
+  |   `-- feed.atom
+  |-- otherfeed
+  |   |-- a.config
+  |   |-- a.expected
+  |   |-- b.config
+  |   |-- b.expected
+  |   `-- feed.rss
+  `-- test.py
+
+``test.py`` will parse:
+
+* ``feed.atom`` after loading ``1.config`` and compare the output with
+  ``1.expected``.
+* ``feed.atom`` after loading ``2.config`` and compare the output with
+  ``2.expected``.
+* ``feed.rss`` after loading ``a.config`` and compare the output with
+  ``a.expected``.
+* ``feed.rss`` after loading ``b.config`` and compare the output with
+  ``b.expected``.
+
+If you only want to limit yourself to a subset of tests, you can
+specify subdirectories on the command line::
+
+  $ PYTHONPATH=. ./test/test.py test/allthingsrss
+
+You can limit the tests even further by specify particular config
+files::
+
+  $ PYTHONPATH=. ./test/test.py test/allthingsrss/1.config
