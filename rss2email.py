@@ -682,7 +682,7 @@ class Feed (object):
         self.__setstate__(dict(
                 (attr, getattr(self, attr))
                 for attr in self._dynamic_attributes))
-        self.load_from_config(config)
+        self.load_from_config(config=config)
         if url:
             self.url = url
         if to:
@@ -726,7 +726,7 @@ class Feed (object):
         "Restore configured attributes"
         if config is None:
             config = CONFIG
-        self.config = CONFIG
+        self.config = config
         if self.section in self.config:
             data = self.config[self.section]
         else:
