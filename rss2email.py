@@ -508,7 +508,7 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
         raise SendmailError() from e
 
 def send(sender, recipient, message, config=None, section='DEFAULT'):
-    if configSMTP_SEND:
+    if config.getboolean(section, 'use-smtp'):
         smtp_send(sender, recipient, message)
     else:
         sendmail_send(sender, recipient, message)
