@@ -468,6 +468,7 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = CONFIG
     server = CONFIG.get(section, 'smtp-server')
+    LOG.debug('sending message to {} via {}'.format(recipient, server))
     ssl = CONFIG.getboolean(section, 'smtp-ssl')
     if ssl:
         smtp = _smtplib.SMTP_SSL()
@@ -497,6 +498,8 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
 def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = CONFIG
+    LOG.debug(
+        'sending message to {} via /usr/sbin/sendmail'.format(recipient))
     try:
         p = _subprocess.Popen(
             ['/usr/sbin/sendmail', recipient],
