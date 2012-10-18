@@ -1364,13 +1364,16 @@ class Feeds (list):
         for feed in self:
             feed.load_from_config(self.config)
 
+        feed_names = set(feed.name for feed in self)
         for section in self.config.sections():
             if section.startswith('feed.'):
                 name = section[len('feed.'):]
-                LOG.debug(
-                    ('feed {} not found feed file, initializing from config'
-                     ).format(name))
-                self.append(Feed(name=name, config=self.config))
+                if name not in feed_names:
+                    LOG.debug(
+                        ('feed {} not found in feed file, '
+                         'initializing from config').format(name))
+                    self.append(Feed(name=name, config=self.config))
+                    feed_names.add(name)
 
     def save(self):
         LOG.debug('save feed configuration to {}'.format(self.configfiles[-1]))
