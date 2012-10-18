@@ -1604,7 +1604,7 @@ if __name__ == '__main__':
     unpause_parser.set_defaults(func=cmd_unpause)
     unpause_parser.add_argument(
         'index', nargs='*',
-        help='feeds to ununpause (defaults to pausing all feeds)')
+        help='feeds to ununpause (defaults to unpausing all feeds)')
 
     delete_parser = subparsers.add_parser(
         'delete', help=cmd_delete.__doc__.splitlines()[0])
