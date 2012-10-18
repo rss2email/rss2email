@@ -1341,7 +1341,13 @@ class Feeds (list):
             _fcntl.flock(self._datafile_lock.fileno(), locktype)
 
         self.clear()
-        self.extend(_pickle.load(self._datafile_lock))
+
+        level = LOG.level
+        handlers = list(LOG.handlers)
+        feeds = list(_pickle.load(self._datafile_lock))
+        LOG.setLevel(level)
+        LOG.handlers = handlers
+        self.extend(feeds)
 
         if locktype == 0:
             self._datafile_lock.close()
