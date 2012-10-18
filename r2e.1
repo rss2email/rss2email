@@ -2,76 +2,147 @@
 .SH NAME
 r2e \- receive RSS feeds by email
 .SH SYNOPSIS
-.B r2e [-d dir] action [options]
+.B r2e [options] <command> [<args>]
 .SH DESCRIPTION
 .BR r2e
 is a simple program which you can run in your crontab.
 It watches RSS feeds and sends you nicely formatted email message
 for each new item.
 .P
-The program is configured by ~/.rss2email/config.py by default. To use
-a different config file in a different directory, you can specify the
--d option before any actions.
+For a quick start with \fBr2e\fR, try these steps:
 .P
-For a quick start with r2e, try these steps:
-.P
-.RS
+.RS 4
 .nf
-.BI "r2e new " your@address
-.BI "r2e add " http://feed.url/somewhere.rss
-.BI "r2e run "
+.BI "r2e new " "your@yourdomain.com"
+.BI "r2e add " "feedname http://feed.url/somewhere.rss"
+.BI "r2e run"
 .RE
 .P
 The last command should eventually be put into your crontab, if you
 want things be sent you automatically.
-.SH ACTIONS
+.SH OPTIONS
+.TP 4
+\-\-help
+Print the rss2email help and exit.
 .TP
-.B new [youremail]
-Create a new feedfile. If the second option is specified, it sets the
-default email address that mails are sent to.
+\-v, \-\-version
+Print the rss2email version and exit.
 .TP
-.B add url [youremail]
-Subscribe to a feed. The first option is the URL of the feed.
-The optional second option is the email address to send new items to.
-Repeat for each feed you want to subscribe to.
+\-c, \-\-config \fI<path>\fR
+The program is configured by ~/\&.config/rss2mail/config by
+default. Use this option to set a different config file.
 .TP
-.B run [--no-send] [num]
+\-d, \-\-data \fI<path>\fR
+The program is configured by ~/\&.config/rss2mail/config by
+default. Use this option to set a different config file.
+.TP
+\-V, \-\-verbose
+Increment the logging verbosity.
+.SH COMMANDS
+.TP 4
+.B new [\fI<email>\fR]
+Create a new feed database. If the \fI<email>\fR argument is given, it
+sets the default email address that mails are sent to.
+.TP
+.B email [\fI<email>\fR]
+Update the default target email address to \fI<email>\fR.
+.TP
+.B add \fI<name>\fR \fI<url>\fR [\fI<email>\fR]
+Subscribe to a feed. The \fI<name>\fR argument gives the feed a name
+for future manipulation. \fI<url>\fR is the URL of the feed.  The
+optional \fI<email>\fR argument is the email address to send new items
+to, overriding the default address for this particular feed.  Repeat
+for each feed you want to subscribe to.
+.TP
+.B run [\-\-no-send] [\fI<index>\fR [\fI<index>\fR ...]]
 Scan the feeds and send emails for new items. This can be run in a cron
 job.
 .P
-The --no-send option stops r2e from sending any email. This can be
-useful the first time you run it, as otherwise it would send every
-available story.
+.RS 4
+The \-\-no-send option stops \fBr2e\fR from sending any email. This can be
+useful the first time you run it, as otherwise it would send an email
+for every available feed entry.
 .P
-If a number is specified, r2e will only download that feed. The list
-command lists the feed numbers.
-.TP
-.B email yournewemail
-Change the default email address.
+If an \fI<index>\fR is specified, \fBr2e\fR will only download that
+feed. \fI<index>\fR can be either the feed name (as set by \fBadd\fR)
+or the feed index (as shown by \fBlist\fR).
+.RE
 .TP
 .B list
-List all your currently subscribed feeds.
+List all the feeds in the database.
 .TP
-.B delete n
-Delete a feed, using its number from the list command.
+.B pause [\fI<index>\fR [\fI<index>\fR ...]]
+Pause feeds (disable fetching).  The \fI<index>\fR option selects the
+feed(s) to pause (see \fBrun\fR for possible values).  If no
+\fI<index>\fR is given, all feeds are paused.
+.TP
+.B unpause [\fI<index>\fR [\fI<index>\fR ...]]
+Unpause feeds (enable fetching).
+.TP
+.B delete \fI<index>\fR [\fI<index>\fR [\fI<index>\fR ...]]
+Remove a feed (or feeds) from the database.  The \fI<index>\fR option
+selects the feed(s) to delete (see \fBrun\fR for possible values).
+.TP
+.B reset [\fI<index>\fR [\fI<index>\fR ...]]
+Forget dynamic feed data (e.g. to re-send old entries).  The
+\fI<index>\fR option selects the feed(s) to reset (see \fBrun\fR for
+possible values).  If no \fI<index>\fR is given, all feeds are reset.
+.TP
+.B opmlimport [\fI<path>\fR]
+Import new feeds from OPML.  \fI<path>\fR is the file from which the
+OPML data will be read.  If \fI<path>\fR is not given \fBr2e\fR reads
+the data from stdin.
+.TP
+.B opmlexport [\fI<path>\fR]
+Export all feeds to OPML.  \fI<path>\fR is the file to which the OPML
+data will be written.  If \fI<path>\fR is not given \fBr2e\fR writes
+the data to stdout.
 .SH "CONFIGURATION"
-The program's behavior can be controlled via the ~/.rss2email/config.py
-config file. The file is a python file, so variables are set using a syntax
-like this: VARIABLE = "value"
+The program's behavior can be controlled via the
+~/.config/rss2email/config file. The file format is similar to a
+Microsoft Windows INI file.  It is parsed by Python's ConfigParser
+class, so see the Python documentation at
+http://docs\&.python\&.org/py3k/library/configparser\&.html for format
+details.
 .P
-If the value is a number, the quotes may be omitted. Most configuration
-variables in the file are boolean values, where a 1 indicates the option is
-set, and a 0 disables it.
+The config file stores general configuration (applied to all feeds) in
+the \fB[DEFAULT]\fR section.  The \fBnew\fR command will create a
+configuration file for you, which you can edit as you see fit.  The
+\fBadd\fR command will add feed-specific sections.  To override any a
+setting for all feeds, change the value in the \fB[DEFAULT]\fR
+section.  To override a setting for a particular feed, add that
+setting to the feed-specific section.  Here is an example overriding
+\fBuse-publisher-email\fR and \fBfriendly-name\fR for the
+\fBfeedname\fR feed.
 .P
-See the example config.py file for a full list of available configuration
-variables.
+.RS 4
+.nf
+[DEFAULT]
+from = bozo@dev.null.invalid
+force-from = False
+use-publisher-email = False
+friendly-name = True
+...
+verbose = warning
+
+[feed.feedname]
+url = http://feed.url/somewhere.rss
+use-publisher-email = True
+friendly-name = False
+.RE
+.P
 .SH FILES
 .TP
-.B ~/.rss2email/feeds.dat
-The database of feeds. Use r2e to add, remove, or modify feeds, do not edit
-it directly.
+.B ~/.rss2email/feeds\&.dat
+The database of feeds. Use \fBr2e\fR to add, remove, or modify feeds,
+do not edit it directly.
 .TP
-.B ~/.rss2email/config.py
+.B ~/.rss2email/config\&.py
 If this file exists, it it read to configure the program.
-.SH AUTHOR
-Aaron Swartz <rss2email@aaronsw.com>
+.SH AUTHORS
+rss2email was started by Aaron Swartz, and is currently maintained by
+Lindsey Smith.  For a more complete list of contributors, see the
+__contributors__ list in rss2email\&.py.
+.SH "REPORTING BUGS"                                                            
+Report bugs to the current maintainer (see the __author__ string in
+rss2email\&.py).
