@@ -81,7 +81,7 @@ class RSS2EmailError (Exception):
     def log(self):
         LOG.error(str(self))
         if self.__cause__ is not None:
-            LOG.error('cause: {}'.format(e.__cause__))
+            LOG.error('cause: {}'.format(self.__cause__))
 
 
 class TimeoutError (RSS2EmailError):
@@ -118,8 +118,8 @@ class SMTPConnectionError (ValueError, RSS2EmailError):
         LOG.warning(
             'check your config file to confirm that smtp-server and other '
             'mail server settings are configured properly')
-        if hasattr(e.__cause__, 'reason'):
-            LOG.error('reason: {}'.format(e.__cause__.reason))
+        if hasattr(self.__cause__, 'reason'):
+            LOG.error('reason: {}'.format(self.__cause__.reason))
 
 
 class SMTPAuthenticationError (SMTPConnectionError):
