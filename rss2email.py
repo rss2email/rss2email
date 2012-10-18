@@ -1444,7 +1444,7 @@ def cmd_run(feeds, args):
         feed = feeds.index(index)
         if feed.active:
             try:
-                feed.run(index)
+                feed.run(send=args.send)
             except NoToEmailAddress as e:
                 e.log()
             except ProcessingError as e:
