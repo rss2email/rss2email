@@ -1320,19 +1320,24 @@ class Feeds (list):
         while self:
             self.pop(0)
 
-    def load(self, lock=True):
+    def load(self, lock=True, require=False):
         LOG.debug('load feed configuration from {}'.format(self.configfiles))
         if self.configfiles:
             self.read_configfiles = self.config.read(self.configfiles)
         else:
             self.read_configfiles = []
         LOG.debug('loaded confguration from {}'.format(self.read_configfiles))
-        self._load_feeds(lock=lock)
+        self._load_feeds(lock=lock, require=require)
 
-    def _load_feeds(self, lock):
+    def _load_feeds(self, lock, require):
         LOG.debug('load feed data from {}'.format(self.datafile))
         if not _os.path.exists(self.datafile):
-            raise NoDataFile(feeds=self)
+            if require:
+                raise NoDataFile(feeds=self)
+            LOG.info('feed data file not found at {}'.format(self.datafile))
+            LOG.debug('creating an empty data file')
+            with open(self.datafile, 'wb') as f:
+                _pickle.dump([], f)
         try:
             self._datafile_lock = open(self.datafile, 'rb')
         except IOError as e:
@@ -1358,6 +1363,14 @@ class Feeds (list):
 
         for feed in self:
             feed.load_from_config(self.config)
+
+        for section in self.config.sections():
+            if section.startswith('feed.'):
+                name = section[len('feed.'):]
+                LOG.debug(
+                    ('feed {} not found feed file, initializing from config'
+                     ).format(name))
+                self.append(Feed(name=name, config=self.config))
 
     def save(self):
         LOG.debug('save feed configuration to {}'.format(self.configfiles[-1]))
