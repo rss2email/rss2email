@@ -1,2 +1,2 @@
 #!/bin/sh
-python3 rss2email.py -c config -d feeds.dat $*
+python3 -c 'import rss2email; rss2email.run()' -c config -d feeds.dat $*
