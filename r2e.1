@@ -1,0 +1,77 @@
+.TH R2E 1
+.SH NAME
+r2e \- receive RSS feeds by email
+.SH SYNOPSIS
+.B r2e [-d dir] action [options]
+.SH DESCRIPTION
+.BR r2e
+is a simple program which you can run in your crontab.
+It watches RSS feeds and sends you nicely formatted email message
+for each new item.
+.P
+The program is configured by ~/.rss2email/config.py by default. To use
+a different config file in a different directory, you can specify the
+-d option before any actions.
+.P
+For a quick start with r2e, try these steps:
+.P
+.RS
+.nf
+.BI "r2e new " your@address
+.BI "r2e add " http://feed.url/somewhere.rss
+.BI "r2e run "
+.RE
+.P
+The last command should eventually be put into your crontab, if you
+want things be sent you automatically.
+.SH ACTIONS
+.TP
+.B new [youremail]
+Create a new feedfile. If the second option is specified, it sets the
+default email address that mails are sent to.
+.TP
+.B add url [youremail]
+Subscribe to a feed. The first option is the URL of the feed.
+The optional second option is the email address to send new items to.
+Repeat for each feed you want to subscribe to.
+.TP
+.B run [--no-send] [num]
+Scan the feeds and send emails for new items. This can be run in a cron
+job.
+.P
+The --no-send option stops r2e from sending any email. This can be
+useful the first time you run it, as otherwise it would send every
+available story.
+.P
+If a number is specified, r2e will only download that feed. The list
+command lists the feed numbers.
+.TP
+.B email yournewemail
+Change the default email address.
+.TP
+.B list
+List all your currently subscribed feeds.
+.TP
+.B delete n
+Delete a feed, using its number from the list command.
+.SH "CONFIGURATION"
+The program's behavior can be controlled via the ~/.rss2email/config.py
+config file. The file is a python file, so variables are set using a syntax
+like this: VARIABLE = "value"
+.P
+If the value is a number, the quotes may be omitted. Most configuration
+variables in the file are boolean values, where a 1 indicates the option is
+set, and a 0 disables it.
+.P
+See the example config.py file for a full list of available configuration
+variables.
+.SH FILES
+.TP
+.B ~/.rss2email/feeds.dat
+The database of feeds. Use r2e to add, remove, or modify feeds, do not edit
+it directly.
+.TP
+.B ~/.rss2email/config.py
+If this file exists, it it read to configure the program.
+.SH AUTHOR
+Aaron Swartz <rss2email@aaronsw.com>
