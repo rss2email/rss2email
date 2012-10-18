@@ -871,7 +871,7 @@ class Feed (object):
         elif parsed.bozo or exc:
             if exc is None:
                 exc = "can't process"
-            LOG.error('{}: {}'.format(exc, self))
+            LOG.error('processing error: {}: {}'.format(exc, self))
             warned = True
 
         if (not warned and
