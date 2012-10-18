@@ -1542,7 +1542,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__, version=__version__)
 
     parser.add_argument(
-        '-c', '--config', metavar='PATH', nargs='*',
+        '-c', '--config', metavar='PATH', default=[], action='append',
         help='path to the configuration file')
     parser.add_argument(
         '-d', '--data', metavar='PATH',
@@ -1640,6 +1640,8 @@ if __name__ == '__main__':
         LOG.setLevel(max(_logging.DEBUG, _logging.ERROR - 10 * args.verbose))
 
     try:
+        if not args.config:
+            args.config = None
         feeds = Feeds(datafile=args.data, configfiles=args.config)
         if args.func != cmd_new:
             lock = args.func not in [cmd_list, cmd_opmlexport]
