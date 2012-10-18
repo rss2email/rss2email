@@ -21,6 +21,7 @@ __contributors__ = [
     'Aaron Swartz (original author)',
     ]
 
+import argparse as _argparse
 import collections as _collections
 import configparser as _configparser
 from email.mime.text import MIMEText as _MIMEText
@@ -63,6 +64,7 @@ LOG = _logging.getLogger('rss2email')
 LOG.addHandler(_logging.StreamHandler())
 LOG.setLevel(_logging.ERROR)
 
+_MODULE_DOCSTRING = __doc__
 _feedparser.USER_AGENT = 'rss2email/{} +{}'.format(__version__, __url__)
 _urllib_request.install_opener(_urllib_request.build_opener())
 _SOCKET_ERRORS = []
@@ -1536,10 +1538,16 @@ def cmd_opmlexport(feeds, args):
         f.close()
 
 
-if __name__ == '__main__':
-    import argparse
+### Main Program ###
 
-    parser = argparse.ArgumentParser(description=__doc__, version=__version__)
+def run(*args, **kwargs):
+    """The rss2email command line interface
+
+    Arguments passed to this function are forwarded to the parser's
+    `.parse_args()` call without modification.
+    """
+    parser = _argparse.ArgumentParser(
+        description=_MODULE_DOCSTRING, version=__version__)
 
     parser.add_argument(
         '-c', '--config', metavar='PATH', default=[], action='append',
@@ -1634,7 +1642,7 @@ if __name__ == '__main__':
         'file', metavar='PATH', nargs='?',
         help='path for exported OPML (defaults to stdout)')
 
-    args = parser.parse_args()
+    args = parser.parse_args(*args, **kwargs)
 
     if args.verbose:
         LOG.setLevel(max(_logging.DEBUG, _logging.ERROR - 10 * args.verbose))
@@ -1650,3 +1658,7 @@ if __name__ == '__main__':
     except RSS2EmailError as e:
         e.log()
         _sys.exit(1)
+
+
+if __name__ == '__main__':
+    run()
