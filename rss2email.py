@@ -44,6 +44,7 @@ import types as _types
 import urllib.request as _urllib_request
 import urllib.error as _urllib_error
 import xml.dom.minidom as _minidom
+import xml.sax as _sax
 import xml.sax.saxutils as _saxutils
 
 UNIX = False
@@ -868,6 +869,9 @@ class Feed (object):
             warned = True
         elif isinstance(exc, KeyboardInterrupt):
             raise exc
+        elif isinstance(exc, _sax.SAXParseException):
+            LOG.error('sax parsing error: {}: {}'.format(exc, self))
+            warned = True
         elif parsed.bozo or exc:
             if exc is None:
                 exc = "can't process"
