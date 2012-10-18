@@ -1350,7 +1350,7 @@ class Feeds (list):
         for feed in self:
             feed.save_to_config()
         dirname = _os.path.dirname(self.configfiles[-1])
-        if not _os.path.isdir(dirname):
+        if dirname and not _os.path.isdir(dirname):
             _os.makedirs(dirname)
         with open(self.configfiles[-1], 'w') as f:
             self.config.write(f)
@@ -1359,7 +1359,7 @@ class Feeds (list):
     def _save_feeds(self):
         LOG.debug('save feed data to {}'.format(self.datafile))
         dirname = _os.path.dirname(self.datafile)
-        if not _os.path.isdir(dirname):
+        if dirname and not _os.path.isdir(dirname):
             _os.makedirs(dirname)
         if UNIX:
             tmpfile = self.datafile + '.tmp'
