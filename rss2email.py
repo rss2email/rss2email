@@ -993,7 +993,7 @@ class Feed (object):
                 parts.append(feed.publisher_detail.name)
         return _html2text.unescape(''.join(parts))
 
-    def _validate_email(email, default=None):
+    def _validate_email(self, email, default=None):
         """Do a basic quality check on email address
 
         Return `default` if the address doesn't appear to be
