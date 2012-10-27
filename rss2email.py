@@ -41,6 +41,7 @@ import threading as _threading
 import time as _time
 import traceback as _traceback
 import types as _types
+import uuid as _uuid
 import urllib.request as _urllib_request
 import urllib.error as _urllib_error
 import xml.dom.minidom as _minidom
@@ -904,6 +905,7 @@ class Feed (object):
         subject = self._get_entry_title(entry)
         extra_headers = _collections.OrderedDict((
                 ('Date', self._get_entry_date(entry)),
+                ('Message-ID', '<{}@dev.null.invalid>'.format(_uuid.uuid4())),
                 ('User-Agent', 'rss2email'),
                 ('X-RSS-Feed', self.url),
                 ('X-RSS-ID', id_),
