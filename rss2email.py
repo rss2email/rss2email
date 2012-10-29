@@ -1367,15 +1367,20 @@ class Feeds (list):
             feed.load_from_config(self.config)
 
         feed_names = set(feed.name for feed in self)
-        for section in self.config.sections():
+        order = _collections.defaultdict(lambda: (1e3, ''))
+        for i,section in enumerate(self.config.sections()):
             if section.startswith('feed.'):
                 name = section[len('feed.'):]
+                order[name] = (i, name)
                 if name not in feed_names:
                     LOG.debug(
                         ('feed {} not found in feed file, '
                          'initializing from config').format(name))
                     self.append(Feed(name=name, config=self.config))
                     feed_names.add(name)
+        def key(feed):
+            return order[feed.name]
+        self.sort(key=key)
 
     def save(self):
         LOG.debug('save feed configuration to {}'.format(self.configfiles[-1]))
