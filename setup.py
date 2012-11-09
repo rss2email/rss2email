@@ -12,9 +12,9 @@ _this_dir = _os_path.dirname(__file__)
 setup(
     name='rss2email',
     version=__version__,
-    maintainer='Lindsey Smith',
-    maintainer_email='lindsey@allthingsrss.com',
-    url='http://rss2email.infogami.com',
+    maintainer='W. Trevor King',
+    maintainer_email='wking@tremily.us',
+    url='http://pypi.python.org/pypi/rss2email/',
     download_url='http://git.tremily.us/?p=rss2email.git;a=snapshot;h=v{};sf=tgz'.format( __version__),
     license='GNU General Public License (GPL)',
     platforms=['all'],

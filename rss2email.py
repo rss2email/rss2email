@@ -5,7 +5,7 @@
 
 __version__ = '2.71'
 __url__ = 'http://rss2email.infogami.com'
-__author__ = 'Lindsey Smith (lindsey@allthingsrss.com)'
+__author__ = 'W. Trevor King'
 __copyright__ = '(C) 2004 Aaron Swartz. GNU GPL 2 or 3.'
 __contributors__ = [
     'Dean Jackson',
@@ -14,7 +14,7 @@ __contributors__ = [
     'Matej Cepl',
     "Martin 'Joey' Schulze",
     'Marcel Ackermann (http://www.DreamFlasher.de)',
-    'Lindsey Smith (maintainer)',
+    'Lindsey Smith (lindsey@allthingsrss.com)',
     'Erik Hetzner',
     'W. Trevor King',
     'Aaron Swartz (original author)',
