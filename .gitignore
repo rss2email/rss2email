@@ -1,7 +1,4 @@
-config.py
-temp/*
-Old/*
-feeds.dat
-*.pyc
-build/*
-*.sublime-project
+__pycache__
+build
+dist
+MANIFEST

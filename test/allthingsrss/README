@@ -1,0 +1,19 @@
+feed.atom is a snapshot of
+
+  http://feeds.feedburner.com/allthingsrss/hJBr
+
+as of 2012-10-04.
+
+HTTP headers:
+
+  HTTP/1.1 200 OK
+  Content-Type: text/xml; charset=UTF-8
+  ETag: Qki3L47sjALSTTcA3nJpJua1le8
+  Last-Modified: Thu, 04 Oct 2012 22:06:19 GMT
+  Date: Thu, 04 Oct 2012 23:20:33 GMT
+  Expires: Thu, 04 Oct 2012 23:20:33 GMT
+  Cache-Control: private, max-age=0
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Server: GSE
+  Transfer-Encoding: chunked

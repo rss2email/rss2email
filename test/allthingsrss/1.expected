@@ -1,0 +1,398 @@
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Version 2.67 Released
+Date: Tue, 21 Sep 2010 16:55:07 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=62
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
+X-RSS-TAGS: Uncategorized
+
+Version 2.67 of rss2email is now available for both
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.67.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.67.zip), which
+includes the latest development version of feedparser. Changes from the
+previous version:
+
+  * Fixed entries that include an id which is blank (i.e., an empty string) were being resent
+  * Fixed some entries not being sent by email because they had bad From headers
+  * Fixed From headers with HTML entities encoded twice
+  * Compatibility changes to support most recent development versions of feedparser
+  * Compatibility changes to support Google Reader feeds
+
+Complete list in the official
+[CHANGELOG](http://www.allthingsrss.com/rss2email/changelog).
+
+[![](http://feedads.g.doubleclick.net/~a/Sjq8v-
+Lq2dNKzkelsypiC4fjPLM/0/di)](http://feedads.g.doubleclick.net/~a/Sjq8v-
+Lq2dNKzkelsypiC4fjPLM/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/Sjq8v-
+Lq2dNKzkelsypiC4fjPLM/1/di)](http://feedads.g.doubleclick.net/~a/Sjq8v-
+Lq2dNKzkelsypiC4fjPLM/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/aGbf5Gefkmc)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Version 2.68 Released with Actual New Features
+Date: Fri, 01 Oct 2010 18:21:26 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=72
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/
+X-RSS-TAGS: Uncategorized
+
+Unlike the last few versions of rss2email that have trickled out, I finally
+got around to adding a few new oft-requested features! Version 2.68 of
+rss2email is now available for both
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.68.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.68.zip).
+
+Changes from the previous version:
+
+  * Added ability to pause/resume checking of individual feeds through pause and unpause commands
+  * Added ability to import and export OPML feed lists through importopml and exportopml commands
+
+Complete list in the official
+[CHANGELOG](http://www.allthingsrss.com/rss2email/changelog).
+
+**Pause/Unpause**
+
+Through `r2e pause _n_` where _n_ is a feed number, you can temporarily
+suspend checking that feed for new content. To start checking it again, simply
+run `r2e unpause _n_`. When you `r2e list`, an asterisk indicates that the
+feed is currently unpaused and active.
+
+**OMPL Import/Export**
+
+[OPML](http://en.wikipedia.org/wiki/OPML) is an XML format commonly used to
+exchange a list of RSS feeds between applications. `r2e opmlexport >
+_filename_` will give you a file that you can use to import your list of feeds
+into another application. If you've exported feeds from another application
+into a file, `r2e opmlimport _filename_` will add those feeds to your
+rss2email feed list.
+
+[![](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/di)](ht
+tp://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/di)](ht
+tp://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/bT-I0iH2vw8)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: How to Read RSS Feeds in Emacs
+Date: Fri, 05 Nov 2010 17:36:14 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=79
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/JryfOLe_q6c/
+X-RSS-TAGS: Uncategorized
+
+Emacs and rss2email user Erik Hetzner has written up a tutorial on how he
+integrated [RSS feed reading into
+Emacs](http://www.emacswiki.org/emacs/HOWTOReadFeedsInEmacsViaEmail) using
+rss2email.
+
+[![](http://feedads.g.doubleclick.net/~a/W185EjeIKKNPfRCWp9sV0gDrfJk/0/di)](ht
+tp://feedads.g.doubleclick.net/~a/W185EjeIKKNPfRCWp9sV0gDrfJk/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/W185EjeIKKNPfRCWp9sV0gDrfJk/1/di)](ht
+tp://feedads.g.doubleclick.net/~a/W185EjeIKKNPfRCWp9sV0gDrfJk/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/JryfOLe_q6c)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/JryfOLe_q6c/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Version 2.69 Released
+Date: Fri, 12 Nov 2010 18:45:08 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=85
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/ubaE55Le1OU/
+X-RSS-TAGS: Uncategorized
+
+Version 2.69 of rss2email is now available for both
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.69.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.69.zip).
+
+Changes from the previous version:
+
+  * Added support for connecting to SMTP server via SSL, see SMTP_SSL option 
+  * Improved backwards compatibility by fixing issue with listing feeds when run with older Python versions 
+  * Added selective feed email overrides through OVERRIDE_EMAIL and DEFAULT_EMAIL options 
+  * Added NO_FRIENDLY_NAME to from from address only without the friendly name 
+  * Added X-RSS-URL header in each message with the link to the original item 
+
+Complete list in the official
+[CHANGELOG](http://www.allthingsrss.com/rss2email/changelog).
+
+[![](http://feedads.g.doubleclick.net/~a/ygS5IVjPi9xnNjTZA1SFTAzPtuA/0/di)](ht
+tp://feedads.g.doubleclick.net/~a/ygS5IVjPi9xnNjTZA1SFTAzPtuA/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/ygS5IVjPi9xnNjTZA1SFTAzPtuA/1/di)](ht
+tp://feedads.g.doubleclick.net/~a/ygS5IVjPi9xnNjTZA1SFTAzPtuA/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/ubaE55Le1OU)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/ubaE55Le1OU/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Minor Correction to v2.69 Packages
+Date: Fri, 10 Dec 2010 17:47:58 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=88
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/CiODBX5_NSk/
+X-RSS-TAGS: Uncategorized
+
+The v2.69 rss2email packages contain an example config.py file that might
+accidentally overwrite an existing config.py file. To keep this from happening
+I've updated both the
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.69.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.69.zip) by simply
+renaming the file to config.py.example.
+
+[![](http://feedads.g.doubleclick.net/~a/V9Hd_J59X3SfWg3Q2XbjLNcdusA/0/di)](ht
+tp://feedads.g.doubleclick.net/~a/V9Hd_J59X3SfWg3Q2XbjLNcdusA/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/V9Hd_J59X3SfWg3Q2XbjLNcdusA/1/di)](ht
+tp://feedads.g.doubleclick.net/~a/V9Hd_J59X3SfWg3Q2XbjLNcdusA/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/CiODBX5_NSk)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/CiODBX5_NSk/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Minor correction to the minor correction: v2.69a released
+Date: Mon, 13 Dec 2010 18:04:20 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=95
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/VgWvylH6fvk/
+X-RSS-TAGS: Uncategorized
+
+Last week I made a [slight change to the v2.69 rss2email
+packages](http://www.allthingsrss.com/rss2email/2010/12/minor-correction-
+to-v2-69-packages/), which can cause suspicion that they have been tampered
+with. To mitigate this, I put the original v2.69 files back in place and
+renamed the updated package set to v2.69a.
+
+Here is v2.69a:
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.69a.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.69a.zip)
+
+And here is the original v2.69:
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.69.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.69.zip)
+
+[![](http://feedads.g.doubleclick.net/~a/a817YdrxPE_g34wXU-
+SAzQ6UihM/0/di)](http://feedads.g.doubleclick.net/~a/a817YdrxPE_g34wXU-
+SAzQ6UihM/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/a817YdrxPE_g34wXU-
+SAzQ6UihM/1/di)](http://feedads.g.doubleclick.net/~a/a817YdrxPE_g34wXU-
+SAzQ6UihM/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/VgWvylH6fvk)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/VgWvylH6fvk/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Mac OS X and rss2email are Compatible
+Date: Fri, 17 Dec 2010 20:54:27 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=99
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/cILvxh4ziQg/
+X-RSS-TAGS: Uncategorized
+
+rss2email user Jon Thompson has reported that Linux rss2email works well under
+Mac OS X. This is good news, but not to surprising since Apple based OS X on
+UNIX.
+
+Technically the rss2email Linux package usually works on other UNIX-derived
+OSs, such as CentOS and BSD. They aren't officially supported, but we usually
+try resolve incompatibilities if possible.
+
+[![](http://feedads.g.doubleclick.net/~a/n8I-
+3iyxNsT7ki6avOy7J2DFJk8/0/di)](http://feedads.g.doubleclick.net/~a/n8I-
+3iyxNsT7ki6avOy7J2DFJk8/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/n8I-
+3iyxNsT7ki6avOy7J2DFJk8/1/di)](http://feedads.g.doubleclick.net/~a/n8I-
+3iyxNsT7ki6avOy7J2DFJk8/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/cILvxh4ziQg)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/cILvxh4ziQg/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Version 2.70 Released
+Date: Tue, 21 Dec 2010 20:00:49 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=106
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/0rUaRcCJ8dU/
+X-RSS-TAGS: Uncategorized
+
+Version 2.70 of rss2email is now available for both
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.70.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.70.zip).
+
+Changes from the previous version:
+
+  * Improved handling of given feed email addresses to prevent mail servers rejecting poorly formed Froms 
+  * Added X-RSS-TAGS header that lists any tags provided by an entry, which will be helpful in filtering incoming messages 
+
+Complete list in the official
+[CHANGELOG](http://www.allthingsrss.com/rss2email/changelog).
+
+[![](http://feedads.g.doubleclick.net/~a/3-mTadqlwiwGd3BGVmqYMI2xAyg/0/di)](ht
+tp://feedads.g.doubleclick.net/~a/3-mTadqlwiwGd3BGVmqYMI2xAyg/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/3-mTadqlwiwGd3BGVmqYMI2xAyg/1/di)](ht
+tp://feedads.g.doubleclick.net/~a/3-mTadqlwiwGd3BGVmqYMI2xAyg/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/0rUaRcCJ8dU)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/0rUaRcCJ8dU/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Version 2.71 Release plus Other Major Updates
+Date: Fri, 04 Mar 2011 18:03:11 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=123
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/wsLSVDNzno0/
+X-RSS-TAGS: Uncategorized
+
+Good news everyone! Two important tools that rss2email depends on have
+recently received major upgrades:
+[feedparser](http://code.google.com/p/feedparser/) and
+[html2text](https://github.com/aaronsw/html2text). These should improve
+rss2email's ability to handle feeds with poorly formed HTML and other
+weirdness.
+
+The rss2email application itself also needed to be upgraded some to support
+these. Changes in this version:
+
+  * Upgraded to feedparser v5.01! (http://code.google.com/p/feedparser/) 
+  * Upgraded to html2text v3.01! (https://github.com/aaronsw/html2text) 
+  * Potentially safer method for writing feeds.dat on UNIX 
+  * Handle via links with no title attribute 
+  * Handle attributes more cleanly with OVERRIDE_EMAIL and DEFAULT_EMAIL 
+
+[![](http://feedads.g.doubleclick.net/~a/mPc_o2aCgPYkdQhi-
+IMAOP4LbS0/0/di)](http://feedads.g.doubleclick.net/~a/mPc_o2aCgPYkdQhi-
+IMAOP4LbS0/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/mPc_o2aCgPYkdQhi-
+IMAOP4LbS0/1/di)](http://feedads.g.doubleclick.net/~a/mPc_o2aCgPYkdQhi-
+IMAOP4LbS0/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/wsLSVDNzno0)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/wsLSVDNzno0/
+
+SENT TO: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
+To: a@b.com
+Subject: Mac OS, rss2email and scheduling with launchd
+Date: Tue, 23 Aug 2011 15:57:37 -0000
+User-Agent: rss2email
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=131
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/0hb7cT3sLUM/
+X-RSS-TAGS: Uncategorized
+
+Just a little FYI if you encounter this: MacRumors user durlecs was having a
+[problem scheduling rss2email with
+launchd](http://forums.macrumors.com/showthread.php?t=1216694), Mac OS's built
+in replacement for cron and other UNIX services. It looks like he/she got it
+working in the end by adding the path to Python into the PATH environment
+variable.
+
+[![](http://feedads.g.doubleclick.net/~a/0Q4e9-dkgHhcjqmhUxC-
+_qJrGKA/0/di)](http://feedads.g.doubleclick.net/~a/0Q4e9-dkgHhcjqmhUxC-
+_qJrGKA/0/da)
+
+[![](http://feedads.g.doubleclick.net/~a/0Q4e9-dkgHhcjqmhUxC-
+_qJrGKA/1/di)](http://feedads.g.doubleclick.net/~a/0Q4e9-dkgHhcjqmhUxC-
+_qJrGKA/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/0hb7cT3sLUM)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/0hb7cT3sLUM/

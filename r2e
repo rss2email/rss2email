@@ -1,2 +1,5 @@
-#!/bin/sh
-python rss2email.py feeds.dat $*
+#!/usr/bin/env python
+
+import rss2email
+
+rss2email.run()
