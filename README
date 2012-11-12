@@ -8,7 +8,7 @@ We highly recommend that you subscribe to the rss2email project feed
 so you can keep up to date with the latest version, bugfixes and
 features:
 
-  http://feeds.feedburner.com/allthingsrss/hJBr
+  https://github.com/wking/rss2email/commits/master.atom
 
 .. contents::
 
@@ -57,12 +57,12 @@ from several equivalent formats.
 
 1. A ``.zip`` file (suggested for Microsoft Windows users)::
 
-    $ wget http://www.allthingsrss.com/rss2email/rss2email-2.71.zip
+    $ wget https://github.com/wking/rss2email/archive/v2.71.zip
     $ unzip rss2email-*.zip
 
 2. A ``.tar.gz`` file (suggested for everyone else)::
 
-    $ wget http://www.allthingsrss.com/rss2email/rss2email-2.71.tar.gz
+    $ wget https://github.com/wking/rss2email/archive/v2.71.tar.gz
     $ tar xvf rss2email*.tar.gz
 
 3. A Git_ checkout (suggested for developers)::
@@ -108,7 +108,7 @@ sendmail-equivalent, you'll need to edit the SMTP_ options.
 
 Subscribe to some feeds::
 
-  $ r2e add rss2email http://feeds.feedburner.com/allthingsrss/hJBr
+  $ r2e add rss2email https://github.com/wking/rss2email/commits/master.atom
 
 That's the feed to be notified when there's a new version of
 rss2email. Repeat this for each feed you want to subscribe to.

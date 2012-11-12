@@ -14,8 +14,8 @@ setup(
     version=__version__,
     maintainer='W. Trevor King',
     maintainer_email='wking@tremily.us',
-    url='http://pypi.python.org/pypi/rss2email/',
-    download_url='http://git.tremily.us/?p=rss2email.git;a=snapshot;h=v{};sf=tgz'.format( __version__),
+    url='https://github.com/wking/rss2email/'
+    download_url='https://github.com/wking/rss2email/archive/v{}.tar.gz'.format(__version__),
     license='GNU General Public License (GPL)',
     platforms=['all'],
     description=__doc__,
