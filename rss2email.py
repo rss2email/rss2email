@@ -99,7 +99,7 @@ class TimeoutError (RSS2EmailError):
         self.time_limited_function = time_limited_function
 
 
-class NoValidEncodingError (ValueError, RSS2EmailError):
+class NoValidEncodingError (RSS2EmailError, ValueError):
     def __init__(self, string, encodings):
         message = 'no valid encoding for {} in {}'.format(string, encodings)
         super(NoValidEncodingError, self).__init__(message=message)
