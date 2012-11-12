@@ -1,4 +1,6 @@
 v2.71 (2011-03-04)
+    * Upgraded to feedparser v5.01! (http://code.google.com/p/feedparser/)
+    * Upgrade to html2text v3.01! (https://github.com/aaronsw/html2text)
     * Potentialy safer method for writing feeds.dat on UNIX
     * Handle via links with no title attribute
     * Handle attributes more cleanly with OVERRIDE_EMAIL and DEFAULT_EMAIL
