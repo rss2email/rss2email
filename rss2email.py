@@ -15,7 +15,7 @@ Usage:
   opmlexport
   opmlimport filename
 """
-__version__ = "2.70"
+__version__ = "2.72"
 __author__ = "Lindsey Smith (lindsey@allthingsrss.com)"
 __copyright__ = "(C) 2004 Aaron Swartz. GNU GPL 2 or 3."
 ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess", 
@@ -24,6 +24,7 @@ ___contributors__ = ["Dean Jackson", "Brian Lalor", "Joey Hess",
                      "Lindsey Smith (maintainer)", "Erik Hetzner", "Aaron Swartz (original author)" ]
 
 import urllib2
+import BeautifulSoup
 urllib2.install_opener(urllib2.build_opener())
 
 ### Vaguely Customizable Options ###
@@ -295,6 +296,7 @@ for e in ['error', 'gaierror']:
 
 import feedparser
 feedparser.USER_AGENT = "rss2email/"+__version__+ " +http://www.allthingsrss.com/rss2email/"
+feedparser.SANITIZE_HTML = 0
 
 import html2text as h2t
 
@@ -381,7 +383,8 @@ def getContent(entry, HTMLOK=0):
 		if not HTMLOK: # Only need to convert to text if HTML isn't OK
 			for c in conts:
 				if contains(c.type, 'html'):
-					return html2text(c.value)
+					cleanerhtml = BeautifulSoup.BeautifulSoup(c.value)
+					return html2text(unicode(cleanerhtml))
 		
 		for c in conts:
 			if c.type == 'text/plain': return c.value
@@ -391,7 +394,8 @@ def getContent(entry, HTMLOK=0):
 	return ""
 
 def getID(entry):
-	"""Get best ID from an entry."""
+	"""Get best ID from an entry.
+	NEEDS UNIT TESTS"""
 	if TRUST_GUID:
 		if 'id' in entry and entry.id: 
 			# Newer versions of feedparser could return a dictionary
@@ -405,16 +409,17 @@ def getID(entry):
 	if 'link' in entry: return entry.link
 	if 'title' in entry: return hash(unu(entry.title)).hexdigest()
 
-def getName(r, entry):
-	"""Get the best name."""
+def getName(fullfeed, entry):
+	"""Get the best name.
+	NEEDS UNIT TESTS"""
 
 	if NO_FRIENDLY_NAME: return ''
 
-	feed = r.feed
-	if hasattr(r, "url") and r.url in OVERRIDE_FROM.keys():
-		return OVERRIDE_FROM[r.url]
+	feedinfo = fullfeed.feed
+	if hasattr(fullfeed, "url") and fullfeed.url in OVERRIDE_FROM.keys():
+		return OVERRIDE_FROM[fullfeed.url]
 	
-	name = feed.get('title', '')
+	name = feedinfo.get('title', '')
 
 	if 'name' in entry.get('author_detail', []): # normally {} but py2.1
 		if entry.author_detail.name:
@@ -425,22 +430,23 @@ def getName(r, entry):
 			except UnicodeDecodeError:
 			    name +=  unicode(entry.author_detail.name, 'utf-8')
 
-	elif 'name' in feed.get('author_detail', []):
-		if feed.author_detail.name:
+	elif 'name' in feedinfo.get('author_detail', []):
+		if feedinfo.author_detail.name:
 			if name: name += ", "
-			name += feed.author_detail.name
+			name += feedinfo.author_detail.name
 	
 	return name
 
 def validateEmail(email, planb):
 	"""Do a basic quality check on email address, but return planb if email doesn't appear to be well-formed"""
 	email_parts = email.split('@')
-	if len(email_parts) != 2:
+	if (len(email_parts) != 2) or not email_parts[0] or not email_parts[1]:
 		return planb
 	return email
 	
 def getEmail(r, entry):
-	"""Get the best email_address. If the best guess isn't well-formed (something@somthing.com), use DEFAULT_FROM instead"""
+	"""Get the best email_address. If the best guess isn't well-formed (something@somthing.com), use DEFAULT_FROM instead.
+	NEEDS UNIT TESTS"""
 	
 	feed = r.feed
 		
@@ -465,6 +471,21 @@ def getEmail(r, entry):
 	if hasattr(r, "url") and r.url in DEFAULT_EMAIL.keys():
 		return DEFAULT_EMAIL[r.url]
 	return DEFAULT_FROM
+
+def getTags(entry):
+	"""If the entry has any tags, build a tagline and return as a string. Otherwise returns empty string"""
+	tagline = ""
+	if 'tags' in entry:
+		tags = entry.get('tags')
+		taglist = []
+		if tags:
+			for tag in tags:
+				if tag.has_key('term'): taglist.append(tag['term'])
+		if taglist:
+			tagline = ",".join(taglist)
+
+	return tagline
+	
 
 ### Simple Database of Feeds ###
 
@@ -686,16 +707,8 @@ def run(num=None):
 					useragenthdr = "rss2email"
 					
 					# Add post tags, if available
-					tagline = ""
-					if 'tags' in entry:
-						tags = entry.get('tags')
-						taglist = []
-						if tags:
-							for tag in tags:
-								taglist.append(tag['term'])
-						if taglist:
-							tagline = ",".join(taglist)
-					
+					tagline = getTags(entry)
+
 					extraheaders = {'Date': datehdr, 'User-Agent': useragenthdr, 'X-RSS-Feed': f.url, 'X-RSS-ID': id, 'X-RSS-URL': link, 'X-RSS-TAGS' : tagline}
 					if BONUS_HEADER != '':
 						for hdr in BONUS_HEADER.strip().splitlines():
@@ -826,7 +839,7 @@ def opmlimport(importfile):
 	importfileObject = None
 	print 'Importing feeds from', importfile
 	if not os.path.exists(importfile):
-		print 'OPML import file "%s" does not exist.' % feedfile
+		print 'OPML import file "%s" does not exist.' % importfile
 	try:
 		importfileObject = open(importfile, 'r')
 	except IOError, e:
