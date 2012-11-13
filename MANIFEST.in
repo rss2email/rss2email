@@ -1,4 +1,5 @@
 include CHANGELOG
+include COPYING
 include r2e.1
 include r2e.bat
 recursive-include test README *.atom *.rss *.config *.expected
