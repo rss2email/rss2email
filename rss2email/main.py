@@ -2,10 +2,12 @@
 """
 
 import argparse as _argparse
+import logging as _logging
 import sys as _sys
 
 from . import __doc__ as _PACKAGE_DOCSTRING
 from . import __version__
+from . import LOG as _LOG
 from . import command as _command
 from . import error as _error
 from . import feeds as _feeds
@@ -116,7 +118,7 @@ def run(*args, **kwargs):
     args = parser.parse_args(*args, **kwargs)
 
     if args.verbose:
-        LOG.setLevel(max(_logging.DEBUG, _logging.ERROR - 10 * args.verbose))
+        _LOG.setLevel(max(_logging.DEBUG, _logging.ERROR - 10 * args.verbose))
 
     try:
         if not args.config:
