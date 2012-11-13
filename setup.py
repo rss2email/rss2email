@@ -35,7 +35,7 @@ setup(
         'Topic :: Communications :: Email',
         'Topic :: Software Development :: Libraries :: Python Modules',
         ],
-    py_modules=['rss2email'],
+    packages=['rss2email'],
     scripts=['r2e'],
     provides=['rss2email'],
     )

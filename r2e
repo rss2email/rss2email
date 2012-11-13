@@ -1,5 +1,5 @@
 #!/usr/bin/env python
 
-import rss2email
+import rss2email.main
 
-rss2email.run()
+rss2email.main.run()
