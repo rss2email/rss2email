@@ -165,11 +165,11 @@ prefer to use SMTP__ directly, edit the configuration file and fill in
 your outoing email server's details::
 
   [DEFAULT]
-  …
+  ...
   use-smtp = True
   smtp-server = smtp.yourisp.net:587
   smtp-auth = False
-  …
+  ...
 
 If your server requires you to login, change ``smtp-auth = False`` to
 ``smtp-auth = True`` and enter your email username and password::
