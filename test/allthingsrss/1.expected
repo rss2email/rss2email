@@ -6,6 +6,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Version 2.67 Released
 Date: Tue, 21 Sep 2010 16:55:07 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=62
@@ -49,6 +50,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Version 2.68 Released with Actual New Features
 Date: Fri, 01 Oct 2010 18:21:26 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=72
@@ -105,6 +107,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: How to Read RSS Feeds in Emacs
 Date: Fri, 05 Nov 2010 17:36:14 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=79
@@ -136,6 +139,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Version 2.69 Released
 Date: Fri, 12 Nov 2010 18:45:08 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=85
@@ -177,6 +181,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Minor Correction to v2.69 Packages
 Date: Fri, 10 Dec 2010 17:47:58 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=88
@@ -210,6 +215,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Minor correction to the minor correction: v2.69a released
 Date: Mon, 13 Dec 2010 18:04:20 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=95
@@ -252,6 +258,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Mac OS X and rss2email are Compatible
 Date: Fri, 17 Dec 2010 20:54:27 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=99
@@ -288,6 +295,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Version 2.70 Released
 Date: Tue, 21 Dec 2010 20:00:49 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=106
@@ -326,6 +334,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Version 2.71 Release plus Other Major Updates
 Date: Fri, 04 Mar 2011 18:03:11 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=123
@@ -370,6 +379,7 @@ From: "rss2email: Lindsey Smith" <bozo@dev.null.invalid>
 To: a@b.com
 Subject: Mac OS, rss2email and scheduling with launchd
 Date: Tue, 23 Aug 2011 15:57:37 -0000
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=131

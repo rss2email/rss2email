@@ -8,15 +8,21 @@ import glob as _glob
 import io as _io
 import logging as _logging
 import os as _os
+import re as _re
 
 import rss2email as _rss2email
+import rss2email.config as _rss2email_config
+import rss2email.feed as _rss2email_feed
 
 
 # Get a copy of the internal rss2email.CONFIG for copying
 _stringio = _io.StringIO()
-_rss2email.CONFIG.write(_stringio)
+_rss2email_config.CONFIG.write(_stringio)
 BASE_CONFIG_STRING = _stringio.getvalue()
 del _stringio
+
+MESSAGE_ID_REGEXP = _re.compile(
+    '^Message-ID: <[^@]*@dev.null.invalid>$', _re.MULTILINE)
 
 
 class Send (list):
@@ -30,6 +36,21 @@ class Send (list):
         return '\n'.join(chunks)
 
 
+def clean_result(text):
+    """Cleanup dynamic portions of the generated email headers
+
+    >>> text = (
+    ...      'Date: Tue, 23 Aug 2011 15:57:37 -0000\\n'
+    ...      'Message-ID: <9dff03db-f5a7@dev.null.invalid>\\n'
+    ...      'User-Agent: rss2email\\n'
+    ...      )
+    >>> print(clean_result(text).rstrip())
+    Date: Tue, 23 Aug 2011 15:57:37 -0000
+    Message-ID: <...@dev.null.invalid>
+    User-Agent: rss2email
+    """
+    return MESSAGE_ID_REGEXP.sub('Message-ID: <...@dev.null.invalid>', text)
+
 def test(dirname=None, config_path=None, force=False):
     if dirname is None:
         dirname = _os.path.dirname(config_path)
@@ -40,19 +61,20 @@ def test(dirname=None, config_path=None, force=False):
         return
     feed_path = _glob.glob(_os.path.join(dirname, 'feed.*'))[0]
     _rss2email.LOG.info('testing {}'.format(config_path))
-    config = _rss2email.Config()
+    config = _rss2email_config.Config()
     config.read_string(BASE_CONFIG_STRING)
     read_paths = config.read([config_path])
-    feed = _rss2email.Feed(name='test', url=feed_path, config=config)
+    feed = _rss2email_feed.Feed(name='test', url=feed_path, config=config)
     expected_path = config_path.replace('config', 'expected')
     with open(expected_path, 'r') as f:
-        expected = f.read()
+        expected = clean_result(f.read())
     feed._send = Send()
     feed.run()
     generated = feed._send.as_string()
     if force:
         with open(expected_path, 'w') as f:
             f.write(generated)
+    generated = clean_result(generated)
     if generated != expected:
         diff_lines = _difflib.unified_diff(
             expected.splitlines(), generated.splitlines(),
