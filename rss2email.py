@@ -4,7 +4,7 @@
 """
 
 __version__ = '2.71'
-__url__ = 'http://rss2email.infogami.com'
+__url__ = 'https://github.com/wking/rss2email/'
 __author__ = 'W. Trevor King'
 __copyright__ = '(C) 2004 Aaron Swartz. GNU GPL 2 or 3.'
 __contributors__ = [
