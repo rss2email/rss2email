@@ -31,7 +31,7 @@ class Send (list):
 
     def as_string(self):
         chunks = [
-            'SENT TO: {}\n{}\n'.format(sender, message.as_string())
+            'SENT BY: {}\n{}\n'.format(sender, message.as_string())
             for sender,message in self]
         return '\n'.join(chunks)
 
