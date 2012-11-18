@@ -29,7 +29,7 @@ setup(
     name='rss2email',
     version=__version__,
     maintainer='W. Trevor King',
-    maintainer_email='wking@tremily.us',
+    maintainer_email='rss2email@tremily.us',
     url='https://github.com/wking/rss2email/',
     download_url='https://github.com/wking/rss2email/archive/v{}.tar.gz'.format(__version__),
     license='GNU General Public License (GPL)',
