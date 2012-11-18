@@ -127,10 +127,10 @@ Then later, you can ask it to email you new stories::
 Customizing rss2email
 =====================
 
-There are a number of options, described in full in ``rss2email.py``
-around line 270, to customize the way rss2email behaves. If you want
-to change something, edit the the configuration file that was created
-by ``r2e new``.
+There are a number of options, described in full in
+``rss2email/config.py``, to customize the way rss2email behaves. If
+you want to change something, edit the the configuration file that was
+created by ``r2e new``.
 
 For example, if you want to receive HTML mail, instead of having
 entries converted to plain text::
