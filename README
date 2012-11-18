@@ -67,7 +67,7 @@ from several equivalent formats.
 
 3. A Git_ checkout (suggested for developers)::
 
-    $ git clone git://tremily.us/rss2email.git
+    $ git clone git://github.com/wking/rss2email.git
 
 Install
 ~~~~~~~
