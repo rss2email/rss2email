@@ -18,6 +18,7 @@
 """
 
 import logging as _logging
+import sys as _sys
 
 
 __version__ = '2.71'
@@ -40,3 +41,9 @@ __contributors__ = [
 LOG = _logging.getLogger('rss2email')
 LOG.addHandler(_logging.StreamHandler())
 LOG.setLevel(_logging.ERROR)
+
+
+if _sys.version_info < (3, 2):
+    raise ImportError(
+        "rss2email requires Python 3.2, but you're using:\n{}".format(
+            _sys.version))
