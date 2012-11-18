@@ -8,7 +8,7 @@ We highly recommend that you subscribe to the rss2email project feed
 so you can keep up to date with the latest version, bugfixes and
 features:
 
-  https://github.com/wking/rss2email/commits/master.atom
+  http://rss.gmane.org/gmane.mail.rss2email
 
 .. contents::
 
@@ -207,6 +207,15 @@ For example, run ``r2e`` every night (at 1:23 am) with::
 
   23 1 * * * r2e run
 
+Development
+===========
+
+User discussion and development take place on the rss2email mailing
+list at ``rss2email@tremily.us``.  Everyone is welcome to post bug
+reports, feature requests, comments, and patches.  To subscribe to the
+list, send an email to ``rss2email+subscribe@tremily.us``.  The
+mailing list archives are available on Gmane_.
+
 
 .. _Debian package:
   http://packages.debian.org/cgi-bin/search_packages.pl?searchon=names&version=all&exact=1&keywords=rss2email
@@ -225,3 +234,4 @@ For example, run ``r2e`` every night (at 1:23 am) with::
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _windows scheduler: http://www.iopus.com/guides/winscheduler.htm
 .. _cron: http://en.wikipedia.org/wiki/Cron
+.. _Gmane: http://dir.gmane.org/gmane.mail.rss2email
