@@ -19,18 +19,18 @@ v2.69 (2010-11-12)
 v2.68 (2010-10-01)
     * Added ability to pause/resume checking of individual feeds through pause and unpause commands
     * Added ability to import and export OPML feed lists through importopml and exportopml commands
-    
+
 v2.67 (2010-09-21)
-    * Fixed entries that include an id which is blank (i.e., an empty string) were being resent 
-    * Fixed some entries not being sent by email because they had bad From headers	
+    * Fixed entries that include an id which is blank (i.e., an empty string) were being resent
+    * Fixed some entries not being sent by email because they had bad From headers
     * Fixed From headers with HTML entities encoded twice
     * Compatibility changes to support most recent development versions of feedparser
     * Compatibility changes to support Google Reader feeds
-    
+
 v2.66 (2009-12-21)
     * Complete packaging of all necessary source files (rss2email, html2text, feedparser, r2e, etc.) into one bundle
         o Included a more complete config.py with all options
-        o Default to HTML mail and CSS results 
+        o Default to HTML mail and CSS results
     * Added 'reset' command to erase history of already seen entries
     * Changed project email to 'lindsey@allthingsrss.com' and project homepage to 'http://www.allthingsrss.com/rss2email/'
     * Made exception and error output text more useful
@@ -39,7 +39,6 @@ v2.66 (2009-12-21)
     * Fixed MacOS compatibility issues
 
 v2.65 (2009-01-05)
-
     * Fixed warnings caused by Python v2.6 (using hashlib, removing mimify, etc.)
     * Deprecated QP_REQUIRED option as this is more than likely no longer needed and part of what triggered Python warnings
     * Fixed unicode errors in certain post headers
@@ -71,7 +70,7 @@ v2.61 (2007-12-07)
         o New parameter CHARSET_LIST to override or supplement the order in which charsets are tried against an entry
         o Don't use blank content to generate id
         o Using GMail as mail server should work
-        
+
 v2.60 (2006-08-25)
     * Small bug-fix version:
         o Now compatible with SunOS
