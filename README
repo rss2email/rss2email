@@ -108,7 +108,7 @@ sendmail-equivalent, you'll need to edit the SMTP_ options.
 
 Subscribe to some feeds::
 
-  $ r2e add rss2email https://github.com/wking/rss2email/commits/master.atom
+  $ r2e add rss2email http://rss.gmane.org/gmane.mail.rss2email
 
 That's the feed to be notified when there's a new version of
 rss2email. Repeat this for each feed you want to subscribe to.
