@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/" xmlns:admin="http://webns.net/mvcb/">
+  <channel rdf:about="http://permalink.gmane.org/gmane.mail.rss2email">
+    <title>gmane.mail.rss2email</title>
+    <link>http://permalink.gmane.org/gmane.mail.rss2email</link>
+    <description/>
+    <syn:updatePeriod>hourly</syn:updatePeriod>
+    <syn:updateFrequency>1</syn:updateFrequency>
+    <syn:updateBase>1901-01-01T00:00+00:00</syn:updateBase>
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://permalink.gmane.org/gmane.mail.rss2email/5"/>
+        <rdf:li rdf:resource="http://permalink.gmane.org/gmane.mail.rss2email/4"/>
+        <rdf:li rdf:resource="http://permalink.gmane.org/gmane.mail.rss2email/3"/>
+        <rdf:li rdf:resource="http://permalink.gmane.org/gmane.mail.rss2email/2"/>
+        <rdf:li rdf:resource="http://permalink.gmane.org/gmane.mail.rss2email/1"/>
+      </rdf:Seq>
+    </items>
+    <image rdf:resource="http://gmane.org/img/gmane-25t.png"/>
+    <textinput rdf:resource=""/>
+  </channel>
+  <image rdf:about="http://gmane.org/img/gmane-25t.png">
+    <title>Gmane</title>
+    <url>http://gmane.org/img/gmane-25t.png</url>
+    <link>http://gmane.org</link>
+  </image>
+  <item rdf:about="http://permalink.gmane.org/gmane.mail.rss2email/5">
+    <title>split massive package into modules</title>
+    <link>http://permalink.gmane.org/gmane.mail.rss2email/5</link>
+    <description>&lt;pre&gt;I just split the 1769-line rss2email.py module into a more manageable
+package with sub-modules:
+
+https://github.com/wking/rss2email/commit/066602efa088b4a89d67e23011613b4459db3c92
+
+&lt;/pre&gt;</description>
+    <dc:creator>W. Trevor King</dc:creator>
+    <dc:date>2012-11-13T14:36:22</dc:date>
+  </item>
+  <item rdf:about="http://permalink.gmane.org/gmane.mail.rss2email/4">
+    <title>Re: new maintainer and mailing list for rss2email</title>
+    <link>http://permalink.gmane.org/gmane.mail.rss2email/4</link>
+    <description>&lt;pre&gt;* W. Trevor King &amp;lt;wking-vJI2gpByivqcqzYg7KEe8g&amp;lt; at &amp;gt;public.gmane.org&amp;gt; [121113 13:21]:
+
+Ack.
+
+Also, confirming that the mailing list works.
+
+&lt;/pre&gt;</description>
+    <dc:creator>Etienne Millon</dc:creator>
+    <dc:date>2012-11-13T12:42:13</dc:date>
+  </item>
+  <item rdf:about="http://permalink.gmane.org/gmane.mail.rss2email/3">
+    <title>Re: new maintainer and mailing list for rss2email</title>
+    <link>http://permalink.gmane.org/gmane.mail.rss2email/3</link>
+    <description>&lt;pre&gt;
+send-email style, although I'll accept anything ;).
+
+&lt;/pre&gt;</description>
+    <dc:creator>W. Trevor King</dc:creator>
+    <dc:date>2012-11-13T12:20:20</dc:date>
+  </item>
+  <item rdf:about="http://permalink.gmane.org/gmane.mail.rss2email/2">
+    <title>Re: new maintainer and mailing list for rss2email</title>
+    <link>http://permalink.gmane.org/gmane.mail.rss2email/2</link>
+    <description>&lt;pre&gt;* W. Trevor King &amp;lt;wking-vJI2gpByivqcqzYg7KEe8g&amp;lt; at &amp;gt;public.gmane.org&amp;gt; [121112 23:18]:
+
+It seems to work, though it may have been grouped together with my
+MDA. I'll tell you if I don't receive a mail where I'm not CCed.
+
+
+We're finalizing a release ATM, so it will be the perfect time to try
+a new rss2email release in a couple of months.
+
+
+The idea is more to migrate the low hanging fruits (maybe 95% of
+users) so that they don't lose their config. I was thinking to just
+eval() the config file and output the relevant variables to the new
+format. We'll see how it turns out :)
+
+
+Do you prefer taking pull requests there or as a discussion on the
+mailing list (git send-email style) ?
+
+&lt;/pre&gt;</description>
+    <dc:creator>Etienne Millon</dc:creator>
+    <dc:date>2012-11-13T10:48:07</dc:date>
+  </item>
+  <item rdf:about="http://permalink.gmane.org/gmane.mail.rss2email/1">
+    <title>Re: new maintainer and mailing list for rss2email</title>
+    <link>http://permalink.gmane.org/gmane.mail.rss2email/1</link>
+    <description>&lt;pre&gt;Alrighty, this is the first email on the list and also my first
+production mlmmj list, so I've CCed you both directly.  Etienne, let
+me know if you get the direct email but not the list email, in which
+case I'll try and figure out what I've miss-configured ;).  Lindsey,
+I'll direct future rss2email stuff to my new list, so subscribe if
+you're interested.
+
+On Mon, Nov 12, 2012 at 06:17:50PM +0100, Etienne Millon wrote:
+
+Wonderful.  Let me know if you come up with anything during a
+test-drive, and I'll get it in before the 3.0 release.
+
+
+The 2.x config format is pure Python, which means the users can do
+whatever they want there (including monkey-patching urllib2, changing
+the rss2email version number, etc.).  It's hard to imagine a robust
+way to migrate everything a user may have done in there.
+
+
+If you want to take a stab at it, I'll be happy to add it to a contrib
+directory :).
+
+
+Great :).
+
+On Mon, Nov 12, 2012 at 01:48:13PM -0500, W. Trevor King wrote:
+
+Done: https://github.com/wking/rss2email
+
+&lt;/pre&gt;</description>
+    <dc:creator>W. Trevor King</dc:creator>
+    <dc:date>2012-11-12T21:20:22</dc:date>
+  </item>
+  <textinput rdf:about="http://search.gmane.org/?group=$group=gmane.mail.rss2email">
+    <title>Search Engine</title>
+    <description>Search the mailing list at Gmane</description>
+    <name>query</name>
+    <link>http://search.gmane.org/?group=$group=gmane.mail.rss2email</link>
+  </textinput>
+</rdf:RDF>

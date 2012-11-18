@@ -1,0 +1,19 @@
+feed.atom is a snapshot of
+
+  http://rss.gmane.org/gmane.mail.rss2email
+
+as of 2012-11-18.
+
+HTTP headers:
+
+  HTTP/1.1 200 OK
+  Date: Sun, 18 Nov 2012 14:01:35 GMT
+  Server: Apache/2.2.9 (Debian) PHP/5.2.6-1+lenny6 with Suhosin-Patch
+  Last-Modified: Sun, 18 Nov 2012 02:55:19 GMT
+  ETag: "9209e0-161b-4cebc218e73c0"
+  Accept-Ranges: bytes
+  Content-Length: 5659
+  Vary: Accept-Encoding
+  Keep-Alive: timeout=5, max=2
+  Connection: Keep-Alive
+  Content-Type: text/xml
