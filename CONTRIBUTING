@@ -1,0 +1,7 @@
+This project tracks patch provenance and licensing using the Developer
+Certificate of Origin and Signed-off-by tags initially developed by
+the Linux kernel project.  Because the documentation for this
+procedure is licensed under the GPLv2, we have chosen not to include
+it in our project directly.  Instead, please see:
+
+  http://git.tremily.us/?p=signed-off-by.git;a=blob;f=Documentation/SubmittingPatches;h=34055986ab836553896f091225448c448a4cc62c;hb=refs/heads/signed-off-by
