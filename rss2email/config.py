@@ -50,7 +50,7 @@ CONFIG = Config()
 CONFIG['DEFAULT'] = _collections.OrderedDict((
         ### Addressing
         # The email address messages are from by default
-        ('from', 'bozo@dev.null.invalid'),
+        ('from', 'user@rss2email.invalid'),
         # True: Only use the 'from' address.
         # False: Use the email address specified by the feed, when possible.
         ('force-from', str(False)),

@@ -72,13 +72,13 @@ class Feed (object):
     >>> feed.section
     'feed.test-feed'
     >>> feed.from_email
-    'bozo@dev.null.invalid'
+    'user@rss2email.invalid'
 
     >>> feed.from_email = 'a@b.com'
     >>> feed.save_to_config()
     >>> feed.config.write(sys.stdout)  # doctest: +REPORT_UDIFF, +ELLIPSIS
     [DEFAULT]
-    from = bozo@dev.null.invalid
+    from = user@rss2email.invalid
     ...
     verbose = warning
     <BLANKLINE>

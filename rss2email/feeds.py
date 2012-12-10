@@ -100,7 +100,7 @@ class Feeds (list):
     >>> print(open(configfile, 'r').read().rstrip('\\n'))
     ... # doctest: +REPORT_UDIFF, +ELLIPSIS
     [DEFAULT]
-    from = bozo@dev.null.invalid
+    from = user@rss2email.invalid
     ...
     verbose = warning
     <BLANKLINE>
