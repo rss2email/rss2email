@@ -448,7 +448,11 @@ class Feed (object):
             if 'html' in entry.title_detail.type:
                 title = _html2text.html2text(title)
         else:
-            title = self._get_entry_content(entry).content[:70]
+            content = self._get_entry_content(entry)
+            value = content['value']
+            if content['type'] in ('text/html', 'application/xhtml+xml'):
+                value = _html2text.html2text(value)
+            title = value[:70]
         title = title.replace('\n', ' ').strip()
         return title
 
