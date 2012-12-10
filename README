@@ -218,9 +218,9 @@ mailing list archives are available on Gmane_.
 
 
 .. _Debian package:
-  http://packages.debian.org/cgi-bin/search_packages.pl?searchon=names&version=all&exact=1&keywords=rss2email
+  http://packages.qa.debian.org/r/rss2email.html
 .. _Ubuntu package:
-  http://packages.ubuntu.com/search?keywords=rss2email&searchon=names&section=all
+  https://launchpad.net/ubuntu/+source/rss2email
 .. _NetBSD package:
   ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-current/pkgsrc/mail/rss2email/README.html
 .. _Gentoo package:
