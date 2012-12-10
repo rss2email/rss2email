@@ -89,9 +89,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('trust-guid', str(True)),
         # To most correctly encode emails with international
         # characters, we iterate through the list below and use the
-        # first character set that works Eventually (and
-        # theoretically) UTF-8 is our catch-all failsafe.
-        ('encodings', 'US-ASCII, BIG5, ISO-2022-JP, ISO-8859-1, UTF-8'),
+        # first character set that works.
+        ('encodings', 'US-ASCII, ISO-8859-1, UTF-8, BIG5, ISO-2022-JP'),
         ## HTML conversion
         # True: Send text/html messages when possible.
         # False: Convert HTML to plain text.
