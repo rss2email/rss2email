@@ -630,7 +630,7 @@ class Feed (object):
                     return content
         if contents:
             return contents[0]
-        return {type: 'text/plain', 'value': ''}
+        return {'type': 'text/plain', 'value': ''}
 
     def _process_entry_content(self, entry, content, link, subject):
         "Convert entry content to the requested format."
