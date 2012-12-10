@@ -433,8 +433,8 @@ class Feed (object):
                 if isinstance(entry.id, dict):
                     return entry.id.values()[0]
                 return entry.id
-        content_type,content_value = self._get_entry_content(entry)
-        content_value = content_value.strip()
+        content = self._get_entry_content(entry)
+        content_value = content['value'].strip()
         if content_value:
             return hash(content_value.encode('unicode-escape')).hexdigest()
         elif getattr(entry, 'link', None):
