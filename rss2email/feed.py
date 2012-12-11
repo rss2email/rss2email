@@ -382,7 +382,7 @@ class Feed (object):
         # If .trust_guid isn't set, we get back hashes of the content.
         # Instead of letting these run wild, we put them in context
         # by associating them with the actual ID (if it exists).
-        guid = entry['id'] or id_
+        guid = entry.get('id', id_)
         if isinstance(guid, dict):
             guid = guid.values()[0]
         if guid in self.seen:
