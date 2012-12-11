@@ -28,6 +28,7 @@
 
 import collections as _collections
 from email.utils import formataddr as _formataddr
+import hashlib as _hashlib
 import re as _re
 import socket as _socket
 import time as _time
@@ -436,11 +437,14 @@ class Feed (object):
         content = self._get_entry_content(entry)
         content_value = content['value'].strip()
         if content_value:
-            return hash(content_value.encode('unicode-escape')).hexdigest()
+            return _hashlib.sha1(
+                content_value.encode('unicode-escape')).hexdigest()
         elif getattr(entry, 'link', None):
-            return hash(entry.link.encode('unicode-escape')).hexdigest()
+            return _hashlib.sha1(
+                entry.link.encode('unicode-escape')).hexdigest()
         elif getattr(entry, 'title', None):
-            return hash(entry.title.encode('unicode-escape')).hexdigest()
+            return _hashlib.sha1(
+                entry.title.encode('unicode-escape')).hexdigest()
 
     def _get_entry_title(self, entry):
         if hasattr(entry, 'title_detail') and entry.title_detail:
