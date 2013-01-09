@@ -112,10 +112,21 @@ class FeedError (RSS2EmailError):
         self.feed = feed
 
 
-class InvalidFeedName (FeedError):
+class InvalidFeedConfig (FeedError):
+    def __init__(self, setting, feed, message=None, **kwargs):
+        if not message:
+            message = "invalid feed configuration {}".format(
+                {setting: getattr(feed, setting)})
+        super(InvalidFeedConfig, self).__init__(
+            feed=feed, message=message, **kwargs)
+        self.setting = setting
+
+
+class InvalidFeedName (InvalidFeedConfig):
     def __init__(self, name, **kwargs):
         message = "invalid feed name '{}'".format(name)
-        super(InvalidFeedName, self).__init__(message=message, **kwargs)
+        super(InvalidFeedName, self).__init__(
+            setting='name', message=message, **kwargs)
 
 
 class ProcessingError (FeedError):
@@ -183,10 +194,11 @@ class NoDataFile (DataFileError):
             "'r2e new' first.")
 
 
-class NoToEmailAddress (FeedsError, FeedError):
-    def __init__(self, **kwargs):
+class NoToEmailAddress (InvalidFeedConfig, FeedsError):
+    def __init__(self, feed, **kwargs):
         message = 'no target email address has been defined'
-        super(NoToEmailAddress, self).__init__(message=message, **kwargs)
+        super(NoToEmailAddress, self).__init__(
+            setting='to', feed=feed, message=message, **kwargs)
 
     def log(self):
         super(NoToEmailAddress, self).log()

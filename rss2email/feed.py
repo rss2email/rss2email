@@ -106,6 +106,14 @@ class Feed (object):
       ...
     rss2email.error.InvalidFeedName: invalid feed name 'invalid name'
 
+    You must define a URL:
+
+    >>> Feed(name='feed-without-a-url', to='a@b.com').run(send=False)
+    Traceback (most recent call last):
+      ...
+    rss2email.error.InvalidFeedConfig: invalid feed configuration {'url': None}
+
+
     Cleanup `CONFIG`.
 
     >>> CONFIG['DEFAULT']['to'] = ''
@@ -285,6 +293,8 @@ class Feed (object):
         200
         """
         _LOG.info('fetch {}'.format(self))
+        if not self.url:
+            raise _error.InvalidFeedConfig(setting='url', feed=self)
         if self.section in self.config:
             config = self.config[self.section]
         else:
