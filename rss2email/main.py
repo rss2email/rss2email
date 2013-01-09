@@ -20,8 +20,11 @@ def run(*args, **kwargs):
     `.parse_args()` call without modification.
     """
     parser = _argparse.ArgumentParser(
-        description=_PACKAGE_DOCSTRING, version=__version__)
+        prog='rss2email', description=_PACKAGE_DOCSTRING)
 
+    parser.add_argument(
+        '-v', '--version', action='version',
+        version='%(prog)s {}'.format(__version__))
     parser.add_argument(
         '-c', '--config', metavar='PATH', default=[], action='append',
         help='path to the configuration file')
