@@ -11,6 +11,14 @@ from . import LOG as _LOG
 from . import command as _command
 from . import error as _error
 from . import feeds as _feeds
+from . import version as _version
+
+
+class FullVersionAction (_argparse.Action):
+    def __call__(self, *args, **kwargs):
+        for package,version in _version.get_versions():
+            print('{} {}'.format(package, version))
+        _sys.exit(0)
 
 
 def run(*args, **kwargs):
@@ -25,6 +33,9 @@ def run(*args, **kwargs):
     parser.add_argument(
         '-v', '--version', action='version',
         version='%(prog)s {}'.format(__version__))
+    parser.add_argument(
+        '--full-version', action=FullVersionAction, nargs=0,
+        help='print the version information of all related packages and exit')
     parser.add_argument(
         '-c', '--config', metavar='PATH', default=[], action='append',
         help='path to the configuration file')
