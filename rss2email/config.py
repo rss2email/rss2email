@@ -1,7 +1,8 @@
-# Copyright (C) 2004-2012 Aaron Swartz
+# Copyright (C) 2004-2013 Aaron Swartz
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Erik Hetzner
+#                         Etienne Millon <me@emillon.org>
 #                         Joey Hess
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Marcel Ackermann
