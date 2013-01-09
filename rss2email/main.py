@@ -1,3 +1,5 @@
+# Copyright
+
 """Define the rss2email command line interface
 """
 
