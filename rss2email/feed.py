@@ -401,7 +401,6 @@ class Feed (object):
                 _LOG.debug('already seen {}'.format(id_))
                 return  # already seen
         sender = self._get_entry_email(parsed=parsed, entry=entry)
-        link = entry.get('link', None)
         subject = self._get_entry_title(entry)
         extra_headers = _collections.OrderedDict((
                 ('Date', self._get_entry_date(entry)),
@@ -409,7 +408,7 @@ class Feed (object):
                 ('User-Agent', 'rss2email'),
                 ('X-RSS-Feed', self.url),
                 ('X-RSS-ID', id_),
-                ('X-RSS-URL', link),
+                ('X-RSS-URL', self._get_entry_link(entry)),
                 ('X-RSS-TAGS', self._get_entry_tags(entry)),
                 ))
         for k,v in extra_headers.items():  # remove empty tags, etc.
@@ -427,7 +426,7 @@ class Feed (object):
 
         content = self._get_entry_content(entry)
         content = self._process_entry_content(
-            entry=entry, content=content, link=link, subject=subject)
+            entry=entry, content=content, subject=subject)
         message = _email.get_message(
             sender=sender,
             recipient=self.to,
@@ -456,6 +455,9 @@ class Feed (object):
         elif getattr(entry, 'title', None):
             return _hashlib.sha1(
                 entry.title.encode('unicode-escape')).hexdigest()
+
+    def _get_entry_link(self, entry):
+        return entry.get('link', None)
 
     def _get_entry_title(self, entry):
         if hasattr(entry, 'title_detail') and entry.title_detail:
@@ -651,8 +653,9 @@ class Feed (object):
             return contents[0]
         return {'type': 'text/plain', 'value': ''}
 
-    def _process_entry_content(self, entry, content, link, subject):
+    def _process_entry_content(self, entry, content, subject):
         "Convert entry content to the requested format."
+        link = self._get_entry_link(entry)
         if self.html_mail:
             lines = [
                 '<!DOCTYPE html>',
