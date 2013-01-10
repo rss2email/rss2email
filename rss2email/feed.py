@@ -401,7 +401,7 @@ class Feed (object):
         if isinstance(guid, dict):
             guid = guid.values()[0]
         if guid in self.seen:
-            if self.seen[guid] == id_:
+            if self.seen[guid]['id'] == id_:
                 _LOG.debug('already seen {}'.format(id_))
                 return  # already seen
         sender = self._get_entry_email(parsed=parsed, entry=entry)
@@ -774,6 +774,8 @@ class Feed (object):
             _LOG.debug('new message: {}'.format(message['Subject']))
             if send:
                 self._send(sender=sender, message=message)
-            self.seen[guid] = id_
+            if guid not in self.seen:
+                self.seen[guid] = {}
+            self.seen[guid]['id'] = id_
         self.etag = parsed.get('etag', None)
         self.modified = parsed.get('modified', None)

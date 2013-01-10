@@ -125,7 +125,7 @@ class Feeds (list):
 
     >>> tmpdir.cleanup()
     """
-    datafile_version = 1
+    datafile_version = 2
     datafile_encoding = 'utf-8'
 
     def __init__(self, configfiles=None, datafile=None, config=None):
@@ -321,6 +321,12 @@ class Feeds (list):
 
     def _upgrade_state_data(self, data):
         version = data.get('version', 'unknown')
+        if version == 1:
+            for feed in data['feeds']:
+                seen = feed['seen']
+                for guid,id_ in seen.items():
+                    seen[guid] = {'id': id_}
+            return data
         raise NotImplementedError(
             'cannot convert data file from version {} to {}'.format(
                 version, self.datafile_version))
