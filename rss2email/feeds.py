@@ -49,6 +49,10 @@ except:
     pass
 
 
+# Path to the filesystem root, '/' on POSIX.1 (IEEE Std 1003.1-2008).
+ROOT_PATH = _os.path.splitdrive(_sys.executable)[0] or _os.sep
+
+
 class Feeds (list):
     """Utility class for rss2email activity.
 
@@ -61,7 +65,7 @@ class Feeds (list):
     Setup a temporary directory to load.
 
     >>> tmpdir = tempfile.TemporaryDirectory(prefix='rss2email-test-')
-    >>> configfile = os.path.join(tmpdir.name, 'config')
+    >>> configfile = os.path.join(tmpdir.name, 'rss2email.cfg')
     >>> with open(configfile, 'w') as f:
     ...     count = f.write('[DEFAULT]\\n')
     ...     count = f.write('to = a@b.com\\n')
@@ -70,7 +74,7 @@ class Feeds (list):
     ...     count = f.write('to = x@y.net\\n')
     ...     count = f.write('[feed.f2]\\n')
     ...     count = f.write('url = http://b.com/rss.atom\\n')
-    >>> datafile = os.path.join(tmpdir.name, 'feeds.dat')
+    >>> datafile = os.path.join(tmpdir.name, 'rss2email.json')
     >>> with codecs.open(datafile, 'w', Feeds.datafile_encoding) as f:
     ...     json.dump({
     ...             'version': 1,
@@ -124,18 +128,14 @@ class Feeds (list):
     datafile_version = 1
     datafile_encoding = 'utf-8'
 
-    def __init__(self, configdir=None, datafile=None, configfiles=None,
-                 config=None):
+    def __init__(self, configfiles=None, datafile=None, config=None):
         super(Feeds, self).__init__()
-        if configdir is None:
-            configdir = _os.path.expanduser(_os.path.join(
-                    '~', '.config', 'rss2email'))
-        if datafile is None:
-            datafile = _os.path.join(configdir, 'feeds.dat')
-        self.datafile = datafile
         if configfiles is None:
-            configfiles = [_os.path.join(configdir, 'config')]
+            configfiles = self._get_configfiles()
         self.configfiles = configfiles
+        if datafile is None:
+            datafile = self._get_datafile()
+        self.datafile = datafile
         if config is None:
             config = _config.CONFIG
         self.config = config
@@ -185,13 +185,57 @@ class Feeds (list):
         while self:
             self.pop(0)
 
+    def _get_configfiles(self):
+        """Get configuration file paths
+
+        Following the XDG Base Directory Specification.
+        """
+        config_home = _os.environ.get(
+            'XDG_CONFIG_HOME',
+            _os.path.expanduser(_os.path.join('~', '.config')))
+        config_dirs = [config_home]
+        config_dirs.extend(
+            _os.environ.get(
+                'XDG_CONFIG_DIRS',
+                _os.path.join(ROOT_PATH, 'etc', 'xdg'),
+                ).split(':'))
+        # reverse because ConfigParser wants most significan last
+        return list(reversed(
+                [_os.path.join(config_dir, 'rss2email.cfg')
+                 for config_dir in config_dirs]))
+
+    def _get_datafile(self):
+        """Get the data file path
+
+        Following the XDG Base Directory Specification.
+        """
+        data_home = _os.environ.get(
+            'XDG_DATA_HOME',
+            _os.path.expanduser(_os.path.join('~', '.local', 'share')))
+        data_dirs = [data_home]
+        data_dirs.extend(
+            _os.environ.get(
+                'XDG_DATA_DIRS',
+                ':'.join([
+                        _os.path.join(ROOT_PATH, 'usr', 'local', 'share'),
+                        _os.path.join(ROOT_PATH, 'usr', 'share'),
+                        ]),
+                ).split(':'))
+        datafiles = [_os.path.join(data_dir, 'rss2email.json')
+                     for data_dir in data_dirs]
+        for datafile in datafiles:
+            if _os.path.isfile(datafile):
+                return datafile
+        return datafiles[0]
+
     def load(self, lock=True, require=False):
         _LOG.debug('load feed configuration from {}'.format(self.configfiles))
         if self.configfiles:
             self.read_configfiles = self.config.read(self.configfiles)
         else:
             self.read_configfiles = []
-        _LOG.debug('loaded confguration from {}'.format(self.read_configfiles))
+        _LOG.debug('loaded configuration from {}'.format(
+                self.read_configfiles))
         self._load_feeds(lock=lock, require=require)
 
     def _load_feeds(self, lock, require):
@@ -201,6 +245,9 @@ class Feeds (list):
                 raise _error.NoDataFile(feeds=self)
             _LOG.info('feed data file not found at {}'.format(self.datafile))
             _LOG.debug('creating an empty data file')
+            dirname = _os.path.dirname(self.datafile)
+            if dirname and not _os.path.isdir(dirname):
+                _os.makedirs(dirname, mode=0o700, exist_ok=True)
             with _codecs.open(self.datafile, 'w', self.datafile_encoding) as f:
                 self._save_feed_states(feeds=[], stream=f)
         try:
@@ -284,7 +331,7 @@ class Feeds (list):
             feed.save_to_config()
         dirname = _os.path.dirname(self.configfiles[-1])
         if dirname and not _os.path.isdir(dirname):
-            _os.makedirs(dirname)
+            _os.makedirs(dirname, mode=0o700, exist_ok=True)
         with open(self.configfiles[-1], 'w') as f:
             self.config.write(f)
         self._save_feeds()
@@ -293,7 +340,7 @@ class Feeds (list):
         _LOG.debug('save feed data to {}'.format(self.datafile))
         dirname = _os.path.dirname(self.datafile)
         if dirname and not _os.path.isdir(dirname):
-            _os.makedirs(dirname)
+            _os.makedirs(dirname, mode=0o700, exist_ok=True)
         if UNIX:
             tmpfile = self.datafile + '.tmp'
             with _codecs.open(tmpfile, 'w', self.datafile_encoding) as f:

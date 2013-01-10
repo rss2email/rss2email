@@ -1,6 +1,7 @@
 v3.0 (unreleased)
     * Changed project email (rss2email@tremily.us) and homepage (http://github.com/wking/rss2email)
-    * Split static configuration parameters into a ConfigParser-read config file.  Only data that depends on the feed state is still pickled.
+    * Split static configuration parameters into a ConfigParser-read config file (rss2email.cfg).  Data that depends on the feed state is recorded using JSON (rss2email.json).
+    * Use the XDG Base Directory Specification for standardized configuration and data file locations.
     * Converted the command line interface to argparse, with some restructuring along the way.
     * Added the r2e.1 man page (based on one from the Debian package).
     * Added setup.py and a PyPI page for simpler installation (http://pypi.python.org/pypi/rss2email)

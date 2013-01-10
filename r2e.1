@@ -29,12 +29,14 @@ Print the rss2email help and exit.
 Print the rss2email version and exit.
 .TP
 \-c, \-\-config \fI<path>\fR
-The program is configured by ~/\&.config/rss2mail/config by
-default. Use this option to set a different config file.
+The program configuration is read from $XDG_CONFIG_HOME/rss2mail.cfg
+by default (see also FILES and ENVIRONMENT VARIABLES below).  Use this
+option to set a different configuration file.
 .TP
 \-d, \-\-data \fI<path>\fR
-The program is configured by ~/\&.config/rss2mail/config by
-default. Use this option to set a different config file.
+Dynamic program data is read from $XDG_DATA_HOME/rss2mail\&.json by
+default (see also FILES and ENVIRONMENT VARIABLES below).  Use this
+option to set a different data file.
 .TP
 \-V, \-\-verbose
 Increment the logging verbosity.
@@ -99,9 +101,10 @@ data will be written.  If \fI<path>\fR is not given \fBr2e\fR writes
 the data to stdout.
 .SH "CONFIGURATION"
 The program's behavior can be controlled via the
-~/.config/rss2email/config file. The file format is similar to a
-Microsoft Windows INI file.  It is parsed by Python's ConfigParser
-class, so see the Python documentation at
+$XDG_CONFIG_HOME/rss2email.cfg (see also FILES and ENVIRONMENT
+VARIABLES below). The file format is similar to a Microsoft Windows
+INI file.  It is parsed by Python's ConfigParser class, so see the
+Python documentation at
 http://docs\&.python\&.org/py3k/library/configparser\&.html for format
 details.
 .P
@@ -132,13 +135,38 @@ friendly-name = False
 .RE
 .P
 .SH FILES
+.TP 4
+.B $XDG_CONFIG_HOME/rss2email.cfg
+If this file exists, it it read to configure the program.
 .TP
-.B ~/.rss2email/feeds\&.dat
+.B $XDG_DATA_HOME/rss2email\&.json
 The database of feeds. Use \fBr2e\fR to add, remove, or modify feeds,
 do not edit it directly.
+.SH "ENVIRONMENT VARIABLES"
+The environment variables used by \fBr2e\fR are all defined in the XDG
+Base Directory Specification, which aims to standardize locations for
+user-specific configuration and data files.
+.TP 4
+.B XDG_CONFIG_HOME
+The preferred directory for configuration files.  Defaults to
+$HOME/\&.config.
 .TP
-.B ~/.rss2email/config\&.py
-If this file exists, it it read to configure the program.
+.B XDG_DATA_HOME
+The preferred directory for data files.  Defaults to
+$HOME/\&.local/share.
+.TP
+.B XDG_CONFIG_DIRS
+A colon ':' separated, preference ordered list of base directories for
+configuration files in addition to $XDG_CONFIG_HOME.  Defaults to
+/etc/xdg.  If multiple configuration files are found in this path,
+they will all be read by the ConfigParser class (see also
+CONFIGURATION above).
+.TP
+.B XDG_DATA_DIRS
+A colon ':' separated, preference ordered list of base directories for
+data files.  Defaults to /usr/local/share/:/usr/share/.  Only the
+first matching file is used.
+.B 
 .SH AUTHORS
 rss2email was started by Aaron Swartz, and is currently maintained by
 Lindsey Smith.  For a more complete list of contributors, see the

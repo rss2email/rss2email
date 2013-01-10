@@ -86,8 +86,8 @@ Upgrading to a new version
 Just repeat the installation procedure for the new source package.  If
 your config file and data file were in the old source directory, move
 them over to the new source directory.  If the config and data files
-were in another directory (e.g. ``~/.config/rss2email/``), there is no
-need to move them.
+were in another directory (e.g. ``~/.config`` and ``~/.local/share``),
+there is no need to move them.
 
 Using rss2email
 ===============
@@ -97,10 +97,11 @@ Create a new feed database to send updates to your email address::
   $ r2e new you@yourdomain.com
 
 This command will create a configuration file
-(``~/.config/rss2email/config`` by default) and a feed database
-(``~/.config/rss2email/feeds.dat`` by default).  If you'd rather those
+(``$XDG_CONFIG_HOME/rss2email.cfs`` by default) and a feed database
+(``$XDG_DATA_HOME/rss2email.json`` by default).  If you'd rather those
 files were stored in other locations, use the ``--config`` and
-``--data`` options.
+``--data`` options.  ``XDG_CONFIG_HOME`` defaults to ``$HOME/.config``
+and ``XDG_DATA_HOME`` defaults to ``$HOME/.local/share``.
 
 You should edit the default configuration file now to adjust rss2email
 for your local system.  Unless you've installed a local
