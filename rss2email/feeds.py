@@ -27,8 +27,10 @@
 """Define the ``Feed`` class for handling a list of feeds
 """
 
+import codecs as _codecs
 import collections as _collections
 import os as _os
+import json as _json
 import pickle as _pickle
 import sys as _sys
 
@@ -50,8 +52,9 @@ except:
 class Feeds (list):
     """Utility class for rss2email activity.
 
+    >>> import codecs
     >>> import os.path
-    >>> import pickle
+    >>> import json
     >>> import tempfile
     >>> from .feed import Feed
 
@@ -68,13 +71,16 @@ class Feeds (list):
     ...     count = f.write('[feed.f2]\\n')
     ...     count = f.write('url = http://b.com/rss.atom\\n')
     >>> datafile = os.path.join(tmpdir.name, 'feeds.dat')
-    >>> with open(datafile, 'wb') as f:
-    ...     pickle.dump([
-    ...             Feed(name='f1'),
-    ...             Feed(name='f2'),
-    ...             ], f)
+    >>> with codecs.open(datafile, 'w', Feeds.datafile_encoding) as f:
+    ...     json.dump({
+    ...             'version': 1,
+    ...             'feeds': [
+    ...                 Feed(name='f1').get_state(),
+    ...                 Feed(name='f2').get_state(),
+    ...                 ],
+    ...             }, f)
 
-    >>> feeds = Feeds(configdir=tmpdir.name)
+    >>> feeds = Feeds(configfiles=[configfile,], datafile=datafile)
     >>> feeds.load()
     >>> for feed in feeds:
     ...     print(feed)
@@ -115,6 +121,9 @@ class Feeds (list):
 
     >>> tmpdir.cleanup()
     """
+    datafile_version = 1
+    datafile_encoding = 'utf-8'
+
     def __init__(self, configdir=None, datafile=None, configfiles=None,
                  config=None):
         super(Feeds, self).__init__()
@@ -192,10 +201,11 @@ class Feeds (list):
                 raise _error.NoDataFile(feeds=self)
             _LOG.info('feed data file not found at {}'.format(self.datafile))
             _LOG.debug('creating an empty data file')
-            with open(self.datafile, 'wb') as f:
-                _pickle.dump([], f)
+            with _codecs.open(self.datafile, 'w', self.datafile_encoding) as f:
+                self._save_feed_states(feeds=[], stream=f)
         try:
-            self._datafile_lock = open(self.datafile, 'rb')
+            self._datafile_lock = _codecs.open(
+                self.datafile, 'r', self.datafile_encoding)
         except IOError as e:
             raise _error.DataFileError(feeds=self) from e
 
@@ -208,7 +218,24 @@ class Feeds (list):
 
         level = _LOG.level
         handlers = list(_LOG.handlers)
-        feeds = list(_pickle.load(self._datafile_lock))
+        feeds = []
+        try:
+            data = _json.load(self._datafile_lock)
+        except ValueError as e:
+            _LOG.info('could not load data file using JSON')
+            data = self._load_pickled_data(self._datafile_lock)
+        version = data.get('version', None)
+        if version != self.datafile_version:
+            data = self._upgrade_state_data(data)
+        for state in data['feeds']:
+            feed = _feed.Feed(name='dummy-name')
+            feed.set_state(state)
+            if 'name' not in state:
+                raise _error.DataFileError(
+                    feeds=self,
+                    message='missing feed name in datafile {}'.format(
+                        self.datafile))
+            feeds.append(feed)
         _LOG.setLevel(level)
         _LOG.handlers = handlers
         self.extend(feeds)
@@ -236,6 +263,21 @@ class Feeds (list):
             return order[feed.name]
         self.sort(key=key)
 
+    def _load_pickled_data(self, stream):
+        _LOG.info('try and load data file using Pickle')
+        with open(self.datafile, 'rb') as f:
+            feeds = list(feed.get_state() for feed in _pickle.load(f))
+        return {
+            'version': self.datafile_version,
+            'feeds': feeds,
+            }
+
+    def _upgrade_state_data(self, data):
+        version = data.get('version', 'unknown')
+        raise NotImplementedError(
+            'cannot convert data file from version {} to {}'.format(
+                version, self.datafile_version))
+
     def save(self):
         _LOG.debug('save feed configuration to {}'.format(self.configfiles[-1]))
         for feed in self:
@@ -254,14 +296,26 @@ class Feeds (list):
             _os.makedirs(dirname)
         if UNIX:
             tmpfile = self.datafile + '.tmp'
-            with open(tmpfile, 'wb') as f:
-                _pickle.dump(list(self), f)
+            with _codecs.open(tmpfile, 'w', self.datafile_encoding) as f:
+                self._save_feed_states(feeds=self, stream=f)
             _os.rename(tmpfile, self.datafile)
             if self._datafile_lock is not None:
                 self._datafile_lock.close()  # release the lock
                 self._datafile_lock = None
         else:
-            _pickle.dump(list(self), open(self.datafile, 'wb'))
+            with _codecs.open(self.datafile, 'w', self.datafile_encoding) as f:
+                self._save_feed_states(feeds=self, stream=f)
+
+    def _save_feed_states(self, feeds, stream):
+        _json.dump(
+            {'version': self.datafile_version,
+             'feeds': list(feed.get_state() for feed in feeds),
+             },
+            stream,
+            indent=2,
+            separators=(',', ': '),
+            )
+        stream.write('\n')
 
     def new_feed(self, name=None, prefix='feed-', **kwargs):
         """Return a new feed, possibly auto-generating a name.

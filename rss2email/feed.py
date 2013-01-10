@@ -203,6 +203,8 @@ class Feed (object):
         return dict(
             (key,getattr(self,key)) for key in self._dynamic_attributes)
 
+    get_state = __getstate__  # make it publicly accessible
+
     def __setstate__(self, state):
         "Restore dynamic attributes"
         keys = sorted(state.keys())
@@ -210,6 +212,8 @@ class Feed (object):
             raise ValueError(state)
         self._set_name(name=state['name'])
         self.__dict__.update(state)
+
+    set_state = __setstate__  # make it publicly accessible
 
     def save_to_config(self):
         "Save configured attributes"
