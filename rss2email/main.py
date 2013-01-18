@@ -150,6 +150,9 @@ def run(*args, **kwargs):
     if args.verbose:
         _LOG.setLevel(max(_logging.DEBUG, _logging.ERROR - 10 * args.verbose))
 
+    if not getattr(args, 'func', None):
+        parser.error('too few arguments')
+
     try:
         if not args.config:
             args.config = None
