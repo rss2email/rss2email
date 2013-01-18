@@ -26,16 +26,18 @@ __url__ = 'http://rss2email.infogami.com'
 __author__ = 'W. Trevor King'
 __copyright__ = '(C) 2004 Aaron Swartz. GNU GPL 2 or 3.'
 __contributors__ = [
-    'Dean Jackson',
-    'Brian Lalor',
-    'Joey Hess',
-    'Matej Cepl',
-    "Martin 'Joey' Schulze",
-    'Marcel Ackermann (http://www.DreamFlasher.de)',
-    'Lindsey Smith (lindsey@allthingsrss.com)',
-    'Erik Hetzner',
-    'W. Trevor King',
     'Aaron Swartz (original author)',
+    'Brian Lalor',
+    'Dean Jackson',
+    'Eelis van der Weegen',
+    'Erik Hetzner',
+    'Etienne Millon',
+    'Joey Hess',
+    'Lindsey Smith (lindsey@allthingsrss.com)',
+    'Marcel Ackermann (http://www.DreamFlasher.de)',
+    "Martin 'Joey' Schulze",
+    'Matej Cepl',
+    'W. Trevor King',
     ]
 
 LOG = _logging.getLogger('rss2email')
