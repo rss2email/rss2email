@@ -112,9 +112,10 @@ def get_message(sender, recipient, subject, body, content_type,
     message['From'] = _formataddr((sender_name, sender_addr))
     message['To'] = _formataddr((recipient_name, recipient_addr))
     message['Subject'] = _Header(subject, subject_encoding)
-    for key,value in extra_headers.items():
-        encoding = guess_encoding(value, encodings)
-        message[key] = _Header(value, encoding)
+    if extra_headers:
+        for key,value in extra_headers.items():
+            encoding = guess_encoding(value, encodings)
+            message[key] = _Header(value, encoding)
     return message
 
 def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
