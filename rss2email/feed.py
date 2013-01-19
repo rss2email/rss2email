@@ -57,6 +57,7 @@ _SOCKET_ERRORS = []
 for e in ['error', 'gaierror']:
     if hasattr(_socket, e):
         _SOCKET_ERRORS.append(getattr(_socket, e))
+del e  # cleanup namespace
 _SOCKET_ERRORS = tuple(_SOCKET_ERRORS)
 
 
