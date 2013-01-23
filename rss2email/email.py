@@ -160,7 +160,7 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
         'sending message to {} via /usr/sbin/sendmail'.format(recipient))
     try:
         p = _subprocess.Popen(
-            ['/usr/sbin/sendmail', recipient],
+            ['/usr/sbin/sendmail', '-f', sender, recipient],
             stdin=_subprocess.PIPE, stdout=_subprocess.PIPE,
             stderr=_subprocess.PIPE)
         stdout,stderr = p.communicate(message.as_string()
