@@ -1,0 +1,17 @@
+feed.atom is a snapshot of
+
+  http://www.bbc.co.uk/zhongwen/simp/index.xml
+
+as of 2013-01-23.
+
+HTTP headers:
+
+  HTTP/1.1 200 OK
+  Date: Wed, 23 Jan 2013 22:27:10 GMT
+  Server: Apache
+  Last-Modified: Wed, 23 Jan 2013 21:04:01 GMT
+  Accept-Ranges: bytes
+  Content-Length: 560081
+  Keep-Alive: timeout=4, max=193
+  Connection: Keep-Alive
+  Content-Type: text/xml
