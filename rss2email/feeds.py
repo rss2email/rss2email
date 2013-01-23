@@ -163,7 +163,10 @@ class Feeds (list):
 
     def index(self, index):
         if isinstance(index, int):
-            return self[index]
+            try:
+                return self[index]
+            except IndexError as e:
+                raise _error.FeedIndexError(index=index, feeds=self) from e
         elif isinstance(index, str):
             try:
                 index = int(index)
@@ -174,7 +177,10 @@ class Feeds (list):
             for feed in self:
                 if feed.name == index:
                     return feed
-        super(Feeds, self).index(index)
+        try:
+            super(Feeds, self).index(index)
+        except (IndexError, ValueError) as e:
+            raise _error.FeedIndexError(index=index, feeds=self) from e
 
     def remove(self, feed):
         super(Feeds, self).remove(feed)

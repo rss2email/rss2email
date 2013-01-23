@@ -207,6 +207,15 @@ class NoToEmailAddress (InvalidFeedConfig, FeedsError):
             "'r2e add name url emailaddress'.")
 
 
+class FeedIndexError (FeedsError, IndexError):
+    def __init__(self, index, message=None, **kwargs):
+        if message is None:
+            message = 'feed {!r} not found'.format(index)
+        super(FeedIndexError, self).__init__(
+            message=message, **kwargs)
+        self.index = index
+
+
 class OPMLReadError (RSS2EmailError):
     def __init__(self, **kwargs):
         message = 'error reading OPML'
