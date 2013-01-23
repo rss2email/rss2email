@@ -86,6 +86,8 @@ def get_message(sender, recipient, subject, body, content_type,
     """
     if config is None:
         config = _config.CONFIG
+    if section not in config.sections():
+        section = 'DEFAULT'
     encodings = [
         x.strip() for x in config.get(section, 'encodings').split(',')]
 

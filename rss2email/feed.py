@@ -438,7 +438,9 @@ class Feed (object):
             subject=subject,
             body=content['value'],
             content_type=content['type'].split('/', 1)[1],
-            extra_headers=extra_headers)
+            extra_headers=extra_headers,
+            config=self.config,
+            section=self.section)
         return (guid, id_, sender, message)
 
     def _get_entry_id(self, entry):
