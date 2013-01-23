@@ -114,7 +114,7 @@ def get_message(sender, recipient, subject, body, content_type,
     message['From'] = _formataddr((sender_name, sender_addr))
     message['To'] = _formataddr((recipient_name, recipient_addr))
     message['Subject'] = _Header(subject, subject_encoding)
-    if config.getboolean(section, 'use_8bit'):
+    if config.getboolean(section, 'use-8bit'):
         message['Content-Transfer-Encoding'] = '8bit'
         message.set_payload(body)
     if extra_headers:
