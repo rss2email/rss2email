@@ -112,6 +112,9 @@ def get_message(sender, recipient, subject, body, content_type,
     message['From'] = _formataddr((sender_name, sender_addr))
     message['To'] = _formataddr((recipient_name, recipient_addr))
     message['Subject'] = _Header(subject, subject_encoding)
+    if config.getboolean(section, 'use_8bit'):
+        message['Content-Transfer-Encoding'] = '8bit'
+        message.set_payload(body)
     if extra_headers:
         for key,value in extra_headers.items():
             encoding = guess_encoding(value, encodings)
@@ -160,7 +163,8 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
             ['/usr/sbin/sendmail', recipient],
             stdin=_subprocess.PIPE, stdout=_subprocess.PIPE,
             stderr=_subprocess.PIPE)
-        stdout,stderr = p.communicate(message.as_string().encode('ascii'))
+        stdout,stderr = p.communicate(message.as_string()
+                                      .encode(str(message.get_charset())))
         status = p.wait()
         if status:
             raise _error.SendmailError(

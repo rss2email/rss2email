@@ -52,6 +52,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ### Addressing
         # The email address messages are from by default
         ('from', 'user@rss2email.invalid'),
+        # Transfer-Encoding. For local mailing it is safe and
+        # convient to use 8bit.
+        ('use_8bit', str(True)),
         # True: Only use the 'from' address.
         # False: Use the email address specified by the feed, when possible.
         ('force-from', str(False)),
