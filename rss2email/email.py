@@ -19,6 +19,8 @@
 """Email message generation and dispatching
 """
 
+from email.charset import Charset as _Charset
+import email.encoders as _email_encoders
 from email.header import Header as _Header
 from email.mime.text import MIMEText as _MIMEText
 from email.utils import formataddr as _formataddr
@@ -116,8 +118,9 @@ def get_message(sender, recipient, subject, body, content_type,
     message['Subject'] = _Header(subject, subject_encoding)
     if config.getboolean(section, 'use-8bit'):
         del message['Content-Transfer-Encoding']
-        message['Content-Transfer-Encoding'] = '8bit'
-        message.set_payload(body)
+        charset = _Charset(body_encoding)
+        charset.body_encoding = _email_encoders.encode_7or8bit
+        message.set_payload(body, charset=charset)
     if extra_headers:
         for key,value in extra_headers.items():
             encoding = guess_encoding(value, encodings)
