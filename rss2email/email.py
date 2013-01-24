@@ -122,7 +122,7 @@ def get_message(sender, recipient, subject, body, content_type,
         del message['Content-Transfer-Encoding']
         charset = _Charset(body_encoding)
         charset.body_encoding = _email_encoders.encode_7or8bit
-        message.set_payload(body, charset=charset)
+        message.set_payload(body.encode(body_encoding), charset=charset)
     if extra_headers:
         for key,value in extra_headers.items():
             encoding = guess_encoding(value, encodings)
