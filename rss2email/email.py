@@ -175,7 +175,7 @@ def _flatten(message):
     ...     content_type='plain',
     ...     config=config)
     >>> for line in _flatten(message).split(b'\n'):
-    ...     print(line)
+    ...     print(line)  # doctest: +REPORT_UDIFF
     b'MIME-Version: 1.0'
     b'Content-Type: text/plain; charset="utf-8"'
     b'Content-Transfer-Encoding: base64'
@@ -196,7 +196,7 @@ def _flatten(message):
     ...     content_type='plain',
     ...     config=config)
     >>> for line in _flatten(message).split(b'\n'):
-    ...     print(line)
+    ...     print(line)  # doctest: +REPORT_UDIFF
     b'MIME-Version: 1.0'
     b'Content-Type: text/plain; charset="utf-8"'
     b'From: John <jdoe@a.com>'
@@ -205,6 +205,26 @@ def _flatten(message):
     b'Content-Transfer-Encoding: 8bit'
     b''
     b"You're great, \xce\x96\xce\xb5\xcf\x8d\xcf\x82!\\n"
+
+    Here's an 8-bit version in UTF-16:
+
+    >>> config.set('DEFAULT', 'encodings', 'US-ASCII, UTF-16-LE')
+    >>> message = get_message(
+    ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
+    ...     subject='Homage',
+    ...     body="You're great, Ζεύς!\\n",
+    ...     content_type='plain',
+    ...     config=config)
+    >>> for line in _flatten(message).split(b'\n'):
+    ...     print(line)  # doctest: +REPORT_UDIFF
+    b'MIME-Version: 1.0'
+    b'Content-Type: text/plain; charset="utf-16-le"'
+    b'From: John <jdoe@a.com>'
+    b'To: =?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>'
+    b'Subject: Homage'
+    b'Content-Transfer-Encoding: 8bit'
+    b''
+    b"\x00Y\x00o\x00u\x00'\x00r\x00e\x00 \x00g\x00r\x00e\x00a\x00t\x00,\x00 \x00\x96\x03\xb5\x03\xcd\x03\xc2\x03!\x00\\\x00n\x00"
     """
     return message.as_string().encode(str(message.get_charset()))
 
