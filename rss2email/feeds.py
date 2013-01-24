@@ -205,7 +205,7 @@ class Feeds (list):
                 'XDG_CONFIG_DIRS',
                 _os.path.join(ROOT_PATH, 'etc', 'xdg'),
                 ).split(':'))
-        # reverse because ConfigParser wants most significan last
+        # reverse because ConfigParser wants most significant last
         return list(reversed(
                 [_os.path.join(config_dir, 'rss2email.cfg')
                  for config_dir in config_dirs]))
