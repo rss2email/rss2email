@@ -163,6 +163,8 @@ def run(*args, **kwargs):
         args.func(feeds=feeds, args=args)
     except _error.RSS2EmailError as e:
         e.log()
+        if _logging.ERROR - 10 * args.verbose < _logging.DEBUG:
+            raise  # don't mask the traceback
         _sys.exit(1)
 
 
