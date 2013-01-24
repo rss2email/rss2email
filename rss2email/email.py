@@ -21,10 +21,12 @@
 
 from email.charset import Charset as _Charset
 import email.encoders as _email_encoders
+from email.generator import BytesGenerator as _BytesGenerator
 from email.header import Header as _Header
 from email.mime.text import MIMEText as _MIMEText
 from email.utils import formataddr as _formataddr
 from email.utils import parseaddr as _parseaddr
+import io as _io
 import smtplib as _smtplib
 import subprocess as _subprocess
 
@@ -226,7 +228,10 @@ def _flatten(message):
     b''
     b"\x00Y\x00o\x00u\x00'\x00r\x00e\x00 \x00g\x00r\x00e\x00a\x00t\x00,\x00 \x00\x96\x03\xb5\x03\xcd\x03\xc2\x03!\x00\\\x00n\x00"
     """
-    return message.as_string().encode(str(message.get_charset()))
+    bytesio = _io.BytesIO()
+    generator = _BytesGenerator(bytesio)  # use policies for Python >=3.3
+    generator.flatten(message)
+    return bytesio.getvalue()
 
 def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
