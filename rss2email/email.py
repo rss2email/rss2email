@@ -159,9 +159,59 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     smtp.send_message(message, sender, [recipient])
     smtp.quit()
 
+def _flatten(message):
+    r"""Flatten an email.message.Message to bytes
+
+    >>> import rss2email.config
+    >>> config = rss2email.config.Config()
+    >>> config.read_dict(rss2email.config.CONFIG)
+
+    Here's a 7-bit, base64 version:
+
+    >>> message = get_message(
+    ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
+    ...     subject='Homage',
+    ...     body="You're great, Ζεύς!\\n",
+    ...     content_type='plain',
+    ...     config=config)
+    >>> for line in _flatten(message).split(b'\n'):
+    ...     print(line)
+    b'MIME-Version: 1.0'
+    b'Content-Type: text/plain; charset="utf-8"'
+    b'Content-Transfer-Encoding: base64'
+    b'From: John <jdoe@a.com>'
+    b'To: =?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>'
+    b'Subject: Homage'
+    b''
+    b'WW91J3JlIGdyZWF0LCDOls61z43PgiFcbg=='
+    b''
+
+    Here's an 8-bit version:
+
+    >>> config.set('DEFAULT', 'use-8bit', str(True))
+    >>> message = get_message(
+    ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
+    ...     subject='Homage',
+    ...     body="You're great, Ζεύς!\\n",
+    ...     content_type='plain',
+    ...     config=config)
+    >>> for line in _flatten(message).split(b'\n'):
+    ...     print(line)
+    b'MIME-Version: 1.0'
+    b'Content-Type: text/plain; charset="utf-8"'
+    b'From: John <jdoe@a.com>'
+    b'To: =?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>'
+    b'Subject: Homage'
+    b'Content-Transfer-Encoding: 8bit'
+    b''
+    b"You're great, \xce\x96\xce\xb5\xcf\x8d\xcf\x82!\\n"
+    """
+    return message.as_string().encode(str(message.get_charset()))
+
 def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
+    message_bytes = _flatten(message)
     _LOG.debug(
         'sending message to {} via /usr/sbin/sendmail'.format(recipient))
     try:
@@ -169,8 +219,7 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
             ['/usr/sbin/sendmail', '-f', sender, recipient],
             stdin=_subprocess.PIPE, stdout=_subprocess.PIPE,
             stderr=_subprocess.PIPE)
-        stdout,stderr = p.communicate(message.as_string()
-                                      .encode(str(message.get_charset())))
+        stdout,stderr = p.communicate(message_bytes)
         status = p.wait()
         if status:
             raise _error.SendmailError(
