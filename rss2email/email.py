@@ -19,8 +19,8 @@
 """Email message generation and dispatching
 """
 
-from email.mime.text import MIMEText as _MIMEText
 from email.header import Header as _Header
+from email.mime.text import MIMEText as _MIMEText
 from email.utils import formataddr as _formataddr
 from email.utils import parseaddr as _parseaddr
 import smtplib as _smtplib
