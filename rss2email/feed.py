@@ -246,10 +246,14 @@ class Feed (object):
             for key in expected:
                 if (key not in keys and
                     key not in self._non_default_configured_attributes):
-                    raise ValueError('missing key: {}'.format(key))
+                    raise _error.InvalidFeedConfig(
+                        setting=key, feed=self,
+                        message='missing configuration key: {}'.format(key))
             for key in keys:
                 if key not in expected:
-                    raise ValueError('extra key: {}'.format(key))
+                    raise _error.InvalidFeedConfig(
+                        setting=key, feed=self,
+                        message='extra configuration key: {}'.format(key))
         data = dict(
             (self._configured_attribute_inverse_translations[k],
              self._get_configured_attribute_value(
