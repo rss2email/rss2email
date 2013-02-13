@@ -53,16 +53,16 @@ def run(feeds, args):
     "Fetch feeds and send entry emails."
     if not args.index:
         args.index = range(len(feeds))
-    for index in args.index:
-        feed = feeds.index(index)
-        if feed.active:
-            try:
-                feed.run(send=args.send)
-            except _error.NoToEmailAddress as e:
-                e.log()
-            except _error.ProcessingError as e:
-                e.log()
-    feeds.save()
+    try:
+        for index in args.index:
+            feed = feeds.index(index)
+            if feed.active:
+                try:
+                    feed.run(send=args.send)
+                except _error.RSS2EmailError as e:
+                    e.log()
+    finally:
+        feeds.save()
 
 def list(feeds, args):
     "List all the feeds in the database"
