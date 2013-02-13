@@ -21,7 +21,7 @@ import logging as _logging
 import sys as _sys
 
 
-__version__ = '2.71'
+__version__ = '3.0'
 __url__ = 'http://rss2email.infogami.com'
 __author__ = 'W. Trevor King'
 __copyright__ = '(C) 2004 Aaron Swartz. GNU GPL 2 or 3.'
