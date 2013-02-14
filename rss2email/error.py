@@ -18,6 +18,7 @@
 """
 
 from . import LOG as _LOG
+from . import __version__, __url__, __email__
 
 import pprint as _pprint
 
