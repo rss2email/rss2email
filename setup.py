@@ -20,7 +20,7 @@ import codecs as _codecs
 from distutils.core import setup
 import os.path as _os_path
 
-from rss2email import __version__
+from rss2email import __version__, __url__, __author__, __email__
 
 
 _this_dir = _os_path.dirname(__file__)
@@ -28,9 +28,9 @@ _this_dir = _os_path.dirname(__file__)
 setup(
     name='rss2email',
     version=__version__,
-    maintainer='W. Trevor King',
-    maintainer_email='rss2email@tremily.us',
-    url='https://github.com/wking/rss2email/',
+    maintainer=__author__,
+    maintainer_email=__email__,
+    url=__url__,
     download_url='https://github.com/wking/rss2email/archive/v{}.tar.gz'.format(__version__),
     license='GNU General Public License (GPL)',
     platforms=['all'],
