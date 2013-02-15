@@ -1,3 +1,6 @@
+v3.2 (unreleased)
+    * Added sendmail configuration option.  Change this if you want to use an alternative, sendmail-compatible mailer.
+
 v3.1 (2013-02-14)
     * Import __url__, __author__, and __email__ in rss2email.error, which fixes bugs in formatting a number of errors.
 

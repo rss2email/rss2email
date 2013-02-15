@@ -237,11 +237,12 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
     message_bytes = _flatten(message)
+    sendmail = config.get(section, 'sendmail')
     _LOG.debug(
-        'sending message to {} via /usr/sbin/sendmail'.format(recipient))
+        'sending message to {} via {}'.format(recipient, sendmail))
     try:
         p = _subprocess.Popen(
-            ['/usr/sbin/sendmail', '-f', sender, recipient],
+            [sendmail, '-f', sender, recipient],
             stdin=_subprocess.PIPE, stdout=_subprocess.PIPE,
             stderr=_subprocess.PIPE)
         stdout,stderr = p.communicate(message_bytes)
