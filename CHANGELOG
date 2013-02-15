@@ -1,11 +1,17 @@
-v3.0 (unreleased)
-    * Changed project email (rss2email@tremily.us) and homepage (http://github.com/wking/rss2email)
+v3.1 (2013-02-14)
+    * Import __url__, __author__, and __email__ in rss2email.error, which fixes bugs in formatting a number of errors.
+
+v3.0 (2013-02-13)
+    * Changed project email (rss2email@tremily.us) and homepage (http://github.com/wking/rss2email).
     * Split static configuration parameters into a ConfigParser-read config file (rss2email.cfg).  Data that depends on the feed state is recorded using JSON (rss2email.json).
     * Use the XDG Base Directory Specification for standardized configuration and data file locations.
     * Converted the command line interface to argparse, with some restructuring along the way.
     * Added the r2e.1 man page (based on one from the Debian package).
-    * Added setup.py and a PyPI page for simpler installation (http://pypi.python.org/pypi/rss2email)
+    * Added setup.py and a PyPI page for simpler installation (http://pypi.python.org/pypi/rss2email).
+    * Added Message-ID headers to outgoing email.
+    * Added a test suite.
     * Upgraded to Python 3.2 to take advantage of cleaner Unicode handling and argparse.
+    * Require Signed-off-by lines in new commit messages, following the Linux and Git projects.
 
 v2.71 (2011-03-04)
     * Upgraded to feedparser v5.01! (http://code.google.com/p/feedparser/)
