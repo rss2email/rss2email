@@ -19,6 +19,7 @@
 """Email message generation and dispatching
 """
 
+import email as _email
 from email.charset import Charset as _Charset
 import email.encoders as _email_encoders
 from email.generator import BytesGenerator as _BytesGenerator
@@ -122,7 +123,7 @@ def get_message(sender, recipient, subject, body, content_type,
         del message['Content-Transfer-Encoding']
         charset = _Charset(body_encoding)
         charset.body_encoding = _email_encoders.encode_7or8bit
-        message.set_payload(body.encode(body_encoding), charset=charset)
+        message.set_payload(body, charset=charset)
     if extra_headers:
         for key,value in extra_headers.items():
             encoding = guess_encoding(value, encodings)
@@ -231,8 +232,21 @@ def _flatten(message):
     """
     bytesio = _io.BytesIO()
     generator = _BytesGenerator(bytesio)  # use policies for Python >=3.3
-    generator.flatten(message)
-    return bytesio.getvalue()
+    try:
+        generator.flatten(message)
+    except UnicodeEncodeError as e:
+        # HACK: work around deficiencies in BytesGenerator
+        _LOG.warning(e)
+        b = message.as_string().encode(str(message.get_charset()))
+        m = _email.message_from_bytes(b)
+        if not m:
+            raise
+        body = str(m.get_payload(decode=True), str(m.get_charsets()[0]))
+        if (dict(m) == dict(message) and body == message.get_payload()):
+            return b
+        raise
+    else:
+        return bytesio.getvalue()
 
 def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
