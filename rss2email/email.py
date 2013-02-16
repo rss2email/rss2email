@@ -173,7 +173,7 @@ def _flatten(message):
     >>> message = get_message(
     ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
     ...     subject='Homage',
-    ...     body="You're great, Ζεύς!\\n",
+    ...     body="You're great, Ζεύς!\n",
     ...     content_type='plain',
     ...     config=config)
     >>> for line in _flatten(message).split(b'\n'):
@@ -185,7 +185,7 @@ def _flatten(message):
     b'To: =?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>'
     b'Subject: Homage'
     b''
-    b'WW91J3JlIGdyZWF0LCDOls61z43PgiFcbg=='
+    b'WW91J3JlIGdyZWF0LCDOls61z43PgiEK'
     b''
 
     Here's an 8-bit version:
@@ -194,7 +194,7 @@ def _flatten(message):
     >>> message = get_message(
     ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
     ...     subject='Homage',
-    ...     body="You're great, Ζεύς!\\n",
+    ...     body="You're great, Ζεύς!\n",
     ...     content_type='plain',
     ...     config=config)
     >>> for line in _flatten(message).split(b'\n'):
@@ -206,7 +206,8 @@ def _flatten(message):
     b'Subject: Homage'
     b'Content-Transfer-Encoding: 8bit'
     b''
-    b"You're great, \xce\x96\xce\xb5\xcf\x8d\xcf\x82!\\n"
+    b"You're great, \xce\x96\xce\xb5\xcf\x8d\xcf\x82!"
+    b''
 
     Here's an 8-bit version in UTF-16:
 
@@ -214,7 +215,7 @@ def _flatten(message):
     >>> message = get_message(
     ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
     ...     subject='Homage',
-    ...     body="You're great, Ζεύς!\\n",
+    ...     body="You're great, Ζεύς!\n",
     ...     content_type='plain',
     ...     config=config)
     >>> for line in _flatten(message).split(b'\n'):
@@ -226,7 +227,7 @@ def _flatten(message):
     b'Subject: Homage'
     b'Content-Transfer-Encoding: 8bit'
     b''
-    b"\x00Y\x00o\x00u\x00'\x00r\x00e\x00 \x00g\x00r\x00e\x00a\x00t\x00,\x00 \x00\x96\x03\xb5\x03\xcd\x03\xc2\x03!\x00\\\x00n\x00"
+    b"\x00Y\x00o\x00u\x00'\x00r\x00e\x00 \x00g\x00r\x00e\x00a\x00t\x00,\x00 \x00\x96\x03\xb5\x03\xcd\x03\xc2\x03!\x00\n\x00"
     """
     bytesio = _io.BytesIO()
     generator = _BytesGenerator(bytesio)  # use policies for Python >=3.3
