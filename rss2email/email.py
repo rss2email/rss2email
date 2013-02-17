@@ -23,6 +23,7 @@ import email as _email
 from email.charset import Charset as _Charset
 import email.encoders as _email_encoders
 from email.generator import BytesGenerator as _BytesGenerator
+import email.header as _email_header
 from email.header import Header as _Header
 from email.mime.text import MIMEText as _MIMEText
 from email.utils import formataddr as _formataddr
@@ -30,6 +31,7 @@ from email.utils import parseaddr as _parseaddr
 import io as _io
 import smtplib as _smtplib
 import subprocess as _subprocess
+import sys as _sys
 
 from . import LOG as _LOG
 from . import config as _config
@@ -162,6 +164,32 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     smtp.send_message(message, sender, [recipient])
     smtp.quit()
 
+def _decode_header(header):
+    """Decode RFC-2047-encoded headers to Unicode strings
+
+    >>> from email.header import Header
+    >>> _decode_header('abc')
+    'abc'
+    >>> _decode_header('=?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>')
+    'Ζεύς <z@olympus.org>'
+    >>> _decode_header(Header('Ζεύς <z@olympus.org>', 'utf-8'))
+    'Ζεύς <z@olympus.org>'
+    """
+    if isinstance(header, _Header):
+        return str(header)
+    chunks = []
+    _LOG.critical(_email_header.decode_header(header))
+    for chunk,charset in _email_header.decode_header(header):
+        if charset is None:
+            if isinstance(chunk, bytes):
+                chunk = str(chunk, 'ascii')
+            chunks.append(chunk)
+        else:
+            chunks.append(str(chunk, charset))
+    if _sys.version_info < (3, 3):  # Python 3.2 and older
+        return ' '.join(chunks)  # http://bugs.python.org/issue1079
+    return ''.join(chunks)
+
 def _flatten(message):
     r"""Flatten an email.message.Message to bytes
 
@@ -241,8 +269,10 @@ def _flatten(message):
         m = _email.message_from_bytes(b)
         if not m:
             raise
+        h = {k:_decode_header(v) for k,v in m.items()}
+        head = {k:_decode_header(v) for k,v in message.items()}
         body = str(m.get_payload(decode=True), str(m.get_charsets()[0]))
-        if (dict(m) == dict(message) and body == message.get_payload()):
+        if (h == head and body == message.get_payload()):
             return b
         raise
     else:
