@@ -34,8 +34,11 @@ import html2text as _html2text
 
 
 class Config (_configparser.ConfigParser):
-    def __init__(self, **kwargs):
-        super(Config, self).__init__(dict_type=_collections.OrderedDict)
+    def __init__(self, dict_type=_collections.OrderedDict,
+                 interpolation=_configparser.ExtendedInterpolation(),
+                 **kwargs):
+        super(Config, self).__init__(
+            dict_type=dict_type, interpolation=interpolation, **kwargs)
 
     def _setup(self, section='DEFAULT'):
         _html2text.UNICODE_SNOB = self.getboolean(
