@@ -19,12 +19,13 @@ Packages
 --------
 
 A quick way to get rss2email going is using pre-made packages. Here
-are releases for Debian__ Linux, Ubuntu__ Linux, Gentoo__ Linux, and
-NetBSD__.
+are releases for Debian__ Linux, Ubuntu__ Linux, Gentoo__ Linux,
+openSUSE__, and NetBSD__.
 
 __ `Debian package`_
 __ `Ubuntu package`_
 __ `Gentoo package`_
+__ `openSUSE package`_
 __ `NetBSD package`_
 
 Installing by hand
@@ -222,6 +223,8 @@ mailing list archives are available on Gmane_.
   http://packages.qa.debian.org/r/rss2email.html
 .. _Ubuntu package:
   https://launchpad.net/ubuntu/+source/rss2email
+.. _openSUSE package:
+  https://build.opensuse.org/package/show?package=rss2email&project=server%3Amail
 .. _NetBSD package:
   ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-current/pkgsrc/mail/rss2email/README.html
 .. _Gentoo package:
