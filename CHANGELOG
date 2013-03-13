@@ -1,4 +1,6 @@
 v3.2 (unreleased)
+    * Use extended interpolation in configuration files, to allow percent signs (%).
+    * Added .as_string() fallback to email flattening (only used if `use-smtp = False` and `use-8bit = True`).
     * Added sendmail configuration option.  Change this if you want to use an alternative, sendmail-compatible mailer.
 
 v3.1 (2013-02-14)
