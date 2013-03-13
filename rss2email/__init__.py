@@ -21,7 +21,7 @@ import logging as _logging
 import sys as _sys
 
 
-__version__ = '3.1'
+__version__ = '3.2'
 __url__ = 'https://github.com/wking/rss2email'
 __author__ = 'W. Trevor King'
 __email__ = 'rss2email@tremily.us'
