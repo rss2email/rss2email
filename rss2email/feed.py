@@ -710,9 +710,6 @@ class Feed (object):
             for elink in getattr(entry, 'links', []):
                 if elink.get('rel', None) == 'via':
                     url = elink['href']
-                    url = url.replace(
-                        'http://www.google.com/reader/public/atom/',
-                        'http://www.google.com/reader/view/')
                     title = url
                     if elink.get('title', None):
                         title = elink['title']
@@ -742,9 +739,6 @@ class Feed (object):
             for elink in getattr(entry, 'links', []):
                 if elink.get('rel', None) == 'via':
                     url = elink['href']
-                    url = url.replace(
-                        'http://www.google.com/reader/public/atom/',
-                        'http://www.google.com/reader/view/')
                     title = url
                     if elink.get('title', None):
                         title = elink['title']
