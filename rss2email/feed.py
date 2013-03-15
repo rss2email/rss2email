@@ -710,9 +710,7 @@ class Feed (object):
             for elink in getattr(entry, 'links', []):
                 if elink.get('rel', None) == 'via':
                     url = elink['href']
-                    title = url
-                    if elink.get('title', None):
-                        title = elink['title']
+                    title = elink.get('title', url)
                     lines.append('<p>Via <a href="{}">{}</a></p>'.format(
                             url, title))
             lines.extend([
@@ -739,9 +737,7 @@ class Feed (object):
             for elink in getattr(entry, 'links', []):
                 if elink.get('rel', None) == 'via':
                     url = elink['href']
-                    title = url
-                    if elink.get('title', None):
-                        title = elink['title']
+                    title = elink.get('title', url)
                     lines.append('Via: {} {}'.format(title, url))
             content['type'] = 'text/plain'
             content['value'] = '\n'.join(lines)
