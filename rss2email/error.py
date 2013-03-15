@@ -160,10 +160,10 @@ class ProcessingError (FeedError):
             _LOG.warning('=== END HERE ===')
 
 
-class HTTPError (ProcessingError):
+class HTTPError (FeedError):
     def __init__(self, status, feed, **kwargs):
         message = 'HTTP status {} fetching feed {}'.format(status, feed)
-        super(FeedError, self).__init__(feed=feed, message=message)
+        super(HTTPError, self).__init__(feed=feed, message=message)
         self.status = status
 
 
