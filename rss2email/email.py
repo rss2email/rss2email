@@ -142,7 +142,6 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
         smtp = _smtplib.SMTP_SSL()
     else:
         smtp = _smtplib.SMTP()
-        smtp.ehlo()
     try:
         smtp.connect(SMTP_SERVER)
     except KeyboardInterrupt:
