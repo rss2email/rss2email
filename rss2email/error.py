@@ -79,7 +79,7 @@ class SMTPAuthenticationError (SMTPConnectionError):
         message = (
             'could not authenticate with mail server {} as user {}'.format(
                 server, username))
-        super(SMTPConnectionError, self).__init__(
+        super(SMTPAuthenticationError, self).__init__(
             server=server, message=message)
         self.server = server
         self.username = username
@@ -134,7 +134,7 @@ class ProcessingError (FeedError):
     def __init__(self, parsed, feed, **kwargs):
         if message is None:
             message = 'error processing feed {}'.format(feed)
-        super(FeedError, self).__init__(feed=feed, message=message)
+        super(ProcessingError, self).__init__(feed=feed, message=message)
         self.parsed = parsed
 
     def log(self):
@@ -220,4 +220,4 @@ class FeedIndexError (FeedsError, IndexError):
 class OPMLReadError (RSS2EmailError):
     def __init__(self, **kwargs):
         message = 'error reading OPML'
-        super(RSS2EmailError, self).__init__(message=message, **kwargs)
+        super(OPMLReadError, self).__init__(message=message, **kwargs)
