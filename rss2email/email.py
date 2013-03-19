@@ -143,7 +143,7 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     else:
         smtp = _smtplib.SMTP()
     try:
-        smtp.connect(SMTP_SERVER)
+        smtp.connect(server)
     except KeyboardInterrupt:
         raise
     except Exception as e:
