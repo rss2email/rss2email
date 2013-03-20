@@ -30,6 +30,7 @@
 import collections as _collections
 from email.utils import formataddr as _formataddr
 import hashlib as _hashlib
+import html.parser as _html_parser
 import re as _re
 import socket as _socket
 import time as _time
@@ -434,8 +435,12 @@ class Feed (object):
                             self.bonus_header))
 
         content = self._get_entry_content(entry)
-        content = self._process_entry_content(
-            entry=entry, content=content, subject=subject)
+        try:
+            content = self._process_entry_content(
+                entry=entry, content=content, subject=subject)
+        except _error.ProcessingError as e:
+            e.parsed = parsed
+            raise
         message = _email.get_message(
             sender=sender,
             recipient=self.to,
@@ -724,7 +729,10 @@ class Feed (object):
             return content
         else:  # not self.html_mail
             if content['type'] in ('text/html', 'application/xhtml+xml'):
-                lines = [_html2text.html2text(content['value'])]
+                try:
+                    lines = [_html2text.html2text(content['value'])]
+                except _html_parser.HTMLParseError as e:
+                    raise _error.ProcessingError(parsed=None, feed=self)
             else:
                 lines = [content['value']]
             lines.append('')
