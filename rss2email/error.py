@@ -17,6 +17,8 @@
 """rss2email-specific errors
 """
 
+import sys as _sys
+
 from . import LOG as _LOG
 from . import __version__, __url__, __email__
 
@@ -131,7 +133,7 @@ class InvalidFeedName (InvalidFeedConfig):
 
 
 class ProcessingError (FeedError):
-    def __init__(self, parsed, feed, **kwargs):
+    def __init__(self, parsed, feed, message=None, **kwargs):
         if message is None:
             message = 'error processing feed {}'.format(feed)
         super(ProcessingError, self).__init__(feed=feed, message=message)
@@ -153,10 +155,10 @@ class ProcessingError (FeedError):
                     self.parsed.get('bozo_exception', "can't process"),
                     self.feed.url))
             _LOG.warning(_pprint.pformat(self.parsed))
-            _LOG.warning('rss2email', __version__)
-            _LOG.warning('feedparser', _feedparser.__version__)
-            _LOG.warning('html2text', _html2text.__version__)
-            _LOG.warning('Python', _sys.version)
+            _LOG.warning('rss2email {}'.format(__version__))
+            _LOG.warning('feedparser {}'.format(_feedparser.__version__))
+            _LOG.warning('html2text {}'.format(_html2text.__version__))
+            _LOG.warning('Python {}'.format(_sys.version))
             _LOG.warning('=== END HERE ===')
 
 
