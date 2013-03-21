@@ -55,7 +55,7 @@ from . import util as _util
 _feedparser.USER_AGENT = 'rss2email/{} +{}'.format(__version__, __url__)
 _urllib_request.install_opener(_urllib_request.build_opener())
 _SOCKET_ERRORS = []
-for e in ['error', 'gaierror']:
+for e in ['error', 'herror', 'gaierror']:
     if hasattr(_socket, e):
         _SOCKET_ERRORS.append(getattr(_socket, e))
 del e  # cleanup namespace
@@ -363,16 +363,10 @@ class Feed (object):
         if isinstance(exc, _socket.timeout):
             _LOG.error('timed out: {}'.format(self))
             warned = True
-        elif isinstance(exc, _SOCKET_ERRORS):
-            reason = exc.args[1]
+        elif isinstance(exc, OSError):
             _LOG.error('{}: {}'.format(exc, self))
             warned = True
-        elif (hasattr(exc, 'reason') and
-              isinstance(exc.reason, _urllib_error.URLError)):
-            if isinstance(exc.reason, _SOCKET_ERRORS):
-                reason = exc.reason.args[1]
-            else:
-                reason = exc.reason
+        elif isinstance(exc, _SOCKET_ERRORS):
             _LOG.error('{}: {}'.format(exc, self))
             warned = True
         elif isinstance(exc, _feedparser.zlib.error):
