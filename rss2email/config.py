@@ -107,6 +107,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # True: Receive one email per post.
         # False: Receive an email every time a post changes.
         ('trust-guid', str(True)),
+        # True: Receive one email per unique link url.
+        # False: Defer to trust-guid preference.
+        ('trust-link', str(False)),
         # To most correctly encode emails with international
         # characters, we iterate through the list below and use the
         # first character set that works.
