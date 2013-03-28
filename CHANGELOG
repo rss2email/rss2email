@@ -1,3 +1,10 @@
+v3.3 (unreleased)
+    * Fix SMTP message submission logic.
+    * Fix error inheritence (super() calls).
+    * Convert html2text parsing errors to `ProcessingError`s.
+    * Cleanup html2text error handling.
+    * Drop Google Reader rel-via manipulation.
+
 v3.2 (2013-03-13)
     * Use extended interpolation in configuration files, to allow percent signs (%).
     * Added .as_string() fallback to email flattening (only used if `use-smtp = False` and `use-8bit = True`).
