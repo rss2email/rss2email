@@ -33,6 +33,7 @@ __contributors__ = [
     'Eelis van der Weegen',
     'Erik Hetzner',
     'Etienne Millon',
+    'George Saunders',
     'Joey Hess',
     'Lindsey Smith (lindsey@allthingsrss.com)',
     'Marcel Ackermann (http://www.DreamFlasher.de)',
