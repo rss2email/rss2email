@@ -83,7 +83,6 @@ class SMTPAuthenticationError (SMTPConnectionError):
                 server, username))
         super(SMTPAuthenticationError, self).__init__(
             server=server, message=message)
-        self.server = server
         self.username = username
 
 
