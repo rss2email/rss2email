@@ -177,12 +177,6 @@ def imap_send(message, config=None, section='DEFAULT'):
     else:
         imap = _imaplib.IMAP4(server, port)
     try:
-        imap.connect(server)
-    except KeyboardInterrupt:
-        raise
-    except Exception as e:
-        raise _error.IMAPConnectionError(server=server) from e
-    try:
         if config.getboolean(section, 'imap-auth'):
             username = config.get(section, 'imap-username')
             password = config.get(section, 'imap-password')
@@ -200,10 +194,6 @@ def imap_send(message, config=None, section='DEFAULT'):
         message_bytes = _flatten(message)
         imap.append(mailbox, None, date, message_bytes)
     finally:
-        try:
-            imap.close()
-        except Exception as e:
-            _LOG.error(e)
         imap.logout()
 
 def _decode_header(header):
@@ -341,10 +331,10 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
         raise _error.SendmailError() from e
 
 def send(sender, recipient, message, config=None, section='DEFAULT'):
-    protocol = config.get(section, 'email-protocol'):
+    protocol = config.get(section, 'email-protocol')
     if protocol == 'smtp':
         smtp_send(sender, recipient, message)
     elif protocol == 'imap':
-        smtp_send(message)
+        imap_send(message)
     else:
         sendmail_send(sender, recipient, message)
