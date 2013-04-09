@@ -684,13 +684,13 @@ class Feed (object):
                     '<div id="entry>',
                     '<h1 class="header"><a href="{}">{}</a></h1>'.format(
                         link, subject),
-                    '<div id="body"><table><tr><td>',
+                    '<div id="body">',
                     ])
             if content['type'] in ('text/html', 'application/xhtml+xml'):
                 lines.append(content['value'].strip())
             else:
                 lines.append(_saxutils.escape(content['value'].strip()))
-            lines.append('</td></tr></table></div>')
+            lines.append('</div>')
             lines.extend([
                     '<div class="footer">'
                     '<p>URL: <a href="{0}">{0}</a></p>'.format(link),
