@@ -1,4 +1,4 @@
-v3.3 (unreleased)
+v3.3 (2013-04-13)
     * Fix SMTP message submission logic.
     * Fix error inheritence (super() calls).
     * Convert html2text parsing errors to `ProcessingError`s.
