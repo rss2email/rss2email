@@ -28,6 +28,8 @@
 """
 
 import collections as _collections
+from email.mime.message import MIMEMessage as _MIMEMessage
+from email.mime.multipart import MIMEMultipart as _MIMEMultipart
 from email.utils import formataddr as _formataddr
 import hashlib as _hashlib
 import html.parser as _html_parser
@@ -52,7 +54,8 @@ from . import error as _error
 from . import util as _util
 
 
-_feedparser.USER_AGENT = 'rss2email/{} +{}'.format(__version__, __url__)
+_USER_AGENT = 'rss2email/{} +{}'.format(__version__, __url__)
+_feedparser.USER_AGENT = _USER_AGENT
 _urllib_request.install_opener(_urllib_request.build_opener())
 _SOCKET_ERRORS = []
 for e in ['error', 'herror', 'gaierror']:
@@ -158,6 +161,7 @@ class Feed (object):
 
     # hints for value conversion
     _boolean_attributes = [
+        'digest',
         'force_from',
         'use_publisher_email',
         'friendly_name',
@@ -428,7 +432,7 @@ class Feed (object):
         extra_headers = _collections.OrderedDict((
                 ('Date', self._get_entry_date(entry)),
                 ('Message-ID', '<{}@dev.null.invalid>'.format(_uuid.uuid4())),
-                ('User-Agent', 'rss2email'),
+                ('User-Agent', _USER_AGENT),
                 ('X-RSS-Feed', self.url),
                 ('X-RSS-ID', id_),
                 ('X-RSS-URL', self._get_entry_link(entry)),
@@ -788,12 +792,60 @@ class Feed (object):
         if not self.to:
             raise _error.NoToEmailAddress(feed=self)
         parsed = self._fetch()
+
+        if self.digest:
+            digest = self._new_digest()
+            seen = []
+
         for (guid, id_, sender, message) in self._process(parsed):
             _LOG.debug('new message: {}'.format(message['Subject']))
-            if send:
-                self._send(sender=sender, message=message)
+            if self.digest:
+                seen.append((guid, id_))
+                self._append_to_digest(digest=digest, message=message)
+            else:
+                if send:
+                    self._send(sender=sender, message=message)
+                if guid not in self.seen:
+                    self.seen[guid] = {}
+                self.seen[guid]['id'] = id_
+
+        if self.digest and seen:
+            self._send_digest(
+                digest=digest, seen=seen, sender=sender, send=send)
+
+        self.etag = parsed.get('etag', None)
+        self.modified = parsed.get('modified', None)
+
+    def _new_digest(self):
+        digest = _MIMEMultipart('digest')
+        digest['To'] = self.to  # TODO: _Header(), _formataddr((recipient_name, recipient_addr))
+        digest['Subject'] = 'digest for {}'.format(self.name)
+        digest['Message-ID'] = '<{}@dev.null.invalid>'.format(_uuid.uuid4())
+        digest['User-Agent'] = _USER_AGENT
+        digest['X-RSS-Feed'] = self.url
+        return digest
+
+    def _append_to_digest(self, digest, message):
+        part = _MIMEMessage(message)
+        part.add_header('Content-Disposition', 'attachment')
+        digest.attach(part)
+
+    def _send_digest(self, digest, seen, sender, send=True):
+        """Send a digest message
+
+        The date is extracted from the last message in the digest
+        payload.  We assume that this part exists.  If you don't have
+        any messages in the digest, don't call this function.
+        """
+        digest['From'] = sender  # TODO: _Header(), _formataddr()...
+        last_part = digest.get_payload()[-1]
+        last_message = last_part.get_payload()[0]
+        digest['Date'] = last_message['Date']
+
+        _LOG.debug('new digest for {}'.format(self))
+        if send:
+            self._send(sender=sender, message=digest)
+        for (guid, id_) in seen:
             if guid not in self.seen:
                 self.seen[guid] = {}
             self.seen[guid]['id'] = id_
-        self.etag = parsed.get('etag', None)
-        self.modified = parsed.get('modified', None)
