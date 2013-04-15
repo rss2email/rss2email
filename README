@@ -157,6 +157,9 @@ following to your configuration file::
 You can make the email address whatever you want, but your mail server
 requires that the ``yoursite.com`` part actually exists.
 
+You can also add custom filters, see the example and documentation in
+``rss2email/post_process/prettify.py`` for more information.
+
 SMTP
 ----
 
