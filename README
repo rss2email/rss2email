@@ -226,7 +226,7 @@ mailing list archives are available on Gmane_.
 .. _openSUSE package:
   https://build.opensuse.org/package/show?package=rss2email&project=server%3Amail
 .. _NetBSD package:
-  ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-current/pkgsrc/mail/rss2email/README.html
+  http://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/mail/rss2email/README.html
 .. _Gentoo package:
   http://gpo.zugaina.org/net-mail/rss2email
 .. _Python: http://www.python.org
