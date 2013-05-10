@@ -156,14 +156,25 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('body-width', str(0)),
 
         ### Mailing
+        # Select protocol from: sendmail, smtp, imap
+        ('email-protocol', 'sendmail'),
         # True: Use SMTP_SERVER to send mail.
-        # False: Use sendmail (or compatible) to send mail.
-        ('use-smtp', str(False)),
+        # Sendmail (or compatible) configuration
         ('sendmail', '/usr/sbin/sendmail'),  # Path to sendmail (or compatible)
-        ('smtp-server', 'smtp.yourisp.net:25'),        ('smtp-auth', str(False)),      # set to True to use SMTP AUTH
+        # SMTP configuration
+        ('smtp-auth', str(False)),      # set to True to use SMTP AUTH
         ('smtp-username', 'username'),  # username for SMTP AUTH
         ('smtp-password', 'password'),  # password for SMTP AUTH
+        ('smtp-server', 'smtp.yourisp.net:25'),
         ('smtp-ssl', str(False)),       # Connect to the SMTP server using SSL
+        # IMAP configuration
+        ('imap-auth', str(False)),      # set to True to use IMAP auth.
+        ('imap-username', 'username'),  # username for IMAP authentication
+        ('imap-password', 'password'),  # password for IMAP authentication
+        ('imap-server', 'imap.yourisp.net'),
+        ('imap-port', str(143)),
+        ('imap-ssl', str(False)),       # connect to the IMAP server using SSL
+        ('imap-mailbox', 'INBOX'),      # where we should store new messages
 
         ### Miscellaneous
         # Verbosity (one of 'error', 'warning', 'info', or 'debug').

@@ -86,6 +86,34 @@ class SMTPAuthenticationError (SMTPConnectionError):
         self.username = username
 
 
+class IMAPConnectionError (ValueError, RSS2EmailError):
+    def __init__(self, server, port, message=None):
+        if message is None:
+            message = 'could not connect to mail server {}:{}'.format(
+                server, port)
+        super(IMAPConnectionError, self).__init__(message=message)
+        self.server = server
+        self.port = port
+
+    def log(self):
+        super(IMAPConnectionError, self).log()
+        _LOG.warning(
+            'check your config file to confirm that imap-server and other '
+            'mail server settings are configured properly')
+        if hasattr(self.__cause__, 'reason'):
+            _LOG.error('reason: {}'.format(self.__cause__.reason))
+
+
+class IMAPAuthenticationError (IMAPConnectionError):
+    def __init__(self, server, port, username):
+        message = (
+            'could not authenticate with mail server {}:{} as user {}'.format(
+                server, port, username))
+        super(IMAPAuthenticationError, self).__init__(
+            server=server, port=port, message=message)
+        self.username = username
+
+
 class SendmailError (RSS2EmailError):
     def __init__(self, status=None, stdout=None, stderr=None):
         if status:
