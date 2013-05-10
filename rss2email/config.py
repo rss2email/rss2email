@@ -105,6 +105,12 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # User processing hooks.  Note the space after the module name.
         # Example: post-process = 'rss2email.post_process.downcase downcase_message'
         ('post-process', ''),
+        # User processing hooks for digest messages.  If 'digest' is
+        # enabled, the usual 'post-process' hook gets to massage the
+        # per-entry messages, but this hook is called with the full
+        # digest message before it is mailed.
+        # Example: digest-post-process = 'rss2email.post_process.downcase downcase_message'
+        ('digest-post-process', ''),
         ## HTML conversion
         # True: Send text/html messages when possible.
         # False: Convert HTML to plain text.

@@ -34,4 +34,11 @@ message:
 
 Post-processing hooks should return the possibly altered message, or
 return ``None`` to indicate that the message should not be sent.
+
+For feeds with the ``digest`` setting enabled, there is a similar
+``digest-post-process`` hook, which, when set, is called by
+``Feed.run()``.  The keyword arguments are mostly the same as for the
+standard post-processing hook, however ``entry`` and ``guid`` are
+replaced by ``seen``, a list of ``(guid, id_)`` tuples for each entry
+part contained in the digest message.
 """

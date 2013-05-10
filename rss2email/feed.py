@@ -188,6 +188,7 @@ class Feed (object):
 
     _function_attributes = [
         'post_process',
+        'digest_post_process',
         ]
 
     def __init__(self, name=None, url=None, to=None, config=None):
@@ -810,6 +811,11 @@ class Feed (object):
                 self.seen[guid]['id'] = id_
 
         if self.digest and seen:
+            if self.digest_post_process:
+                digest = self.digest_post_process(
+                    feed=self, parsed=parsed, seen=seen, message=digest)
+                if not digest:
+                    return
             self._send_digest(
                 digest=digest, seen=seen, sender=sender, send=send)
 
