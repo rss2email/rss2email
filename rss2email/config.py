@@ -1,6 +1,7 @@
 # Copyright (C) 2004-2013 Aaron Swartz
 #                         Brian Lalor
 #                         Dean Jackson
+#                         Dmitry Bogatov <KAction@gnu.org>
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
 #                         Joey Hess

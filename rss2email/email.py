@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 #
-# Copyright (C) 2012-2013 W. Trevor King <wking@tremily.us>
+# Copyright (C) 2012-2013 Dmitry Bogatov <KAction@gnu.org>
+#                         George Saunders <georgesaunders@gmail.com>
+#                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.
 #

@@ -1,4 +1,4 @@
-# Copyright (C) 2013 Arun Persaud
+# Copyright (C) 2013 Arun Persaud <apersaud@lbl.gov>
 #
 # This file is part of rss2email.
 #
