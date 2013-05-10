@@ -182,6 +182,10 @@ class Feed (object):
         'encodings',
         ]
 
+    _function_attributes = [
+        'post_process',
+        ]
+
     def __init__(self, name=None, url=None, to=None, config=None):
         self._set_name(name=name)
         self.reset()
@@ -267,8 +271,12 @@ class Feed (object):
         self.__dict__.update(data)
 
     def _get_configured_option_value(self, attribute, value):
-        if value and attribute in self._list_attributes:
+        if value is None:
+            return ''
+        elif attribute in self._list_attributes:
             return ', '.join(value)
+        elif attribute in self._function_attributes:
+            return _util.import_name(value)
         return str(value)
 
     def _get_configured_attribute_value(self, attribute, key, data):
@@ -278,6 +286,10 @@ class Feed (object):
             return data.getint(key)
         elif attribute in self._list_attributes:
             return [x.strip() for x in data[key].split(',')]
+        elif attribute in self._function_attributes:
+            if data[key]:
+                return _util.import_function(data[key])
+            return None
         return data[key]
 
     def reset(self):
@@ -325,7 +337,14 @@ class Feed (object):
             _LOG.debug('processing {}'.format(entry.get('id', 'no-id')))
             processed = self._process_entry(parsed=parsed, entry=entry)
             if processed:
-                yield processed
+                guid,id_,sender,message = processed
+                if self.post_process:
+                    message = self.post_process(
+                        feed=self, parsed=parsed, entry=entry, guid=guid,
+                        message=message)
+                    if not message:
+                        continue
+                yield (guid, id_, sender, message)
 
     def _check_for_errors(self, parsed):
         warned = False

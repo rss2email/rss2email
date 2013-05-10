@@ -98,6 +98,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # characters, we iterate through the list below and use the
         # first character set that works.
         ('encodings', 'US-ASCII, ISO-8859-1, UTF-8, BIG5, ISO-2022-JP'),
+        # User processing hooks.  Note the space after the module name.
+        # Example: post-process = 'rss2email.post_process.downcase downcase_message'
+        ('post-process', ''),
         ## HTML conversion
         # True: Send text/html messages when possible.
         # False: Convert HTML to plain text.
