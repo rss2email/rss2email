@@ -1,3 +1,6 @@
+v3.4 (unreleased)
+    * Added post-processing hooks for user-specified message manipulation.
+
 v3.3 (2013-04-13)
     * Fix SMTP message submission logic.
     * Fix error inheritence (super() calls).
