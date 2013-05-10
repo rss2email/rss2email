@@ -1,5 +1,6 @@
 v3.4 (unreleased)
     * Added post-processing hooks for user-specified message manipulation.
+    * Added settings for IMAP delivery.  The old `use-smtp` boolean has been replaced by a new `email-protocol` setting.  Non-IMAP users should adjust their configuration to set `email-protocol` to either `sendmail` or `smtp`.
 
 v3.3 (2013-04-13)
     * Fix SMTP message submission logic.
