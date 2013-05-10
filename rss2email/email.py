@@ -179,7 +179,6 @@ def _decode_header(header):
     if isinstance(header, _Header):
         return str(header)
     chunks = []
-    _LOG.critical(_email_header.decode_header(header))
     for chunk,charset in _email_header.decode_header(header):
         if charset is None:
             if isinstance(chunk, bytes):
