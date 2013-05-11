@@ -334,8 +334,12 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
 def send(sender, recipient, message, config=None, section='DEFAULT'):
     protocol = config.get(section, 'email-protocol')
     if protocol == 'smtp':
-        smtp_send(sender, recipient, message)
+        smtp_send(
+            sender=sender, recipient=recipient, message=message,
+            config=config, section=section)
     elif protocol == 'imap':
-        imap_send(message)
+        imap_send(message=message, config=config, section=section)
     else:
-        sendmail_send(sender, recipient, message)
+        sendmail_send(
+            sender=sender, recipient=recipient, message=message,
+            config=config, section=section)
