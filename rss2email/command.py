@@ -134,7 +134,12 @@ def opmlimport(feeds, args):
     for feed in new_feeds:
         if feed.hasAttribute('xmlUrl'):
             url = _saxutils.unescape(feed.getAttribute('xmlUrl'))
-            feed = feeds.new_feed(url=url)
+            name = None
+            if feed.hasAttribute('text'):
+                text = _saxutils.unescape(feed.getAttribute('text'))
+                if text != url:
+                    name = text
+            feed = feeds.new_feed(name=name, url=url)
             _LOG.info('add new feed {}'.format(feed))
     feeds.save()
 
@@ -157,8 +162,10 @@ def opmlexport(feeds, args):
         if not feed.url:
             _LOG.debug('dropping {}'.format(feed))
             continue
+        name = _saxutils.escape(feed.name)
         url = _saxutils.escape(feed.url)
-        f.write('<outline type="rss" text="{0}" xmlUrl="{0}"/>'.format(url))
+        f.write('<outline type="rss" text="{}" xmlUrl="{}"/>'.format(
+                name, url))
     f.write(
         '</body>\n'
         '</opml>\n')
