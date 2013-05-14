@@ -154,6 +154,9 @@ def opmlexport(feeds, args):
         '</head>\n'
         '<body>\n')
     for feed in feeds:
+        if not feed.url:
+            _LOG.debug('dropping {}'.format(feed))
+            continue
         url = _saxutils.escape(feed.url)
         f.write('<outline type="rss" text="{0}" xmlUrl="{0}"/>'.format(url))
     f.write(
