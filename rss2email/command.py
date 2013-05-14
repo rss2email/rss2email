@@ -164,7 +164,7 @@ def opmlexport(feeds, args):
             continue
         name = _saxutils.escape(feed.name)
         url = _saxutils.escape(feed.url)
-        f.write('<outline type="rss" text="{}" xmlUrl="{}"/>'.format(
+        f.write('<outline type="rss" text="{}" xmlUrl="{}"/>\n'.format(
                 name, url))
     f.write(
         '</body>\n'
