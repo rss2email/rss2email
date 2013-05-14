@@ -41,12 +41,19 @@ class Config (_configparser.ConfigParser):
         super(Config, self).__init__(
             dict_type=dict_type, interpolation=interpolation, **kwargs)
 
-    def _setup(self, section='DEFAULT'):
+    def setup_html2text(self, section='DEFAULT'):
+        """Setup html2text globals to match our configuration
+
+        Html2text unfortunately uses globals (instead of keyword
+        arguments) to configure its conversion.
+        """
+        if section not in self:
+            section = 'DEFAULT'
         _html2text.UNICODE_SNOB = self.getboolean(
-            section, 'unicode-snob', fallback=False)
+            section, 'unicode-snob')
         _html2text.LINKS_EACH_PARAGRAPH = self.getboolean(
-            section, 'links-after-each-paragaph', fallback=False)
-        _html2text.BODY_WIDTH = self.getint(section, 'body-width', fallback=0)
+            section, 'links-after-each-paragraph')
+        _html2text.BODY_WIDTH = self.getint(section, 'body-width')
 
 
 CONFIG = Config()

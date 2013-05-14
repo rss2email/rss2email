@@ -411,6 +411,10 @@ class Feed (object):
             not version):
             raise _error.ProcessingError(parsed=parsed, feed=feed)
 
+    def _html2text(self, html, baseurl=''):
+        self.config.setup_html2text(section=self.section)
+        return _html2text.html2text(html=html, baseurl=baseurl)
+
     def _process_entry(self, parsed, entry):
         id_ = self._get_entry_id(entry)
         # If .trust_guid isn't set, we get back hashes of the content.
@@ -492,12 +496,12 @@ class Feed (object):
         if hasattr(entry, 'title_detail') and entry.title_detail:
             title = entry.title_detail.value
             if 'html' in entry.title_detail.type:
-                title = _html2text.html2text(title)
+                title = self._html2text(title)
         else:
             content = self._get_entry_content(entry)
             value = content['value']
             if content['type'] in ('text/html', 'application/xhtml+xml'):
-                value = _html2text.html2text(value)
+                value = self._html2text(value)
             title = value[:70]
         title = title.replace('\n', ' ').strip()
         return title
@@ -743,7 +747,7 @@ class Feed (object):
         else:  # not self.html_mail
             if content['type'] in ('text/html', 'application/xhtml+xml'):
                 try:
-                    lines = [_html2text.html2text(content['value'])]
+                    lines = [self._html2text(content['value'])]
                 except _html_parser.HTMLParseError as e:
                     raise _error.ProcessingError(parsed=None, feed=self)
             else:

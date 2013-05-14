@@ -6,14 +6,13 @@ From: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
 To: a@b.com
 Subject: Re: new maintainer and mailing list for rss2email
 Date: Mon, 12 Nov 2012 21:20:22 -0000
-Message-ID: <1dda718c-58d2-4906-98c2-3277d50ec932@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/1
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/1
 
 Alrighty, this is the first email on the list and also my first
-
     production mlmmj list, so I've CCed you both directly.  Etienne, let
     me know if you get the direct email but not the list email, in which
     case I'll try and figure out what I've miss-configured ;).  Lindsey,
@@ -45,7 +44,6 @@ Alrighty, this is the first email on the list and also my first
     
 
 
-
 URL: http://permalink.gmane.org/gmane.mail.rss2email/1
 
 SENT BY: "gmane.mail.rss2email: Etienne Millon" <user@rss2email.invalid>
@@ -56,7 +54,7 @@ From: "gmane.mail.rss2email: Etienne Millon" <user@rss2email.invalid>
 To: a@b.com
 Subject: Re: new maintainer and mailing list for rss2email
 Date: Tue, 13 Nov 2012 10:48:07 -0000
-Message-ID: <d08327bf-ac49-4639-9a97-cc63a7829599@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/2
@@ -84,7 +82,6 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/2
     
 
 
-
 URL: http://permalink.gmane.org/gmane.mail.rss2email/2
 
 SENT BY: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
@@ -95,7 +92,7 @@ From: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
 To: a@b.com
 Subject: Re: new maintainer and mailing list for rss2email
 Date: Tue, 13 Nov 2012 12:20:20 -0000
-Message-ID: <1745ca6f-b70f-4e96-bdae-a278d205e13d@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/3
@@ -105,7 +102,6 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/3
     send-email style, although I'll accept anything ;).
     
     
-
 
 
 URL: http://permalink.gmane.org/gmane.mail.rss2email/3
@@ -118,7 +114,7 @@ From: "gmane.mail.rss2email: Etienne Millon" <user@rss2email.invalid>
 To: a@b.com
 Subject: Re: new maintainer and mailing list for rss2email
 Date: Tue, 13 Nov 2012 12:42:13 -0000
-Message-ID: <b0f91137-4d32-425e-b8d7-1df028097d1f@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/4
@@ -133,7 +129,6 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/4
     
 
 
-
 URL: http://permalink.gmane.org/gmane.mail.rss2email/4
 
 SENT BY: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
@@ -144,20 +139,18 @@ From: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
 To: a@b.com
 Subject: split massive package into modules
 Date: Tue, 13 Nov 2012 14:36:22 -0000
-Message-ID: <4fb51e8a-120c-4c8e-8cfe-636ce61c0a36@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/5
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/5
 
 I just split the 1769-line rss2email.py module into a more manageable
-
     package with sub-modules:
     
     https://github.com/wking/rss2email/commit/066602efa088b4a89d67e23011613b4459db3c92
     
     
-
 
 
 URL: http://permalink.gmane.org/gmane.mail.rss2email/5

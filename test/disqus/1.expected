@@ -6,24 +6,15 @@ From: "Software Carpentry - Latest Comments: Hans-Martin" <user@rss2email.invali
 To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Sat, 17 Nov 2012 11:21:26 -0000
-Message-ID: <d5218e13-7fb3-4d85-ba38-a68c01cf304b@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 82a71554e460103fdd7350c4ae84f7518386d4f8
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578641
 
-This and previous discussions of the empirical results on learning outcomes
-have left me wondering in how far this depends on students demographics. I can
-see that "media work best" is true for undergrads and high school students,
-but it seems to me that for (post-) PhD's the important metric would be
-closeness of the material to the area in which they will apply things. Has
-there been a study on the SWC target crowd that I have missed?
+This and previous discussions of the empirical results on learning outcomes have left me wondering in how far this depends on students demographics. I can see that "media work best" is true for undergrads and high school students, but it seems to me that for (post-) PhD's the important metric would be closeness of the material to the area in which they will apply things. Has there been a study on the SWC target crowd that I have missed?
 
-Speaking of myself, I have never needed to manipulate an image while I am
-doing some form of data munging all the time. Had the SWC material been
-presented primarily in terms of image manipulation, most likely I would not
-have given it a second, deeper look.
-
+Speaking of myself, I have never needed to manipulate an image while I am doing some form of data munging all the time. Had the SWC material been presented primarily in terms of image manipulation, most likely I would not have given it a second, deeper look.
 
 
 URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578641
@@ -36,23 +27,14 @@ From: "Software Carpentry - Latest Comments: Greg Wilson" <user@rss2email.invali
 To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Sat, 17 Nov 2012 14:01:27 -0000
-Message-ID: <425611ad-4563-426b-b581-0c362eb08b34@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: a52375ec78a988241fe9864a2243d4d910538d52
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578640
 
-@Hans-Martin
-
-That's a really good point: no, we don't have anything that specifically
-studies our target cohort. What we *do* know is that for their younger-by-
-five-years selves, the visual feedback of programming with images makes a
-difference: for example, being able to see that you've colored the top half of
-the image red instead of the top-left triangle is a powerful aid to debugging,
-and more visceral than the equivalent text output. But I agree, manipulating
-text (particularly reading and analyzing data files) is an important hook
-too...
-
+@Hans-Martin    
+That's a really good point: no, we don't have anything that specifically studies our target cohort. What we *do* know is that for their younger-by-five-years selves, the visual feedback of programming with images makes a difference: for example, being able to see that you've colored the top half of the image red instead of the top-left triangle is a powerful aid to debugging, and more visceral than the equivalent text output. But I agree, manipulating text (particularly reading and analyzing data files) is an important hook too...
 
 
 URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578640
@@ -65,29 +47,13 @@ From: "Software Carpentry - Latest Comments: Doug Blank" <user@rss2email.invalid
 To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Sat, 17 Nov 2012 16:32:25 -0000
-Message-ID: <1c192fa2-f5b3-49f1-a36c-56fc71e40f87@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 4140a64e33aba18a80001a6721573ae89b1474d2
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578639
 
-We did what you are suggesting (and what Mark and Barbara did): we built a
-Python library for exploring a "computing context" and thought a lot about the
-API for novice students. But this has some major problems: first, we spent a
-lot of time on the library, and it was only useful for Python---what a shame
-it can't be used in other languages like Scratch, Alice, or Java; second, we
-wanted to have a rich, cross-platform set of multimedia support (text-to-
-speech, 3D graphics, low-level sound control, etc.) We did build this library
-for Python, and did so fairly quickly. But maintaining it was a nightmare!
-Different versions of operating systems and Pythons were a pain to keep
-working. And all that work only worked for Python. So we started a new
-project: we built our own "stack", encompassing the languages to the
-multimedia support. We now control it all, which ironically makes it easier to
-maintain. And our libraries now work across many languages. And we control
-fine-grain detail with the languages. If you are interested in the project,
-check out [http://calicoproject.org/](http://calicoproject.org/) --- we just
-getting started, and looking for collaborators of all kinds.
-
+We did what you are suggesting (and what Mark and Barbara did): we built a Python library for exploring a "computing context" and thought a lot about the API for novice students. But this has some major problems: first, we spent a lot of time on the library, and it was only useful for Python---what a shame it can't be used in other languages like Scratch, Alice, or Java; second, we wanted to have a rich, cross-platform set of multimedia support (text-to-speech, 3D graphics, low-level sound control, etc.) We did build this library for Python, and did so fairly quickly. But maintaining it was a nightmare! Different versions of operating systems and Pythons were a pain to keep working. And all that work only worked for Python. So we started a new project: we built our own "stack", encompassing the languages to the multimedia support. We now control it all, which ironically makes it easier to maintain. And our libraries now work across many languages. And we control fine-grain detail with the languages. If you are interested in the project, check out [http://calicoproject.org/](http://calicoproject.org/) --- we just getting started, and looking for collaborators of all kinds.
 
 
 URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578639
@@ -100,15 +66,13 @@ From: "Software Carpentry - Latest Comments: Michael Hansen" <user@rss2email.inv
 To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Sat, 17 Nov 2012 19:10:51 -0000
-Message-ID: <2d9ca531-1774-4661-9cae-5d40ce90da36@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: f001da3e77329aa8e942cd912992325d96620a0a
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578638
 
-Here you go :)
-[https://github.com/synesthesia...](https://github.com/synesthesiam/skimage)
-
+Here you go :) [https://github.com/synesthesia...](https://github.com/synesthesiam/skimage)
 
 
 URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578638
@@ -121,15 +85,13 @@ From: "Software Carpentry - Latest Comments: Aron Lindberg" <user@rss2email.inva
 To: a@b.com
 Subject: Re: Updating Our Reading List
 Date: Sun, 18 Nov 2012 01:47:39 -0000
-Message-ID: <a286511c-cfe0-470f-b3bc-aa8347ed3b47@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 7085b5533cd3894e04342ed4eb362a6a1cc4c712
 X-RSS-URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713578644
 
-It would be great to have a dedicated pre-workshop reading list as well, so
-that attendants can make sure that they are properly prepared.
-
+It would be great to have a dedicated pre-workshop reading list as well, so that attendants can make sure that they are properly prepared.
 
 
 URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713578644
@@ -142,17 +104,13 @@ From: "Software Carpentry - Latest Comments: Greg Wilson" <user@rss2email.invali
 To: a@b.com
 Subject: Re: Updating Our Reading List
 Date: Sun, 18 Nov 2012 11:35:15 -0000
-Message-ID: <fc7c49bb-fd56-4b0a-a6f6-adb478da75e5@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: a905039f76219d23f5438232f436826b63e1ffd3
 X-RSS-URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713578646
 
-@Aron Lindberg  We already have things like a short intro to Python in
-slide/narrative/video form on this site, but the main reason we run the
-workshops is that many novices find that easier to absorb when it's delivered
-live --- what would you include in a pre-workshop reading list?
-
+@Aron Lindberg  We already have things like a short intro to Python in slide/narrative/video form on this site, but the main reason we run the workshops is that many novices find that easier to absorb when it's delivered live --- what would you include in a pre-workshop reading list?
 
 
 URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713578646
@@ -165,20 +123,15 @@ From: "Software Carpentry - Latest Comments: Ben Waugh" <user@rss2email.invalid>
 To: a@b.com
 Subject: Re: License
 Date: Mon, 19 Nov 2012 05:04:14 -0000
-Message-ID: <ed7c25b4-e31d-4d95-bd07-7834521d8798@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: ca5d0c74ab4863c154184744f9019b8d2bc57874
 X-RSS-URL: http://dev.software-carpentry.org/license.html#comment-713697314
 
-If you mean "what is the manner specified by SWC for attribution" then I
-second the question. There is a lot of stuff on the web that says "CC-BY" but
-doesn't specify how, or even to whom, to give credit.
+If you mean "what is the manner specified by SWC for attribution" then I second the question. There is a lot of stuff on the web that says "CC-BY" but doesn't specify how, or even to whom, to give credit.
 
-I guess in this case something a mention of Software Carpentry along with a
-link to the SWC web site and the CC-BY licence conditions, but an example
-would be nice.
-
+I guess in this case something a mention of Software Carpentry along with a link to the SWC web site and the CC-BY licence conditions, but an example would be nice.
 
 
 URL: http://dev.software-carpentry.org/license.html#comment-713697314
@@ -191,17 +144,13 @@ From: "Software Carpentry - Latest Comments: Nick Barnes" <user@rss2email.invali
 To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Mon, 19 Nov 2012 07:26:17 -0000
-Message-ID: <7ceb60bc-d111-4972-9a43-f71a50c227d2@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 2a6766e530cffaeebce0a606f117eea00fdc691b
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713743170
 
-Awesome. Based on a glance through the code, I think your use of
-itertools.repeat() is wrong, and will loop forever: can't you just put a
-singleton list here instead? I'm installing PIL on my Mac to test out this
-hypothesis.
-
+Awesome. Based on a glance through the code, I think your use of itertools.repeat() is wrong, and will loop forever: can't you just put a singleton list here instead? I'm installing PIL on my Mac to test out this hypothesis.
 
 
 URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713743170
@@ -214,15 +163,13 @@ From: "Software Carpentry - Latest Comments: Nick Barnes" <user@rss2email.invali
 To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Mon, 19 Nov 2012 09:25:37 -0000
-Message-ID: <ff09cc70-b044-4679-84a5-02036154b517@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: d60d5b5d42b37831ffbebff4c88de2172b21317b
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713806704
 
-See pull request [https://github.com/synesthesia...](https://github.com/synest
-hesiam/skimage/pull/2)
-
+See pull request [https://github.com/synesthesia...](https://github.com/synesthesiam/skimage/pull/2)
 
 
 URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713806704
@@ -235,16 +182,13 @@ From: "Software Carpentry - Latest Comments: Michael Hansen" <user@rss2email.inv
 To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Mon, 19 Nov 2012 10:16:34 -0000
-Message-ID: <c914d4c6-d277-4cd7-8634-60c83a19f4cc@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 11fe3629ac59c5b3e7e3ab7342c18a6b445926ff
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713835492
 
-Thanks, Nick! For some reason, I had in my head that product() would stop when
-the non-repeating iterator was done. A quick test in ipython confirmed your
-hypothesis and froze my machine for a minute.
-
+Thanks, Nick! For some reason, I had in my head that product() would stop when the non-repeating iterator was done. A quick test in ipython confirmed your hypothesis and froze my machine for a minute.
 
 
 URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713835492
@@ -257,18 +201,13 @@ From: "Software Carpentry - Latest Comments: Guest" <user@rss2email.invalid>
 To: a@b.com
 Subject: Re: Updating Our Reading List
 Date: Mon, 19 Nov 2012 11:02:47 -0000
-Message-ID: <08ee9de0-2ba2-42d3-93b6-b95e0a9038d4@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: e90c60c308d6ce39ad5dd6b0c166a1fdb828fa98
 X-RSS-URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713879471
 
-Eric Reiss. Usable Usability
-([http://www.amazon.com/Usable-U...](http://www.amazon.com/Usable-Usability-
-Simple-Making-Better/dp/1118185471#_)). Wiley, 111818547, 2012. An general
-introduction to usability and usable design with examples drawn from all sorts
-of products (not just GUIs).
-
+Eric Reiss. Usable Usability ([http://www.amazon.com/Usable-U...](http://www.amazon.com/Usable-Usability-Simple-Making-Better/dp/1118185471#_)). Wiley, 111818547, 2012. An general introduction to usability and usable design with examples drawn from all sorts of products (not just GUIs).
 
 
 URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713879471
@@ -281,14 +220,13 @@ From: "Software Carpentry - Latest Comments: Matt Davis" <user@rss2email.invalid
 To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Mon, 19 Nov 2012 11:50:48 -0000
-Message-ID: <3c8161ba-bc9e-43c6-9f2a-4f05b42aa45b@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 191fb27d9fe2b3628ef325cf30eb4280e5957a05
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713925640
 
 FYI, skimage is also the library name for scikits-image.
-
 
 
 URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713925640
@@ -301,24 +239,19 @@ From: "Software Carpentry - Latest Comments: David Jones" <user@rss2email.invali
 To: a@b.com
 Subject: Re: Boot camp standard software set-up
 Date: Mon, 19 Nov 2012 17:21:48 -0000
-Message-ID: <5c4f8b4b-ced3-4861-b426-6693eec78bfe@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: f8411372ad12808de0353862993e1d7e6ca33c53
 X-RSS-URL: http://software-carpentry.org/boot-camps/boot-camp-standard-software-set-up/#comment-714244447
 
-I've created a script to check you have all of the required software
-installed. It's here: [https://github.com/drj11/prace...](https://github.com/d
-rj11/prace/blob/master/gotit)
+I've created a script to check you have all of the required software installed. It's here: [https://github.com/drj11/prace...](https://github.com/drj11/prace/blob/master/gotit)
 
 In an open Terminal window, run the script with:
 
-`curl [https://raw.github.com/drj11/p...](https://raw.github.com/drj11/prace/m
-aster/gotit) | sh`
+`curl [https://raw.github.com/drj11/p...](https://raw.github.com/drj11/prace/master/gotit) | sh`
 
-Except... gah! DISQUS doesn't display the full command. (see the link to the
-source which does have the full command you need in a comment)
-
+Except... gah! DISQUS doesn't display the full command. (see the link to the source which does have the full command you need in a comment)
 
 
 URL: http://software-carpentry.org/boot-camps/boot-camp-standard-software-set-up/#comment-714244447
@@ -331,17 +264,13 @@ From: "Software Carpentry - Latest Comments: Aron Lindberg" <user@rss2email.inva
 To: a@b.com
 Subject: Re: Updating Our Reading List
 Date: Mon, 19 Nov 2012 20:01:28 -0000
-Message-ID: <37a51e29-5d07-4d77-bb55-bdf2c7dfae54@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: b99f52d5c145cffe0cdaa072fbfd8db2aaf26182
 X-RSS-URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-714359879
 
-I don't know what would be included - that's why I am asking. The intention
-behind my question is to find out which knowledge level I need to be at in the
-various domains (Python, SQL, Version Control etc.) in order to gain the most
-from the workshop.
-
+I don't know what would be included - that's why I am asking. The intention behind my question is to find out which knowledge level I need to be at in the various domains (Python, SQL, Version Control etc.) in order to gain the most from the workshop.
 
 
 URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-714359879
@@ -354,19 +283,13 @@ From: "Software Carpentry - Latest Comments: Tim Cerino" <user@rss2email.invalid
 To: a@b.com
 Subject: Re: Pre-Assessment
 Date: Tue, 20 Nov 2012 13:35:58 -0000
-Message-ID: <8287df1c-c678-43e8-aaef-1a516bc3cd0f@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 3c26d08d9282a33234684ab4c78348a7cc41b780
 X-RSS-URL: http://software-carpentry.org/2012/11/pre-assessment/#comment-715101942
 
-I might ask comfort level / facility with various languages and tools. I think
-there is a long distance between different tools and approaches and this may
-account for some of the issues students encounter when presented with Python &
-Unix. Thinking in Python is distinct from thinking in R, SAS, Java, etc. and
-someone who is a VBA expert may be stumped to perform a simple task in Python
-and vice versa.
-
+I might ask comfort level / facility with various languages and tools. I think there is a long distance between different tools and approaches and this may account for some of the issues students encounter when presented with Python & Unix. Thinking in Python is distinct from thinking in R, SAS, Java, etc. and someone who is a VBA expert may be stumped to perform a simple task in Python and vice versa.
 
 
 URL: http://software-carpentry.org/2012/11/pre-assessment/#comment-715101942
@@ -379,22 +302,17 @@ From: "Software Carpentry - Latest Comments: Matt Davis" <user@rss2email.invalid
 To: a@b.com
 Subject: Re: Cait Pickens on the Scripps Institute Boot Camp
 Date: Sat, 24 Nov 2012 22:55:27 -0000
-Message-ID: <faec8bed-eb95-4c5e-be3c-0ce3253a66c7@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: f8eb500dd3e663750ff6da01077be3ef4888e00a
 X-RSS-URL: http://software-carpentry.org/2012/11/cait-pickens-on-the-scripps-institute-boot-camp/#comment-718478609
 
-I definitely like the idea of having a running chat going, assuming you have
-someone to monitor it. I guess you've been using Etherpad for that for a bit.
-In a pinch I think you could use a Google Doc.
+I definitely like the idea of having a running chat going, assuming you have someone to monitor it. I guess you've been using Etherpad for that for a bit. In a pinch I think you could use a Google Doc.
 
-Unfortunately, as far as I can tell HipChat is *not* free. To use it long term
-it looks like someone would have to foot the bill.
+Unfortunately, as far as I can tell HipChat is *not* free. To use it long term it looks like someone would have to foot the bill.
 
-The idea of having students bring their own data and try to load it is a great
-one too.
-
+The idea of having students bring their own data and try to load it is a great one too.
 
 
 URL: http://software-carpentry.org/2012/11/cait-pickens-on-the-scripps-institute-boot-camp/#comment-718478609
@@ -407,15 +325,13 @@ From: "Software Carpentry - Latest Comments: Titus Brown" <user@rss2email.invali
 To: a@b.com
 Subject: Re: Usability Testing and Instructional Design
 Date: Sun, 25 Nov 2012 14:14:04 -0000
-Message-ID: <dbe0f48f-f5ba-4c3f-b09f-e171013eaf43@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 040f57f4bcb609a390fffb52b4b861dc09187550
 X-RSS-URL: http://software-carpentry.org/2012/10/usability-testing-instructional-design/#comment-718887929
 
-Does it work within the notebook? For me it pops up a separate window. Not so
-useful for some of my teaching situations.
-
+Does it work within the notebook? For me it pops up a separate window. Not so useful for some of my teaching situations.
 
 
 URL: http://software-carpentry.org/2012/10/usability-testing-instructional-design/#comment-718887929
@@ -428,25 +344,19 @@ From: "Software Carpentry - Latest Comments: Sheila Miguez" <user@rss2email.inva
 To: a@b.com
 Subject: Re: Titus Brown on the Scripps Institute Boot Camp
 Date: Tue, 27 Nov 2012 10:28:51 -0000
-Message-ID: <e23f08c9-84aa-47ed-ae2c-56322456c84c@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 26fcd8e7ba0c80bfb28a1f6bf5e9f52ebbfb7615
 X-RSS-URL: http://software-carpentry.org/2012/11/titus-brown-on-the-scripps-institute-boot-camp/#comment-720356478
 
-He mentions using the 15 minute writing exercise. I've been wondering whether
-to use that during beginner workshops. The measured result was an improvement
-in gpa, a longterm effect. How would it translate in the short-term?
+He mentions using the 15 minute writing exercise. I've been wondering whether to use that during beginner workshops. The measured result was an improvement in gpa, a longterm effect. How would it translate in the short-term?
 
-That is, does the essay work to improve learning, as measured by GPA, only in
-the context of a semester long class?
+That is, does the essay work to improve learning, as measured by GPA, only in the context of a semester long class?
 
-It is unlikely to cause harm by including it in a workshop, so I've been
-thinking of doing it anyway. More so after reading his retrospective.
+It is unlikely to cause harm by including it in a workshop, so I've been thinking of doing it anyway. More so after reading his retrospective.
 
-One critique I have for his use is that he may have given the control version
-of the exercise if he didn't emphasize the inspirational aspect
-
+One critique I have for his use is that he may have given the control version of the exercise if he didn't emphasize the inspirational aspect
 
 
 URL: http://software-carpentry.org/2012/11/titus-brown-on-the-scripps-institute-boot-camp/#comment-720356478
@@ -459,40 +369,30 @@ From: "Software Carpentry - Latest Comments: Matthias Bussonnier" <user@rss2emai
 To: a@b.com
 Subject: Re: Alpha-Testing Ideas for the IPython Notebook
 Date: Wed, 28 Nov 2012 11:59:11 -0000
-Message-ID: <e790cc0a-8938-4f7d-b8eb-ac6cfb241b69@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 4506d8c7d87adeb4ba02fe18933e5f1afb25da1e
 X-RSS-URL: http://software-carpentry.org/2012/11/alpha-testing-ideas-for-the-ipython-notebook/#comment-721672437
 
-Hi there,
+Hi there, 
 
 it is nice to have user feedback like that.
 
-Multi user will come to IPython for sure.
+Multi user will come to IPython for sure. 
 
-Edit apearing block will be able to use [https://github.com/ipython/ipy...](ht
-tps://github.com/ipython/ipython/pull/2333) (when it is ready) for fast
-edition. We had a demo at scipy 12" where cell with specific tag where colored
-green/red if was not that hard to do. It might help while presenting.
+Edit apearing block will be able to use [https://github.com/ipython/ipy...](https://github.com/ipython/ipython/pull/2333) (when it is ready) for fast edition. We had a demo at scipy 12" where cell with specific tag where colored green/red if was not that hard to do. It might help while presenting.
 
-Autointerrupt by time/output number should be a ~50 js line plugin.
-
+Autointerrupt by time/output number should be a ~50 js line plugin.  
 Really beginner or sprint friendly to write.
 
-Testing could be helped by
-[https://github.com/taavi/ipyth...](https://github.com/taavi/ipython_nose) (I
-haven't looked at it yet)
+Testing could be helped by [https://github.com/taavi/ipyth...](https://github.com/taavi/ipython_nose) (I haven't looked at it yet)
 
-Time recording woud not be that easy... But much easier to do after/while the
-collaboration mode is integrated into ipython.
+Time recording woud not be that easy... But much easier to do after/while the collaboration mode is integrated into ipython.
 
-The Tooltip of notebook is "configurable" it shouldn't be too hard to extend
-it to display a "per cell" help or hints.
+The Tooltip of notebook is "configurable" it shouldn't be too hard to extend it to display a "per cell" help or hints.
 
-Don't hesitate to post your proposition as "Issues" on github, we often
-"forget" the wiki.
-
+Don't hesitate to post your proposition as "Issues" on github, we often "forget" the wiki.
 
 
 URL: http://software-carpentry.org/2012/11/alpha-testing-ideas-for-the-ipython-notebook/#comment-721672437
@@ -505,17 +405,13 @@ From: "Software Carpentry - Latest Comments: Nick Barnes" <user@rss2email.invali
 To: a@b.com
 Subject: Re: Good News About Software Carpentry (and More)
 Date: Fri, 30 Nov 2012 16:16:26 -0000
-Message-ID: <16b03688-ffbe-458c-9d02-c3e12c1726a0@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: d9366333b32d03165ad0e8347ccdaa7642dd85ed
 X-RSS-URL: http://software-carpentry.org/2012/11/good-news-about-software-carpentry-and-more/#comment-724142260
 
-Great news, Greg. I just finished a blog post about web science, and it
-mentions SwC too.
-[http://climatecode.org/blog/20...](http://climatecode.org/blog/2012/11/a
--vision-of-web-science/)
-
+Great news, Greg. I just finished a blog post about web science, and it mentions SwC too. [http://climatecode.org/blog/20...](http://climatecode.org/blog/2012/11/a-vision-of-web-science/)
 
 
 URL: http://software-carpentry.org/2012/11/good-news-about-software-carpentry-and-more/#comment-724142260
@@ -528,14 +424,13 @@ From: "Software Carpentry - Latest Comments: Guest" <user@rss2email.invalid>
 To: a@b.com
 Subject: Re: Software Carpentry: Boot Camps
 Date: Tue, 04 Dec 2012 23:10:01 -0000
-Message-ID: <5addb9e8-421a-4846-a67e-933f6b13f93d@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: cc7138c4b79c0218dae70e4c37515cf674a3e9a0
 X-RSS-URL: http://0.0.0.0:4000/#comment-727907941
 
 Do comments work on here?
-
 
 
 URL: http://0.0.0.0:4000/#comment-727907941
@@ -548,7 +443,7 @@ From: "Software Carpentry - Latest Comments: Joel Adamson" <user@rss2email.inval
 To: a@b.com
 Subject: Re: Best Practices for Scientific Computing
 Date: Wed, 05 Dec 2012 10:33:57 -0000
-Message-ID: <ebcecb3b-0104-48af-8855-1ed26511615e@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: d429b280f96db84c7717108724486704173d32b5
@@ -556,53 +451,21 @@ X-RSS-URL: http://software-carpentry.org/2012/10/best-practices-for-scientific-c
 
 Hello Greg and Ethan,
 
-I'm again glad to see a paper making the right suggestions to scientists on
-how to improve their communication of computer programs. The paper is really
-well researched and organized.
+I'm again glad to see a paper making the right suggestions to scientists on how to improve their communication of computer programs. The paper is really well researched and organized.
 
 I have a few comments:
 
-1. The largest barrier to scientists adopting these practices is what Carol
-Dweck calls the fixed mindset or entity theory of self. Basically, scientists
-think of themselves as scientists, not as "programmers." How did a scientist
-like me find out about all this stuff before you wrote this paper? I read
-programming books thinking of myself as a programmer. "90% of them are
-primarily self-taught..." doesn't translate into being ignorant of programming
-practices. The practices you suggest are out there available for everyone to
-read about. There's something missing in the explanation: "self-taught" begs
-the question.
+1. The largest barrier to scientists adopting these practices is what Carol Dweck calls the fixed mindset or entity theory of self. Basically, scientists think of themselves as scientists, not as "programmers." How did a scientist like me find out about all this stuff before you wrote this paper? I read programming books thinking of myself as a programmer. "90% of them are primarily self-taught..." doesn't translate into being ignorant of programming practices. The practices you suggest are out there available for everyone to read about. There's something missing in the explanation: "self-taught" begs the question.
 
-2. Coding standards: I think you should suggest a coding standard for
-scientists to follow, or create one yourself. I, for example, chose to follow
-the GNU Coding Standards because (a) it exists as a published standard and (b)
-my code is primarily in C. These published coding standards have the same goal
-that you have in writing this paper, so perhaps you should promote an existing
-standard for people to study and follow.
+2. Coding standards: I think you should suggest a coding standard for scientists to follow, or create one yourself. I, for example, chose to follow the GNU Coding Standards because (a) it exists as a published standard and (b) my code is primarily in C. These published coding standards have the same goal that you have in writing this paper, so perhaps you should promote an existing standard for people to study and follow.
 
-3. People are people, not robots, not insects. I like the psychological
-suggestions for chunking of work and time at the desk. However, it's easy to
-take these suggestions too far. I know there are studies backing these
-suggestions, but those studies may have been done with the goal of turning the
-available primates into highly efficient hymenopterans. There's also no
-accounting for "flow" in this suggestion: when people are really having fun
-programming, they get a burst of energy and mental clarity that does not
-require breaks. You might consider saying that these are suggestions for
-improvement, not rules (or even guidelines) for efficiency. They don't
-guarantee anything. This suggestion also seems to suggest that programming is
-painful or unenjoyable: if it is, you're doing it wrong!
+3. People are people, not robots, not insects. I like the psychological suggestions for chunking of work and time at the desk. However, it's easy to take these suggestions too far. I know there are studies backing these suggestions, but those studies may have been done with the goal of turning the available primates into highly efficient hymenopterans. There's also no accounting for "flow" in this suggestion: when people are really having fun programming, they get a burst of energy and mental clarity that does not require breaks. You might consider saying that these are suggestions for improvement, not rules (or even guidelines) for efficiency. They don't guarantee anything. This suggestion also seems to suggest that programming is painful or unenjoyable: if it is, you're doing it wrong!
 
-4. "...the best one to use is almost always whatever your colleagues are
-already using." Then I'd be using nothing! Someone has to introduce these
-concepts and tools to research groups, and those people should have some
-guidelines for selecting good tools.
+4. "...the best one to use is almost always whatever your colleagues are already using." Then I'd be using nothing! Someone has to introduce these concepts and tools to research groups, and those people should have some guidelines for selecting good tools.
 
-5. I think you should mention Software Carpentry closer to the beginning. This
-paper is clearly the result of teaching the workshop, and readers should know
-that early on.
+5. I think you should mention Software Carpentry closer to the beginning. This paper is clearly the result of teaching the workshop, and readers should know that early on.
 
-There's a few LaTeX errors in the version I had: footnotes, unformatted
-references, etc.
-
+There's a few LaTeX errors in the version I had: footnotes, unformatted references, etc.
 
 
 URL: http://software-carpentry.org/2012/10/best-practices-for-scientific-computing/#comment-728345964
@@ -615,15 +478,13 @@ From: "Software Carpentry - Latest Comments: wg" <user@rss2email.invalid>
 To: a@b.com
 Subject: Re: Transitioning to the IPython Notebook
 Date: Thu, 06 Dec 2012 10:12:25 -0000
-Message-ID: <1bd65701-a2fe-4edd-95b1-a2390d11bc27@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: d592e38cf1044cb835911ee0fa9dc318e4b47e56
 X-RSS-URL: http://software-carpentry.org/2012/10/transitioning-to-the-ipython-notebook/#comment-729245349
 
-very good initiative, I am teaching python to middle school kids and plan to
-use your material, let me know how I can help
-
+very good initiative, I am teaching python to middle school kids and plan to use your material, let me know how I can help
 
 
 URL: http://software-carpentry.org/2012/10/transitioning-to-the-ipython-notebook/#comment-729245349
@@ -636,15 +497,13 @@ From: "Software Carpentry - Latest Comments: Lorin Hochstein" <user@rss2email.in
 To: a@b.com
 Subject: Re: Moving Up and Moving Down
 Date: Sun, 09 Dec 2012 16:28:11 -0000
-Message-ID: <aab2fbdb-3adf-42d9-82d1-c0288cf62acb@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 4b8954483b74036891ca4be74b2f4f132ff504f4
 X-RSS-URL: http://software-carpentry.org/2012/12/moving-up-and-moving-down/#comment-731874263
 
-I think this is a great idea. Would be interested in the breakdown in demand
-for the beginner/intermediate/advanced levels.
-
+I think this is a great idea. Would be interested in the breakdown in demand for the beginner/intermediate/advanced levels.
 
 
 URL: http://software-carpentry.org/2012/12/moving-up-and-moving-down/#comment-731874263
@@ -657,18 +516,13 @@ From: "Software Carpentry - Latest Comments: Neil Chue Hong" <user@rss2email.inv
 To: a@b.com
 Subject: Re: Sustainability
 Date: Mon, 10 Dec 2012 16:01:30 -0000
-Message-ID: <de7ae296-2a32-4e1f-99b9-f3286f6f9990@dev.null.invalid>
+Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: b515c95f6704cadb9e7c24a27585f5e94aab9947
 X-RSS-URL: http://software-carpentry.org/2012/12/sustainability/#comment-732661695
 
-I think the model for the bootcamps expenses is nearly at the self-sustaining
-stage in the UK. The trickier one is how we scale up what happens *after* the
-bootcamps, in that vital period between being enthused by the bootcamp and
-putting in place a good network for asking and answering questions. I'm
-excited about the idea of virtual "office hours" as one potential model.
-
+I think the model for the bootcamps expenses is nearly at the self-sustaining stage in the UK. The trickier one is how we scale up what happens *after* the bootcamps, in that vital period between being enthused by the bootcamp and putting in place a good network for asking and answering questions. I'm excited about the idea of virtual "office hours" as one potential model.
 
 
 URL: http://software-carpentry.org/2012/12/sustainability/#comment-732661695
