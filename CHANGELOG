@@ -1,4 +1,4 @@
-v3.5 (unreleased)
+v3.5 (2013-06-05)
     * Added digest generation and post-processing hooks.
     * Fix html2text configuration (ignored since 2012-10-04).
     * Fix opmlexport crash due to orphaned feed data.
