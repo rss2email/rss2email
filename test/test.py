@@ -23,6 +23,7 @@ del _stringio
 
 MESSAGE_ID_REGEXP = _re.compile(
     '^Message-ID: <[^@]*@dev.null.invalid>$', _re.MULTILINE)
+BOUNDARY_REGEXP = _re.compile('===============[^=]+==')
 
 
 class Send (list):
@@ -40,16 +41,27 @@ def clean_result(text):
     """Cleanup dynamic portions of the generated email headers
 
     >>> text = (
+    ...      'Content-Type: multipart/digest;\\n'
+    ...      '  boundary="===============7509425281347501533=="\\n'
+    ...      'MIME-Version: 1.0\\n'
     ...      'Date: Tue, 23 Aug 2011 15:57:37 -0000\\n'
     ...      'Message-ID: <9dff03db-f5a7@dev.null.invalid>\\n'
     ...      'User-Agent: rss2email\\n'
     ...      )
     >>> print(clean_result(text).rstrip())
+    Content-Type: multipart/digest;
+      boundary="===============...=="
+    MIME-Version: 1.0
     Date: Tue, 23 Aug 2011 15:57:37 -0000
     Message-ID: <...@dev.null.invalid>
     User-Agent: rss2email
     """
-    return MESSAGE_ID_REGEXP.sub('Message-ID: <...@dev.null.invalid>', text)
+    for regexp,replacement in [
+            (MESSAGE_ID_REGEXP, 'Message-ID: <...@dev.null.invalid>'),
+            (BOUNDARY_REGEXP, '===============...=='),
+            ]:
+        text = regexp.sub(replacement, text)
+    return text
 
 def test(dirname=None, config_path=None, force=False):
     if dirname is None:
