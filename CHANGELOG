@@ -1,4 +1,5 @@
 v3.5 (unreleased)
+    * Added digest generation and post-processing hooks.
     * Fix html2text configuration (ignored since 2012-10-04).
     * Fix opmlexport crash due to orphaned feed data.
     * Use feed names in OPML 'text' attributes.
