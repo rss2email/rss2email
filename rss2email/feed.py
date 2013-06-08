@@ -709,7 +709,7 @@ class Feed (object):
             lines.extend([
                     '</head>',
                     '<body>',
-                    '<div id="entry>',
+                    '<div id="entry">',
                     '<h1 class="header"><a href="{}">{}</a></h1>'.format(
                         link, subject),
                     '<div id="body">',
