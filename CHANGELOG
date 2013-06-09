@@ -1,3 +1,6 @@
+v3.6 (unreleased)
+    * Fix `<div id="entry>` syntax error in HTML mail.
+
 v3.5 (2013-06-05)
     * Added digest generation and post-processing hooks.
     * Fix html2text configuration (ignored since 2012-10-04).
