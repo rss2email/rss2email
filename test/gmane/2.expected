@@ -28,7 +28,6 @@ X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/1
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/1
 
 alrighty, this is the first email on the list and also my first
-
     production mlmmj list, so i've cced you both directly.  etienne, let
     me know if you get the direct email but not the list email, in which
     case i'll try and figure out what i've miss-configured ;).  lindsey,
@@ -58,7 +57,6 @@ alrighty, this is the first email on the list and also my first
     done: https://github.com/wking/rss2email
     
     
-
 
 
 url: http://permalink.gmane.org/gmane.mail.rss2email/1
@@ -102,7 +100,6 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/2
     
 
 
-
 url: http://permalink.gmane.org/gmane.mail.rss2email/2
 --===============...==
 Content-Type: message/rfc822
@@ -126,7 +123,6 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/3
     send-email style, although i'll accept anything ;).
     
     
-
 
 
 url: http://permalink.gmane.org/gmane.mail.rss2email/3
@@ -157,7 +153,6 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/4
     
 
 
-
 url: http://permalink.gmane.org/gmane.mail.rss2email/4
 --===============...==
 Content-Type: message/rfc822
@@ -178,13 +173,11 @@ X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/5
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/5
 
 i just split the 1769-line rss2email.py module into a more manageable
-
     package with sub-modules:
     
     https://github.com/wking/rss2email/commit/066602efa088b4a89d67e23011613b4459db3c92
     
     
-
 
 
 url: http://permalink.gmane.org/gmane.mail.rss2email/5
