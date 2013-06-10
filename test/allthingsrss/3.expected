@@ -7,7 +7,7 @@ Subject: Version 2.67 Released
 Content-Transfer-Encoding: 7bit
 Date: Tue, 21 Sep 2010 16:55:07 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=62
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
@@ -52,7 +52,7 @@ Subject: Version 2.68 Released with Actual New Features
 Content-Transfer-Encoding: 8bit
 Date: Fri, 01 Oct 2010 18:21:26 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=72
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/
@@ -112,7 +112,7 @@ Subject: How to Read RSS Feeds in Emacs
 Content-Transfer-Encoding: 7bit
 Date: Fri, 05 Nov 2010 17:36:14 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=79
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/JryfOLe_q6c/
@@ -146,7 +146,7 @@ Subject: Version 2.69 Released
 Content-Transfer-Encoding: 7bit
 Date: Fri, 12 Nov 2010 18:45:08 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=85
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/ubaE55Le1OU/
@@ -191,7 +191,7 @@ Subject: Minor Correction to v2.69 Packages
 Content-Transfer-Encoding: 8bit
 Date: Fri, 10 Dec 2010 17:47:58 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=88
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/CiODBX5_NSk/
@@ -228,7 +228,7 @@ Subject: Minor correction to the minor correction: v2.69a released
 Content-Transfer-Encoding: 7bit
 Date: Mon, 13 Dec 2010 18:04:20 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=95
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/VgWvylH6fvk/
@@ -273,7 +273,7 @@ Subject: Mac OS X and rss2email are Compatible
 Content-Transfer-Encoding: 8bit
 Date: Fri, 17 Dec 2010 20:54:27 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=99
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/cILvxh4ziQg/
@@ -310,7 +310,7 @@ Subject: Version 2.70 Released
 Content-Transfer-Encoding: 7bit
 Date: Tue, 21 Dec 2010 20:00:49 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=106
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/0rUaRcCJ8dU/
@@ -352,7 +352,7 @@ Subject: Version 2.71 Release plus Other Major Updates
 Content-Transfer-Encoding: 8bit
 Date: Fri, 04 Mar 2011 18:03:11 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=123
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/wsLSVDNzno0/
@@ -397,7 +397,7 @@ Subject: Mac OS, rss2email and scheduling with launchd
 Content-Transfer-Encoding: 8bit
 Date: Tue, 23 Aug 2011 15:57:37 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=131
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/0hb7cT3sLUM/

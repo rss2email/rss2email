@@ -23,6 +23,8 @@ del _stringio
 
 MESSAGE_ID_REGEXP = _re.compile(
     '^Message-ID: <[^@]*@dev.null.invalid>$', _re.MULTILINE)
+USER_AGENT_REGEXP = _re.compile(
+    '^User-Agent: rss2email/[0-9.]* \+\S*$', _re.MULTILINE)
 BOUNDARY_REGEXP = _re.compile('===============[^=]+==')
 
 
@@ -46,7 +48,7 @@ def clean_result(text):
     ...      'MIME-Version: 1.0\\n'
     ...      'Date: Tue, 23 Aug 2011 15:57:37 -0000\\n'
     ...      'Message-ID: <9dff03db-f5a7@dev.null.invalid>\\n'
-    ...      'User-Agent: rss2email\\n'
+    ...      'User-Agent: rss2email/3.5 +https://github.com/wking/rss2email\\n'
     ...      )
     >>> print(clean_result(text).rstrip())
     Content-Type: multipart/digest;
@@ -54,10 +56,11 @@ def clean_result(text):
     MIME-Version: 1.0
     Date: Tue, 23 Aug 2011 15:57:37 -0000
     Message-ID: <...@dev.null.invalid>
-    User-Agent: rss2email
+    User-Agent: rss2email/...
     """
     for regexp,replacement in [
             (MESSAGE_ID_REGEXP, 'Message-ID: <...@dev.null.invalid>'),
+            (USER_AGENT_REGEXP, 'User-Agent: rss2email/...'),
             (BOUNDARY_REGEXP, '===============...=='),
             ]:
         text = regexp.sub(replacement, text)

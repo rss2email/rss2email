@@ -7,7 +7,7 @@ To: a@b.com
 Subject: =?utf-8?b?5YiG5p6Q77ya5aWl5be06ams5paw5Lu75pyf5b6I6Zq+55WZ5pS/5rK76YGX5Lqn?=
 Date: Mon, 21 Jan 2013 17:07:08 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22482728
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world_commentary/2013/01/130121_ana_obama_legacy.shtml
@@ -28,7 +28,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lmg6L+R5bmz55yf6IO95omT4oCc6ICB6JmO4oCd5b275bqV5Y+N6IWQ77yf?=
 Date: Tue, 22 Jan 2013 16:31:25 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22503710
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_analysis/2013/01/130122_xijinping.shtml
@@ -50,7 +50,7 @@ To: a@b.com
 Subject: =?utf-8?b?QkJD5paw6Ze75a2m6Zmi572R56uZ?=
 Date: Tue, 27 Nov 2012 10:13:12 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2012-11-27:21378376
 X-RSS-URL: http://www.bbc.co.uk/academy/collegeofjournalism/chinese-simp
@@ -69,7 +69,7 @@ To: a@b.com
 Subject: =?utf-8?b?QkJD5paw6Ze75a2m6Zmi6KeG6aKR?=
 Date: Fri, 21 Dec 2012 15:08:55 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2012-12-21:21888970
 X-RSS-URL: http://www.bbc.co.uk/academy/collegeofjournalism/chinese-simp/standards/social-media/weibo-vid
@@ -89,7 +89,7 @@ To: a@b.com
 Subject: =?utf-8?b?5LiT6L6R77ya5Y2X5ZGo5LqL5Lu2?=
 Date: Tue, 22 Jan 2013 11:22:28 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2012-09-12:22207054
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/indepth/cluster_southernweekends.shtml
@@ -110,7 +110,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KGj5L+K5Y2/5YW25Lq65ZKM5Lit5aSu57yW6K+R5bGA?=
 Date: Thu, 17 Jan 2013 12:47:41 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-17:22399608
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_analysis/2013/01/130117_china_corruption_yijunqin.shtml
@@ -131,7 +131,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux5aqS77ya5Lit5pel5oiY6byT5aOw5aOwIOe8k+WSjOW4jOacm+a4uuiMqw==?=
 Date: Thu, 17 Jan 2013 21:45:11 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-17:22411846
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130117_ukpress_china_japan.shtml
@@ -152,7 +152,7 @@ To: a@b.com
 Subject: =?utf-8?b?5LuOR0RQ5pWw5a2X55yLMjAxM+W5tOS4reWbvee7j+a1jui1sOWQkQ==?=
 Date: Fri, 18 Jan 2013 13:32:53 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22421154
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_analysis/2013/01/130118_china_economy_gdp_2013outlook.shtml
@@ -173,7 +173,7 @@ To: a@b.com
 Subject: =?utf-8?b?57u86L+w77ya5aWl5be06ams56ys5LqM5Lu75pyf5Lit576O5YWz57O76LWw5ZCR?=
 Date: Sun, 20 Jan 2013 17:35:39 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22460593
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_analysis/2013/01/130120_obama_china.shtml
@@ -195,7 +195,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux5aqS77ya5YyX5Lqs5bCG5Ye65Y+w5paw5rOV5bqU5a+556m65rCU5rGh5p+T?=
 Date: Mon, 21 Jan 2013 12:19:51 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22472015
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130121_press_beijing_new_law.shtml
@@ -217,7 +217,7 @@ To: a@b.com
 Subject: =?utf-8?b?4oCc5qKB5oyv6Iux5pS/5pS56KGo5oCB5oOz5bmz5oGv5YWs5LyX5om56K+E4oCd?=
 Date: Tue, 22 Jan 2013 14:58:00 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22494420
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130122_hk_leung_vote2017.shtml
@@ -239,7 +239,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux5aqS77ya5o+t5byA4oCd5Lit5Zu9MTDkur/ln47msJHigJzkuYvosJw=?=
 Date: Tue, 22 Jan 2013 14:45:37 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22501173
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/press_review/2013/01/130122_media_china_urban_numbers.shtml
@@ -262,7 +262,7 @@ To: a@b.com
 Subject: =?utf-8?b?5YiG5p6Q77ya6Iux5Zu96ISx56a75qyn55uf55qE5Yip5LiO5byK?=
 Date: Wed, 23 Jan 2013 14:18:55 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22526479
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130123_uk_eu.shtml
@@ -283,7 +283,7 @@ To: a@b.com
 Subject: =?utf-8?b?5pel5pys5pS/5a6i5o6l6Li16K6/5Y2O5bim5Y6755qE6Jma5a6e6K6v5oGv?=
 Date: Wed, 23 Jan 2013 12:05:09 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22520817
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_japan_china_visit_tongqian.shtml
@@ -304,7 +304,7 @@ To: a@b.com
 Subject: =?utf-8?b?6L+w6K+E77ya5bq55byP5YWa566h5aqS5L2T5piv6Ieq5o6Y5Z2f5aKT?=
 Date: Wed, 23 Jan 2013 10:45:52 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22518842
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/focus_on_china/2013/01/130123_southern_weekly_xiaoshu_press.shtml
@@ -325,7 +325,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeC54K577ya5Lit5pel5YWz57O75aaC5L2V56C05bGA77yf?=
 Date: Wed, 23 Jan 2013 13:42:54 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22526056
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world_commentary/2013/01/130123_ana_sino_japan_relations.shtml
@@ -346,7 +346,7 @@ To: a@b.com
 Subject: =?utf-8?b?6K6/6LCI77ya5Lit5Zu95Lq65rKh5oqi6Z2e5rSy5Lq66aWt56KX?=
 Date: Wed, 23 Jan 2013 18:02:49 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22527878
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_sunguoping_nigeria.shtml
@@ -369,7 +369,7 @@ To: a@b.com
 Subject: =?utf-8?b?6IqC55uu6YeN5rip77ya56eR5oqA6ISJ5pCP77yI57Kk6K+t77yJ?=
 Date: Mon, 21 Jan 2013 10:43:53 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22470668
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130121_cant_scitech_audio.shtml
@@ -389,7 +389,7 @@ To: a@b.com
 Subject: =?utf-8?b?6IqC55uu6YeN5rip77ya5qyn5rSy57q15qiq77yI57Kk6K+t77yJ?=
 Date: Mon, 14 Jan 2013 11:48:34 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-14:22330139
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130114_cant_myeurope_audio.shtml
@@ -409,7 +409,7 @@ To: a@b.com
 Subject: =?utf-8?b?6IqC55uu6YeN5rip77ya6K6w6ICF5p2l6bi/77yI57Kk6K+t77yJ?=
 Date: Mon, 21 Jan 2013 10:43:40 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22470689
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130121_cant_fooc_audio.shtml
@@ -429,7 +429,7 @@ To: a@b.com
 Subject: =?utf-8?b?6IqC55uu6YeN5rip77ya5Lit5Zu95Lq655yL5Lit5Zu977yI57Kk6K+t77yJ?=
 Date: Mon, 21 Jan 2013 10:43:31 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22470638
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130121_audio_cant_coc.shtml
@@ -449,7 +449,7 @@ To: a@b.com
 Subject: =?utf-8?b?4oCc55WZ5a2m6Iux5Zu94oCdIOaSreWuou+8iOaZrumAmuivne+8iQ==?=
 Date: Thu, 28 Apr 2011 09:45:18 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2011-04-28:10360300
 X-RSS-URL: http://www.bbc.co.uk/ukchina/simp/services/2009/08/000000_podcast_studyuk.shtml
@@ -469,7 +469,7 @@ To: a@b.com
 Subject: =?utf-8?b?4oCc5pe25LqL5LiA5ZGo4oCd5pKt5a6i77yI57Kk6K+t77yJ?=
 Date: Tue, 17 May 2011 07:08:54 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2011-05-17:10706276
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/institutional/2011/04/111111_newsweek_podcast.shtml
@@ -489,7 +489,7 @@ To: a@b.com
 Subject: =?utf-8?b?5paw6Ze75pKt5a6i77yI5pmu6YCa6K+d77yJ?=
 Date: Tue, 17 May 2011 07:07:30 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2011-05-17:10706246
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/institutional/2011/05/111111_pod_of_the_day.shtml
@@ -509,7 +509,7 @@ To: a@b.com
 Subject: =?utf-8?b?5r6z5rSy5Lia5L2Z5o6i55+/6ICF5Y+R546wNeWFrOaWpOWkp+mHkeWdlw==?=
 Date: Thu, 17 Jan 2013 17:57:48 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-17:22407998
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130117_australia_prospector.shtml
@@ -530,7 +530,7 @@ To: a@b.com
 Subject: =?utf-8?b?5rOi6Z+zNzg35qKm5bm75a6i5py65Zyo576O5YWo57q/5YGc6aOe?=
 Date: Thu, 17 Jan 2013 05:00:44 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-17:22389404
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/business/2013/01/130117_boeing_dreamliners_grounded.shtml
@@ -551,7 +551,7 @@ To: a@b.com
 Subject: =?utf-8?b?5L615p2D572R56uZ5Yib5Yqe5Lq65o6o5paw572R56uZ5Y235Zyf6YeN5p2l?=
 Date: Sun, 20 Jan 2013 06:58:11 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22450006
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/science/2013/01/130120_kim_dotcom_mega.shtml
@@ -572,7 +572,7 @@ To: a@b.com
 Subject: =?utf-8?b?56CU56m256ew6ZW/5pyf5pyN6Zi/5Y+45Yy55p6X5Y+v6IO95a+86Ie055y855a+?=
 Date: Tue, 22 Jan 2013 13:41:10 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22500069
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/science/2013/01/130122_aspirin_eye_disease.shtml
@@ -593,7 +593,7 @@ To: a@b.com
 Subject: =?utf-8?b?5b635Zu95aSu6KGM5bCG6YOo5YiG5rW35aSW6buE6YeR5YKo5aSH6L+Q5Zue5Zu9?=
 Date: Wed, 16 Jan 2013 19:41:56 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-16:22386903
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/business/2013/01/130116_germany_gold.shtml
@@ -614,7 +614,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lit5Zu9MjAxMuW5tEdEUOWinumVvzcuOCU=?=
 Date: Fri, 18 Jan 2013 05:01:45 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22414989
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130118_china_economy_gdp.shtml
@@ -635,7 +635,7 @@ To: a@b.com
 Subject: =?utf-8?b?5riv5aqS77ya5Lit6LWE6auY566h5YWF5pal6aaZ5riv5a6Y5pa56YeR6J6N5py65p6E?=
 Date: Fri, 18 Jan 2013 08:10:10 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22416493
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130118_hk_finance_china.shtml
@@ -656,7 +656,7 @@ To: a@b.com
 Subject: =?utf-8?b?5pel5pys5o6i5rWL6Ii55YaN6LW05aSq5bmz5rSL5YuY5o6i56iA5Zyf?=
 Date: Mon, 21 Jan 2013 10:34:31 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22469159
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/business/2013/01/130121_japan_rare_earth.shtml
@@ -677,7 +677,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lit5Zu95Lq65rW35aSW5aWi5L6I5ZOB5raI6LS55aKe5Yqg6L+F6YCf?=
 Date: Tue, 22 Jan 2013 13:58:01 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22499902
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130122_china_luxury.shtml
@@ -699,7 +699,7 @@ To: a@b.com
 Subject: =?utf-8?b?5qyn55uf5YeG6K64MTHkuKrmiJDlkZjlm73lrp7mlr3ph5Hono3kuqTmmJPnqI4=?=
 Date: Tue, 22 Jan 2013 20:08:04 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22510306
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/business/2013/01/130122_eu_new_tax.shtml
@@ -720,7 +720,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux6aaW55u45o6o6L+f5qyn55uf5ryU6K6y5aSE55CG5Lq66LSo5Y2x5py6?=
 Date: Thu, 17 Jan 2013 21:57:24 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-17:22411255
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130117_uk_cameron_algeria.shtml
@@ -741,7 +741,7 @@ To: a@b.com
 Subject: =?utf-8?b?54mb5rSl5Lqa6KOU5oCn54qv572q5Zui5LyZ5qGI5byA5bqt5a6h55CG?=
 Date: Fri, 18 Jan 2013 14:20:22 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22425687
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130118_gang_rape.shtml
@@ -761,7 +761,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Y+w5rm+55WZ5a2m55Sf4oCc6KGM5Li66Im65pyv4oCd5Y+N5aqS5L2T5Z6E5pat?=
 Date: Fri, 18 Jan 2013 15:18:01 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22427797
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130118_taiwan_soas_protest.shtml
@@ -782,7 +782,7 @@ To: a@b.com
 Subject: =?utf-8?b?6LCD5p+l77ya6Iux5Zu955S35Lq65bel5L2c5pe26Ze05bGF5qyn5rSy5LmL5pyA?=
 Date: Fri, 18 Jan 2013 22:25:14 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22434039
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130118_uk_long_hours.shtml
@@ -803,7 +803,7 @@ To: a@b.com
 Subject: =?utf-8?b?4oCc6Zi/5bCU5Y+K5Yip5Lqa5Lq66LSo5Y2x5py65piv6Iux5Zu96KaB5Yqh4oCd?=
 Date: Sat, 19 Jan 2013 12:42:12 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-19:22439468
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130119_algeria_hague.shtml
@@ -824,7 +824,7 @@ To: a@b.com
 Subject: =?utf-8?b?5aSn6Zuq57un57ut5bmy5omw5Lym5pWm6Iiq56m65ZKM5Zyw6Z2i5Lqk6YCa?=
 Date: Sat, 19 Jan 2013 10:57:47 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-19:22438483
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130119_uk_snow.shtml
@@ -845,7 +845,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux5Zu95aSn6Zuq5Lym5pWm5biM5oCd572X5py65Zy65Lqk6YCa5re35Lmx?=
 Date: Sat, 19 Jan 2013 22:38:29 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-19:22447941
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130119_heathrow_snow.shtml
@@ -866,7 +866,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux5Zu96IuP5qC85YWw6auY5Zyw6Zuq5bSp6Ie0NOatuzHph43kvKQ=?=
 Date: Sun, 20 Jan 2013 03:24:39 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22449045
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130120_scotland_avalanche.shtml
@@ -887,7 +887,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux5Zu95ZGo5LiA5bCG57un57ut6KKr5Yaw6Zuq5aSp5Zuw5omw?=
 Date: Sun, 20 Jan 2013 18:00:21 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22460306
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130120_uk_frozen_snow.shtml
@@ -908,7 +908,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux55u477ya5LiO5YyX6Z2e5oGQ5oCW5Li75LmJ5paX5LqJ5Lu76YeN6YGT6L+c?=
 Date: Sun, 20 Jan 2013 19:46:48 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22461409
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130120_uk_cameron_terrorism.shtml
@@ -929,7 +929,7 @@ To: a@b.com
 Subject: =?utf-8?b?5ZOI6YeM546L5a2Q6LCI5YmN57q/77ya5oiR5ZCR5pWM5Lq65byA5p6q?=
 Date: Mon, 21 Jan 2013 21:42:01 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22486710
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130121_prince_harry.shtml
@@ -950,7 +950,7 @@ To: a@b.com
 Subject: =?utf-8?b?QkJD5YmN6JGX5ZCN5pKt6Z+z5ZGY6YGt5by65aW4572q6LW36K+J?=
 Date: Wed, 23 Jan 2013 04:41:06 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22513501
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130123_hall_rape_charge.shtml
@@ -971,7 +971,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lit5Zu95paw5YWs5a6J6YOo6ZW/5by66LCD4oCc57u056iz5LiO5rOV5rK74oCd?=
 Date: Sun, 20 Jan 2013 04:23:59 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22449409
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130120_china_security_chief.shtml
@@ -992,7 +992,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lit5Zu96amz5pal5YWL5p6X6aG/6K+E6ZKT6bG85bKb5LqJ56uv6KiA6K66?=
 Date: Sun, 20 Jan 2013 08:09:34 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22450877
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130120_china_us_japan_islands.shtml
@@ -1013,7 +1013,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Kej5pS+5Yab5oql5aS05p2h77ya5YeG5aSH5omT5LuX5pS55Y+Y56ev5Lmg?=
 Date: Sun, 20 Jan 2013 20:27:12 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22462252
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130120_china_military.shtml
@@ -1035,7 +1035,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Y+w5rOV6Zmi5a6h5Yik5p6X55uK5LiW6LSq6IWQ5qGI?=
 Date: Mon, 21 Jan 2013 15:19:09 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22479333
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130121_tw_corruption_byjameslin.shtml
@@ -1057,7 +1057,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lit5Zu95pil6L+Q5bCG6IezIOKAnOaKouelqOi9r+S7tuKAneW8leS6ieiurg==?=
 Date: Mon, 21 Jan 2013 12:51:53 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22474156
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130121_china_train_tickets_software.shtml
@@ -1079,7 +1079,7 @@ To: a@b.com
 Subject: =?utf-8?b?5rKz5Y2X5ZWG5LiY6Imz54Wn5LqL5Lu25omA5raJ5a6Y5ZGY5Y+X6LCD5p+l?=
 Date: Mon, 21 Jan 2013 15:30:53 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22479375
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130121_china_shangqiu_corruption.shtml
@@ -1101,7 +1101,7 @@ To: a@b.com
 Subject: =?utf-8?b?5paw5Y2O56S+5om56K+E5bGx6KW/5Lq65aSn4oCc5LiN5YeG5ZGK54q24oCd?=
 Date: Mon, 21 Jan 2013 21:24:34 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22486785
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130121_shanxi_renda.shtml
@@ -1122,7 +1122,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lit5Zu955S35oCn5bSH5bCa5ZCN54mM5ouJ5Yqo5aWi5L6I5ZOB6ZSA5ZSu?=
 Date: Tue, 22 Jan 2013 11:05:46 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22495063
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/press_review/2013/01/130122_press_china_luxury.shtml
@@ -1143,7 +1143,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lmg6L+R5bmz6KaB5rGC5Y+N6IWQ4oCc6ICB6JmO6IuN6J2H5YW85omT4oCd?=
 Date: Tue, 22 Jan 2013 08:01:23 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22491702
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130122_china_xi_anti_corruption.shtml
@@ -1164,7 +1164,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Y+w5Yab5pil6IqC5pON5ryU576O5Yi254yO6Zu36Iiw5Lqu55u4?=
 Date: Tue, 22 Jan 2013 12:43:06 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22497481
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130122_tw_warship.shtml
@@ -1185,7 +1185,7 @@ To: a@b.com
 Subject: =?utf-8?b?6LSo55aR6YCJ576O5bCP5aeQ5oiQ5bmy6YOoIOe9keWPi+iiq+aLmOW8leeDreiurg==?=
 Date: Tue, 22 Jan 2013 12:22:05 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22495614
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130122_china_netizen_detained.shtml
@@ -1207,7 +1207,7 @@ To: a@b.com
 Subject: =?utf-8?b?4oCc5rGf5rO95rCR6KaB5rGC5Zyo56S85a6+5o6S5ZCN5LiK6Z2g5ZCO4oCd?=
 Date: Tue, 22 Jan 2013 18:09:17 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22508465
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130122_china_politics_jiang.shtml
@@ -1229,7 +1229,7 @@ To: a@b.com
 Subject: =?utf-8?b?5aWl5be06ams5bCx6IGM5ryU6K+077ya576O5Zu95bqU5oqK5o+h5py66YGH?=
 Date: Mon, 21 Jan 2013 22:43:22 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22484899
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130121_obama_inauguration_speech.shtml
@@ -1251,7 +1251,7 @@ To: a@b.com
 Subject: =?utf-8?b?5rOV5Yab5Y2P5Yqp6ams6YeM5pS/5bqc5Yab5aS65Y+W5Lik5bqn6YeN6ZWH?=
 Date: Tue, 22 Jan 2013 04:26:24 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22489525
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130122_mali_france.shtml
@@ -1272,7 +1272,7 @@ To: a@b.com
 Subject: =?utf-8?b?6IGU5ZCI5Zu95Lyg6ZiF5Lit576O5Yi26KOB5pyd6bKc5Yaz6K6u6I2J5qGI?=
 Date: Tue, 22 Jan 2013 03:22:45 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22489079
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130122_us_china_north_korea.shtml
@@ -1293,7 +1293,7 @@ To: a@b.com
 Subject: =?utf-8?b?5pel5pys5omn5pS/5YWa6KaB5ZGY6K6/5Y2O6LCL5rGC5pS55ZaE5YWz57O7?=
 Date: Tue, 22 Jan 2013 04:25:38 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22489604
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130122_china_japan_visit.shtml
@@ -1314,7 +1314,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Zu96ZmF5Yqz5bel57uE57uH77ya5YWo55CD5aSx5Lia5piO5pi+5oG25YyW?=
 Date: Tue, 22 Jan 2013 11:38:26 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22491655
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/business/2013/01/130122_un_unemployment.shtml
@@ -1335,7 +1335,7 @@ To: a@b.com
 Subject: =?utf-8?b?5a6J55CG5Lya6YCa6L+H5Yaz6K6u6LC06LSj5pyd6bKc5Y+R5bCE54Gr566t?=
 Date: Tue, 22 Jan 2013 20:41:18 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22510767
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130122_un_nkorea_resolution.shtml
@@ -1357,7 +1357,7 @@ To: a@b.com
 Subject: =?utf-8?b?6buE5bKp5bKb5LqJ6K6u6I+y5b6L5a6+6LW06IGU5Zu95o+Q6K+J5Lit5Zu9?=
 Date: Tue, 22 Jan 2013 13:26:46 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22492179
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130122_philippines_south_china_sea.shtml
@@ -1378,7 +1378,7 @@ To: a@b.com
 Subject: =?utf-8?b?4oCc5Lit44CB5r6z5aSn6YeP6YeH54Wk5Yqg5b+r5YWo55CD5Y+Y5pqW4oCd?=
 Date: Tue, 22 Jan 2013 17:31:48 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22507941
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/science/2013/01/130122_carbon_emissions.shtml
@@ -1400,7 +1400,7 @@ To: a@b.com
 Subject: =?utf-8?b?5b635rOV5bqG56Wd562+572y5Y+L5aW95p2h57qmNTDlkajlubQ=?=
 Date: Tue, 22 Jan 2013 20:52:23 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22510391
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130122_eu_germany_france.shtml
@@ -1421,7 +1421,7 @@ To: a@b.com
 Subject: =?utf-8?b?5a6J5YCN77ya5pel5Lit5bqU5oGi5aSN5oiY55Wl5LqS5oOg5YWz57O7?=
 Date: Tue, 22 Jan 2013 22:50:30 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22511545
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130122_abe_china.shtml
@@ -1443,7 +1443,7 @@ To: a@b.com
 Subject: =?utf-8?b?5YaF5Z2m5bC85Lqa6IOh5aSn6YCJ6I636IOc5YaN5Lu75oC755CG?=
 Date: Wed, 23 Jan 2013 08:02:46 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22515287
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_israel_netanyahu.shtml
@@ -1464,7 +1464,7 @@ To: a@b.com
 Subject: =?utf-8?b?5r6z5aSn5Yip5Lqa5paw5Zu95a6J562W55Wl5rOo6YeN5Lit576O5YWz57O7?=
 Date: Wed, 23 Jan 2013 04:36:58 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22513493
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_australia_security_china.shtml
@@ -1485,7 +1485,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77yaTkJB5Zyo5Lym5pWm5Li+6KGM5bi46KeE6LWb?=
 Date: Thu, 17 Jan 2013 17:22:52 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-17:22407673
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130117_vid_nba_b.shtml
@@ -1506,7 +1506,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77yaQkJD5paw6Ze754mH5aS06Z+z5LmQ5piv5aaC5L2V5Yi25L2c55qE77yf?=
 Date: Fri, 18 Jan 2013 17:28:28 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22427024
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130118_vid_bbc_countdown_music.shtml
@@ -1527,7 +1527,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77ya5LuO6ZKi6ZOB5Z+O5biC5q2m5rGJ55yL57uP5rWO5pS56Z2p?=
 Date: Fri, 18 Jan 2013 15:23:24 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22425113
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130118_vid_wuhan.shtml
@@ -1548,7 +1548,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77ya5aiB5bCU5aOr5Y2X6YOo6Z2i5a+56aOO6Zuq?=
 Date: Fri, 18 Jan 2013 17:26:51 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22430456
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130118_vid_snow_b.shtml
@@ -1569,7 +1569,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Z+z6aKR77ya5buW5LmZ6Ie76LCI5Y+w5rm+5a2m55Sf5Y+N5aqS5L2T5Z6E5pat?=
 Date: Fri, 18 Jan 2013 14:43:57 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22426710
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130118_aud_iv_taiwan_soas_protest_lyc.shtml
@@ -1590,7 +1590,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Zu+6L6R77ya5Lit57yF6L655aKD5YWL6ZKm5q2m6KOF5qC55o2u5Zyw?=
 Date: Sun, 20 Jan 2013 23:02:51 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-20:22463422
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130120_picture_kachin_rebels.shtml
@@ -1612,7 +1612,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Z+z6aKR77ya5YiY6ZSQ57uN6LCI5qKB5oyv6Iux5bCx5pmu6YCJ54m56aaW55qE6KGo5oCB?=
 Date: Tue, 22 Jan 2013 12:28:53 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22497236
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130122_iv_liuruishao.shtml
@@ -1634,7 +1634,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77ya5bim5L2g5oqi5YWI6KeC6LWP6ams5aWI55S75bGV?=
 Date: Tue, 22 Jan 2013 17:39:54 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22508260
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130122_vid_manet_b.shtml
@@ -1654,7 +1654,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77ya5ZOI6YeM546L5a2Q6Zi/5a+M5rGX5b2S5p2l6LCI5oSf5Y+X?=
 Date: Tue, 22 Jan 2013 14:20:22 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22502126
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130122_vid_harry_afghan.shtml
@@ -1676,7 +1676,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77ya5paw5Yqg5Z2h5oqVMjDkur/mlrDlhYPpvJPlirHlh7rnlJ/njoc=?=
 Date: Wed, 23 Jan 2013 13:39:49 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22522856
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130123_vid_singapore_baby_boom.shtml
@@ -1697,7 +1697,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77ya5rWB5rWq54uX55qE5paw5b2i6LGh?=
 Date: Wed, 23 Jan 2013 17:35:29 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22532146
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130123_vid_stray_dogs.shtml
@@ -1717,7 +1717,7 @@ To: a@b.com
 Subject: =?utf-8?b?6KeG6aKR77ya6Iux5Zu95Y2X5YyX6aOO6Zuq5Yaw6Zu56Zu35Ye75LiN5q2i?=
 Date: Wed, 23 Jan 2013 17:07:47 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22528628
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/multimedia/2013/01/130123_vid_uk_snow_b.shtml
@@ -1739,7 +1739,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lym5pWm5L+h566x77yaQkJD5Lit5paH55qE566A57mB5a2X5L2T5LiO4oCc5b275bqV57yW6L6R4oCd?=
 Date: Tue, 15 Jan 2013 12:55:49 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2012-04-05:16556186
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/interactive/2012/04/120405_londonbox_999.shtml
@@ -1760,7 +1760,7 @@ To: a@b.com
 Subject: =?utf-8?b?5aSn5a626LCI5Lit5Zu977ya5ouY55WZ5Y+R5biW6ICF5bCx5piv5YGa6LS85b+D6Jma?=
 Date: Tue, 22 Jan 2013 10:25:17 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22493331
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/comments_on_china/2013/01/130122_coc_poster.shtml
@@ -1782,7 +1782,7 @@ To: a@b.com
 Subject: =?utf-8?b?5aSn5a626LCI5Lit5Zu977ya5Yir6K6p4oCc6L+H5bm05Zue6LCB5a624oCd5oiQ56a75ama5a+854Gr57Si?=
 Date: Wed, 23 Jan 2013 11:42:24 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22520615
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/comments_on_china/2013/01/130123_coc_divorce.shtml
@@ -1804,7 +1804,7 @@ To: a@b.com
 Subject: =?utf-8?b?6K665Z2b77ya5L2g5a+55aWl5be06ams56ys5LqM5Lu75pyf5pyJ5L2V5pyf5b6F77yf?=
 Date: Mon, 21 Jan 2013 11:30:42 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-21:22471811
 X-RSS-URL: http://newsforums.bbc.co.uk/ws/zh/thread.jspa?forumID=16542
@@ -1825,7 +1825,7 @@ To: a@b.com
 Subject: =?utf-8?b?6K665Z2b77ya5L2g5a+55Lmg6L+R5bmz5Y+N6IWQ5YmN5pmv5pyJ5L+h5b+D5ZCX77yf?=
 Date: Tue, 22 Jan 2013 16:22:56 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22503649
 X-RSS-URL: http://newsforums.bbc.co.uk/ws/zh/thread.jspa?forumID=16550
@@ -1844,7 +1844,7 @@ To: a@b.com
 Subject: =?utf-8?b?6K665Z2b77ya5Lit5YWx6ICB5Lq65bmy5pS/546w6LGh5pyJ5Y+Y5YyW5ZCX77yf?=
 Date: Wed, 23 Jan 2013 12:43:04 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22523785
 X-RSS-URL: http://newsforums.bbc.co.uk/ws/zh/thread.jspa?forumID=16553
@@ -1866,7 +1866,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Y+w5rm+5p2l6bi/77ya5rKh5pyJ5bC+54mZ55qE5LiA5bm0?=
 Date: Fri, 18 Jan 2013 09:52:16 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22417512
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/taiwan_letters/2013/01/130118_tw_newyear_bywuyanling.shtml
@@ -1889,7 +1889,7 @@ To: a@b.com
 Subject: =?utf-8?b?6IW+6b6Z6K+05LqL77ya5Lym5pWm6KGX5aS055qE4oCc6ay86L2m4oCd?=
 Date: Fri, 18 Jan 2013 11:18:40 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22421244
 X-RSS-URL: http://www.bbc.co.uk/ukchina/simp/uk_life/tenglong/2013/01/130118_tenglong_ghost_bikes.shtml
@@ -1909,7 +1909,7 @@ To: a@b.com
 Subject: =?utf-8?b?6K6w6ICF5p2l6bi/77ya6aaZ5riv5oCl6ZyA5aGr6KGl55qE5aSn4oCc6buR5rSe4oCd?=
 Date: Fri, 18 Jan 2013 10:13:58 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-18:22417956
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/fooc/2013/01/130118_fooc_hk.shtml
@@ -1930,7 +1930,7 @@ To: a@b.com
 Subject: =?utf-8?b?54K56K+E5Lit5Zu977ya6LCB5piv5Y2X5ZGo5LqL5Lu255qE5bmV5ZCO6buR5omL77yf?=
 Date: Tue, 22 Jan 2013 10:38:33 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22493779
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/focus_on_china/2013/01/130122_cr_southern_weekly_xiaoshu.shtml
@@ -1952,7 +1952,7 @@ To: a@b.com
 Subject: =?utf-8?b?6aaZ5riv6KeC5a+f77ya6LCB5piv5a625bqt55Sf5rS755qE56C05Z2P6ICF77yf?=
 Date: Wed, 23 Jan 2013 09:02:00 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-22:22502506
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/hong_kong_review/2013/01/130122_hkreview_sexual_discrimination.shtml
@@ -1974,7 +1974,7 @@ To: a@b.com
 Subject: =?utf-8?b?6K6w6ICF5p2l6bi/77ya5rKh5pyJ5p+l6Z+m5pav55qE5aeU5YaF55Ge5ouJ77yf?=
 Date: Wed, 23 Jan 2013 13:40:44 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22525030
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/fooc/2013/01/130123_fooc_venezuela.shtml
@@ -1995,7 +1995,7 @@ To: a@b.com
 Subject: =?utf-8?b?5r6z6Zeo5Y+46K2m4oCc5rKh5o6l5ZG95Luk5p+l6JaE54aZ5p2l4oCd?=
 Date: Wed, 23 Jan 2013 05:49:58 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22514144
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_macau_bo_xilai.shtml
@@ -2016,7 +2016,7 @@ To: a@b.com
 Subject: =?utf-8?b?5pel5YWs5piO5YWa5YyX5Lqs6Iyr54S2IOiHquawkeWFmuS4nOS6rOeJteWItg==?=
 Date: Wed, 23 Jan 2013 06:20:41 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22514542
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_china_japan_visit.shtml
@@ -2037,7 +2037,7 @@ To: a@b.com
 Subject: =?utf-8?b?5pyd5aiB6IOB57uT5p2f5peg5qC45YyW44CA5Y2O5L+D6YeN5byA6LCI5Yik?=
 Date: Wed, 23 Jan 2013 03:19:30 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22513139
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_un_north_korea_reax.shtml
@@ -2058,7 +2058,7 @@ To: a@b.com
 Subject: =?utf-8?b?5a6Y5aqS56ew5rGf5rO95rCR6KaB5rGC5o6S5ZCN6Z2g5ZCO5byV54Ot6K6u?=
 Date: Wed, 23 Jan 2013 09:49:05 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22516836
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_china_weibo_jiang.shtml
@@ -2079,7 +2079,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux6aaW55u477ya5aaC5p6c6YCJ6IOc5bCG5bCx6YCA5Ye65qyn55uf5YWs5oqV?=
 Date: Wed, 23 Jan 2013 10:54:35 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22519295
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130123_cameron_un_eu.shtml
@@ -2100,7 +2100,7 @@ To: a@b.com
 Subject: =?utf-8?b?6Iux5aqS77ya5Lit5Zu95Lul5by66LCD5oiY5LqJ5Y+W5Luj6LCI6K665ZKM5bmz?=
 Date: Wed, 23 Jan 2013 11:25:00 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22519446
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_press_china_war_rhetoric.shtml
@@ -2121,7 +2121,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Zu95rCR5YWa5Lit5aSu6YCa6L+H6ams6Iux5Lmd5Y+v5YaN6YCJ5YWa5Li75bit?=
 Date: Wed, 23 Jan 2013 12:51:19 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22522743
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_mayingjeou_kmt_taiwan.shtml
@@ -2142,7 +2142,7 @@ To: a@b.com
 Subject: =?utf-8?b?5rex5Zyz6Z2S5bm06aaZ5riv5rSX6buR6ZKxMTMx5Lq/6I635YiR?=
 Date: Wed, 23 Jan 2013 13:24:07 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22524284
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_moneylaundry.shtml
@@ -2163,7 +2163,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Y+w5ZCM5oCn5oGL5Ly05L6j5pKk5Zue6KaB5rGC5om/6K6k5ama5ae75a6Y5Y+4?=
 Date: Wed, 23 Jan 2013 13:40:25 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22523978
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_gaymarriage.shtml
@@ -2184,7 +2184,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Lit5Zu94oCc5bu66K6+5oCn4oCd5Y+C5LiO5pyd6bKc5Yaz6K6u55qE6IOM5ZCO?=
 Date: Wed, 23 Jan 2013 14:05:09 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22524785
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_analysis/2013/01/130123_north_korea_resolution.shtml
@@ -2205,7 +2205,7 @@ To: a@b.com
 Subject: =?utf-8?b?6auY5pm65pmfOeS4quaciOWQjuWGjeiOt+WutuS6uuaOouinhg==?=
 Date: Wed, 23 Jan 2013 14:35:44 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22525421
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/chinese_news/2013/01/130123_gao_zhisheng_visit.shtml
@@ -2226,7 +2226,7 @@ To: a@b.com
 Subject: =?utf-8?b?5b635rOV562J5Zu95om56K+E5Y2h5qKF5Lym55qE5qyn55uf5YWs5oqV6K6h5YiS?=
 Date: Wed, 23 Jan 2013 18:31:24 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22533177
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/uk/2013/01/130123_eu_uk.shtml
@@ -2247,7 +2247,7 @@ To: a@b.com
 Subject: =?utf-8?b?5Zu96ZmF6LSn5biB5Z+66YeR57uE57uH56ew5YWo55CD57uP5rWO5oGi5aSN5pS+57yT?=
 Date: Wed, 23 Jan 2013 20:50:57 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22535346
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_imf_world_economy.shtml
@@ -2268,7 +2268,7 @@ To: a@b.com
 Subject: =?utf-8?b?55m95a6r5o+Q5ZCN6Im+5Lym5Li65YyX57qm5pyA6auY5Y+45Luk5a6Y?=
 Date: Wed, 23 Jan 2013 20:55:42 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22535477
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_us_genallen_nato.shtml

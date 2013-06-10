@@ -7,7 +7,7 @@ To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Sat, 17 Nov 2012 11:21:26 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 82a71554e460103fdd7350c4ae84f7518386d4f8
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578641
@@ -28,7 +28,7 @@ To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Sat, 17 Nov 2012 14:01:27 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: a52375ec78a988241fe9864a2243d4d910538d52
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578640
@@ -48,7 +48,7 @@ To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Sat, 17 Nov 2012 16:32:25 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 4140a64e33aba18a80001a6721573ae89b1474d2
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578639
@@ -67,7 +67,7 @@ To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Sat, 17 Nov 2012 19:10:51 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: f001da3e77329aa8e942cd912992325d96620a0a
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578638
@@ -86,7 +86,7 @@ To: a@b.com
 Subject: Re: Updating Our Reading List
 Date: Sun, 18 Nov 2012 01:47:39 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 7085b5533cd3894e04342ed4eb362a6a1cc4c712
 X-RSS-URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713578644
@@ -105,7 +105,7 @@ To: a@b.com
 Subject: Re: Updating Our Reading List
 Date: Sun, 18 Nov 2012 11:35:15 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: a905039f76219d23f5438232f436826b63e1ffd3
 X-RSS-URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713578646
@@ -124,7 +124,7 @@ To: a@b.com
 Subject: Re: License
 Date: Mon, 19 Nov 2012 05:04:14 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: ca5d0c74ab4863c154184744f9019b8d2bc57874
 X-RSS-URL: http://dev.software-carpentry.org/license.html#comment-713697314
@@ -145,7 +145,7 @@ To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Mon, 19 Nov 2012 07:26:17 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 2a6766e530cffaeebce0a606f117eea00fdc691b
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713743170
@@ -164,7 +164,7 @@ To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Mon, 19 Nov 2012 09:25:37 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: d60d5b5d42b37831ffbebff4c88de2172b21317b
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713806704
@@ -183,7 +183,7 @@ To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Mon, 19 Nov 2012 10:16:34 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 11fe3629ac59c5b3e7e3ab7342c18a6b445926ff
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713835492
@@ -202,7 +202,7 @@ To: a@b.com
 Subject: Re: Updating Our Reading List
 Date: Mon, 19 Nov 2012 11:02:47 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: e90c60c308d6ce39ad5dd6b0c166a1fdb828fa98
 X-RSS-URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-713879471
@@ -221,7 +221,7 @@ To: a@b.com
 Subject: Re: Who Wants To Write a Little Code?
 Date: Mon, 19 Nov 2012 11:50:48 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 191fb27d9fe2b3628ef325cf30eb4280e5957a05
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713925640
@@ -240,7 +240,7 @@ To: a@b.com
 Subject: Re: Boot camp standard software set-up
 Date: Mon, 19 Nov 2012 17:21:48 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: f8411372ad12808de0353862993e1d7e6ca33c53
 X-RSS-URL: http://software-carpentry.org/boot-camps/boot-camp-standard-software-set-up/#comment-714244447
@@ -265,7 +265,7 @@ To: a@b.com
 Subject: Re: Updating Our Reading List
 Date: Mon, 19 Nov 2012 20:01:28 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: b99f52d5c145cffe0cdaa072fbfd8db2aaf26182
 X-RSS-URL: http://software-carpentry.org/2012/11/updating-our-reading-list/#comment-714359879
@@ -284,7 +284,7 @@ To: a@b.com
 Subject: Re: Pre-Assessment
 Date: Tue, 20 Nov 2012 13:35:58 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 3c26d08d9282a33234684ab4c78348a7cc41b780
 X-RSS-URL: http://software-carpentry.org/2012/11/pre-assessment/#comment-715101942
@@ -303,7 +303,7 @@ To: a@b.com
 Subject: Re: Cait Pickens on the Scripps Institute Boot Camp
 Date: Sat, 24 Nov 2012 22:55:27 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: f8eb500dd3e663750ff6da01077be3ef4888e00a
 X-RSS-URL: http://software-carpentry.org/2012/11/cait-pickens-on-the-scripps-institute-boot-camp/#comment-718478609
@@ -326,7 +326,7 @@ To: a@b.com
 Subject: Re: Usability Testing and Instructional Design
 Date: Sun, 25 Nov 2012 14:14:04 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 040f57f4bcb609a390fffb52b4b861dc09187550
 X-RSS-URL: http://software-carpentry.org/2012/10/usability-testing-instructional-design/#comment-718887929
@@ -345,7 +345,7 @@ To: a@b.com
 Subject: Re: Titus Brown on the Scripps Institute Boot Camp
 Date: Tue, 27 Nov 2012 10:28:51 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 26fcd8e7ba0c80bfb28a1f6bf5e9f52ebbfb7615
 X-RSS-URL: http://software-carpentry.org/2012/11/titus-brown-on-the-scripps-institute-boot-camp/#comment-720356478
@@ -370,7 +370,7 @@ To: a@b.com
 Subject: Re: Alpha-Testing Ideas for the IPython Notebook
 Date: Wed, 28 Nov 2012 11:59:11 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 4506d8c7d87adeb4ba02fe18933e5f1afb25da1e
 X-RSS-URL: http://software-carpentry.org/2012/11/alpha-testing-ideas-for-the-ipython-notebook/#comment-721672437
@@ -406,7 +406,7 @@ To: a@b.com
 Subject: Re: Good News About Software Carpentry (and More)
 Date: Fri, 30 Nov 2012 16:16:26 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: d9366333b32d03165ad0e8347ccdaa7642dd85ed
 X-RSS-URL: http://software-carpentry.org/2012/11/good-news-about-software-carpentry-and-more/#comment-724142260
@@ -425,7 +425,7 @@ To: a@b.com
 Subject: Re: Software Carpentry: Boot Camps
 Date: Tue, 04 Dec 2012 23:10:01 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: cc7138c4b79c0218dae70e4c37515cf674a3e9a0
 X-RSS-URL: http://0.0.0.0:4000/#comment-727907941
@@ -444,7 +444,7 @@ To: a@b.com
 Subject: Re: Best Practices for Scientific Computing
 Date: Wed, 05 Dec 2012 10:33:57 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: d429b280f96db84c7717108724486704173d32b5
 X-RSS-URL: http://software-carpentry.org/2012/10/best-practices-for-scientific-computing/#comment-728345964
@@ -479,7 +479,7 @@ To: a@b.com
 Subject: Re: Transitioning to the IPython Notebook
 Date: Thu, 06 Dec 2012 10:12:25 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: d592e38cf1044cb835911ee0fa9dc318e4b47e56
 X-RSS-URL: http://software-carpentry.org/2012/10/transitioning-to-the-ipython-notebook/#comment-729245349
@@ -498,7 +498,7 @@ To: a@b.com
 Subject: Re: Moving Up and Moving Down
 Date: Sun, 09 Dec 2012 16:28:11 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: 4b8954483b74036891ca4be74b2f4f132ff504f4
 X-RSS-URL: http://software-carpentry.org/2012/12/moving-up-and-moving-down/#comment-731874263
@@ -517,7 +517,7 @@ To: a@b.com
 Subject: Re: Sustainability
 Date: Mon, 10 Dec 2012 16:01:30 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email
+User-Agent: rss2email/...
 X-RSS-Feed: disqus/feed.rss
 X-RSS-ID: b515c95f6704cadb9e7c24a27585f5e94aab9947
 X-RSS-URL: http://software-carpentry.org/2012/12/sustainability/#comment-732661695
