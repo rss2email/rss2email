@@ -190,7 +190,7 @@ def imap_send(message, config=None, section='DEFAULT'):
                 raise
             except Exception as e:
                 raise _error.IMAPAuthenticationError(
-                    server=server, username=username)
+                    server=server, port=port, username=username)
         mailbox = config.get(section, 'imap-mailbox')
         date = _imaplib.Time2Internaldate(_time.localtime())
         message_bytes = _flatten(message)
