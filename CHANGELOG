@@ -1,4 +1,5 @@
 v3.6 (unreleased)
+    * Fix missing port argument for IMAPAuthenticationError.
     * Fix `<div id="entry>` syntax error in HTML mail.
 
 v3.5 (2013-06-05)
