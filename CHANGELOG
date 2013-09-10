@@ -1,3 +1,6 @@
+v3.7 (unreleased)
+    * Convert the `friendly-name` boolean to the new `name-format` setting.  This allow users to customize how the friendly name is constructed.
+
 v3.6 (2013-09-09)
     * Fix missing port argument for IMAPAuthenticationError.
     * Fix `<div id="entry>` syntax error in HTML mail.
