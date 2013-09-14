@@ -115,7 +115,7 @@ configuration file for you, which you can edit as you see fit.  The
 setting for all feeds, change the value in the \fB[DEFAULT]\fR
 section.  To override a setting for a particular feed, add that
 setting to the feed-specific section.  Here is an example overriding
-\fBuse-publisher-email\fR and \fBfriendly-name\fR for the
+\fBuse-publisher-email\fR and \fBname-format\fR for the
 \fBfeedname\fR feed.
 .P
 .RS 4
@@ -124,14 +124,14 @@ setting to the feed-specific section.  Here is an example overriding
 from = user@rss2email.invalid
 force-from = False
 use-publisher-email = False
-friendly-name = True
+name-format = '{feed-title}: {author}'
   .\|.\|.
 verbose = warning
 
 [feed.feedname]
 url = http://feed.url/somewhere.rss
 use-publisher-email = True
-friendly-name = False
+name-format = '{author} ({feed.title})'
 .RE
 .P
 .SH FILES

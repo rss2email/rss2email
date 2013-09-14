@@ -168,7 +168,6 @@ class Feed (object):
         'digest',
         'force_from',
         'use_publisher_email',
-        'friendly_name',
         'active',
         'date_header',
         'trust_guid',
@@ -547,31 +546,38 @@ class Feed (object):
         ...     '</feed>\\n'
         ...     )
         >>> entry = parsed.entries[0]
-        >>> f.friendly_name = False
+        >>> f.name_format = ''
         >>> f._get_entry_name(parsed, entry)
         ''
-        >>> f.friendly_name = True
+        >>> f.name_format = '{author}'
         >>> f._get_entry_name(parsed, entry)
         'Example author'
+        >>> f.name_format = '{feed-title}: {author}'
+        >>> f._get_entry_name(parsed, entry)
+        ': Example author'
+        >>> f.name_format = '{author} ({feed.name})'
+        >>> f._get_entry_name(parsed, entry)
+        'Example author (test-feed)'
         """
-        if not self.friendly_name:
+        if not self.name_format:
             return ''
-        parts = ['']
+        data = {
+            'feed': self,
+            'feed-title': '<feed title>',
+            'author': '<author>',
+            'publisher': '<publisher>',
+            }
         feed = parsed.feed
-        parts.append(feed.get('title', ''))
+        data['feed-title'] = feed.get('title', '')
         for x in [entry, feed]:
             if 'name' in x.get('author_detail', []):
                 if x.author_detail.name:
-                    if ''.join(parts):
-                        parts.append(': ')
-                    parts.append(x.author_detail.name)
+                    data['author'] = x.author_detail.name
                     break
-        if not ''.join(parts) and self.use_publisher_email:
-            if 'name' in feed.get('publisher_detail', []):
-                if ''.join(parts):
-                    parts.append(': ')
-                parts.append(feed.publisher_detail.name)
-        return _html2text.unescape(''.join(parts))
+        if 'name' in feed.get('publisher_detail', []):
+            data['publisher'] = feed.publisher_detail.name
+        name = self.name_format.format(**data)
+        return _html2text.unescape(name)
 
     def _validate_email(self, email, default=None):
         """Do a basic quality check on email address
