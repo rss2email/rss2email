@@ -64,6 +64,10 @@ for e in ['error', 'herror', 'gaierror']:
 del e  # cleanup namespace
 _SOCKET_ERRORS = tuple(_SOCKET_ERRORS)
 
+# drv_libxml2 raises:
+#   TypeError: 'str' does not support the buffer interface
+_feedparser.PREFERRED_XML_PARSERS = []
+
 
 class Feed (object):
     """Utility class for feed manipulation and storage.
