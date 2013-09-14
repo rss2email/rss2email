@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 #
-# Copyright (C) 2012-2013 Dmitry Bogatov <KAction@gnu.org>
+# Copyright (C) 2012-2013 Arun Persaud <apersaud@lbl.gov>
+#                         Dmitry Bogatov <KAction@gnu.org>
 #                         George Saunders <georgesaunders@gmail.com>
 #                         W. Trevor King <wking@tremily.us>
 #

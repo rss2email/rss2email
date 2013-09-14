@@ -1,8 +1,10 @@
 # Copyright (C) 2004-2013 Aaron Swartz
 #                         Brian Lalor
 #                         Dean Jackson
+#                         Dennis Keitzel <github@pinshot.net>
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
+#                         J. Lewis Muir <jlmuir@imca-cat.org>
 #                         Joey Hess
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Marcel Ackermann

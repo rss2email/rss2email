@@ -1,4 +1,5 @@
 # Copyright (C) 2013 Arun Persaud <apersaud@lbl.gov>
+#                    W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.
 #
