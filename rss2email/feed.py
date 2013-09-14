@@ -552,7 +552,12 @@ class Feed (object):
         """
         if not self.name_format:
             return ''
-        data = {'feed': self}
+        data = {
+            'feed': self,
+            'feed-title': '<feed title>',
+            'author': '<author>',
+            'publisher': '<publisher>',
+            }
         feed = parsed.feed
         data['feed-title'] = feed.get('title', '')
         for x in [entry, feed]:
