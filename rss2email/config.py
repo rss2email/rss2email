@@ -193,6 +193,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('imap-port', str(143)),
         ('imap-ssl', str(False)),       # connect to the IMAP server using SSL
         ('imap-mailbox', 'INBOX'),      # where we should store new messages
+        # Maildir configuration
+        ('maildir-path', '~/Maildir'),
+        ('maildir-mailbox', 'INBOX'),
 
         ### Miscellaneous
         # Verbosity (one of 'error', 'warning', 'info', or 'debug').
