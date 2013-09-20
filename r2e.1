@@ -124,14 +124,14 @@ setting to the feed-specific section.  Here is an example overriding
 from = user@rss2email.invalid
 force-from = False
 use-publisher-email = False
-name-format = '{feed-title}: {author}'
+name-format = {feed-title}: {author}
   .\|.\|.
 verbose = warning
 
 [feed.feedname]
 url = http://feed.url/somewhere.rss
 use-publisher-email = True
-name-format = '{author} ({feed.title})'
+name-format = {author} ({feed.title})
 .RE
 .P
 .SH FILES
