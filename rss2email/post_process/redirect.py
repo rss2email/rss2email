@@ -24,6 +24,7 @@ This hook finds and uses the real url behind redirects.
 
 import urllib
 import re
+import rss2email
 
 def process(feed, parsed, entry, guid, message):
     # decode message
@@ -37,7 +38,9 @@ def process(feed, parsed, entry, guid, message):
 
     # Remove the redirect and modify the content
     try:
-        direct_link = urllib.request.urlopen(link).geturl()
+        request = urllib.request.Request(link)
+        request.add_header('User-agent', rss2email.feed._USER_AGENT)
+        direct_link = urllib.request.urlopen(request).geturl()
     except:
         return message
     content = re.sub(re.escape(link), direct_link, content, re.MULTILINE)
