@@ -31,19 +31,30 @@ def process(feed, parsed, entry, guid, message):
     encoding = message.get_charsets()[0]
     content = str(message.get_payload(decode=True), encoding)
 
+    links = []
+
     # Get the link
     link = entry['link']
-    if not link:
+    if link:
+        links.append(link)
+
+    for enclosure in entry['enclosures']:
+        links.append(enclosure['href'])
+
+    if not links:
         return message
 
     # Remove the redirect and modify the content
-    try:
-        request = urllib.request.Request(link)
-        request.add_header('User-agent', rss2email.feed._USER_AGENT)
-        direct_link = urllib.request.urlopen(request).geturl()
-    except:
-        return message
-    content = re.sub(re.escape(link), direct_link, content, re.MULTILINE)
+    timeout = rss2email.config.CONFIG['DEFAULT'].getint('feed-timeout')
+    proxy = rss2email.config.CONFIG['DEFAULT']['proxy']
+    for link in links:
+        try:
+            request = urllib.request.Request(link)
+            request.add_header('User-agent', rss2email.feed._USER_AGENT)
+            direct_link = urllib.request.urlopen(request).geturl()
+        except:
+            continue
+        content = re.sub(re.escape(link), direct_link, content, re.MULTILINE)
 
     # clear CTE and set message. It can be important to clear the CTE
     # before setting the payload, since the payload is only re-encoded
