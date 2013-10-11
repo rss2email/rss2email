@@ -1,3 +1,6 @@
+v3.7 (unreleased)
+    * Fix fallback for titles that contain malformed HTML.
+
 v3.6 (2013-09-09)
     * Fix missing port argument for IMAPAuthenticationError.
     * Fix `<div id="entry>` syntax error in HTML mail.
