@@ -41,15 +41,15 @@ things are in place.
 1. Ensure that a version of Python_ ≥3.2 is installed.
 2. Install the required Python packages.
 
-  1. feedparser_
-  2. html2text_
+   * feedparser_
+   * html2text_
 
 3. Figure out how you are going to send outgoing email.  You have two
    options here: either use an STMP server or a local sendmail
    program.  So,
 
-  * determine your outgoing email server's SMTP address, or
-  * install sendmail (or a compatible replacement like postfix).
+   * determine your outgoing email server's SMTP address, or
+   * install sendmail (or a compatible replacement like postfix).
 
 Download
 ~~~~~~~~
