@@ -49,6 +49,7 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
         'Topic :: Communications :: Email',
         'Topic :: Software Development :: Libraries :: Python Modules',
         ],
