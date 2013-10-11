@@ -1,3 +1,4 @@
+include AUTHORS
 include CHANGELOG
 include COPYING
 include r2e.1
