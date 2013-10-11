@@ -1,4 +1,4 @@
-v3.7 (unreleased)
+v3.7 (2013-10-11)
     * Fix fallback for titles that contain malformed HTML.
     * Fix atomic saves to avoid garbling config and data files if the disk is full.
     * Convert the `friendly-name` boolean to the new `name-format` setting.  This allow users to customize how the friendly name is constructed.
