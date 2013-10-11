@@ -426,9 +426,14 @@ class Feed (object):
             not version):
             raise _error.ProcessingError(parsed=parsed, feed=feed)
 
-    def _html2text(self, html, baseurl=''):
+    def _html2text(self, html, baseurl='', default=None):
         self.config.setup_html2text(section=self.section)
-        return _html2text.html2text(html=html, baseurl=baseurl)
+        try:
+            return _html2text.html2text(html=html, baseurl=baseurl)
+        except _html_parser.HTMLParseError as e:
+            if default is not None:
+                return default
+            raise
 
     def _process_entry(self, parsed, entry):
         id_ = self._get_entry_id(entry)
@@ -511,12 +516,12 @@ class Feed (object):
         if hasattr(entry, 'title_detail') and entry.title_detail:
             title = entry.title_detail.value
             if 'html' in entry.title_detail.type:
-                title = self._html2text(title)
+                title = self._html2text(title, default=title)
         else:
             content = self._get_entry_content(entry)
             value = content['value']
             if content['type'] in ('text/html', 'application/xhtml+xml'):
-                value = self._html2text(value)
+                value = self._html2text(value, default=value)
             title = value[:70]
         title = title.replace('\n', ' ').strip()
         return title
