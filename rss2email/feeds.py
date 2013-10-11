@@ -344,8 +344,12 @@ class Feeds (list):
         dirname = _os.path.dirname(self.configfiles[-1])
         if dirname and not _os.path.isdir(dirname):
             _os.makedirs(dirname, mode=0o700, exist_ok=True)
-        with open(self.configfiles[-1], 'w') as f:
+        tmpfile = self.configfiles[-1] + '.tmp'
+        with open(tmpfile, 'w') as f:
             self.config.write(f)
+            f.flush()
+            _os.fsync(f.fileno())
+        _os.rename(tmpfile, self.configfiles[-1])
         self._save_feeds()
 
     def _save_feeds(self):
@@ -353,17 +357,15 @@ class Feeds (list):
         dirname = _os.path.dirname(self.datafile)
         if dirname and not _os.path.isdir(dirname):
             _os.makedirs(dirname, mode=0o700, exist_ok=True)
-        if UNIX:
-            tmpfile = self.datafile + '.tmp'
-            with _codecs.open(tmpfile, 'w', self.datafile_encoding) as f:
-                self._save_feed_states(feeds=self, stream=f)
-            _os.rename(tmpfile, self.datafile)
-            if self._datafile_lock is not None:
-                self._datafile_lock.close()  # release the lock
-                self._datafile_lock = None
-        else:
-            with _codecs.open(self.datafile, 'w', self.datafile_encoding) as f:
-                self._save_feed_states(feeds=self, stream=f)
+        tmpfile = self.datafile + '.tmp'
+        with _codecs.open(tmpfile, 'w', self.datafile_encoding) as f:
+            self._save_feed_states(feeds=self, stream=f)
+            f.flush()
+            _os.fsync(f.fileno())
+        _os.rename(tmpfile, self.datafile)
+        if UNIX and self._datafile_lock is not None:
+            self._datafile_lock.close()  # release the lock
+            self._datafile_lock = None
 
     def _save_feed_states(self, feeds, stream):
         _json.dump(

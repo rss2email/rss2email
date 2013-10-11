@@ -1,4 +1,5 @@
 v3.7 (unreleased)
+    * Fix atomic saves to avoid garbling config and data files if the disk is full.
     * Convert the `friendly-name` boolean to the new `name-format` setting.  This allow users to customize how the friendly name is constructed.
     * Demote guessed encodings logs from 'error' to 'warning'.
 
