@@ -132,7 +132,7 @@ def opmlimport(feeds, args):
         raise _error.OPMLReadError() from e
     if args.file:
         f.close()
-    name_slug_regexp = _re.compile('[^a-zA-Z0-9._-]+')
+    name_slug_regexp = _re.compile('[^\w\d.-]+')
     for feed in new_feeds:
         if feed.hasAttribute('xmlUrl'):
             url = _saxutils.unescape(feed.getAttribute('xmlUrl'))

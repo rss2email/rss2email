@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (C) 2004-2013 Aaron Swartz
 #                         Brian Lalor
 #                         Dean Jackson
@@ -110,13 +111,18 @@ class Feed (object):
     >>> feed.url
     'http://example.com/feed.atom'
 
-    Names can only contain ASCII letters, digits, and '._-'.  Here the
+    Names can only contain letters, digits, and '._-'.  Here the
     invalid space causes an exception:
 
     >>> Feed(name='invalid name')
     Traceback (most recent call last):
       ...
     rss2email.error.InvalidFeedName: invalid feed name 'invalid name'
+
+    However, you aren't restricted to ASCII letters:
+
+    >>> Feed(name='Αθήνα')
+    <Feed Αθήνα (None -> )>
 
     You must define a URL:
 
@@ -130,8 +136,9 @@ class Feed (object):
 
     >>> CONFIG['DEFAULT']['to'] = ''
     >>> test_section = CONFIG.pop('feed.test-feed')
+
     """
-    _name_regexp = _re.compile('^[a-zA-Z0-9._-]+$')
+    _name_regexp = _re.compile('^[\w\d.-]+$')
 
     # saved/loaded from feed.dat using __getstate__/__setstate__.
     _dynamic_attributes = [
