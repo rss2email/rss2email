@@ -17,6 +17,7 @@
 """rss2email commands
 """
 
+import re as _re
 import sys as _sys
 import xml.dom.minidom as _minidom
 import xml.sax.saxutils as _saxutils
@@ -131,6 +132,7 @@ def opmlimport(feeds, args):
         raise _error.OPMLReadError() from e
     if args.file:
         f.close()
+    name_slug_regexp = _re.compile('[^a-zA-Z0-9._-]+')
     for feed in new_feeds:
         if feed.hasAttribute('xmlUrl'):
             url = _saxutils.unescape(feed.getAttribute('xmlUrl'))
@@ -138,7 +140,7 @@ def opmlimport(feeds, args):
             if feed.hasAttribute('text'):
                 text = _saxutils.unescape(feed.getAttribute('text'))
                 if text != url:
-                    name = text
+                    name = name_slug_regexp.sub('-', text)
             feed = feeds.new_feed(name=name, url=url)
             _LOG.info('add new feed {}'.format(feed))
     feeds.save()
