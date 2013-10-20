@@ -1,3 +1,7 @@
+v3.8 (unreleased)
+    * Sluggify feed names on opmlimport.
+    * Allow Unicode letters and digits in feed names, instead of just ASCII lettters and digits.
+
 v3.7 (2013-10-11)
     * Fix fallback for titles that contain malformed HTML.
     * Fix atomic saves to avoid garbling config and data files if the disk is full.
