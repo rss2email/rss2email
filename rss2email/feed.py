@@ -180,6 +180,7 @@ class Feed (object):
         'active',
         'date_header',
         'trust_guid',
+        'trust_link',
         'html_mail',
         'use_css',
         'unicode_snob',
@@ -498,6 +499,8 @@ class Feed (object):
 
     def _get_entry_id(self, entry):
         """Get best ID from an entry."""
+        if self.trust_link:
+            return entry.get('link', None)
         if self.trust_guid:
             if getattr(entry, 'id', None):
                 # Newer versions of feedparser could return a dictionary

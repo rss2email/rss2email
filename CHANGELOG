@@ -1,3 +1,6 @@
+v3.9 (unreleased)
+    * Add a new `trust-link` setting, to prefer the `link` attribute over the `id` attribute for identifying entries.
+
 v3.8 (2014-01-18)
     * Sluggify feed names on opmlimport.
     * Allow Unicode letters and digits in feed names, instead of just ASCII lettters and digits.
