@@ -1,4 +1,4 @@
-v3.8 (unreleased)
+v3.8 (2014-01-18)
     * Sluggify feed names on opmlimport.
     * Allow Unicode letters and digits in feed names, instead of just ASCII lettters and digits.
 
