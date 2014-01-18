@@ -109,6 +109,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('trust-guid', str(True)),
         # True: Receive one email per unique link url.
         # False: Defer to trust-guid preference.
+        # Toggling this for existing feeds may result in duplicates,
+        # because the old entries will not be recorded under their new
+        # link-based ids.
         ('trust-link', str(False)),
         # To most correctly encode emails with international
         # characters, we iterate through the list below and use the
