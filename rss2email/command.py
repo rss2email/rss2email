@@ -47,7 +47,7 @@ def add(feeds, args):
     feed = feeds.new_feed(name=args.name, url=args.url, to=args.email)
     _LOG.info('add new feed {}'.format(feed))
     if not feed.to:
-        raise _error.NoToEmailAddress(feeds=feeds)
+        raise _error.NoToEmailAddress(feed=feed, feeds=feeds)
     feeds.save()
 
 def run(feeds, args):

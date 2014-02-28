@@ -135,10 +135,10 @@ class SendmailError (RSS2EmailError):
 
 
 class FeedError (RSS2EmailError):
-    def __init__(self, feed, message=None):
+    def __init__(self, feed, message=None, **kwargs):
         if message is None:
             message = 'error with feed {}'.format(feed.name)
-        super(FeedError, self).__init__(message=message)
+        super(FeedError, self).__init__(message=message, **kwargs)
         self.feed = feed
 
 
