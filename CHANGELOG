@@ -1,4 +1,5 @@
 v3.9 (unreleased)
+    * Fix an error in the NoToEmailAddress invocation.
     * Add a new `trust-link` setting, to prefer the `link` attribute over the `id` attribute for identifying entries.
 
 v3.8 (2014-01-18)
