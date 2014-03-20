@@ -57,7 +57,7 @@ from . import error as _error
 from . import util as _util
 
 
-_USER_AGENT = 'rss2email/{} +{}'.format(__version__, __url__)
+_USER_AGENT = 'rss2email/{} ({})'.format(__version__, __url__)
 _feedparser.USER_AGENT = _USER_AGENT
 _urllib_request.install_opener(_urllib_request.build_opener())
 _SOCKET_ERRORS = []
