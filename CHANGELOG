@@ -1,4 +1,5 @@
 v3.9 (unreleased)
+    * Add a new `smtp-ssl-protocol` setting, to select acceptable protocols for SMTP connections.
     * Fix non-compliant User-Agent header for HTTP/1.1.
     * Fix an error in the NoToEmailAddress invocation.
     * Add a new `trust-link` setting, to prefer the `link` attribute over the `id` attribute for identifying entries.
