@@ -51,8 +51,6 @@ import xml.sax.saxutils as _saxutils
 import feedparser as _feedparser
 import html2text as _html2text
 
-from . import __url__
-from . import __version__
 from . import LOG as _LOG
 from . import config as _config
 from . import email as _email
@@ -60,8 +58,6 @@ from . import error as _error
 from . import util as _util
 
 
-_USER_AGENT = 'rss2email/{} ({})'.format(__version__, __url__)
-_feedparser.USER_AGENT = _USER_AGENT
 _urllib_request.install_opener(_urllib_request.build_opener())
 _SOCKET_ERRORS = []
 for e in ['error', 'herror', 'gaierror']:
@@ -349,7 +345,10 @@ class Feed (object):
         if proxy:
             kwargs['handlers'] = [_urllib_request.ProxyHandler({'http':proxy})]
         f = _util.TimeLimitedFunction(timeout, _feedparser.parse)
-        return f(self.url, self.etag, modified=self.modified, **kwargs)
+        return f(
+            self.url, self.etag, modified=self.modified,
+            agent=self.user_agent,
+            **kwargs)
 
     def _process(self, parsed):
         _LOG.info('process {}'.format(self))
@@ -469,7 +468,7 @@ class Feed (object):
         extra_headers = _collections.OrderedDict((
                 ('Date', self._get_entry_date(entry)),
                 ('Message-ID', '<{}@dev.null.invalid>'.format(_uuid.uuid4())),
-                ('User-Agent', _USER_AGENT),
+                ('User-Agent', self.user_agent),
                 ('X-RSS-Feed', self.url),
                 ('X-RSS-ID', id_),
                 ('X-RSS-URL', self._get_entry_link(entry)),
@@ -875,7 +874,7 @@ class Feed (object):
         digest['To'] = self.to  # TODO: _Header(), _formataddr((recipient_name, recipient_addr))
         digest['Subject'] = 'digest for {}'.format(self.name)
         digest['Message-ID'] = '<{}@dev.null.invalid>'.format(_uuid.uuid4())
-        digest['User-Agent'] = _USER_AGENT
+        digest['User-Agent'] = self.user_agent
         digest['X-RSS-Feed'] = self.url
         return digest
 
