@@ -60,7 +60,7 @@ class NoValidEncodingError (RSS2EmailError, ValueError):
         self.encodings = encodings
 
 
-class SMTPConnectionError (ValueError, RSS2EmailError):
+class SMTPConnectionError (RSS2EmailError, ValueError):
     def __init__(self, server, message=None):
         if message is None:
             message = 'could not connect to mail server {}'.format(server)
