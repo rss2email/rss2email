@@ -153,10 +153,18 @@ class InvalidFeedConfig (FeedError):
 
 
 class InvalidFeedName (InvalidFeedConfig):
-    def __init__(self, name, **kwargs):
-        message = "invalid feed name '{}'".format(name)
+    def __init__(self, name, message=None, **kwargs):
+        if not message:
+            message = 'invalid feed name {!r}'.format(name)
         super(InvalidFeedName, self).__init__(
             setting='name', message=message, **kwargs)
+
+
+class DuplicateFeedName (InvalidFeedName):
+    def __init__(self, name, **kwargs):
+        message = 'duplicate feed name {!r}'.format(name)
+        super(DuplicateFeedName, self).__init__(
+            name=name, message=message, **kwargs)
 
 
 class ProcessingError (FeedError):

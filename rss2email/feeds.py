@@ -388,15 +388,22 @@ class Feeds (list):
         feed-0 (None -> a@b.com)
         >>> print(feeds.new_feed())
         feed-1 (None -> a@b.com)
+        >>> print(feeds.new_feed(name='feed-1'))
+        Traceback (most recent call last):
+          ...
+        rss2email.error.DuplicateFeedName: duplicate feed name 'feed-1'
         """
+        feed_names = [feed.name for feed in self]
         if name is None:
             i = 0
             while True:
                 name = '{}{}'.format(prefix, i)
-                feed_names = [feed.name for feed in self]
                 if name not in feed_names:
                     break
                 i += 1
+        elif name in feed_names:
+            feed = self[name]
+            raise _error.DuplicateFeedName(name=feed.name, feed=feed)
         feed = _feed.Feed(name=name, **kwargs)
         self.append(feed)
         return feed
