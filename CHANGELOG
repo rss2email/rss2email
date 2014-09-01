@@ -1,4 +1,4 @@
-v3.9 (unreleased)
+v3.9 (2014-09-01)
     * Catch and error out if a user adds a feed with a duplicate name.
     * Split sender into both sendmail's -F and -f.
     * Fix an error with SMTPConnectionError inhertence order ("does not take keyword arguments").

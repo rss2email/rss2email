@@ -59,12 +59,12 @@ from several equivalent formats.
 
 1. A ``.zip`` file (suggested for Microsoft Windows users)::
 
-    $ wget https://github.com/wking/rss2email/archive/v3.8.zip
+    $ wget https://github.com/wking/rss2email/archive/v3.9.zip
     $ unzip rss2email-*.zip
 
 2. A ``.tar.gz`` file (suggested for everyone else)::
 
-    $ wget https://github.com/wking/rss2email/archive/v3.8.tar.gz
+    $ wget https://github.com/wking/rss2email/archive/v3.9.tar.gz
     $ tar xvf rss2email*.tar.gz
 
 3. A Git_ checkout (suggested for developers)::
