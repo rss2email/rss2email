@@ -1,14 +1,16 @@
-# Copyright (C) 2004-2013 Aaron Swartz
+# Copyright (C) 2004-2014 Aaron Swartz
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dmitry Bogatov <KAction@gnu.org>
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
+#                         George Saunders <georgesaunders@gmail.com>
 #                         Joey Hess
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
 #                         Matej Cepl
+#                         Thiago Coutinho <root@thiagoc.net>
 #                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.

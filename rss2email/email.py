@@ -1,8 +1,9 @@
 # -*- encoding: utf-8 -*-
 #
-# Copyright (C) 2012-2013 Arun Persaud <apersaud@lbl.gov>
+# Copyright (C) 2012-2014 Arun Persaud <apersaud@lbl.gov>
 #                         Dmitry Bogatov <KAction@gnu.org>
 #                         George Saunders <georgesaunders@gmail.com>
+#                         Thiago Coutinho <root@thiagoc.net>
 #                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.

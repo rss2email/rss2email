@@ -1,4 +1,4 @@
-# Copyright (C) 2004-2013 Aaron Swartz
+# Copyright (C) 2004-2014 Aaron Swartz
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Erik Hetzner

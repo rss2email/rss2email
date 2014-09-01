@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2004-2013 Aaron Swartz
+# Copyright (C) 2004-2014 Aaron Swartz
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dennis Keitzel <github@pinshot.net>
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
+#                         George Saunders <georgesaunders@gmail.com>
 #                         J. Lewis Muir <jlmuir@imca-cat.org>
 #                         Joey Hess
 #                         Lindsey Smith <lindsey.smith@gmail.com>
