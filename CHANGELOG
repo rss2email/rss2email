@@ -1,4 +1,5 @@
 v3.9 (unreleased)
+    * Split sender into both sendmail's -F and -f.
     * Add a new `smtp-ssl-protocol` setting, to select acceptable protocols for SMTP connections.
     * Fix non-compliant User-Agent header for HTTP/1.1.
     * Fix an error in the NoToEmailAddress invocation.
