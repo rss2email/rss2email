@@ -324,11 +324,12 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
         config = _config.CONFIG
     message_bytes = _flatten(message)
     sendmail = config.get(section, 'sendmail')
+    sender_name,sender_addr = _parseaddr(sender)
     _LOG.debug(
         'sending message to {} via {}'.format(recipient, sendmail))
     try:
         p = _subprocess.Popen(
-            [sendmail, '-f', sender, recipient],
+            [sendmail, '-F', sender_name, '-f', sender_addr, recipient],
             stdin=_subprocess.PIPE, stdout=_subprocess.PIPE,
             stderr=_subprocess.PIPE)
         stdout,stderr = p.communicate(message_bytes)
