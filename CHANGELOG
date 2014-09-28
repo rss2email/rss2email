@@ -1,3 +1,6 @@
+v3.10 (unreleased)
+    * Add a redirect post-process module.
+
 v3.7 (unreleased)
     * Convert the `friendly-name` boolean to the new `name-format` setting.  This allow users to customize how the friendly name is constructed.
     * Demote guessed encodings logs from 'error' to 'warning'.
