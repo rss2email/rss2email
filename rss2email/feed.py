@@ -423,6 +423,9 @@ class Feed (object):
             _LOG.warning(
                 'incorrectly declared encoding: {}: {}'.format(exc, self))
             warned = True
+        elif (parsed.bozo and isinstance(exc, _feedparser.NonXMLContentType)):
+            _LOG.warning('non XML Content-Type: {}: {}'.format(exc, self))
+            warned = True
         elif parsed.bozo or exc:
             if exc is None:
                 exc = "can't process"
