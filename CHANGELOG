@@ -1,3 +1,6 @@
+v3.10 (unreleased)
+    * Add a redirect post-process module.
+
 v3.9 (2014-09-01)
     * Catch and error out if a user adds a feed with a duplicate name.
     * Split sender into both sendmail's -F and -f.
