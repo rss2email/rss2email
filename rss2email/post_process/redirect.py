@@ -22,9 +22,15 @@ statistics. You may want to avoid this for privacy or for durability.
 This hook finds and uses the real url behind redirects.
 """
 
-import urllib
+import logging
 import re
+import urllib
+
 import rss2email
+
+
+LOG = _logging.getLogger(__name__)
+
 
 def process(feed, parsed, entry, guid, message):
     # decode message
@@ -52,7 +58,9 @@ def process(feed, parsed, entry, guid, message):
             request = urllib.request.Request(link)
             request.add_header('User-agent', rss2email.feed._USER_AGENT)
             direct_link = urllib.request.urlopen(request).geturl()
-        except:
+        except Exception as e:
+            LOG.warning('could not follow redirect for {}: {}'.format(
+                linke, e))
             continue
         content = re.sub(re.escape(link), direct_link, content, re.MULTILINE)
 
