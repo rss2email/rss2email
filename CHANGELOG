@@ -1,3 +1,6 @@
+v3.10 (unreleased)
+    * Add a manually extracted list of config options to r2e.1.
+
 v3.9 (2014-09-01)
     * Catch and error out if a user adds a feed with a duplicate name.
     * Split sender into both sendmail's -F and -f.
