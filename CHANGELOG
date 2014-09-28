@@ -1,4 +1,5 @@
 v3.10 (unreleased)
+    * Catch and warn for invalid Content-Types.
     * Add a manually extracted list of config options to r2e.1.
     * Add a redirect post-process module.
 
