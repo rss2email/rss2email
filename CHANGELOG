@@ -1,4 +1,5 @@
 v3.10 (unreleased)
+    * Add a manually extracted list of config options to r2e.1.
     * Add a redirect post-process module.
 
 v3.9 (2014-09-01)

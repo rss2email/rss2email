@@ -134,6 +134,142 @@ use-publisher-email = True
 name-format = {author} ({feed.title})
 .RE
 .P
+You can configure the following items:
+.SS Addressing
+.RS
+.IP from
+The email address messages are from by default
+.IP use-8bit
+Transfer-Encoding. For local mailing it is safe and
+convient to use 8bit.
+.IP force-from
+True: Only use the 'from' address.
+False: Use the email address specified by the feed, when possible.
+.IP use-publisher-email
+True: Use the publisher's email if you can't find the author's.
+False: Just use the 'from' email instead.
+.IP name-format
+If empty, only use the feed email address rather than
+friendly name plus email address.  Available attributes may
+include 'feed', 'feed-title', 'author', and 'publisher', but
+only 'feed' is guaranteed.
+.IP to
+Set this to default To email addresses.
+.RE
+.SS Fetching
+.RS
+.IP proxy
+Set an HTTP proxy (e.g. 'http://your.proxy.here:8080/')
+.IP feed-timeout
+Set the timeout (in seconds) for feed server response
+.RE
+.SS Processing
+.RS
+.IP active
+True: Fetch, process, and email feeds.
+False: Don't fetch, process, or email feeds
+.IP digest
+True: Send a single, multi-entry email per feed per rss2email run.
+False: Send a single email per entry.
+.IP date-header
+True: Generate Date header based on item's date, when possible.
+False: Generate Date header based on time sent.
+.IP date-header-order
+A comma-delimited list of some combination of
+('issued', 'created', 'modified', 'expired')
+expressing ordered list of preference in dates
+to use for the Date header of the email.
+.IP bonus-header
+Set this to add bonus headers to all emails
+Example: bonus-header = 'Approved: joe@bob.org'
+.IP trust-guid
+True: Receive one email per post.
+False: Receive an email every time a post changes.
+.IP trust-link
+True: Receive one email per unique link url.
+False: Defer to trust-guid preference.
+Toggling this for existing feeds may result in duplicates,
+because the old entries will not be recorded under their new
+link-based ids.
+.IP encodings
+To most correctly encode emails with international
+characters, we iterate through the list below and use the
+first character set that works.
+.IP post-process
+User processing hooks.  Note the space after the module name.
+Example: post-process = 'rss2email.post_process.downcase downcase_message'
+.IP digest-post-process
+User processing hooks for digest messages.  If 'digest' is
+enabled, the usual 'post-process' hook gets to message the
+per-entry messages, but this hook is called with the full
+digest message before it is mailed.
+Example: digest-post-process = 'rss2email.post_process.downcase downcase_message'
+.RE
+.SS HTML conversion
+.RS
+.IP html-mail
+True: Send text/html messages when possible.
+False: Convert HTML to plain text.
+.IP use-css
+Use CSS
+.IP css
+Optional CSS styling
+.RE
+.SS html2text options
+.RS
+.IP unicode-snob
+Use Unicode characters instead of their ascii psuedo-replacements
+.IP links-after-each-paragraph
+Put the links after each paragraph instead of at the end.
+.IP body-width
+Wrap long lines at position. 0 for no wrapping.
+.RE
+.SS Mailing
+.RS
+.IP email-protocol
+Select protocol from: sendmail, smtp, imap
+.IP sendmail
+Path to sendmail (or compatible)
+.RE
+.SS SMTP configuration
+.RS
+.IP smtp-auth
+Set to True to use SMTP AUTH
+.IP smtp-username
+username for SMTP AUTH
+.IP smtp-password
+password for SMTP AUTH
+.IP smtp-server
+SMTP server
+.IP smtp-ssl
+Connect to the SMTP server using SSL
+.IP smtp-ssl-protocol
+TLS/SSL version to use on STARTTLS when not using 'smtp-ssl'.
+.RE
+.SS IMAP configuration
+.RS
+.IP imap-auth
+set to True to use IMAP auth.
+
+.IP imap-username
+username for IMAP authentication
+.IP imap-password
+password for IMAP authentication
+.IP imap-server
+IMAP server
+.IP imap-port
+IMAP port
+.IP imap-ssl
+connect to the IMAP server using SSL
+.IP imap-mailbox
+where we should store new messages
+.RE
+.SS Miscellaneous
+.RS
+.IP verbose
+Verbosity (one of 'error', 'warning', 'info', or 'debug').
+.RE
+.P
 .SH FILES
 .TP 4
 .B $XDG_CONFIG_HOME/rss2email.cfg
