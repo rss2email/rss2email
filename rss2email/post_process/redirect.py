@@ -22,7 +22,7 @@ statistics. You may want to avoid this for privacy or for durability.
 This hook finds and uses the real url behind redirects.
 """
 
-import logging
+import logging as _logging
 import re
 import urllib
 
