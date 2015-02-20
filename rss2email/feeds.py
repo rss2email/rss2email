@@ -135,7 +135,7 @@ class Feeds (list):
         self.configfiles = configfiles
         if datafile is None:
             datafile = self._get_datafile()
-        self.datafile = datafile
+        self.datafile = _os.path.realpath(datafile)
         if config is None:
             config = _config.CONFIG
         self.config = config
@@ -338,18 +338,19 @@ class Feeds (list):
                 version, self.datafile_version))
 
     def save(self):
-        _LOG.debug('save feed configuration to {}'.format(self.configfiles[-1]))
+        dst_config_file = _os.path.realpath(self.configfiles[-1])
+        _LOG.debug('save feed configuration to {}'.format(dst_config_file))
         for feed in self:
             feed.save_to_config()
-        dirname = _os.path.dirname(self.configfiles[-1])
+        dirname = _os.path.dirname(dst_config_file)
         if dirname and not _os.path.isdir(dirname):
             _os.makedirs(dirname, mode=0o700, exist_ok=True)
-        tmpfile = self.configfiles[-1] + '.tmp'
+        tmpfile = dst_config_file + '.tmp'
         with open(tmpfile, 'w') as f:
             self.config.write(f)
             f.flush()
             _os.fsync(f.fileno())
-        _os.rename(tmpfile, self.configfiles[-1])
+        _os.rename(tmpfile, dst_config_file)
         self._save_feeds()
 
     def _save_feeds(self):
