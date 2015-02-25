@@ -470,9 +470,10 @@ class Feed (object):
                 ('X-RSS-URL', self._get_entry_link(entry)),
                 ('X-RSS-TAGS', self._get_entry_tags(entry)),
                 ))
-        for k,v in extra_headers.items():  # remove empty tags, etc.
-            if v is None:
-                extra_headers.pop(k)
+        # remove empty tags, etc.
+        keys = {k for k, v in extra_headers.items() if v is None}
+        for key in keys:
+            extra_headers.pop(key)
         if self.bonus_header:
             for header in self.bonus_header.splitlines():
                 if ':' in header:
