@@ -49,5 +49,5 @@ LOG.setLevel(_logging.ERROR)
 
 if _sys.version_info < (3, 2):
     raise ImportError(
-        "rss2email requires Python 3.2, but you're using:\n{}".format(
-            _sys.version))
+        "rss2email requires Python 3.2 or newer, but you're using:\n{}"
+        .format(_sys.version))
