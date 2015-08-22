@@ -14,7 +14,7 @@ v3.9 (2014-09-01)
 
 v3.8 (2014-01-18)
     * Sluggify feed names on opmlimport.
-    * Allow Unicode letters and digits in feed names, instead of just ASCII lettters and digits.
+    * Allow Unicode letters and digits in feed names, instead of just ASCII letters and digits.
 
 v3.7 (2013-10-11)
     * Fix fallback for titles that contain malformed HTML.
@@ -38,7 +38,7 @@ v3.4 (2013-05-14)
 
 v3.3 (2013-04-13)
     * Fix SMTP message submission logic.
-    * Fix error inheritence (super() calls).
+    * Fix error inheritance (super() calls).
     * Convert html2text parsing errors to `ProcessingError`s.
     * Cleanup html2text error handling.
     * Drop Google Reader rel-via manipulation.
@@ -67,7 +67,7 @@ v3.0 (2013-02-13)
 v2.71 (2011-03-04)
     * Upgraded to feedparser v5.01! (http://code.google.com/p/feedparser/)
     * Upgrade to html2text v3.01! (https://github.com/aaronsw/html2text)
-    * Potentialy safer method for writing feeds.dat on UNIX
+    * Potentially safer method for writing feeds.dat on UNIX
     * Handle via links with no title attribute
     * Handle attributes more cleanly with OVERRIDE_EMAIL and DEFAULT_EMAIL
 
@@ -148,7 +148,7 @@ v2.59 (2006-06-09)
     * Added optional, configurable CSS styling to HTML mail. Set USE_CSS_STYLING=1 in your config.py to enable this. If you want to tweak the look, modify STYLE_SHEET.
     * Improved empty feed checking
     * Improved invalid feed messages
-    * Unfortunately, rss2email is no longer compatible with Python v2.1. Two of the most serious lingering issues with rss2email were waiting forever for non-responsive feeds and its inablility to properly handle feeds with international characters. To properly fix these once and for all, rss2email now depends on functionality that was not available until Python v2.2. Hopefully this does not unduly inconvenience anyone that has not yet upgraded to a more current version of Python.
+    * Unfortunately, rss2email is no longer compatible with Python v2.1. Two of the most serious lingering issues with rss2email were waiting forever for non-responsive feeds and its inability to properly handle feeds with international characters. To properly fix these once and for all, rss2email now depends on functionality that was not available until Python v2.2. Hopefully this does not unduly inconvenience anyone that has not yet upgraded to a more current version of Python.
 
 v2.58 (2006-05-11)
     * Total rewrite of email code that should fix encoding problems
@@ -168,7 +168,7 @@ v2.57 (2006-04-07)
        o This avoids another backtrace, this time if there's no feed file yet. [load()]
        o Add a handler for the AttributeError exception, which feedparser can throw. Beats crashing..
        o Next, four hunks that make it more robust if no default email address is set and feeds are added w/o an email address. This patch originally comes from http://bugs.debian.org/310485 which has some examples.
-       o Finally, this works around a bug in mimify that causes it to add a newline to the subject header if it contains very long words. Details at http://bugs.debian.org/320185. Note that Tatsuya Kinoshita has a larger patch torard the end of that bug report that deals with some other problems in this area, Aaron has seen that patch before and said it "looks pretty reasonable".
+       o Finally, this works around a bug in mimify that causes it to add a newline to the subject header if it contains very long words. Details at http://bugs.debian.org/320185. Note that Tatsuya Kinoshita has a larger patch toward the end of that bug report that deals with some other problems in this area, Aaron has seen that patch before and said it "looks pretty reasonable".
     * add() catches error case on first feed add and no email address is set
     * Made "emailaddress" consistent param label throughout
     * Error message improvements
