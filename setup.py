@@ -56,8 +56,8 @@ setup(
     packages=['rss2email', 'rss2email.post_process'],
     scripts=['r2e'],
     provides=['rss2email'],
-    requires=[
-        'feedparser (>=5.0.1)',
-        'html2text (>=3.0.1)',
+    install_requires=[
+        'feedparser>=5.0.1',
+        'html2text>=3.0.1',
         ],
     )
