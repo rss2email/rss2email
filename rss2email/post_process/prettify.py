@@ -62,9 +62,10 @@ process
 
 # import modules you need
 from bs4 import BeautifulSoup
+import rss2email.email
 
 
-def pretty(message):
+def pretty(feed, parsed, entry, guid, message):
     """Use BeautifulSoup to pretty-print the html
 
     A very simple function that decodes the entry into a unicode
@@ -93,7 +94,7 @@ def pretty(message):
 
 
 def process(feed, parsed, entry, guid, message):
-    message = pretty(message)
+    message = pretty(feed, parsed, entry, guid, message)
     # you could add several filters in here if you want to
 
     # we need to return the message, if we return False,
