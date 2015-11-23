@@ -258,3 +258,9 @@ class OPMLReadError (RSS2EmailError):
     def __init__(self, **kwargs):
         message = 'error reading OPML'
         super(OPMLReadError, self).__init__(message=message, **kwargs)
+
+
+class ConfigAlreadyExistsError (FeedsError):
+    def __init__(self, feeds=None):
+        message = 'configuration file already exists'
+        super().__init__(feeds=feeds, message=message)
