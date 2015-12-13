@@ -224,7 +224,7 @@ class Feed (object):
         return '<Feed {}>'.format(str(self))
 
     def __getstate__(self):
-        "Save dyamic attributes"
+        "Save dynamic attributes"
         return dict(
             (key,getattr(self,key)) for key in self._dynamic_attributes)
 
