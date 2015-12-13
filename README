@@ -174,7 +174,7 @@ your outoing email server's details::
   [DEFAULT]
   ...
   use-smtp = True
-  smtp-server = smtp.yourisp.net:587
+  smtp-server = smtp.example.net:587
   smtp-auth = False
   ...
 
