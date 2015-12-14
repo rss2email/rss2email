@@ -145,12 +145,11 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     server = config.get(section, 'smtp-server')
     _LOG.debug('sending message to {} via {}'.format(recipient, server))
     ssl = config.getboolean(section, 'smtp-ssl')
-    if ssl:
-        smtp = _smtplib.SMTP_SSL()
-    else:
-        smtp = _smtplib.SMTP()
     try:
-        smtp.connect(server)
+        if ssl:
+            smtp = _smtplib.SMTP_SSL(host=server)
+        else:
+            smtp = _smtplib.SMTP(host=server)
     except KeyboardInterrupt:
         raise
     except Exception as e:
