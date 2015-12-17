@@ -436,7 +436,7 @@ class Feed (object):
             status in [200, 302] and
             not parsed.entries and
             not version):
-            raise _error.ProcessingError(parsed=parsed, feed=feed)
+            raise _error.ProcessingError(parsed=parsed, feed=self)
 
     def _html2text(self, html, baseurl='', default=None):
         self.config.setup_html2text(section=self.section)
