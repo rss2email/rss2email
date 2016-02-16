@@ -143,6 +143,8 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
     server = config.get(section, 'smtp-server')
+    port = config.getint(section, 'smtp-port')
+
     _LOG.debug('sending message to {} via {}'.format(recipient, server))
     ssl = config.getboolean(section, 'smtp-ssl')
     smtp_auth = config.getboolean(section, 'smtp-auth')
@@ -156,11 +158,11 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
                     context.set_default_verify_paths()
         if ssl:
             try:
-                smtp = _smtplib.SMTP_SSL(host=server, context=context)
+                smtp = _smtplib.SMTP_SSL(host=server, port=port, context=context)
             except TypeError: # Python 3.2 or earlier
-                smtp = _smtplib.SMTP_SSL(host=server) 
+                smtp = _smtplib.SMTP_SSL(host=server, port=port) 
         else:
-            smtp = _smtplib.SMTP(host=server)
+            smtp = _smtplib.SMTP(host=server, port=port)
     except KeyboardInterrupt:
         raise
     except Exception as e:
