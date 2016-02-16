@@ -149,9 +149,11 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     try:
         if ssl or smtp-auth:
                 try:
-                    context = ssl.create_default_context()
+                    context = _ssl.create_default_context()
                 except AttributeError: # Python 3.3 or earlier
                     context = _ssl.SSLContext(protocol=_ssl.PROTOCOL_SSLv23)
+                    context.verify_mode = _ssl.CERT_REQUIRED
+                    context.set_default_verify_paths()
 
         if ssl:
             try:
