@@ -154,7 +154,10 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
                     context = _ssl.SSLContext(protocol=_ssl.PROTOCOL_SSLv23)
 
         if ssl:
-            smtp = _smtplib.SMTP_SSL(host=server, context=context)
+            try:
+                smtp = _smtplib.SMTP_SSL(host=server, context=context)
+            except TypeError: # Python 3.2 or earlier
+                smtp = _smtplib.SMTP_SSL(host=server) 
         else:
             smtp = _smtplib.SMTP(host=server)
     except KeyboardInterrupt:
