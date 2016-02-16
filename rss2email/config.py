@@ -193,7 +193,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('smtp-password', 'password'),  # password for SMTP AUTH
         ('smtp-server', 'smtp.example.net:25'),
         ('smtp-ssl', str(False)),       # Connect to the SMTP server using SSL
-        ('smtp-ssl-protocol', 'SSLv3'), # TLS/SSL version to use on STARTTLS when not using 'smtp-ssl'
+        ('smtp-ssl-protocol', 'SSLv23'), # TLS/SSL version to use (SSLv23 selects the highest protocol version that both the client and server support. Despite the name, this option can select "TLS" protocols as well as "SSL".)
         # IMAP configuration
         ('imap-auth', str(False)),      # set to True to use IMAP auth.
         ('imap-username', 'username'),  # username for IMAP authentication
