@@ -145,24 +145,40 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     server = config.get(section, 'smtp-server')
     _LOG.debug('sending message to {} via {}'.format(recipient, server))
     ssl = config.getboolean(section, 'smtp-ssl')
+    smtp-auth = config.getboolean(section, 'smtp-auth')
     try:
+        if ssl or smtp-auth:
+            protocol_name = config.get(section, 'smtp-ssl-protocol') 
+            if protocol_name:
+                protocol = getattr(_ssl, 'PROTOCOL_{}'.format(protocol_name))
+                context = _ssl.SSLContext(protocol=protocol)
+                context.verify_mode = ssl.CERT_REQUIRED
+                try:
+                    context.check_hostname = True
+                    context.load_default_certs()
+                except AttributeError: #Python 3.3 or earlier
+                    context.set_default_verify_paths()
+            else:
+                try:
+                    context = ssl.create_default_context()
+                except AttributeError: # Python 3.3 or earlier
+                    context = _ssl.SSLContext(protocol=_ssl.PROTOCOL_SSLv23)
+
         if ssl:
-            smtp = _smtplib.SMTP_SSL(host=server)
+            smtp = _smtplib.SMTP_SSL(host=server, context=context)
         else:
             smtp = _smtplib.SMTP(host=server)
     except KeyboardInterrupt:
         raise
     except Exception as e:
         raise _error.SMTPConnectionError(server=server) from e
-    if config.getboolean(section, 'smtp-auth'):
+    if smtp-auth:
         username = config.get(section, 'smtp-username')
         password = config.get(section, 'smtp-password')
         try:
             if not ssl:
-                protocol_name = config.get(section, 'smtp-ssl-protocol')
-                protocol = getattr(_ssl, 'PROTOCOL_{}'.format(protocol_name))
                 try:
-                    smtp.starttls(context=_ssl.SSLContext(protocol=protocol))
+                    smtp.starttls(context=context)
                 except TypeError:
                     # Python 3.2 or earlier
                     smtp.starttls()
