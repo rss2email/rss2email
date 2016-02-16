@@ -145,16 +145,15 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     server = config.get(section, 'smtp-server')
     _LOG.debug('sending message to {} via {}'.format(recipient, server))
     ssl = config.getboolean(section, 'smtp-ssl')
-    smtp-auth = config.getboolean(section, 'smtp-auth')
+    smtp_auth = config.getboolean(section, 'smtp-auth')
     try:
-        if ssl or smtp-auth:
+        if ssl or smtp_auth:
                 try:
                     context = _ssl.create_default_context()
                 except AttributeError: # Python 3.3 or earlier
                     context = _ssl.SSLContext(protocol=_ssl.PROTOCOL_SSLv23)
                     context.verify_mode = _ssl.CERT_REQUIRED
                     context.set_default_verify_paths()
-
         if ssl:
             try:
                 smtp = _smtplib.SMTP_SSL(host=server, context=context)
@@ -166,7 +165,7 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
         raise
     except Exception as e:
         raise _error.SMTPConnectionError(server=server) from e
-    if smtp-auth:
+    if smtp_auth:
         username = config.get(section, 'smtp-username')
         password = config.get(section, 'smtp-password')
         try:
