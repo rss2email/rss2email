@@ -32,6 +32,7 @@ from email.header import Header as _Header
 from email.mime.text import MIMEText as _MIMEText
 from email.utils import formataddr as _formataddr
 from email.utils import parseaddr as _parseaddr
+from email.utils import getaddresses as _getaddresses
 import imaplib as _imaplib
 import io as _io
 import smtplib as _smtplib
@@ -107,7 +108,12 @@ def get_message(sender, recipient, subject, body, content_type,
 
     # Split real name (which is optional) and email address parts
     sender_name,sender_addr = _parseaddr(sender)
-    recipient_name,recipient_addr = _parseaddr(recipient)
+    recipient_list = []
+    for recipient_name, recipient_addr in _getaddresses([recipient]):
+        recipient_encoding = guess_encoding(recipient_name, encodings)
+        recipient_name = str(_Header(recipient_name, recipient_encoding).encode())
+        recipient_addr.encode('ascii')
+        recipient_list.append(_formataddr((recipient_name, recipient_addr)))
 
     sender_encoding = guess_encoding(sender_name, encodings)
     recipient_encoding = guess_encoding(recipient_name, encodings)
@@ -117,16 +123,14 @@ def get_message(sender, recipient, subject, body, content_type,
     # We must always pass Unicode strings to Header, otherwise it will
     # use RFC 2047 encoding even on plain ASCII strings.
     sender_name = str(_Header(sender_name, sender_encoding).encode())
-    recipient_name = str(_Header(recipient_name, recipient_encoding).encode())
 
     # Make sure email addresses do not contain non-ASCII characters
     sender_addr.encode('ascii')
-    recipient_addr.encode('ascii')
 
     # Create the message ('plain' stands for Content-Type: text/plain)
     message = _MIMEText(body, content_type, body_encoding)
     message['From'] = _formataddr((sender_name, sender_addr))
-    message['To'] = _formataddr((recipient_name, recipient_addr))
+    message['To'] = ', '.join(recipient_list)
     message['Subject'] = _Header(subject, subject_encoding)
     if config.getboolean(section, 'use-8bit'):
         del message['Content-Transfer-Encoding']
@@ -172,7 +176,7 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
         except Exception as e:
             raise _error.SMTPAuthenticationError(
                 server=server, username=username)
-    smtp.send_message(message, sender, [recipient])
+    smtp.send_message(message, sender, recipient.split(','))
     smtp.quit()
 
 def imap_send(message, config=None, section='DEFAULT'):
