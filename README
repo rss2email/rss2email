@@ -132,7 +132,7 @@ Customizing rss2email
 
 There are a number of options, described in full in
 ``rss2email/config.py``, to customize the way rss2email behaves. If
-you want to change something, edit the the configuration file that was
+you want to change something, edit the configuration file that was
 created by ``r2e new``.
 
 For example, if you want to receive HTML mail, instead of having
@@ -169,7 +169,7 @@ SMTP
 By default, rss2email uses sendmail (or an equivalent) to send
 outgoing email.  If you don't have such a program installed, or simply
 prefer to use SMTP__ directly, edit the configuration file and fill in
-your outoing email server's details::
+your outgoing email server's details::
 
   [DEFAULT]
   ...

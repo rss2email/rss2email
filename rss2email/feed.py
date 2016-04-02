@@ -628,7 +628,7 @@ class Feed (object):
     def _get_entry_address(self, parsed, entry):
         """Get the best From email address ('<jdoe@a.com>')
 
-        If the best guess isn't well-formed (something@somthing.com),
+        If the best guess isn't well-formed (something@something.com),
         use `self.from_email` instead.
         """
         if self.force_from:
