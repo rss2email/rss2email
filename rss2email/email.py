@@ -32,6 +32,7 @@ from email.header import Header as _Header
 from email.mime.text import MIMEText as _MIMEText
 from email.utils import formataddr as _formataddr
 from email.utils import parseaddr as _parseaddr
+import mailbox as _mailbox
 import imaplib as _imaplib
 import io as _io
 import smtplib as _smtplib
@@ -39,6 +40,7 @@ import ssl as _ssl
 import subprocess as _subprocess
 import sys as _sys
 import time as _time
+import os as _os
 
 from . import LOG as _LOG
 from . import config as _config
@@ -206,6 +208,14 @@ def imap_send(message, config=None, section='DEFAULT'):
     finally:
         imap.logout()
 
+def maildir_send(message, config=None, section='DEFAULT'):
+    if config is None:
+        config = _config.CONFIG
+    path = config.get(section, 'maildir-path')
+    mailbox = config.get(section, 'maildir-mailbox')
+    maildir = _mailbox.Maildir(_os.path.join(path, mailbox))
+    maildir.add(message)
+
 def _decode_header(header):
     """Decode RFC-2047-encoded headers to Unicode strings
 
@@ -348,6 +358,8 @@ def send(sender, recipient, message, config=None, section='DEFAULT'):
             config=config, section=section)
     elif protocol == 'imap':
         imap_send(message=message, config=config, section=section)
+    elif protocol == 'maildir':
+        maildir_send(message=message, config=config, section=section)
     else:
         sendmail_send(
             sender=sender, recipient=recipient, message=message,
