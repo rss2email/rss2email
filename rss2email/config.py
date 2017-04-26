@@ -76,8 +76,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('use-publisher-email', str(False)),
         # If empty, only use the feed email address rather than
         # friendly name plus email address.  Available attributes may
-        # include 'feed', 'feed-title', 'author', and 'publisher', but
-        # only 'feed' is guaranteed.
+        # include 'feed', 'feed-name', 'feed-url', 'feed-title', 'author', and
+        # 'publisher', but only 'feed', 'feed-name', and 'feed-url' are guaranteed.
         ('name-format', '{feed-title}: {author}'),
         # Set this to default To email addresses.
         ('to', ''),

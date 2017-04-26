@@ -585,6 +585,8 @@ class Feed (object):
             return ''
         data = {
             'feed': self,
+            'feed-name': self.name,
+            'feed-url': self.url,
             'feed-title': '<feed title>',
             'author': '<author>',
             'publisher': '<publisher>',

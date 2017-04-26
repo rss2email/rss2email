@@ -2,6 +2,7 @@ v3.10 (unreleased)
     * Catch and warn for invalid Content-Types.
     * Add a manually extracted list of config options to r2e.1.
     * Add a redirect post-process module.
+    * Add new `feed-name` and `feed-url` attributes for the `name-format` setting.
 
 v3.9 (2014-09-01)
     * Catch and error out if a user adds a feed with a duplicate name.
