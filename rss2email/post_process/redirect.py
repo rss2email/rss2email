@@ -60,7 +60,7 @@ def process(feed, parsed, entry, guid, message):
             direct_link = urllib.request.urlopen(request).geturl()
         except Exception as e:
             LOG.warning('could not follow redirect for {}: {}'.format(
-                linke, e))
+                link, e))
             continue
         content = re.sub(re.escape(link), direct_link, content)
 
