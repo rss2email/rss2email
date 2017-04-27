@@ -62,7 +62,7 @@ def process(feed, parsed, entry, guid, message):
             LOG.warning('could not follow redirect for {}: {}'.format(
                 linke, e))
             continue
-        content = re.sub(re.escape(link), direct_link, content, re.MULTILINE)
+        content = re.sub(re.escape(link), direct_link, content)
 
     # clear CTE and set message. It can be important to clear the CTE
     # before setting the payload, since the payload is only re-encoded
