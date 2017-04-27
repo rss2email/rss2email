@@ -150,6 +150,11 @@ def run(*args, **kwargs):
     if args.verbose:
         _LOG.setLevel(max(_logging.DEBUG, _logging.ERROR - 10 * args.verbose))
 
+    # https://docs.python.org/3/library/logging.html#logrecord-attributes
+    formatter = _logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
+    for handler in _LOG.handlers: # type: _logging.Handler
+        handler.setFormatter(formatter)
+
     if not getattr(args, 'func', None):
         parser.error('too few arguments')
 
