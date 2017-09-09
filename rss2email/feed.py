@@ -459,6 +459,7 @@ class Feed (object):
             if self.seen[guid]['id'] == id_:
                 _LOG.debug('already seen {}'.format(id_))
                 return  # already seen
+        _LOG.debug('not seen {}'.format(id_))
         sender = self._get_entry_email(parsed=parsed, entry=entry)
         subject = self._get_entry_title(entry)
         extra_headers = _collections.OrderedDict((
@@ -585,6 +586,8 @@ class Feed (object):
             return ''
         data = {
             'feed': self,
+            'feed-name': self.name,
+            'feed-url': self.url,
             'feed-title': '<feed title>',
             'author': '<author>',
             'publisher': '<publisher>',
