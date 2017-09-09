@@ -191,9 +191,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('smtp-auth', str(False)),      # set to True to use SMTP AUTH
         ('smtp-username', 'username'),  # username for SMTP AUTH
         ('smtp-password', 'password'),  # password for SMTP AUTH
-        ('smtp-server', 'smtp.example.net:25'),
+        ('smtp-server', 'smtp.example.net'),
+        ('smtp-port', '465'),
         ('smtp-ssl', str(False)),       # Connect to the SMTP server using SSL
-        ('smtp-ssl-protocol', 'SSLv3'), # TLS/SSL version to use on STARTTLS when not using 'smtp-ssl'
         # IMAP configuration
         ('imap-auth', str(False)),      # set to True to use IMAP auth.
         ('imap-username', 'username'),  # username for IMAP authentication
