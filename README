@@ -4,11 +4,11 @@
 Getting Started With rss2email
 ==============================
 
-We highly recommend that you subscribe to the rss2email project feed
+We highly recommend that you watch the rss2email project on GitHub
 so you can keep up to date with the latest version, bugfixes and
 features:
 
-  http://rss.gmane.org/gmane.mail.rss2email
+  https://github.com/rss2email/rss2email
 
 .. contents::
 
@@ -57,19 +57,16 @@ Download
 Download the latest rss2email source and unpack it.  You can choose
 from several equivalent formats.
 
-1. A ``.zip`` file (suggested for Microsoft Windows users)::
+1. A ``.zip`` file (suggested for Microsoft Windows users)
+   or ``.tar.gz`` file (suggested for everyone else)::
 
-    $ wget https://github.com/wking/rss2email/archive/v3.9.zip
-    $ unzip rss2email-*.zip
-
-2. A ``.tar.gz`` file (suggested for everyone else)::
-
-    $ wget https://github.com/wking/rss2email/archive/v3.9.tar.gz
-    $ tar xvf rss2email*.tar.gz
+    * Navigate to https://github.com/rss2email/rss2email/releases
+    * Click either the ``zip`` or ``tar.gz`` icon for the latest release
+    * Download and extract the archive
 
 3. A Git_ checkout (suggested for developers)::
 
-    $ git clone git://github.com/wking/rss2email.git
+    $ git clone git://github.com/rss2email/rss2email.git
 
 Install
 ~~~~~~~
@@ -111,10 +108,11 @@ sendmail-equivalent, you'll need to edit the SMTP_ options.
 
 Subscribe to some feeds::
 
-  $ r2e add rss2email http://rss.gmane.org/gmane.mail.rss2email
+  $ r2e add eff https://www.eff.org/rss/updates.xml
 
-That's the feed to be notified when there's a new version of
-rss2email. Repeat this for each feed you want to subscribe to.
+That will cause rss2email to notify you when there is a new announcement from
+the Electronic Frontier Foundation. Repeat this for each feed you want to
+subscribe to.
 
 When you run rss2email, it emails you about every story it hasn't seen
 before. But the first time you run it, that will be every story. To
@@ -217,19 +215,19 @@ For example, run ``r2e`` every night (at 1:23 am) with::
 Development
 ===========
 
-User discussion and development take place on the rss2email mailing
-list at ``rss2email@tremily.us``.  Everyone is welcome to post bug
-reports, feature requests, comments, and patches.  To subscribe to the
-list, send an email to ``rss2email+subscribe@tremily.us``.  The
-mailing list archives are available on Gmane_.
+User discussion and development take place on GitHub. Please feel free
+to post bug reports, feature requests, comments, and patches. If you
+do not have a GitHub account and do not wish to acquire one, you may
+e-mail Jeff:
 
+  jeff@jsbackus.com
 
 .. _Debian package:
   http://packages.qa.debian.org/r/rss2email.html
 .. _Ubuntu package:
   https://launchpad.net/ubuntu/+source/rss2email
 .. _Fedora package:
-  https://admin.fedoraproject.org/pkgdb/acls/name/rss2email
+  https://admin.fedoraproject.org/pkgdb/package/rpms/rss2email/
 .. _openSUSE package:
   https://build.opensuse.org/package/show?package=rss2email&project=server%3Amail
 .. _NetBSD package:
@@ -245,4 +243,4 @@ mailing list archives are available on Gmane_.
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _windows scheduler: http://www.iopus.com/guides/winscheduler.htm
 .. _cron: http://en.wikipedia.org/wiki/Cron
-.. _Gmane: http://dir.gmane.org/gmane.mail.rss2email
+
