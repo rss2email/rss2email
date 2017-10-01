@@ -149,7 +149,14 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
     server = config.get(section, 'smtp-server')
-    port = config.getint(section, 'smtp-port')
+    # Adding back in support for 'server:port'
+    pos = server.find(':')
+    if 0 <= pos:
+        # Strip port out of server name
+        port = int(server[pos+1:])
+        server = server[:pos]
+    else:
+        port = config.getint(section, 'smtp-port')
 
     _LOG.debug('sending message to {} via {}'.format(recipient, server))
     ssl = config.getboolean(section, 'smtp-ssl')
