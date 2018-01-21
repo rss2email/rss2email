@@ -125,6 +125,8 @@ Then later, you can ask it to email you new stories::
 
   r2e run
 
+When a run is made, rss2email stores the list of already seen items for each feed in `$HOME/.local/share/rss2email.json`.
+
 Customizing rss2email
 =====================
 
