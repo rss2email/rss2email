@@ -32,7 +32,7 @@ setup(
     maintainer=__author__,
     maintainer_email=__email__,
     url=__url__,
-    download_url='https://github.com/wking/rss2email/archive/v{}.tar.gz'.format(__version__),
+    download_url='{}/archive/v{}.tar.gz'.format(__url__, __version__),
     license='GNU General Public License (GPL)',
     platforms=['all'],
     description=__doc__,
