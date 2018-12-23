@@ -436,7 +436,7 @@ class Feed (object):
             status in [200, 302] and
             not parsed.entries and
             not version):
-            raise _error.ProcessingError(parsed=parsed, feed=feed)
+            raise _error.ProcessingError(parsed=parsed, feed=self)
 
     def _html2text(self, html, baseurl='', default=None):
         self.config.setup_html2text(section=self.section)
@@ -459,6 +459,7 @@ class Feed (object):
             if self.seen[guid]['id'] == id_:
                 _LOG.debug('already seen {}'.format(id_))
                 return  # already seen
+        _LOG.debug('not seen {}'.format(id_))
         sender = self._get_entry_email(parsed=parsed, entry=entry)
         subject = self._get_entry_title(entry)
         extra_headers = _collections.OrderedDict((
@@ -585,6 +586,8 @@ class Feed (object):
             return ''
         data = {
             'feed': self,
+            'feed-name': self.name,
+            'feed-url': self.url,
             'feed-title': '<feed title>',
             'author': '<author>',
             'publisher': '<publisher>',
@@ -628,7 +631,7 @@ class Feed (object):
     def _get_entry_address(self, parsed, entry):
         """Get the best From email address ('<jdoe@a.com>')
 
-        If the best guess isn't well-formed (something@somthing.com),
+        If the best guess isn't well-formed (something@something.com),
         use `self.from_email` instead.
         """
         if self.force_from:

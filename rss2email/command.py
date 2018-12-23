@@ -17,6 +17,7 @@
 """rss2email commands
 """
 
+import os as _os
 import re as _re
 import sys as _sys
 import xml.dom.minidom as _minidom
@@ -31,6 +32,8 @@ def new(feeds, args):
     if args.email:
         _LOG.info('set the default target email to {}'.format(args.email))
         feeds.config['DEFAULT']['to'] = args.email
+    if _os.path.exists(feeds.configfiles[-1]):
+        raise _error.ConfigAlreadyExistsError(feeds=feeds)
     feeds.save()
 
 def email(feeds, args):

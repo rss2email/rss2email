@@ -32,6 +32,8 @@ from email.header import Header as _Header
 from email.mime.text import MIMEText as _MIMEText
 from email.utils import formataddr as _formataddr
 from email.utils import parseaddr as _parseaddr
+import mailbox as _mailbox
+from email.utils import getaddresses as _getaddresses
 import imaplib as _imaplib
 import io as _io
 import smtplib as _smtplib
@@ -39,6 +41,7 @@ import ssl as _ssl
 import subprocess as _subprocess
 import sys as _sys
 import time as _time
+import os as _os
 
 from . import LOG as _LOG
 from . import config as _config
@@ -107,7 +110,12 @@ def get_message(sender, recipient, subject, body, content_type,
 
     # Split real name (which is optional) and email address parts
     sender_name,sender_addr = _parseaddr(sender)
-    recipient_name,recipient_addr = _parseaddr(recipient)
+    recipient_list = []
+    for recipient_name, recipient_addr in _getaddresses([recipient]):
+        recipient_encoding = guess_encoding(recipient_name, encodings)
+        recipient_name = str(_Header(recipient_name, recipient_encoding).encode())
+        recipient_addr.encode('ascii')
+        recipient_list.append(_formataddr((recipient_name, recipient_addr)))
 
     sender_encoding = guess_encoding(sender_name, encodings)
     recipient_encoding = guess_encoding(recipient_name, encodings)
@@ -117,16 +125,14 @@ def get_message(sender, recipient, subject, body, content_type,
     # We must always pass Unicode strings to Header, otherwise it will
     # use RFC 2047 encoding even on plain ASCII strings.
     sender_name = str(_Header(sender_name, sender_encoding).encode())
-    recipient_name = str(_Header(recipient_name, recipient_encoding).encode())
 
     # Make sure email addresses do not contain non-ASCII characters
     sender_addr.encode('ascii')
-    recipient_addr.encode('ascii')
 
     # Create the message ('plain' stands for Content-Type: text/plain)
     message = _MIMEText(body, content_type, body_encoding)
     message['From'] = _formataddr((sender_name, sender_addr))
-    message['To'] = _formataddr((recipient_name, recipient_addr))
+    message['To'] = ', '.join(recipient_list)
     message['Subject'] = _Header(subject, subject_encoding)
     if config.getboolean(section, 'use-8bit'):
         del message['Content-Transfer-Encoding']
@@ -143,26 +149,44 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
     server = config.get(section, 'smtp-server')
+    # Adding back in support for 'server:port'
+    pos = server.find(':')
+    if 0 <= pos:
+        # Strip port out of server name
+        port = int(server[pos+1:])
+        server = server[:pos]
+    else:
+        port = config.getint(section, 'smtp-port')
+
     _LOG.debug('sending message to {} via {}'.format(recipient, server))
     ssl = config.getboolean(section, 'smtp-ssl')
+    smtp_auth = config.getboolean(section, 'smtp-auth')
     try:
+        if ssl or smtp_auth:
+                try:
+                    context = _ssl.create_default_context()
+                except AttributeError: # Python 3.3 or earlier
+                    context = _ssl.SSLContext(protocol=_ssl.PROTOCOL_SSLv23)
+                    context.verify_mode = _ssl.CERT_REQUIRED
+                    context.set_default_verify_paths()
         if ssl:
-            smtp = _smtplib.SMTP_SSL(host=server)
+            try:
+                smtp = _smtplib.SMTP_SSL(host=server, port=port, context=context)
+            except TypeError: # Python 3.2 or earlier
+                smtp = _smtplib.SMTP_SSL(host=server, port=port) 
         else:
-            smtp = _smtplib.SMTP(host=server)
+            smtp = _smtplib.SMTP(host=server, port=port)
     except KeyboardInterrupt:
         raise
     except Exception as e:
         raise _error.SMTPConnectionError(server=server) from e
-    if config.getboolean(section, 'smtp-auth'):
+    if smtp_auth:
         username = config.get(section, 'smtp-username')
         password = config.get(section, 'smtp-password')
         try:
             if not ssl:
-                protocol_name = config.get(section, 'smtp-ssl-protocol')
-                protocol = getattr(_ssl, 'PROTOCOL_{}'.format(protocol_name))
                 try:
-                    smtp.starttls(context=_ssl.SSLContext(protocol=protocol))
+                    smtp.starttls(context=context)
                 except TypeError:
                     # Python 3.2 or earlier
                     smtp.starttls()
@@ -172,7 +196,7 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
         except Exception as e:
             raise _error.SMTPAuthenticationError(
                 server=server, username=username)
-    smtp.send_message(message, sender, [recipient])
+    smtp.send_message(message, sender, recipient.split(','))
     smtp.quit()
 
 def imap_send(message, config=None, section='DEFAULT'):
@@ -205,6 +229,14 @@ def imap_send(message, config=None, section='DEFAULT'):
         imap.append(mailbox, None, date, message_bytes)
     finally:
         imap.logout()
+
+def maildir_send(message, config=None, section='DEFAULT'):
+    if config is None:
+        config = _config.CONFIG
+    path = config.get(section, 'maildir-path')
+    mailbox = config.get(section, 'maildir-mailbox')
+    maildir = _mailbox.Maildir(_os.path.join(path, mailbox))
+    maildir.add(message)
 
 def _decode_header(header):
     """Decode RFC-2047-encoded headers to Unicode strings
@@ -348,6 +380,8 @@ def send(sender, recipient, message, config=None, section='DEFAULT'):
             config=config, section=section)
     elif protocol == 'imap':
         imap_send(message=message, config=config, section=section)
+    elif protocol == 'maildir':
+        maildir_send(message=message, config=config, section=section)
     else:
         sendmail_send(
             sender=sender, recipient=recipient, message=message,

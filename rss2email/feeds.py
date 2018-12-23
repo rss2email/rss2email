@@ -350,7 +350,7 @@ class Feeds (list):
             self.config.write(f)
             f.flush()
             _os.fsync(f.fileno())
-        _os.rename(tmpfile, dst_config_file)
+        _os.replace(tmpfile, dst_config_file)
         self._save_feeds()
 
     def _save_feeds(self):
@@ -363,7 +363,7 @@ class Feeds (list):
             self._save_feed_states(feeds=self, stream=f)
             f.flush()
             _os.fsync(f.fileno())
-        _os.rename(tmpfile, self.datafile)
+        _os.replace(tmpfile, self.datafile)
         if UNIX and self._datafile_lock is not None:
             self._datafile_lock.close()  # release the lock
             self._datafile_lock = None

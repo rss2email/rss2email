@@ -151,8 +151,8 @@ False: Just use the 'from' email instead.
 .IP name-format
 If empty, only use the feed email address rather than
 friendly name plus email address.  Available attributes may
-include 'feed', 'feed-title', 'author', and 'publisher', but
-only 'feed' is guaranteed.
+include 'feed', 'feed-name', 'feed-url', 'feed-title', 'author', and
+'publisher', but only 'feed', 'feed-name', and 'feed-url' are guaranteed.
 .IP to
 Set this to default To email addresses.
 .RE
@@ -273,7 +273,7 @@ Verbosity (one of 'error', 'warning', 'info', or 'debug').
 .SH FILES
 .TP 4
 .B $XDG_CONFIG_HOME/rss2email.cfg
-If this file exists, it it read to configure the program.
+If this file exists, it is read to configure the program.
 .TP
 .B $XDG_DATA_HOME/rss2email\&.json
 The database of feeds. Use \fBr2e\fR to add, remove, or modify feeds,

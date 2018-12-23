@@ -76,8 +76,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('use-publisher-email', str(False)),
         # If empty, only use the feed email address rather than
         # friendly name plus email address.  Available attributes may
-        # include 'feed', 'feed-title', 'author', and 'publisher', but
-        # only 'feed' is guaranteed.
+        # include 'feed', 'feed-name', 'feed-url', 'feed-title', 'author', and
+        # 'publisher', but only 'feed', 'feed-name', and 'feed-url' are guaranteed.
         ('name-format', '{feed-title}: {author}'),
         # Set this to default To email addresses.
         ('to', ''),
@@ -191,9 +191,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('smtp-auth', str(False)),      # set to True to use SMTP AUTH
         ('smtp-username', 'username'),  # username for SMTP AUTH
         ('smtp-password', 'password'),  # password for SMTP AUTH
-        ('smtp-server', 'smtp.example.net:25'),
+        ('smtp-server', 'smtp.example.net'),
+        ('smtp-port', '465'),
         ('smtp-ssl', str(False)),       # Connect to the SMTP server using SSL
-        ('smtp-ssl-protocol', 'SSLv3'), # TLS/SSL version to use on STARTTLS when not using 'smtp-ssl'
         # IMAP configuration
         ('imap-auth', str(False)),      # set to True to use IMAP auth.
         ('imap-username', 'username'),  # username for IMAP authentication
@@ -202,6 +202,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('imap-port', str(143)),
         ('imap-ssl', str(False)),       # connect to the IMAP server using SSL
         ('imap-mailbox', 'INBOX'),      # where we should store new messages
+        # Maildir configuration
+        ('maildir-path', '~/Maildir'),
+        ('maildir-mailbox', 'INBOX'),
 
         ### Miscellaneous
         # Verbosity (one of 'error', 'warning', 'info', or 'debug').
