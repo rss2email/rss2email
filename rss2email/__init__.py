@@ -47,7 +47,12 @@ LOG.addHandler(_logging.StreamHandler())
 LOG.setLevel(_logging.ERROR)
 
 
-if _sys.version_info < (3, 2):
+min_python_version = (3, 4)
+if _sys.version_info < min_python_version:
     raise ImportError(
-        "rss2email requires Python 3.2 or newer, but you're using:\n{}"
-        .format(_sys.version))
+        "rss2email requires Python {maj}.{min} or newer, but you're using:\n{got}"
+        .format(
+            maj=min_python_version[0],
+            min=min_python_version[1],
+            got=_sys.version
+        ))

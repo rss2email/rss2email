@@ -163,17 +163,9 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
     smtp_auth = config.getboolean(section, 'smtp-auth')
     try:
         if ssl or smtp_auth:
-                try:
-                    context = _ssl.create_default_context()
-                except AttributeError: # Python 3.3 or earlier
-                    context = _ssl.SSLContext(protocol=_ssl.PROTOCOL_SSLv23)
-                    context.verify_mode = _ssl.CERT_REQUIRED
-                    context.set_default_verify_paths()
+            context = _ssl.create_default_context()
         if ssl:
-            try:
-                smtp = _smtplib.SMTP_SSL(host=server, port=port, context=context)
-            except TypeError: # Python 3.2 or earlier
-                smtp = _smtplib.SMTP_SSL(host=server, port=port) 
+            smtp = _smtplib.SMTP_SSL(host=server, port=port, context=context)
         else:
             smtp = _smtplib.SMTP(host=server, port=port)
     except KeyboardInterrupt:
@@ -185,11 +177,7 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
         password = config.get(section, 'smtp-password')
         try:
             if not ssl:
-                try:
-                    smtp.starttls(context=context)
-                except TypeError:
-                    # Python 3.2 or earlier
-                    smtp.starttls()
+                smtp.starttls(context=context)
             smtp.login(username, password)
         except KeyboardInterrupt:
             raise
@@ -259,8 +247,6 @@ def _decode_header(header):
             chunks.append(chunk)
         else:
             chunks.append(str(chunk, charset))
-    if _sys.version_info < (3, 3):  # Python 3.2 and older
-        return ' '.join(chunks)  # http://bugs.python.org/issue1079
     return ''.join(chunks)
 
 def _flatten(message):
@@ -332,7 +318,9 @@ def _flatten(message):
     b"\x00Y\x00o\x00u\x00'\x00r\x00e\x00 \x00g\x00r\x00e\x00a\x00t\x00,\x00 \x00\x96\x03\xb5\x03\xcd\x03\xc2\x03!\x00\n\x00"
     """
     bytesio = _io.BytesIO()
-    generator = _BytesGenerator(bytesio)  # use policies for Python >=3.3
+    # TODO: use policies argument instead of policy set in `message`
+    # see https://docs.python.org/3.5/library/email.generator.html?highlight=bytesgenerator#email.generator.BytesGenerator
+    generator = _BytesGenerator(bytesio)
     try:
         generator.flatten(message)
     except UnicodeEncodeError as e:
