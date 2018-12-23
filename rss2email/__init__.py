@@ -23,7 +23,7 @@ import sys as _sys
 
 __version__ = '3.9'
 __url__ = 'https://github.com/rss2email/rss2email'
-__author__ = 'W. Trevor King'
+__author__ = 'The rss2email maintainers'
 __email__ = 'rss2email@tremily.us'
 __copyright__ = '(C) 2004 Aaron Swartz. GNU GPL 2 or 3.'
 __contributors__ = [
@@ -39,7 +39,8 @@ __contributors__ = [
     'Marcel Ackermann (http://www.DreamFlasher.de)',
     "Martin 'Joey' Schulze",
     'Matej Cepl',
-    'W. Trevor King',
+    'W. Trevor King (long-time maintainer)',
+    'Profpatsch',
     ]
 
 LOG = _logging.getLogger('rss2email')
