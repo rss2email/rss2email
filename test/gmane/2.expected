@@ -27,7 +27,8 @@ X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/1
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/1
 
-alrighty, this is the first email on the list and also my first
+
+    alrighty, this is the first email on the list and also my first
     production mlmmj list, so i've cced you both directly.  etienne, let
     me know if you get the direct email but not the list email, in which
     case i'll try and figure out what i've miss-configured ;).  lindsey,
@@ -59,6 +60,7 @@ alrighty, this is the first email on the list and also my first
     
 
 
+
 url: http://permalink.gmane.org/gmane.mail.rss2email/1
 --===============...==
 Content-Type: message/rfc822
@@ -78,7 +80,8 @@ X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/2
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/2
 
-* w. trevor king <wking-vji2gpbyivqcqzyg7kee8g< at >public.gmane.org> [121112 23:18]:
+
+    * w. trevor king <wking-vji2gpbyivqcqzyg7kee8g< at >public.gmane.org> [121112 23:18]:
     
     it seems to work, though it may have been grouped together with my
     mda. i'll tell you if i don't receive a mail where i'm not cced.
@@ -98,6 +101,7 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/2
     mailing list (git send-email style) ?
     
     
+
 
 
 url: http://permalink.gmane.org/gmane.mail.rss2email/2
@@ -125,6 +129,7 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/3
     
 
 
+
 url: http://permalink.gmane.org/gmane.mail.rss2email/3
 --===============...==
 Content-Type: message/rfc822
@@ -144,13 +149,15 @@ X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/4
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/4
 
-* w. trevor king <wking-vji2gpbyivqcqzyg7kee8g< at >public.gmane.org> [121113 13:21]:
+
+    * w. trevor king <wking-vji2gpbyivqcqzyg7kee8g< at >public.gmane.org> [121113 13:21]:
     
     ack.
     
     also, confirming that the mailing list works.
     
     
+
 
 
 url: http://permalink.gmane.org/gmane.mail.rss2email/4
@@ -172,7 +179,8 @@ X-RSS-Feed: gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/5
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/5
 
-i just split the 1769-line rss2email.py module into a more manageable
+
+    i just split the 1769-line rss2email.py module into a more manageable
     package with sub-modules:
     
     https://github.com/wking/rss2email/commit/066602efa088b4a89d67e23011613b4459db3c92
@@ -180,5 +188,7 @@ i just split the 1769-line rss2email.py module into a more manageable
     
 
 
+
 url: http://permalink.gmane.org/gmane.mail.rss2email/5
 --===============...==--
+
