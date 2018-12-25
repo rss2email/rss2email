@@ -1,4 +1,6 @@
-# Copyright (C) 2012-2013 Arun Persaud <apersaud@lbl.gov>
+# Copyright (C) 2012-2018 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
+#                         Arun Persaud <apersaud@lbl.gov>
+#                         Markus Unterwaditzer <markus@unterwaditzer.net>
 #                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.

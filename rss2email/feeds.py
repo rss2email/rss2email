@@ -1,4 +1,5 @@
-# Copyright (C) 2004-2014 Aaron Swartz
+# Copyright (C) 2004-2017 Aaron Swartz
+#                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Erik Hetzner
@@ -8,6 +9,7 @@
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
 #                         Matej Cepl
+#                         Raphaël Droz <raphael.droz+floss@gmail.com>
 #                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.

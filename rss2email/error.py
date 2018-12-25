@@ -1,4 +1,5 @@
-# Copyright (C) 2012-2014 W. Trevor King <wking@tremily.us>
+# Copyright (C) 2012-2015 Etienne Millon <me@emillon.org>
+#                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.
 #
