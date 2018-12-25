@@ -4,6 +4,7 @@ v3.10 (unreleased)
     * Add a redirect post-process module.
     * Add new `feed-name` and `feed-url` attributes for the `name-format` setting.
     * Drop support for Python 3.2 and 3.3
+    * Remove `__contributors__` from the `rss2email` module.
 
 v3.9 (2014-09-01)
     * Catch and error out if a user adds a feed with a duplicate name.
