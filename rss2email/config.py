@@ -1,17 +1,22 @@
-# Copyright (C) 2004-2014 Aaron Swartz
+# Copyright (C) 2004-2017 Aaron Swartz
+#                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dmitry Bogatov <KAction@gnu.org>
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
+#                         François Boulogne <fboulogne sciunto org>
 #                         George Saunders <georgesaunders@gmail.com>
+#                         Jakub Wilk <jwilk@jwilk.net>
 #                         Joey Hess
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
 #                         Matej Cepl
 #                         Thiago Coutinho <root@thiagoc.net>
+#                         Thibaut Girka <thib@sitedethib.com>
 #                         W. Trevor King <wking@tremily.us>
+#                         Yannik Sembritzki <yannik@sembritzki.me>
 #
 # This file is part of rss2email.
 #

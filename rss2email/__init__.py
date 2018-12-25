@@ -1,4 +1,7 @@
-# Copyright (C) 2012-2014 W. Trevor King <wking@tremily.us>
+# Copyright (C) 2012-2018 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
+#                         François Boulogne <fboulogne sciunto org>
+#                         Profpatsch <mail@profpatsch.de>
+#                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.
 #

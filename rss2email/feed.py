@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2004-2014 Aaron Swartz
+# Copyright (C) 2004-2017 Aaron Swartz
+#                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dennis Keitzel <github@pinshot.net>
@@ -7,6 +8,7 @@
 #                         Etienne Millon <me@emillon.org>
 #                         George Saunders <georgesaunders@gmail.com>
 #                         J. Lewis Muir <jlmuir@imca-cat.org>
+#                         Jakub Wilk <jwilk@jwilk.net>
 #                         Joey Hess
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Marcel Ackermann
