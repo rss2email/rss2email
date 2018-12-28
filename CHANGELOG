@@ -2,7 +2,15 @@ v3.10 (unreleased)
     * Catch and warn for invalid Content-Types.
     * Add a manually extracted list of config options to r2e.1.
     * Add a redirect post-process module.
+    * Follow symlinks of datafiles
+    * Add zsh completion
+    * Add support for maildir
+    * Fix `r2e new` overwriting an existing config
     * Add new `feed-name` and `feed-url` attributes for the `name-format` setting.
+    * Change logging format
+    * Allow multiple SMTP recipients
+    * Fix SMTP security issues
+    * Fix test suite
     * Drop support for Python 3.2 and 3.3
 
 v3.9 (2014-09-01)
