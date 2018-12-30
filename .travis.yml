@@ -1,0 +1,9 @@
+language: python
+python:
+  - "3.4"
+
+install:
+  - python3 develop setup.py
+
+script:
+  - PYTHONPATH=. ./test/test.py
