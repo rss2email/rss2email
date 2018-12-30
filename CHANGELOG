@@ -1,70 +1,78 @@
 v3.10 (unreleased)
-    * Catch and warn for invalid Content-Types.
-    * Add a manually extracted list of config options to r2e.1.
-    * Add a redirect post-process module.
-    * Add new `feed-name` and `feed-url` attributes for the `name-format` setting.
+    * Catch and warn for invalid Content-Types
+    * Add a manually extracted list of config options to r2e.1
+    * Add a redirect post-process module
+    * Follow symlinks of datafiles
+    * Add zsh completion
+    * Add support for maildir
+    * Fix `r2e new` overwriting an existing config
+    * Add new `feed-name` and `feed-url` attributes for the `name-format` setting
+    * Change logging format
+    * Allow multiple SMTP recipients
+    * Fix SMTP security issues
+    * Fix test suite
     * Drop support for Python 3.2 and 3.3
 
 v3.9 (2014-09-01)
-    * Catch and error out if a user adds a feed with a duplicate name.
-    * Split sender into both sendmail's -F and -f.
-    * Fix an error with SMTPConnectionError inheritance order ("does not take keyword arguments").
-    * Add a new `smtp-ssl-protocol` setting, to select acceptable protocols for SMTP connections.
-    * Fix non-compliant User-Agent header for HTTP/1.1.
-    * Fix an error in the NoToEmailAddress invocation.
-    * Add a new `trust-link` setting, to prefer the `link` attribute over the `id` attribute for identifying entries.
+    * Catch and error out if a user adds a feed with a duplicate name
+    * Split sender into both sendmail's -F and -f
+    * Fix an error with SMTPConnectionError inheritance order ("does not take keyword arguments")
+    * Add a new `smtp-ssl-protocol` setting, to select acceptable protocols for SMTP connections
+    * Fix non-compliant User-Agent header for HTTP/1.1
+    * Fix an error in the NoToEmailAddress invocation
+    * Add a new `trust-link` setting, to prefer the `link` attribute over the `id` attribute for identifying entries
 
 v3.8 (2014-01-18)
-    * Sluggify feed names on opmlimport.
-    * Allow Unicode letters and digits in feed names, instead of just ASCII letters and digits.
+    * Sluggify feed names on opmlimport
+    * Allow Unicode letters and digits in feed names, instead of just ASCII letters and digits
 
 v3.7 (2013-10-11)
-    * Fix fallback for titles that contain malformed HTML.
-    * Fix atomic saves to avoid garbling config and data files if the disk is full.
-    * Convert the `friendly-name` boolean to the new `name-format` setting.  This allow users to customize how the friendly name is constructed.
-    * Demote guessed encodings logs from 'error' to 'warning'.
+    * Fix fallback for titles that contain malformed HTML
+    * Fix atomic saves to avoid garbling config and data files if the disk is full
+    * Convert the `friendly-name` boolean to the new `name-format` setting.  This allow users to customize how the friendly name is constructed
+    * Demote guessed encodings logs from 'error' to 'warning'
 
 v3.6 (2013-09-09)
-    * Fix missing port argument for IMAPAuthenticationError.
-    * Fix `<div id="entry>` syntax error in HTML mail.
+    * Fix missing port argument for IMAPAuthenticationError
+    * Fix `<div id="entry>` syntax error in HTML mail
 
 v3.5 (2013-06-05)
-    * Added digest generation and post-processing hooks.
-    * Fix html2text configuration (ignored since 2012-10-04).
-    * Fix opmlexport crash due to orphaned feed data.
-    * Use feed names in OPML 'text' attributes.
+    * Added digest generation and post-processing hooks
+    * Fix html2text configuration (ignored since 2012-10-04)
+    * Fix opmlexport crash due to orphaned feed data
+    * Use feed names in OPML 'text' attributes
 
 v3.4 (2013-05-14)
-    * Added post-processing hooks for user-specified message manipulation.
-    * Added settings for IMAP delivery.  The old `use-smtp` boolean has been replaced by a new `email-protocol` setting.  Non-IMAP users should adjust their configuration to set `email-protocol` to either `sendmail` or `smtp`.
+    * Added post-processing hooks for user-specified message manipulation
+    * Added settings for IMAP delivery.  The old `use-smtp` boolean has been replaced by a new `email-protocol` setting.  Non-IMAP users should adjust their configuration to set `email-protocol` to either `sendmail` or `smtp`
 
 v3.3 (2013-04-13)
-    * Fix SMTP message submission logic.
-    * Fix error inheritance (super() calls).
-    * Convert html2text parsing errors to `ProcessingError`s.
-    * Cleanup html2text error handling.
-    * Drop Google Reader rel-via manipulation.
+    * Fix SMTP message submission logic
+    * Fix error inheritance (super() calls)
+    * Convert html2text parsing errors to `ProcessingError`s
+    * Cleanup html2text error handling
+    * Drop Google Reader rel-via manipulation
     * Drop the wrapping <table> elements from HTML mail
 
 v3.2 (2013-03-13)
-    * Use extended interpolation in configuration files, to allow percent signs (%).
-    * Added .as_string() fallback to email flattening (only used if `use-smtp = False` and `use-8bit = True`).
-    * Added sendmail configuration option.  Change this if you want to use an alternative, sendmail-compatible mailer.
+    * Use extended interpolation in configuration files, to allow percent signs (%)
+    * Added .as_string() fallback to email flattening (only used if `use-smtp = False` and `use-8bit = True`)
+    * Added sendmail configuration option.  Change this if you want to use an alternative, sendmail-compatible mailer
 
 v3.1 (2013-02-14)
-    * Import __url__, __author__, and __email__ in rss2email.error, which fixes bugs in formatting a number of errors.
+    * Import __url__, __author__, and __email__ in rss2email.error, which fixes bugs in formatting a number of errors
 
 v3.0 (2013-02-13)
-    * Changed project email (rss2email@tremily.us) and homepage (http://github.com/wking/rss2email).
-    * Split static configuration parameters into a ConfigParser-read config file (rss2email.cfg).  Data that depends on the feed state is recorded using JSON (rss2email.json).
-    * Use the XDG Base Directory Specification for standardized configuration and data file locations.
-    * Converted the command line interface to argparse, with some restructuring along the way.
-    * Added the r2e.1 man page (based on one from the Debian package).
-    * Added setup.py and a PyPI page for simpler installation (http://pypi.python.org/pypi/rss2email).
-    * Added Message-ID headers to outgoing email.
-    * Added a test suite.
-    * Upgraded to Python 3.2 to take advantage of cleaner Unicode handling and argparse.
-    * Require Signed-off-by lines in new commit messages, following the Linux and Git projects.
+    * Changed project email (rss2email@tremily.us) and homepage (http://github.com/wking/rss2email)
+    * Split static configuration parameters into a ConfigParser-read config file (rss2email.cfg).  Data that depends on the feed state is recorded using JSON (rss2email.json)
+    * Use the XDG Base Directory Specification for standardized configuration and data file locations
+    * Converted the command line interface to argparse, with some restructuring along the way
+    * Added the r2e.1 man page (based on one from the Debian package)
+    * Added setup.py and a PyPI page for simpler installation (http://pypi.python.org/pypi/rss2email)
+    * Added Message-ID headers to outgoing email
+    * Added a test suite
+    * Upgraded to Python 3.2 to take advantage of cleaner Unicode handling and argparse
+    * Require Signed-off-by lines in new commit messages, following the Linux and Git projects
 
 v2.71 (2011-03-04)
     * Upgraded to feedparser v5.01! (http://code.google.com/p/feedparser/)
