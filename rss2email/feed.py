@@ -207,20 +207,25 @@ class Feed (object):
         'digest_post_process',
         ]
 
-    def __init__(self, name=None, url=None, to=None, config=None):
+    def __init__(self, name=None, url=None, to=None, from_email=None, config=None):
         self._set_name(name=name)
         self.reset()
         self.__setstate__(dict(
                 (attr, getattr(self, attr))
                 for attr in self._dynamic_attributes))
         self.load_from_config(config=config)
+        if not from_email is None: self.from_email = from_email
         if url:
             self.url = url
         if to:
             self.to = to
 
     def __str__(self):
-        return '{} ({} -> {})'.format(self.name, self.url, self.to)
+        if self.force_from and\
+           self.from_email != self.config['DEFAULT']['from']:
+            return '{} ({} -> {} (from {}))'.format(self.name, self.url, self.to, self.from_email)
+        else:
+            return '{} ({} -> {})'.format(self.name, self.url, self.to)
 
     def __repr__(self):
         return '<Feed {}>'.format(str(self))
@@ -319,6 +324,7 @@ class Feed (object):
         self.etag = None
         self.modified = None
         self.seen = {}
+        self.from_email = None
 
     def _set_name(self, name):
         if not self._name_regexp.match(name):
