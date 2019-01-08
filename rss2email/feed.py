@@ -457,6 +457,9 @@ class Feed (object):
         guid = entry.get('id', id_)
         if isinstance(guid, dict):
             guid = guid.values()[0]
+        # In some bad RSS feeds, id is present but empty...
+        if guid == '':
+            guid = id_
         if guid in self.seen:
             if self.seen[guid]['id'] == id_:
                 _LOG.debug('already seen {}'.format(id_))
