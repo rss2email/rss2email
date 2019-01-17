@@ -214,12 +214,12 @@ class Feed (object):
                 (attr, getattr(self, attr))
                 for attr in self._dynamic_attributes))
         self.load_from_config(config=config)
-        if from_email:
-            self.from_email = from_email
         if url:
             self.url = url
         if to:
             self.to = to
+        if from_email:
+            self.from_email = from_email
 
     def __str__(self):
         if self.force_from and\
