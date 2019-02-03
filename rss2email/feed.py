@@ -214,8 +214,7 @@ class Feed (object):
                 (attr, getattr(self, attr))
                 for attr in self._dynamic_attributes))
         self.load_from_config(config=config)
-        if from_email:
-            self.from_email = from_email
+        if not from_email is None: self.from_email = from_email
         if url:
             self.url = url
         if to:
