@@ -89,7 +89,7 @@ def run(*args, **kwargs):
         'email', nargs='?',
         help='target email for the new feed')
     add_parser.add_argument(
-        'from-email', nargs='?',
+        'from_email', nargs='?',
         help='override from field in sent email')
 
     run_parser = subparsers.add_parser(
