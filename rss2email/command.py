@@ -48,7 +48,7 @@ def email(feeds, args):
 
 def add(feeds, args):
     "Add a new feed to the database"
-    feed = feeds.new_feed(name=args.name, url=args.url, to=args.email, from_email=args.from_email)
+    feed = feeds.new_feed(name=args.name, url=args.url, to=args.email)
     _LOG.info('add new feed {}'.format(feed))
     if not feed.to:
         raise _error.NoToEmailAddress(feed=feed, feeds=feeds)
