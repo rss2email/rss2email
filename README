@@ -224,6 +224,9 @@ e-mail Jeff:
 
   jeff@jsbackus.com
 
+There is a developer chat on the `freenode IRC server`_, in the
+``rss2email`` channel. Feel free to idle.
+
 .. _Debian package:
   http://packages.qa.debian.org/r/rss2email.html
 .. _Ubuntu package:
@@ -245,4 +248,4 @@ e-mail Jeff:
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _windows scheduler: http://www.iopus.com/guides/winscheduler.htm
 .. _cron: http://en.wikipedia.org/wiki/Cron
-
+.. _freenode IRC server: https://freenode.net
