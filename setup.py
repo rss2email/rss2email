@@ -39,7 +39,7 @@ setup(
     platforms=['all'],
     description=__doc__,
     long_description=_codecs.open(
-        _os_path.join(_this_dir, 'README'), 'r', encoding='utf-8').read(),
+        _os_path.join(_this_dir, 'README.rst'), 'r', encoding='utf-8').read(),
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Environment :: Console',
