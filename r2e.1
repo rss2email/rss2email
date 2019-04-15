@@ -2,24 +2,31 @@
 .SH NAME
 r2e \- receive RSS feeds by email
 .SH SYNOPSIS
-.B r2e [options] <command> [<args>]
+.B r2e
+.RI [ options ]
+.I <command>
+.RI [ <args> ]
 .SH DESCRIPTION
 .BR r2e
-is a simple program which you can run in your crontab.
+is a simple program which you can run in your
+.BR crontab (5).
 It watches RSS feeds and sends you nicely formatted email message
 for each new item.
 .P
-For a quick start with \fBr2e\fR, try these steps:
+For a quick start with
+.B r2e
+try these steps:
 .P
 .RS 4
-.nf
+.EX
 .BI "r2e new " "your@yourdomain.com"
 .BI "r2e add " "feedname http://feed.url/somewhere.rss"
 .BI "r2e run"
+.EE
 .RE
+
 .P
-The last command should eventually be put into your crontab, if you
-want things be sent you automatically.
+The last command should eventually be put into your crontab if you want things be sent you automatically.
 .SH OPTIONS
 .TP 4
 \-\-help
@@ -42,11 +49,11 @@ option to set a different data file.
 Increment the logging verbosity.
 .SH COMMANDS
 .TP 4
-.B new [\fI<email>\fR]
+.B new \fR[\fI<email>\fR]
 Create a new feed database. If the \fI<email>\fR argument is given, it
 sets the default email address that mails are sent to.
 .TP
-.B email [\fI<email>\fR]
+.B email \fR[\fI<email>\fR]
 Update the default target email address to \fI<email>\fR.
 .TP
 .B add \fI<name>\fR \fI<url>\fR [\fI<email>\fR]
@@ -56,7 +63,7 @@ optional \fI<email>\fR argument is the email address to send new items
 to, overriding the default address for this particular feed.  Repeat
 for each feed you want to subscribe to.
 .TP
-.B run [\-\-no-send] [\fI<index>\fR [\fI<index>\fR ...]]
+.B run \fR[\fI\-\-no-send\fR] \fR[\fI<index>\fR [\fI<index>\fR ...]]
 Scan the feeds and send emails for new items. This can be run in a cron
 job.
 .P
@@ -73,36 +80,37 @@ or the feed index (as shown by \fBlist\fR).
 .B list
 List all the feeds in the database.
 .TP
-.B pause [\fI<index>\fR [\fI<index>\fR ...]]
+.B pause \fR[\fI<index>\fR [\fI<index>\fR ...]]
 Pause feeds (disable fetching).  The \fI<index>\fR option selects the
 feed(s) to pause (see \fBrun\fR for possible values).  If no
 \fI<index>\fR is given, all feeds are paused.
 .TP
-.B unpause [\fI<index>\fR [\fI<index>\fR ...]]
+.B unpause \fR[\fI<index>\fR [\fI<index>\fR ...]]
 Unpause feeds (enable fetching).
 .TP
 .B delete \fI<index>\fR [\fI<index>\fR [\fI<index>\fR ...]]
 Remove a feed (or feeds) from the database.  The \fI<index>\fR option
 selects the feed(s) to delete (see \fBrun\fR for possible values).
 .TP
-.B reset [\fI<index>\fR [\fI<index>\fR ...]]
+.B reset \fR[\fI<index>\fR [\fI<index>\fR ...]]
 Forget dynamic feed data (e.g. to re-send old entries).  The
 \fI<index>\fR option selects the feed(s) to reset (see \fBrun\fR for
 possible values).  If no \fI<index>\fR is given, all feeds are reset.
 .TP
-.B opmlimport [\fI<path>\fR]
+.B opmlimport \fR[\fI<path>\fR]
 Import new feeds from OPML.  \fI<path>\fR is the file from which the
 OPML data will be read.  If \fI<path>\fR is not given \fBr2e\fR reads
 the data from stdin.
 .TP
-.B opmlexport [\fI<path>\fR]
+.B opmlexport \fR[\fI<path>\fR]
 Export all feeds to OPML.  \fI<path>\fR is the file to which the OPML
 data will be written.  If \fI<path>\fR is not given \fBr2e\fR writes
 the data to stdout.
 .SH "CONFIGURATION"
 The program's behavior can be controlled via the
-$XDG_CONFIG_HOME/rss2email.cfg (see also FILES and ENVIRONMENT
-VARIABLES below). The file format is similar to a Microsoft Windows
+\fI$XDG_CONFIG_HOME/rss2email.cfg\fR
+(see also \fBFILES\fR and \fBENVIRONMENT VARIABLES\fR below).
+The file format is similar to a Microsoft Windows
 INI file.  It is parsed by Python's ConfigParser class, so see the
 Python documentation at
 http://docs\&.python\&.org/3/library/configparser\&.html for format
@@ -119,7 +127,7 @@ setting to the feed-specific section.  Here is an example overriding
 \fBfeedname\fR feed.
 .P
 .RS 4
-.nf
+.EX
 [DEFAULT]
 from = user@rss2email.invalid
 force-from = False
@@ -132,11 +140,11 @@ verbose = warning
 url = http://feed.url/somewhere.rss
 use-publisher-email = True
 name-format = {author} ({feed.title})
+.EE
 .RE
 .P
 You can configure the following items:
 .SS Addressing
-.RS
 .IP from
 The email address messages are from by default
 .IP use-8bit
@@ -157,14 +165,12 @@ include 'feed', 'feed-name', 'feed-url', 'feed-title', 'author', and
 Set this to default To email addresses.
 .RE
 .SS Fetching
-.RS
 .IP proxy
 Set an HTTP proxy (e.g. 'http://your.proxy.here:8080/')
 .IP feed-timeout
 Set the timeout (in seconds) for feed server response
 .RE
 .SS Processing
-.RS
 .IP active
 True: Fetch, process, and email feeds.
 False: Don't fetch, process, or email feeds
@@ -206,7 +212,6 @@ digest message before it is mailed.
 Example: digest-post-process = 'rss2email.post_process.downcase downcase_message'
 .RE
 .SS HTML conversion
-.RS
 .IP html-mail
 True: Send text/html messages when possible.
 False: Convert HTML to plain text.
@@ -216,7 +221,6 @@ Use CSS
 Optional CSS styling
 .RE
 .SS html2text options
-.RS
 .IP unicode-snob
 Use Unicode characters instead of their ascii psuedo-replacements
 .IP links-after-each-paragraph
@@ -225,14 +229,12 @@ Put the links after each paragraph instead of at the end.
 Wrap long lines at position. 0 for no wrapping.
 .RE
 .SS Mailing
-.RS
 .IP email-protocol
 Select protocol from: sendmail, smtp, imap
 .IP sendmail
 Path to sendmail (or compatible)
 .RE
 .SS SMTP configuration
-.RS
 .IP smtp-auth
 Set to True to use SMTP AUTH
 .IP smtp-username
@@ -247,7 +249,6 @@ Connect to the SMTP server using SSL
 TLS/SSL version to use on STARTTLS when not using 'smtp-ssl'.
 .RE
 .SS IMAP configuration
-.RS
 .IP imap-auth
 set to True to use IMAP auth.
 
@@ -265,7 +266,6 @@ connect to the IMAP server using SSL
 where we should store new messages
 .RE
 .SS Miscellaneous
-.RS
 .IP verbose
 Verbosity (one of 'error', 'warning', 'info', or 'debug').
 .RE
