@@ -172,8 +172,6 @@ following to your configuration file::
 You can make the email address whatever you want, but your mail server
 requires that the ``yoursite.com`` part actually exists.
 
-You can also add custom filters, see the example and documentation in
-``rss2email/post_process/prettify.py`` for more information.
 
 SMTP
 ----
@@ -204,6 +202,21 @@ rss2email will use STARTTLS_ to encrypt the connection before sending
 your login credentials to the server.
 
 __ `Simple Mail Transport Protocol`_
+
+Post-processing
+---------------
+
+rss2email has a mechanism to post-process entries. A post-processor can be used to change the content of each entry
+before rss2email sends the email out. A hook is added by defining the variable ``post-process`` in the
+config file. It takes two arguments, the module and the function to call. For example:
+
+  post-process = rss2email.post_process.prettify process
+
+Examples of built-in post-processors:
+
+* ``prettify.py`` prettifies the HTML content with BeautifulSoup.
+* ``redirect.py`` remove redirects on the post URL for privacy or durability.
+
 
 Automating rss2email
 ====================
