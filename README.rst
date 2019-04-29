@@ -212,7 +212,7 @@ config file. It takes two arguments, the module and the function to call. For ex
 
   post-process = rss2email.post_process.prettify process
 
-Examples of built-in post-processots:
+Examples of built-in post-processors:
 
 * ``prettify.py`` prettifies the HTML content with BeautifulSoup.
 * ``redirect.py`` remove redirects on the post URL for privacy or durability.
