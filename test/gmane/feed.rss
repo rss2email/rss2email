@@ -30,7 +30,7 @@
     <description>&lt;pre&gt;I just split the 1769-line rss2email.py module into a more manageable
 package with sub-modules:
 
-https://github.com/wking/rss2email/commit/066602efa088b4a89d67e23011613b4459db3c92
+https://github.com/rss2email/rss2email/commit/066602efa088b4a89d67e23011613b4459db3c92
 
 &lt;/pre&gt;</description>
     <dc:creator>W. Trevor King</dc:creator>
@@ -115,7 +115,7 @@ Great :).
 
 On Mon, Nov 12, 2012 at 01:48:13PM -0500, W. Trevor King wrote:
 
-Done: https://github.com/wking/rss2email
+Done: https://github.com/rss2email/rss2email
 
 &lt;/pre&gt;</description>
     <dc:creator>W. Trevor King</dc:creator>
