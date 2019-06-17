@@ -48,7 +48,7 @@ def clean_result(text):
     ...      'MIME-Version: 1.0\\n'
     ...      'Date: Tue, 23 Aug 2011 15:57:37 -0000\\n'
     ...      'Message-ID: <9dff03db-f5a7@dev.null.invalid>\\n'
-    ...      'User-Agent: rss2email/3.5 (https://github.com/wking/rss2email)\\n'
+    ...      'User-Agent: rss2email/3.5 (https://github.com/rss2email/rss2email)\\n'
     ...      )
     >>> print(clean_result(text).rstrip())
     Content-Type: multipart/digest;
