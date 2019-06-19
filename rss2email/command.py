@@ -61,6 +61,8 @@ def run(feeds, args):
     try:
         for index in args.index:
             feed = feeds.index(index)
+            # to debug feeds that timeout, run "r2e -V run"
+            _LOG.warning('refreshing feed {}'.format(feed))
             if feed.active:
                 try:
                     feed.run(send=args.send)
