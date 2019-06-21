@@ -213,5 +213,5 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
 
         ### Miscellaneous
         # Verbosity (one of 'error', 'warning', 'info', or 'debug').
-        ('verbose', 'warning'),
+        ('verbose', 'info'),
         ))
