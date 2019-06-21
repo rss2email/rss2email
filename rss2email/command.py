@@ -69,8 +69,8 @@ def run(feeds, args):
         last_server = "example.com"
         for index in args.index:
             feed = feeds.index(index)
-            # to debug feeds that timeout, run "r2e -V run"
-            _LOG.warning('refreshing feed {}'.format(feed))
+            # to debug feeds that timeout, run "r2e -VV run"
+            _LOG.info('refreshing feed {}'.format(feed))
             if feed.active:
                 current_server = _urllib.parse.urlparse(feed.url).netloc
                 try:
