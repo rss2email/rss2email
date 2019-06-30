@@ -266,8 +266,8 @@ class Feeds (list):
 
         locktype = 0
         if lock and UNIX:
-            locktype = _fcntl.LOCK_EX
-            _fcntl.flock(self._datafile_lock.fileno(), locktype)
+            locktype = _fcntl.LOCK_SH
+            _fcntl.lockf(self._datafile_lock.fileno(), locktype)
 
         self.clear()
 
