@@ -92,6 +92,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('proxy', ''),
         # Set the timeout (in seconds) for feed server response
         ('feed-timeout', str(60)),
+        # Set the time (in seconds) to sleep between fetches from the same server
+        ('same-server-fetch-interval', str(0)),
 
         ### Processing
         # True: Fetch, process, and email feeds.

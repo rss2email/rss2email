@@ -194,6 +194,7 @@ class Feed (object):
 
     _integer_attributes = [
         'feed_timeout',
+        'same-server-fetch-interval',
         'body_width',
         ]
 

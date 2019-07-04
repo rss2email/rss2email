@@ -23,10 +23,11 @@ import re as _re
 import sys as _sys
 import xml.dom.minidom as _minidom
 import xml.sax.saxutils as _saxutils
+import urllib as _urllib
+import time as _time
 
 from . import LOG as _LOG
 from . import error as _error
-
 
 def new(feeds, args):
     "Create a new feed database."
@@ -59,13 +60,25 @@ def run(feeds, args):
     if not args.index:
         args.index = range(len(feeds))
     try:
+        # How long (in seconds) to sleep between running feeds with
+        # the same server.
+        interval = int(feeds.config['DEFAULT']['same-server-fetch-interval'])
+
+        # We use the domain name to determine if we are fetching from
+        # the same server twice in a row.
+        last_server = "example.com"
         for index in args.index:
             feed = feeds.index(index)
             if feed.active:
+                current_server = _urllib.parse.urlparse(feed.url).netloc
                 try:
+                    if last_server == current_server:
+                        _LOG.info(f'fetching from server {current_server} again, sleeping for {interval}s')
+                        _time.sleep(interval)
                     feed.run(send=args.send)
                 except _error.RSS2EmailError as e:
                     e.log()
+                last_server = current_server
     finally:
         feeds.save()
 
