@@ -9,6 +9,9 @@ import io as _io
 import logging as _logging
 import os as _os
 import re as _re
+import tempfile
+import multiprocessing
+import subprocess
 
 import rss2email as _rss2email
 import rss2email.config as _rss2email_config
@@ -99,6 +102,61 @@ def test(dirname=None, config_path=None, force=False):
                 config_path,
                 '\n'.join(diff_lines)))
 
+def test_delay():
+    """
+    Test that r2e waits before fetching repeatedly from the same
+    server.
+    """
+    delay_cfg = """[DEFAULT]
+    to = example@example.com
+    same-server-fetch-interval = 1
+    """
+    tmpdir = tempfile.mkdtemp()
+    cfg_path = _os.path.join(tmpdir, "rss2email.cfg")
+    data_path = _os.path.join(tmpdir, "rss2email.json")
+
+    def r2e(*args):
+        subprocess.call(["r2e", "-c", cfg_path, "-d", data_path] + list(args))
+
+    with open(cfg_path, "w") as f:
+        f.write(delay_cfg)
+
+    num_requests = 3
+
+    def webserver(queue):
+        import http.server, time
+
+        class NoLogHandler(http.server.SimpleHTTPRequestHandler):
+            def log_message(self, format, *args):
+                return
+
+        httpd = http.server.HTTPServer(('', 8000), NoLogHandler)
+        start = 0
+        for _ in range(num_requests):
+            httpd.handle_request()
+            end = time.time()
+            if end - start < 1:
+                queue.put("too fast")
+                return
+            start = end
+        queue.put("ok")
+
+    queue = multiprocessing.Queue()
+    webserver_proc = multiprocessing.Process(target=webserver, args=(queue,))
+    webserver_proc.start()
+
+    for i in range(num_requests):
+        r2e("add", f'test{i}', "http://127.0.0.1:8000/disqus/feed.rss")
+
+    r2e("run", "--no-send")
+    result = queue.get()
+
+    _os.remove(cfg_path)
+    _os.remove(data_path)
+    _os.rmdir(tmpdir)
+
+    if result == "too fast":
+        raise Exception("r2e did not delay long enough!")
 
 if __name__ == '__main__':
     import argparse
@@ -141,3 +199,5 @@ if __name__ == '__main__':
             test(dirname=this_path, force=args.force)
         else:
             test(config_path=this_path, force=args.force)
+
+    test_delay()
