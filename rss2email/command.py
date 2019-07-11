@@ -62,7 +62,7 @@ def run(feeds, args):
     try:
         # How long (in seconds) to sleep between running feeds with
         # the same server.
-        interval = int(feeds.config['DEFAULT']['same-server-fetch-interval'])
+        interval = float(feeds.config['DEFAULT']['same-server-fetch-interval'])
 
         # We use the domain name to determine if we are fetching from
         # the same server twice in a row.

@@ -107,10 +107,11 @@ def test_delay():
     Test that r2e waits before fetching repeatedly from the same
     server.
     """
+    wait_time = 0.3
     delay_cfg = """[DEFAULT]
     to = example@example.com
-    same-server-fetch-interval = 1
-    """
+    same-server-fetch-interval = {}
+    """.format(wait_time)
     tmpdir = tempfile.mkdtemp()
     cfg_path = _os.path.join(tmpdir, "rss2email.cfg")
     data_path = _os.path.join(tmpdir, "rss2email.json")
@@ -130,12 +131,15 @@ def test_delay():
             def log_message(self, format, *args):
                 return
 
-        httpd = http.server.HTTPServer(('', 8000), NoLogHandler)
+        httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+        port = httpd.server_address[1]
+        queue.put(port)
+
         start = 0
         for _ in range(num_requests):
             httpd.handle_request()
             end = time.time()
-            if end - start < 1:
+            if end - start < wait_time:
                 queue.put("too fast")
                 return
             start = end
@@ -144,9 +148,10 @@ def test_delay():
     queue = multiprocessing.Queue()
     webserver_proc = multiprocessing.Process(target=webserver, args=(queue,))
     webserver_proc.start()
+    port = queue.get()
 
     for i in range(num_requests):
-        r2e("add", f'test{i}', "http://127.0.0.1:8000/disqus/feed.rss")
+        r2e("add", f'test{i}', f'http://127.0.0.1:{port}/disqus/feed.rss')
 
     r2e("run", "--no-send")
     result = queue.get()
