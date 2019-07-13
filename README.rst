@@ -32,7 +32,7 @@ Packages
 
 A quick way to get rss2email going is using pre-made packages. There
 are releases for Debian__, Ubuntu__, Fedora__, openSUSE__, Gentoo__,
-and NetBSD__.
+NetBSD__, and OpenBSD__.
 
 __ `Debian package`_
 __ `Ubuntu package`_
@@ -40,6 +40,7 @@ __ `Fedora package`_
 __ `openSUSE package`_
 __ `Gentoo package`_
 __ `NetBSD package`_
+__ `OpenBSD package`_
 
 Installing by hand
 ------------------
@@ -257,13 +258,15 @@ There is a developer chat on the `freenode IRC server`_, in the
 .. _Ubuntu package:
   https://launchpad.net/ubuntu/+source/rss2email
 .. _Fedora package:
-  https://admin.fedoraproject.org/pkgdb/package/rpms/rss2email/
+  https://src.fedoraproject.org/rpms/rss2email
 .. _openSUSE package:
-  https://build.opensuse.org/package/show?package=rss2email&project=server%3Amail
+  https://build.opensuse.org/package/show/openSUSE:Factory/rss2email
 .. _NetBSD package:
   http://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/mail/rss2email/README.html
 .. _Gentoo package:
   http://gpo.zugaina.org/net-mail/rss2email
+.. _OpenBSD package:
+  http://openports.se/mail/rss2email
 .. _Python: http://www.python.org
 .. _feedparser: http://pypi.python.org/pypi/feedparser
 .. _html2text: http://pypi.python.org/pypi/html2text
