@@ -58,7 +58,7 @@ things are in place.
    * html2text_
 
 3. Figure out how you are going to send outgoing email.  You have two
-   options here: either use an STMP server or a local sendmail
+   options here: either use an SMTP server or a local sendmail
    program.  So,
 
    * determine your outgoing email server's SMTP address, or
