@@ -450,21 +450,12 @@ class Feed (object):
             raise
 
     def _process_entry(self, parsed, entry):
-        id_ = self._get_entry_id(entry)
-        # If .trust_guid isn't set, we get back hashes of the content.
-        # Instead of letting these run wild, we put them in context
-        # by associating them with the actual ID (if it exists).
-        guid = entry.get('id', id_)
-        if isinstance(guid, dict):
-            guid = guid.values()[0]
-        # In some bad RSS feeds, id is present but empty...
-        if guid == '':
-            guid = id_
+        # get_entry_id is the unique method that encapsulates where the strategy for getting the id is set
+        guid = self._get_entry_id(entry)
         if guid in self.seen:
-            if self.seen[guid]['id'] == id_:
-                _LOG.debug('already seen {}'.format(id_))
-                return  # already seen
-        _LOG.debug('not seen {}'.format(id_))
+            _LOG.debug('already seen {}'.format(guid))
+            return  # already seen
+        _LOG.debug('not seen {}'.format(guid))
         sender = self._get_entry_email(parsed=parsed, entry=entry)
         subject = self._get_entry_title(entry)
         extra_headers = _collections.OrderedDict((
@@ -472,7 +463,7 @@ class Feed (object):
                 ('Message-ID', '<{}@dev.null.invalid>'.format(_uuid.uuid4())),
                 ('User-Agent', _USER_AGENT),
                 ('X-RSS-Feed', self.url),
-                ('X-RSS-ID', id_),
+                ('X-RSS-ID', guid),
                 ('X-RSS-URL', self._get_entry_link(entry)),
                 ('X-RSS-TAGS', self._get_entry_tags(entry)),
                 ))
@@ -506,7 +497,7 @@ class Feed (object):
             extra_headers=extra_headers,
             config=self.config,
             section=self.section)
-        return (guid, id_, sender, message)
+        return (guid, guid, sender, message)
 
     def _get_entry_id(self, entry):
         """Get best ID from an entry."""
