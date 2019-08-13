@@ -50,6 +50,7 @@ import xml.sax.saxutils as _saxutils
 
 import feedparser as _feedparser
 import html2text as _html2text
+import html as _html
 
 from . import __url__
 from . import __version__
@@ -606,7 +607,7 @@ class Feed (object):
         if 'name' in feed.get('publisher_detail', []):
             data['publisher'] = feed.publisher_detail.name
         name = self.name_format.format(**data)
-        return _html2text.unescape(name)
+        return _html.unescape(name)
 
     def _validate_email(self, email, default=None):
         """Do a basic quality check on email address
