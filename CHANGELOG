@@ -12,7 +12,10 @@ v3.10 (unreleased)
     * Fix SMTP security issues
     * Fix test suite
     * Drop support for Python 3.2 and 3.3
-    * Remove `__contributors__` from the `rss2email` module.
+    * Remove `__contributors__` from the `rss2email` module
+    * Stop using deprecated `html2text.unescape`
+    * Fix locking issues when data file is on NFS
+    * Add `same-server-fetch-interval` setting for rate-limiting fetches to a server
 
 v3.9 (2014-09-01)
     * Catch and error out if a user adds a feed with a duplicate name
