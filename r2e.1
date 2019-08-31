@@ -29,11 +29,15 @@ try these steps:
 The last command should eventually be put into your crontab if you want things be sent you automatically.
 .SH OPTIONS
 .TP 4
-\-\-help
+\-h, \-\-help
 Print the rss2email help and exit.
 .TP
 \-v, \-\-version
 Print the rss2email version and exit.
+.TP
+\-\-full\-version
+Print the versions of Python, the compiler used to compile Python, and
+packages used by rss2email.
 .TP
 \-c, \-\-config \fI<path>\fR
 The program configuration is read from $XDG_CONFIG_HOME/rss2mail.cfg
@@ -230,7 +234,7 @@ Wrap long lines at position. 0 for no wrapping.
 .RE
 .SS Mailing
 .IP email-protocol
-Select protocol from: sendmail, smtp, imap
+Select protocol from: sendmail, smtp, imap, maildir
 .IP sendmail
 Path to sendmail (or compatible)
 .RE
@@ -251,7 +255,6 @@ TLS/SSL version to use on STARTTLS when not using 'smtp-ssl'.
 .SS IMAP configuration
 .IP imap-auth
 set to True to use IMAP auth.
-
 .IP imap-username
 username for IMAP authentication
 .IP imap-password
@@ -264,6 +267,12 @@ IMAP port
 connect to the IMAP server using SSL
 .IP imap-mailbox
 where we should store new messages
+.RE
+.SS Maildir configuration
+.IP maildir-path
+Path of maildir to write messages into
+.IP maildir-mailbox
+Mailbox within maildir-path to write messages into
 .RE
 .SS Miscellaneous
 .IP verbose
@@ -302,10 +311,12 @@ CONFIGURATION above).
 A colon ':' separated, preference ordered list of base directories for
 data files.  Defaults to /usr/local/share/:/usr/share/.  Only the
 first matching file is used.
-.B 
+.B
 .SH AUTHORS
 rss2email was started by Aaron Swartz, and is currently maintained by
 a group of people.  For a more complete list of contributors, see the
 AUTHORS file in the rss2email distribution.
 .SH "REPORTING BUGS"
-Report bugs to the mailing list (see the README for details).
+Report bugs by creating an issue at
+.UR https://github.com/rss2email/rss2email
+.UE .
