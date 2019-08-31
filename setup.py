@@ -20,15 +20,15 @@
 "A python script that converts RSS/Atom newsfeeds to email"
 
 import codecs as _codecs
-from distutils.core import setup
 import os.path as _os_path
+import setuptools
 
 from rss2email import __version__, __url__, __author__, __email__
 
 
 _this_dir = _os_path.dirname(__file__)
 
-setup(
+setuptools.setup(
     name='rss2email',
     version=__version__,
     maintainer=__author__,
