@@ -1,4 +1,4 @@
-v3.10 (unreleased)
+v3.10 (2019-09-01)
     * Catch and warn for invalid Content-Types
     * Add a manually extracted list of config options to r2e.1
     * Add a redirect post-process module
@@ -16,6 +16,7 @@ v3.10 (unreleased)
     * Stop using deprecated `html2text.unescape`
     * Fix locking issues when data file is on NFS
     * Add `same-server-fetch-interval` setting for rate-limiting fetches to a server
+    * Update setup.py to setuptools
 
 v3.9 (2014-09-01)
     * Catch and error out if a user adds a feed with a duplicate name
