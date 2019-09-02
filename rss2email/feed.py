@@ -396,7 +396,7 @@ class Feed (object):
         if version:
             _LOG.debug('feed version {}'.format(version))
         else:
-            _LOG.warning('unrecognized version: {}'.format(self))
+            _LOG.debug('unrecognized version: {}'.format(self))
             warned = True
 
         exc = parsed.get('bozo_exception', None)
