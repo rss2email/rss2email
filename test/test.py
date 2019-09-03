@@ -13,6 +13,9 @@ import tempfile
 import multiprocessing
 import subprocess
 import unittest
+import mailbox
+import http.server
+import time
 
 import rss2email as _rss2email
 import rss2email.config as _rss2email_config
@@ -137,7 +140,7 @@ class ExecContext:
         context.call("run", "--no-send")
 
     """
-    def __init__(self, config=""):
+    def __init__(self, config):
         self.tmpdir = tempfile.mkdtemp()
         self.cfg_path = _os.path.join(self.tmpdir, "rss2email.cfg")
         self.data_path = _os.path.join(self.tmpdir, "rss2email.json")
@@ -156,6 +159,11 @@ class ExecContext:
     def call(self, *args):
         subprocess.call(["r2e", "-c", self.cfg_path, "-d", self.data_path] + list(args))
 
+class NoLogHandler(http.server.SimpleHTTPRequestHandler):
+    "No-op handler for http.server"
+    def log_message(self, format, *args):
+        return
+
 class TestFetch(unittest.TestCase):
     "Retrieving feeds from servers"
     def test_delay(self):
@@ -169,12 +177,6 @@ class TestFetch(unittest.TestCase):
         num_requests = 3
 
         def webserver(queue):
-            import http.server, time
-
-            class NoLogHandler(http.server.SimpleHTTPRequestHandler):
-                def log_message(self, format, *args):
-                    return
-
             with http.server.HTTPServer(('', 0), NoLogHandler) as httpd:
                 port = httpd.server_address[1]
                 queue.put(port)
@@ -206,8 +208,53 @@ class TestFetch(unittest.TestCase):
 
 class TestSend(unittest.TestCase):
     "Send email using the various email-protocol choices"
+    def setUp(self):
+        "Starts web server to serve feeds"
+        def webserver(queue):
+            with http.server.HTTPServer(('', 0), NoLogHandler) as httpd:
+                port = httpd.server_address[1]
+                queue.put(port)
+
+                # to make the web server serve your request, you have
+                # to put something into the queue to advance this loop
+                while queue.get() != "stop":
+                    httpd.handle_request()
+
+        self.httpd_queue = multiprocessing.Queue()
+        webserver_proc = multiprocessing.Process(target=webserver, args=(self.httpd_queue,))
+        webserver_proc.start()
+        self.httpd_port = self.httpd_queue.get()
+
+    def tearDown(self):
+        "Stops web server"
+        self.httpd_queue.put("stop")
+
     def test_maildir(self):
         "Sends mail to maildir"
+        with tempfile.TemporaryDirectory() as maildirname:
+            for d in ["cur", "new", "tmp"]:
+                _os.makedirs(_os.path.join(maildirname, d))
+                _os.makedirs(_os.path.join(maildirname, "inbox", d))
+            maildir_cfg = """[DEFAULT]
+            to = example@example.com
+            email-protocol = maildir
+            maildir-path = {}
+            maildir-mailbox = inbox
+            """.format(maildirname)
+
+            with ExecContext(maildir_cfg) as ctx:
+                self.httpd_queue.put("next")
+                ctx.call("add", f'test', f'http://127.0.0.1:{self.httpd_port}/gmane/feed.rss')
+                ctx.call("run")
+
+            # quick check to make sure right number of messages sent
+            # and subjects are right
+            inbox = mailbox.Maildir(_os.path.join(maildirname, "inbox"))
+            msgs = list(inbox)
+
+            self.assertEqual(len(msgs), 5)
+            self.assertEqual(len([msg for msg in msgs if msg["subject"] == "split massive package into modules"]), 1)
+            self.assertEqual(len([msg for msg in msgs if msg["subject"] == "Re: new maintainer and mailing list for rss2email"]), 4)
 
 if __name__ == '__main__':
     unittest.main()
