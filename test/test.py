@@ -127,6 +127,35 @@ class TestEmails(unittest.TestCase):
             else:
                 self.run_single_test(config_path=this_path)
 
+class ExecContext:
+    """Creates temporary config, data file and lets you call r2e with them
+    easily. Cleans up temp files afterwards.
+
+    Example:
+
+    with ExecContext(config="[DEFAULT]\nto=me@example.com") as context:
+        context.call("run", "--no-send")
+
+    """
+    def __init__(self, config=""):
+        self.tmpdir = tempfile.mkdtemp()
+        self.cfg_path = _os.path.join(self.tmpdir, "rss2email.cfg")
+        self.data_path = _os.path.join(self.tmpdir, "rss2email.json")
+
+        with open(self.cfg_path, "w") as f:
+            f.write(config)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, traceback):
+        _os.remove(self.cfg_path)
+        _os.remove(self.data_path)
+        _os.rmdir(self.tmpdir)
+
+    def call(self, *args):
+        subprocess.call(["r2e", "-c", self.cfg_path, "-d", self.data_path] + list(args))
+
 class TestFetch(unittest.TestCase):
     "Retrieving feeds from servers"
     def test_delay(self):
@@ -136,15 +165,6 @@ class TestFetch(unittest.TestCase):
         to = example@example.com
         same-server-fetch-interval = {}
         """.format(wait_time)
-        tmpdir = tempfile.mkdtemp()
-        cfg_path = _os.path.join(tmpdir, "rss2email.cfg")
-        data_path = _os.path.join(tmpdir, "rss2email.json")
-
-        def r2e(*args):
-            subprocess.call(["r2e", "-c", cfg_path, "-d", data_path] + list(args))
-
-        with open(cfg_path, "w") as f:
-            f.write(delay_cfg)
 
         num_requests = 3
 
@@ -174,18 +194,20 @@ class TestFetch(unittest.TestCase):
         webserver_proc.start()
         port = queue.get()
 
-        for i in range(num_requests):
-            r2e("add", f'test{i}', f'http://127.0.0.1:{port}/disqus/feed.rss')
+        with ExecContext(delay_cfg) as ctx:
+            for i in range(num_requests):
+                ctx.call("add", f'test{i}', f'http://127.0.0.1:{port}/disqus/feed.rss')
+            ctx.call("run", "--no-send")
 
-        r2e("run", "--no-send")
         result = queue.get()
-
-        _os.remove(cfg_path)
-        _os.remove(data_path)
-        _os.rmdir(tmpdir)
 
         if result == "too fast":
             raise Exception("r2e did not delay long enough!")
+
+class TestSend(unittest.TestCase):
+    "Send email using the various email-protocol choices"
+    def test_maildir(self):
+        "Sends mail to maildir"
 
 if __name__ == '__main__':
     unittest.main()
