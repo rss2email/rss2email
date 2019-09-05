@@ -109,7 +109,7 @@ Create a new feed database to send updates to your email address::
   $ r2e new you@yourdomain.com
 
 This command will create a configuration file
-(``$XDG_CONFIG_HOME/rss2email.cfs`` by default) and a feed database
+(``$XDG_CONFIG_HOME/rss2email.cfg`` by default) and a feed database
 (``$XDG_DATA_HOME/rss2email.json`` by default).  If you'd rather those
 files were stored in other locations, use the ``--config`` and
 ``--data`` options.  ``XDG_CONFIG_HOME`` defaults to ``$HOME/.config``
