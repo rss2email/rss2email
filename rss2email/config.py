@@ -40,8 +40,6 @@ import configparser as _configparser
 
 import html2text as _html2text
 
-from . import __url__
-
 class Config (_configparser.ConfigParser):
     def __init__(self, dict_type=_collections.OrderedDict,
                  interpolation=_configparser.ExtendedInterpolation(),
@@ -71,8 +69,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ### Addressing
         # The email address messages are from by default
         ('from', 'user@rss2email.invalid'),
-        # The User-Agent default string (__VERSION__ is replaced)
-        ('user-agent', 'rss2email/__VERSION__ ({})'.format(__url__)),
+        # The User-Agent default string (rss2email __VERSION__ and __URL__ is replaced)
+        ('user-agent', 'rss2email/__VERSION__ (__URL__)'),
         # Transfer-Encoding. For local mailing it is safe and
         # convenient to use 8bit.
         ('use-8bit', str(False)),
