@@ -1,0 +1,104 @@
+SENT BY: "rss2email: Lindsey Smith" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+From: "rss2email: Lindsey Smith" <user@rss2email.invalid>
+To: a@b.com
+Subject: Version 2.67 Released
+Content-Transfer-Encoding: 7bit
+Date: Tue, 21 Sep 2010 16:55:07 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: test string
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=62
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
+X-RSS-TAGS: Uncategorized
+
+Version 2.67 of rss2email is now available for both
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.67.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.67.zip), which
+includes the latest development version of feedparser. Changes from the
+previous version:
+
+  * Fixed entries that include an id which is blank (i.e., an empty string) were being resent
+  * Fixed some entries not being sent by email because they had bad From headers
+  * Fixed From headers with HTML entities encoded twice
+  * Compatibility changes to support most recent development versions of feedparser
+  * Compatibility changes to support Google Reader feeds
+
+Complete list in the official
+[CHANGELOG](http://www.allthingsrss.com/rss2email/changelog).
+
+[![](http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/0/di)](http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/0/da)  
+[![](http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/1/di)](http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/aGbf5Gefkmc)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
+
+SENT BY: "rss2email: Lindsey Smith" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+From: "rss2email: Lindsey Smith" <user@rss2email.invalid>
+To: a@b.com
+Subject: Version 2.68 Released with Actual New Features
+Content-Transfer-Encoding: 7bit
+Date: Fri, 01 Oct 2010 18:21:26 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: test string
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=72
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/
+X-RSS-TAGS: Uncategorized
+
+Unlike the last few versions of rss2email that have trickled out, I finally
+got around to adding a few new oft-requested features! Version 2.68 of
+rss2email is now available for both
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.68.tar.gz) and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.68.zip).
+
+Changes from the previous version:
+
+  * Added ability to pause/resume checking of individual feeds through pause and unpause commands
+  * Added ability to import and export OPML feed lists through importopml and exportopml commands
+
+Complete list in the official
+[CHANGELOG](http://www.allthingsrss.com/rss2email/changelog).
+
+**Pause/Unpause**
+
+Through `r2e pause _n_` where _n_ is a feed number, you can temporarily
+suspend checking that feed for new content. To start checking it again, simply
+run `r2e unpause _n_`. When you `r2e list`, an asterisk indicates that the
+feed is currently unpaused and active.
+
+[![](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/di)](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/da)  
+[![](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/di)](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/da)
+
+![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/bT-I0iH2vw8)
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/
+
+SENT BY: "rss2email: Lindsey Smith" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+From: "rss2email: Lindsey Smith" <user@rss2email.invalid>
+To: a@b.com
+Subject: How to Read RSS Feeds in Emacs
+Content-Transfer-Encoding: 7bit
+Date: Fri, 05 Nov 2010 17:36:14 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: test string
+X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=79
+X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/JryfOLe_q6c/
+X-RSS-TAGS: Uncategorized
+
+something something irrelevant
+
+
+
+URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/JryfOLe_q6c/
