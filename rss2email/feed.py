@@ -61,8 +61,6 @@ from . import error as _error
 from . import util as _util
 
 
-_USER_AGENT = 'rss2email/{} ({})'.format(__version__, __url__)
-_feedparser.USER_AGENT = _USER_AGENT
 _urllib_request.install_opener(_urllib_request.build_opener())
 _SOCKET_ERRORS = []
 for e in ['error', 'herror', 'gaierror']:
@@ -219,6 +217,8 @@ class Feed (object):
             self.url = url
         if to:
             self.to = to
+        self.user_agent = self.user_agent.replace('__VERSION__', __version__)
+        self.user_agent = self.user_agent.replace('__URL__', __url__)
 
     def __str__(self):
         return '{} ({} -> {})'.format(self.name, self.url, self.to)
@@ -458,10 +458,11 @@ class Feed (object):
         _LOG.debug('not seen {}'.format(guid))
         sender = self._get_entry_email(parsed=parsed, entry=entry)
         subject = self._get_entry_title(entry)
+
         extra_headers = _collections.OrderedDict((
                 ('Date', self._get_entry_date(entry)),
                 ('Message-ID', '<{}@dev.null.invalid>'.format(_uuid.uuid4())),
-                ('User-Agent', _USER_AGENT),
+                ('User-Agent', self.user_agent),
                 ('X-RSS-Feed', self.url),
                 ('X-RSS-ID', guid),
                 ('X-RSS-URL', self._get_entry_link(entry)),
@@ -867,7 +868,7 @@ class Feed (object):
         digest['To'] = self.to  # TODO: _Header(), _formataddr((recipient_name, recipient_addr))
         digest['Subject'] = 'digest for {}'.format(self.name)
         digest['Message-ID'] = '<{}@dev.null.invalid>'.format(_uuid.uuid4())
-        digest['User-Agent'] = _USER_AGENT
+        digest['User-Agent'] = self.user_agent
         digest['X-RSS-Feed'] = self.url
         return digest
 

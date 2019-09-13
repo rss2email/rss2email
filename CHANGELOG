@@ -1,3 +1,6 @@
+UNRELEASED
+    * Add new `user-agent` attribute for configuring email User-Agent
+
 v3.10 (2019-09-01)
     * Catch and warn for invalid Content-Types
     * Add a manually extracted list of config options to r2e.1
