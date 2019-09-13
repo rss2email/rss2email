@@ -71,8 +71,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ### Addressing
         # The email address messages are from by default
         ('from', 'user@rss2email.invalid'),
-        # The User-Agent default string (_VERSION_ is replaced)
-        ('user-agent', 'rss2email/_VERSION_ ({})'.format(__url__)),
+        # The User-Agent default string (__VERSION__ is replaced)
+        ('user-agent', 'rss2email/__VERSION__ ({})'.format(__url__)),
         # Transfer-Encoding. For local mailing it is safe and
         # convenient to use 8bit.
         ('use-8bit', str(False)),

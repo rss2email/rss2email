@@ -217,7 +217,7 @@ class Feed (object):
             self.url = url
         if to:
             self.to = to
-        self.user_agent = self.user_agent.replace('_VERSION_', __version__)
+        self.user_agent = self.user_agent.replace('__VERSION__', __version__)
 
     def __str__(self):
         return '{} ({} -> {})'.format(self.name, self.url, self.to)
