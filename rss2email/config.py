@@ -42,7 +42,6 @@ import html2text as _html2text
 
 from . import __url__
 
-
 class Config (_configparser.ConfigParser):
     def __init__(self, dict_type=_collections.OrderedDict,
                  interpolation=_configparser.ExtendedInterpolation(),
