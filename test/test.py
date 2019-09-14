@@ -177,7 +177,8 @@ class TestFetch(unittest.TestCase):
         num_requests = 3
 
         def webserver(queue):
-            with http.server.HTTPServer(('', 0), NoLogHandler) as httpd:
+            httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+            try:
                 port = httpd.server_address[1]
                 queue.put(port)
 
@@ -190,6 +191,8 @@ class TestFetch(unittest.TestCase):
                         return
                     start = end
                 queue.put("ok")
+            finally:
+                httpd.server_close()
 
         queue = multiprocessing.Queue()
         webserver_proc = multiprocessing.Process(target=webserver, args=(queue,))
@@ -211,7 +214,8 @@ class TestSend(unittest.TestCase):
     def setUp(self):
         "Starts web server to serve feeds"
         def webserver(queue):
-            with http.server.HTTPServer(('', 0), NoLogHandler) as httpd:
+            httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+            try:
                 port = httpd.server_address[1]
                 queue.put(port)
 
@@ -219,6 +223,8 @@ class TestSend(unittest.TestCase):
                 # to put something into the queue to advance this loop
                 while queue.get() != "stop":
                     httpd.handle_request()
+            finally:
+                httpd.server_close()
 
         self.httpd_queue = multiprocessing.Queue()
         webserver_proc = multiprocessing.Process(target=webserver, args=(self.httpd_queue,))
