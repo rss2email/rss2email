@@ -1,0 +1,11 @@
+language: "nix"
+
+nix: "2.2.1"
+
+os: "linux"
+
+script: |
+  set -euo pipefail
+
+  # build rss2email against every python version we support
+  nix-build -A pythonVersions ./nix/release.nix
