@@ -75,7 +75,10 @@ def run(feeds, args):
                 current_server = _urllib.parse.urlparse(feed.url).netloc
                 try:
                     if last_server == current_server:
-                        _LOG.info(f'fetching from server {current_server} again, sleeping for {interval}s')
+                        _LOG.info('fetching from server {current_server} again, sleeping for {interval}s'.format(
+                            current_server = current_server,
+                            interval = interval
+                        ))
                         _time.sleep(interval)
                     feed.run(send=args.send)
                 except _error.RSS2EmailError as e:

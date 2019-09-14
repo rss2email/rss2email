@@ -198,7 +198,7 @@ class TestFetch(unittest.TestCase):
 
         with ExecContext(delay_cfg) as ctx:
             for i in range(num_requests):
-                ctx.call("add", f'test{i}', f'http://127.0.0.1:{port}/disqus/feed.rss')
+                ctx.call("add", 'test{i}'.format(i = i), 'http://127.0.0.1:{port}/disqus/feed.rss'.format(port = port))
             ctx.call("run", "--no-send")
 
         result = queue.get()
@@ -244,7 +244,7 @@ class TestSend(unittest.TestCase):
 
             with ExecContext(maildir_cfg) as ctx:
                 self.httpd_queue.put("next")
-                ctx.call("add", f'test', f'http://127.0.0.1:{self.httpd_port}/gmane/feed.rss')
+                ctx.call("add", 'test', 'http://127.0.0.1:{port}/gmane/feed.rss'.format(port = self.httpd_port))
                 ctx.call("run")
 
             # quick check to make sure right number of messages sent
