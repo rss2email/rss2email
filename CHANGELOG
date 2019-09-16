@@ -1,5 +1,6 @@
 UNRELEASED
     * Add new `user-agent` attribute for configuring email User-Agent
+    * Add `--set` command line option for overriding the configuration
 
 v3.10 (2019-09-01)
     * Catch and warn for invalid Content-Types
