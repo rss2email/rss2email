@@ -177,7 +177,8 @@ class TestFetch(unittest.TestCase):
         num_requests = 3
 
         def webserver(queue):
-            with http.server.HTTPServer(('', 0), NoLogHandler) as httpd:
+            httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+            try:
                 port = httpd.server_address[1]
                 queue.put(port)
 
@@ -190,6 +191,8 @@ class TestFetch(unittest.TestCase):
                         return
                     start = end
                 queue.put("ok")
+            finally:
+                httpd.server_close()
 
         queue = multiprocessing.Queue()
         webserver_proc = multiprocessing.Process(target=webserver, args=(queue,))
@@ -198,7 +201,7 @@ class TestFetch(unittest.TestCase):
 
         with ExecContext(delay_cfg) as ctx:
             for i in range(num_requests):
-                ctx.call("add", f'test{i}', f'http://127.0.0.1:{port}/disqus/feed.rss')
+                ctx.call("add", 'test{i}'.format(i = i), 'http://127.0.0.1:{port}/disqus/feed.rss'.format(port = port))
             ctx.call("run", "--no-send")
 
         result = queue.get()
@@ -211,7 +214,8 @@ class TestSend(unittest.TestCase):
     def setUp(self):
         "Starts web server to serve feeds"
         def webserver(queue):
-            with http.server.HTTPServer(('', 0), NoLogHandler) as httpd:
+            httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+            try:
                 port = httpd.server_address[1]
                 queue.put(port)
 
@@ -219,6 +223,8 @@ class TestSend(unittest.TestCase):
                 # to put something into the queue to advance this loop
                 while queue.get() != "stop":
                     httpd.handle_request()
+            finally:
+                httpd.server_close()
 
         self.httpd_queue = multiprocessing.Queue()
         webserver_proc = multiprocessing.Process(target=webserver, args=(self.httpd_queue,))
@@ -244,7 +250,7 @@ class TestSend(unittest.TestCase):
 
             with ExecContext(maildir_cfg) as ctx:
                 self.httpd_queue.put("next")
-                ctx.call("add", f'test', f'http://127.0.0.1:{self.httpd_port}/gmane/feed.rss')
+                ctx.call("add", 'test', 'http://127.0.0.1:{port}/gmane/feed.rss'.format(port = self.httpd_port))
                 ctx.call("run")
 
             # quick check to make sure right number of messages sent

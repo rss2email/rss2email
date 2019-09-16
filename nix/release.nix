@@ -7,6 +7,7 @@ let
     { version = "3_6"; set = pkgs.python36Packages; }
     { version = "3_7"; set = pkgs.python37Packages; }
   ];
+  latestSupportedPackageSet = pkgs.lib.last supportedPackageSets;
 
   src = pkgs.lib.cleanSource ../.;
 
@@ -24,18 +25,26 @@ let
       beautifulsoup4
     ];
 
+    doCheck = true;
     checkPhase = ''
-      env PYTHONPATH=.:$PYTHONPATH \
-        python3 ./test/test.py
+      env \
+        PATH="$out/bin:$PATH" \
+        PYTHONPATH=.:"$PYTHONPATH" \
+          python3 ./test/test.py --verbose
     '';
-
   };
 
-in
-  # { "rss2email-3-5" = <rss2email package>; … }
-  pkgs.lib.listToAttrs
-    (map
-      (pkgSet: pkgs.lib.nameValuePair
-         (mkName pkgSet.version)
-         (buildWith pkgSet))
-      supportedPackageSets)
+  # { "rss2email-python_3_5" = <rss2email package>; … }
+  rss2emailVersions =
+    (pkgs.lib.listToAttrs
+      (map
+        (pkgSet: pkgs.lib.nameValuePair
+          (mkName pkgSet.version)
+          (buildWith pkgSet))
+        supportedPackageSets));
+
+in {
+  rss2email = buildWith latestSupportedPackageSet;
+
+  pythonVersions = rss2emailVersions;
+}

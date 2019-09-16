@@ -1,0 +1,34 @@
+language: "nix"
+
+nix: "2.2.1"
+
+os: "linux"
+
+script: |
+  set -e
+
+  # build rss2email against every python version we support
+  nix-build -A pythonVersions ./nix/release.nix
+
+  # build the list of the transitive closure of dependencies
+  nix-store --query --requisites --include-outputs \
+    $(nix-instantiate -A pythonVersions ./nix/release.nix) \
+    > nix-dependencies
+
+
+# using the snippets from https://nixos.wiki/wiki/Nix_on_Travis
+
+before_cache:
+- mkdir -p $HOME/nix.store
+# this copies the closure of all dependencies to the cache
+- nix copy --to file://$HOME/nix.store $(cat ./nix-dependencies)
+
+cache:
+  directories:
+  - $HOME/nix.store
+
+before_install:
+- sudo mkdir -p /etc/nix
+- echo "substituters = https://cache.nixos.org/ file://$HOME/nix.store" | sudo tee -a /etc/nix/nix.conf > /dev/null
+- echo 'require-sigs = false' | sudo tee -a /etc/nix/nix.conf > /dev/null
+- echo 'sandbox = true' | sudo tee -a /etc/nix/nix.conf > /dev/null
