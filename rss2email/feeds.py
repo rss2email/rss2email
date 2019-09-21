@@ -130,7 +130,7 @@ class Feeds (list):
     datafile_version = 2
     datafile_encoding = 'utf-8'
 
-    def __init__(self, configfiles=None, datafile=None, config=None):
+    def __init__(self, configfiles=None, datafile=None, config=None, config_overrides={}):
         super(Feeds, self).__init__()
         if configfiles is None:
             configfiles = self._get_configfiles()
@@ -141,6 +141,7 @@ class Feeds (list):
         if config is None:
             config = _config.CONFIG
         self.config = config
+        self.config.set_overrides(config_overrides)
         self._datafile_lock = None
 
     def __getitem__(self, key):

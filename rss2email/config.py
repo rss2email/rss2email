@@ -40,12 +40,34 @@ import configparser as _configparser
 
 import html2text as _html2text
 
+class SectionOverrideProxy(_configparser.SectionProxy):
+    def __init__(self, name, config, overrides={}):
+        super().__init__(config, name)
+        # Get the real (not affected by overrides) section
+        self.real_section = _configparser.ConfigParser.__getitem__(config, name)
+        self.overrides = overrides
+
+    def __getitem__(self, key):
+        if key in self.overrides:
+            return self.overrides[key]
+        else:
+            return self.real_section[key]
+
 class Config (_configparser.ConfigParser):
     def __init__(self, dict_type=_collections.OrderedDict,
                  interpolation=_configparser.ExtendedInterpolation(),
                  **kwargs):
         super(Config, self).__init__(
             dict_type=dict_type, interpolation=interpolation, **kwargs)
+        self.overrides = {}
+        self.filenames = None
+
+    def __getitem__(self, section_name):
+        """Show a section with overrides enabled. This is usually what is
+        wanted, since the user can configure the program with
+        overrides on the command line (via -s/--set).
+        """
+        return SectionOverrideProxy(section_name, self, self.overrides)
 
     def setup_html2text(self, section='DEFAULT'):
         """Setup html2text globals to match our configuration
@@ -61,6 +83,36 @@ class Config (_configparser.ConfigParser):
             section, 'links-after-each-paragraph')
         _html2text.BODY_WIDTH = self.getint(section, 'body-width')
 
+    def set_overrides(self, overrides):
+        self.overrides = overrides
+
+    def read(self, filenames):
+        # if we read in from a file, we need to keep track of the
+        # filenames that produced this config for later comparison, so
+        # we don't overwrite disk configuration with command-line
+        # overrides except in some specific cases
+        read_filenames = super(Config, self).read(filenames)
+        self.filenames = read_filenames
+        return read_filenames
+
+    def write(self, f):
+        """Writes config to file. Overrides are writen to disk only if the
+        section being overridden does not exist on disk (e.g. when
+        creating a new feed)"""
+        if self.filenames:
+            # We only need to take care if there is an on-disk config
+            # to worry about preserving
+            disk_config = _configparser.ConfigParser()
+            disk_config.read(self.filenames)
+            new_sections = set(self.sections()).difference(set(disk_config.sections()))
+            for section in new_sections:
+                # Create the sections with the overrides
+                disk_config[section] = dict(self[section])
+            disk_config.write(f)
+        else:
+            # Else we are creating the on-disk config for the first
+            # time and can just write everything
+            super(Config, self).write(f)
 
 CONFIG = Config()
 
