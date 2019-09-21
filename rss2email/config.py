@@ -108,6 +108,10 @@ class Config (_configparser.ConfigParser):
             for section in new_sections:
                 # Create the sections with the overrides
                 disk_config[section] = dict(self[section])
+
+            # Change the default target email if we have changed it
+            # (this only happens through 'r2e email')
+            disk_config['DEFAULT']['to'] = self['DEFAULT'].real_section['to']
             disk_config.write(f)
         else:
             # Else we are creating the on-disk config for the first
