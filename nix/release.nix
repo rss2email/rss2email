@@ -6,6 +6,7 @@ let
     { version = "3_5"; set = pkgs.python35Packages; }
     { version = "3_6"; set = pkgs.python36Packages; }
     { version = "3_7"; set = pkgs.python37Packages; }
+    { version = "3_8"; set = pkgs.python38Packages; }
   ];
   latestSupportedPackageSet = pkgs.lib.last supportedPackageSets;
 
