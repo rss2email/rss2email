@@ -22,8 +22,6 @@ let
     propagatedBuildInputs = with pkgSet.set; [
       feedparser
       html2text
-      # tests
-      beautifulsoup4
     ];
 
     doCheck = true;
