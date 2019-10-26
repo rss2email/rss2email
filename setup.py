@@ -44,7 +44,7 @@ setuptools.setup(
     long_description=_codecs.open(
         _os_path.join(_this_dir, 'README.rst'), 'r', encoding='utf-8').read(),
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Intended Audience :: End Users/Desktop',
         'Operating System :: OS Independent',

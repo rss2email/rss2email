@@ -13,10 +13,11 @@ if you have a question (or something is not described sufficiently).
 - `git commit`
 - `exit`
 
+- `rm -Rf dist rss2email.egg-info`
 - `nix-shell -p python37Packages.{setuptools,wheel,twine}`
 - `SOURCE_DATE_EPOCH=315532800 python3 setup.py sdist bdist_wheel`
 - `twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
-- Check it actually work on test-pypi
+- Check it actually work on test-pypi (NixOS test, run on dev machines…)
 
 - Add git tag, git branch if need be, push it to repository
 - `twine upload --repository-url https://pypi.org/legacy/ dist/*`
