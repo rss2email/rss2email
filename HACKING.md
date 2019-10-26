@@ -6,8 +6,17 @@ if you have a question (or something is not described sufficiently).
 
 ## Cutting a new release
 
-- TODO
-- run update-copyright.py
+- `nix-shell`
+- `update-copyright.py`
+- `exit`
+
+- `nix-shell -p python37Packages.{setuptools,wheel,twine}`
+- `SOURCE_DATE_EPOCH=315532800 python3 setup.py sdist bdist_wheel`
+- `twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
+- Check it actually work on test-pypi
+
+- Add git tag, git branch if need be, push it to repository
+- `twine upload --repository-url https://pypi.org/legacy/ dist/*`
 
 
 ## Using nix support
