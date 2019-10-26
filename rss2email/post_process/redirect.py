@@ -1,6 +1,7 @@
-# Copyright (C) 2013-2017 Andrey Zelenchuk <azelenchuk@parallels.com>
+# Copyright (C) 2013-2018 Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         François Boulogne <fboulogne sciunto org>
 #                         Jakub Wilk <jwilk@jwilk.net>
+#                         Profpatsch <mail@profpatsch.de>
 #                         Puneeth Chaganti <punchagan@muse-amuse.in>
 #                         W. Trevor King <wking@tremily.us>
 #

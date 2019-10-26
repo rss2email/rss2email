@@ -1,4 +1,5 @@
-# Copyright (C) 2004-2017 Aaron Swartz
+# Copyright (C) 2004-2019 Aaron Swartz
+#                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Brian Lalor
 #                         Dean Jackson
@@ -9,10 +10,13 @@
 #                         George Saunders <georgesaunders@gmail.com>
 #                         Jakub Wilk <jwilk@jwilk.net>
 #                         Joey Hess
+#                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
+#                         Martin Monperrus <monperrus@users.noreply.github.com>
 #                         Matej Cepl
+#                         Profpatsch <mail@profpatsch.de>
 #                         Thiago Coutinho <root@thiagoc.net>
 #                         Thibaut Girka <thib@sitedethib.com>
 #                         W. Trevor King <wking@tremily.us>

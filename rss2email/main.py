@@ -1,4 +1,6 @@
-# Copyright (C) 2012-2017 Andrey Zelenchuk <azelenchuk@parallels.com>
+# Copyright (C) 2012-2019 Andrey Zelenchuk <azelenchuk@parallels.com>
+#                         Gregory Soutade <gregory@soutade.fr>
+#                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.

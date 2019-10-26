@@ -1,4 +1,5 @@
-# Copyright (C) 2012-2013 W. Trevor King <wking@tremily.us>
+# Copyright (C) 2012-2018 Profpatsch <mail@profpatsch.de>
+#                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.
 #

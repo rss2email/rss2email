@@ -1,20 +1,27 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2004-2017 Aaron Swartz
+# Copyright (C) 2004-2019 Aaron Swartz
+#                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dennis Keitzel <github@pinshot.net>
+#                         Emil Oppeln-Bronikowski <emil@fuse.pl>
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
 #                         George Saunders <georgesaunders@gmail.com>
+#                         Gregory Soutade <gregory@soutade.fr>
 #                         J. Lewis Muir <jlmuir@imca-cat.org>
 #                         Jakub Wilk <jwilk@jwilk.net>
 #                         Joey Hess
+#                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
+#                         Martin Monperrus <monperrus@users.noreply.github.com>
 #                         Matej Cepl
+#                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
+#                         shan3141 <xpoh434@users.noreply.github.com>
 #
 # This file is part of rss2email.
 #

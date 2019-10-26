@@ -1,4 +1,5 @@
-# Copyright (C) 2012-2015 Etienne Millon <me@emillon.org>
+# Copyright (C) 2012-2018 Etienne Millon <me@emillon.org>
+#                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
 #
 # This file is part of rss2email.

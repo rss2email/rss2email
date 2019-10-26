@@ -8,6 +8,8 @@ if you have a question (or something is not described sufficiently).
 
 - `nix-shell`
 - `update-copyright.py`
+- Prepare `CHANGELOG`
+- `git commit`
 - `exit`
 
 - `nix-shell -p python37Packages.{setuptools,wheel,twine}`

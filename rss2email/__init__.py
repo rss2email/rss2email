@@ -1,5 +1,6 @@
-# Copyright (C) 2012-2018 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
+# Copyright (C) 2012-2019 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
 #                         François Boulogne <fboulogne sciunto org>
+#                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
 #

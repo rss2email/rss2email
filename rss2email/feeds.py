@@ -1,14 +1,16 @@
-# Copyright (C) 2004-2017 Aaron Swartz
+# Copyright (C) 2004-2019 Aaron Swartz
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
 #                         Joey Hess
+#                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
 #                         Matej Cepl
+#                         Profpatsch <mail@profpatsch.de>
 #                         Raphaël Droz <raphael.droz+floss@gmail.com>
 #                         W. Trevor King <wking@tremily.us>
 #
