@@ -20,7 +20,7 @@ if you have a question (or something is not described sufficiently).
 - Check it actually work on test-pypi (NixOS test, run on dev machines…)
 
 - Add git tag, git branch if need be, push it to repository
-- `twine upload --repository-url https://pypi.org/legacy/ dist/*`
+- `twine upload dist/*`
 
 
 ## Using nix support
