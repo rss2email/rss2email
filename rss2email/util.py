@@ -19,8 +19,6 @@
 """
 
 import importlib as _importlib
-import pickle as _pickle
-import pickletools as _pickletools
 import sys as _sys
 import threading as _threading
 
@@ -83,34 +81,19 @@ def import_name(obj):
     """Return the full import name for a Python object
 
     Note that this does not always exist (e.g. for dynamically
-    generated functions).  This function does it's best, using Pickle
-    for the heavy lifting.  For example:
+    generated functions). A working example:
 
     >>> import_name(import_name)
     'rss2email.util import_name'
 
     Note the space between the module (``rss2email.util``) and the
     function within the module (``import_name``).
-
-    Some objects can't be pickled:
-
-    >>> import_name(lambda x: 'muahaha')
-    Traceback (most recent call last):
-      ...
-    _pickle.PicklingError: Can't pickle <class 'function'>: attribute lookup builtins.function failed
-
-    Some objects don't have a global scope:
-
-    >>> import_name('abc')
-    Traceback (most recent call last):
-      ...
-    ValueError: abc
     """
-    pickle = _pickle.dumps(obj)
-    for opcode,arg,pos in _pickletools.genops(pickle):
-        if opcode.name == 'GLOBAL':
-            return arg
-    raise ValueError(obj)
+    name = "{} {}".format(obj.__module__, obj.__qualname__)
+    if import_function(name) is obj:
+        return name
+    else:
+        raise ValueError(obj)
 
 def import_function(name):
     """Import a function using the full import name
