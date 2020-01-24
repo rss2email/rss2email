@@ -72,7 +72,7 @@ class TimeLimitedFunction (_threading.Thread):
         if self.error:
             raise _error.TimeoutError(
                 time_limited_function=self) from self.error[1]
-        elif self.isAlive():
+        elif self.is_alive():
             raise _error.TimeoutError(time_limited_function=self)
         return self.result
 
