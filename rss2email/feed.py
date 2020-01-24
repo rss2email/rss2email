@@ -147,7 +147,7 @@ class Feed (object):
     >>> test_section = CONFIG.pop('feed.test-feed')
 
     """
-    _name_regexp = _re.compile('^[\w\d.-]+$')
+    _name_regexp = _re.compile(r'^[\w\d.-]+$')
 
     # saved/loaded from feed.dat using __getstate__/__setstate__.
     _dynamic_attributes = [
