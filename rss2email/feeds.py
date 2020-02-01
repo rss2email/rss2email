@@ -132,18 +132,18 @@ class Feeds (list):
     datafile_version = 2
     datafile_encoding = 'utf-8'
 
-    def __init__(self, configfiles=None, datafile=None, config=None):
+    def __init__(self, configfiles=None, datafile_path=None, config=None):
         super(Feeds, self).__init__()
         if configfiles is None:
             configfiles = self._get_configfiles()
         self.configfiles = configfiles
-        if datafile is None:
-            datafile = self._get_datafile()
-        self.datafile = _os.path.realpath(datafile)
+        if datafile_path is None:
+            datafile_path = self._get_datafile_path()
+        self.datafile_path = _os.path.realpath(datafile_path)
         if config is None:
             config = _config.CONFIG
         self.config = config
-        self._datafile_lock = None
+        self._datafile = None
 
     def __getitem__(self, key):
         for feed in self:
@@ -214,7 +214,7 @@ class Feeds (list):
                 [_os.path.join(config_dir, 'rss2email.cfg')
                  for config_dir in config_dirs]))
 
-    def _get_datafile(self):
+    def _get_datafile_path(self):
         """Get the data file path
 
         Following the XDG Base Directory Specification.
@@ -249,27 +249,27 @@ class Feeds (list):
         self._load_feeds(lock=lock, require=require)
 
     def _load_feeds(self, lock, require):
-        _LOG.debug('load feed data from {}'.format(self.datafile))
-        if not _os.path.exists(self.datafile):
+        _LOG.debug('load feed data from {}'.format(self.datafile_path))
+        if not _os.path.exists(self.datafile_path):
             if require:
                 raise _error.NoDataFile(feeds=self)
-            _LOG.info('feed data file not found at {}'.format(self.datafile))
+            _LOG.info('feed data file not found at {}'.format(self.datafile_path))
             _LOG.debug('creating an empty data file')
-            dirname = _os.path.dirname(self.datafile)
+            dirname = _os.path.dirname(self.datafile_path)
             if dirname and not _os.path.isdir(dirname):
                 _os.makedirs(dirname, mode=0o700, exist_ok=True)
-            with _codecs.open(self.datafile, 'w', self.datafile_encoding) as f:
+            with _codecs.open(self.datafile_path, 'w', self.datafile_encoding) as f:
                 self._save_feed_states(feeds=[], stream=f)
         try:
-            self._datafile_lock = _codecs.open(
-                self.datafile, 'r', self.datafile_encoding)
+            self._datafile = _codecs.open(
+                self.datafile_path, 'r', self.datafile_encoding)
         except IOError as e:
             raise _error.DataFileError(feeds=self) from e
 
         locktype = 0
         if lock and UNIX:
             locktype = _fcntl.LOCK_SH
-            _fcntl.lockf(self._datafile_lock.fileno(), locktype)
+            _fcntl.lockf(self._datafile.fileno(), locktype)
 
         self.clear()
 
@@ -277,10 +277,10 @@ class Feeds (list):
         handlers = list(_LOG.handlers)
         feeds = []
         try:
-            data = _json.load(self._datafile_lock)
+            data = _json.load(self._datafile)
         except ValueError as e:
             _LOG.info('could not load data file using JSON')
-            data = self._load_pickled_data(self._datafile_lock)
+            data = self._load_pickled_data(self._datafile)
         version = data.get('version', None)
         if version != self.datafile_version:
             data = self._upgrade_state_data(data)
@@ -291,15 +291,15 @@ class Feeds (list):
                 raise _error.DataFileError(
                     feeds=self,
                     message='missing feed name in datafile {}'.format(
-                        self.datafile))
+                        self.datafile_path))
             feeds.append(feed)
         _LOG.setLevel(level)
         _LOG.handlers = handlers
         self.extend(feeds)
 
         if locktype == 0:
-            self._datafile_lock.close()
-            self._datafile_lock = None
+            self._datafile.close()
+            self._datafile = None
 
         for feed in self:
             feed.load_from_config(self.config)
@@ -322,7 +322,7 @@ class Feeds (list):
 
     def _load_pickled_data(self, stream):
         _LOG.info('try and load data file using Pickle')
-        with open(self.datafile, 'rb') as f:
+        with open(self.datafile_path, 'rb') as f:
             feeds = list(feed.get_state() for feed in _pickle.load(f))
         return {
             'version': self.datafile_version,
@@ -358,19 +358,19 @@ class Feeds (list):
         self._save_feeds()
 
     def _save_feeds(self):
-        _LOG.debug('save feed data to {}'.format(self.datafile))
-        dirname = _os.path.dirname(self.datafile)
+        _LOG.debug('save feed data to {}'.format(self.datafile_path))
+        dirname = _os.path.dirname(self.datafile_path)
         if dirname and not _os.path.isdir(dirname):
             _os.makedirs(dirname, mode=0o700, exist_ok=True)
-        tmpfile = self.datafile + '.tmp'
+        tmpfile = self.datafile_path + '.tmp'
         with _codecs.open(tmpfile, 'w', self.datafile_encoding) as f:
             self._save_feed_states(feeds=self, stream=f)
             f.flush()
             _os.fsync(f.fileno())
-        _os.replace(tmpfile, self.datafile)
-        if UNIX and self._datafile_lock is not None:
-            self._datafile_lock.close()  # release the lock
-            self._datafile_lock = None
+        _os.replace(tmpfile, self.datafile_path)
+        if UNIX and self._datafile is not None:
+            self._datafile.close()  # release the lock
+            self._datafile = None
 
     def _save_feed_states(self, feeds, stream):
         _json.dump(

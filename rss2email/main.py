@@ -164,7 +164,7 @@ def run(*args, **kwargs):
     try:
         if not args.config:
             args.config = None
-        feeds = _feeds.Feeds(datafile=args.data, configfiles=args.config)
+        feeds = _feeds.Feeds(datafile_path=args.data, configfiles=args.config)
         if args.func != _command.new:
             lock = args.func not in [_command.list, _command.opmlexport]
             feeds.load(lock=lock)
