@@ -61,7 +61,7 @@ def process(feed, parsed, entry, guid, message):
     for link in links:
         try:
             request = urllib.request.Request(link)
-            request.add_header('User-agent', rss2email.feed._USER_AGENT)
+            request.add_header('User-agent', feed.user_agent)
             direct_link = urllib.request.urlopen(request).geturl()
         except Exception as e:
             LOG.warning('could not follow redirect for {}: {}'.format(
