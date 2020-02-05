@@ -67,7 +67,7 @@ optional \fI<email>\fR argument is the email address to send new items
 to, overriding the default address for this particular feed.  Repeat
 for each feed you want to subscribe to.
 .TP
-.B run \fR[\fI\-\-no-send\fR] \fR[\fI<index>\fR [\fI<index>\fR ...]]
+.B run \fR[\fI\-\-no-send\fR] \fR[\fI\-\-maximum <num>\fR] \fR[\fI<index>\fR [\fI<index>\fR ...]]
 Scan the feeds and send emails for new items. This can be run in a cron
 job.
 .P
@@ -75,6 +75,10 @@ job.
 The \-\-no-send option stops \fBr2e\fR from sending any email. This can be
 useful the first time you run it, as otherwise it would send an email
 for every available feed entry.
+.P
+The \-\-maximum option specifies the maximum number of items to
+process from each feed. Unprocessed items will be left to be processed
+in a future run.
 .P
 If an \fI<index>\fR is specified, \fBr2e\fR will only download that
 feed. \fI<index>\fR can be either the feed name (as set by \fBadd\fR)

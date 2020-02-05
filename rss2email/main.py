@@ -99,6 +99,10 @@ def run(*args, **kwargs):
         default=True, action='store_const', const=False,
         help="fetch feeds, but don't send email")
     run_parser.add_argument(
+        '-m', '--maximum', dest='maximum',
+        action='store', type=int,
+        help="Maximum number of new items to process for each feed")
+    run_parser.add_argument(
         'index', nargs='*',
         help='feeds to fetch (defaults to fetching all feeds)')
 

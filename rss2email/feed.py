@@ -359,9 +359,10 @@ class Feed (object):
         f = _util.TimeLimitedFunction(timeout, _feedparser.parse)
         return f(self.url, self.etag, modified=self.modified, **kwargs)
 
-    def _process(self, parsed):
-        _LOG.info('process {}'.format(self))
+    def _process(self, parsed, maximum=None):
+        _LOG.info('process {}, maximum={}'.format(self, maximum))
         self._check_for_errors(parsed)
+        num_processed = 0
         for entry in reversed(parsed.entries):
             _LOG.debug('processing {}'.format(entry.get('id', 'no-id')))
             processed = self._process_entry(parsed=parsed, entry=entry)
@@ -374,6 +375,9 @@ class Feed (object):
                     if not message:
                         continue
                 yield (guid, id_, sender, message)
+                num_processed += 1
+                if maximum and num_processed >= maximum:
+                    return
 
     def _check_for_errors(self, parsed):
         warned = False
@@ -825,7 +829,7 @@ class Feed (object):
         _email.send(sender=sender, recipient=self.to, message=message,
                     config=self.config, section=section)
 
-    def run(self, send=True):
+    def run(self, send=True, maximum=None):
         """Fetch and process the feed, mailing entry emails.
 
         >>> feed = Feed(
@@ -846,7 +850,8 @@ class Feed (object):
             digest = self._new_digest()
             seen = []
 
-        for (guid, id_, sender, message) in self._process(parsed):
+        for (guid, id_, sender, message) in self._process(parsed,
+                                                          maximum=maximum):
             _LOG.debug('new message: {}'.format(message['Subject']))
             if self.digest:
                 seen.append((guid, id_))

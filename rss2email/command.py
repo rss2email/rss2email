@@ -84,7 +84,7 @@ def run(feeds, args):
                             interval = interval
                         ))
                         _time.sleep(interval)
-                    feed.run(send=args.send)
+                    feed.run(send=args.send, maximum=args.maximum)
                 except _error.RSS2EmailError as e:
                     e.log()
                 last_server = current_server
