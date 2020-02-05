@@ -168,6 +168,9 @@ class Feed (object):
     _default_configured_attributes[
         _default_configured_attributes.index('from')
         ] = 'from_email'  # `from` is a Python keyword
+    _default_configured_attributes[
+        _default_configured_attributes.index('user_agent')
+        ] = '_user_agent'  # `user_agent` is a getter that does substitution
     # all attributes that are saved/loaded from .config
     _configured_attributes = (
         _non_default_configured_attributes + _default_configured_attributes)
@@ -213,6 +216,12 @@ class Feed (object):
         'digest_post_process',
         ]
 
+    @property
+    def user_agent(self):
+        return self._user_agent.\
+            replace('__VERSION__', __version__).\
+            replace('__URL__', __url__)
+
     def __init__(self, name=None, url=None, to=None, config=None):
         self._set_name(name=name)
         self.reset()
@@ -224,8 +233,6 @@ class Feed (object):
             self.url = url
         if to:
             self.to = to
-        self.user_agent = self.user_agent.replace('__VERSION__', __version__)
-        self.user_agent = self.user_agent.replace('__URL__', __url__)
 
     def __str__(self):
         return '{} ({} -> {})'.format(self.name, self.url, self.to)
