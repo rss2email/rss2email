@@ -63,7 +63,7 @@ class TestEmails(unittest.TestCase):
         self.MESSAGE_ID_REGEXP = _re.compile(
             '^Message-ID: <[^@]*@dev.null.invalid>$', _re.MULTILINE)
         self.USER_AGENT_REGEXP = _re.compile(
-            r'^User-Agent: rss2email/[0-9.]* (\S*)$', _re.MULTILINE)
+            r'^User-Agent: rss2email/[0-9.]* \(https:\S*\)$', _re.MULTILINE)
         self.BOUNDARY_REGEXP = _re.compile('===============[^=]+==')
 
     def clean_result(self, text):
