@@ -1,6 +1,6 @@
 Run tests with::
 
-  $ env "PATH=$(pwd):$PATH" "PYTHONPATH=$(pwd):$PYTHONPATH" ./test/test.py
+  $ ./test/test.py
 
 … from the root of the project.
 
@@ -36,12 +36,14 @@ feed/config pair.  For example, with a directory structure like::
 * ``feed.rss`` after loading ``b.config`` and compare the output with
   ``b.expected``.
 
-If you only want to limit yourself to a subset of tests, you can
-specify subdirectories on the command line::
+Tests are run within Python's "unittest" framework
+(https://docs.python.org/library/unittest.html), which means you can
+do all the things that the unittest test driver does. For example, you
+can:
 
-  $ env "PATH=$(pwd):$PATH" "PYTHONPATH=$(pwd):$PYTHONPATH" ./test/test.py test/allthingsrss
-
-You can limit the tests even further by specify particular config
-files::
-
-  $ env "PATH=$(pwd):$PATH" "PYTHONPATH=$(pwd):$PYTHONPATH" ./test/test.py test/allthingsrss test/allthingsrss/1.config
+* specify "-v" to list the individual tests as they are executing;
+* specify one or more test classes to execute only the tests in those
+  classes (look in test/test.py for the names of the test classes, or
+  get them from the "-v" output); or
+* specify one or more individual tests in the form TestClass.test_name
+  to execute only those tests.

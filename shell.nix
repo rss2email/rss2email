@@ -22,6 +22,7 @@ in pkgs.mkShell {
     pkgs.python3
     feedparser
     html2text
+    parameterized
     update-copyright pkgs.git
   ];
 }

@@ -19,6 +19,9 @@ let
     version = "develop";
 
     inherit src;
+    checkInputs = with pkgSet.set; [
+      parameterized
+    ];
     propagatedBuildInputs = with pkgSet.set; [
       feedparser
       html2text
