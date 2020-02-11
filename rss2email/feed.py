@@ -611,6 +611,14 @@ class Feed (object):
                 if x.author_detail.name:
                     data['author'] = x.author_detail.name
                     break
+            try:
+                a = next(c['content'] for c in x.media_credit
+                         if c['role'] == 'author')
+                if a:
+                    data['author'] = a
+                    break
+            except (AttributeError, KeyError, StopIteration):
+                pass
         if 'name' in feed.get('publisher_detail', []):
             data['publisher'] = feed.publisher_detail.name
         name = self.name_format.format(**data)
