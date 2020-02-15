@@ -230,7 +230,7 @@ class Feeds (list):
                 return datafile
         return datafiles[0]
 
-    def load(self, lock=True, require=False):
+    def load(self, require=False):
         _LOG.debug('load feed configuration from {}'.format(self.configfiles))
         if self.configfiles:
             self.read_configfiles = self.config.read(self.configfiles)
@@ -238,9 +238,9 @@ class Feeds (list):
             self.read_configfiles = []
         _LOG.debug('loaded configuration from {}'.format(
                 self.read_configfiles))
-        self._load_feeds(lock=lock, require=require)
+        self._load_feeds(require=require)
 
-    def _load_feeds(self, lock, require):
+    def _load_feeds(self, require):
         _LOG.debug('load feed data from {}'.format(self.datafile_path))
         if not _os.path.exists(self.datafile_path):
             if require:
@@ -258,10 +258,7 @@ class Feeds (list):
         except IOError as e:
             raise _error.DataFileError(feeds=self) from e
 
-        locktype = 0
-        if lock:
-            locktype = _fcntl.LOCK_SH
-            _fcntl.lockf(self.datafile.fileno(), locktype)
+        _fcntl.lockf(self.datafile, _fcntl.LOCK_SH)
 
         self.clear()
 
@@ -288,10 +285,6 @@ class Feeds (list):
         _LOG.setLevel(level)
         _LOG.handlers = handlers
         self.extend(feeds)
-
-        if locktype == 0:
-            self.datafile.close()
-            self.datafile = None
 
         for feed in self:
             feed.load_from_config(self.config)

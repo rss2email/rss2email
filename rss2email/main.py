@@ -175,8 +175,7 @@ def run(*args, **kwargs):
                 args.config = None
             feeds = _feeds.Feeds(datafile_path=args.data, configfiles=args.config)
             if args.func != _command.new:
-                lock = args.func not in [_command.list, _command.opmlexport]
-                feeds.load(lock=lock)
+                feeds.load()
             args.func(feeds=feeds, args=args)
     except _error.RSS2EmailError as e:
         e.log()
