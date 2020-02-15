@@ -135,7 +135,7 @@ class Feeds (list):
         if config is None:
             config = _config.CONFIG
         self.config = config
-        self._datafile = None
+        self.datafile = None
 
     def __getitem__(self, key):
         for feed in self:
@@ -253,7 +253,7 @@ class Feeds (list):
             with _codecs.open(self.datafile_path, 'w', self.datafile_encoding) as f:
                 self._save_feed_states(feeds=[], stream=f)
         try:
-            self._datafile = _codecs.open(
+            self.datafile = _codecs.open(
                 self.datafile_path, 'r', self.datafile_encoding)
         except IOError as e:
             raise _error.DataFileError(feeds=self) from e
@@ -261,7 +261,7 @@ class Feeds (list):
         locktype = 0
         if lock:
             locktype = _fcntl.LOCK_SH
-            _fcntl.lockf(self._datafile.fileno(), locktype)
+            _fcntl.lockf(self.datafile.fileno(), locktype)
 
         self.clear()
 
@@ -269,10 +269,10 @@ class Feeds (list):
         handlers = list(_LOG.handlers)
         feeds = []
         try:
-            data = _json.load(self._datafile)
+            data = _json.load(self.datafile)
         except ValueError as e:
             _LOG.info('could not load data file using JSON')
-            data = self._load_pickled_data(self._datafile)
+            data = self._load_pickled_data(self.datafile)
         version = data.get('version', None)
         if version != self.datafile_version:
             data = self._upgrade_state_data(data)
@@ -290,8 +290,8 @@ class Feeds (list):
         self.extend(feeds)
 
         if locktype == 0:
-            self._datafile.close()
-            self._datafile = None
+            self.datafile.close()
+            self.datafile = None
 
         for feed in self:
             feed.load_from_config(self.config)
@@ -360,9 +360,9 @@ class Feeds (list):
             f.flush()
             _os.fsync(f.fileno())
         _os.replace(tmpfile, self.datafile_path)
-        if self._datafile is not None:
-            self._datafile.close()  # release the lock
-            self._datafile = None
+        if self.datafile is not None:
+            self.datafile.close()  # release the lock
+            self.datafile = None
 
     def _save_feed_states(self, feeds, stream):
         _json.dump(
