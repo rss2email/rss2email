@@ -23,6 +23,8 @@
 import argparse as _argparse
 import logging as _logging
 import sys as _sys
+import fcntl as _fcntl
+import os as _os
 
 from . import __doc__ as _PACKAGE_DOCSTRING
 from . import __version__
@@ -161,14 +163,21 @@ def run(*args, **kwargs):
     if not getattr(args, 'func', None):
         parser.error('too few arguments')
 
+    lockfile_path = _os.path.join(_os.environ.get("XDG_RUNTIME_DIR",
+                                                  default="/tmp/"),
+                                  "rss2email.lock")
     try:
-        if not args.config:
-            args.config = None
-        feeds = _feeds.Feeds(datafile_path=args.data, configfiles=args.config)
-        if args.func != _command.new:
-            lock = args.func not in [_command.list, _command.opmlexport]
-            feeds.load(lock=lock)
-        args.func(feeds=feeds, args=args)
+        with open(lockfile_path, "w") as lockfile:
+            # Immediately lock so only one r2e instance runs at a time
+            _fcntl.lockf(lockfile, _fcntl.LOCK_EX)
+            _LOG.debug("acquired lock file {}".format(lockfile_path))
+            if not args.config:
+                args.config = None
+            feeds = _feeds.Feeds(datafile_path=args.data, configfiles=args.config)
+            if args.func != _command.new:
+                lock = args.func not in [_command.list, _command.opmlexport]
+                feeds.load(lock=lock)
+            args.func(feeds=feeds, args=args)
     except _error.RSS2EmailError as e:
         e.log()
         if _logging.ERROR - 10 * args.verbose < _logging.DEBUG:
