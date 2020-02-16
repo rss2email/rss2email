@@ -31,7 +31,40 @@ import rss2email as _rss2email
 import rss2email.config as _rss2email_config
 import rss2email.feed as _rss2email_feed
 
-class TestEmails(unittest.TestCase):
+# This metaclass lets us generate the tests for each feed directory
+# separately. This lets us see which tests are being run more clearly than
+# if we had one big test that ran everything.
+class TestEmailsMeta(type):
+    def __new__(cls, name, bases, attrs):
+        # no paths on the command line, find all subdirectories
+        this_dir = _os.path.dirname(__file__)
+        test_dirs = []
+        for basename in _os.listdir(this_dir):
+            path = _os.path.join(this_dir, basename)
+            if _os.path.isdir(path):
+                test_dirs.append(path)
+
+        # we need standardized URLs, so change to `this_dir` and adjust paths
+        _os.chdir(this_dir)
+
+        # Generate test methods
+        for orig_path in test_dirs:
+            this_path = _os.path.relpath(orig_path, start=this_dir)
+            test_name = "test_email_{}".format(this_path.replace(".", "_").replace("-", "_"))
+            attrs[test_name] = cls.generate_test(this_path)
+
+        return super(TestEmailsMeta, cls).__new__(cls, name, bases, attrs)
+
+    @classmethod
+    def generate_test(cls, test_path):
+        def fn(self):
+            if _os.path.isdir(test_path):
+                self.run_single_test(dirname=test_path)
+            else:
+                self.run_single_test(config_path=test_path)
+        return fn
+
+class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
     class Send (list):
         def __call__(self, sender, message):
             self.append((sender, message))
@@ -117,28 +150,6 @@ class TestEmails(unittest.TestCase):
                 'error processing {}\n{}'.format(
                     config_path,
                     '\n'.join(diff_lines)))
-
-    def test_send(self):
-        "Emails generated from already-fetched feed data are correct"
-        # no paths on the command line, find all subdirectories
-        this_dir = _os.path.dirname(__file__)
-        test_dirs = []
-        for basename in _os.listdir(this_dir):
-            path = _os.path.join(this_dir, basename)
-            if _os.path.isdir(path):
-                test_dirs.append(path)
-
-        # we need standardized URLs, so change to `this_dir` and adjust paths
-        orig_dir = _os.getcwd()
-        _os.chdir(this_dir)
-
-        # run tests
-        for orig_path in test_dirs:
-            this_path = _os.path.relpath(orig_path, start=this_dir)
-            if _os.path.isdir(this_path):
-                self.run_single_test(dirname=this_path)
-            else:
-                self.run_single_test(config_path=this_path)
 
 class ExecContext:
     """Creates temporary config, data file and lets you call r2e with them
