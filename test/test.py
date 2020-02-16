@@ -6,7 +6,6 @@
 import difflib as _difflib
 import glob as _glob
 import io as _io
-import logging as _logging
 import os as _os
 import re as _re
 import tempfile
@@ -20,6 +19,12 @@ import time
 import rss2email as _rss2email
 import rss2email.config as _rss2email_config
 import rss2email.feed as _rss2email_feed
+
+# By default, we run the r2e in the dir above this script, not the
+# system-wide installed version, which you probably don't mean to
+# test
+r2e_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
+                         "..", "r2e")
 
 class TestEmails(unittest.TestCase):
     class Send (list):
@@ -157,7 +162,7 @@ class ExecContext:
         _os.rmdir(self.tmpdir)
 
     def call(self, *args):
-        subprocess.call(["r2e", "-c", self.cfg_path, "-d", self.data_path] + list(args))
+        subprocess.call([r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     "No-op handler for http.server"
@@ -208,6 +213,53 @@ class TestFetch(unittest.TestCase):
 
         if result == "too fast":
             raise Exception("r2e did not delay long enough!")
+
+    def test_fetch_parallel(self):
+        "Reads/writes to data file are sequenced correctly for multiple instances"
+        num_processes = 5
+        process_cfg = """[DEFAULT]
+        to = example@example.com
+        """
+
+        # All r2e instances will output here
+        input_fd, output_fd = _os.pipe()
+
+        with ExecContext(process_cfg) as ctx:
+            # We don't need to add any feeds - we are testing that the copy
+            # and replace dance on the data file is sequenced correctly. r2e
+            # always does the copy/replace, it must be sequenced correctly or
+            # some processes will exit with a failure since their temp data
+            # file was moved out from under them. Proper locking prevents that.
+            command = [r2e_path, "-VVVVV",
+                       "-c", ctx.cfg_path,
+                       "-d", ctx.data_path,
+                       "run", "--no-send"]
+            processes = [
+                subprocess.Popen(command, stdout=output_fd, stderr=output_fd,
+                                 close_fds=True)
+                for _ in range(num_processes)
+            ]
+            _os.close(output_fd)
+
+            # Bad locking will cause the victim process to exit with failure.
+            all_success = True
+            for p in processes:
+                p.wait()
+                all_success = all_success and (p.returncode == _os.EX_OK)
+            self.assertTrue(all_success)
+
+            # We check that each time the lock was acquired, the previous process
+            # had finished writing to the data file. i.e. no process ever reads
+            # the data file while another has it open.
+            previous_line = None
+            finish_precedes_acquire = True
+            with _io.open(input_fd, 'r', buffering=1) as file:
+                for line in file:
+                    if "acquired lock" in line and previous_line is not None:
+                        finish_precedes_acquire = finish_precedes_acquire and \
+                                                  "save feed data" in previous_line
+                    previous_line = line
+            self.assertTrue(finish_precedes_acquire)
 
 class TestSend(unittest.TestCase):
     "Send email using the various email-protocol choices"
