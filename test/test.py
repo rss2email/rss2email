@@ -15,16 +15,19 @@ import unittest
 import mailbox
 import http.server
 import time
-
-import rss2email as _rss2email
-import rss2email.config as _rss2email_config
-import rss2email.feed as _rss2email_feed
+import sys
 
 # By default, we run the r2e in the dir above this script, not the
 # system-wide installed version, which you probably don't mean to
-# test
+# test.
 r2e_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
                          "..", "r2e")
+
+# Ensure we import the local (not system-wide) rss2email module
+sys.path.insert(0, _os.path.dirname(r2e_path))
+import rss2email as _rss2email
+import rss2email.config as _rss2email_config
+import rss2email.feed as _rss2email_feed
 
 class TestEmails(unittest.TestCase):
     class Send (list):
