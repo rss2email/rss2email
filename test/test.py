@@ -173,8 +173,9 @@ class ExecContext:
         return self
 
     def __exit__(self, type, value, traceback):
-        _os.remove(self.cfg_path)
-        _os.remove(self.data_path)
+        for path in [self.cfg_path, self.data_path]:
+            if _os.path.exists(path):
+                _os.remove(path)
         _os.rmdir(self.tmpdir)
 
     def call(self, *args):
