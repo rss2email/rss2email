@@ -156,8 +156,12 @@ class ExecContext:
         _os.remove(self.data_path)
         _os.rmdir(self.tmpdir)
 
-    def call(self, *args):
-        subprocess.call(["r2e", "-c", self.cfg_path, "-d", self.data_path] + list(args))
+    def call(self, *args, call_func=subprocess.call):
+        return call_func(["r2e", "-c", self.cfg_path, "-d", self.data_path] + list(args))
+
+    def check_output(self, *args):
+        "Returns the output of the call"
+        return self.call(*args, call_func=subprocess.check_output)
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     "No-op handler for http.server"
@@ -261,6 +265,38 @@ class TestSend(unittest.TestCase):
             self.assertEqual(len(msgs), 5)
             self.assertEqual(len([msg for msg in msgs if msg["subject"] == "split massive package into modules"]), 1)
             self.assertEqual(len([msg for msg in msgs if msg["subject"] == "Re: new maintainer and mailing list for rss2email"]), 4)
+
+class TestConfig(unittest.TestCase):
+    "Config options and command line flags work"
+    def test_override(self):
+        """Command line overrides are used internally, but not saved
+        to disk except when adding a new feed."""
+
+        original_cfg = """[DEFAULT]
+        from = rss2email@localhost
+        to = example@example.com
+        """
+        with ExecContext(original_cfg) as ctx:
+            ctx.call("add", "test", "https://www.eff.org/rss/updates.xml")
+
+            self.assertEqual(ctx.check_output("list"),
+                             b'0: [*] test (https://www.eff.org/rss/updates.xml -> example@example.com)\n')
+
+            # We now override the to address and check that it changes in
+            # the command output. Since we are not creating the feed with the
+            # override, this is a temporary override.
+            self.assertEqual(ctx.check_output("-s", "to", "override@override.com", "list"),
+                             b'0: [*] test (https://www.eff.org/rss/updates.xml -> override@override.com)\n')
+
+            # Now we override the to address, add a new feed
+            ctx.call("-s", "to", "override@to.com", "add", "test2", "https://www.eff.org/rss/updates.xml")
+
+            # The overriden to address should have been written to the config
+            # file for the new feed (but not the old feed), so should persist
+            # when we list feeds
+            self.assertEqual(ctx.check_output("list"),
+                             b'0: [*] test (https://www.eff.org/rss/updates.xml -> example@example.com)\n' \
+                             b'1: [*] test2 (https://www.eff.org/rss/updates.xml -> override@to.com)\n')
 
 if __name__ == '__main__':
     unittest.main()

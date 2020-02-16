@@ -64,6 +64,9 @@ def run(*args, **kwargs):
     parser.add_argument(
         '-V', '--verbose', default=0, action='count',
         help='increment verbosity')
+    parser.add_argument(
+        '-s', '--set', action='append', nargs=2, metavar=('key', 'value'),
+        help='override config key to value')
     subparsers = parser.add_subparsers(title='commands')
 
     new_parser = subparsers.add_parser(
@@ -153,6 +156,10 @@ def run(*args, **kwargs):
     if args.verbose:
         _LOG.setLevel(max(_logging.DEBUG, _logging.ERROR - 10 * args.verbose))
 
+    config_overrides = {}
+    if args.set:
+        config_overrides = {key:value for [key, value] in args.set}
+
     # https://docs.python.org/3/library/logging.html#logrecord-attributes
     formatter = _logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
     for handler in _LOG.handlers: # type: _logging.Handler
@@ -164,7 +171,9 @@ def run(*args, **kwargs):
     try:
         if not args.config:
             args.config = None
-        feeds = _feeds.Feeds(datafile=args.data, configfiles=args.config)
+        feeds = _feeds.Feeds(datafile=args.data,
+                             configfiles=args.config,
+                             config_overrides=config_overrides)
         if args.func != _command.new:
             lock = args.func not in [_command.list, _command.opmlexport]
             feeds.load(lock=lock)

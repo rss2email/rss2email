@@ -49,6 +49,23 @@ Dynamic program data is read from $XDG_DATA_HOME/rss2mail\&.json by
 default (see also FILES and ENVIRONMENT VARIABLES below).  Use this
 option to set a different data file.
 .TP
+\-s, \-\-set \fI<key>\fR \fI<value>\fR
+Set the config key \fI<key>\fR to \fI<value>\fR for the duration of
+the current invocation. See CONFIGURATION for possible keys and
+values. Note: if \-s is used when adding a new feed, for example to
+override the 'from' address, this is the only case where the new
+config is written to disk. For example:
+
+.RS 8
+.EX
+$ r2e -s from override@example.com add eff https://www.eff.org/rss/updates.xml
+$ tail -3 $XDG_CONFIG_HOME/rss2email.cfg
+[feed.eff]
+url = https://www.eff.org/rss/updates.xml
+from = override@example.com
+.EE
+.RE
+.TP
 \-V, \-\-verbose
 Increment the logging verbosity.
 .SH COMMANDS
