@@ -17,11 +17,13 @@ import http.server
 import time
 import sys
 
+# Directory containing test feed data/configs
+test_dir = _os.path.dirname(_os.path.abspath(__file__))
+
 # By default, we run the r2e in the dir above this script, not the
 # system-wide installed version, which you probably don't mean to
 # test.
-r2e_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
-                         "..", "r2e")
+r2e_path = _os.path.join(test_dir, "..", "r2e")
 
 # Ensure we import the local (not system-wide) rss2email module
 sys.path.insert(0, _os.path.dirname(r2e_path))
@@ -168,7 +170,10 @@ class ExecContext:
         subprocess.call([r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
-    "No-op handler for http.server"
+    "No logging handler serving test feed data"
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs, directory=test_dir)
+
     def log_message(self, format, *args):
         return
 
