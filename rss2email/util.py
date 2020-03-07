@@ -43,11 +43,12 @@ class TimeLimitedFunction (_threading.Thread):
       ...
     rss2email.error.TimeoutError: error while running time limited function: a float is required
     """
-    def __init__(self, timeout, target, **kwargs):
+    def __init__(self, timeout, target, message=None, **kwargs):
         super(TimeLimitedFunction, self).__init__(target=target, daemon=True, **kwargs)
         self.timeout = timeout
         self.result = None
         self.error = None
+        self.message = message
 
     def run(self):
         """Based on Thread.run().
@@ -71,9 +72,9 @@ class TimeLimitedFunction (_threading.Thread):
         self.join(self.timeout)
         if self.error:
             raise _error.TimeoutError(
-                time_limited_function=self) from self.error[1]
+                time_limited_function=self, message=self.message) from self.error[1]
         elif self.is_alive():
-            raise _error.TimeoutError(time_limited_function=self)
+            raise _error.TimeoutError(time_limited_function=self, message=self.message)
         return self.result
 
 
