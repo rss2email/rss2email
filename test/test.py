@@ -177,9 +177,10 @@ class ExecContext:
         subprocess.call([r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
-    "No logging handler serving test feed data"
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs, directory=test_dir)
+    "No logging handler serving test feed data from test_dir"
+    def translate_path(self, path):
+        path = http.server.SimpleHTTPRequestHandler.translate_path(self, path)
+        return _os.path.join(test_dir, path)
 
     def log_message(self, format, *args):
         return
