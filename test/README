@@ -41,3 +41,9 @@ see exactly which tests are being run:
 
   $ ./test/test.py -v
 
+If you want to test an r2e script not in the repo (e.g. the system
+one), you can provide the environment variable R2E_PATH, with the
+absolute path to the script that you want to test. We use this in our
+CI build:
+
+  $ R2E_PATH=/path/to/your/r2e ./test/test.py -v
