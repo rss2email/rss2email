@@ -26,10 +26,7 @@ let
 
     doCheck = true;
     checkPhase = ''
-      env \
-        PATH="$out/bin:$PATH" \
-        PYTHONPATH=.:"$PYTHONPATH" \
-          python3 ./test/test.py --verbose
+        python3 ./test/test.py --verbose
     '';
   };
 
