@@ -38,20 +38,14 @@ class TestEmailsMeta(type):
     def __new__(cls, name, bases, attrs):
         # no paths on the command line, find all subdirectories
         this_dir = _os.path.dirname(__file__)
-        test_dirs = []
-        for basename in _os.listdir(this_dir):
-            path = _os.path.join(this_dir, basename)
-            if _os.path.isdir(path):
-                test_dirs.append(path)
 
         # we need standardized URLs, so change to `this_dir` and adjust paths
         _os.chdir(this_dir)
 
         # Generate test methods
-        for orig_path in test_dirs:
-            this_path = _os.path.relpath(orig_path, start=this_dir)
-            test_name = "test_email_{}".format(this_path.replace(".", "_").replace("-", "_"))
-            attrs[test_name] = cls.generate_test(this_path)
+        for test_config_path in _glob.glob("*/*.config"):
+            test_name = "test_email_{}".format(test_config_path)
+            attrs[test_name] = cls.generate_test(test_config_path)
 
         return super(TestEmailsMeta, cls).__new__(cls, name, bases, attrs)
 
