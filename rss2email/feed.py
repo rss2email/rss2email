@@ -168,6 +168,9 @@ class Feed (object):
     _default_configured_attributes[
         _default_configured_attributes.index('from')
         ] = 'from_email'  # `from` is a Python keyword
+    _default_configured_attributes[
+        _default_configured_attributes.index('user_agent')
+        ] = '_user_agent'  # `user_agent` is a getter that does substitution
     # all attributes that are saved/loaded from .config
     _configured_attributes = (
         _non_default_configured_attributes + _default_configured_attributes)
@@ -213,6 +216,12 @@ class Feed (object):
         'digest_post_process',
         ]
 
+    @property
+    def user_agent(self):
+        return self._user_agent.\
+            replace('__VERSION__', __version__).\
+            replace('__URL__', __url__)
+
     def __init__(self, name=None, url=None, to=None, config=None):
         self._set_name(name=name)
         self.reset()
@@ -220,12 +229,11 @@ class Feed (object):
                 (attr, getattr(self, attr))
                 for attr in self._dynamic_attributes))
         self.load_from_config(config=config)
+        self._fix_user_agent() # Fix feeds broken by user agent change in 3.11
         if url:
             self.url = url
         if to:
             self.to = to
-        self.user_agent = self.user_agent.replace('__VERSION__', __version__)
-        self.user_agent = self.user_agent.replace('__URL__', __url__)
 
     def __str__(self):
         return '{} ({} -> {})'.format(self.name, self.url, self.to)
@@ -903,3 +911,21 @@ class Feed (object):
             if guid not in self.seen:
                 self.seen[guid] = {}
             self.seen[guid]['id'] = id_
+
+    def _fix_user_agent(self):
+        """Fix feed user agent settings broken in 3.11
+
+        Release 3.11 added code to allow the user agent string to be
+        configured globally and on a per-feed basis. It was supposed
+        to allow __VERSION__ and __URL__ in configuration setting to
+        be substituted dynamically with the current version and URL of
+        rss2email, but a bug in the implementation caused them to be
+        substituted statically in the settings for any newly added
+        feed. We've fixed that problem, but we want to go back now and
+        repair feeds that got the wrong user agent value in the
+        interim.
+        """
+        if self._user_agent == \
+           'rss2email/3.11 (https://github.com/rss2email/rss2email)':
+            self._user_agent = 'rss2email/__VERSION__ (__URL__)'
+            self.save_to_config()
