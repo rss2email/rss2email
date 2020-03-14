@@ -22,13 +22,9 @@ test_dir = _os.path.dirname(_os.path.abspath(__file__))
 
 # By default, we run the r2e in the dir above this script, not the
 # system-wide installed version, which you probably don't mean to
-# test.
-r2e_path = _os.path.join(test_dir, "..", "r2e")
-
-if not _os.path.isfile(r2e_path):
-    print("Couldn't find r2e script, existing files are: ")
-    print(_os.listdir(_os.path.join(test_dir, "..")))
-    sys.exit(1)
+# test. You can also pass in an alternate location in the R2E_PATH
+# environment variable.
+r2e_path = _os.getenv("R2E_PATH", _os.path.join(test_dir, "..", "r2e"))
 
 # Ensure we import the local (not system-wide) rss2email module
 sys.path.insert(0, _os.path.dirname(r2e_path))

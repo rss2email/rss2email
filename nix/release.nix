@@ -26,7 +26,9 @@ let
 
     doCheck = true;
     checkPhase = ''
-        python3 ./test/test.py --verbose
+      env \
+        R2E_PATH="$out/bin/r2e" \
+          python3 ./test/test.py --verbose
     '';
   };
 
