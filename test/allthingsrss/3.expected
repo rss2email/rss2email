@@ -14,10 +14,11 @@ X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
 X-RSS-TAGS: Uncategorized
 
 Version 2.67 of rss2email is now available for both
-[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.67.tar.gz) and
-[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.67.zip), which
-includes the latest development version of feedparser. Changes from the
-previous version:
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.67.tar.gz)
+and
+[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.67.zip),
+which includes the latest development version of feedparser. Changes
+from the previous version:
 
   * Fixed entries that include an id which is blank (i.e., an empty string) were being resent
   * Fixed some entries not being sent by email because they had bad From headers
@@ -52,10 +53,11 @@ X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=72
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/
 X-RSS-TAGS: Uncategorized
 
-Unlike the last few versions of rss2email that have trickled out, I finally
-got around to adding a few new oft-requested features! Version 2.68 of
-rss2email is now available for both
-[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.68.tar.gz) and
+Unlike the last few versions of rss2email that have trickled out, I
+finally got around to adding a few new oft-requested features! Version
+2.68 of rss2email is now available for both
+[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.68.tar.gz)
+and
 [Windows](http://www.allthingsrss.com/rss2email/rss2email-2.68.zip).
 
 Changes from the previous version:
@@ -68,10 +70,10 @@ Complete list in the official
 
 **Pause/Unpause**
 
-Through `r2e pause _n_` where _n_ is a feed number, you can temporarily
-suspend checking that feed for new content. To start checking it again, simply
-run `r2e unpause _n_`. When you `r2e list`, an asterisk indicates that the
-feed is currently unpaused and active.
+Through `r2e pause _n_` where _n_ is a feed number, you can
+temporarily suspend checking that feed for new content. To start
+checking it again, simply run `r2e unpause _n_`. When you `r2e list`,
+an asterisk indicates that the feed is currently unpaused and active.
 
 [![](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/di)](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/da)  
 [![](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/di)](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/da)

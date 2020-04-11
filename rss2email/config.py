@@ -59,11 +59,13 @@ class Config (_configparser.ConfigParser):
         """
         if section not in self:
             section = 'DEFAULT'
-        _html2text.UNICODE_SNOB = self.getboolean(
+        _html2text.config.UNICODE_SNOB = self.getboolean(
             section, 'unicode-snob')
-        _html2text.LINKS_EACH_PARAGRAPH = self.getboolean(
+        _html2text.config.LINKS_EACH_PARAGRAPH = self.getboolean(
             section, 'links-after-each-paragraph')
-        _html2text.BODY_WIDTH = self.getint(section, 'body-width')
+        # hack to prevent breaking the default in every existing config file
+        body_width = self.getint(section, 'body-width')
+        _html2text.config.BODY_WIDTH = 0 if body_width < 0 else 78 if body_width == 0 else body_width
 
 
 CONFIG = Config()
@@ -190,7 +192,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('unicode-snob', str(False)),
         # Put the links after each paragraph instead of at the end.
         ('links-after-each-paragraph', str(False)),
-        # Wrap long lines at position. 0 for no wrapping.
+        # Wrap long lines at position.
+        # Any negative value for no wrapping, 0 for 78 width (compatibility), or any positive width.
         ('body-width', str(0)),
 
         ### Mailing
