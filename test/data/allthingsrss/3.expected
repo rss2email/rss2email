@@ -15,12 +15,13 @@ X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=62
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
 X-RSS-TAGS: Uncategorized
 
-Version 2.67 of rss2email is now available for both
-[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.67.tar.gz)
-and
-[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.67.zip),
-which includes the latest development version of feedparser. Changes
-from the previous version:
+Version 2.67 of rss2email is now available for both [Linux][1] and
+[Windows][2], which includes the latest development version of
+feedparser. Changes from the previous version:
+
+   [1]: http://www.allthingsrss.com/rss2email/rss2email-2.67.tar.gz
+
+   [2]: http://www.allthingsrss.com/rss2email/rss2email-2.67.zip
 
   * Fixed entries that include an id which is blank (i.e., an empty string) were being resent
   * Fixed some entries not being sent by email because they had bad From headers
@@ -28,13 +29,29 @@ from the previous version:
   * Compatibility changes to support most recent development versions of feedparser
   * Compatibility changes to support Google Reader feeds
 
-Complete list in the official
-[CHANGELOG](http://www.allthingsrss.com/rss2email/changelog).
+Complete list in the official [CHANGELOG][3].
 
-[![](http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/0/di)](http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/0/da)  
-[![](http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/1/di)](http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/1/da)
+   [3]: http://www.allthingsrss.com/rss2email/changelog
 
-![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/aGbf5Gefkmc)
+[![][4]][5]  
+[![][6]][7]
+
+   [4]:
+http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/0/di
+
+   [5]:
+http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/0/da
+
+   [6]:
+http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/1/di
+
+   [7]:
+http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/1/da
+
+![][8]
+
+   [8]:
+http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/aGbf5Gefkmc
 
 
 
@@ -59,18 +76,21 @@ X-RSS-TAGS: Uncategorized
 
 Unlike the last few versions of rss2email that have trickled out, I
 finally got around to adding a few new oft-requested features! Version
-2.68 of rss2email is now available for both
-[Linux](http://www.allthingsrss.com/rss2email/rss2email-2.68.tar.gz)
-and
-[Windows](http://www.allthingsrss.com/rss2email/rss2email-2.68.zip).
+2.68 of rss2email is now available for both [Linux][1] and
+[Windows][2].
+
+   [1]: http://www.allthingsrss.com/rss2email/rss2email-2.68.tar.gz
+
+   [2]: http://www.allthingsrss.com/rss2email/rss2email-2.68.zip
 
 Changes from the previous version:
 
   * Added ability to pause/resume checking of individual feeds through pause and unpause commands
   * Added ability to import and export OPML feed lists through importopml and exportopml commands
 
-Complete list in the official
-[CHANGELOG](http://www.allthingsrss.com/rss2email/changelog).
+Complete list in the official [CHANGELOG][3].
+
+   [3]: http://www.allthingsrss.com/rss2email/changelog
 
 **Pause/Unpause**
 
@@ -79,10 +99,25 @@ temporarily suspend checking that feed for new content. To start
 checking it again, simply run `r2e unpause _n_`. When you `r2e list`,
 an asterisk indicates that the feed is currently unpaused and active.
 
-[![](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/di)](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/da)  
-[![](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/di)](http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/da)
+[![][4]][5]  
+[![][6]][7]
 
-![](http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/bT-I0iH2vw8)
+   [4]:
+http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/di
+
+   [5]:
+http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/da
+
+   [6]:
+http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/di
+
+   [7]:
+http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/da
+
+![][8]
+
+   [8]:
+http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/bT-I0iH2vw8
 
 
 
