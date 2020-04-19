@@ -732,9 +732,9 @@ class Feed (object):
         if entry.get('summary_detail', None):
             contents.append(entry.summary_detail)
         if self.html_mail:
-            types = ['text/html', 'text/plain']
+            types = ['application/xhtml+xml', 'text/html', 'text/plain']
         else:
-            types = ['text/plain', 'text/html']
+            types = ['text/plain', 'text/html', 'application/xhtml+xml']
         for content_type in types:
             for content in contents:
                 if content['type'] == content_type:
