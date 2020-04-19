@@ -729,7 +729,7 @@ class Feed (object):
         #    pick the one in the "best" language.
         #  * HACK: hardcoded .html_mail, should take a tuple of media types
         contents = list(entry.get('content', []))
-        if entry.get('summary_detail', None):
+        if not contents and entry.get('summary_detail', None):
             contents.append(entry.summary_detail)
         if self.html_mail:
             types = ['text/html', 'text/plain']
@@ -738,6 +738,8 @@ class Feed (object):
         for content_type in types:
             for content in contents:
                 if content['type'] == content_type:
+                    if entry.get('summary_detail', None) and content != entry.summary_detail:
+                        content['value'] = '<p>'+entry.summary_detail.value+'</p>'+content['value']
                     return content
         if contents:
             return contents[0]
