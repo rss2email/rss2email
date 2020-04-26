@@ -27,8 +27,7 @@ let
     doCheck = true;
     checkPhase = ''
       env \
-        PATH="$out/bin:$PATH" \
-        PYTHONPATH=.:"$PYTHONPATH" \
+        R2E_PATH="$out/bin/r2e" \
           python3 ./test/test.py --verbose
     '';
   };

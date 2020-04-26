@@ -6,7 +6,6 @@
 import difflib as _difflib
 import glob as _glob
 import io as _io
-import logging as _logging
 import os as _os
 import re as _re
 import tempfile
@@ -16,12 +15,51 @@ import unittest
 import mailbox
 import http.server
 import time
+import sys
 
+# Directory containing test feed data/configs
+test_dir = _os.path.dirname(_os.path.abspath(__file__))
+
+# By default, we run the r2e in the dir above this script, not the
+# system-wide installed version, which you probably don't mean to
+# test. You can also pass in an alternate location in the R2E_PATH
+# environment variable.
+r2e_path = _os.getenv("R2E_PATH", _os.path.join(test_dir, "..", "r2e"))
+
+# Ensure we import the local (not system-wide) rss2email module
+sys.path.insert(0, _os.path.dirname(r2e_path))
 import rss2email as _rss2email
 import rss2email.config as _rss2email_config
 import rss2email.feed as _rss2email_feed
 
-class TestEmails(unittest.TestCase):
+# This metaclass lets us generate the tests for each feed directory
+# separately. This lets us see which tests are being run more clearly than
+# if we had one big test that ran everything.
+class TestEmailsMeta(type):
+    def __new__(cls, name, bases, attrs):
+        # no paths on the command line, find all subdirectories
+        this_dir = _os.path.dirname(__file__)
+
+        # we need standardized URLs, so change to `this_dir` and adjust paths
+        _os.chdir(this_dir)
+
+        # Generate test methods
+        for test_config_path in _glob.glob("*/*.config"):
+            test_name = "test_email_{}".format(test_config_path)
+            attrs[test_name] = cls.generate_test(test_config_path)
+
+        return super(TestEmailsMeta, cls).__new__(cls, name, bases, attrs)
+
+    @classmethod
+    def generate_test(cls, test_path):
+        def fn(self):
+            if _os.path.isdir(test_path):
+                self.run_single_test(dirname=test_path)
+            else:
+                self.run_single_test(config_path=test_path)
+        return fn
+
+class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
     class Send (list):
         def __call__(self, sender, message):
             self.append((sender, message))
@@ -108,28 +146,6 @@ class TestEmails(unittest.TestCase):
                     config_path,
                     '\n'.join(diff_lines)))
 
-    def test_send(self):
-        "Emails generated from already-fetched feed data are correct"
-        # no paths on the command line, find all subdirectories
-        this_dir = _os.path.dirname(__file__)
-        test_dirs = []
-        for basename in _os.listdir(this_dir):
-            path = _os.path.join(this_dir, basename)
-            if _os.path.isdir(path):
-                test_dirs.append(path)
-
-        # we need standardized URLs, so change to `this_dir` and adjust paths
-        orig_dir = _os.getcwd()
-        _os.chdir(this_dir)
-
-        # run tests
-        for orig_path in test_dirs:
-            this_path = _os.path.relpath(orig_path, start=this_dir)
-            if _os.path.isdir(this_path):
-                self.run_single_test(dirname=this_path)
-            else:
-                self.run_single_test(config_path=this_path)
-
 class ExecContext:
     """Creates temporary config, data file and lets you call r2e with them
     easily. Cleans up temp files afterwards.
@@ -152,15 +168,20 @@ class ExecContext:
         return self
 
     def __exit__(self, type, value, traceback):
-        _os.remove(self.cfg_path)
-        _os.remove(self.data_path)
+        for path in [self.cfg_path, self.data_path]:
+            if _os.path.exists(path):
+                _os.remove(path)
         _os.rmdir(self.tmpdir)
 
     def call(self, *args):
-        subprocess.call(["r2e", "-c", self.cfg_path, "-d", self.data_path] + list(args))
+        subprocess.call([r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
-    "No-op handler for http.server"
+    "No logging handler serving test feed data from test_dir"
+    def translate_path(self, path):
+        path = http.server.SimpleHTTPRequestHandler.translate_path(self, path)
+        return _os.path.join(test_dir, path)
+
     def log_message(self, format, *args):
         return
 
@@ -208,6 +229,53 @@ class TestFetch(unittest.TestCase):
 
         if result == "too fast":
             raise Exception("r2e did not delay long enough!")
+
+    def test_fetch_parallel(self):
+        "Reads/writes to data file are sequenced correctly for multiple instances"
+        num_processes = 5
+        process_cfg = """[DEFAULT]
+        to = example@example.com
+        """
+
+        # All r2e instances will output here
+        input_fd, output_fd = _os.pipe()
+
+        with ExecContext(process_cfg) as ctx:
+            # We don't need to add any feeds - we are testing that the copy
+            # and replace dance on the data file is sequenced correctly. r2e
+            # always does the copy/replace, it must be sequenced correctly or
+            # some processes will exit with a failure since their temp data
+            # file was moved out from under them. Proper locking prevents that.
+            command = [r2e_path, "-VVVVV",
+                       "-c", ctx.cfg_path,
+                       "-d", ctx.data_path,
+                       "run", "--no-send"]
+            processes = [
+                subprocess.Popen(command, stdout=output_fd, stderr=output_fd,
+                                 close_fds=True)
+                for _ in range(num_processes)
+            ]
+            _os.close(output_fd)
+
+            # Bad locking will cause the victim process to exit with failure.
+            all_success = True
+            for p in processes:
+                p.wait()
+                all_success = all_success and (p.returncode == _os.EX_OK)
+            self.assertTrue(all_success)
+
+            # We check that each time the lock was acquired, the previous process
+            # had finished writing to the data file. i.e. no process ever reads
+            # the data file while another has it open.
+            previous_line = None
+            finish_precedes_acquire = True
+            with _io.open(input_fd, 'r', buffering=1) as file:
+                for line in file:
+                    if "acquired lock" in line and previous_line is not None:
+                        finish_precedes_acquire = finish_precedes_acquire and \
+                                                  "save feed data" in previous_line
+                    previous_line = line
+            self.assertTrue(finish_precedes_acquire)
 
 class TestSend(unittest.TestCase):
     "Send email using the various email-protocol choices"

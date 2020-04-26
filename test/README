@@ -1,6 +1,6 @@
 Run tests with::
 
-  $ env "PATH=$(pwd):$PATH" "PYTHONPATH=$(pwd):$PYTHONPATH" ./test/test.py
+  $ ./test/test.py
 
 … from the root of the project.
 
@@ -36,12 +36,14 @@ feed/config pair.  For example, with a directory structure like::
 * ``feed.rss`` after loading ``b.config`` and compare the output with
   ``b.expected``.
 
-If you only want to limit yourself to a subset of tests, you can
-specify subdirectories on the command line::
+Various other tests are also run, run test.py with the '-v' option to
+see exactly which tests are being run:
 
-  $ env "PATH=$(pwd):$PATH" "PYTHONPATH=$(pwd):$PYTHONPATH" ./test/test.py test/allthingsrss
+  $ ./test/test.py -v
 
-You can limit the tests even further by specify particular config
-files::
+If you want to test an r2e script not in the repo (e.g. the system
+one), you can provide the environment variable R2E_PATH, with the
+absolute path to the script that you want to test. We use this in our
+CI build:
 
-  $ env "PATH=$(pwd):$PATH" "PYTHONPATH=$(pwd):$PYTHONPATH" ./test/test.py test/allthingsrss test/allthingsrss/1.config
+  $ R2E_PATH=/path/to/your/r2e ./test/test.py -v
