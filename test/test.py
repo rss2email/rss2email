@@ -17,6 +17,7 @@ import http.server
 import time
 import sys
 import json
+from pathlib import Path
 
 # Directory containing test feed data/configs
 test_dir = _os.path.dirname(_os.path.abspath(__file__))
@@ -127,7 +128,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         config = _rss2email_config.Config()
         config.read_string(self.BASE_CONFIG_STRING)
         read_paths = config.read([config_path])
-        feed = _rss2email_feed.Feed(name='test', url=feed_path, config=config)
+        feed = _rss2email_feed.Feed(name='test', url=Path(feed_path).as_posix(), config=config)
         expected_path = config_path.replace('config', 'expected')
         with open(expected_path, 'r') as f:
             expected = self.clean_result(f.read())
