@@ -41,6 +41,7 @@
 """
 
 import collections as _collections
+import platform
 from email.message import Message
 from email.mime.message import MIMEMessage as _MIMEMessage
 from email.mime.multipart import MIMEMultipart as _MIMEMultipart
@@ -479,9 +480,10 @@ class Feed (object):
         sender = self._get_entry_email(parsed=parsed, entry=entry)
         subject = self._get_entry_title(entry)
 
+        message_id = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
         extra_headers = _collections.OrderedDict((
                 ('Date', self._get_entry_date(entry)),
-                ('Message-ID', '<{}@dev.null.invalid>'.format(_uuid.uuid4())),
+                ('Message-ID', message_id),
                 ('User-Agent', self.user_agent),
                 ('List-ID', '<{}.localhost>'.format(self.name)),
                 ('List-Post', 'NO (posting not allowed on this list)'),
@@ -899,7 +901,7 @@ class Feed (object):
         digest = _MIMEMultipart('digest')
         digest['To'] = self.to  # TODO: _Header(), _formataddr((recipient_name, recipient_addr))
         digest['Subject'] = 'digest for {}'.format(self.name)
-        digest['Message-ID'] = '<{}@dev.null.invalid>'.format(_uuid.uuid4())
+        digest['Message-ID'] = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
         digest['User-Agent'] = self.user_agent
         digest['List-ID'] = '<{}.localhost>'.format(self.name)
         digest['List-Post'] = 'NO (posting not allowed on this list)'

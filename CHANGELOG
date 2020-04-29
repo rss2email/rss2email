@@ -1,4 +1,5 @@
 UNRELEASED
+    * Use `platform.node()` instead of "dev.null.invalid" in "Message-ID" header
 
 v3.11 (2019-10-26)
     * Add new `user-agent` attribute for configuring email User-Agent

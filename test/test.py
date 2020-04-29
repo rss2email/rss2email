@@ -7,6 +7,7 @@ import difflib as _difflib
 import glob as _glob
 import io as _io
 import os as _os
+import platform
 import re as _re
 import multiprocessing
 import subprocess
@@ -80,7 +81,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         del _stringio
 
         self.MESSAGE_ID_REGEXP = _re.compile(
-            '^Message-ID: <[^@]*@dev.null.invalid>$', _re.MULTILINE)
+            r'^Message-ID: <(.*)@{}>$'.format(_re.escape(platform.node())), _re.MULTILINE)
         self.USER_AGENT_REGEXP = _re.compile(
             r'^User-Agent: rss2email/[0-9.]* (\S*)$', _re.MULTILINE)
         self.BOUNDARY_REGEXP = _re.compile('===============[^=]+==')
@@ -93,7 +94,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         ...      '  boundary="===============7509425281347501533=="\\n'
         ...      'MIME-Version: 1.0\\n'
         ...      'Date: Tue, 23 Aug 2011 15:57:37 -0000\\n'
-        ...      'Message-ID: <9dff03db-f5a7@dev.null.invalid>\\n'
+        ...      'Message-ID: <9dff03db-f5a7@mail.example>\\n'
         ...      'User-Agent: rss2email/3.5 (https://github.com/rss2email/rss2email)\\n'
         ...      )
         >>> print(clean_result(text).rstrip())
