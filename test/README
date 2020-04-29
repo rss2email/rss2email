@@ -1,6 +1,7 @@
 Run tests with::
 
-  $ ./test/test.py
+  $ cd ./test
+  $ python -m unittest
 
 … from the root of the project.
 

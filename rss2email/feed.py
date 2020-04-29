@@ -55,6 +55,7 @@ import urllib.request as _urllib_request
 import uuid as _uuid
 import xml.sax as _sax
 import xml.sax.saxutils as _saxutils
+from functools import lru_cache
 from typing import Optional, Dict, Any, Tuple
 
 import feedparser as _feedparser
@@ -195,6 +196,7 @@ class Feed (object):
         'date_header',
         'trust_guid',
         'trust_link',
+        'reply_changes',
         'html_mail',
         'use_css',
         'unicode_snob',
@@ -468,6 +470,7 @@ class Feed (object):
 
     def _process_entry(self, parsed, entry) -> Optional[Tuple[str, Dict[str, Any], str, Message]]:
         guid = self._get_uid_for_entry(entry)
+        new_hash = self._get_entry_hash(entry)
 
         old_state = self.seen.get(guid)
         if old_state is None:
@@ -475,15 +478,26 @@ class Feed (object):
             new_state = {} # type: Dict[str, Any]
         else:
             _LOG.debug('already seen {}'.format(guid))
-            return None
+            if self.reply_changes:
+                if new_hash != old_state.get('hash'):
+                    _LOG.debug('hash changed for {}'.format(guid))
+                    new_state = old_state.copy()
+                else:
+                    return None
+            else:
+                return None
+
+        new_state['hash'] = new_hash
 
         sender = self._get_entry_email(parsed=parsed, entry=entry)
         subject = self._get_entry_title(entry)
 
         message_id = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
+        in_reply_to = old_state.get('message_id') if old_state is not None else None
         extra_headers = _collections.OrderedDict((
                 ('Date', self._get_entry_date(entry)),
                 ('Message-ID', message_id),
+                ('In-Reply-To', in_reply_to),
                 ('User-Agent', self.user_agent),
                 ('List-ID', '<{}.localhost>'.format(self.name)),
                 ('List-Post', 'NO (posting not allowed on this list)'),
@@ -537,6 +551,7 @@ class Feed (object):
                 return uid
         return self._get_entry_hash(entry)
 
+    @lru_cache(1)
     def _get_entry_hash(self, entry) -> str:
         content = self._get_entry_content(entry)
         content_value = content['value'].strip()
@@ -732,6 +747,7 @@ class Feed (object):
         if taglist:
             return ','.join(taglist)
 
+    @lru_cache(1)
     def _get_entry_content(self, entry):
         """Select the best content from an entry.
 
@@ -892,6 +908,7 @@ class Feed (object):
                 _LOG.debug('new message: {}'.format(message['Subject']))
                 if send:
                     self._send(sender=sender, message=message)
+                    state['message_id'] = str(message["Message-ID"])
                 self.seen[guid] = state
 
         self.etag = parsed.get('etag', None)

@@ -2,8 +2,9 @@ import os
 import subprocess
 import sys
 import tempfile
+from configparser import ConfigParser
 from pathlib import Path
-
+from typing import Dict, Any
 
 # By default, we run the r2e in the dir above this script, not the
 # system-wide installed version, which you probably don't mean to
@@ -39,3 +40,11 @@ class ExecContext:
 
     def call(self, *args) -> None:
         subprocess.call([sys.executable, r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
+
+    def change_config(self, params: Dict[str, Any]) -> None:
+        config = ConfigParser()
+        config.read(self.cfg_path)
+        for name, value in params.items():
+            config['DEFAULT'][name] = str(value)
+        with self.cfg_path.open('w') as file:
+            config.write(file)

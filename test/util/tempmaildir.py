@@ -1,6 +1,7 @@
 import mailbox
 import tempfile
 from pathlib import Path
+from typing import List
 
 
 class TemporaryMaildir:
@@ -20,3 +21,9 @@ class TemporaryMaildir:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.cleanup()
+
+    def inbox_messages(self) -> List[mailbox.MaildirMessage]:
+        """
+        :return: Messages from the inbox sorted by date ascending.
+        """
+        return sorted(self.inbox.itervalues(), key=(lambda x: x.get_date()))

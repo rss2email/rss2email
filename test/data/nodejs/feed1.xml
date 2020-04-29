@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+	<channel>
+		<title>
+			<![CDATA[Node.js Blog: Vulnerability Reports]]>
+		</title>
+		<description>
+			<![CDATA[Node.js Blog: Vulnerability Reports]]>
+		</description>
+		<link>https://nodejs.org/en/</link>
+		<generator>metalsmith-feed</generator>
+		<lastBuildDate>Fri, 15 May 2020 05:23:25 GMT</lastBuildDate>
+		<atom:link href="https://nodejs.org/en/feed/vulnerability.xml" rel="self" type="application/rss+xml"/>
+		<author>
+			<![CDATA[Node.js]]>
+		</author>
+		<language>
+			<![CDATA[English]]>
+		</language>
+		<docs/>
+		<item>
+			<title>
+				<![CDATA[February 2020 Security Releases]]>
+			</title>
+			<description>
+				<![CDATA[<h2 id="header-summary">Summary<a id="summary" class="anchor" href="#summary" aria-labelledby="header-summary"></a></h2><p>The Node.js project will release new versions of all supported release lines on or shortly after Tuesday, February 4th, 2020.</p>
+<p>One Critical severity and two High severity issues will be fixed. The release also includes stricter HTTP parsing.</p>
+<h2 id="header-impact">Impact<a id="impact" class="anchor" href="#impact" aria-labelledby="header-impact"></a></h2><p>All supported versions (10.x, 12.x, and 13.x) of Node.js are vulnerable.</p>
+<h2 id="header-release-timing">Release timing<a id="release-timing" class="anchor" href="#release-timing" aria-labelledby="header-release-timing"></a></h2><p>Releases will be available at, or shortly after, Tuesday, February 4th, 2020.</p>
+<h2 id="header-contact-and-future-updates">Contact and future updates<a id="contact-and-future-updates" class="anchor" href="#contact-and-future-updates" aria-labelledby="header-contact-and-future-updates"></a></h2><p>The current Node.js security policy can be found at <a href="https://nodejs.org/en/security/">https://nodejs.org/en/security/</a>. Please follow the process outlined in <a href="https://github.com/nodejs/node/blob/master/SECURITY.md">https://github.com/nodejs/node/blob/master/SECURITY.md</a> if you wish to report a vulnerability in Node.js.</p>
+<p>Subscribe to the low-volume announcement-only nodejs-sec mailing list at <a href="https://groups.google.com/forum/#!forum/nodejs-sec">https://groups.google.com/forum/#!forum/nodejs-sec</a> to stay up to date on security vulnerabilities and security-related releases of Node.js and the projects maintained in the nodejs GitHub organization.</p>
+]]>
+			</description>
+			<link>https://nodejs.org/en/blog/vulnerability/february-2020-security-releases</link>
+			<guid isPermaLink="true">https://nodejs.org/en/blog/vulnerability/february-2020-security-releases</guid>
+			<dc:creator>
+				<![CDATA[Sam Roberts]]>
+			</dc:creator>
+			<pubDate>Thu, 23 Jan 2020 12:00:00 GMT</pubDate>
+		</item>
+	</channel>
+</rss>
