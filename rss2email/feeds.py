@@ -43,7 +43,14 @@ from . import config as _config
 from . import error as _error
 from . import feed as _feed
 
-import fcntl as _fcntl
+UNIX = False
+try:
+    import fcntl as _fcntl
+    # A pox on SunOS file locking methods
+    if 'sunos' not in _sys.platform:
+        UNIX = True
+except:
+    pass
 
 # Path to the filesystem root, '/' on POSIX.1 (IEEE Std 1003.1-2008).
 ROOT_PATH = _os.path.splitdrive(_sys.executable)[0] or _os.sep
@@ -258,7 +265,8 @@ class Feeds (list):
         except IOError as e:
             raise _error.DataFileError(feeds=self) from e
 
-        _fcntl.lockf(self.datafile, _fcntl.LOCK_SH)
+        if UNIX:
+            _fcntl.lockf(self.datafile, _fcntl.LOCK_SH)
 
         self.clear()
 
@@ -285,6 +293,10 @@ class Feeds (list):
         _LOG.setLevel(level)
         _LOG.handlers = handlers
         self.extend(feeds)
+
+        if not UNIX:
+            self.datafile.close()
+            self.datafile = None
 
         for feed in self:
             feed.load_from_config(self.config)
@@ -353,7 +365,7 @@ class Feeds (list):
             f.flush()
             _os.fsync(f.fileno())
         _os.replace(tmpfile, self.datafile_path)
-        if self.datafile is not None:
+        if UNIX and self.datafile is not None:
             self.datafile.close()  # release the lock
             self.datafile = None
 
