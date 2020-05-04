@@ -43,14 +43,11 @@ from . import config as _config
 from . import error as _error
 from . import feed as _feed
 
-UNIX = False
 try:
     import fcntl as _fcntl
-    # A pox on SunOS file locking methods
-    if 'sunos' not in _sys.platform:
-        UNIX = True
-except:
-    pass
+    UNIX = True
+except ImportError:
+    UNIX = False
 
 # Path to the filesystem root, '/' on POSIX.1 (IEEE Std 1003.1-2008).
 ROOT_PATH = _os.path.splitdrive(_sys.executable)[0] or _os.sep
@@ -294,10 +291,6 @@ class Feeds (list):
         _LOG.handlers = handlers
         self.extend(feeds)
 
-        if not UNIX:
-            self.datafile.close()
-            self.datafile = None
-
         for feed in self:
             feed.load_from_config(self.config)
 
@@ -364,10 +357,16 @@ class Feeds (list):
             self._save_feed_states(feeds=self, stream=f)
             f.flush()
             _os.fsync(f.fileno())
-        _os.replace(tmpfile, self.datafile_path)
-        if UNIX and self.datafile is not None:
+        if UNIX:
+            # Replace the file, then release the lock by closing the old one.
+            _os.replace(tmpfile, self.datafile_path)
             self.datafile.close()  # release the lock
             self.datafile = None
+        else:
+            # On Windows we cannot replace the file while it is opened. And we have no lock.
+            self.datafile.close()
+            self.datafile = None
+            _os.replace(tmpfile, self.datafile_path)
 
     def _save_feed_states(self, feeds, stream):
         _json.dump(
