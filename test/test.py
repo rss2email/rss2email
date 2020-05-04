@@ -177,7 +177,7 @@ class ExecContext:
         _os.rmdir(self.tmpdir)
 
     def call(self, *args):
-        subprocess.call([r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
+        subprocess.call([sys.executable, r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     "No logging handler serving test feed data from test_dir"
@@ -249,7 +249,7 @@ class TestFetch(unittest.TestCase):
             # always does the copy/replace, it must be sequenced correctly or
             # some processes will exit with a failure since their temp data
             # file was moved out from under them. Proper locking prevents that.
-            command = [r2e_path, "-VVVVV",
+            command = [sys.executable, r2e_path, "-VVVVV",
                        "-c", ctx.cfg_path,
                        "-d", ctx.data_path,
                        "run", "--no-send"]
