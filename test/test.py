@@ -33,6 +33,7 @@ sys.path.insert(0, _os.path.dirname(r2e_path))
 import rss2email as _rss2email
 import rss2email.config as _rss2email_config
 import rss2email.feed as _rss2email_feed
+from rss2email.feeds import UNIX
 
 # This metaclass lets us generate the tests for each feed directory
 # separately. This lets us see which tests are being run more clearly than
@@ -234,6 +235,9 @@ class TestFetch(unittest.TestCase):
             raise Exception("r2e did not delay long enough!")
 
     def test_fetch_parallel(self):
+        if not UNIX:
+            self.skipTest("No locking on Windows.")
+
         "Reads/writes to data file are sequenced correctly for multiple instances"
         num_processes = 5
         process_cfg = """[DEFAULT]
