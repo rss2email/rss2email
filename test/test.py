@@ -264,7 +264,7 @@ class TestFetch(unittest.TestCase):
             all_success = True
             for p in processes:
                 p.wait()
-                all_success = all_success and (p.returncode == _os.EX_OK)
+                all_success = all_success and (p.returncode == 0)
             self.assertTrue(all_success)
 
             # We check that each time the lock was acquired, the previous process
