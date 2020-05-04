@@ -188,6 +188,24 @@ class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         return
 
+def webserver_for_test_fetch(queue, num_requests, wait_time):
+    httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+    try:
+        port = httpd.server_address[1]
+        queue.put(port)
+
+        start = 0
+        for _ in range(num_requests):
+            httpd.handle_request()
+            end = time.time()
+            if end - start < wait_time:
+                queue.put("too fast")
+                return
+            start = end
+        queue.put("ok")
+    finally:
+        httpd.server_close()
+
 class TestFetch(unittest.TestCase):
     "Retrieving feeds from servers"
     def test_delay(self):
@@ -200,26 +218,8 @@ class TestFetch(unittest.TestCase):
 
         num_requests = 3
 
-        def webserver(queue):
-            httpd = http.server.HTTPServer(('', 0), NoLogHandler)
-            try:
-                port = httpd.server_address[1]
-                queue.put(port)
-
-                start = 0
-                for _ in range(num_requests):
-                    httpd.handle_request()
-                    end = time.time()
-                    if end - start < wait_time:
-                        queue.put("too fast")
-                        return
-                    start = end
-                queue.put("ok")
-            finally:
-                httpd.server_close()
-
         queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver, args=(queue,))
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_fetch, args=(queue, num_requests, wait_time))
         webserver_proc.start()
         port = queue.get()
 
@@ -280,25 +280,25 @@ class TestFetch(unittest.TestCase):
                     previous_line = line
             self.assertTrue(finish_precedes_acquire)
 
+def webserver_for_test_send(queue):
+    httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+    try:
+        port = httpd.server_address[1]
+        queue.put(port)
+
+        # to make the web server serve your request, you have
+        # to put something into the queue to advance this loop
+        while queue.get() != "stop":
+            httpd.handle_request()
+    finally:
+        httpd.server_close()
+
 class TestSend(unittest.TestCase):
     "Send email using the various email-protocol choices"
     def setUp(self):
         "Starts web server to serve feeds"
-        def webserver(queue):
-            httpd = http.server.HTTPServer(('', 0), NoLogHandler)
-            try:
-                port = httpd.server_address[1]
-                queue.put(port)
-
-                # to make the web server serve your request, you have
-                # to put something into the queue to advance this loop
-                while queue.get() != "stop":
-                    httpd.handle_request()
-            finally:
-                httpd.server_close()
-
         self.httpd_queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver, args=(self.httpd_queue,))
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_send, args=(self.httpd_queue,))
         webserver_proc.start()
         self.httpd_port = self.httpd_queue.get()
 
