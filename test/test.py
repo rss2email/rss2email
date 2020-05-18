@@ -18,6 +18,9 @@ import time
 import sys
 import json
 from pathlib import Path
+from typing import List
+
+from util.tempmaildir import TemporaryMaildir
 
 # Directory containing test feed data/configs
 test_dir = Path(__file__).absolute().parent.joinpath("data")
@@ -321,16 +324,15 @@ class TestSend(unittest.TestCase):
 
     def test_maildir(self):
         "Sends mail to maildir"
-        with tempfile.TemporaryDirectory() as maildirname:
-            for d in ["cur", "new", "tmp"]:
-                _os.makedirs(_os.path.join(maildirname, d))
-                _os.makedirs(_os.path.join(maildirname, "inbox", d))
-            maildir_cfg = """[DEFAULT]
-            to = example@example.com
-            email-protocol = maildir
-            maildir-path = {}
-            maildir-mailbox = inbox
-            """.format(maildirname)
+        with TemporaryMaildir() as maildir:
+            maildir_cfg = """\
+                [DEFAULT]
+                to = example@example.com
+                email-protocol = maildir
+                maildir-path = {maildir_path}
+                maildir-mailbox = {maildir_mailbox}
+                """.format(maildir_path=maildir.path,
+                           maildir_mailbox=maildir.inbox_name)
 
             with ExecContext(maildir_cfg) as ctx:
                 self.httpd_queue.put("next")
@@ -339,8 +341,7 @@ class TestSend(unittest.TestCase):
 
             # quick check to make sure right number of messages sent
             # and subjects are right
-            inbox = mailbox.Maildir(_os.path.join(maildirname, "inbox"))
-            msgs = list(inbox)
+            msgs = maildir.inbox.values() # type: List[mailbox.MaildirMessage]
 
             self.assertEqual(len(msgs), 5)
             self.assertEqual(len([msg for msg in msgs if msg["subject"] == "split massive package into modules"]), 1)
