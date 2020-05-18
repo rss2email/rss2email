@@ -8,7 +8,6 @@ import glob as _glob
 import io as _io
 import os as _os
 import re as _re
-import tempfile
 import multiprocessing
 import subprocess
 import unittest
@@ -20,16 +19,11 @@ import json
 from pathlib import Path
 from typing import List
 
+from util.execcontext import r2e_path, ExecContext
 from util.tempmaildir import TemporaryMaildir
 
 # Directory containing test feed data/configs
 test_dir = Path(__file__).absolute().parent.joinpath("data")
-
-# By default, we run the r2e in the dir above this script, not the
-# system-wide installed version, which you probably don't mean to
-# test. You can also pass in an alternate location in the R2E_PATH
-# environment variable.
-r2e_path = _os.getenv("R2E_PATH", Path(__file__).absolute().parent.parent.joinpath("r2e"))
 
 # Ensure we import the local (not system-wide) rss2email module
 sys.path.insert(0, _os.path.dirname(r2e_path))
@@ -151,37 +145,6 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
                 'error processing {}\n{}'.format(
                     config_path,
                     '\n'.join(diff_lines)))
-
-class ExecContext:
-    """Creates temporary config, data file and lets you call r2e with them
-    easily. Cleans up temp files afterwards.
-
-    Example:
-
-    with ExecContext(config="[DEFAULT]\nto=me@example.com") as context:
-        context.call("run", "--no-send")
-
-    """
-    def __init__(self, config):
-        self.tmpdir = tempfile.mkdtemp()
-        self.cfg_path = _os.path.join(self.tmpdir, "rss2email.cfg")
-        self.data_path = _os.path.join(self.tmpdir, "rss2email.json")
-        self.opml_path = _os.path.join(self.tmpdir, "rss2email.opml")
-
-        with open(self.cfg_path, "w") as f:
-            f.write(config)
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, type, value, traceback):
-        for path in [self.cfg_path, self.data_path, self.opml_path]:
-            if _os.path.exists(path):
-                _os.remove(path)
-        _os.rmdir(self.tmpdir)
-
-    def call(self, *args):
-        subprocess.call([sys.executable, r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     "No logging handler serving test feed data from test_dir"
