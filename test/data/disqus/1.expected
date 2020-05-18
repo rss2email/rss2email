@@ -10,7 +10,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: disqus/feed.rss
+X-RSS-Feed: data/disqus/feed.rss
 X-RSS-ID: 82a71554e460103fdd7350c4ae84f7518386d4f8
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578641
 
@@ -42,7 +42,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: disqus/feed.rss
+X-RSS-Feed: data/disqus/feed.rss
 X-RSS-ID: ab03f2100069a1cd0876b997be87976c18d48e8a
 X-RSS-URL: http://software-carpentry.org/2012/11/who-wants-to-write-a-little-code/#comment-713578640
 

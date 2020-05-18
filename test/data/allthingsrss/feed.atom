@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/atom10full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><feed xmlns="http://www.w3.org/2005/Atom" xmlns:thr="http://purl.org/syndication/thread/1.0" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" xml:lang="en" xml:base="http://www.allthingsrss.com/rss2email/wp-atom.php">
+	<title type="text">rss2email</title>
+	<subtitle type="text">a free, open-source tool for Windows and UNIX for getting news from RSS feeds in email</subtitle>
+
+	<updated>2011-08-23T15:57:37Z</updated>
+
+	<link rel="alternate" type="text/html" href="http://www.allthingsrss.com/rss2email" />
+	<id>http://www.allthingsrss.com/rss2email/feed/atom/</id>
+	
+
+	<generator uri="http://wordpress.org/" version="3.3.1">WordPress</generator>
+		<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://feeds.feedburner.com/allthingsrss/hJBr" /><feedburner:info uri="allthingsrss/hjbr" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" />
+		<entry>
+		<author>
+			<name>Lindsey Smith</name>
+						<uri>http://www.gerundinganimal.com</uri>
+					</author>
+		<title type="html"><![CDATA[How to Read RSS Feeds in Emacs]]></title>
+		<link rel="alternate" type="text/html" href="http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/JryfOLe_q6c/" />
+		<id>http://www.allthingsrss.com/rss2email/?p=79</id>
+		<updated>2010-11-05T17:36:14Z</updated>
+		<published>2010-11-05T17:36:14Z</published>
+		<category scheme="http://www.allthingsrss.com/rss2email" term="Uncategorized" />		<summary type="html"><![CDATA[Emacs and rss2email user Erik Hetzner has written up a tutorial on how he integrated RSS feed reading into Emacs using rss2email.]]></summary>
+		<content type="html"
+             xml:base="http://www.allthingsrss.com/rss2email/2010/11/rss-in-emac/">&lt;p&gt;something something irrelevant&lt;/p&gt;</content>
+		<link rel="replies" type="text/html" href="http://www.allthingsrss.com/rss2email/2010/11/rss-in-emac/#comments" thr:count="0" />
+		<link rel="replies" type="application/atom+xml" href="http://www.allthingsrss.com/rss2email/2010/11/rss-in-emac/feed/atom/" thr:count="0" />
+		<thr:total>0</thr:total>
+	<feedburner:origLink>http://www.allthingsrss.com/rss2email/2010/11/rss-in-emac/</feedburner:origLink></entry>
+		<entry>
+		<author>
+			<name>Lindsey Smith</name>
+						<uri>http://www.gerundinganimal.com</uri>
+					</author>
+		<title type="html"><![CDATA[Version 2.68 Released with Actual New Features]]></title>
+		<link rel="alternate" type="text/html" href="http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/" />
+		<id>http://www.allthingsrss.com/rss2email/?p=72</id>
+		<updated>2010-10-01T18:21:26Z</updated>
+		<published>2010-10-01T18:21:26Z</published>
+		<category scheme="http://www.allthingsrss.com/rss2email" term="Uncategorized" />		<summary type="html"><![CDATA[Unlike the last few versions of rss2email that have trickled out, I finally got around to adding a few new oft-requested features! Version 2.68 of rss2email is now available for both Linux and Windows. Changes from the previous version: Added ability to pause/resume checking of individual feeds through pause and unpause commands Added ability to [...]]]></summary>
+		<content type="html" xml:base="http://www.allthingsrss.com/rss2email/2010/10/version-2-68-released-with-actual-new-features/">&lt;p&gt;Unlike the last few versions of rss2email that have trickled out, I finally got around to adding a few new oft-requested features! Version 2.68 of rss2email is now available for both &lt;a href="http://www.allthingsrss.com/rss2email/rss2email-2.68.tar.gz"&gt;Linux&lt;/a&gt; and &lt;a href="http://www.allthingsrss.com/rss2email/rss2email-2.68.zip"&gt;Windows&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Changes from the previous version:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added ability to pause/resume checking of individual feeds through pause and unpause commands&lt;/li&gt;
+&lt;li&gt;Added ability to import and export OPML feed lists through importopml and exportopml commands&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Complete list in the official &lt;a href="http://www.allthingsrss.com/rss2email/changelog"&gt;CHANGELOG&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pause/Unpause&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Through &lt;code&gt;r2e pause &lt;em&gt;n&lt;/em&gt;&lt;/code&gt; where &lt;em&gt;n&lt;/em&gt; is a feed number, you can temporarily suspend checking that feed for new content. To start checking it again, simply run &lt;code&gt;r2e unpause &lt;em&gt;n&lt;/em&gt;&lt;/code&gt;. When you &lt;code&gt;r2e list&lt;/code&gt;, an asterisk indicates that the feed is currently unpaused and active.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/bT-I0iH2vw8" height="1" width="1"/&gt;</content>
+		<link rel="replies" type="text/html" href="http://www.allthingsrss.com/rss2email/2010/10/version-2-68-released-with-actual-new-features/#comments" thr:count="17" />
+		<link rel="replies" type="application/atom+xml" href="http://www.allthingsrss.com/rss2email/2010/10/version-2-68-released-with-actual-new-features/feed/atom/" thr:count="17" />
+		<thr:total>17</thr:total>
+	<feedburner:origLink>http://www.allthingsrss.com/rss2email/2010/10/version-2-68-released-with-actual-new-features/</feedburner:origLink></entry>
+		<entry>
+		<author>
+			<name>Lindsey Smith</name>
+						<uri>http://www.gerundinganimal.com</uri>
+					</author>
+		<title type="html"><![CDATA[Version 2.67 Released]]></title>
+		<link rel="alternate" type="text/html" href="http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/" />
+		<id>http://www.allthingsrss.com/rss2email/?p=62</id>
+		<updated>2010-09-21T16:55:07Z</updated>
+		<published>2010-09-21T16:55:07Z</published>
+		<category scheme="http://www.allthingsrss.com/rss2email" term="Uncategorized" />		<summary type="html"><![CDATA[Version 2.67 of rss2email is now available for both Linux and Windows, which includes the latest development version of feedparser. Changes from the previous version: Fixed entries that include an id which is blank (i.e., an empty string) were being resent Fixed some entries not being sent by email because they had bad From headers [...]]]></summary>
+		<content type="html" xml:base="http://www.allthingsrss.com/rss2email/2010/09/version-2-67-released/">&lt;p&gt;Version 2.67 of rss2email is now available for both &lt;a href="http://www.allthingsrss.com/rss2email/rss2email-2.67.tar.gz"&gt;Linux&lt;/a&gt; and &lt;a href="http://www.allthingsrss.com/rss2email/rss2email-2.67.zip"&gt;Windows&lt;/a&gt;, which includes the latest development version of feedparser. Changes from the previous version:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed entries that include an id which is blank (i.e., an empty string) were being resent&lt;/li&gt;
+&lt;li&gt;Fixed some entries not being sent by email because they had bad From headers&lt;/li&gt;
+&lt;li&gt;Fixed From headers with HTML entities encoded twice&lt;/li&gt;
+&lt;li&gt;Compatibility changes to support most recent development versions of feedparser&lt;/li&gt;
+&lt;li&gt;Compatibility changes to support Google Reader feeds&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Complete list in the official &lt;a href="http://www.allthingsrss.com/rss2email/changelog"&gt;CHANGELOG&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Sjq8v-Lq2dNKzkelsypiC4fjPLM/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/aGbf5Gefkmc" height="1" width="1"/&gt;</content>
+		<link rel="replies" type="text/html" href="http://www.allthingsrss.com/rss2email/2010/09/version-2-67-released/#comments" thr:count="1" />
+		<link rel="replies" type="application/atom+xml" href="http://www.allthingsrss.com/rss2email/2010/09/version-2-67-released/feed/atom/" thr:count="1" />
+		<thr:total>1</thr:total>
+	<feedburner:origLink>http://www.allthingsrss.com/rss2email/2010/09/version-2-67-released/</feedburner:origLink></entry>
+	</feed><!-- Dynamic page generated in 0.562 seconds. --><!-- Cached page generated by WP-Super-Cache on 2012-09-25 06:06:45 -->

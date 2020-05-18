@@ -20,13 +20,13 @@ import json
 from pathlib import Path
 
 # Directory containing test feed data/configs
-test_dir = _os.path.dirname(_os.path.abspath(__file__))
+test_dir = Path(__file__).absolute().parent.joinpath("data")
 
 # By default, we run the r2e in the dir above this script, not the
 # system-wide installed version, which you probably don't mean to
 # test. You can also pass in an alternate location in the R2E_PATH
 # environment variable.
-r2e_path = _os.getenv("R2E_PATH", _os.path.join(test_dir, "..", "r2e"))
+r2e_path = _os.getenv("R2E_PATH", Path(__file__).absolute().parent.parent.joinpath("r2e"))
 
 # Ensure we import the local (not system-wide) rss2email module
 sys.path.insert(0, _os.path.dirname(r2e_path))
@@ -47,7 +47,7 @@ class TestEmailsMeta(type):
         _os.chdir(this_dir)
 
         # Generate test methods
-        for test_config_path in _glob.glob("*/*.config"):
+        for test_config_path in _glob.glob("data/*/*.config"):
             test_name = "test_email_{}".format(test_config_path)
             attrs[test_name] = cls.generate_test(test_config_path)
 
@@ -182,9 +182,18 @@ class ExecContext:
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     "No logging handler serving test feed data from test_dir"
-    def translate_path(self, path):
-        path = http.server.SimpleHTTPRequestHandler.translate_path(self, path)
-        return _os.path.join(test_dir, path)
+
+    if sys.version_info >= (3, 7):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs, directory=test_dir)
+    else:
+        def translate_path(self, path):
+            cwd = _os.getcwd()
+            try:
+                _os.chdir(test_dir)
+                return super().translate_path(path)
+            finally:
+                _os.chdir(cwd)
 
     def log_message(self, format, *args):
         return

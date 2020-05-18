@@ -10,7 +10,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: gmane/feed.rss
+X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/1
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/1
 
@@ -72,7 +72,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: gmane/feed.rss
+X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/2
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/2
 
@@ -124,7 +124,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: gmane/feed.rss
+X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/3
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/3
 
@@ -160,7 +160,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: gmane/feed.rss
+X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/4
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/4
 
@@ -199,7 +199,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: gmane/feed.rss
+X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/5
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/5
 

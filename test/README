@@ -10,19 +10,20 @@ saved (not mailed) and compared with the expected output for that
 feed/config pair.  For example, with a directory structure like::
 
   test
+  |-- data
+  |   |-- allthingsrss
+  |   |   |-- 1.config
+  |   |   |-- 1.expected
+  |   |   |-- 2.config
+  |   |   |-- 2.expected
+  |   |   `-- feed.atom
+  |   `-- otherfeed
+  |       |-- a.config
+  |       |-- a.expected
+  |       |-- b.config
+  |       |-- b.expected
+  |       `-- feed.rss
   |-- README
-  |-- allthingsrss
-  |   |-- 1.config
-  |   |-- 1.expected
-  |   |-- 2.config
-  |   |-- 2.expected
-  |   `-- feed.atom
-  |-- otherfeed
-  |   |-- a.config
-  |   |-- a.expected
-  |   |-- b.config
-  |   |-- b.expected
-  |   `-- feed.rss
   `-- test.py
 
 ``test.py`` will parse:
