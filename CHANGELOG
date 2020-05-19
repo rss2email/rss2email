@@ -1,6 +1,8 @@
 UNRELEASED
     * Add a new `reply-changes` setting
     * Use `platform.node()` instead of "dev.null.invalid" in "Message-ID" header
+    * Drop support for Python 3.4
+    * Add support for Python 3.8
 
 v3.11 (2019-10-26)
     * Add new `user-agent` attribute for configuring email User-Agent
