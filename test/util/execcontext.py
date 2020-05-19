@@ -22,23 +22,20 @@ class ExecContext:
         context.call("run", "--no-send")
 
     """
-    def __init__(self, config):
-        self.tmpdir = tempfile.mkdtemp()
-        self.cfg_path = os.path.join(self.tmpdir, "rss2email.cfg")
-        self.data_path = os.path.join(self.tmpdir, "rss2email.json")
-        self.opml_path = os.path.join(self.tmpdir, "rss2email.opml")
 
-        with open(self.cfg_path, "w") as f:
-            f.write(config)
+    def __init__(self, config: str):
+        self._tmpdir = tempfile.TemporaryDirectory()
+        self.cfg_path = Path(self._tmpdir.name, "rss2email.cfg")
+        self.data_path = Path(self._tmpdir.name, "rss2email.json")
+        self.opml_path = Path(self._tmpdir.name, "rss2email.opml")
+
+        self.cfg_path.write_text(config)
 
     def __enter__(self):
         return self
 
-    def __exit__(self, type, value, traceback):
-        for path in [self.cfg_path, self.data_path, self.opml_path]:
-            if os.path.exists(path):
-                os.remove(path)
-        os.rmdir(self.tmpdir)
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self._tmpdir.cleanup()
 
-    def call(self, *args):
+    def call(self, *args) -> None:
         subprocess.call([sys.executable, r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
