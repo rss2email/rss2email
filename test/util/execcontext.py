@@ -10,7 +10,7 @@ from typing import Dict, Any
 # system-wide installed version, which you probably don't mean to
 # test. You can also pass in an alternate location in the R2E_PATH
 # environment variable.
-r2e_path = os.getenv("R2E_PATH", Path(__file__).absolute().parent.parent.parent.joinpath("r2e"))
+r2e_path = os.getenv("R2E_PATH", str(Path(__file__).absolute().parent.parent.parent.joinpath("r2e")))
 
 
 class ExecContext:
@@ -39,11 +39,11 @@ class ExecContext:
         self._tmpdir.cleanup()
 
     def call(self, *args) -> None:
-        subprocess.call([sys.executable, r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
+        subprocess.call([sys.executable, r2e_path, "-c", str(self.cfg_path), "-d", str(self.data_path)] + list(args))
 
     def change_config(self, params: Dict[str, Any]) -> None:
         config = ConfigParser()
-        config.read(self.cfg_path)
+        config.read(str(self.cfg_path))
         for name, value in params.items():
             config['DEFAULT'][name] = str(value)
         with self.cfg_path.open('w') as file:

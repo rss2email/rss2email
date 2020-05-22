@@ -24,7 +24,7 @@ from util.execcontext import r2e_path, ExecContext
 from util.tempmaildir import TemporaryMaildir
 
 # Directory containing test feed data/configs
-test_dir = Path(__file__).absolute().parent.joinpath("data")
+test_dir = str(Path(__file__).absolute().parent.joinpath("data"))
 
 # Ensure we import the local (not system-wide) rss2email module
 sys.path.insert(0, _os.path.dirname(r2e_path))
@@ -230,8 +230,8 @@ class TestFetch(unittest.TestCase):
             # some processes will exit with a failure since their temp data
             # file was moved out from under them. Proper locking prevents that.
             command = [sys.executable, r2e_path, "-VVVVV",
-                       "-c", ctx.cfg_path,
-                       "-d", ctx.data_path,
+                       "-c", str(ctx.cfg_path),
+                       "-d", str(ctx.data_path),
                        "run", "--no-send"]
             processes = [
                 subprocess.Popen(command, stdout=output_fd, stderr=output_fd,
@@ -329,7 +329,7 @@ class TestFeedConfig(unittest.TestCase):
             # The old bug was that in the feed-specific config, we would
             # see "user-agent = rss2email 3.11" when in fact user-agent
             # shouldn't appear at all.
-            with open(ctx.cfg_path, "r") as f:
+            with ctx.cfg_path.open("r") as f:
                 lines = f.readlines()
             feed_cfg_start = lines.index("[feed.test]\n")
             for line in lines[feed_cfg_start:]:
@@ -352,7 +352,7 @@ class TestFeedConfig(unittest.TestCase):
         with ExecContext(bad_sub_cfg) as ctx:
             # Modify the config to trigger a rewrite
             ctx.call("add", "other", "https://example.com/other.xml")
-            with open(ctx.cfg_path, "r") as f:
+            with ctx.cfg_path.open("r") as f:
                 lines = f.readlines()
 
             feed_cfg_start = lines.index("[feed.test]\n")
@@ -383,20 +383,18 @@ class TestOPML(unittest.TestCase):
     def test_opml_export(self):
         with ExecContext(self.cfg) as ctx:
             ctx.call("add", self.feed_name, self.feed_url)
-            ctx.call("opmlexport", ctx.opml_path)
+            ctx.call("opmlexport", str(ctx.opml_path))
 
-            self.assertTrue(_os.path.isfile(ctx.opml_path))
-            with open(ctx.opml_path, "rb") as f:
-                read_content = f.read()
+            self.assertTrue(ctx.opml_path.is_file())
+            read_content = ctx.opml_path.read_bytes()
             self.assertEqual(self.opml_content, read_content)
 
     def test_opml_import(self):
         with ExecContext(self.cfg) as ctx:
-            with open(ctx.opml_path, "wb") as f:
-                f.write(self.opml_content)
-            ctx.call("opmlimport", ctx.opml_path)
+            ctx.opml_path.write_bytes(self.opml_content)
+            ctx.call("opmlimport", str(ctx.opml_path))
 
-            with open(ctx.data_path) as f:
+            with ctx.data_path.open('r') as f:
                 content = json.load(f)
 
             self.assertEqual(content["feeds"][0]["name"], self.feed_name)
