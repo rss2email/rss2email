@@ -32,6 +32,7 @@ import time as _time
 
 from . import LOG as _LOG
 from . import error as _error
+from . import imapmgt as _imapmgt
 
 def new(feeds, args):
     "Create a new feed database."
@@ -199,3 +200,17 @@ def opmlexport(feeds, args):
         '</opml>\n')
     if args.file:
         f.close()
+
+def imapmgt(feeds, args):
+    "Manage feeds by IMAP."
+    _LOG.info("running imap management")
+    messages = _imapmgt.parse_mailbox(config=feeds.config)
+    actions = _imapmgt.parse_messages(messages)
+    for action in actions:
+        if action["action"] == "add":
+            args.name = action["name"]
+            args.url = action["url"]
+            add(feeds, args)
+        elif action["action"] == "delete":
+            args.index = action["index"]
+            delete(feeds, args)

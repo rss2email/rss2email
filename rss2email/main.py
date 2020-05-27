@@ -150,6 +150,10 @@ def run(*args, **kwargs):
         'file', metavar='PATH', nargs='?',
         help='path for exported OPML (defaults to stdout)')
 
+    imapmgt_parser = subparsers.add_parser(
+        'imapmgt', help=_command.imapmgt.__doc__.splitlines()[0])
+    imapmgt_parser.set_defaults(func=_command.imapmgt)
+
     args = parser.parse_args(*args, **kwargs)
 
     if args.verbose:

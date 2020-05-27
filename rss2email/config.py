@@ -217,6 +217,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('imap-port', str(143)),
         ('imap-ssl', str(False)),       # connect to the IMAP server using SSL
         ('imap-mailbox', 'INBOX'),      # where we should store new messages
+        # IMAP management
+        ('imap-mgt-sender', ''),            # allowed sender
+        ('imap-mgt-prefix', 'r2e'),         # subject prefix to search
         # Maildir configuration
         ('maildir-path', '~/Maildir'),
         ('maildir-mailbox', 'INBOX'),
