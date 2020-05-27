@@ -210,6 +210,7 @@ def imapmgt(feeds, args):
         if action["action"] == "add":
             args.name = action["name"]
             args.url = action["url"]
+            args.email = None
             add(feeds, args)
         elif action["action"] == "delete":
             args.index = action["index"]
