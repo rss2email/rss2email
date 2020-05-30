@@ -99,6 +99,7 @@ def parse_messages(messages):
         if action == 'add':
             body = _get_email_body(msg)
             if not body:
+                _LOG.error('missing body for message: {}'.format(subject))
                 continue
             url = body.splitlines()[0]
             actions.append({
