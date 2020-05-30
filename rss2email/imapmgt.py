@@ -81,7 +81,7 @@ def parse_mailbox(config=None, section='DEFAULT'):
             if not msg.get('Subject').startswith(prefix):
                 continue
             # mark as read
-            imap.store(num, '-FLAGS', '\\Seen')
+            imap.store(num, '+FLAGS', '\\Seen')
             messages.append(msg)
     finally:
         imap.logout()
