@@ -175,17 +175,17 @@ def opmlexport(feeds, args):
     "Export configuration to OPML."
     if args.file:
         _LOG.info('exporting feeds to {}'.format(args.file))
-        f = open(args.file, 'rb')
+        f = open(args.file, 'wb')
     else:
         _LOG.info('exporting feeds to stdout')
         f = _sys.stdout
     f.write(
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<opml version="1.0">\n'
-        '<head>\n'
-        '<title>rss2email OPML export</title>\n'
-        '</head>\n'
-        '<body>\n')
+        b'<?xml version="1.0" encoding="UTF-8"?>\n'
+        b'<opml version="1.0">\n'
+        b'<head>\n'
+        b'<title>rss2email OPML export</title>\n'
+        b'</head>\n'
+        b'<body>\n')
     for feed in feeds:
         if not feed.url:
             _LOG.debug('dropping {}'.format(feed))
@@ -193,9 +193,9 @@ def opmlexport(feeds, args):
         name = _saxutils.escape(feed.name)
         url = _saxutils.escape(feed.url)
         f.write('<outline type="rss" text="{}" xmlUrl="{}"/>\n'.format(
-                name, url))
+                name, url).encode())
     f.write(
-        '</body>\n'
-        '</opml>\n')
+        b'</body>\n'
+        b'</opml>\n')
     if args.file:
         f.close()
