@@ -112,6 +112,10 @@ def parse_messages(messages):
                 'action': action,
                 'index': subject[2],
                 })
+        elif action == 'list':
+            actions.append({
+                'action': action,
+                })
         else:
             _LOG.error('action {} not supported'.format(action))
             continue
