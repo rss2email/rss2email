@@ -95,6 +95,7 @@ def parse_messages(messages):
     for msg in messages:
         subject = msg.get('Subject').split()
         action = subject[1]
+        _LOG.debug('parsing message: "{}"'.format(subject))
         if action == 'add':
             body = _get_email_body(msg)
             if not body:
