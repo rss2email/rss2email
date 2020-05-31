@@ -16,6 +16,7 @@ import mailbox
 import http.server
 import time
 import sys
+import json
 
 # Directory containing test feed data/configs
 test_dir = _os.path.dirname(_os.path.abspath(__file__))
@@ -160,6 +161,7 @@ class ExecContext:
         self.tmpdir = tempfile.mkdtemp()
         self.cfg_path = _os.path.join(self.tmpdir, "rss2email.cfg")
         self.data_path = _os.path.join(self.tmpdir, "rss2email.json")
+        self.opml_path = _os.path.join(self.tmpdir, "rss2email.opml")
 
         with open(self.cfg_path, "w") as f:
             f.write(config)
@@ -168,7 +170,7 @@ class ExecContext:
         return self
 
     def __exit__(self, type, value, traceback):
-        for path in [self.cfg_path, self.data_path]:
+        for path in [self.cfg_path, self.data_path, self.opml_path]:
             if _os.path.exists(path):
                 _os.remove(path)
         _os.rmdir(self.tmpdir)
@@ -380,6 +382,45 @@ class TestFeedConfig(unittest.TestCase):
             # config and not added to the feed we just added.
             for line in lines[feed_cfg_start:]:
                 self.assertFalse("user-agent" in line)
+
+class TestOPML(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        super(TestOPML, self).__init__(*args, **kwargs)
+
+        self.cfg = "[DEFAULT]\nto = example@example.com"
+        self.feed_name = "test"
+        self.feed_url = "https://example.com/feed.xml"
+        self.opml_content = """<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+<head>
+<title>rss2email OPML export</title>
+</head>
+<body>
+<outline type="rss" text="{}" xmlUrl="{}"/>
+</body>
+</opml>
+""".format(self.feed_name, self.feed_url).encode()
+
+    def test_opml_export(self):
+        with ExecContext(self.cfg) as ctx:
+            ctx.call("add", self.feed_name, self.feed_url)
+            ctx.call("opmlexport", ctx.opml_path)
+
+            self.assertTrue(_os.path.isfile(ctx.opml_path))
+            with open(ctx.opml_path, "rb") as f:
+                read_content = f.read()
+            self.assertEqual(self.opml_content, read_content)
+
+    def test_opml_import(self):
+        with ExecContext(self.cfg) as ctx:
+            with open(ctx.opml_path, "wb") as f:
+                f.write(self.opml_content)
+            ctx.call("opmlimport", ctx.opml_path)
+
+            with open(ctx.data_path) as f:
+                content = json.load(f)
+
+            self.assertEqual(content["feeds"][0]["name"], self.feed_name)
 
 if __name__ == '__main__':
     unittest.main()
