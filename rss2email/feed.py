@@ -478,6 +478,8 @@ class Feed (object):
                 ('Date', self._get_entry_date(entry)),
                 ('Message-ID', '<{}@dev.null.invalid>'.format(_uuid.uuid4())),
                 ('User-Agent', self.user_agent),
+                ('List-ID', '<{}.localhost>'.format(self.name)),
+                ('List-Post', 'NO (posting not allowed on this list)'),
                 ('X-RSS-Feed', self.url),
                 ('X-RSS-ID', guid),
                 ('X-RSS-URL', self._get_entry_link(entry)),
@@ -884,6 +886,8 @@ class Feed (object):
         digest['Subject'] = 'digest for {}'.format(self.name)
         digest['Message-ID'] = '<{}@dev.null.invalid>'.format(_uuid.uuid4())
         digest['User-Agent'] = self.user_agent
+        digest['List-ID'] = '<{}.localhost>'.format(self.name)
+        digest['List-Post'] = 'NO (posting not allowed on this list)'
         digest['X-RSS-Feed'] = self.url
         return digest
 
