@@ -8,6 +8,8 @@ Content-Transfer-Encoding: base64
 Date: Wed, 23 Jan 2013 20:50:57 -0000
 Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22535346
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_imf_world_economy.shtml
@@ -29,6 +31,8 @@ Content-Transfer-Encoding: base64
 Date: Wed, 23 Jan 2013 20:55:42 -0000
 Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22535477
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_us_genallen_nato.shtml

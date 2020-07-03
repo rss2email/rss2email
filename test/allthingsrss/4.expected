@@ -8,6 +8,8 @@ Content-Transfer-Encoding: 7bit
 Date: Tue, 21 Sep 2010 16:55:07 -0000
 Message-ID: <...@dev.null.invalid>
 User-Agent: test string
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=62
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
@@ -48,6 +50,8 @@ Content-Transfer-Encoding: 7bit
 Date: Fri, 01 Oct 2010 18:21:26 -0000
 Message-ID: <...@dev.null.invalid>
 User-Agent: test string
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=72
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/
@@ -94,6 +98,8 @@ Content-Transfer-Encoding: 7bit
 Date: Fri, 05 Nov 2010 17:36:14 -0000
 Message-ID: <...@dev.null.invalid>
 User-Agent: test string
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=79
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/JryfOLe_q6c/
