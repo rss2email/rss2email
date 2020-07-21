@@ -38,14 +38,8 @@ feed/config pair.  For example, with a directory structure like::
 * ``feed.rss`` after loading ``b.config`` and compare the output with
   ``b.expected``.
 
-Various other tests are also run, run test.py with the '-v' option to
+Various other tests are also run, run test.py with the `-v`/`--verbose` option to
 see exactly which tests are being run:
 
-  $ ./test/test.py -v
-
-If you want to test an r2e script not in the repo (e.g. the system
-one), you can provide the environment variable R2E_PATH, with the
-absolute path to the script that you want to test. We use this in our
-CI build:
-
-  $ R2E_PATH=/path/to/your/r2e ./test/test.py -v
+  $ cd ./test
+  $ python -m unittest --verbose

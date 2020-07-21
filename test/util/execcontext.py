@@ -1,4 +1,3 @@
-import os
 import subprocess
 import sys
 import tempfile
@@ -6,11 +5,9 @@ from configparser import ConfigParser
 from pathlib import Path
 from typing import Dict, Any
 
-# By default, we run the r2e in the dir above this script, not the
-# system-wide installed version, which you probably don't mean to
-# test. You can also pass in an alternate location in the R2E_PATH
-# environment variable.
-r2e_path = os.getenv("R2E_PATH", str(Path(__file__).absolute().parent.parent.parent.joinpath("r2e")))
+# We run the r2e in the dir above this script, not the system-wide
+# installed version, which you probably don't mean to test.
+r2e_path = str(Path(__file__).absolute().parent.parent.parent.joinpath("r2e"))
 
 
 class ExecContext:
