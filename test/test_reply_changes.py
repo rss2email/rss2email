@@ -1,11 +1,14 @@
 import mailbox
+import os
 import shutil
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 from textwrap import dedent
 from typing import List, Optional, Dict, Any
 
+sys.path.insert(0, os.path.dirname(__file__))
 from util.execcontext import ExecContext
 from util.tempmaildir import TemporaryMaildir
 
