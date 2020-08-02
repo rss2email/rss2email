@@ -181,7 +181,7 @@ def opmlexport(feeds, args):
         f = open(args.file, 'wb')
     else:
         _LOG.info('exporting feeds to stdout')
-        f = _sys.stdout
+        f = _sys.stdout.buffer
     f.write(
         b'<?xml version="1.0" encoding="UTF-8"?>\n'
         b'<opml version="1.0">\n'

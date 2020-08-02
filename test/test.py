@@ -391,6 +391,18 @@ class TestOPML(unittest.TestCase):
             read_content = ctx.opml_path.read_bytes()
             self.assertEqual(self.opml_content, read_content)
 
+    def test_opml_export_without_arg(self):
+        with ExecContext(self.cfg) as ctx:
+            # This is just a smoke test for now, it'd be better to capture
+            # stdout but this is enough to check for non-regression
+            res = ctx.call("opmlexport")
+            self.assertEqual(res, 0)
+
+            ctx.call("add", self.feed_name, self.feed_url)
+
+            res = ctx.call("opmlexport")
+            self.assertEqual(res, 0)
+
     def test_opml_import(self):
         with ExecContext(self.cfg) as ctx:
             ctx.opml_path.write_bytes(self.opml_content)

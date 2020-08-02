@@ -1,4 +1,5 @@
 UNRELEASED
+    * Fix calling opmlexport without arguments
 
 v3.12 (2020-08-02)
     * Drop support for EOL Python 3.4, add support for Python 3.8
