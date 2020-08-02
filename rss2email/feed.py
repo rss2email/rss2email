@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2004-2019 Aaron Swartz
+# Copyright (C) 2004-2020 Aaron Swartz
 #                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
+#                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dennis Keitzel <github@pinshot.net>
@@ -13,12 +14,16 @@
 #                         J. Lewis Muir <jlmuir@imca-cat.org>
 #                         Jakub Wilk <jwilk@jwilk.net>
 #                         Joey Hess
+#                         Jonathan Kamens <jik@kamens.us>
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
+#                         Karthikeyan Singaravelan <tir.karthi@gmail.com>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
+#                         Léo Gaspard <leo@gaspard.io>
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
 #                         Martin Monperrus <monperrus@users.noreply.github.com>
 #                         Matej Cepl
+#                         Notkea <pacien@users.noreply.github.com>
 #                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
 #                         shan3141 <xpoh434@users.noreply.github.com>

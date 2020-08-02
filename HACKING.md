@@ -9,7 +9,7 @@ if you have a question (or something is not described sufficiently).
 - `nix-shell`
 - `update-copyright.py`
 - Prepare `CHANGELOG`
-- Fix `__version__` in `rss2email/__init.py`
+- Fix `__version__` in `rss2email/__init__.py`
 - `git commit`
 - `exit`
 

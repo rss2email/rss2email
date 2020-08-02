@@ -1,6 +1,8 @@
-# Copyright (C) 2013-2018 Andrey Zelenchuk <azelenchuk@parallels.com>
+# Copyright (C) 2013-2020 Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         François Boulogne <fboulogne sciunto org>
 #                         Jakub Wilk <jwilk@jwilk.net>
+#                         Jonathan Kamens <jik@kamens.us>
+#                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
 #                         Puneeth Chaganti <punchagan@muse-amuse.in>
 #                         W. Trevor King <wking@tremily.us>

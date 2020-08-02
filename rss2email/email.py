@@ -1,9 +1,10 @@
 # -*- encoding: utf-8 -*-
 #
-# Copyright (C) 2012-2018 Arun Persaud <apersaud@lbl.gov>
+# Copyright (C) 2012-2020 Arun Persaud <apersaud@lbl.gov>
 #                         Dmitry Bogatov <KAction@gnu.org>
 #                         George Saunders <georgesaunders@gmail.com>
 #                         Jeff Backus <jeff@jsbackus.com>
+#                         Léo Gaspard <leo@gaspard.io>
 #                         Mátyás Jani <jzombi@gmail.com>
 #                         Profpatsch <mail@profpatsch.de>
 #                         Thiago Coutinho <root@thiagoc.net>

@@ -1,4 +1,5 @@
-# Copyright (C) 2012-2018 Etienne Millon <me@emillon.org>
+# Copyright (C) 2012-2020 Etienne Millon <me@emillon.org>
+#                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
 #

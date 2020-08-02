@@ -1,5 +1,8 @@
-# Copyright (C) 2012-2019 Andrey Zelenchuk <azelenchuk@parallels.com>
+# Copyright (C) 2012-2020 Andrey Zelenchuk <azelenchuk@parallels.com>
+#                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Gregory Soutade <gregory@soutade.fr>
+#                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
+#                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
 #

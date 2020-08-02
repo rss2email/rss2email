@@ -1,6 +1,7 @@
-# Copyright (C) 2004-2019 Aaron Swartz
+# Copyright (C) 2004-2020 Aaron Swartz
 #                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
+#                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dmitry Bogatov <KAction@gnu.org>
@@ -12,6 +13,7 @@
 #                         Joey Hess
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
+#                         Léo Gaspard <leo@gaspard.io>
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
 #                         Martin Monperrus <monperrus@users.noreply.github.com>
@@ -21,6 +23,7 @@
 #                         Thibaut Girka <thib@sitedethib.com>
 #                         W. Trevor King <wking@tremily.us>
 #                         Yannik Sembritzki <yannik@sembritzki.me>
+#                         auouymous <au@qzx.com>
 #
 # This file is part of rss2email.
 #

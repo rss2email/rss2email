@@ -1,4 +1,5 @@
-# Copyright (C) 2012-2019 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
+# Copyright (C) 2012-2020 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
+#                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         François Boulogne <fboulogne sciunto org>
 #                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
@@ -25,7 +26,7 @@ import logging as _logging
 import sys as _sys
 
 
-__version__ = '3.12.0-dev'
+__version__ = '3.12'
 __url__ = 'https://github.com/rss2email/rss2email'
 __author__ = 'The rss2email maintainers'
 __email__ = 'rss2email@tremily.us'

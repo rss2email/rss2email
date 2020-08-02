@@ -1,8 +1,14 @@
-v3.12.0 (UNRELEASED)
+UNRELEASED
+
+v3.12 (2020-08-02)
+    * Drop support for EOL Python 3.4, add support for Python 3.8
+    * Add List_ID and List_Post headers to the generated emails
     * Add a new `reply-changes` setting
+    * Improve configurability of text wrapping for the emails
     * Use `platform.node()` instead of "dev.null.invalid" in "Message-ID" header
-    * Drop support for Python 3.4
-    * Add support for Python 3.8
+    * Improve locking support for when multiple rss2email instances are run in parallel
+    * Fix handling of __VERSION__ and __URL__ in user-agent strings
+    * Fix opmlexport
 
 v3.11 (2019-10-26)
     * Add new `user-agent` attribute for configuring email User-Agent

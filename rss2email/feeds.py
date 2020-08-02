@@ -1,5 +1,6 @@
-# Copyright (C) 2004-2019 Aaron Swartz
+# Copyright (C) 2004-2020 Aaron Swartz
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
+#                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Erik Hetzner
@@ -7,6 +8,7 @@
 #                         Joey Hess
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
+#                         Léo Gaspard <leo@gaspard.io>
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
 #                         Matej Cepl
