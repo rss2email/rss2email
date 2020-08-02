@@ -7,8 +7,8 @@ import difflib as _difflib
 import glob as _glob
 import io as _io
 import os as _os
+import platform
 import re as _re
-import tempfile
 import multiprocessing
 import subprocess
 import unittest
@@ -17,21 +17,21 @@ import http.server
 import time
 import sys
 import json
+from pathlib import Path
+from typing import List
+
+from util.execcontext import r2e_path, ExecContext
+from util.tempmaildir import TemporaryMaildir
 
 # Directory containing test feed data/configs
-test_dir = _os.path.dirname(_os.path.abspath(__file__))
-
-# By default, we run the r2e in the dir above this script, not the
-# system-wide installed version, which you probably don't mean to
-# test. You can also pass in an alternate location in the R2E_PATH
-# environment variable.
-r2e_path = _os.getenv("R2E_PATH", _os.path.join(test_dir, "..", "r2e"))
+test_dir = str(Path(__file__).absolute().parent.joinpath("data"))
 
 # Ensure we import the local (not system-wide) rss2email module
 sys.path.insert(0, _os.path.dirname(r2e_path))
 import rss2email as _rss2email
 import rss2email.config as _rss2email_config
 import rss2email.feed as _rss2email_feed
+from rss2email.feeds import UNIX
 
 # This metaclass lets us generate the tests for each feed directory
 # separately. This lets us see which tests are being run more clearly than
@@ -45,7 +45,7 @@ class TestEmailsMeta(type):
         _os.chdir(this_dir)
 
         # Generate test methods
-        for test_config_path in _glob.glob("*/*.config"):
+        for test_config_path in _glob.glob("data/*/*.config"):
             test_name = "test_email_{}".format(test_config_path)
             attrs[test_name] = cls.generate_test(test_config_path)
 
@@ -81,9 +81,10 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         del _stringio
 
         self.MESSAGE_ID_REGEXP = _re.compile(
-            '^Message-ID: <[^@]*@dev.null.invalid>$', _re.MULTILINE)
+            r'^Message-ID: <(.*)@{}>$'.format(_re.escape(platform.node())), _re.MULTILINE)
         self.USER_AGENT_REGEXP = _re.compile(
-            r'^User-Agent: rss2email/[0-9.]* (\S*)$', _re.MULTILINE)
+            r'^User-Agent: rss2email/{0} \({1}\)$'.format(_re.escape(_rss2email.__version__), _re.escape(_rss2email.__url__)),
+            _re.MULTILINE)
         self.BOUNDARY_REGEXP = _re.compile('===============[^=]+==')
 
     def clean_result(self, text):
@@ -94,7 +95,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         ...      '  boundary="===============7509425281347501533=="\\n'
         ...      'MIME-Version: 1.0\\n'
         ...      'Date: Tue, 23 Aug 2011 15:57:37 -0000\\n'
-        ...      'Message-ID: <9dff03db-f5a7@dev.null.invalid>\\n'
+        ...      'Message-ID: <9dff03db-f5a7@mail.example>\\n'
         ...      'User-Agent: rss2email/3.5 (https://github.com/rss2email/rss2email)\\n'
         ...      )
         >>> print(clean_result(text).rstrip())
@@ -127,7 +128,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         config = _rss2email_config.Config()
         config.read_string(self.BASE_CONFIG_STRING)
         read_paths = config.read([config_path])
-        feed = _rss2email_feed.Feed(name='test', url=feed_path, config=config)
+        feed = _rss2email_feed.Feed(name='test', url=Path(feed_path).as_posix(), config=config)
         expected_path = config_path.replace('config', 'expected')
         with open(expected_path, 'r') as f:
             expected = self.clean_result(f.read())
@@ -147,45 +148,41 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
                     config_path,
                     '\n'.join(diff_lines)))
 
-class ExecContext:
-    """Creates temporary config, data file and lets you call r2e with them
-    easily. Cleans up temp files afterwards.
-
-    Example:
-
-    with ExecContext(config="[DEFAULT]\nto=me@example.com") as context:
-        context.call("run", "--no-send")
-
-    """
-    def __init__(self, config):
-        self.tmpdir = tempfile.mkdtemp()
-        self.cfg_path = _os.path.join(self.tmpdir, "rss2email.cfg")
-        self.data_path = _os.path.join(self.tmpdir, "rss2email.json")
-        self.opml_path = _os.path.join(self.tmpdir, "rss2email.opml")
-
-        with open(self.cfg_path, "w") as f:
-            f.write(config)
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, type, value, traceback):
-        for path in [self.cfg_path, self.data_path, self.opml_path]:
-            if _os.path.exists(path):
-                _os.remove(path)
-        _os.rmdir(self.tmpdir)
-
-    def call(self, *args):
-        subprocess.call([r2e_path, "-c", self.cfg_path, "-d", self.data_path] + list(args))
-
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     "No logging handler serving test feed data from test_dir"
-    def translate_path(self, path):
-        path = http.server.SimpleHTTPRequestHandler.translate_path(self, path)
-        return _os.path.join(test_dir, path)
+
+    if sys.version_info >= (3, 7):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs, directory=test_dir)
+    else:
+        def translate_path(self, path):
+            cwd = _os.getcwd()
+            try:
+                _os.chdir(test_dir)
+                return super().translate_path(path)
+            finally:
+                _os.chdir(cwd)
 
     def log_message(self, format, *args):
         return
+
+def webserver_for_test_fetch(queue, num_requests, wait_time):
+    httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+    try:
+        port = httpd.server_address[1]
+        queue.put(port)
+
+        start = 0
+        for _ in range(num_requests):
+            httpd.handle_request()
+            end = time.time()
+            if end - start < wait_time:
+                queue.put("too fast")
+                return
+            start = end
+        queue.put("ok")
+    finally:
+        httpd.server_close()
 
 class TestFetch(unittest.TestCase):
     "Retrieving feeds from servers"
@@ -199,26 +196,8 @@ class TestFetch(unittest.TestCase):
 
         num_requests = 3
 
-        def webserver(queue):
-            httpd = http.server.HTTPServer(('', 0), NoLogHandler)
-            try:
-                port = httpd.server_address[1]
-                queue.put(port)
-
-                start = 0
-                for _ in range(num_requests):
-                    httpd.handle_request()
-                    end = time.time()
-                    if end - start < wait_time:
-                        queue.put("too fast")
-                        return
-                    start = end
-                queue.put("ok")
-            finally:
-                httpd.server_close()
-
         queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver, args=(queue,))
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_fetch, args=(queue, num_requests, wait_time))
         webserver_proc.start()
         port = queue.get()
 
@@ -233,6 +212,9 @@ class TestFetch(unittest.TestCase):
             raise Exception("r2e did not delay long enough!")
 
     def test_fetch_parallel(self):
+        if not UNIX:
+            self.skipTest("No locking on Windows.")
+
         "Reads/writes to data file are sequenced correctly for multiple instances"
         num_processes = 5
         process_cfg = """[DEFAULT]
@@ -248,9 +230,9 @@ class TestFetch(unittest.TestCase):
             # always does the copy/replace, it must be sequenced correctly or
             # some processes will exit with a failure since their temp data
             # file was moved out from under them. Proper locking prevents that.
-            command = [r2e_path, "-VVVVV",
-                       "-c", ctx.cfg_path,
-                       "-d", ctx.data_path,
+            command = [sys.executable, r2e_path, "-VVVVV",
+                       "-c", str(ctx.cfg_path),
+                       "-d", str(ctx.data_path),
                        "run", "--no-send"]
             processes = [
                 subprocess.Popen(command, stdout=output_fd, stderr=output_fd,
@@ -263,7 +245,7 @@ class TestFetch(unittest.TestCase):
             all_success = True
             for p in processes:
                 p.wait()
-                all_success = all_success and (p.returncode == _os.EX_OK)
+                all_success = all_success and (p.returncode == 0)
             self.assertTrue(all_success)
 
             # We check that each time the lock was acquired, the previous process
@@ -279,25 +261,25 @@ class TestFetch(unittest.TestCase):
                     previous_line = line
             self.assertTrue(finish_precedes_acquire)
 
+def webserver_for_test_send(queue):
+    httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+    try:
+        port = httpd.server_address[1]
+        queue.put(port)
+
+        # to make the web server serve your request, you have
+        # to put something into the queue to advance this loop
+        while queue.get() != "stop":
+            httpd.handle_request()
+    finally:
+        httpd.server_close()
+
 class TestSend(unittest.TestCase):
     "Send email using the various email-protocol choices"
     def setUp(self):
         "Starts web server to serve feeds"
-        def webserver(queue):
-            httpd = http.server.HTTPServer(('', 0), NoLogHandler)
-            try:
-                port = httpd.server_address[1]
-                queue.put(port)
-
-                # to make the web server serve your request, you have
-                # to put something into the queue to advance this loop
-                while queue.get() != "stop":
-                    httpd.handle_request()
-            finally:
-                httpd.server_close()
-
         self.httpd_queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver, args=(self.httpd_queue,))
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_send, args=(self.httpd_queue,))
         webserver_proc.start()
         self.httpd_port = self.httpd_queue.get()
 
@@ -307,16 +289,15 @@ class TestSend(unittest.TestCase):
 
     def test_maildir(self):
         "Sends mail to maildir"
-        with tempfile.TemporaryDirectory() as maildirname:
-            for d in ["cur", "new", "tmp"]:
-                _os.makedirs(_os.path.join(maildirname, d))
-                _os.makedirs(_os.path.join(maildirname, "inbox", d))
-            maildir_cfg = """[DEFAULT]
-            to = example@example.com
-            email-protocol = maildir
-            maildir-path = {}
-            maildir-mailbox = inbox
-            """.format(maildirname)
+        with TemporaryMaildir() as maildir:
+            maildir_cfg = """\
+                [DEFAULT]
+                to = example@example.com
+                email-protocol = maildir
+                maildir-path = {maildir_path}
+                maildir-mailbox = {maildir_mailbox}
+                """.format(maildir_path=maildir.path,
+                           maildir_mailbox=maildir.inbox_name)
 
             with ExecContext(maildir_cfg) as ctx:
                 self.httpd_queue.put("next")
@@ -325,8 +306,7 @@ class TestSend(unittest.TestCase):
 
             # quick check to make sure right number of messages sent
             # and subjects are right
-            inbox = mailbox.Maildir(_os.path.join(maildirname, "inbox"))
-            msgs = list(inbox)
+            msgs = maildir.inbox.values() # type: List[mailbox.MaildirMessage]
 
             self.assertEqual(len(msgs), 5)
             self.assertEqual(len([msg for msg in msgs if msg["subject"] == "split massive package into modules"]), 1)
@@ -350,7 +330,7 @@ class TestFeedConfig(unittest.TestCase):
             # The old bug was that in the feed-specific config, we would
             # see "user-agent = rss2email 3.11" when in fact user-agent
             # shouldn't appear at all.
-            with open(ctx.cfg_path, "r") as f:
+            with ctx.cfg_path.open("r") as f:
                 lines = f.readlines()
             feed_cfg_start = lines.index("[feed.test]\n")
             for line in lines[feed_cfg_start:]:
@@ -373,7 +353,7 @@ class TestFeedConfig(unittest.TestCase):
         with ExecContext(bad_sub_cfg) as ctx:
             # Modify the config to trigger a rewrite
             ctx.call("add", "other", "https://example.com/other.xml")
-            with open(ctx.cfg_path, "r") as f:
+            with ctx.cfg_path.open("r") as f:
                 lines = f.readlines()
 
             feed_cfg_start = lines.index("[feed.test]\n")
@@ -404,20 +384,18 @@ class TestOPML(unittest.TestCase):
     def test_opml_export(self):
         with ExecContext(self.cfg) as ctx:
             ctx.call("add", self.feed_name, self.feed_url)
-            ctx.call("opmlexport", ctx.opml_path)
+            ctx.call("opmlexport", str(ctx.opml_path))
 
-            self.assertTrue(_os.path.isfile(ctx.opml_path))
-            with open(ctx.opml_path, "rb") as f:
-                read_content = f.read()
+            self.assertTrue(ctx.opml_path.is_file())
+            read_content = ctx.opml_path.read_bytes()
             self.assertEqual(self.opml_content, read_content)
 
     def test_opml_import(self):
         with ExecContext(self.cfg) as ctx:
-            with open(ctx.opml_path, "wb") as f:
-                f.write(self.opml_content)
-            ctx.call("opmlimport", ctx.opml_path)
+            ctx.opml_path.write_bytes(self.opml_content)
+            ctx.call("opmlimport", str(ctx.opml_path))
 
-            with open(ctx.data_path) as f:
+            with ctx.data_path.open('r') as f:
                 content = json.load(f)
 
             self.assertEqual(content["feeds"][0]["name"], self.feed_name)

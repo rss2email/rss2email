@@ -23,7 +23,6 @@
 import argparse as _argparse
 import logging as _logging
 import sys as _sys
-import fcntl as _fcntl
 import os as _os
 
 from . import __doc__ as _PACKAGE_DOCSTRING
@@ -33,6 +32,7 @@ from . import command as _command
 from . import error as _error
 from . import feeds as _feeds
 from . import version as _version
+from .feeds import UNIX
 
 
 class FullVersionAction (_argparse.Action):
@@ -163,25 +163,32 @@ def run(*args, **kwargs):
     if not getattr(args, 'func', None):
         parser.error('too few arguments')
 
-    lockfile_path = _os.path.join(_os.environ.get("XDG_RUNTIME_DIR",
-                                                  default="/tmp/"),
-                                  "rss2email.lock")
+    # Immediately lock so only one r2e instance runs at a time
+    if UNIX:
+        import fcntl as _fcntl
+        lockfile_path = _os.path.join(_os.environ.get("XDG_RUNTIME_DIR", default="/tmp/"), "rss2email.lock")
+        lockfile = open(lockfile_path, "w")
+        _fcntl.lockf(lockfile, _fcntl.LOCK_EX)
+        _LOG.debug("acquired lock file {}".format(lockfile_path))
+    else:
+        # TODO: What to do on Windows?
+        lockfile = None
+
     try:
-        with open(lockfile_path, "w") as lockfile:
-            # Immediately lock so only one r2e instance runs at a time
-            _fcntl.lockf(lockfile, _fcntl.LOCK_EX)
-            _LOG.debug("acquired lock file {}".format(lockfile_path))
-            if not args.config:
-                args.config = None
-            feeds = _feeds.Feeds(datafile_path=args.data, configfiles=args.config)
-            if args.func != _command.new:
-                feeds.load()
-            args.func(feeds=feeds, args=args)
+        if not args.config:
+            args.config = None
+        feeds = _feeds.Feeds(datafile_path=args.data, configfiles=args.config)
+        if args.func != _command.new:
+            feeds.load()
+        args.func(feeds=feeds, args=args)
     except _error.RSS2EmailError as e:
         e.log()
         if _logging.ERROR - 10 * args.verbose < _logging.DEBUG:
             raise  # don't mask the traceback
         _sys.exit(1)
+    finally:
+        if lockfile is not None:
+            lockfile.close()
 
 
 if __name__ == '__main__':

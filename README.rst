@@ -154,7 +154,7 @@ entries converted to plain text::
   html-mail = True
 
 To be notified every time a post changes, instead of just when it's
-first posted (see also ``trust-link``, described in
+first posted (see also ``trust-link`` and ``reply-changes``, described in
 ``rss2email/config.py``)::
 
   trust-guid = True

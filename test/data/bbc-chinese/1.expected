@@ -1,16 +1,16 @@
 SENT BY: =?utf-8?b?YmJjY2hpbmVzZS5jb20gfCDkuLvpobU6IEJCQyBDaGluZXNl?= <chinese@bbc.co.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 From: =?utf-8?b?YmJjY2hpbmVzZS5jb20gfCDkuLvpobU6IEJCQyBDaGluZXNl?= <chinese@bbc.co.uk>
 To: a@b.com
 Subject: =?utf-8?b?5Zu96ZmF6LSn5biB5Z+66YeR57uE57uH56ew5YWo55CD57uP5rWO5oGi5aSN5pS+57yT?=
-Content-Transfer-Encoding: base64
 Date: Wed, 23 Jan 2013 20:50:57 -0000
 Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: bbc-chinese/feed.atom
+X-RSS-Feed: data/bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22535346
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_imf_world_economy.shtml
 X-RSS-TAGS: =?utf-8?b?Y2hpbmVzZV9zaW1wbGlmaWVkLHdvcmxkLOS4lueVjOmTtuihjO+8jCDmiqXlkYrvvIwg57uP5rWO5Y+R5bGV?=
@@ -24,16 +24,16 @@ bXAvd29ybGQvMjAxMy8wMS8xMzAxMjNfaW1mX3dvcmxkX2Vjb25vbXkuc2h0bWw=
 SENT BY: =?utf-8?b?YmJjY2hpbmVzZS5jb20gfCDkuLvpobU6IEJCQyBDaGluZXNl?= <chinese@bbc.co.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 From: =?utf-8?b?YmJjY2hpbmVzZS5jb20gfCDkuLvpobU6IEJCQyBDaGluZXNl?= <chinese@bbc.co.uk>
 To: a@b.com
 Subject: =?utf-8?b?55m95a6r5o+Q5ZCN6Im+5Lym5Li65YyX57qm5pyA6auY5Y+45Luk5a6Y?=
-Content-Transfer-Encoding: base64
 Date: Wed, 23 Jan 2013 20:55:42 -0000
 Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: bbc-chinese/feed.atom
+X-RSS-Feed: data/bbc-chinese/feed.atom
 X-RSS-ID: tag:www.bbcchinese.com,2013-01-23:22535477
 X-RSS-URL: http://www.bbc.co.uk/zhongwen/simp/world/2013/01/130123_us_genallen_nato.shtml
 X-RSS-TAGS: =?utf-8?b?Y2hpbmVzZV9zaW1wbGlmaWVkLHdvcmxkLOe+juWbve+8jOWMl+e6pu+8jOWbvemYsumDqO+8jOmpu+mYv+WvjOaxl+e+juWGm+WPuOS7pOWumO+8jOS4reWkruaDheaKpeWxgO+8jOWpmuWkluaDhQ==?=

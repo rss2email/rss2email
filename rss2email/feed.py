@@ -41,6 +41,8 @@
 """
 
 import collections as _collections
+import platform
+from email.message import Message
 from email.mime.message import MIMEMessage as _MIMEMessage
 from email.mime.multipart import MIMEMultipart as _MIMEMultipart
 from email.utils import formataddr as _formataddr
@@ -49,11 +51,12 @@ import html.parser as _html_parser
 import re as _re
 import socket as _socket
 import time as _time
-import urllib.error as _urllib_error
 import urllib.request as _urllib_request
 import uuid as _uuid
 import xml.sax as _sax
 import xml.sax.saxutils as _saxutils
+from functools import lru_cache
+from typing import Optional, Dict, Any, Tuple
 
 import feedparser as _feedparser
 import html2text as _html2text
@@ -193,6 +196,7 @@ class Feed (object):
         'date_header',
         'trust_guid',
         'trust_link',
+        'reply_changes',
         'html_mail',
         'use_css',
         'unicode_snob',
@@ -334,7 +338,7 @@ class Feed (object):
         """
         self.etag = None
         self.modified = None
-        self.seen = {}
+        self.seen = {} # type: Dict[str, Dict[str, Any]]
 
     def _set_name(self, name):
         if not self._name_regexp.match(name):
@@ -374,14 +378,14 @@ class Feed (object):
             _LOG.debug('processing {}'.format(entry.get('id', 'no-id')))
             processed = self._process_entry(parsed=parsed, entry=entry)
             if processed:
-                guid,id_,sender,message = processed
+                guid, _, sender, message = processed
                 if self.post_process:
                     message = self.post_process(
                         feed=self, parsed=parsed, entry=entry, guid=guid,
                         message=message)
                     if not message:
                         continue
-                yield (guid, id_, sender, message)
+                yield processed
 
     def _check_for_errors(self, parsed):
         warned = False
@@ -464,19 +468,36 @@ class Feed (object):
                 return default
             raise
 
-    def _process_entry(self, parsed, entry):
-        # get_entry_id is the unique method that encapsulates where the strategy for getting the id is set
-        guid = self._get_entry_id(entry)
-        if guid in self.seen:
+    def _process_entry(self, parsed, entry) -> Optional[Tuple[str, Dict[str, Any], str, Message]]:
+        guid = self._get_uid_for_entry(entry)
+        new_hash = self._get_entry_hash(entry)
+
+        old_state = self.seen.get(guid)
+        if old_state is None:
+            _LOG.debug('not seen {}'.format(guid))
+            new_state = {} # type: Dict[str, Any]
+        else:
             _LOG.debug('already seen {}'.format(guid))
-            return  # already seen
-        _LOG.debug('not seen {}'.format(guid))
+            if self.reply_changes:
+                if new_hash != old_state.get('hash'):
+                    _LOG.debug('hash changed for {}'.format(guid))
+                    new_state = old_state.copy()
+                else:
+                    return None
+            else:
+                return None
+
+        new_state['hash'] = new_hash
+
         sender = self._get_entry_email(parsed=parsed, entry=entry)
         subject = self._get_entry_title(entry)
 
+        message_id = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
+        in_reply_to = old_state.get('message_id') if old_state is not None else None
         extra_headers = _collections.OrderedDict((
                 ('Date', self._get_entry_date(entry)),
-                ('Message-ID', '<{}@dev.null.invalid>'.format(_uuid.uuid4())),
+                ('Message-ID', message_id),
+                ('In-Reply-To', in_reply_to),
                 ('User-Agent', self.user_agent),
                 ('List-ID', '<{}.localhost>'.format(self.name)),
                 ('List-Post', 'NO (posting not allowed on this list)'),
@@ -515,31 +536,43 @@ class Feed (object):
             extra_headers=extra_headers,
             config=self.config,
             section=self.section)
-        return (guid, guid, sender, message)
 
-    def _get_entry_id(self, entry):
-        """Get best ID from an entry."""
+        return guid, new_state, sender, message
+
+    def _get_uid_for_entry(self, entry) -> str:
+        """Get the best UID (unique ID) for the entry."""
         if self.trust_link:
-            return entry.get('link', None)
+            uid = self._get_entry_link(entry)
+            if uid:
+                return uid
         if self.trust_guid:
-            if getattr(entry, 'id', None):
-                # Newer versions of feedparser could return a dictionary
-                if isinstance(entry.id, dict):
-                    return entry.id.values()[0]
-                return entry.id
+            uid = self._get_entry_id(entry)
+            if uid:
+                return uid
+        return self._get_entry_hash(entry)
+
+    @lru_cache(1)
+    def _get_entry_hash(self, entry) -> str:
         content = self._get_entry_content(entry)
         content_value = content['value'].strip()
         if content_value:
-            return _hashlib.sha1(
-                content_value.encode('unicode-escape')).hexdigest()
+            text = content_value
         elif getattr(entry, 'link', None):
-            return _hashlib.sha1(
-                entry.link.encode('unicode-escape')).hexdigest()
+            text = entry.link
         elif getattr(entry, 'title', None):
-            return _hashlib.sha1(
-                entry.title.encode('unicode-escape')).hexdigest()
+            text = entry.title
+        else:
+            text = ""
+        return _hashlib.sha1(text.encode('unicode-escape')).hexdigest()
 
-    def _get_entry_link(self, entry):
+    def _get_entry_id(self, entry) -> Optional[str]:
+        id_ = getattr(entry, 'id', None)
+        # Newer versions of feedparser could return a dictionary
+        if isinstance(id_, dict):
+            return next(iter(id_.values()), None)
+        return id_
+
+    def _get_entry_link(self, entry) -> Optional[str]:
         return entry.get('link', None)
 
     def _get_entry_title(self, entry):
@@ -714,6 +747,7 @@ class Feed (object):
         if taglist:
             return ','.join(taglist)
 
+    @lru_cache(1)
     def _get_entry_content(self, entry):
         """Select the best content from an entry.
 
@@ -855,27 +889,27 @@ class Feed (object):
         if self.digest:
             digest = self._new_digest()
             seen = []
-
-        for (guid, id_, sender, message) in self._process(parsed):
-            _LOG.debug('new message: {}'.format(message['Subject']))
-            if self.digest:
-                seen.append((guid, id_))
+            for (guid, state, sender, message) in self._process(parsed):
+                _LOG.debug('new message: {}'.format(message['Subject']))
+                seen.append((guid, state))
                 self._append_to_digest(digest=digest, message=message)
-            else:
+            if seen:
+                if self.digest_post_process:
+                    digest = self.digest_post_process(feed=self, parsed=parsed, seen=seen, message=digest)
+                    if not digest:
+                        return
+                _LOG.debug('new digest for {}'.format(self))
+                if send:
+                    self._send_digest(digest=digest, sender=sender)
+                for (guid, state) in seen:
+                    self.seen[guid] = state
+        else:
+            for (guid, state, sender, message) in self._process(parsed):
+                _LOG.debug('new message: {}'.format(message['Subject']))
                 if send:
                     self._send(sender=sender, message=message)
-                if guid not in self.seen:
-                    self.seen[guid] = {}
-                self.seen[guid]['id'] = id_
-
-        if self.digest and seen:
-            if self.digest_post_process:
-                digest = self.digest_post_process(
-                    feed=self, parsed=parsed, seen=seen, message=digest)
-                if not digest:
-                    return
-            self._send_digest(
-                digest=digest, seen=seen, sender=sender, send=send)
+                    state['message_id'] = str(message["Message-ID"])
+                self.seen[guid] = state
 
         self.etag = parsed.get('etag', None)
         self.modified = parsed.get('modified', None)
@@ -884,7 +918,7 @@ class Feed (object):
         digest = _MIMEMultipart('digest')
         digest['To'] = self.to  # TODO: _Header(), _formataddr((recipient_name, recipient_addr))
         digest['Subject'] = 'digest for {}'.format(self.name)
-        digest['Message-ID'] = '<{}@dev.null.invalid>'.format(_uuid.uuid4())
+        digest['Message-ID'] = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
         digest['User-Agent'] = self.user_agent
         digest['List-ID'] = '<{}.localhost>'.format(self.name)
         digest['List-Post'] = 'NO (posting not allowed on this list)'
@@ -896,7 +930,7 @@ class Feed (object):
         part.add_header('Content-Disposition', 'attachment')
         digest.attach(part)
 
-    def _send_digest(self, digest, seen, sender, send=True):
+    def _send_digest(self, digest, sender):
         """Send a digest message
 
         The date is extracted from the last message in the digest
@@ -907,14 +941,7 @@ class Feed (object):
         last_part = digest.get_payload()[-1]
         last_message = last_part.get_payload()[0]
         digest['Date'] = last_message['Date']
-
-        _LOG.debug('new digest for {}'.format(self))
-        if send:
-            self._send(sender=sender, message=digest)
-        for (guid, id_) in seen:
-            if guid not in self.seen:
-                self.seen[guid] = {}
-            self.seen[guid]['id'] = id_
+        self._send(sender=sender, message=digest)
 
     def _fix_user_agent(self):
         """Fix feed user agent settings broken in 3.11

@@ -10,7 +10,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-Feed: data/allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=62
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/aGbf5Gefkmc/
 X-RSS-TAGS: Uncategorized
@@ -51,7 +51,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-Feed: data/allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=72
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/bT-I0iH2vw8/
 X-RSS-TAGS: Uncategorized
@@ -98,7 +98,7 @@ Message-ID: <...@dev.null.invalid>
 User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
-X-RSS-Feed: allthingsrss/feed.atom
+X-RSS-Feed: data/allthingsrss/feed.atom
 X-RSS-ID: http://www.allthingsrss.com/rss2email/?p=79
 X-RSS-URL: http://feedproxy.google.com/~r/allthingsrss/hJBr/~3/JryfOLe_q6c/
 X-RSS-TAGS: Uncategorized

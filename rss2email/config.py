@@ -129,6 +129,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # because the old entries will not be recorded under their new
         # link-based ids.
         ('trust-link', str(False)),
+        # If 'trust-guid' or 'trust-link' is True, this settings allows to receive
+        # a new email message in reply to the previous one when the post changes.
+        ('reply-changes', str(False)),
         # To most correctly encode emails with international
         # characters, we iterate through the list below and use the
         # first character set that works.

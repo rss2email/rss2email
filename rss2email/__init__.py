@@ -25,7 +25,7 @@ import logging as _logging
 import sys as _sys
 
 
-__version__ = '3.11'
+__version__ = '3.12.0-dev'
 __url__ = 'https://github.com/rss2email/rss2email'
 __author__ = 'The rss2email maintainers'
 __email__ = 'rss2email@tremily.us'
@@ -36,7 +36,7 @@ LOG.addHandler(_logging.StreamHandler())
 LOG.setLevel(_logging.ERROR)
 
 
-min_python_version = (3, 4)
+min_python_version = (3, 5)
 if _sys.version_info < min_python_version:
     raise ImportError(
         "rss2email requires Python {maj}.{min} or newer, but you're using:\n{got}"

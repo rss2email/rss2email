@@ -43,7 +43,11 @@ from . import config as _config
 from . import error as _error
 from . import feed as _feed
 
-import fcntl as _fcntl
+try:
+    import fcntl as _fcntl
+    UNIX = True
+except ImportError:
+    UNIX = False
 
 # Path to the filesystem root, '/' on POSIX.1 (IEEE Std 1003.1-2008).
 ROOT_PATH = _os.path.splitdrive(_sys.executable)[0] or _os.sep
@@ -258,7 +262,8 @@ class Feeds (list):
         except IOError as e:
             raise _error.DataFileError(feeds=self) from e
 
-        _fcntl.lockf(self.datafile, _fcntl.LOCK_SH)
+        if UNIX:
+            _fcntl.lockf(self.datafile, _fcntl.LOCK_SH)
 
         self.clear()
 
@@ -352,10 +357,16 @@ class Feeds (list):
             self._save_feed_states(feeds=self, stream=f)
             f.flush()
             _os.fsync(f.fileno())
-        _os.replace(tmpfile, self.datafile_path)
-        if self.datafile is not None:
+        if UNIX:
+            # Replace the file, then release the lock by closing the old one.
+            _os.replace(tmpfile, self.datafile_path)
             self.datafile.close()  # release the lock
             self.datafile = None
+        else:
+            # On Windows we cannot replace the file while it is opened. And we have no lock.
+            self.datafile.close()
+            self.datafile = None
+            _os.replace(tmpfile, self.datafile_path)
 
     def _save_feed_states(self, feeds, stream):
         _json.dump(
