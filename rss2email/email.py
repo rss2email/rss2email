@@ -349,13 +349,16 @@ def sendmail_send(recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
     message_bytes = _flatten(message)
-    sendmail = config.get(section, 'sendmail')
+    sendmail = [config.get(section, 'sendmail')]
+    sendmail_config = config.get(section, 'sendmail_config')
+    if sendmail_config:
+        sendmail.extend(['-C', sendmail_config])
     sender_name,sender_addr = _parseaddr(config.get(section, 'from'))
     _LOG.debug(
         'sending message to {} via {}'.format(recipient, sendmail))
     try:
         p = _subprocess.Popen(
-            [sendmail, '-F', sender_name, '-f', sender_addr, recipient],
+            sendmail + ['-F', sender_name, '-f', sender_addr, recipient],
             stdin=_subprocess.PIPE, stdout=_subprocess.PIPE,
             stderr=_subprocess.PIPE)
         stdout,stderr = p.communicate(message_bytes)

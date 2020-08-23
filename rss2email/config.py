@@ -208,6 +208,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # True: Use SMTP_SERVER to send mail.
         # Sendmail (or compatible) configuration
         ('sendmail', '/usr/sbin/sendmail'),  # Path to sendmail (or compatible)
+        ('sendmail_config', ''),
         # SMTP configuration
         ('smtp-auth', str(False)),      # set to True to use SMTP AUTH
         ('smtp-username', 'username'),  # username for SMTP AUTH
