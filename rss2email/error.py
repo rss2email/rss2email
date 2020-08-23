@@ -117,15 +117,12 @@ class IMAPAuthenticationError (IMAPConnectionError):
 
 
 class SendmailError (RSS2EmailError):
-    def __init__(self, status=None, stdout=None, stderr=None):
+    def __init__(self, status=None):
         if status:
             message = 'sendmail exited with code {}'.format(status)
         else:
             message = ''
         super(SendmailError, self).__init__(message=message)
-        self.status = status
-        self.stdout = stdout
-        self.stderr = stderr
 
     def log(self):
         super(SendmailError, self).log()
