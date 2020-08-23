@@ -148,8 +148,9 @@ class FeedError (RSS2EmailError):
 class InvalidFeedConfig (FeedError):
     def __init__(self, setting, feed, message=None, **kwargs):
         if not message:
-            message = "invalid feed configuration {}".format(
-                {setting: getattr(feed, setting)})
+            message = (
+                "invalid feed configuration '{setting}' in {feed}".format(
+                    setting=getattr(feed, setting), feed=feed))
         super(InvalidFeedConfig, self).__init__(
             feed=feed, message=message, **kwargs)
         self.setting = setting
