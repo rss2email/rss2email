@@ -183,6 +183,8 @@ def run(*args, **kwargs):
         feeds = _feeds.Feeds(datafile_path=args.data, configfiles=args.config)
         if args.func != _command.new:
             feeds.load()
+        if not args.verbose:
+            _LOG.setLevel(feeds.config['DEFAULT']['verbose'].upper())
         args.func(feeds=feeds, args=args)
     except _error.RSS2EmailError as e:
         e.log()

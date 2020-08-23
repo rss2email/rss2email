@@ -36,7 +36,11 @@ class ExecContext:
         self._tmpdir.cleanup()
 
     def call(self, *args):
-        return subprocess.call([sys.executable, r2e_path, "-c", str(self.cfg_path), "-d", str(self.data_path)] + list(args))
+        return subprocess.run(
+            [sys.executable, r2e_path, "-c", str(self.cfg_path), "-d", str(self.data_path)] + list(args),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True)
 
     def change_config(self, params: Dict[str, Any]) -> None:
         config = ConfigParser()

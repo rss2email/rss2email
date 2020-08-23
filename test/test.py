@@ -364,6 +364,24 @@ class TestFeedConfig(unittest.TestCase):
             for line in lines[feed_cfg_start:]:
                 self.assertFalse("user-agent" in line)
 
+    def test_verbose_setting_debug(self):
+        "Verbose setting set to debug in configuration should be respected"
+        cfg = """[DEFAULT]
+        verbose = debug
+        """
+        with ExecContext(cfg) as ctx:
+            p = ctx.call("run", "--no-send")
+            self.assertIn('[DEBUG]', p.stderr)
+
+    def test_verbose_setting_info(self):
+        "Verbose setting set to info in configuration should be respected"
+        cfg = """[DEFAULT]
+        verbose = info
+        """
+        with ExecContext(cfg) as ctx:
+            p = ctx.call("run", "--no-send")
+            self.assertNotIn('[DEBUG]', p.stderr)
+
 class TestOPML(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestOPML, self).__init__(*args, **kwargs)
@@ -393,15 +411,15 @@ class TestOPML(unittest.TestCase):
 
     def test_opml_export_without_arg(self):
         with ExecContext(self.cfg) as ctx:
-            # This is just a smoke test for now, it'd be better to capture
+            # This is just a smoke test for now, it'd be better to check
             # stdout but this is enough to check for non-regression
             res = ctx.call("opmlexport")
-            self.assertEqual(res, 0)
+            self.assertEqual(res.returncode, 0)
 
             ctx.call("add", self.feed_name, self.feed_url)
 
             res = ctx.call("opmlexport")
-            self.assertEqual(res, 0)
+            self.assertEqual(res.returncode, 0)
 
     def test_opml_import(self):
         with ExecContext(self.cfg) as ctx:

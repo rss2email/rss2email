@@ -3,6 +3,7 @@ UNRELEASED
     * Remove documentation of `smtp-ssl-protocol` as this option was dropped in 2016
     * Stop forging SMTP and sendmail envelope sender (#134)
     * Add sendmail_config option
+    * Fix verbose configuration setting
 
 v3.12.2 (2020-08-31)
     * Fix bug `AttributeError: 'NoneType' object has no attribute 'close'` (#126)
