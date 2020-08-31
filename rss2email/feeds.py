@@ -361,12 +361,14 @@ class Feeds (list):
         if UNIX:
             # Replace the file, then release the lock by closing the old one.
             _os.replace(tmpfile, self.datafile_path)
-            self.datafile.close()  # release the lock
-            self.datafile = None
+            if self.datafile is not None:
+                self.datafile.close()  # release the lock
+                self.datafile = None
         else:
             # On Windows we cannot replace the file while it is opened. And we have no lock.
-            self.datafile.close()
-            self.datafile = None
+            if self.datafile is not None:
+                self.datafile.close()
+                self.datafile = None
             _os.replace(tmpfile, self.datafile_path)
 
     def _save_feed_states(self, feeds, stream):
