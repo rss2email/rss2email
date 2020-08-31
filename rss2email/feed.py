@@ -373,7 +373,7 @@ class Feed (object):
         kwargs = {}
         if proxy:
             kwargs['handlers'] = [_urllib_request.ProxyHandler({'http':proxy})]
-        f = _util.TimeLimitedFunction(timeout, _feedparser.parse)
+        f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
         return f(self.url, self.etag, modified=self.modified, **kwargs)
 
     def _process(self, parsed):
