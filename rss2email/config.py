@@ -85,7 +85,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('use-8bit', str(False)),
         # True: Only use the 'from' address.
         # False: Use the email address specified by the feed, when possible.
-        ('force-from', str(False)),
+        ('force-from', str(True)),
         # True: Use the publisher's email if you can't find the author's.
         # False: Just use the 'from' email instead.
         ('use-publisher-email', str(False)),
