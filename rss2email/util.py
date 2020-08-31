@@ -35,19 +35,20 @@ class TimeLimitedFunction (_threading.Thread):
     >>> def sleeping_return(sleep, x):
     ...     time.sleep(sleep)
     ...     return x
-    >>> TimeLimitedFunction(0.5, sleeping_return)(0.1, 'x')
+    >>> TimeLimitedFunction('sleeping', 0.5, sleeping_return)(0.1, 'x')
     'x'
-    >>> TimeLimitedFunction(0.5, sleeping_return)(10, 'y')
+    >>> TimeLimitedFunction('sleeping', 0.5, sleeping_return)(10, 'y')
     Traceback (most recent call last):
       ...
-    rss2email.error.TimeoutError: 0.5 second timeout exceeded
-    >>> TimeLimitedFunction(0.5, time.sleep)('x')
+    rss2email.error.TimeoutError: 0.5 second timeout exceeded in sleeping
+    >>> TimeLimitedFunction('sleep', 0.5, time.sleep)('x')
     Traceback (most recent call last):
       ...
-    rss2email.error.TimeoutError: error while running time limited function: a float is required
+    rss2email.error.TimeoutError: error while running time limited function in sleep: a float is required
     """
-    def __init__(self, timeout, target, **kwargs):
+    def __init__(self, name, timeout, target, **kwargs):
         super(TimeLimitedFunction, self).__init__(target=target, daemon=True, **kwargs)
+        self.name = name
         self.timeout = timeout
         self.result = None
         self.error = None
