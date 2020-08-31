@@ -1,4 +1,5 @@
 UNRELEASED
+    * Improve log messages
 
 v3.12.1 (2020-08-02)
     * Fix calling opmlexport without arguments
