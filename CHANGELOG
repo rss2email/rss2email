@@ -1,6 +1,7 @@
 UNRELEASED
     * Improve log messages
     * Fix bug `AttributeError: 'NoneType' object has no attribute 'close'` (#126)
+    * Remove documentation of `smtp-ssl-protocol` as this option was dropped in 2016
 
 v3.12.1 (2020-08-02)
     * Fix calling opmlexport without arguments
