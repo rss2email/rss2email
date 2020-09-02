@@ -169,7 +169,12 @@ def run(*args, **kwargs):
     # Immediately lock so only one r2e instance runs at a time
     if UNIX:
         import fcntl as _fcntl
-        lockfile_path = _os.path.join(_os.environ.get("XDG_RUNTIME_DIR", default="/tmp/"), "rss2email.lock")
+        from pathlib import Path as _Path
+        dir = _os.environ.get("XDG_RUNTIME_DIR")
+        if dir is None:
+            dir = _os.path.join("/tmp", "rss2email-{}".format(_os.getuid()))
+            _Path(dir).mkdir(mode=0o700, parents=True, exist_ok=True)
+        lockfile_path = _os.path.join(dir, "rss2email.lock")
         lockfile = open(lockfile_path, "w")
         _fcntl.lockf(lockfile, _fcntl.LOCK_EX)
         _LOG.debug("acquired lock file {}".format(lockfile_path))
