@@ -42,15 +42,14 @@ class RSS2EmailError (Exception):
 
 
 class TimeoutError (RSS2EmailError):
-    def __init__(self, time_limited_function, message=None):
-        if message is None:
-            if time_limited_function.error is not None:
-                message = (
-                    'error while running time limited function in {}: {}'.format(
-                        time_limited_function.name, time_limited_function.error[1]))
-            else:
-                message = '{} second timeout exceeded in {}'.format(
-                    time_limited_function.timeout, time_limited_function.name)
+    def __init__(self, time_limited_function):
+        if time_limited_function.error is not None:
+            message = (
+                'error while running time limited function in {}: {}'.format(
+                    time_limited_function.name, time_limited_function.error[1]))
+        else:
+            message = '{} second timeout exceeded in {}'.format(
+                time_limited_function.timeout, time_limited_function.name)
         super(TimeoutError, self).__init__(message=message)
         self.time_limited_function = time_limited_function
 
