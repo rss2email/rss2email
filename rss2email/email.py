@@ -151,7 +151,7 @@ def get_message(sender, recipient, subject, body, content_type,
             message[key] = _Header(value, encoding)
     return message
 
-def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
+def smtp_send(recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
     server = config.get(section, 'smtp-server')
@@ -190,7 +190,7 @@ def smtp_send(sender, recipient, message, config=None, section='DEFAULT'):
         except Exception as e:
             raise _error.SMTPAuthenticationError(
                 server=server, username=username)
-    smtp.send_message(message, sender, recipient.split(','))
+    smtp.send_message(message, config.get(section, 'from'), recipient.split(','))
     smtp.quit()
 
 def imap_send(message, config=None, section='DEFAULT'):
@@ -345,12 +345,12 @@ def _flatten(message):
     else:
         return bytesio.getvalue()
 
-def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
+def sendmail_send(recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
     message_bytes = _flatten(message)
     sendmail = config.get(section, 'sendmail')
-    sender_name,sender_addr = _parseaddr(sender)
+    sender_name,sender_addr = _parseaddr(config.get(section, 'from'))
     _LOG.debug(
         'sending message to {} via {}'.format(recipient, sendmail))
     try:
@@ -366,11 +366,11 @@ def sendmail_send(sender, recipient, message, config=None, section='DEFAULT'):
     except Exception as e:
         raise _error.SendmailError() from e
 
-def send(sender, recipient, message, config=None, section='DEFAULT'):
+def send(recipient, message, config=None, section='DEFAULT'):
     protocol = config.get(section, 'email-protocol')
     if protocol == 'smtp':
         smtp_send(
-            sender=sender, recipient=recipient, message=message,
+            recipient=recipient, message=message,
             config=config, section=section)
     elif protocol == 'imap':
         imap_send(message=message, config=config, section=section)
@@ -378,5 +378,5 @@ def send(sender, recipient, message, config=None, section='DEFAULT'):
         maildir_send(message=message, config=config, section=section)
     else:
         sendmail_send(
-            sender=sender, recipient=recipient, message=message,
+            recipient=recipient, message=message,
             config=config, section=section)

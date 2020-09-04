@@ -871,7 +871,7 @@ class Feed (object):
         section = self.section
         if section not in self.config:
             section = 'DEFAULT'
-        _email.send(sender=sender, recipient=self.to, message=message,
+        _email.send(recipient=self.to, message=message,
                     config=self.config, section=section)
 
     def run(self, send=True):
