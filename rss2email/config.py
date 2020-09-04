@@ -83,11 +83,11 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # Transfer-Encoding. For local mailing it is safe and
         # convenient to use 8bit.
         ('use-8bit', str(False)),
-        # True: Only use the 'from' address.
+        # True: Only use the 'from' address. Overrides the use-publisher-email setting.
         # False: Use the email address specified by the feed, when possible.
         ('force-from', str(False)),
-        # True: Use the publisher's email if you can't find the author's.
-        # False: Just use the 'from' email instead.
+        # True: Use author's email if found, or use publisher's email if found, or use the 'from' setting.
+        # False: Use author's email if found, or use the 'from' setting.
         ('use-publisher-email', str(False)),
         # If empty, only use the feed email address rather than
         # friendly name plus email address.  Available attributes may
@@ -132,7 +132,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # because the old entries will not be recorded under their new
         # link-based ids.
         ('trust-link', str(False)),
-        # If 'trust-guid' or 'trust-link' is True, this settings allows to receive
+        # If 'trust-guid' or 'trust-link' is True, this setting allows to receive
         # a new email message in reply to the previous one when the post changes.
         ('reply-changes', str(False)),
         # To most correctly encode emails with international
