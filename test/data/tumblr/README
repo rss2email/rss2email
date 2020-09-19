@@ -1,0 +1,23 @@
+feed.rss is a snapshot of
+
+  https://sarahcandersen.com/rss
+
+as of 2021-11-04.
+
+HTTP headers:
+
+    HTTP/2 200
+    server: openresty
+    date: Thu, 04 Nov 2021 21:40:18 GMT
+    content-type: text/xml; charset=utf-8
+    vary: Accept-Encoding
+    vary: Accept-Encoding
+    x-rid: 1f203dae5478bd8a764326c32dd126c7
+    p3p: CP="Tumblr's privacy policy is available here: https://www.tumblr.com/policy/en/privacy"
+    x-xss-protection: 1; mode=block
+    x-content-type-options: nosniff
+    strict-transport-security: max-age=15552001
+    x-tumblr-user: sarahseeandersen
+    x-robots-tag: noindex
+    cache-control: max-age=600
+    x-ua-compatible: IE=Edge,chrome=1
