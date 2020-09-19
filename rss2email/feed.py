@@ -433,7 +433,7 @@ class Feed (object):
         elif isinstance(exc, _SOCKET_ERRORS):
             _LOG.error('{}: {}'.format(exc, self))
             warned = True
-        elif isinstance(exc, _feedparser.zlib.error):
+        elif isinstance(exc, _feedparser.http.zlib.error):
             _LOG.error('broken compression: {}'.format(self))
             warned = True
         elif isinstance(exc, (IOError, AttributeError)):
