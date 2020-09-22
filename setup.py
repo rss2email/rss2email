@@ -65,7 +65,7 @@ setuptools.setup(
     scripts=['r2e'],
     provides=['rss2email'],
     install_requires=[
-        'feedparser>=5.0.1',
+        'feedparser>=6.0.0',
         'html2text>=3.0.1',
         ],
     )
