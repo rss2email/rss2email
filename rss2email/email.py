@@ -325,7 +325,7 @@ def _flatten(message):
     """
     bytesio = _io.BytesIO()
     # TODO: use policies argument instead of policy set in `message`
-    # see https://docs.python.org/3.5/library/email.generator.html?highlight=bytesgenerator#email.generator.BytesGenerator
+    # see https://docs.python.org/3.6/library/email.generator.html?highlight=bytesgenerator#email.generator.BytesGenerator
     generator = _BytesGenerator(bytesio)
     try:
         generator.flatten(message)

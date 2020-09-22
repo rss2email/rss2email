@@ -43,9 +43,9 @@ against multiple python versions.
 You can build each one of them like this:
 
 ```
-nix-build -A pythonVersions.rss2email-python_3_5 nix/release.nix
 nix-build -A pythonVersions.rss2email-python_3_6 nix/release.nix
 nix-build -A pythonVersions.rss2email-python_3_7 nix/release.nix
+nix-build -A pythonVersions.rss2email-python_3_8 nix/release.nix
 …
 ```
 
