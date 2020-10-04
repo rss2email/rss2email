@@ -1,2 +1,2 @@
 feedparser>=6.0.0
-html2text==2020.1.16
+html2text>=2020.1.16
