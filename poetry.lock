@@ -1,0 +1,55 @@
+[[package]]
+category = "main"
+description = "Universal feed parser, handles RSS 0.9x, RSS 1.0, RSS 2.0, CDF, Atom 0.3, and Atom 1.0 feeds"
+name = "feedparser"
+optional = false
+python-versions = ">=3.6"
+version = "6.0.1"
+
+[package.dependencies]
+sgmllib3k = "*"
+
+[[package]]
+category = "main"
+description = "Turn HTML into equivalent Markdown-structured text."
+name = "html2text"
+optional = false
+python-versions = ">=3.5"
+version = "2020.1.16"
+
+[[package]]
+category = "main"
+description = "Py3k port of sgmllib."
+name = "sgmllib3k"
+optional = false
+python-versions = "*"
+version = "1.0.0"
+
+[[package]]
+category = "dev"
+description = "Automatically update copyright blurbs in versioned source."
+name = "update-copyright"
+optional = false
+python-versions = "*"
+version = "0.6.2"
+
+[metadata]
+content-hash = "9886ddfe85969df311e501044b12156082b2a58a9aa1db74b9effa92952bfdc1"
+lock-version = "1.0"
+python-versions = "^3.6"
+
+[metadata.files]
+feedparser = [
+    {file = "feedparser-6.0.1-py2.py3-none-any.whl", hash = "sha256:c9b436334258e718e224c5ef8a78088557e0d0382506360f702de10667ffde32"},
+    {file = "feedparser-6.0.1.tar.gz", hash = "sha256:6ca88edcaa43f428345968df903a87f020843eda5e28d7ea24a612158d61e74c"},
+]
+html2text = [
+    {file = "html2text-2020.1.16-py3-none-any.whl", hash = "sha256:c7c629882da0cf377d66f073329ccf34a12ed2adf0169b9285ae4e63ef54c82b"},
+    {file = "html2text-2020.1.16.tar.gz", hash = "sha256:e296318e16b059ddb97f7a8a1d6a5c1d7af4544049a01e261731d2d5cc277bbb"},
+]
+sgmllib3k = [
+    {file = "sgmllib3k-1.0.0.tar.gz", hash = "sha256:7868fb1c8bfa764c1ac563d3cf369c381d1325d36124933a726f29fcdaa812e9"},
+]
+update-copyright = [
+    {file = "update-copyright-0.6.2.tar.gz", hash = "sha256:ffccb6eb762afcbd7e91d0e1901a3af7fba0d90ede4da21ac45e18d6d66bcb9f"},
+]
