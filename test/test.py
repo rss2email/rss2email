@@ -436,4 +436,7 @@ if __name__ == '__main__':
         sys.argv.remove('--subprocess')
     else:
         ExecContext = RunContext
+        if '-s' in sys.argv:
+            sys.argv.remove('-s')
+            RunContext.suppress = False
     unittest.main()
