@@ -1,3 +1,8 @@
+import collections
+import contextlib
+import importlib
+import io
+import os
 import subprocess
 import sys
 import tempfile
@@ -8,6 +13,41 @@ from typing import Dict, Any
 # We run the r2e in the dir above this script, not the system-wide
 # installed version, which you probably don't mean to test.
 r2e_path = str(Path(__file__).absolute().parent.parent.parent.joinpath("r2e"))
+sys.path.insert(0, os.path.dirname(r2e_path))
+
+import rss2email
+import rss2email.main
+
+
+# Mimic the subprocess.CompletedProcess api.
+ProcessStub = collections.namedtuple(
+    'ProcessStub', ['stdout', 'stderr', 'returncode'])
+
+
+@contextlib.contextmanager
+def capture_output():
+    # Adapted from: https://stackoverflow.com/a/64289688/1938621.
+    output = {}
+    try:
+        # Redirect
+        sys.stdout = io.TextIOWrapper(io.BytesIO(), sys.stdout.encoding)
+        sys.stderr = io.TextIOWrapper(io.BytesIO(), sys.stderr.encoding)
+        assert len(rss2email.LOG.handlers) == 1
+        rss2email.LOG.handlers[0].stream = sys.stderr
+        yield output
+    finally:
+        # Read
+        sys.stdout.seek(0)
+        sys.stderr.seek(0)
+        output['stdout'] = sys.stdout.read()
+        output['stderr'] = sys.stderr.read()
+        sys.stdout.close()
+        sys.stderr.close()
+
+        # Restore
+        sys.stdout = sys.__stdout__
+        sys.stderr = sys.__stderr__
+        rss2email.LOG.handlers[0].stream = sys.stderr
 
 
 class ExecContext:
@@ -49,3 +89,21 @@ class ExecContext:
             config['DEFAULT'][name] = str(value)
         with self.cfg_path.open('w') as file:
             config.write(file)
+
+
+class RunContext(ExecContext):
+    """ Run rss2email calls within the same python process. """
+    def call(self, *args):
+        importlib.reload(rss2email.config)
+        rss2email.LOG.setLevel(
+            rss2email.config.CONFIG['DEFAULT']['verbose'].upper())
+
+        with capture_output() as output:
+            rss2email.main.run(
+                ["-c", str(self.cfg_path), "-d", str(self.data_path)] +
+                list(args))
+
+        return ProcessStub(
+            stdout=output['stdout'],
+            stderr=output['stderr'],
+            returncode=0)

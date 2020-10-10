@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import List
 
 sys.path.insert(0, _os.path.dirname(__file__))
-from util.execcontext import r2e_path, ExecContext
+from util.execcontext import r2e_path, ExecContext, RunContext
 from util.tempmaildir import TemporaryMaildir
 
 # Directory containing test feed data/configs
@@ -432,4 +432,8 @@ class TestOPML(unittest.TestCase):
             self.assertEqual(content["feeds"][0]["name"], self.feed_name)
 
 if __name__ == '__main__':
+    if '--subprocess' in sys.argv:
+        sys.argv.remove('--subprocess')
+    else:
+        ExecContext = RunContext
     unittest.main()
