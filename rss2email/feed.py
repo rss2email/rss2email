@@ -488,7 +488,8 @@ class Feed (object):
             new_state = {} # type: Dict[str, Any]
         else:
             _LOG.debug('already seen {}'.format(guid))
-            del self.seen[guid]['old']
+            if 'old' in old_state:
+                del old_state['old']
             if self.reply_changes:
                 if new_hash != old_state.get('hash'):
                     _LOG.debug('hash changed for {}'.format(guid))
