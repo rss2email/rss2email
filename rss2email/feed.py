@@ -930,9 +930,14 @@ class Feed (object):
         self.modified = parsed.get('modified', None)
 
         if clean:
-            for guid in list(self.seen):
+            old = 3
+            for guid in reversed(list(self.seen)):
                 if 'old' in self.seen[guid]:
-                    del self.seen[guid]
+                    if old > 0:
+                        del self.seen[guid]['old']
+                    else:
+                        del self.seen[guid]
+                    old = old - 1
 
     def _new_digest(self):
         digest = _MIMEMultipart('digest')
