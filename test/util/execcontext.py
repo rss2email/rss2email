@@ -65,7 +65,7 @@ def capture_output(suppress=True):
         rss2email.LOG.handlers[0].stream = sys.stderr
 
 
-class ExecContext:
+class ProcContext:
     """Creates temporary config, data file and lets you call r2e with them
     easily. Cleans up temp files afterwards.
 
@@ -106,9 +106,9 @@ class ExecContext:
             config.write(file)
 
 
-class RunContext(ExecContext):
+class RunContext(ProcContext):
     """ Run rss2email calls within the same python process. """
-    suppress = True
+    suppress = bool(os.getenv('NOCAPTURE') != '1')
 
     def call(self, *args):
         importlib.reload(rss2email.config)
@@ -124,3 +124,6 @@ class RunContext(ExecContext):
             stdout=output['stdout'],
             stderr=output['stderr'],
             returncode=0)
+
+
+ExecContext = ProcContext if os.getenv('SUBPROCESS') == '1' else RunContext

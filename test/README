@@ -1,7 +1,6 @@
 Run tests with::
 
-  $ cd ./test
-  $ python -m unittest
+  $ ./runtests.sh
 
 … from the root of the project.
 
@@ -38,8 +37,15 @@ feed/config pair.  For example, with a directory structure like::
 * ``feed.rss`` after loading ``b.config`` and compare the output with
   ``b.expected``.
 
-Various other tests are also run, run test.py with the `-v`/`--verbose` option to
+Various other tests are also run, run runtests.sh with the `-v`/`--verbose` option to
 see exactly which tests are being run:
 
-  $ cd ./test
-  $ python -m unittest --verbose
+  $ ./runtests.sh --verbose
+
+Because the default test runner captures r2e output in order to make it's assertions, this output will not be printed to the console. This may be detrimental to your debugging efforts and makes it impossible to jump into rss2email code with pdb because stdout is suppressed. To pass output through to the console, use the `-s` flag:
+
+  $ ./runtests.sh -s
+
+By default the test runner will run r2e in the same process which is fast and makes debugging easier. However, in CI we run each r2e instance in a separate process for superior isolation. You can achieve this same quality with the `--subprocess` flag:
+
+  $ ./runtests.sh --subprocess
