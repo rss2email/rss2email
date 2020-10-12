@@ -488,6 +488,7 @@ class Feed (object):
             new_state = {} # type: Dict[str, Any]
         else:
             _LOG.debug('already seen {}'.format(guid))
+            del self.seen[guid]['old']
             if self.reply_changes:
                 if new_hash != old_state.get('hash'):
                     _LOG.debug('hash changed for {}'.format(guid))
@@ -879,7 +880,7 @@ class Feed (object):
         _email.send(recipient=self.to, message=message,
                     config=self.config, section=section)
 
-    def run(self, send=True):
+    def run(self, send=True, clean=False):
         """Fetch and process the feed, mailing entry emails.
 
         >>> feed = Feed(
@@ -895,6 +896,10 @@ class Feed (object):
         if not self.to:
             raise _error.NoToEmailAddress(feed=self)
         parsed = self._fetch()
+
+        if clean:
+            for guid in self.seen:
+                self.seen[guid]['old'] = True
 
         if self.digest:
             digest = self._new_digest()
@@ -923,6 +928,11 @@ class Feed (object):
 
         self.etag = parsed.get('etag', None)
         self.modified = parsed.get('modified', None)
+
+        if clean:
+            for guid in list(self.seen):
+                if 'old' in self.seen[guid]:
+                    del self.seen[guid]
 
     def _new_digest(self):
         digest = _MIMEMultipart('digest')
