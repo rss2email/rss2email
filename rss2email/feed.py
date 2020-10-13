@@ -898,7 +898,7 @@ class Feed (object):
             raise _error.NoToEmailAddress(feed=self)
         parsed = self._fetch()
 
-        if clean:
+        if clean and len(parsed.entries) > 0:
             for guid in self.seen:
                 self.seen[guid]['old'] = True
 
@@ -930,7 +930,7 @@ class Feed (object):
         self.etag = parsed.get('etag', None)
         self.modified = parsed.get('modified', None)
 
-        if clean:
+        if clean and len(parsed.entries) > 0:
             old = 3
             for guid in reversed(list(self.seen)):
                 if 'old' in self.seen[guid]:
