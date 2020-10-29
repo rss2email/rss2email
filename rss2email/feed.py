@@ -896,6 +896,9 @@ class Feed (object):
         """
         if not self.to:
             raise _error.NoToEmailAddress(feed=self)
+        if clean:
+            self.etag = None
+            self.modified = None
         parsed = self._fetch()
 
         if clean and len(parsed.entries) > 0:
