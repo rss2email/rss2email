@@ -23,6 +23,7 @@ from typing import List
 sys.path.insert(0, _os.path.dirname(__file__))
 from util.execcontext import r2e_path, ExecContext
 from util.tempmaildir import TemporaryMaildir
+from util.tempsendmail import TemporarySendmail
 
 # Directory containing test feed data/configs
 test_dir = str(Path(__file__).absolute().parent.joinpath("data"))
@@ -313,6 +314,41 @@ class TestSend(unittest.TestCase):
             self.assertEqual(len([msg for msg in msgs if msg["subject"] == "split massive package into modules"]), 1)
             self.assertEqual(len([msg for msg in msgs if msg["subject"] == "Re: new maintainer and mailing list for rss2email"]), 4)
 
+    def _test_sendmail(self, exitcode, shouldlog, verbose='error'):
+        with TemporarySendmail(exitcode) as sendmail:
+            cfg = """\
+            [DEFAULT]
+            to = example@example.com
+            sendmail = {sendmail}
+            sendmail_config = {sendmail_config}
+            verbose = {verbose}
+            """.format(
+                sendmail=sendmail.bin,
+                sendmail_config=sendmail.config,
+                verbose=verbose)
+
+            with ExecContext(cfg) as ctx:
+                self.httpd_queue.put("next")
+                ctx.call(
+                    "add",
+                    'test',
+                    'http://127.0.0.1:{port}/gmane/feed.rss'.format(
+                        port=self.httpd_port))
+                p = ctx.call("run")
+
+        assertion = self.assertIn if shouldlog else self.assertNotIn
+        assertion("Sendmail failing for reasons...", p.stderr)
+
+    def test_sendmail_success(self):
+        self._test_sendmail(exitcode=0, shouldlog=False)
+
+    def test_sendmail_fail(self):
+        self._test_sendmail(exitcode=1, shouldlog=True)
+
+    def test_sendmail_debug(self):
+        self._test_sendmail(exitcode=0, shouldlog=True, verbose='debug')
+
+
 class TestFeedConfig(unittest.TestCase):
     def test_user_agent_substitutions(self):
         "User agent with substitutions done is not written to config"
@@ -371,7 +407,7 @@ class TestFeedConfig(unittest.TestCase):
         """
         with ExecContext(cfg) as ctx:
             p = ctx.call("run", "--no-send")
-            self.assertIn('[DEBUG]', p.stderr)
+        self.assertIn('[DEBUG]', p.stderr)
 
     def test_verbose_setting_info(self):
         "Verbose setting set to info in configuration should be respected"
@@ -380,7 +416,8 @@ class TestFeedConfig(unittest.TestCase):
         """
         with ExecContext(cfg) as ctx:
             p = ctx.call("run", "--no-send")
-            self.assertNotIn('[DEBUG]', p.stderr)
+        self.assertNotIn('[DEBUG]', p.stderr)
+
 
 class TestOPML(unittest.TestCase):
     def __init__(self, *args, **kwargs):
