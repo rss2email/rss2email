@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "rss2email"
+version = "3.12.2"
+description = "Forward RSS feeds to your email address"
+authors = ["Your Name <you@example.com>"]
+license = "GPL-2.0-only"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+feedparser = ">=6.0.0"
+html2text = ">=2020.1.16"
+
+[tool.poetry.dev-dependencies]
+update-copyright = ">=0.6.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
