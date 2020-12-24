@@ -152,6 +152,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # True: Send text/html messages when possible.
         # False: Convert HTML to plain text.
         ('html-mail', str(False)),
+        ('multipart-html', str(False)),
         # Optional CSS styling
         ('use-css', str(False)),
         ('css', (
