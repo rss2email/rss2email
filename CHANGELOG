@@ -7,6 +7,7 @@ UNRELEASED
     * Upgraded to feedparser v6.0 (https://github.com/kurtmckee/feedparser/)
     * Drop support for Python 3.5
     * Log sendmail output
+    * Support multipart/alternative emails with both HTML and plain text parts with option `multipart-html`
 
 v3.12.2 (2020-08-31)
     * Fix bug `AttributeError: 'NoneType' object has no attribute 'close'` (#126)
