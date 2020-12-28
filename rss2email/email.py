@@ -101,6 +101,10 @@ def message_add_plain_multipart(guid, message, html):
         return m
     if message.is_multipart():
         # we could support multipart messages, but let's postpone it
+        # in fact, we don't expect any multipart message to arrive here
+        _LOG.warning("Couldn't add a text/plain part to this multipart message. "
+                "If you see this, it's probably a bug in rss2email."
+                )
         return message
     return message
 
