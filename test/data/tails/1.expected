@@ -1,0 +1,957 @@
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.8 is out
+Date: Wed, 08 Jul 2020 00:50:45 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.8/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.8/index.en.html
+X-RSS-TAGS: announce
+
+VGhpcyByZWxlYXNlIGZpeGVzIFttYW55IHNlY3VyaXR5CnZ1bG5lcmFiaWxpdGllc10oaHR0cHM6
+Ly90YWlscy5ib3VtLm9yZy9zZWN1cml0eS9OdW1lcm91c19zZWN1cml0eV9ob2xlc19pbl80Ljcv
+KS4KWW91IHNob3VsZCB1cGdyYWRlIGFzIHNvb24gYXMgcG9zc2libGUuCgojIE5ldyBmZWF0dXJl
+cwoKICAqIFdlIGRpc2FibGVkIHRoZSBfVW5zYWZlIEJyb3dzZXJfIGJ5IGRlZmF1bHQgYW5kIGNs
+YXJpZmllZCB0aGF0IFt0aGUgX1Vuc2FmZSBCcm93c2VyXyBjYW4gYmUgdXNlZCB0byBkZWFub255
+bWl6ZSB5b3VdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvZG9jL2Fub255bW91c19pbnRlcm5ldC91
+bnNhZmVfYnJvd3Nlci9pbmRleC5lbi5odG1sI3NlY3VyaXR5KS4KCkFuIGF0dGFja2VyIGNvdWxk
+IGV4cGxvaXQgYSBzZWN1cml0eSB2dWxuZXJhYmlsaXR5IGluIGFub3RoZXIgYXBwbGljYXRpb24g
+aW4KVGFpbHMgdG8gc3RhcnQgYW4gaW52aXNpYmxlIF9VbnNhZmUgQnJvd3Nlcl8gYW5kIHJldmVh
+bCB5b3VyIElQIGFkZHJlc3MsIGV2ZW4KaWYgeW91IGFyZSBub3QgdXNpbmcgdGhlIF9VbnNhZmUg
+QnJvd3Nlcl8uCgpGb3IgZXhhbXBsZSwgYW4gYXR0YWNrZXIgY291bGQgZXhwbG9pdCBhIHNlY3Vy
+aXR5IHZ1bG5lcmFiaWxpdHkgaW4KX1RodW5kZXJiaXJkXyBieSBzZW5kaW5nIHlvdSBhIHBoaXNo
+aW5nIGVtYWlsIHRoYXQgY291bGQgc3RhcnQgYW4gaW52aXNpYmxlCl9VbnNhZmUgQnJvd3Nlcl8g
+YW5kIHJldmVhbCB0aGVtIHlvdXIgSVAgYWRkcmVzcy4KClN1Y2ggYW4gYXR0YWNrIGlzIHZlcnkg
+dW5saWtlbHkgYnV0IGNvdWxkIGJlIHBlcmZvcm1lZCBieSBhIHN0cm9uZyBhdHRhY2tlciwKc3Vj
+aCBhcyBhIGdvdmVybm1lbnQgb3IgYSBoYWNraW5nIGZpcm0uCgpUaGlzIGlzIHdoeSB3ZSByZWNv
+bW1lbmQgdGhhdCB5b3U6CgogICAgKiBPbmx5IGVuYWJsZSB0aGUgX1Vuc2FmZSBCcm93c2VyXyBp
+ZiB5b3UgbmVlZCB0byBsb2cgaW4gdG8gYSBjYXB0aXZlIHBvcnRhbC4KICAgICogQWx3YXlzIHVw
+Z3JhZGUgdG8gdGhlIGxhdGVzdCB2ZXJzaW9uIG9mIFRhaWxzIHRvIGZpeCBrbm93biB2dWxuZXJh
+YmlsaXRpZXMgYXMgc29vbiBhcyBwb3NzaWJsZS4KICAqIFdlIGFkZGVkIGEgbmV3IGZlYXR1cmUg
+b2YgdGhlIFBlcnNpc3RlbnQgU3RvcmFnZSB0byBzYXZlIHRoZSBzZXR0aW5ncyBmcm9tIHRoZSBX
+ZWxjb21lIFNjcmVlbi4KClRoaXMgZmVhdHVyZSBpcyBiZXRhIGFuZCBvbmx5IHRoZSBhZGRpdGlv
+bmFsIHNldHRpbmcgdG8gZW5hYmxlIHRoZSBfVW5zYWZlCkJyb3dzZXJfIGlzIG1hZGUgcGVyc2lz
+dGVudC4gVGhlIG90aGVyIHNldHRpbmdzIChsYW5ndWFnZSwga2V5Ym9hcmQsIGFuZCBvdGhlcgph
+ZGRpdGlvbmFsIHNldHRpbmdzKSB3aWxsIGJlIG1hZGUgcGVyc2lzdGVudCBpbiBUYWlscyA0Ljkg
+KEp1bHkgMjgpLgoKIVtuZXcgV2VsY29tZSBTY3JlZW4gZmVhdHVyZSBpbiB0aGUgUGVyc2lzdGVu
+dCBTdG9yYWdlCnNldHRpbmdzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL25ld3MvdmVyc2lvbl80
+Ljgvd2VsY29tZV9zY3JlZW4ucG5nKQoKIyBDaGFuZ2VzIGFuZCB1cGRhdGVzCgogICogVXBkYXRl
+IF9Ub3IgQnJvd3Nlcl8gdG8gWzkuNS4xXShodHRwczovL2Jsb2cudG9ycHJvamVjdC5vcmcvbmV3
+LXJlbGVhc2UtdG9yLWJyb3dzZXItOTUxKS4KCiAgKiBVcGRhdGUgX1RodW5kZXJiaXJkXyB0byBb
+NjguOS4wXShodHRwczovL3d3dy50aHVuZGVyYmlyZC5uZXQvZW4tVVMvdGh1bmRlcmJpcmQvNjgu
+OS4wL3JlbGVhc2Vub3Rlcy8pLgoKICAqIFVwZGF0ZSBfTGludXhfIHRvIDUuNi4wLiBUaGlzIHNo
+b3VsZCBpbXByb3ZlIHRoZSBzdXBwb3J0IGZvciBuZXdlciBoYXJkd2FyZSAoZ3JhcGhpY3MsIFdp
+LUZpLCBldGMuKS4KCiMgRml4ZWQgcHJvYmxlbXMKCiAgKiBGaXggdGhlIF9GaW5kIGluIHBhZ2Vf
+IGZlYXR1cmUgb2YgX1RodW5kZXJiaXJkXy4gKFsjMTczMjhdKGh0dHBzOi8vZ2l0bGFiLnRhaWxz
+LmJvdW0ub3JnL3RhaWxzL3RhaWxzLy0vaXNzdWVzLzE3MzI4KSkKCiAgKiBGaXggc2h1dHRpbmcg
+ZG93biBhdXRvbWF0aWNhbGx5IHRoZSBsYXB0b3Agd2hlbiByZXN1bWluZyBmcm9tIHN1c3BlbmQg
+d2l0aCB0aGUgVGFpbHMgVVNCIHN0aWNrIHJlbW92ZWQuIChbIzE2Nzg3XShodHRwczovL2dpdGxh
+Yi50YWlscy5ib3VtLm9yZy90YWlscy90YWlscy8tL2lzc3Vlcy8xNjc4NykpCgogICogTm90aWZ5
+IGFsd2F5cyB3aGVuIFtNQUMgYWRkcmVzcyBzcG9vZmluZ10oaHR0cHM6Ly90YWlscy5ib3VtLm9y
+Zy9kb2MvZmlyc3Rfc3RlcHMvd2VsY29tZV9zY3JlZW4vbWFjX3Nwb29maW5nL2luZGV4LmVuLmh0
+bWwpIGZhaWxzIGFuZCB0aGUgbmV0d29yayBpbnRlcmZhY2UgaXMgZGlzYWJsZWQuIChbIzE3Nzc5
+XShodHRwczovL2dpdGxhYi50YWlscy5ib3VtLm9yZy90YWlscy90YWlscy8tL2lzc3Vlcy8xNzc3
+OSkpCgogICogRml4IHRoZSBpbXBvcnQgb2YgT3BlblBHUCBwdWJsaWMga2V5cyBpbiBiaW5hcnkg
+Zm9ybWF0IChub24gYXJtb3JlZCkgZnJvbSB0aGUgX0ZpbGVzXyBicm93c2VyLgoKRm9yIG1vcmUg
+ZGV0YWlscywgcmVhZCBvdXIKW2NoYW5nZWxvZ10oaHR0cHM6Ly9naXRsYWIudGFpbHMuYm91bS5v
+cmcvdGFpbHMvdGFpbHMvLS9ibG9iL21hc3Rlci9kZWJpYW4vY2hhbmdlbG9nKS4KCiMgS25vd24g
+aXNzdWVzCgogICogT25seSB1c2UgdGhlIGZvbGxvd2luZyBjaGFyYWN0ZXJzIGluIHRoZSBbYWRt
+aW5pc3RyYXRpb24gcGFzc3dvcmRdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvZG9jL2ZpcnN0X3N0
+ZXBzL3dlbGNvbWVfc2NyZWVuL2FkbWluaXN0cmF0aW9uX3Bhc3N3b3JkL2luZGV4LmVuLmh0bWwp
+OgoKICAgICogYS16CiAgICAqIEEtWgogICAgKiAxLTkKICAgICogX0AlKz06LC4vLQoKSWYgeW91
+IHVzZSBzcGFjZXMgb3Igb3RoZXIgYWNjZW50dWF0ZWQgY2hhcmFjdGVycywgbGlrZSBhZWnDuMWv
+LCB5b3VyIHdpbGwgbm90CmJlIGFibGUgdG8gdHlwZSB5b3VyIGFkbWluaXN0cmF0aW9uIHBhc3N3
+b3JkIGFnYWluIGluIHlvdXIgVGFpbHMgc2Vzc2lvbiwKdW5sZXNzIHlvdSB0eXBlIHNpbmdsZSBx
+dW90ZXMgJyBhcm91bmQgaXQuCgpGb3IgZXhhbXBsZSwgaWYgeW91IHNldCB0aGUgYWRtaW5pc3Ry
+YXRpb24gcGFzc3dvcmQ6IG5lZSBlbnRyZXBvdCB1YmVyIHNlw7FvciwKeW91IHdvdWxkIGhhdmUg
+dG8gdHlwZSAnbmVlIGVudHJlcG90IHViZXIgc2XDsW9yJy4KKFsjMTc3OTJdKGh0dHBzOi8vZ2l0
+bGFiLnRhaWxzLmJvdW0ub3JnL3RhaWxzL3RhaWxzLy0vaXNzdWVzLzE3NzkyKSkKCiAgKiBUaGUg
+a2V5Ym9hcmQgbGF5b3V0IGlzIG5vdCBhcHBsaWVkIHRvIHRoZSBXZWxjb21lIFNjcmVlbiB3aGVu
+IGF1dG9tYXRpY2FsbHkgc2VsZWN0ZWQgYWZ0ZXIgeW91IGNoYW5nZWQgdGhlIGxhbmd1YWdlLiAo
+WyMxNzc5NF0oaHR0cHM6Ly9naXRsYWIudGFpbHMuYm91bS5vcmcvdGFpbHMvdGFpbHMvLS9pc3N1
+ZXMvMTc3OTQpKQoKRm9yIGV4YW1wbGUsIHNldHRpbmcgdGhlIGxhbmd1YWdlIHRvIEZyZW5jaCBz
+ZWVtcyB0byBjaGFuZ2UgdGhlIGtleWJvYXJkCmxheW91dCB0byBGcmVuY2ggKEFaRVJUWSkgYnV0
+IHRoaXMgY2hhbmdlIGlzIG5vdCBhcHBsaWVkIHRvIHRoZSBXZWxjb21lClNjcmVlbi4gVGhpcyBj
+YW4gcHJldmVudCB5b3UgZnJvbSB0eXBpbmcgdGhlIHBhc3NwaHJhc2Ugb2YgeW91ciBQZXJzaXN0
+ZW50ClN0b3JhZ2UuCgpUbyBjaGFuZ2UgdGhlIGtleWJvYXJkIGxheW91dCBvZiB0aGUgV2VsY29t
+ZSBTY3JlZW4sIHNlbGVjdCB5b3VyIGtleWJvYXJkCmxheW91dCBtYW51YWxseSBmcm9tIHRoZSAq
+KktleWJvYXJkIExheW91dCoqIGRyb3AtZG93biBtZW51LiBEbyBzbyBldmVuIGlmCnRoZXkga2V5
+Ym9hcmQgbGF5b3V0IGlzIGF1dG9tYXRpY2FsbHkgc2VsZWN0ZWQgYWZ0ZXIgeW91IGNoYW5nZWQg
+dGhlIGxhbmd1YWdlLgoKICAqIFRhaWxzIGZhaWxzIHRvIHN0YXJ0IHdpdGggdGhlIHRvcmFtIGJv
+b3Qgb3B0aW9uLiAoWyMxNzgwMF0oaHR0cHM6Ly9naXRsYWIudGFpbHMuYm91bS5vcmcvdGFpbHMv
+dGFpbHMvLS9pc3N1ZXMvMTc4MDApKQoKVG8gc3RhcnQgd2l0aCB0aGUgdG9yYW0gYm9vdCBvcHRp
+b24sIHNwZWNpZnkgYm90aCB0aGUgdG9yYW0gYW5kIHRoZQpmcm9taXNvPS9kZXYvdHJ1ZSBbYm9v
+dApvcHRpb25zXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2RvYy9hZHZhbmNlZF90b3BpY3MvYm9v
+dF9vcHRpb25zL2luZGV4LmVuLmh0bWwpLgoKU2VlIHRoZSBsaXN0IG9mIFtsb25nLXN0YW5kaW5n
+Cmlzc3Vlc10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9zdXBwb3J0L2tub3duX2lzc3Vlcy9pbmRl
+eC5lbi5odG1sKS4KCiMgR2V0IFRhaWxzIDQuOAoKIyMgVG8gdXBncmFkZSB5b3VyIFRhaWxzIFVT
+QiBzdGljayBhbmQga2VlcCB5b3VyIHBlcnNpc3RlbnQgc3RvcmFnZQoKICAqIEF1dG9tYXRpYyB1
+cGdyYWRlcyBhcmUgYXZhaWxhYmxlIGZyb20gVGFpbHMgNC4yIG9yIGxhdGVyIHRvIDQuOC4KCiAg
+KiBJZiB5b3UgY2Fubm90IGRvIGFuIGF1dG9tYXRpYyB1cGdyYWRlIG9yIGlmIFRhaWxzIGZhaWxz
+IHRvIHN0YXJ0IGFmdGVyIGFuIGF1dG9tYXRpYyB1cGdyYWRlLCBwbGVhc2UgdHJ5IHRvIGRvIGEg
+W21hbnVhbCB1cGdyYWRlXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2RvYy91cGdyYWRlL2luZGV4
+LmVuLmh0bWwjbWFudWFsKS4KCiMjIFRvIGluc3RhbGwgVGFpbHMgb24gYSBuZXcgVVNCIHN0aWNr
+CgpGb2xsb3cgb3VyIGluc3RhbGxhdGlvbiBpbnN0cnVjdGlvbnM6CgogICogW0luc3RhbGwgZnJv
+bSBXaW5kb3dzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2luc3RhbGwvd2luL2luZGV4LmVuLmh0
+bWwpCiAgKiBbSW5zdGFsbCBmcm9tIG1hY09TXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2luc3Rh
+bGwvbWFjL2luZGV4LmVuLmh0bWwpCiAgKiBbSW5zdGFsbCBmcm9tIExpbnV4XShodHRwczovL3Rh
+aWxzLmJvdW0ub3JnL2luc3RhbGwvbGludXgvaW5kZXguZW4uaHRtbCkKCkFsbCB0aGUgZGF0YSBv
+biB0aGlzIFVTQiBzdGljayB3aWxsIGJlIGxvc3QgaWYgeW91IGluc3RhbGwgaW5zdGVhZCBvZgp1
+cGdyYWRpbmcuCgojIyBUbyBkb3dubG9hZCBvbmx5CgpJZiB5b3UgZG9uJ3QgbmVlZCBpbnN0YWxs
+YXRpb24gb3IgdXBncmFkZSBpbnN0cnVjdGlvbnMsIHlvdSBjYW4gZG93bmxvYWQgVGFpbHMKNC44
+IGRpcmVjdGx5OgoKICAqIFtGb3IgVVNCIHN0aWNrcyAoVVNCIGltYWdlKV0oaHR0cHM6Ly90YWls
+cy5ib3VtLm9yZy9pbnN0YWxsL2Rvd25sb2FkL2luZGV4LmVuLmh0bWwpCiAgKiBbRm9yIERWRHMg
+YW5kIHZpcnR1YWwgbWFjaGluZXMgKElTTyBpbWFnZSldKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcv
+aW5zdGFsbC9kb3dubG9hZC1pc28vaW5kZXguZW4uaHRtbCkKCiMgV2hhdCdzIGNvbWluZyB1cD8K
+ClRhaWxzIDQuOSBpcyBbc2NoZWR1bGVkXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2NvbnRyaWJ1
+dGUvY2FsZW5kYXIvKSBmb3IgSnVseQoyOC4KCkhhdmUgYSBsb29rIGF0IG91ciBbcm9hZG1hcF0o
+aHR0cHM6Ly90YWlscy5ib3VtLm9yZy9jb250cmlidXRlL3JvYWRtYXApIHRvIHNlZQp3aGVyZSB3
+ZSBhcmUgaGVhZGluZyB0by4KCldlIG5lZWQgeW91ciBoZWxwIGFuZCB0aGVyZSBhcmUgbWFueSB3
+YXlzIHRvIFtjb250cmlidXRlIHRvClRhaWxzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2NvbnRy
+aWJ1dGUvaW5kZXguZW4uaHRtbCkKKFtkb25hdGluZ10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9k
+b25hdGUvP3I9NC44KSBpcyBvbmx5IG9uZSBvZiB0aGVtKS4gQ29tZQpbdGFsayB0byB1c10oaHR0
+cHM6Ly90YWlscy5ib3VtLm9yZy9hYm91dC9jb250YWN0L2luZGV4LmVuLmh0bWwjdGFpbHMtZGV2
+KSEKCgoKVVJMOiBodHRwczovL3RhaWxzLmJvdW0ub3JnL25ld3MvdmVyc2lvbl80LjgvaW5kZXgu
+ZW4uaHRtbA==
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.9 is out
+Date: Wed, 29 Jul 2020 07:12:41 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.9/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.9/index.en.html
+X-RSS-TAGS: announce
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.8/).
+You should upgrade as soon as possible.
+
+# Changes and updates
+
+  * Update _Tor Browser_ to [9.5.3](https://blog.torproject.org/new-release-tor-browser-953).
+
+  * Update _Thunderbird_ to [68.10.0](https://www.thunderbird.net/en-US/thunderbird/68.10.0/releasenotes/).
+
+  * Update _Linux_ to 5.7.6. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+# Fixed problems
+
+  * Allow characters others than A-Z, a-z, 1-9, and _@%+=:,./- in the [administration password](https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html). ([#17792](https://gitlab.tails.boum.org/tails/tails/-/issues/17792))
+
+  * Apply the keyboard layout that is automatically selected when you change the language in the Welcome Screen. ([#17794](https://gitlab.tails.boum.org/tails/tails/-/issues/17794))
+
+  * Fix starting Tails with the toram boot option. ([#17800](https://gitlab.tails.boum.org/tails/tails/-/issues/17800))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+  * USB Wi-Fi adapters with Atheros AR9271 hardware do not work with Linux 5.7.6. ([#17834](https://gitlab.tails.boum.org/tails/tails/-/issues/17834))
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.9
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.9.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.9 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.10 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+August 25.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.9) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+
+
+URL: https://tails.boum.org/news/version_4.9/index.en.html
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.10 is out
+Date: Tue, 25 Aug 2020 13:15:06 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.10/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.10/index.en.html
+X-RSS-TAGS: announce
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.9/).
+You should upgrade as soon as possible.
+
+# Changes and updates
+
+  * Update _Tor Browser_ to [9.5.4](https://blog.torproject.org/new-release-tor-browser-954).
+
+  * Update _Tor_ to [0.4.3.6](https://gitweb.torproject.org/tor.git/tree/ChangeLog).
+
+  * Update _Electrum_ from 3.3.8 to [4.0.2](https://github.com/spesmilo/electrum/blob/master/RELEASE-NOTES).
+
+  * Update _Linux_ to 5.7.10. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+  * Hide the welcome message when starting Thunderbird.
+
+# Fixed problems
+
+  * Fix support for USB Wi-Fi adapters with Atheros AR9271 hardware. ([#17834](https://gitlab.tails.boum.org/tails/tails/-/issues/17834))
+
+  * Fix USB tethering from iPhone. ([#17820](https://gitlab.tails.boum.org/tails/tails/-/issues/17820))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+None specific to this release.
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.10
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.10.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.10 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.11 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+September 22.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.10) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+
+
+URL: https://tails.boum.org/news/version_4.10/index.en.html
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Call for testing: 4.11~rc1
+Date: Tue, 08 Sep 2020 10:49:14 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/test_4.11-rc1/
+X-RSS-URL: https://tails.boum.org/news/test_4.11-rc1/
+X-RSS-TAGS: announce
+
+VGFpbHMgNC4xMSwgc2NoZWR1bGVkIGZvciBTZXB0ZW1iZXIgMjIsIHdpbGwgYmUgdGhlIGZpcnN0
+IHZlcnNpb24gb2YgVGFpbHMgdG8KaW5jbHVkZSBUb3IgQnJvd3NlciAxMC4wIGFuZCB0byBzdXBw
+b3J0IHBlcnNpc3RlbnQgc2V0dGluZ3Mgb24gdGhlIFdlbGNvbWUKU2NyZWVuIQoKWW91IGNhbiBo
+ZWxwIFRhaWxzIGJ5IHRlc3RpbmcgdGhlIHJlbGVhc2UgY2FuZGlkYXRlIGZvciBUYWlscyA0LjEx
+IG5vdy4KCiMgUGVyc2lzdGVudCBzZXR0aW5ncyBvbiB0aGUgV2VsY29tZSBTY3JlZW4KCklmIHlv
+dSBlbmFibGUgdGhpcyBwZXJzaXN0ZW5jZSBmZWF0dXJlIHlvdXIgV2VsY29tZSBTY3JlZW4gc2V0
+dGluZ3MsIGxpa2UKbGFuZ3VhZ2Ugc2VsZWN0aW9uIGFuZCBhbnkgYWRtaW5pc3RyYXRpb24gcGFz
+c3dvcmQsIHdpbGwgYmUgYXV0b21hdGljYWxseQpzYXZlZCBiZXR3ZWVuIHNlc3Npb25zLiBXaGls
+ZSBhdCB0aGUgV2VsY29tZSBTY3JlZW4gdGhlIHNldHRpbmdzIGFyZSByZXN0b3JlZAphcyBzb29u
+IGFzIHlvdSB1bmxvY2sgeW91ciBwZXJzaXN0ZW50IGVuY3J5cHRlZCB2b2x1bWUuIFBsZWFzZSBs
+ZXQgdXMga25vdyBpZgp0aGVyZSBhcmUgYW55IHByb2JsZW1zIQoKIyBUb3IgQnJvd3NlciAxMC4w
+IChhbHBoYSA2KQoKVGhpcyBuZXcgbWFqb3IgcmVsZWFzZSBvZiBUb3IgQnJvd3NlciBpcyBiYXNl
+ZCBvbiBhIGJyYW5kIG5ldyBGaXJlZm94IEVTUgpzZXJpZXMsIHZlcnNpb24gNzgsIHdoaWNoIGNv
+bnRhaW5zIHRvbnMgb2YgY2hhbmdlcywgbW9zdCB1bmRlciB0aGUgaG9vZC4KVGhlcmUncyBhIHJp
+c2sgdGhhdCBzb21lIG9mIHRoZXNlIGNoYW5nZXMgYnJlYWsgc29tZSBleHBlY3RlZCBmZWF0dXJl
+IGluClRhaWxzLCBzbyBwbGVhc2UgcGF5IGNsb3NlIGF0dGVudGlvbiBhbmQgcmVwb3J0IGFueSBz
+dWNoIGlzc3VlcyB0byB1cyEKCiMgQ2hhbmdlbG9nCgpGb3IgbW9yZSBkZXRhaWxzIGFib3V0IHdo
+YXQgaGFzIGNoYW5nZWQgaW4gVGFpbHMgNC4xMX5yYzEsIHJlYWQgb3VyCltjaGFuZ2Vsb2ddKGh0
+dHBzOi8vZ2l0bGFiLnRhaWxzLmJvdW0ub3JnL3RhaWxzL3RhaWxzLy0vcmF3LzQuMTEtcmMxL2Rl
+Ymlhbi9jaGFuZ2Vsb2cpLgoKIyBLbm93biBpc3N1ZXMKCiAgKiBJbiBUb3IgQnJvd3Nlciwgb3Bl
+bmluZyBgZmlsZTovL2AgVVJMcyBoYXMgYSBwcm9ibGVtOiBvcGVuaW5nIGFueSBzdWNoIGxvY2Fs
+IGZpbGUgd2lsbCByZXN1bHQgaW4gYW4gaW5maW5pdGUgcmVmcmVzaCBsb29wIGxpa2UgaWYgeW91
+IGtlcHQgdGhlIEY1IGtleSBwcmVzc2VkLCBzbyBpdCB3aWxsIGxpa2VseSBub3QgZGlzcGxheSBh
+bnl0aGluZy4gQXQgdGhlIG1vbWVudCB0aGlzIG1ha2VzIGl0IGltcG9zc2libGUgdG8gcmVhZCB0
+aGUgb2ZmbGluZSBkb2N1bWVudGF0aW9uIGluc2lkZSBUYWlscywgZm9yIGluc3RhbmNlLiBUaGlz
+IHdpbGwgYmUgZml4ZWQgaW4gVGFpbHMgNC4xMS4KClNlZSB0aGUgbGlzdCBvZiBbbG9uZy1zdGFu
+ZGluZwppc3N1ZXNdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvc3VwcG9ydC9rbm93bl9pc3N1ZXMv
+aW5kZXguZW4uaHRtbCkuCgojIEhvdyB0byB0ZXN0IFRhaWxzIDQuMTF+cmMxPwoKS2VlcCBpbiBt
+aW5kIHRoYXQgdGhpcyBpcyBhIHRlc3QgaW1hZ2UuIFdlIHRlc3RlZCB0aGF0IGl0IGlzIG5vdCBi
+cm9rZW4gaW4Kb2J2aW91cyB3YXlzLCBidXQgaXQgbWlnaHQgc3RpbGwgY29udGFpbiB1bmRpc2Nv
+dmVyZWQgaXNzdWVzLgoKUGxlYXNlLCByZXBvcnQgYW55IG5ldyBwcm9ibGVtIHRvIFt0YWlscy10
+ZXN0ZXJzQGJvdW0ub3JnXShtYWlsdG86dGFpbHMtCnRlc3RlcnNAYm91bS5vcmcpIChwdWJsaWMg
+bWFpbGluZyBsaXN0KS4KCiMgR2V0IFRhaWxzIDQuMTF+cmMxCgojIyBUbyB1cGdyYWRlIHlvdXIg
+VGFpbHMgVVNCIHN0aWNrIGFuZCBrZWVwIHlvdXIgcGVyc2lzdGVudCBzdG9yYWdlCgogICogQXV0
+b21hdGljIHVwZ3JhZGVzIGFyZSBhdmFpbGFibGUgZnJvbSA0LjIgb3IgbGF0ZXIgdG8gNC4xMX5y
+YzEuCgpUbyBkbyBhbiBhdXRvbWF0aWMgdXBncmFkZSB0byBUYWlscyA0LjExfnJjMToKCiAgICAx
+LiBTdGFydCBUYWlscyA0LjIgb3IgbGF0ZXIgYW5kIFtzZXQgYW4gYWRtaW5pc3RyYXRpb24gcGFz
+c3dvcmRdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvZG9jL2ZpcnN0X3N0ZXBzL3dlbGNvbWVfc2Ny
+ZWVuL2FkbWluaXN0cmF0aW9uX3Bhc3N3b3JkL2luZGV4LmVuLmh0bWwpLgoKICAgIDIuIFJ1biB0
+aGlzIGNvbW1hbmQgaW4gYSBfVGVybWluYWxfIDoKICAgICAgICAKICAgICAgICAgICAgICAgIGVj
+aG8gVEFJTFNfQ0hBTk5FTD1cImFscGhhXCIgfCBzdWRvIHRlZSAtYSAvZXRjL29zLXJlbGVhc2Ug
+JiYgXAogICAgICAgICAgICAgdGFpbHMtdXBncmFkZS1mcm9udGVuZC13cmFwcGVyCiAgICAgICAg
+CgpFbnRlciB0aGUgYWRtaW5pc3RyYXRpb24gcGFzc3dvcmQgd2hlbiBhc2tlZCBmb3IgdGhlICJw
+YXNzd29yZCBmb3IgYW1uZXNpYSIuCgogICAgMy4gQWZ0ZXIgdGhlIHVwZ3JhZGUgaXMgYXBwbGll
+ZCwgcmVzdGFydCBUYWlscyBhbmQgY2hvb3NlICoqQXBwbGljYXRpb25zICDilrggVGFpbHMg4pa4
+IEFib3V0IFRhaWxzKiogdG8gdmVyaWZ5IHRoYXQgeW91IGFyZSBydW5uaW5nIFRhaWxzIDQuMTF+
+cmMxLgoKICAqIElmIHlvdSBjYW5ub3QgZG8gYW4gYXV0b21hdGljIHVwZ3JhZGUgb3IgaWYgVGFp
+bHMgZmFpbHMgdG8gc3RhcnQgYWZ0ZXIgYW4gYXV0b21hdGljIHVwZ3JhZGUsIHBsZWFzZSB0cnkg
+dG8gZG8gYSBbbWFudWFsIHVwZ3JhZGVdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvZG9jL3VwZ3Jh
+ZGUvaW5kZXguZW4uaHRtbCNtYW51YWwpLgoKIyMgVG8gZG93bmxvYWQgNC4xMX5yYzEKCiMjIyBE
+aXJlY3QgZG93bmxvYWQKCiAgKiBbRm9yIFVTQiBzdGlja3MgKFVTQiBpbWFnZSldKGh0dHA6Ly9k
+bC5hbW5lc2lhLmJvdW0ub3JnL3RhaWxzL2FscGhhL3RhaWxzLWFtZDY0LTQuMTF+cmMxL3RhaWxz
+LWFtZDY0LTQuMTF+cmMxLmltZykgKFs/XShodHRwczovL3RhaWxzLmJvdW0ub3JnL2lraXdpa2ku
+Y2dpP2RvPWNyZWF0ZSZmcm9tPW5ld3MlMkZ0ZXN0XzQuMTEtcmMxJnBhZ2U9dG9ycmVudHMlMkZm
+aWxlcyUyRnRhaWxzLWFtZDY0LTQuMTF+cmMxLmltZy5zaWcpT3BlblBHUCBzaWduYXR1cmUpCgog
+ICogW0ZvciBEVkRzIGFuZCB2aXJ0dWFsIG1hY2hpbmVzIChJU08gaW1hZ2UpXShodHRwOi8vZGwu
+YW1uZXNpYS5ib3VtLm9yZy90YWlscy9hbHBoYS90YWlscy1hbWQ2NC00LjExfnJjMS90YWlscy1h
+bWQ2NC00LjExfnJjMS5pc28pIChbP10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9pa2l3aWtpLmNn
+aT9kbz1jcmVhdGUmZnJvbT1uZXdzJTJGdGVzdF80LjExLXJjMSZwYWdlPXRvcnJlbnRzJTJGZmls
+ZXMlMkZ0YWlscy1hbWQ2NC00LjExfnJjMS5pc28uc2lnKU9wZW5QR1Agc2lnbmF0dXJlKQoKIyMj
+IEJpdFRvcnJlbnQgZG93bmxvYWQKCiAgKiBbRm9yIFVTQiBzdGlja3MgKFVTQiBpbWFnZSldKGh0
+dHBzOi8vdGFpbHMuYm91bS5vcmcvdG9ycmVudHMvZmlsZXMvdGFpbHMtYW1kNjQtNC4xMX5yYzEu
+aW1nLnRvcnJlbnQpCgogICogW0ZvciBEVkRzIGFuZCB2aXJ0dWFsIG1hY2hpbmVzIChJU08gaW1h
+Z2UpXShodHRwczovL3RhaWxzLmJvdW0ub3JnL3RvcnJlbnRzL2ZpbGVzL3RhaWxzLWFtZDY0LTQu
+MTF+cmMxLmlzby50b3JyZW50KQoKIyMgVG8gaW5zdGFsbCBUYWlscyBvbiBhIG5ldyBVU0Igc3Rp
+Y2sKCkZvbGxvdyBvdXIgaW5zdGFsbGF0aW9uIGluc3RydWN0aW9uczoKCiAgKiBbSW5zdGFsbCBm
+cm9tIFdpbmRvd3NdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvaW5zdGFsbC93aW4vdXNiL2luZGV4
+LmVuLmh0bWwpCiAgKiBbSW5zdGFsbCBmcm9tIG1hY09TXShodHRwczovL3RhaWxzLmJvdW0ub3Jn
+L2luc3RhbGwvbWFjL3VzYi9pbmRleC5lbi5odG1sKQogICogW0luc3RhbGwgZnJvbSBMaW51eF0o
+aHR0cHM6Ly90YWlscy5ib3VtLm9yZy9pbnN0YWxsL2xpbnV4L3VzYi9pbmRleC5lbi5odG1sKQoK
+QWxsIHRoZSBkYXRhIG9uIHRoaXMgVVNCIHN0aWNrIHdpbGwgYmUgbG9zdC4KCiMgV2hhdCdzIGNv
+bWluZyB1cD8KClRhaWxzIDQuMTEgaXMgW3NjaGVkdWxlZF0oaHR0cHM6Ly90YWlscy5ib3VtLm9y
+Zy9jb250cmlidXRlL2NhbGVuZGFyLykgZm9yClNlcHRlbWJlciAyMi4KCkhhdmUgYSBsb29rIGF0
+IG91ciBbcm9hZG1hcF0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9jb250cmlidXRlL3JvYWRtYXAp
+IHRvIHNlZQp3aGVyZSB3ZSBhcmUgaGVhZGluZyB0by4KCldlIG5lZWQgeW91ciBoZWxwIGFuZCB0
+aGVyZSBhcmUgbWFueSB3YXlzIHRvIFtjb250cmlidXRlIHRvClRhaWxzXShodHRwczovL3RhaWxz
+LmJvdW0ub3JnL2NvbnRyaWJ1dGUvaW5kZXguZW4uaHRtbCkKKFtkb25hdGluZ10oaHR0cHM6Ly90
+YWlscy5ib3VtLm9yZy9kb25hdGUvP3I9NC4xMS1yYzEpIGlzIG9ubHkgb25lIG9mIHRoZW0pLgpD
+b21lIFt0YWxrIHRvIHVzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2Fib3V0L2NvbnRhY3QvaW5k
+ZXguZW4uaHRtbCN0YWlscy0KZGV2KSEKCgoKVVJMOiBodHRwczovL3RhaWxzLmJvdW0ub3JnL25l
+d3MvdGVzdF80LjExLXJjMS8=
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.11 is out
+Date: Fri, 25 Sep 2020 04:45:57 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.11/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.11/index.en.html
+X-RSS-TAGS: announce
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.10/).
+You should upgrade as soon as possible.
+
+# New features
+
+  * We added a new feature of the Persistent Storage to save the settings from the Welcome Screen: language, keyboard, and additional settings.
+
+To restore your settings when starting Tails, unlock your Persistent Storage
+in the Welcome Screen.
+
+![new Welcome Screen feature in the Persistent Storage
+settings](https://tails.boum.org/news/version_4.11/welcome_screen.png)
+
+# Changes and updates
+
+  * Update _Tor Browser_ to [10.0](https://blog.torproject.org/new-release-tor-browser-100).
+
+  * Update _Thunderbird_ to [68.12](https://www.thunderbird.net/en-US/thunderbird/68.12.0/releasenotes/).
+
+  * Update _Linux_ to 5.7.17. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+  * Configure _KeePassXC_ to use the new default location _Passwords.kdbx_. ([#17286](https://gitlab.tails.boum.org/tails/tails/-/issues/17286))
+
+  * Update python3-trezor to 0.12.2 to add compatibility with the new Trezor Model T.
+
+# Fixed problems
+
+  * Disable the feature to **Turn on Wi-Fi Hotspot** in the Wi-Fi settings because it doesn't work in Tails. ([#17887](https://gitlab.tails.boum.org/tails/tails/-/issues/17887))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+None specific to this release.
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.11
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.11.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.11 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.12 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+October 20.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.11) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+
+
+URL: https://tails.boum.org/news/version_4.11/index.en.html
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.12 is out
+Date: Tue, 10 Nov 2020 21:46:23 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.12/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.12/index.en.html
+X-RSS-TAGS: announce
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.11/).
+You should upgrade as soon as possible.
+
+# Changes and updates
+
+  * Update _Tor Browser_ to [10.0.2](https://blog.torproject.org/new-release-tor-browser-1002).
+
+  * Update _tor_ to 0.4.4.5.
+
+  * Update Linux to 5.8 and most firmware packages. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+  * Add a button to cancel an automated upgrade while downloading. ([#17310](https://gitlab.tails.boum.org/tails/tails/-/issues/17310))
+
+# Fixed problems
+
+  * Fix several internationalization issues in _Electrum_ , _Tails Installer_ , and _Tails Upgrader_. ([#17958](https://gitlab.tails.boum.org/tails/tails/-/issues/17958), [#17758](https://gitlab.tails.boum.org/tails/tails/-/issues/17758), and [#17961](https://gitlab.tails.boum.org/tails/tails/-/issues/17961))
+
+  * Anonymize URLs in the technical details provided by _WhisperBack_. ([#10695](https://gitlab.tails.boum.org/tails/tails/-/issues/10695))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+None specific to this release.
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.12
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.12.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.12 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.13 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+November 17.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.12) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+
+
+URL: https://tails.boum.org/news/version_4.12/index.en.html
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.13 is out
+Date: Tue, 17 Nov 2020 15:31:58 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.13/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.13/index.en.html
+X-RSS-TAGS: announce
+
+VGhpcyByZWxlYXNlIGZpeGVzIFttYW55IHNlY3VyaXR5CnZ1bG5lcmFiaWxpdGllc10oaHR0cHM6
+Ly90YWlscy5ib3VtLm9yZy9zZWN1cml0eS9OdW1lcm91c19zZWN1cml0eV9ob2xlc19pbl80LjEy
+LykuCllvdSBzaG91bGQgdXBncmFkZSBhcyBzb29uIGFzIHBvc3NpYmxlLgoKIyBDaGFuZ2VzIGFu
+ZCB1cGRhdGVzCgogICogVXBkYXRlIF9Ub3IgQnJvd3Nlcl8gdG8gWzEwLjAuNV0oaHR0cHM6Ly9i
+bG9nLnRvcnByb2plY3Qub3JnL25ldy1yZWxlYXNlLXRvci1icm93c2VyLTEwMDUpLgoKX1RvciBC
+cm93c2VyXyAxMC4wLjUgZml4ZXMgdGhlIFtjcml0aWNhbCB2dWxuZXJhYmlsaXR5IGRpc2NvdmVy
+ZWQgbGFzdCB3ZWVrIGluCnRoZSBKYXZhU2NyaXB0CmVuZ2luZV0oaHR0cHM6Ly90YWlscy5ib3Vt
+Lm9yZy9zZWN1cml0eS9tY2FsbGdldHByb3BlcnR5L2luZGV4LmVuLmh0bWwpLgoKICAqIFVwZGF0
+ZSBfVGh1bmRlcmJpcmRfIGZyb20gNjguMTIgdG8gWzc4LjQuMl0oaHR0cHM6Ly93d3cudGh1bmRl
+cmJpcmQubmV0L2VuLVVTL3RodW5kZXJiaXJkLzc4LjQuMi9yZWxlYXNlbm90ZXMvKS4KCl9UaHVu
+ZGVyYmlyZF8gNzggcmVwbGFjZXMgdGhlIF9FbmlnbWFpbF8gZXh0ZW5zaW9uIHdpdGggYnVpbHQt
+aW4gc3VwcG9ydCBmb3IKT3BlblBHUCBlbmNyeXB0aW9uLgoKSWYgeW91IHVzZWQgX0VuaWdtYWls
+XyBiZWZvcmUgVGFpbHMgNC4xMywgZm9sbG93IG91ciBbaW5zdHJ1Y3Rpb25zIHRvIG1pZ3JhdGUK
+ZnJvbSBfRW5pZ21haWxfIHRvIF9UaHVuZGVyYmlyZF8KNzhdKGh0dHBzOi8vdGFpbHMuYm91bS5v
+cmcvZG9jL2Fub255bW91c19pbnRlcm5ldC90aHVuZGVyYmlyZC9vcGVucGdwX21pZ3JhdGlvbi9p
+bmRleC5lbi5odG1sKS4KCiAgKiBBZGQgYSBidXR0b24gdG8gcmVzdGFydCBUYWlscyBhdCB0aGUg
+ZW5kIG9mIGNyZWF0aW5nIHRoZSBQZXJzaXN0ZW50IFN0b3JhZ2UuIChbIzE2Mzg0XShodHRwczov
+L2dpdGxhYi50YWlscy5ib3VtLm9yZy90YWlscy90YWlscy8tL2lzc3Vlcy8xNjM4NCkpCgogICog
+T25seSBpbmNsdWRlIHRyYW5zbGF0aW9ucyBmb3IgbGFuZ3VhZ2VzIHRoYXQgYXJlIGF2YWlsYWJs
+ZSBpbiB0aGUgV2VsY29tZSBTY3JlZW4uIFRoaXMgcmVkdWNlcyB0aGUgc2l6ZSBvZiB0aGUgZG93
+bmxvYWQgYnkgNSUuIChbIzE3MTM5XShodHRwczovL2dpdGxhYi50YWlscy5ib3VtLm9yZy90YWls
+cy90YWlscy8tL2lzc3Vlcy8xNzEzOSkpCgogICogTWFrZSB0aGUgcm9vdCBkaXJlY3Rvcnkgb2Yg
+dGhlIFBlcnNpc3RlbnQgU3RvcmFnZSBvbmx5IHJlYWRhYmxlIGJ5IHRoZSBgcm9vdGAgdXNlci4g
+KFsjNzQ2NV0oaHR0cHM6Ly9naXRsYWIudGFpbHMuYm91bS5vcmcvdGFpbHMvdGFpbHMvLS9pc3N1
+ZXMvNzQ2NSkpCgpVc2VycyBvZiB0aGUgRG90ZmlsZXMgZmVhdHVyZSBvZiB0aGUgUGVyc2lzdGVu
+dCBTdG9yYWdlIGNhbiBjaG9vc2UgKipQbGFjZXMgIOKWuApEb3RmaWxlcyoqIHRvIG9wZW4gdGhl
+IF8vbGl2ZS9wZXJzaXN0ZW5jZS9UYWlsc0RhdGFfdW5sb2NrZWQvZG90ZmlsZXMgZm9sZGVyXwpp
+biB0aGUgX0ZpbGVzXyBicm93c2VyLgoKICAqIEVuYWJsZSBUQ1AgdGltZXN0YW1wcy4gVGhpcyBt
+aWdodCBpbmNyZWFzZSBzdGFiaWxpdHkgb24gc2xvd2VyIEludGVybmV0IGNvbm5lY3Rpb25zLiAo
+WyMxNzQ5MV0oaHR0cHM6Ly9naXRsYWIudGFpbHMuYm91bS5vcmcvdGFpbHMvdGFpbHMvLS9pc3N1
+ZXMvMTc0OTEpKQoKIyBGaXhlZCBwcm9ibGVtcwoKICAqIEZpeCB0aGUgKipVcGdyYWRlKiogYnV0
+dG9uIG9mIF9UYWlscyBJbnN0YWxsZXJfIHdoZW4gcnVubmluZyBDcm9hdGlhbiwgRGFuaXNoLCBG
+cmVuY2gsIEhlYnJldywgTWFjZWRvbmlhbiwgU2ltcGxpZmllZCBDaGluZXNlLCBhbmQgVHVya2lz
+aC4gKFsjMTc5ODJdKGh0dHBzOi8vZ2l0bGFiLnRhaWxzLmJvdW0ub3JnL3RhaWxzL3RhaWxzLy0v
+aXNzdWVzLzE3OTgyKSkKCiAgKiBBbGxvdyByYWlzaW5nIHRoZSBzb3VuZCB2b2x1bWUgYWJvdmUg
+MTAwJS4gKFsjMTczMjJdKGh0dHBzOi8vZ2l0bGFiLnRhaWxzLmJvdW0ub3JnL3RhaWxzL3RhaWxz
+Ly0vaXNzdWVzLzE3MzIyKSkKCkZvciBtb3JlIGRldGFpbHMsIHJlYWQgb3VyCltjaGFuZ2Vsb2dd
+KGh0dHBzOi8vZ2l0bGFiLnRhaWxzLmJvdW0ub3JnL3RhaWxzL3RhaWxzLy0vYmxvYi9tYXN0ZXIv
+ZGViaWFuL2NoYW5nZWxvZykuCgojIEtub3duIGlzc3VlcwoKTm9uZSBzcGVjaWZpYyB0byB0aGlz
+IHJlbGVhc2UuCgpTZWUgdGhlIGxpc3Qgb2YgW2xvbmctc3RhbmRpbmcKaXNzdWVzXShodHRwczov
+L3RhaWxzLmJvdW0ub3JnL3N1cHBvcnQva25vd25faXNzdWVzL2luZGV4LmVuLmh0bWwpLgoKIyBH
+ZXQgVGFpbHMgNC4xMwoKIyMgVG8gdXBncmFkZSB5b3VyIFRhaWxzIFVTQiBzdGljayBhbmQga2Vl
+cCB5b3VyIHBlcnNpc3RlbnQgc3RvcmFnZQoKICAqIEF1dG9tYXRpYyB1cGdyYWRlcyBhcmUgYXZh
+aWxhYmxlIGZyb20gVGFpbHMgNC4yIG9yIGxhdGVyIHRvIDQuMTMuCgogICogSWYgeW91IGNhbm5v
+dCBkbyBhbiBhdXRvbWF0aWMgdXBncmFkZSBvciBpZiBUYWlscyBmYWlscyB0byBzdGFydCBhZnRl
+ciBhbiBhdXRvbWF0aWMgdXBncmFkZSwgcGxlYXNlIHRyeSB0byBkbyBhIFttYW51YWwgdXBncmFk
+ZV0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9kb2MvdXBncmFkZS9pbmRleC5lbi5odG1sI21hbnVh
+bCkuCgojIyBUbyBpbnN0YWxsIFRhaWxzIG9uIGEgbmV3IFVTQiBzdGljawoKRm9sbG93IG91ciBp
+bnN0YWxsYXRpb24gaW5zdHJ1Y3Rpb25zOgoKICAqIFtJbnN0YWxsIGZyb20gV2luZG93c10oaHR0
+cHM6Ly90YWlscy5ib3VtLm9yZy9pbnN0YWxsL3dpbi9pbmRleC5lbi5odG1sKQogICogW0luc3Rh
+bGwgZnJvbSBtYWNPU10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9pbnN0YWxsL21hYy9pbmRleC5l
+bi5odG1sKQogICogW0luc3RhbGwgZnJvbSBMaW51eF0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9p
+bnN0YWxsL2xpbnV4L2luZGV4LmVuLmh0bWwpCgpUaGUgUGVyc2lzdGVudCBTdG9yYWdlIG9uIHRo
+ZSBVU0Igc3RpY2sgd2lsbCBiZSBsb3N0IGlmIHlvdSBpbnN0YWxsIGluc3RlYWQgb2YKdXBncmFk
+aW5nLgoKIyMgVG8gZG93bmxvYWQgb25seQoKSWYgeW91IGRvbid0IG5lZWQgaW5zdGFsbGF0aW9u
+IG9yIHVwZ3JhZGUgaW5zdHJ1Y3Rpb25zLCB5b3UgY2FuIGRvd25sb2FkIFRhaWxzCjQuMTMgZGly
+ZWN0bHk6CgogICogW0ZvciBVU0Igc3RpY2tzIChVU0IgaW1hZ2UpXShodHRwczovL3RhaWxzLmJv
+dW0ub3JnL2luc3RhbGwvZG93bmxvYWQvaW5kZXguZW4uaHRtbCkKICAqIFtGb3IgRFZEcyBhbmQg
+dmlydHVhbCBtYWNoaW5lcyAoSVNPIGltYWdlKV0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9pbnN0
+YWxsL2Rvd25sb2FkLWlzby9pbmRleC5lbi5odG1sKQoKIyBXaGF0J3MgY29taW5nIHVwPwoKVGFp
+bHMgNC4xNCBpcyBbc2NoZWR1bGVkXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2NvbnRyaWJ1dGUv
+Y2FsZW5kYXIvKSBmb3IKRGVjZW1iZXIgMTUuCgpIYXZlIGEgbG9vayBhdCBvdXIgW3JvYWRtYXBd
+KGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvY29udHJpYnV0ZS9yb2FkbWFwKSB0byBzZWUKd2hlcmUg
+d2UgYXJlIGhlYWRpbmcgdG8uCgpXZSBuZWVkIHlvdXIgaGVscCBhbmQgdGhlcmUgYXJlIG1hbnkg
+d2F5cyB0byBbY29udHJpYnV0ZSB0bwpUYWlsc10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9jb250
+cmlidXRlL2luZGV4LmVuLmh0bWwpCihbZG9uYXRpbmddKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcv
+ZG9uYXRlLz9yPTQuMTMpIGlzIG9ubHkgb25lIG9mIHRoZW0pLiBDb21lClt0YWxrIHRvIHVzXSho
+dHRwczovL3RhaWxzLmJvdW0ub3JnL2Fib3V0L2NvbnRhY3QvaW5kZXguZW4uaHRtbCN0YWlscy1k
+ZXYpIQoKCgpVUkw6IGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvbmV3cy92ZXJzaW9uXzQuMTMvaW5k
+ZXguZW4uaHRtbA==
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Deprecation of the Tails Verification extension
+Date: Wed, 09 Dec 2020 18:47:25 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/verification_extension_deprecation/index.en.html
+X-RSS-URL: https://tails.boum.org/news/verification_extension_deprecation/index.en.html
+X-RSS-TAGS: announce
+
+Today, we are retiring the _Tails Verification_ browser extension that used to
+be advertised on our download page. We are replacing it with similar
+JavaScript code that now runs directly on the page.
+
+This new verification procedure is:
+
+  * Simpler and faster for first-time users
+  * Compatible with more web browsers, for example, Edge and Safari
+  * As secure as the _Tails Verification_ extension
+
+From the logs on our website, it seems like only a minority of downloads are
+currently being verified. We believe that this simplified verification
+procedure will greatly increase the number of downloads being verified and
+improve the security of our users.
+
+Users of the _Tails Verification_ extension can safely remove it from their
+browser. They will be reminded to do so on the download page.
+
+We will remove the _Tails Verification_ extension from the Firefox and Chrome
+stores in a few days.
+
+The other 2 verification techniques are still available:
+
+  * If you download Tails using BitTorrent, your BitTorrent client automatically verifies the checksum of the Tails image when the download finishes.
+
+  * If you know OpenPGP, you can verify your Tails image using an OpenPGP signature.
+
+Special thanks to [Mike Meixler](https://www.meixler-tech.com/) who donated
+his time to help us with the verification JavaScript!
+
+In the future, this simplification will allow us to further simplify the
+download page and installation instructions. We also want to research how to
+make the verification faster. If you know WebAssembly, see if you can help us
+[speed up the checksum
+computation](https://gitlab.tails.boum.org/tails/tails/-/issues/16905).
+
+See also our [design document on the security and threat model of the download
+verification](https://tails.boum.org/contribute/design/download_verification/).
+
+
+
+URL: https://tails.boum.org/news/verification_extension_deprecation/index.en.html
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.14 is out
+Date: Thu, 24 Dec 2020 06:53:34 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.14/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.14/index.en.html
+X-RSS-TAGS: announce
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.13/).
+You should upgrade as soon as possible.
+
+# Changes and updates
+
+  * Add support for the Ledger hardware wallets in _Electrum_. ([#15353](https://gitlab.tails.boum.org/tails/tails/-/issues/15353))
+
+  * Update _Tor Browser_ to [10.0.7](https://blog.torproject.org/new-release-tor-browser-1007).
+
+  * Update _Thunderbird_ to [78.5.1](https://www.thunderbird.net/en-US/thunderbird/78.5.1/releasenotes/).
+
+  * Update _Linux_ to 5.9. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+  * Remove the _Unifont_ font. ([!263](https://gitlab.tails.boum.org/tails/tails/-/merge_requests/263))
+
+# Fixed problems
+
+  * Fix Additional Software by updating the APT key for `deb.torproject.org`. ([#18042](https://gitlab.tails.boum.org/tails/tails/-/issues/18042))
+
+  * Fix changing the administration password stored in the Persistent Storage. ([#18018](https://gitlab.tails.boum.org/tails/tails/-/issues/18018))
+
+  * Fix opening the Persistent Storage of another Tails USB stick in the _Files_ browser. ([#18050](https://gitlab.tails.boum.org/tails/tails/-/issues/18050))
+
+  * Restore automatically a _GnuPG_ public keyring from its backup when it gets corrupt. ([#17807](https://gitlab.tails.boum.org/tails/tails/-/issues/17807))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+  * Ledger wallets are not detected by _Electrum_ , with the following error message returned. ([#18080](https://gitlab.tails.boum.org/tails/tails/-/issues/18080))
+    
+        "No hardware device detected"
+    
+
+Please try to execute the following command in a [root
+terminal](https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html#open_root_terminal)
+before starting _Electrum_ :
+
+    
+         apt update && apt install python3-btchip/testing
+    
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.14
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.14.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.14 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.15 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+January 26.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.14) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+
+
+URL: https://tails.boum.org/news/version_4.14/index.en.html
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Our achievements in 2020
+Date: Wed, 23 Dec 2020 18:09:46 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/achievements_in_2020/index.en.html
+X-RSS-URL: https://tails.boum.org/news/achievements_in_2020/index.en.html
+X-RSS-TAGS: announce
+
+RGVzcGl0ZSBldmVyeXRoaW5nLCAyMDIwIHdhcyBhIGdyZWF0IHllYXIgZm9yIFRhaWxzLiBXZSBy
+ZWxlYXNlZCBtYWpvcgppbXByb3ZlbWVudHMgdGhhdCBtYWRlIFRhaWxzIGVhc2llciB0byB1c2Ug
+YnkgdGhlIHBlb3BsZSB3aG8gbmVlZCBpdCB0aGUgbW9zdC4KCklmIHlvdSBlbmpveWVkIG91ciB3
+b3JrIGluIDIwMjAsIHRha2UgYSBtaW51dGUgbm93IHRvIFtkb25hdGUgYW5kIGZpZ2h0CnN1cnZl
+aWxsYW5jZSBhbmQgY2Vuc29yc2hpcF0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9kb25hdGUvP3I9
+YXQpIQoKRnJvbSB0aGUgbnVtYmVyIG9mIGF1dG9tYXRpYyB1cGdyYWRlcywgd2Uga25vdyB0aGF0
+IFRhaWxzIHdhcyB1c2VkIDIwJSBtb3JlIGluCjIwMjAgdGhhbiBpbiAyMDE5LCB3aGljaCBpcyBv
+dXIgbGFyZ2VzdCBpbmNyZWFzZSBzaW5jZSAyMDE2LiBGcm9tIE1hcmNoIHRvIE1heQpvbmx5LCB3
+aGVuIHRoZSBsb2NrZG93biBtZWFzdXJlcyB3ZXJlIHRoZSBzdHJpY3Rlc3Qgd29ybGR3aWRlLCBU
+YWlscyBnb3QgdXNlZAoxMCUgbW9yZSB0aGFuIGV2ZXIgYmVmb3JlLgoKVG9kYXksIFRhaWxzIGlz
+IHVzZWQgY2xvc2UgdG8gMzIgMDAwIHRpbWVzIGVhY2ggZGF5LgoKIVtdKGh0dHBzOi8vdGFpbHMu
+Ym91bS5vcmcvbmV3cy9hY2hpZXZlbWVudHNfaW5fMjAyMC91c2Vycy5wbmcpCgojIFNpbXBsaWZp
+ZWQgc3RhcnRpbmcgcHJvY2VkdXJlCgpXZSBhZGRlZCBzdXBwb3J0IGZvciAqKlNlY3VyZSBCb290
+KiogaW4gQXByaWwuIFNlY3VyZSBCb290IGRvZXNuJ3QgcmVhbGx5IG1ha2UKeW91ciBjb21wdXRl
+ciBhbnkgc2FmZXIgYnV0IGl0IGZvcmNlZCBtb3N0IHVzZXJzIHRvIGVkaXQgdGhlaXIgQklPUyBp
+bgpjb21wbGljYXRlZCBhbmQgcmlza3kgd2F5cyB0byBiZSBhYmxlIHRvIHVzZSBUYWlscyAob3Ig
+TGludXggaW4gZ2VuZXJhbCkuIE5vdwp5b3UgZG9uJ3QgaGF2ZSB0byBlZGl0IHRoZSBCSU9TIGFu
+eW1vcmUhCgpXZSBhbHNvIGRvY3VtZW50ZWQgdGhlICoqU2hpZnQrUmVzdGFydCoqIHByb2NlZHVy
+ZSB0byBzdGFydCBUYWlscyBmcm9tIFdpbmRvd3MKOCBvciAxMCB1c2luZyB0aGUgKipTdGFydCFb
+XShodHRwczovL3RhaWxzLmJvdW0ub3JnL2xpYi9zdGFydC5wbmcpKiogbWVudS4gTm93CnlvdSBk
+b24ndCBoYXZlIHRvIGhhbW1lciB0aGF0IEJvb3QgTWVudSBrZXkgYW55bW9yZSEKCkFsbCB0aGlz
+IGRyYW1hdGljYWxseSBzaW1wbGlmaWVkIG91ciBbc3RhcnRpbmcgaW5zdHJ1Y3Rpb25zIGZvcgpQ
+Q3NdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvaW5zdGFsbC93aW4vdXNiL2luZGV4LmVuLmh0bWwj
+c3RhcnQtdGFpbHMpLgoKIVtdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvaW5zdGFsbC9pbmMvc2Ny
+ZWVuc2hvdHMvY2hvb3NlX2FuX29wdGlvbi5wbmcpCgojIEJldHRlciB1cGdyYWRlcwoKQmVjYXVz
+ZSB3ZSBrbm93IHRoYXQgdXBncmFkZXMgYXJlIG9uZSBvZiB0aGUgbW9zdCBwYWluZnVsIGFzcGVj
+dHMgb2YgdXNpbmcKVGFpbHMsIHdlIHJlbGVhc2VkIHNpZ25pZmljYW50IGltcHJvdmVtZW50cyB0
+byBhdXRvbWF0aWMgdXBncmFkZXMgaW4gSmFudWFyeS4KV2UgbWFkZSBhdXRvbWF0aWMgdXBncmFk
+ZXM6CgogICogQXZhaWxhYmxlICoqZnJvbSBhbGwgcHJpb3IgdmVyc2lvbnMqKiB0byB0aGUgbGF0
+ZXN0IHZlcnNpb24gaW4gYSBzaW5nbGUgdXBncmFkZS4KCkZvciBleGFtcGxlLCB5b3UgY2FuIHVw
+Z3JhZGUgZnJvbSA0LjEwIHRvIDQuMTQgZGlyZWN0bHksIHdpdGhvdXQgaGF2aW5nIHRvCmZpcnN0
+IHVwZ3JhZGUgdG8gNC4xMiBhbnltb3JlLgoKICAqIEF2YWlsYWJsZSAqKmVuZGxlc3NseSBiZXR3
+ZWVuIG1pbm9yIHZlcnNpb25zKiogb2YgVGFpbHMuCgpGb3IgZXhhbXBsZSwgeW91IGRvbid0IGhh
+dmUgdG8gZG8gYSBtYW51YWwgdXBncmFkZSBhbnltb3JlIGFmdGVyIGEgZmV3CnVwZ3JhZGVzLiBZ
+b3Ugd2lsbCBvbmx5IGhhdmUgdG8gZG8gYSBtYW51YWwgdXBncmFkZSBiZXR3ZWVuIG1ham9yIHZl
+cnNpb25zLApmb3IgZXhhbXBsZSB0byB1cGdyYWRlIHRvIFRhaWxzIDUuMCBhdCB0aGUgZW5kIG9m
+IDIwMjEuCgogICogVXNlIGxlc3MgbWVtb3J5LgoKICAqIEJldHRlciBkb2N1bWVudGVkLCBlc3Bl
+Y2lhbGx5IG1hbnVhbCB1cGdyYWRlcy4KCiMgQnV0IGFsc2/igKYKCiAgKiBXZSBjb21wbGV0ZWx5
+IHJlZGVzaWduZWQgb3VyIEhvbWUgcGFnZSB0byBleHBsYWluIGJldHRlciB3aGF0IGlzIFRhaWxz
+IGFuZCB3aHkgcGVvcGxlIHNob3VsZCB1c2UgaXQuCgohW10oaHR0cHM6Ly90YWlscy5ib3VtLm9y
+Zy9hYm91dC9mb290cHJpbnRzLnN2ZykKCiAgKiBXZSBtYWRlIGl0IHBvc3NpYmxlIHRvIHNhdmUg
+dGhlIHNldHRpbmdzIG9mIHRoZSBXZWxjb21lIFNjcmVlbiBpbiB0aGUgUGVyc2lzdGVudCBTdG9y
+YWdlOiBsYW5ndWFnZSwga2V5Ym9hcmQsIGFuZCBhZGRpdGlvbmFsIHNldHRpbmdzLgoKIVtdKGh0
+dHBzOi8vdGFpbHMuYm91bS5vcmcvbmV3cy92ZXJzaW9uXzQuOC93ZWxjb21lX3NjcmVlbi5wbmcp
+CgogICogV2Ugc2ltcGxpZmllZCB0aGUgdmVyaWZpY2F0aW9uIHByb2NlZHVyZSBvbiBvdXIgZG93
+bmxvYWQgcGFnZSBieSBbcmVwbGFjaW5nIHRoZSBfVGFpbHMgVmVyaWZpY2F0aW9uXyBleHRlbnNp
+b25dKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvbmV3cy92ZXJpZmljYXRpb25fZXh0ZW5zaW9uX2Rl
+cHJlY2F0aW9uL2luZGV4LmVuLmh0bWwpIHdpdGggc2ltaWxhciBKYXZhU2NyaXB0IGNvZGUgdGhh
+dCBydW5zIGRpcmVjdGx5IG9uIHRoZSBwYWdlLgoKUGVvcGxlIHdpdGhvdXQgSmF2YVNjcmlwdCBh
+cmUgYWxzbyBub3cgcG9pbnRlZCB0byB0aGUgY2hlY2tzdW0gb2YgdGhlCmRvd25sb2FkLgoKIVtd
+KGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvbmV3cy9hY2hpZXZlbWVudHNfaW5fMjAyMC92ZXJpZnku
+cG5nKQoKICAqIFdlIGFkZGVkIHN1cHBvcnQgZm9yIHRoZSAqKmhhcmR3YXJlIGNyeXB0b2N1cnJl
+bmN5IHdhbGxldHMqKiBUcmV6b3IgYW5kIExlZGdlci4KCiMgVW5kZXIgdGhlIGhvb2QKClVuZm9y
+dHVuYXRlbHksIHRoZSBiaWdnZXN0IHBhcnQgb2Ygb3VyIHdvcmsgZG9lc24ndCBsZWFkIHRvIHN1
+Y2ggbWFqb3IgY2hhbmdlcwpmb3Igb3VyIHVzZXJzLiBUYWlscyBpcyBhbiBlbmRsZXNzIHdvcmsg
+b2YgdXBkYXRlcyBhbmQgbWFpbnRlbmFuY2U6IHB1Ymxpc2hpbmcKYSBuZXcgcmVsZWFzZSBldmVy
+eSA0IHdlZWtzIHRvIGZpeCBzZWN1cml0eSB2dWxuZXJhYmlsaXRpZXMsIGFkYXB0aW5nIHRvIG5l
+dwp2ZXJzaW9ucyBvZiB0aGUgdW5kZXJseWluZyBzb2Z0d2FyZSwga2VlcGluZyBvdXIgd2Vic2l0
+ZSBhbmQgZGV2ZWxvcG1lbnQKaW5mcmFzdHJ1Y3R1cmUgc2VjdXJlIGFuZCByZWxpYWJsZSwgZXRj
+LgoKICAqIFdlIHB1Ymxpc2hlZCAqKm1vcmUgcmVsZWFzZXMgdGhhbiBldmVyKiouIEluIDIwMjAg
+d2UgcmVsZWFzZWQgMTUgbmV3IHZlcnNpb25zIG9mIFRhaWxzIHRvIGFsd2F5cyBoYXZlIHlvdXIg
+YmFjayBjb3ZlcmVkIQoKQXQgdGhlIGVuZCBvZiAyMDE5LCBGaXJlZm94IHN3aXRjaGVkIGZyb20g
+cmVsZWFzaW5nIGEgbmV3IHZlcnNpb24gZXZlcnkgNgp3ZWVrcyB0byByZWxlYXNpbmcgYSBuZXcg
+dmVyc2lvbiBldmVyeSA0IHdlZWtzLiBBbmQgc28gZGlkIHdlLgoKICAqIFdlIHN0cmVhbWxpbmVk
+IG91ciByZWxlYXNlIHByb2Nlc3MgYnkgYXV0b21hdGluZyBpdHMgbW9zdCB0aW1lLWNvbnN1bWlu
+ZyBwYXJ0cy4gVGhpcyByZWR1Y2VkIHRoZSB3b3JrIG5lZWRlZCB0byBwdWJsaXNoIGEgbmV3IHJl
+bGVhc2Ugb2YgVGFpbHMgZnJvbSAyIGZ1bGwgZGF5cyBvZiB3b3JrIHRvIG9ubHkgMSBkYXkuCgpJ
+biB0aGUgbG9uZyBydW4sIHRoaXMgd2lsbCBoZWxwIHVzIHNwZW5kIG1vcmUgdGltZSBvbiB3aGF0
+IHJlYWxseSBtYXR0ZXJzIHRvCm91ciB1c2VycyBhbmQgYWxsb3cgdXMgdG8gcmVhY3QgZmFzdGVy
+IHRvIGVtZXJnZW5jaWVzIGluIGNhc2Ugb2Ygc2VjdXJpdHkKdnVsbmVyYWJpbGl0aWVzLgoKICAq
+IFdlIG1pZ3JhdGVkIHRvIEdpdExhYiBhbmQgc2F3IG1hbnkgbW9yZSBvZiB5b3UganVtcCBpbiBh
+bmQgZ2l2ZSB1cyBhIGhhbmQhCgojIEhlbHAgdXMgZmlnaHQgc3VydmVpbGxhbmNlIGFuZCBjZW5z
+b3JzaGlwCgohW10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9kb25hdGUvZ29kemlsbGEucG5nKQoK
+QWxsIG91ciB3b3JrIGlzIG1hZGUgcG9zc2libGUgYnkgZG9uYXRpb25zIGZyb20gcGVvcGxlIGxp
+a2UgeW91LiBXZQpwYXJ0aWN1bGFybHkgYXBwcmVjaWF0ZSBtb250aGx5IGFuZCB5ZWFybHkgZG9u
+YXRpb25zLCBldmVuIHRoZSBzbWFsbGVzdCBvbmVzLgpCZWNhdXNlIHRoZXkgaGVscCB1cyBwbGFu
+IG91ciB3b3JrLCB0aGV5IGFyZSB0aGUgbW9zdCB2YWx1YWJsZSBmb3IgdGhlCnN1c3RhaW5hYmls
+aXR5IG9mIFRhaWxzLgoKSWYgeW91IGVuam95ZWQgb3VyIHdvcmsgaW4gMjAyMCwgdGFrZSBhIG1p
+bnV0ZSBub3cgdG8gZG9uYXRlIGFuZCBmaWdodApzdXJ2ZWlsbGFuY2UgYW5kIGNlbnNvcnNoaXAh
+CgpbRG9uYXRlXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2RvbmF0ZS8/cj1hYikKCgoKVVJMOiBo
+dHRwczovL3RhaWxzLmJvdW0ub3JnL25ld3MvYWNoaWV2ZW1lbnRzX2luXzIwMjAvaW5kZXguZW4u
+aHRtbA==
+
