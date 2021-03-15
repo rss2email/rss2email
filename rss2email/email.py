@@ -116,29 +116,18 @@ def get_message(sender, recipient, subject, body, content_type,
         x.strip() for x in config.get(section, 'encodings').split(',')]
 
     # Split real name (which is optional) and email address parts
-    sender_name,sender_addr = _parseaddr(sender)
     recipient_list = []
     for recipient_name, recipient_addr in _getaddresses([recipient]):
         recipient_encoding = guess_encoding(recipient_name, encodings)
-        recipient_name = str(_Header(recipient_name, recipient_encoding).encode())
-        recipient_addr.encode('ascii')
-        recipient_list.append(_formataddr((recipient_name, recipient_addr)))
+        recipient_list.append(_formataddr((recipient_name, recipient_addr),
+                                          charset=recipient_encoding))
 
-    sender_encoding = guess_encoding(sender_name, encodings)
-    recipient_encoding = guess_encoding(recipient_name, encodings)
     subject_encoding = guess_encoding(subject, encodings)
     body_encoding = guess_encoding(body, encodings)
 
-    # We must always pass Unicode strings to Header, otherwise it will
-    # use RFC 2047 encoding even on plain ASCII strings.
-    sender_name = str(_Header(sender_name, sender_encoding).encode())
-
-    # Make sure email addresses do not contain non-ASCII characters
-    sender_addr.encode('ascii')
-
     # Create the message ('plain' stands for Content-Type: text/plain)
     message = _MIMEText(body, content_type, body_encoding)
-    message['From'] = _formataddr((sender_name, sender_addr))
+    message['From'] = sender
     message['To'] = ', '.join(recipient_list)
     message['Subject'] = _Header(subject, subject_encoding)
     if config.getboolean(section, 'use-8bit'):
@@ -148,7 +137,7 @@ def get_message(sender, recipient, subject, body, content_type,
         message.set_payload(body, charset=charset)
     if extra_headers:
         for key,value in extra_headers.items():
-            encoding = guess_encoding(value, encodings)
+            encoding = guess_encoding(value, ['US-ASCII'] + encodings)
             message[key] = _Header(value, encoding)
     return message
 
