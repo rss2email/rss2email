@@ -116,13 +116,13 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
             text = regexp.sub(replacement, text)
         return text
 
-    def run_single_test(self, dirname=None, config_path=None, force=False):
+    def run_single_test(self, dirname=None, config_path=None):
         if dirname is None:
             dirname = _os.path.dirname(config_path)
         if config_path is None:
             _rss2email.LOG.info('testing {}'.format(dirname))
             for config_path in _glob.glob(_os.path.join(dirname, '*.config')):
-                self.run_single_test(dirname=dirname, config_path=config_path, force=force)
+                self.run_single_test(dirname=dirname, config_path=config_path)
             return
         feed_path = _glob.glob(_os.path.join(dirname, 'feed.*'))[0]
 
@@ -131,15 +131,21 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         config.read_string(self.BASE_CONFIG_STRING)
         read_paths = config.read([config_path])
         feed = _rss2email_feed.Feed(name='test', url=Path(feed_path).as_posix(), config=config)
-        expected_path = config_path.replace('config', 'expected')
-        with open(expected_path, 'r') as f:
-            expected = self.clean_result(f.read())
         feed._send = TestEmails.Send()
         feed.run()
         generated = feed._send.as_string()
-        if force:
-            with open(expected_path, 'w') as f:
-                f.write(generated)
+
+        expected_path = config_path.replace('config', 'expected')
+        if not _os.path.exists(expected_path):
+            if _os.environ.get('FORCE_TESTDATA_CREATION', '') == '1':
+                with open(expected_path, 'w') as f:
+                    f.write(generated)
+                raise ValueError('missing expected test data, now created')
+            else:
+                raise ValueError('missing test; set FORCE_TESTDATA_CREATION=1 to create')
+        else:
+            with open(expected_path, 'r') as f:
+                expected = self.clean_result(f.read())
         generated = self.clean_result(generated)
         if generated != expected:
             diff_lines = _difflib.unified_diff(
