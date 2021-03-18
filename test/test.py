@@ -142,7 +142,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
                     f.write(generated)
                 raise ValueError('missing expected test data, now created')
             else:
-                raise ValueError('missing test; set FORCE_TESTEDATA_CREATION=1 to create')
+                raise ValueError('missing test; set FORCE_TESTDATA_CREATION=1 to create')
         else:
             with open(expected_path, 'r') as f:
                 expected = self.clean_result(f.read())
