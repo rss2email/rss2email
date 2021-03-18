@@ -30,17 +30,18 @@ Installing rss2email
 Packages
 --------
 
-A quick way to get rss2email going is using pre-made packages. There
-are releases for Debian__, Ubuntu__, Fedora__, openSUSE__, Gentoo__,
-NetBSD__, and OpenBSD__.
+A quick way to get rss2email going is using pre-made packages. There are
+releases for Debian__, Fedora__, Gentoo__, NetBSD__, NixOS__, OpenBSD__,
+openSUSE__, and Ubuntu__.
 
 __ `Debian package`_
-__ `Ubuntu package`_
 __ `Fedora package`_
-__ `openSUSE package`_
 __ `Gentoo package`_
 __ `NetBSD package`_
+__ `NixOS package`_
 __ `OpenBSD package`_
+__ `openSUSE package`_
+__ `Ubuntu package`_
 
 Installing by hand
 ------------------
@@ -243,30 +244,42 @@ For example, run ``r2e`` every night (at 1:23 am) with::
 Development
 ===========
 
-User discussion and development take place on GitHub. Please feel free
-to post bug reports, feature requests, comments, and patches. If you
-do not have a GitHub account and do not wish to acquire one, you may
-e-mail Jeff:
+Community
+---------
 
-  jeff@jsbackus.com
+User discussion and development take place on GitHub. Please feel free
+to post bug reports, feature requests, comments, and patches. If you do
+not have a GitHub account and do not wish to acquire one, please come
+chat in the IRC channel.
 
 There is a developer chat on the `freenode IRC server`_, in the
 ``rss2email`` channel. Feel free to idle.
 
+Tips and tricks
+---------------
+
+When adding a new test case, it is possible to just add the new input
+files, and then run the test suite with ``FORCE_TESTDATA_CREATION=1``,
+and the test suite will automatically generate the output file. Just
+make sure to check that the output file does match what is wanted before
+checking it in.
+
 .. _Debian package:
   http://packages.qa.debian.org/r/rss2email.html
-.. _Ubuntu package:
-  https://launchpad.net/ubuntu/+source/rss2email
 .. _Fedora package:
   https://src.fedoraproject.org/rpms/rss2email
-.. _openSUSE package:
-  https://build.opensuse.org/package/show/openSUSE:Factory/rss2email
-.. _NetBSD package:
-  http://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/mail/rss2email/README.html
 .. _Gentoo package:
   http://gpo.zugaina.org/net-mail/rss2email
+.. _NetBSD package:
+  http://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/mail/rss2email/README.html
+.. _NixOS package:
+  https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&query=rss2email
 .. _OpenBSD package:
   http://openports.se/mail/rss2email
+.. _openSUSE package:
+  https://build.opensuse.org/package/show/openSUSE:Factory/rss2email
+.. _Ubuntu package:
+  https://launchpad.net/ubuntu/+source/rss2email
 .. _Python: http://www.python.org
 .. _feedparser: http://pypi.python.org/pypi/feedparser
 .. _html2text: http://pypi.python.org/pypi/html2text
