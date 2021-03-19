@@ -66,6 +66,8 @@ class Config (_configparser.ConfigParser):
             section, 'unicode-snob')
         _html2text.config.LINKS_EACH_PARAGRAPH = self.getboolean(
             section, 'links-after-each-paragraph')
+        _html2text.config.INLINE_LINKS = self.getboolean(
+            section, 'inline-links')
         # hack to prevent breaking the default in every existing config file
         body_width = self.getint(section, 'body-width')
         _html2text.config.BODY_WIDTH = 0 if body_width < 0 else 78 if body_width == 0 else body_width
@@ -199,6 +201,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('unicode-snob', str(False)),
         # Put the links after each paragraph instead of at the end.
         ('links-after-each-paragraph', str(False)),
+        # Use inline, rather than reference, for formatting images and links.
+        ('inline-links', str(True)),
         # Wrap long lines at position.
         # Any negative value for no wrapping, 0 for 78 width (compatibility), or any positive width.
         ('body-width', str(0)),
