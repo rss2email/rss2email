@@ -10,6 +10,7 @@ UNRELEASED
     * Support multipart/alternative emails with both HTML and plain text parts with option `multipart-html`
     * Add inline-links option, allowing links to be sent to the bottom of the
       paragraph
+    * Add wrap-links option, preventing links from be wrapped over multiple lines
     * Stop looking in $XDG_DATA_DIRS for the database, and only look in
       $XDG_DATA_HOME
     * Warnings about HTTP content-type being unexpected now properly display
