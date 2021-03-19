@@ -8,6 +8,8 @@ UNRELEASED
     * Drop support for Python 3.5
     * Log sendmail output
     * Support multipart/alternative emails with both HTML and plain text parts with option `multipart-html`
+    * Add inline-links option, allowing links to be sent to the bottom of the
+      paragraph
 
 v3.12.2 (2020-08-31)
     * Fix bug `AttributeError: 'NoneType' object has no attribute 'close'` (#126)
