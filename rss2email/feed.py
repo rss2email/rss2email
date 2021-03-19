@@ -373,7 +373,9 @@ class Feed (object):
         timeout = config.getint('feed-timeout')
         kwargs = {}
         if proxy:
-            kwargs['handlers'] = [_urllib_request.ProxyHandler({'http':proxy})]
+            kwargs['handlers'] = [
+                _urllib_request.ProxyHandler({ 'http': proxy, 'https': proxy })
+            ]
         f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
         return f(self.url, self.etag, modified=self.modified, **kwargs)
 
