@@ -12,6 +12,7 @@ UNRELEASED
       paragraph
     * Stop looking in $XDG_DATA_DIRS for the database, and only look in
       $XDG_DATA_HOME
+    * Warnings about HTTP content-type being unexpected now properly display
 
 v3.12.2 (2020-08-31)
     * Fix bug `AttributeError: 'NoneType' object has no attribute 'close'` (#126)
