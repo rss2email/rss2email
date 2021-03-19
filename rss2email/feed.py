@@ -934,6 +934,25 @@ class Feed (object):
         self.modified = parsed.get('modified', None)
 
         if clean and len(parsed.entries) > 0:
+            # A feed might only show the newest N entries, but if the feed
+            # author deletes a new entry, an older entry will reappear. Deleting
+            # all entries not in the feed could cause an old entry to be resent.
+            # To avoid this, the three newest entries no longer in the feed are
+            # kept, allowing up to three new entries to be deleted from the feed
+            # before anything would be resent.
+
+            # Entries from new feeds are added oldest to newest, and new entries
+            # are always inserted at the end. Entries no longer in the feed will
+            # have an 'old' key added above. This iterates over the entry keys
+            # (guid) from last to first, ignoring entries still in the feed. The
+            # three newest 'old' entries are skipped and all others are deleting.
+
+            # Python 3.7 guarantees Dict insertion order and CPython has done so
+            # since 3.5. It is unlikely older and other implementations would
+            # have stored the entries out-of-order, but if they did, the three
+            # entries kept won't be correct. And in the unlikely event the feed
+            # author deletes an entry, an old entry could be resent.
+
             old = 3
             for guid in reversed(list(self.seen)):
                 if 'old' in self.seen[guid]:
