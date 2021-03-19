@@ -220,21 +220,7 @@ class Feeds (list):
         data_home = _os.environ.get(
             'XDG_DATA_HOME',
             _os.path.expanduser(_os.path.join('~', '.local', 'share')))
-        data_dirs = [data_home]
-        data_dirs.extend(
-            _os.environ.get(
-                'XDG_DATA_DIRS',
-                ':'.join([
-                        _os.path.join(ROOT_PATH, 'usr', 'local', 'share'),
-                        _os.path.join(ROOT_PATH, 'usr', 'share'),
-                        ]),
-                ).split(':'))
-        datafiles = [_os.path.join(data_dir, 'rss2email.json')
-                     for data_dir in data_dirs]
-        for datafile in datafiles:
-            if _os.path.isfile(datafile):
-                return datafile
-        return datafiles[0]
+        return _os.path.join(data_home, 'rss2email.json')
 
     def load(self, require=False):
         _LOG.debug('load feed configuration from {}'.format(self.configfiles))
