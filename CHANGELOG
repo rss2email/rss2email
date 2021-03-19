@@ -10,6 +10,8 @@ UNRELEASED
     * Support multipart/alternative emails with both HTML and plain text parts with option `multipart-html`
     * Add inline-links option, allowing links to be sent to the bottom of the
       paragraph
+    * Stop looking in $XDG_DATA_DIRS for the database, and only look in
+      $XDG_DATA_HOME
 
 v3.12.2 (2020-08-31)
     * Fix bug `AttributeError: 'NoneType' object has no attribute 'close'` (#126)
