@@ -403,9 +403,11 @@ class Feed (object):
             self.url = parsed['url']
         elif status not in [200, 302, 304, 307]:
             raise _error.HTTPError(status=status, feed=self)
+
         http_headers = parsed.get('headers', {})
         if http_headers:
             _LOG.debug('HTTP headers: {}'.format(http_headers))
+            http_headers = dict((k.lower(), v) for k, v in http_headers.items())
         if not http_headers:
             _LOG.warning('could not get HTTP headers: {}'.format(self))
             warned = True
