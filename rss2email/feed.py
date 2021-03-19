@@ -51,6 +51,7 @@ from email.message import Message
 from email.mime.message import MIMEMessage as _MIMEMessage
 from email.mime.multipart import MIMEMultipart as _MIMEMultipart
 from email.utils import formataddr as _formataddr
+from email.utils import parseaddr as _parseaddr
 import hashlib as _hashlib
 import html.parser as _html_parser
 import re as _re
@@ -921,7 +922,7 @@ class Feed (object):
 
     def _new_digest(self):
         digest = _MIMEMultipart('digest')
-        digest['To'] = self.to  # TODO: _Header(), _formataddr((recipient_name, recipient_addr))
+        digest['To'] = _formataddr(_parseaddr(self.to))  # Encodes with utf-8 as necessary
         digest['Subject'] = 'digest for {}'.format(self.name)
         digest['Message-ID'] = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
         digest['User-Agent'] = self.user_agent
@@ -942,7 +943,7 @@ class Feed (object):
         payload.  We assume that this part exists.  If you don't have
         any messages in the digest, don't call this function.
         """
-        digest['From'] = sender  # TODO: _Header(), _formataddr()...
+        digest['From'] = sender
         last_part = digest.get_payload()[-1]
         last_message = last_part.get_payload()[0]
         digest['Date'] = last_message['Date']
