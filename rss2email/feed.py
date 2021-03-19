@@ -805,7 +805,7 @@ class Feed (object):
             if self.use_css and self.css:
                 lines.extend([
                         '    <style type="text/css">',
-                        self.css,
+                        _saxutils.escape(self.css),
                         '    </style>',
                         ])
             lines.extend([
@@ -813,7 +813,7 @@ class Feed (object):
                     '<body>',
                     '<div id="entry">',
                     '<h1 class="header"><a href="{}">{}</a></h1>'.format(
-                        link, subject),
+                        _saxutils.escape(link), _saxutils.escape(subject)),
                     '<div id="body">',
                     ])
             if content['type'] in ('text/html', 'application/xhtml+xml'):
@@ -823,25 +823,25 @@ class Feed (object):
             lines.append('</div>')
             lines.extend([
                     '<div class="footer">'
-                    '<p>URL: <a href="{0}">{0}</a></p>'.format(link),
+                    '<p>URL: <a href="{0}">{0}</a></p>'.format(_saxutils.escape(link)),
                     ])
             for enclosure in getattr(entry, 'enclosures', []):
                 if getattr(enclosure, 'url', None):
                     lines.append(
                         '<p>Enclosure: <a href="{0}">{0}</a></p>'.format(
-                            enclosure.url))
+                            _saxutils.escape(enclosure.url)))
                 if getattr(enclosure, 'src', None):
                     lines.append(
                         '<p>Enclosure: <a href="{0}">{0}</a></p>'.format(
-                            enclosure.src))
+                            _saxutils.escape(enclosure.src)))
                     lines.append(
-                        '<p><img src="{}" /></p>'.format(enclosure.src))
+                        '<p><img src="{}" /></p>'.format(_saxutils.escape(enclosure.src)))
             for elink in getattr(entry, 'links', []):
                 if elink.get('rel', None) == 'via':
                     url = elink['href']
                     title = elink.get('title', url)
                     lines.append('<p>Via <a href="{}">{}</a></p>'.format(
-                            url, title))
+                            _saxutils.escape(url), _saxutils.escape(title)))
             lines.extend([
                     '</div>',  # /footer
                     '</div>',  # /entry

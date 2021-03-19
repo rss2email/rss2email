@@ -1,0 +1,22 @@
+feed.atom is a snapshot of
+
+  https://quiltville.blogspot.com/feeds/posts/default
+
+as of 2021-03-26.
+
+HTTP headers:
+
+  HTTP/2 200
+  date: Fri, 26 Mar 2021 09:13:54 GMT
+  content-type: application/atom+xml; charset=UTF-8
+  server: blogger-renderd
+  expires: Fri, 26 Mar 2021 09:13:55 GMT
+  x-content-type-options: nosniff
+  x-xss-protection: 0
+  last-modified: Fri, 26 Mar 2021 09:05:26 GMT
+  x-frame-options: SAMEORIGIN
+  cache-control: public, must-revalidate, proxy-revalidate, max-age=1
+  age: 0
+  alt-svc: h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+  accept-ranges: none
+  vary: Accept-Encoding
