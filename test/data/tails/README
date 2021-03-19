@@ -1,0 +1,21 @@
+feed.rss is a snapshot of
+
+  https://tails.boum.org/news/emails.en.rss
+
+as of 2020-12-28.
+
+HTTP headers:
+
+    HTTP/2 200 
+    server: nginx/1.10.3
+    date: Mon, 28 Dec 2020 10:23:11 GMT
+    content-type: application/rss+xml
+    content-length: 60681
+    last-modified: Sat, 26 Dec 2020 14:21:34 GMT
+    vary: Accept-Encoding
+    etag: "5fe746ee-ed09"
+    strict-transport-security: max-age=15768000; includeSubDomains; preload
+    x-frame-options: sameorigin
+    x-xss-protection: 1; mode=block
+    x-content-type-options: nosniff
+    accept-ranges: bytes

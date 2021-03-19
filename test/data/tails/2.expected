@@ -1,0 +1,2249 @@
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============6279324619237534636=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.8 is out
+Date: Wed, 08 Jul 2020 00:50:45 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.8/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.8/index.en.html
+X-RSS-TAGS: announce
+
+--===============6279324619237534636==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/version_4.8/index.en.html">Tails 4.8 is out</a></h1>
+<div id="body">
+<p>This release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_4.7/">many security
+vulnerabilities</a>. You should upgrade as soon as possible.</p>
+
+<h1>New features</h1>
+
+<ul>
+<li><p>We disabled the <em>Unsafe Browser</em> by default and clarified that <a href="https://tails.boum.org/doc/anonymous_internet/unsafe_browser/index.en.html#security">the
+<em>Unsafe Browser</em> can be used to deanonymize
+you</a>.</p>
+
+<p>An attacker could exploit a security vulnerability in another
+application in Tails to start an invisible <em>Unsafe Browser</em> and reveal
+your IP address, even if you are not using the <em>Unsafe Browser</em>.</p>
+
+<p>For example, an attacker could exploit a security vulnerability in
+<em>Thunderbird</em> by sending you a phishing email that could start an
+invisible <em>Unsafe Browser</em> and reveal them your IP address.</p>
+
+<p>Such an attack is very unlikely but could be performed by a strong
+attacker, such as a government or a hacking firm.</p>
+
+<p>This is why we recommend that you:</p>
+
+<ul>
+<li>Only enable the <em>Unsafe Browser</em> if you need to log in to a captive
+portal.</li>
+<li>Always upgrade to the latest version of Tails to fix known
+vulnerabilities as soon as possible.</li>
+</ul>
+</li>
+<li><p>We added a new feature of the Persistent Storage to save the settings
+from the Welcome Screen.</p>
+
+<p>This feature is beta and only the additional setting to enable the
+<em>Unsafe Browser</em> is made persistent. The other settings (language,
+keyboard, and other additional settings) will be made persistent in
+Tails 4.9 (July 28).</p>
+
+<p><img alt="new Welcome Screen feature in the Persistent Storage settings" class="img" height="430" src="https://tails.boum.org/news/version_4.8/welcome_screen.png" width="379" /></p></li>
+</ul>
+
+
+<h1>Changes and updates</h1>
+
+<ul>
+<li><p>Update <em>Tor Browser</em> to <a href="https://blog.torproject.org/new-release-tor-browser-951">9.5.1</a>.</p></li>
+<li><p>Update <em>Thunderbird</em> to <a href="https://www.thunderbird.net/en-US/thunderbird/68.9.0/releasenotes/">68.9.0</a>.</p></li>
+<li><p>Update <em>Linux</em> to 5.6.0. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).</p></li>
+</ul>
+
+
+<h1>Fixed problems</h1>
+
+<ul>
+<li><p>Fix the <em>Find in page</em> feature of <em>Thunderbird</em>. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17328">#17328</a>)</p></li>
+<li><p>Fix shutting down automatically the laptop when resuming from suspend
+with the Tails USB stick removed. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/16787">#16787</a>)</p></li>
+<li><p>Notify always when <a href="https://tails.boum.org/doc/first_steps/welcome_screen/mac_spoofing/index.en.html">MAC address
+spoofing</a> fails and the
+network interface is disabled. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17779">#17779</a>)</p></li>
+<li><p>Fix the import of OpenPGP public keys in binary format (non armored)
+from the <em>Files</em> browser.</p></li>
+</ul>
+
+
+<p>For more details, read our <a href="https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog">changelog</a>.</p>
+
+<p><a id="known-issues"></a></p>
+
+<h1>Known issues</h1>
+
+<ul>
+<li><p>Only use the following characters in the <a href="https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html">administration
+password</a>:</p>
+
+<ul>
+<li><span class="code">a&ndash;z</span></li>
+<li><span class="code">A&ndash;Z</span></li>
+<li><span class="code">1&ndash;9</span></li>
+<li><span class="code">_@%+=:,./-</span></li>
+</ul>
+
+
+<p>If you use spaces or other accentuated characters, like <span class="code">&agrave;&eacute;&iuml;&oslash;&#x16f;</span>, your will not be able to type your
+administration password again in your Tails session, unless you
+type single quotes <span class="code">'</span> around it.</p>
+
+<p>For example, if you set the administration password:
+<span class="code">n&eacute;e entrep&ocirc;t &uuml;ber se&ntilde;or</span>, you would have to
+type <span class="code">'n&eacute;e entrep&ocirc;t &uuml;ber se&ntilde;or'</span>.
+(<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17792">#17792</a>)</p></li>
+<li><p>The keyboard layout is not applied to the Welcome Screen when
+automatically selected after you changed the language. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17794">#17794</a>)</p>
+
+<p>For example, setting the language to French seems to change the
+keyboard layout to French (AZERTY) but this change is not applied to
+the Welcome Screen. This can prevent you from typing the passphrase
+of your Persistent Storage.</p>
+
+<p>To change the keyboard layout of the Welcome Screen, select your
+keyboard layout manually from the <strong>Keyboard Layout</strong> drop-down menu.
+Do so even if they keyboard layout is automatically selected after you
+changed the language.</p></li>
+<li><p>Tails fails to start with the <span class="code">toram</span> boot
+option. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17800">#17800</a>)</p>
+
+<p>To start with the <span class="code">toram</span> boot option, specify
+both the <span class="code">toram</span> and the
+<span class="code">fromiso=/dev/true</span> <a href="https://tails.boum.org/doc/advanced_topics/boot_options/index.en.html">boot
+options</a>.</p></li>
+</ul>
+
+
+<p>See the list of <a href="https://tails.boum.org/support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1>Get Tails 4.8</h1>
+
+<h2>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from Tails 4.2 or later to 4.8.</p></li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/win/index.en.html">Install from Windows</a></li>
+<li><a href="https://tails.boum.org/install/mac/index.en.html">Install from macOS</a></li>
+<li><a href="https://tails.boum.org/install/linux/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>All the data on this USB stick will be lost if
+you install instead of upgrading.</p></div>
+
+
+<h2>To download only</h2>
+
+<p>If you don't need installation or upgrade instructions, you can download
+Tails 4.8 directly:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/download/index.en.html">For USB sticks (USB image)</a></li>
+<li><a href="https://tails.boum.org/install/download-iso/index.en.html">For DVDs and virtual machines (ISO image)</a></li>
+</ul>
+
+
+<h1>What's coming up?</h1>
+
+<p>Tails 4.9 is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for July 28.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="https://tails.boum.org/contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.8">donating</a> is only one of
+them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.8/index.en.html">https://tails.boum.org/news/version_4.8/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============6279324619237534636==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+IyBbVGFpbHMgNC44IGlzIG91dF0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9uZXdzL3ZlcnNpb25f
+NC44L2luZGV4LmVuLmh0bWwpCgpUaGlzIHJlbGVhc2UgZml4ZXMgW21hbnkgc2VjdXJpdHkKdnVs
+bmVyYWJpbGl0aWVzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL3NlY3VyaXR5L051bWVyb3VzX3Nl
+Y3VyaXR5X2hvbGVzX2luXzQuNy8pLgpZb3Ugc2hvdWxkIHVwZ3JhZGUgYXMgc29vbiBhcyBwb3Nz
+aWJsZS4KCiMgTmV3IGZlYXR1cmVzCgogICogV2UgZGlzYWJsZWQgdGhlIF9VbnNhZmUgQnJvd3Nl
+cl8gYnkgZGVmYXVsdCBhbmQgY2xhcmlmaWVkIHRoYXQgW3RoZSBfVW5zYWZlIEJyb3dzZXJfIGNh
+biBiZSB1c2VkIHRvIGRlYW5vbnltaXplIHlvdV0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9kb2Mv
+YW5vbnltb3VzX2ludGVybmV0L3Vuc2FmZV9icm93c2VyL2luZGV4LmVuLmh0bWwjc2VjdXJpdHkp
+LgoKQW4gYXR0YWNrZXIgY291bGQgZXhwbG9pdCBhIHNlY3VyaXR5IHZ1bG5lcmFiaWxpdHkgaW4g
+YW5vdGhlciBhcHBsaWNhdGlvbiBpbgpUYWlscyB0byBzdGFydCBhbiBpbnZpc2libGUgX1Vuc2Fm
+ZSBCcm93c2VyXyBhbmQgcmV2ZWFsIHlvdXIgSVAgYWRkcmVzcywgZXZlbgppZiB5b3UgYXJlIG5v
+dCB1c2luZyB0aGUgX1Vuc2FmZSBCcm93c2VyXy4KCkZvciBleGFtcGxlLCBhbiBhdHRhY2tlciBj
+b3VsZCBleHBsb2l0IGEgc2VjdXJpdHkgdnVsbmVyYWJpbGl0eSBpbgpfVGh1bmRlcmJpcmRfIGJ5
+IHNlbmRpbmcgeW91IGEgcGhpc2hpbmcgZW1haWwgdGhhdCBjb3VsZCBzdGFydCBhbiBpbnZpc2li
+bGUKX1Vuc2FmZSBCcm93c2VyXyBhbmQgcmV2ZWFsIHRoZW0geW91ciBJUCBhZGRyZXNzLgoKU3Vj
+aCBhbiBhdHRhY2sgaXMgdmVyeSB1bmxpa2VseSBidXQgY291bGQgYmUgcGVyZm9ybWVkIGJ5IGEg
+c3Ryb25nIGF0dGFja2VyLApzdWNoIGFzIGEgZ292ZXJubWVudCBvciBhIGhhY2tpbmcgZmlybS4K
+ClRoaXMgaXMgd2h5IHdlIHJlY29tbWVuZCB0aGF0IHlvdToKCiAgICAqIE9ubHkgZW5hYmxlIHRo
+ZSBfVW5zYWZlIEJyb3dzZXJfIGlmIHlvdSBuZWVkIHRvIGxvZyBpbiB0byBhIGNhcHRpdmUgcG9y
+dGFsLgogICAgKiBBbHdheXMgdXBncmFkZSB0byB0aGUgbGF0ZXN0IHZlcnNpb24gb2YgVGFpbHMg
+dG8gZml4IGtub3duIHZ1bG5lcmFiaWxpdGllcyBhcyBzb29uIGFzIHBvc3NpYmxlLgogICogV2Ug
+YWRkZWQgYSBuZXcgZmVhdHVyZSBvZiB0aGUgUGVyc2lzdGVudCBTdG9yYWdlIHRvIHNhdmUgdGhl
+IHNldHRpbmdzIGZyb20gdGhlIFdlbGNvbWUgU2NyZWVuLgoKVGhpcyBmZWF0dXJlIGlzIGJldGEg
+YW5kIG9ubHkgdGhlIGFkZGl0aW9uYWwgc2V0dGluZyB0byBlbmFibGUgdGhlIF9VbnNhZmUKQnJv
+d3Nlcl8gaXMgbWFkZSBwZXJzaXN0ZW50LiBUaGUgb3RoZXIgc2V0dGluZ3MgKGxhbmd1YWdlLCBr
+ZXlib2FyZCwgYW5kIG90aGVyCmFkZGl0aW9uYWwgc2V0dGluZ3MpIHdpbGwgYmUgbWFkZSBwZXJz
+aXN0ZW50IGluIFRhaWxzIDQuOSAoSnVseSAyOCkuCgohW25ldyBXZWxjb21lIFNjcmVlbiBmZWF0
+dXJlIGluIHRoZSBQZXJzaXN0ZW50IFN0b3JhZ2UKc2V0dGluZ3NdKGh0dHBzOi8vdGFpbHMuYm91
+bS5vcmcvbmV3cy92ZXJzaW9uXzQuOC93ZWxjb21lX3NjcmVlbi5wbmcpCgojIENoYW5nZXMgYW5k
+IHVwZGF0ZXMKCiAgKiBVcGRhdGUgX1RvciBCcm93c2VyXyB0byBbOS41LjFdKGh0dHBzOi8vYmxv
+Zy50b3Jwcm9qZWN0Lm9yZy9uZXctcmVsZWFzZS10b3ItYnJvd3Nlci05NTEpLgoKICAqIFVwZGF0
+ZSBfVGh1bmRlcmJpcmRfIHRvIFs2OC45LjBdKGh0dHBzOi8vd3d3LnRodW5kZXJiaXJkLm5ldC9l
+bi1VUy90aHVuZGVyYmlyZC82OC45LjAvcmVsZWFzZW5vdGVzLykuCgogICogVXBkYXRlIF9MaW51
+eF8gdG8gNS42LjAuIFRoaXMgc2hvdWxkIGltcHJvdmUgdGhlIHN1cHBvcnQgZm9yIG5ld2VyIGhh
+cmR3YXJlIChncmFwaGljcywgV2ktRmksIGV0Yy4pLgoKIyBGaXhlZCBwcm9ibGVtcwoKICAqIEZp
+eCB0aGUgX0ZpbmQgaW4gcGFnZV8gZmVhdHVyZSBvZiBfVGh1bmRlcmJpcmRfLiAoWyMxNzMyOF0o
+aHR0cHM6Ly9naXRsYWIudGFpbHMuYm91bS5vcmcvdGFpbHMvdGFpbHMvLS9pc3N1ZXMvMTczMjgp
+KQoKICAqIEZpeCBzaHV0dGluZyBkb3duIGF1dG9tYXRpY2FsbHkgdGhlIGxhcHRvcCB3aGVuIHJl
+c3VtaW5nIGZyb20gc3VzcGVuZCB3aXRoIHRoZSBUYWlscyBVU0Igc3RpY2sgcmVtb3ZlZC4gKFsj
+MTY3ODddKGh0dHBzOi8vZ2l0bGFiLnRhaWxzLmJvdW0ub3JnL3RhaWxzL3RhaWxzLy0vaXNzdWVz
+LzE2Nzg3KSkKCiAgKiBOb3RpZnkgYWx3YXlzIHdoZW4gW01BQyBhZGRyZXNzIHNwb29maW5nXSho
+dHRwczovL3RhaWxzLmJvdW0ub3JnL2RvYy9maXJzdF9zdGVwcy93ZWxjb21lX3NjcmVlbi9tYWNf
+c3Bvb2ZpbmcvaW5kZXguZW4uaHRtbCkgZmFpbHMgYW5kIHRoZSBuZXR3b3JrIGludGVyZmFjZSBp
+cyBkaXNhYmxlZC4gKFsjMTc3NzldKGh0dHBzOi8vZ2l0bGFiLnRhaWxzLmJvdW0ub3JnL3RhaWxz
+L3RhaWxzLy0vaXNzdWVzLzE3Nzc5KSkKCiAgKiBGaXggdGhlIGltcG9ydCBvZiBPcGVuUEdQIHB1
+YmxpYyBrZXlzIGluIGJpbmFyeSBmb3JtYXQgKG5vbiBhcm1vcmVkKSBmcm9tIHRoZSBfRmlsZXNf
+IGJyb3dzZXIuCgpGb3IgbW9yZSBkZXRhaWxzLCByZWFkIG91cgpbY2hhbmdlbG9nXShodHRwczov
+L2dpdGxhYi50YWlscy5ib3VtLm9yZy90YWlscy90YWlscy8tL2Jsb2IvbWFzdGVyL2RlYmlhbi9j
+aGFuZ2Vsb2cpLgoKIyBLbm93biBpc3N1ZXMKCiAgKiBPbmx5IHVzZSB0aGUgZm9sbG93aW5nIGNo
+YXJhY3RlcnMgaW4gdGhlIFthZG1pbmlzdHJhdGlvbiBwYXNzd29yZF0oaHR0cHM6Ly90YWlscy5i
+b3VtLm9yZy9kb2MvZmlyc3Rfc3RlcHMvd2VsY29tZV9zY3JlZW4vYWRtaW5pc3RyYXRpb25fcGFz
+c3dvcmQvaW5kZXguZW4uaHRtbCk6CgogICAgKiBhLXoKICAgICogQS1aCiAgICAqIDEtOQogICAg
+KiBfQCUrPTosLi8tCgpJZiB5b3UgdXNlIHNwYWNlcyBvciBvdGhlciBhY2NlbnR1YXRlZCBjaGFy
+YWN0ZXJzLCBsaWtlIGFlacO4xa8sIHlvdXIgd2lsbCBub3QKYmUgYWJsZSB0byB0eXBlIHlvdXIg
+YWRtaW5pc3RyYXRpb24gcGFzc3dvcmQgYWdhaW4gaW4geW91ciBUYWlscyBzZXNzaW9uLAp1bmxl
+c3MgeW91IHR5cGUgc2luZ2xlIHF1b3RlcyAnIGFyb3VuZCBpdC4KCkZvciBleGFtcGxlLCBpZiB5
+b3Ugc2V0IHRoZSBhZG1pbmlzdHJhdGlvbiBwYXNzd29yZDogbmVlIGVudHJlcG90IHViZXIgc2XD
+sW9yLAp5b3Ugd291bGQgaGF2ZSB0byB0eXBlICduZWUgZW50cmVwb3QgdWJlciBzZcOxb3InLgoo
+WyMxNzc5Ml0oaHR0cHM6Ly9naXRsYWIudGFpbHMuYm91bS5vcmcvdGFpbHMvdGFpbHMvLS9pc3N1
+ZXMvMTc3OTIpKQoKICAqIFRoZSBrZXlib2FyZCBsYXlvdXQgaXMgbm90IGFwcGxpZWQgdG8gdGhl
+IFdlbGNvbWUgU2NyZWVuIHdoZW4gYXV0b21hdGljYWxseSBzZWxlY3RlZCBhZnRlciB5b3UgY2hh
+bmdlZCB0aGUgbGFuZ3VhZ2UuIChbIzE3Nzk0XShodHRwczovL2dpdGxhYi50YWlscy5ib3VtLm9y
+Zy90YWlscy90YWlscy8tL2lzc3Vlcy8xNzc5NCkpCgpGb3IgZXhhbXBsZSwgc2V0dGluZyB0aGUg
+bGFuZ3VhZ2UgdG8gRnJlbmNoIHNlZW1zIHRvIGNoYW5nZSB0aGUga2V5Ym9hcmQKbGF5b3V0IHRv
+IEZyZW5jaCAoQVpFUlRZKSBidXQgdGhpcyBjaGFuZ2UgaXMgbm90IGFwcGxpZWQgdG8gdGhlIFdl
+bGNvbWUKU2NyZWVuLiBUaGlzIGNhbiBwcmV2ZW50IHlvdSBmcm9tIHR5cGluZyB0aGUgcGFzc3Bo
+cmFzZSBvZiB5b3VyIFBlcnNpc3RlbnQKU3RvcmFnZS4KClRvIGNoYW5nZSB0aGUga2V5Ym9hcmQg
+bGF5b3V0IG9mIHRoZSBXZWxjb21lIFNjcmVlbiwgc2VsZWN0IHlvdXIga2V5Ym9hcmQKbGF5b3V0
+IG1hbnVhbGx5IGZyb20gdGhlICoqS2V5Ym9hcmQgTGF5b3V0KiogZHJvcC1kb3duIG1lbnUuIERv
+IHNvIGV2ZW4gaWYKdGhleSBrZXlib2FyZCBsYXlvdXQgaXMgYXV0b21hdGljYWxseSBzZWxlY3Rl
+ZCBhZnRlciB5b3UgY2hhbmdlZCB0aGUgbGFuZ3VhZ2UuCgogICogVGFpbHMgZmFpbHMgdG8gc3Rh
+cnQgd2l0aCB0aGUgdG9yYW0gYm9vdCBvcHRpb24uIChbIzE3ODAwXShodHRwczovL2dpdGxhYi50
+YWlscy5ib3VtLm9yZy90YWlscy90YWlscy8tL2lzc3Vlcy8xNzgwMCkpCgpUbyBzdGFydCB3aXRo
+IHRoZSB0b3JhbSBib290IG9wdGlvbiwgc3BlY2lmeSBib3RoIHRoZSB0b3JhbSBhbmQgdGhlCmZy
+b21pc289L2Rldi90cnVlIFtib290Cm9wdGlvbnNdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvZG9j
+L2FkdmFuY2VkX3RvcGljcy9ib290X29wdGlvbnMvaW5kZXguZW4uaHRtbCkuCgpTZWUgdGhlIGxp
+c3Qgb2YgW2xvbmctc3RhbmRpbmcKaXNzdWVzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL3N1cHBv
+cnQva25vd25faXNzdWVzL2luZGV4LmVuLmh0bWwpLgoKIyBHZXQgVGFpbHMgNC44CgojIyBUbyB1
+cGdyYWRlIHlvdXIgVGFpbHMgVVNCIHN0aWNrIGFuZCBrZWVwIHlvdXIgcGVyc2lzdGVudCBzdG9y
+YWdlCgogICogQXV0b21hdGljIHVwZ3JhZGVzIGFyZSBhdmFpbGFibGUgZnJvbSBUYWlscyA0LjIg
+b3IgbGF0ZXIgdG8gNC44LgoKICAqIElmIHlvdSBjYW5ub3QgZG8gYW4gYXV0b21hdGljIHVwZ3Jh
+ZGUgb3IgaWYgVGFpbHMgZmFpbHMgdG8gc3RhcnQgYWZ0ZXIgYW4gYXV0b21hdGljIHVwZ3JhZGUs
+IHBsZWFzZSB0cnkgdG8gZG8gYSBbbWFudWFsIHVwZ3JhZGVdKGh0dHBzOi8vdGFpbHMuYm91bS5v
+cmcvZG9jL3VwZ3JhZGUvaW5kZXguZW4uaHRtbCNtYW51YWwpLgoKIyMgVG8gaW5zdGFsbCBUYWls
+cyBvbiBhIG5ldyBVU0Igc3RpY2sKCkZvbGxvdyBvdXIgaW5zdGFsbGF0aW9uIGluc3RydWN0aW9u
+czoKCiAgKiBbSW5zdGFsbCBmcm9tIFdpbmRvd3NdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvaW5z
+dGFsbC93aW4vaW5kZXguZW4uaHRtbCkKICAqIFtJbnN0YWxsIGZyb20gbWFjT1NdKGh0dHBzOi8v
+dGFpbHMuYm91bS5vcmcvaW5zdGFsbC9tYWMvaW5kZXguZW4uaHRtbCkKICAqIFtJbnN0YWxsIGZy
+b20gTGludXhdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvaW5zdGFsbC9saW51eC9pbmRleC5lbi5o
+dG1sKQoKQWxsIHRoZSBkYXRhIG9uIHRoaXMgVVNCIHN0aWNrIHdpbGwgYmUgbG9zdCBpZiB5b3Ug
+aW5zdGFsbCBpbnN0ZWFkIG9mCnVwZ3JhZGluZy4KCiMjIFRvIGRvd25sb2FkIG9ubHkKCklmIHlv
+dSBkb24ndCBuZWVkIGluc3RhbGxhdGlvbiBvciB1cGdyYWRlIGluc3RydWN0aW9ucywgeW91IGNh
+biBkb3dubG9hZCBUYWlscwo0LjggZGlyZWN0bHk6CgogICogW0ZvciBVU0Igc3RpY2tzIChVU0Ig
+aW1hZ2UpXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2luc3RhbGwvZG93bmxvYWQvaW5kZXguZW4u
+aHRtbCkKICAqIFtGb3IgRFZEcyBhbmQgdmlydHVhbCBtYWNoaW5lcyAoSVNPIGltYWdlKV0oaHR0
+cHM6Ly90YWlscy5ib3VtLm9yZy9pbnN0YWxsL2Rvd25sb2FkLWlzby9pbmRleC5lbi5odG1sKQoK
+IyBXaGF0J3MgY29taW5nIHVwPwoKVGFpbHMgNC45IGlzIFtzY2hlZHVsZWRdKGh0dHBzOi8vdGFp
+bHMuYm91bS5vcmcvY29udHJpYnV0ZS9jYWxlbmRhci8pIGZvciBKdWx5CjI4LgoKSGF2ZSBhIGxv
+b2sgYXQgb3VyIFtyb2FkbWFwXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2NvbnRyaWJ1dGUvcm9h
+ZG1hcCkgdG8gc2VlCndoZXJlIHdlIGFyZSBoZWFkaW5nIHRvLgoKV2UgbmVlZCB5b3VyIGhlbHAg
+YW5kIHRoZXJlIGFyZSBtYW55IHdheXMgdG8gW2NvbnRyaWJ1dGUgdG8KVGFpbHNdKGh0dHBzOi8v
+dGFpbHMuYm91bS5vcmcvY29udHJpYnV0ZS9pbmRleC5lbi5odG1sKQooW2RvbmF0aW5nXShodHRw
+czovL3RhaWxzLmJvdW0ub3JnL2RvbmF0ZS8/cj00LjgpIGlzIG9ubHkgb25lIG9mIHRoZW0pLiBD
+b21lClt0YWxrIHRvIHVzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2Fib3V0L2NvbnRhY3QvaW5k
+ZXguZW4uaHRtbCN0YWlscy1kZXYpIQoKVVJMOiA8aHR0cHM6Ly90YWlscy5ib3VtLm9yZy9uZXdz
+L3ZlcnNpb25fNC44L2luZGV4LmVuLmh0bWw+Cgo=
+
+--===============6279324619237534636==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============6115117971066123553=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.9 is out
+Date: Wed, 29 Jul 2020 07:12:41 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.9/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.9/index.en.html
+X-RSS-TAGS: announce
+
+--===============6115117971066123553==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/version_4.9/index.en.html">Tails 4.9 is out</a></h1>
+<div id="body">
+<p>This release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_4.8/">many security
+vulnerabilities</a>. You should upgrade as soon as possible.</p>
+
+<h1>Changes and updates</h1>
+
+<ul>
+<li><p>Update <em>Tor Browser</em> to <a href="https://blog.torproject.org/new-release-tor-browser-953">9.5.3</a>.</p></li>
+<li><p>Update <em>Thunderbird</em> to <a href="https://www.thunderbird.net/en-US/thunderbird/68.10.0/releasenotes/">68.10.0</a>.</p></li>
+<li><p>Update <em>Linux</em> to 5.7.6. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).</p></li>
+</ul>
+
+
+<h1>Fixed problems</h1>
+
+<ul>
+<li><p>Allow characters others than <span class="code">A&ndash;Z</span>,
+<span class="code">a&ndash;z</span>, <span class="code">1&ndash;9</span>, and <span class="code">_@%+=:,./-</span> in
+the <a href="https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html">administration password</a>.
+(<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17792">#17792</a>)</p></li>
+<li><p>Apply the keyboard layout that is automatically selected when you change
+the language in the Welcome Screen. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17794">#17794</a>)</p></li>
+<li><p>Fix starting Tails with the <span class="code">toram</span> boot option.
+(<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17800">#17800</a>)</p></li>
+</ul>
+
+
+<p>For more details, read our <a href="https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog">changelog</a>.</p>
+
+<p><a id="known-issues"></a></p>
+
+<h1>Known issues</h1>
+
+<ul>
+<li>USB Wi-Fi adapters with Atheros AR9271 hardware do not work with Linux
+5.7.6. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17834">#17834</a>)</li>
+</ul>
+
+
+<p>See the list of <a href="https://tails.boum.org/support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1>Get Tails 4.9</h1>
+
+<h2>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from Tails 4.2 or later to 4.9.</p></li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/win/index.en.html">Install from Windows</a></li>
+<li><a href="https://tails.boum.org/install/mac/index.en.html">Install from macOS</a></li>
+<li><a href="https://tails.boum.org/install/linux/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.</p></div>
+
+
+<h2>To download only</h2>
+
+<p>If you don't need installation or upgrade instructions, you can download
+Tails 4.9 directly:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/download/index.en.html">For USB sticks (USB image)</a></li>
+<li><a href="https://tails.boum.org/install/download-iso/index.en.html">For DVDs and virtual machines (ISO image)</a></li>
+</ul>
+
+
+<h1>What's coming up?</h1>
+
+<p>Tails 4.10 is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for August 25.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="https://tails.boum.org/contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.9">donating</a> is only one of
+them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.9/index.en.html">https://tails.boum.org/news/version_4.9/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============6115117971066123553==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+# [Tails 4.9 is out](https://tails.boum.org/news/version_4.9/index.en.html)
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.8/).
+You should upgrade as soon as possible.
+
+# Changes and updates
+
+  * Update _Tor Browser_ to [9.5.3](https://blog.torproject.org/new-release-tor-browser-953).
+
+  * Update _Thunderbird_ to [68.10.0](https://www.thunderbird.net/en-US/thunderbird/68.10.0/releasenotes/).
+
+  * Update _Linux_ to 5.7.6. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+# Fixed problems
+
+  * Allow characters others than A-Z, a-z, 1-9, and _@%+=:,./- in the [administration password](https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html). ([#17792](https://gitlab.tails.boum.org/tails/tails/-/issues/17792))
+
+  * Apply the keyboard layout that is automatically selected when you change the language in the Welcome Screen. ([#17794](https://gitlab.tails.boum.org/tails/tails/-/issues/17794))
+
+  * Fix starting Tails with the toram boot option. ([#17800](https://gitlab.tails.boum.org/tails/tails/-/issues/17800))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+  * USB Wi-Fi adapters with Atheros AR9271 hardware do not work with Linux 5.7.6. ([#17834](https://gitlab.tails.boum.org/tails/tails/-/issues/17834))
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.9
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.9.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.9 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.10 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+August 25.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.9) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+URL: <https://tails.boum.org/news/version_4.9/index.en.html>
+
+
+--===============6115117971066123553==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============8031942330702480015=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.10 is out
+Date: Tue, 25 Aug 2020 13:15:06 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.10/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.10/index.en.html
+X-RSS-TAGS: announce
+
+--===============8031942330702480015==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/version_4.10/index.en.html">Tails 4.10 is out</a></h1>
+<div id="body">
+<p>This release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_4.9/">many security
+vulnerabilities</a>. You should upgrade as soon as possible.</p>
+
+<h1>Changes and updates</h1>
+
+<ul>
+<li><p>Update <em>Tor Browser</em> to <a href="https://blog.torproject.org/new-release-tor-browser-954">9.5.4</a>.</p></li>
+<li><p>Update <em>Tor</em> to <a href="https://gitweb.torproject.org/tor.git/tree/ChangeLog">0.4.3.6</a>.</p></li>
+<li><p>Update <em>Electrum</em> from 3.3.8 to
+<a href="https://github.com/spesmilo/electrum/blob/master/RELEASE-NOTES">4.0.2</a>.</p></li>
+<li><p>Update <em>Linux</em> to 5.7.10. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).</p></li>
+<li><p>Hide the welcome message when starting Thunderbird.</p></li>
+</ul>
+
+
+<h1>Fixed problems</h1>
+
+<ul>
+<li><p>Fix support for USB Wi-Fi adapters with Atheros AR9271 hardware.
+(<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17834">#17834</a>)</p></li>
+<li><p>Fix USB tethering from iPhone. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17820">#17820</a>)</p></li>
+</ul>
+
+
+<p>For more details, read our <a href="https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog">changelog</a>.</p>
+
+<p><a id="known-issues"></a></p>
+
+<h1>Known issues</h1>
+
+
+
+
+<p>None specific to this release.</p>
+
+<p>See the list of <a href="https://tails.boum.org/support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1>Get Tails 4.10</h1>
+
+<h2>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from Tails 4.2 or later to 4.10.</p></li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/win/index.en.html">Install from Windows</a></li>
+<li><a href="https://tails.boum.org/install/mac/index.en.html">Install from macOS</a></li>
+<li><a href="https://tails.boum.org/install/linux/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.</p></div>
+
+
+<h2>To download only</h2>
+
+<p>If you don't need installation or upgrade instructions, you can download
+Tails 4.10 directly:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/download/index.en.html">For USB sticks (USB image)</a></li>
+<li><a href="https://tails.boum.org/install/download-iso/index.en.html">For DVDs and virtual machines (ISO image)</a></li>
+</ul>
+
+
+<h1>What's coming up?</h1>
+
+<p>Tails 4.11 is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for September 22.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="https://tails.boum.org/contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.10">donating</a> is only one of
+them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.10/index.en.html">https://tails.boum.org/news/version_4.10/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============8031942330702480015==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+# [Tails 4.10 is out](https://tails.boum.org/news/version_4.10/index.en.html)
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.9/).
+You should upgrade as soon as possible.
+
+# Changes and updates
+
+  * Update _Tor Browser_ to [9.5.4](https://blog.torproject.org/new-release-tor-browser-954).
+
+  * Update _Tor_ to [0.4.3.6](https://gitweb.torproject.org/tor.git/tree/ChangeLog).
+
+  * Update _Electrum_ from 3.3.8 to [4.0.2](https://github.com/spesmilo/electrum/blob/master/RELEASE-NOTES).
+
+  * Update _Linux_ to 5.7.10. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+  * Hide the welcome message when starting Thunderbird.
+
+# Fixed problems
+
+  * Fix support for USB Wi-Fi adapters with Atheros AR9271 hardware. ([#17834](https://gitlab.tails.boum.org/tails/tails/-/issues/17834))
+
+  * Fix USB tethering from iPhone. ([#17820](https://gitlab.tails.boum.org/tails/tails/-/issues/17820))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+None specific to this release.
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.10
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.10.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.10 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.11 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+September 22.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.10) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+URL: <https://tails.boum.org/news/version_4.10/index.en.html>
+
+
+--===============8031942330702480015==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============7345762823933934779=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Call for testing: 4.11~rc1
+Date: Tue, 08 Sep 2020 10:49:14 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/test_4.11-rc1/
+X-RSS-URL: https://tails.boum.org/news/test_4.11-rc1/
+X-RSS-TAGS: announce
+
+--===============7345762823933934779==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/test_4.11-rc1/">Call for testing: 4.11~rc1</a></h1>
+<div id="body">
+<p>Tails 4.11, scheduled for September 22, will be the first version of
+Tails to include Tor Browser 10.0 and to support persistent settings
+on the Welcome Screen!</p>
+
+<p>You can help Tails by testing the release candidate for Tails 4.11 now.</p>
+
+<h1>Persistent settings on the Welcome Screen</h1>
+
+<p>If you enable this persistence feature your Welcome Screen settings,
+like language selection and any administration password, will be
+automatically saved between sessions. While at the Welcome Screen the
+settings are restored as soon as you unlock your persistent encrypted
+volume. Please let us know if there are any problems!</p>
+
+<h1>Tor Browser 10.0 (alpha 6)</h1>
+
+<p>This new major release of Tor Browser is based on a brand new Firefox
+ESR series, version 78, which contains tons of changes, most under the
+hood. There's a risk that some of these changes break some expected
+feature in Tails, so please pay close attention and report any such
+issues to us!</p>
+
+<h1>Changelog</h1>
+
+<p>For more details about what has changed in Tails 4.11~rc1, read our
+<a href="https://gitlab.tails.boum.org/tails/tails/-/raw/4.11-rc1/debian/changelog">changelog</a>.</p>
+
+<h1>Known issues</h1>
+
+<ul>
+<li>In Tor Browser, opening <code>file://</code> URLs has a problem: opening any
+such local file will result in an infinite refresh loop like if you
+kept the F5 key pressed, so it will likely not display anything. At
+the moment this makes it impossible to read the offline
+documentation inside Tails, for instance. This will be fixed in
+Tails 4.11.</li>
+</ul>
+
+
+<p>See the list of <a href="https://tails.boum.org/support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1>How to test Tails 4.11~rc1?</h1>
+
+<p>Keep in mind that this is a test image. We tested that it is not broken in
+obvious ways, but it might still contain undiscovered issues.</p>
+
+<p>Please, report any new problem to <a href="mailto:tails-testers@boum.org">tails-testers@boum.org</a> (public mailing list).</p>
+
+<h1>Get Tails 4.11~rc1</h1>
+
+<h2>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from 4.2 or later to 4.11~rc1.</p>
+
+<p>To do an automatic upgrade to Tails 4.11~rc1:</p>
+
+<ol>
+<li><p>Start Tails 4.2 or later and
+<a href="https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html">set an administration password</a>.</p></li>
+<li><p>Run this command in a <em>Terminal</em>:</p>
+
+<pre><code>echo TAILS_CHANNEL=\&quot;alpha\&quot; | sudo tee -a /etc/os-release &amp;&amp; \
+     tails-upgrade-frontend-wrapper
+</code></pre>
+
+<p>Enter the administration password when asked for the &quot;password
+for amnesia&quot;.</p></li>
+<li><p>After the upgrade is applied, restart Tails and choose
+<strong>Applications&nbsp;&#x25b8; Tails&nbsp;&#x25b8; About Tails</strong>
+to verify that you are running Tails 4.11~rc1.</p></li>
+</ol>
+</li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2>To download 4.11~rc1</h2>
+
+<h3>Direct download</h3>
+
+<ul>
+<li><p><a class="use-mirror-pool" href="http://dl.amnesia.boum.org/tails/alpha/tails-amd64-4.11~rc1/tails-amd64-4.11~rc1.img">For USB sticks (USB image)</a>
+(<span class="createlink"><a href="https://tails.boum.org/ikiwiki.cgi?do=create&amp;from=news%2Ftest_4.11-rc1&amp;page=torrents%2Ffiles%2Ftails-amd64-4.11~rc1.img.sig" rel="nofollow">?</a>OpenPGP signature</span>)</p></li>
+<li><p><a class="use-mirror-pool" href="http://dl.amnesia.boum.org/tails/alpha/tails-amd64-4.11~rc1/tails-amd64-4.11~rc1.iso">For DVDs and virtual machines (ISO image)</a>
+(<span class="createlink"><a href="https://tails.boum.org/ikiwiki.cgi?do=create&amp;from=news%2Ftest_4.11-rc1&amp;page=torrents%2Ffiles%2Ftails-amd64-4.11~rc1.iso.sig" rel="nofollow">?</a>OpenPGP signature</span>)</p></li>
+</ul>
+
+
+<h3>BitTorrent download</h3>
+
+<ul>
+<li><p><a href="https://tails.boum.org/torrents/files/tails-amd64-4.11~rc1.img.torrent">For USB sticks (USB image)</a></p></li>
+<li><p><a href="https://tails.boum.org/torrents/files/tails-amd64-4.11~rc1.iso.torrent">For DVDs and virtual machines (ISO image)</a></p></li>
+</ul>
+
+
+<h2>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/win/usb/index.en.html">Install from Windows</a></li>
+<li><a href="https://tails.boum.org/install/mac/usb/index.en.html">Install from macOS</a></li>
+<li><a href="https://tails.boum.org/install/linux/usb/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>All the data on this USB stick will be lost.</p></div>
+
+
+<h1>What's coming up?</h1>
+
+<p>Tails 4.11 is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for September 22.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="https://tails.boum.org/contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.11-rc1">donating</a> is only one of
+them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/test_4.11-rc1/">https://tails.boum.org/news/test_4.11-rc1/</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============7345762823933934779==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+IyBbQ2FsbCBmb3IgdGVzdGluZzogNC4xMX5yYzFdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvbmV3
+cy90ZXN0XzQuMTEtcmMxLykKClRhaWxzIDQuMTEsIHNjaGVkdWxlZCBmb3IgU2VwdGVtYmVyIDIy
+LCB3aWxsIGJlIHRoZSBmaXJzdCB2ZXJzaW9uIG9mIFRhaWxzIHRvCmluY2x1ZGUgVG9yIEJyb3dz
+ZXIgMTAuMCBhbmQgdG8gc3VwcG9ydCBwZXJzaXN0ZW50IHNldHRpbmdzIG9uIHRoZSBXZWxjb21l
+ClNjcmVlbiEKCllvdSBjYW4gaGVscCBUYWlscyBieSB0ZXN0aW5nIHRoZSByZWxlYXNlIGNhbmRp
+ZGF0ZSBmb3IgVGFpbHMgNC4xMSBub3cuCgojIFBlcnNpc3RlbnQgc2V0dGluZ3Mgb24gdGhlIFdl
+bGNvbWUgU2NyZWVuCgpJZiB5b3UgZW5hYmxlIHRoaXMgcGVyc2lzdGVuY2UgZmVhdHVyZSB5b3Vy
+IFdlbGNvbWUgU2NyZWVuIHNldHRpbmdzLCBsaWtlCmxhbmd1YWdlIHNlbGVjdGlvbiBhbmQgYW55
+IGFkbWluaXN0cmF0aW9uIHBhc3N3b3JkLCB3aWxsIGJlIGF1dG9tYXRpY2FsbHkKc2F2ZWQgYmV0
+d2VlbiBzZXNzaW9ucy4gV2hpbGUgYXQgdGhlIFdlbGNvbWUgU2NyZWVuIHRoZSBzZXR0aW5ncyBh
+cmUgcmVzdG9yZWQKYXMgc29vbiBhcyB5b3UgdW5sb2NrIHlvdXIgcGVyc2lzdGVudCBlbmNyeXB0
+ZWQgdm9sdW1lLiBQbGVhc2UgbGV0IHVzIGtub3cgaWYKdGhlcmUgYXJlIGFueSBwcm9ibGVtcyEK
+CiMgVG9yIEJyb3dzZXIgMTAuMCAoYWxwaGEgNikKClRoaXMgbmV3IG1ham9yIHJlbGVhc2Ugb2Yg
+VG9yIEJyb3dzZXIgaXMgYmFzZWQgb24gYSBicmFuZCBuZXcgRmlyZWZveCBFU1IKc2VyaWVzLCB2
+ZXJzaW9uIDc4LCB3aGljaCBjb250YWlucyB0b25zIG9mIGNoYW5nZXMsIG1vc3QgdW5kZXIgdGhl
+IGhvb2QuClRoZXJlJ3MgYSByaXNrIHRoYXQgc29tZSBvZiB0aGVzZSBjaGFuZ2VzIGJyZWFrIHNv
+bWUgZXhwZWN0ZWQgZmVhdHVyZSBpbgpUYWlscywgc28gcGxlYXNlIHBheSBjbG9zZSBhdHRlbnRp
+b24gYW5kIHJlcG9ydCBhbnkgc3VjaCBpc3N1ZXMgdG8gdXMhCgojIENoYW5nZWxvZwoKRm9yIG1v
+cmUgZGV0YWlscyBhYm91dCB3aGF0IGhhcyBjaGFuZ2VkIGluIFRhaWxzIDQuMTF+cmMxLCByZWFk
+IG91cgpbY2hhbmdlbG9nXShodHRwczovL2dpdGxhYi50YWlscy5ib3VtLm9yZy90YWlscy90YWls
+cy8tL3Jhdy80LjExLXJjMS9kZWJpYW4vY2hhbmdlbG9nKS4KCiMgS25vd24gaXNzdWVzCgogICog
+SW4gVG9yIEJyb3dzZXIsIG9wZW5pbmcgYGZpbGU6Ly9gIFVSTHMgaGFzIGEgcHJvYmxlbTogb3Bl
+bmluZyBhbnkgc3VjaCBsb2NhbCBmaWxlIHdpbGwgcmVzdWx0IGluIGFuIGluZmluaXRlIHJlZnJl
+c2ggbG9vcCBsaWtlIGlmIHlvdSBrZXB0IHRoZSBGNSBrZXkgcHJlc3NlZCwgc28gaXQgd2lsbCBs
+aWtlbHkgbm90IGRpc3BsYXkgYW55dGhpbmcuIEF0IHRoZSBtb21lbnQgdGhpcyBtYWtlcyBpdCBp
+bXBvc3NpYmxlIHRvIHJlYWQgdGhlIG9mZmxpbmUgZG9jdW1lbnRhdGlvbiBpbnNpZGUgVGFpbHMs
+IGZvciBpbnN0YW5jZS4gVGhpcyB3aWxsIGJlIGZpeGVkIGluIFRhaWxzIDQuMTEuCgpTZWUgdGhl
+IGxpc3Qgb2YgW2xvbmctc3RhbmRpbmcKaXNzdWVzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL3N1
+cHBvcnQva25vd25faXNzdWVzL2luZGV4LmVuLmh0bWwpLgoKIyBIb3cgdG8gdGVzdCBUYWlscyA0
+LjExfnJjMT8KCktlZXAgaW4gbWluZCB0aGF0IHRoaXMgaXMgYSB0ZXN0IGltYWdlLiBXZSB0ZXN0
+ZWQgdGhhdCBpdCBpcyBub3QgYnJva2VuIGluCm9idmlvdXMgd2F5cywgYnV0IGl0IG1pZ2h0IHN0
+aWxsIGNvbnRhaW4gdW5kaXNjb3ZlcmVkIGlzc3Vlcy4KClBsZWFzZSwgcmVwb3J0IGFueSBuZXcg
+cHJvYmxlbSB0byBbdGFpbHMtdGVzdGVyc0Bib3VtLm9yZ10obWFpbHRvOnRhaWxzLQp0ZXN0ZXJz
+QGJvdW0ub3JnKSAocHVibGljIG1haWxpbmcgbGlzdCkuCgojIEdldCBUYWlscyA0LjExfnJjMQoK
+IyMgVG8gdXBncmFkZSB5b3VyIFRhaWxzIFVTQiBzdGljayBhbmQga2VlcCB5b3VyIHBlcnNpc3Rl
+bnQgc3RvcmFnZQoKICAqIEF1dG9tYXRpYyB1cGdyYWRlcyBhcmUgYXZhaWxhYmxlIGZyb20gNC4y
+IG9yIGxhdGVyIHRvIDQuMTF+cmMxLgoKVG8gZG8gYW4gYXV0b21hdGljIHVwZ3JhZGUgdG8gVGFp
+bHMgNC4xMX5yYzE6CgogICAgMS4gU3RhcnQgVGFpbHMgNC4yIG9yIGxhdGVyIGFuZCBbc2V0IGFu
+IGFkbWluaXN0cmF0aW9uIHBhc3N3b3JkXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2RvYy9maXJz
+dF9zdGVwcy93ZWxjb21lX3NjcmVlbi9hZG1pbmlzdHJhdGlvbl9wYXNzd29yZC9pbmRleC5lbi5o
+dG1sKS4KCiAgICAyLiBSdW4gdGhpcyBjb21tYW5kIGluIGEgX1Rlcm1pbmFsXyA6CiAgICAgICAg
+CiAgICAgICAgICAgICAgICBlY2hvIFRBSUxTX0NIQU5ORUw9XCJhbHBoYVwiIHwgc3VkbyB0ZWUg
+LWEgL2V0Yy9vcy1yZWxlYXNlICYmIFwKICAgICAgICAgICAgIHRhaWxzLXVwZ3JhZGUtZnJvbnRl
+bmQtd3JhcHBlcgogICAgICAgIAoKRW50ZXIgdGhlIGFkbWluaXN0cmF0aW9uIHBhc3N3b3JkIHdo
+ZW4gYXNrZWQgZm9yIHRoZSAicGFzc3dvcmQgZm9yIGFtbmVzaWEiLgoKICAgIDMuIEFmdGVyIHRo
+ZSB1cGdyYWRlIGlzIGFwcGxpZWQsIHJlc3RhcnQgVGFpbHMgYW5kIGNob29zZSAqKkFwcGxpY2F0
+aW9ucyAg4pa4IFRhaWxzIOKWuCBBYm91dCBUYWlscyoqIHRvIHZlcmlmeSB0aGF0IHlvdSBhcmUg
+cnVubmluZyBUYWlscyA0LjExfnJjMS4KCiAgKiBJZiB5b3UgY2Fubm90IGRvIGFuIGF1dG9tYXRp
+YyB1cGdyYWRlIG9yIGlmIFRhaWxzIGZhaWxzIHRvIHN0YXJ0IGFmdGVyIGFuIGF1dG9tYXRpYyB1
+cGdyYWRlLCBwbGVhc2UgdHJ5IHRvIGRvIGEgW21hbnVhbCB1cGdyYWRlXShodHRwczovL3RhaWxz
+LmJvdW0ub3JnL2RvYy91cGdyYWRlL2luZGV4LmVuLmh0bWwjbWFudWFsKS4KCiMjIFRvIGRvd25s
+b2FkIDQuMTF+cmMxCgojIyMgRGlyZWN0IGRvd25sb2FkCgogICogW0ZvciBVU0Igc3RpY2tzIChV
+U0IgaW1hZ2UpXShodHRwOi8vZGwuYW1uZXNpYS5ib3VtLm9yZy90YWlscy9hbHBoYS90YWlscy1h
+bWQ2NC00LjExfnJjMS90YWlscy1hbWQ2NC00LjExfnJjMS5pbWcpIChbP10oaHR0cHM6Ly90YWls
+cy5ib3VtLm9yZy9pa2l3aWtpLmNnaT9kbz1jcmVhdGUmZnJvbT1uZXdzJTJGdGVzdF80LjExLXJj
+MSZwYWdlPXRvcnJlbnRzJTJGZmlsZXMlMkZ0YWlscy1hbWQ2NC00LjExfnJjMS5pbWcuc2lnKU9w
+ZW5QR1Agc2lnbmF0dXJlKQoKICAqIFtGb3IgRFZEcyBhbmQgdmlydHVhbCBtYWNoaW5lcyAoSVNP
+IGltYWdlKV0oaHR0cDovL2RsLmFtbmVzaWEuYm91bS5vcmcvdGFpbHMvYWxwaGEvdGFpbHMtYW1k
+NjQtNC4xMX5yYzEvdGFpbHMtYW1kNjQtNC4xMX5yYzEuaXNvKSAoWz9dKGh0dHBzOi8vdGFpbHMu
+Ym91bS5vcmcvaWtpd2lraS5jZ2k/ZG89Y3JlYXRlJmZyb209bmV3cyUyRnRlc3RfNC4xMS1yYzEm
+cGFnZT10b3JyZW50cyUyRmZpbGVzJTJGdGFpbHMtYW1kNjQtNC4xMX5yYzEuaXNvLnNpZylPcGVu
+UEdQIHNpZ25hdHVyZSkKCiMjIyBCaXRUb3JyZW50IGRvd25sb2FkCgogICogW0ZvciBVU0Igc3Rp
+Y2tzIChVU0IgaW1hZ2UpXShodHRwczovL3RhaWxzLmJvdW0ub3JnL3RvcnJlbnRzL2ZpbGVzL3Rh
+aWxzLWFtZDY0LTQuMTF+cmMxLmltZy50b3JyZW50KQoKICAqIFtGb3IgRFZEcyBhbmQgdmlydHVh
+bCBtYWNoaW5lcyAoSVNPIGltYWdlKV0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy90b3JyZW50cy9m
+aWxlcy90YWlscy1hbWQ2NC00LjExfnJjMS5pc28udG9ycmVudCkKCiMjIFRvIGluc3RhbGwgVGFp
+bHMgb24gYSBuZXcgVVNCIHN0aWNrCgpGb2xsb3cgb3VyIGluc3RhbGxhdGlvbiBpbnN0cnVjdGlv
+bnM6CgogICogW0luc3RhbGwgZnJvbSBXaW5kb3dzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2lu
+c3RhbGwvd2luL3VzYi9pbmRleC5lbi5odG1sKQogICogW0luc3RhbGwgZnJvbSBtYWNPU10oaHR0
+cHM6Ly90YWlscy5ib3VtLm9yZy9pbnN0YWxsL21hYy91c2IvaW5kZXguZW4uaHRtbCkKICAqIFtJ
+bnN0YWxsIGZyb20gTGludXhdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvaW5zdGFsbC9saW51eC91
+c2IvaW5kZXguZW4uaHRtbCkKCkFsbCB0aGUgZGF0YSBvbiB0aGlzIFVTQiBzdGljayB3aWxsIGJl
+IGxvc3QuCgojIFdoYXQncyBjb21pbmcgdXA/CgpUYWlscyA0LjExIGlzIFtzY2hlZHVsZWRdKGh0
+dHBzOi8vdGFpbHMuYm91bS5vcmcvY29udHJpYnV0ZS9jYWxlbmRhci8pIGZvcgpTZXB0ZW1iZXIg
+MjIuCgpIYXZlIGEgbG9vayBhdCBvdXIgW3JvYWRtYXBdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcv
+Y29udHJpYnV0ZS9yb2FkbWFwKSB0byBzZWUKd2hlcmUgd2UgYXJlIGhlYWRpbmcgdG8uCgpXZSBu
+ZWVkIHlvdXIgaGVscCBhbmQgdGhlcmUgYXJlIG1hbnkgd2F5cyB0byBbY29udHJpYnV0ZSB0bwpU
+YWlsc10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9jb250cmlidXRlL2luZGV4LmVuLmh0bWwpCihb
+ZG9uYXRpbmddKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvZG9uYXRlLz9yPTQuMTEtcmMxKSBpcyBv
+bmx5IG9uZSBvZiB0aGVtKS4KQ29tZSBbdGFsayB0byB1c10oaHR0cHM6Ly90YWlscy5ib3VtLm9y
+Zy9hYm91dC9jb250YWN0L2luZGV4LmVuLmh0bWwjdGFpbHMtCmRldikhCgpVUkw6IDxodHRwczov
+L3RhaWxzLmJvdW0ub3JnL25ld3MvdGVzdF80LjExLXJjMS8+Cgo=
+
+--===============7345762823933934779==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============4121300989519860214=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.11 is out
+Date: Fri, 25 Sep 2020 04:45:57 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.11/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.11/index.en.html
+X-RSS-TAGS: announce
+
+--===============4121300989519860214==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/version_4.11/index.en.html">Tails 4.11 is out</a></h1>
+<div id="body">
+<p>This release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_4.10/">many security
+vulnerabilities</a>. You should upgrade as soon as possible.</p>
+
+<h1>New features</h1>
+
+<ul>
+<li><p>We added a new feature of the Persistent Storage to save the settings
+from the Welcome Screen: language, keyboard, and additional settings.</p>
+
+<p>To restore your settings when starting Tails, unlock your Persistent Storage
+in the Welcome Screen.</p>
+
+<p><img alt="new Welcome Screen feature in the Persistent Storage settings" class="img" height="428" src="https://tails.boum.org/news/version_4.11/welcome_screen.png" width="380" /></p></li>
+</ul>
+
+
+<h1>Changes and updates</h1>
+
+<ul>
+<li><p>Update <em>Tor Browser</em> to <a href="https://blog.torproject.org/new-release-tor-browser-100">10.0</a>.</p></li>
+<li><p>Update <em>Thunderbird</em> to <a href="https://www.thunderbird.net/en-US/thunderbird/68.12.0/releasenotes/">68.12</a>.</p></li>
+<li><p>Update <em>Linux</em> to 5.7.17. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).</p></li>
+<li><p>Configure <em>KeePassXC</em> to use the new default location <em>Passwords.kdbx</em>. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17286">#17286</a>)</p></li>
+<li><p>Update <span class="code">python3-trezor</span> to 0.12.2 to add
+compatibility with the new Trezor Model T.</p></li>
+</ul>
+
+
+<h1>Fixed problems</h1>
+
+<ul>
+<li>Disable the feature to <strong>Turn on Wi-Fi Hotspot</strong> in the Wi-Fi settings
+because it doesn't work in Tails. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17887">#17887</a>)</li>
+</ul>
+
+
+<p>For more details, read our <a href="https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog">changelog</a>.</p>
+
+<p><a id="known-issues"></a></p>
+
+<h1>Known issues</h1>
+
+<p>None specific to this release.</p>
+
+<p>See the list of <a href="https://tails.boum.org/support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1>Get Tails 4.11</h1>
+
+<h2>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from Tails 4.2 or later to 4.11.</p></li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/win/index.en.html">Install from Windows</a></li>
+<li><a href="https://tails.boum.org/install/mac/index.en.html">Install from macOS</a></li>
+<li><a href="https://tails.boum.org/install/linux/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.</p></div>
+
+
+<h2>To download only</h2>
+
+<p>If you don't need installation or upgrade instructions, you can download
+Tails 4.11 directly:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/download/index.en.html">For USB sticks (USB image)</a></li>
+<li><a href="https://tails.boum.org/install/download-iso/index.en.html">For DVDs and virtual machines (ISO image)</a></li>
+</ul>
+
+
+<h1>What's coming up?</h1>
+
+<p>Tails 4.12 is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for October 20.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="https://tails.boum.org/contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.11">donating</a> is only one of
+them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.11/index.en.html">https://tails.boum.org/news/version_4.11/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============4121300989519860214==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+# [Tails 4.11 is out](https://tails.boum.org/news/version_4.11/index.en.html)
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.10/).
+You should upgrade as soon as possible.
+
+# New features
+
+  * We added a new feature of the Persistent Storage to save the settings from the Welcome Screen: language, keyboard, and additional settings.
+
+To restore your settings when starting Tails, unlock your Persistent Storage
+in the Welcome Screen.
+
+![new Welcome Screen feature in the Persistent Storage
+settings](https://tails.boum.org/news/version_4.11/welcome_screen.png)
+
+# Changes and updates
+
+  * Update _Tor Browser_ to [10.0](https://blog.torproject.org/new-release-tor-browser-100).
+
+  * Update _Thunderbird_ to [68.12](https://www.thunderbird.net/en-US/thunderbird/68.12.0/releasenotes/).
+
+  * Update _Linux_ to 5.7.17. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+  * Configure _KeePassXC_ to use the new default location _Passwords.kdbx_. ([#17286](https://gitlab.tails.boum.org/tails/tails/-/issues/17286))
+
+  * Update python3-trezor to 0.12.2 to add compatibility with the new Trezor Model T.
+
+# Fixed problems
+
+  * Disable the feature to **Turn on Wi-Fi Hotspot** in the Wi-Fi settings because it doesn't work in Tails. ([#17887](https://gitlab.tails.boum.org/tails/tails/-/issues/17887))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+None specific to this release.
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.11
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.11.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.11 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.12 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+October 20.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.11) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+URL: <https://tails.boum.org/news/version_4.11/index.en.html>
+
+
+--===============4121300989519860214==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============0994726738207884902=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.12 is out
+Date: Tue, 10 Nov 2020 21:46:23 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.12/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.12/index.en.html
+X-RSS-TAGS: announce
+
+--===============0994726738207884902==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/version_4.12/index.en.html">Tails 4.12 is out</a></h1>
+<div id="body">
+<p>This release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_4.11/">many security
+vulnerabilities</a>. You should upgrade as soon as possible.</p>
+
+<h1 id="changes">Changes and updates</h1>
+
+
+<ul>
+<li><p>Update <em>Tor Browser</em> to <a href="https://blog.torproject.org/new-release-tor-browser-1002">10.0.2</a>.</p></li>
+<li><p>Update <em>tor</em> to 0.4.4.5.</p></li>
+<li><p>Update Linux to 5.8 and most firmware packages. This should improve the
+support for newer hardware (graphics, Wi-Fi, etc.).</p></li>
+<li><p>Add a button to cancel an automated upgrade while downloading. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17310">#17310</a>)</p></li>
+</ul>
+
+
+<h1 id="fixes">Fixed problems</h1>
+
+
+<ul>
+<li><p>Fix several internationalization issues in <em>Electrum</em>, <em>Tails Installer</em>, and
+<em>Tails Upgrader</em>. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17958">#17958</a>, <a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17758">#17758</a>, and
+<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17961">#17961</a>)</p></li>
+<li><p>Anonymize URLs in the technical details provided by <em>WhisperBack</em>.
+(<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/10695">#10695</a>)</p></li>
+</ul>
+
+
+<p>For more details, read our <a href="https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog">changelog</a>.</p>
+
+<p><a id="known-issues"></a></p>
+
+<h1 id="issues">Known issues</h1>
+
+
+
+
+
+
+
+<p>None specific to this release.</p>
+
+<p>See the list of <a href="https://tails.boum.org/support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1 id="get">Get Tails 4.12</h1>
+
+
+<h2>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from Tails 4.2 or later to 4.12.</p></li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/win/index.en.html">Install from Windows</a></li>
+<li><a href="https://tails.boum.org/install/mac/index.en.html">Install from macOS</a></li>
+<li><a href="https://tails.boum.org/install/linux/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.</p></div>
+
+
+<h2>To download only</h2>
+
+<p>If you don't need installation or upgrade instructions, you can download
+Tails 4.12 directly:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/download/index.en.html">For USB sticks (USB image)</a></li>
+<li><a href="https://tails.boum.org/install/download-iso/index.en.html">For DVDs and virtual machines (ISO image)</a></li>
+</ul>
+
+
+<h1 id="next">What's coming up?</h1>
+
+
+<p>Tails 4.13 is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for November 17.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="https://tails.boum.org/contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.12">donating</a> is only one of
+them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.12/index.en.html">https://tails.boum.org/news/version_4.12/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============0994726738207884902==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+# [Tails 4.12 is out](https://tails.boum.org/news/version_4.12/index.en.html)
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.11/).
+You should upgrade as soon as possible.
+
+# Changes and updates
+
+  * Update _Tor Browser_ to [10.0.2](https://blog.torproject.org/new-release-tor-browser-1002).
+
+  * Update _tor_ to 0.4.4.5.
+
+  * Update Linux to 5.8 and most firmware packages. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+  * Add a button to cancel an automated upgrade while downloading. ([#17310](https://gitlab.tails.boum.org/tails/tails/-/issues/17310))
+
+# Fixed problems
+
+  * Fix several internationalization issues in _Electrum_ , _Tails Installer_ , and _Tails Upgrader_. ([#17958](https://gitlab.tails.boum.org/tails/tails/-/issues/17958), [#17758](https://gitlab.tails.boum.org/tails/tails/-/issues/17758), and [#17961](https://gitlab.tails.boum.org/tails/tails/-/issues/17961))
+
+  * Anonymize URLs in the technical details provided by _WhisperBack_. ([#10695](https://gitlab.tails.boum.org/tails/tails/-/issues/10695))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+None specific to this release.
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.12
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.12.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.12 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.13 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+November 17.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.12) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+URL: <https://tails.boum.org/news/version_4.12/index.en.html>
+
+
+--===============0994726738207884902==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============8739919177368290050=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.13 is out
+Date: Tue, 17 Nov 2020 15:31:58 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.13/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.13/index.en.html
+X-RSS-TAGS: announce
+
+--===============8739919177368290050==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/version_4.13/index.en.html">Tails 4.13 is out</a></h1>
+<div id="body">
+<p>This release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_4.12/">many security
+vulnerabilities</a>. You should upgrade as soon as possible.</p>
+
+<h1 id="changes">Changes and updates</h1>
+
+
+<ul>
+<li><p>Update <em>Tor Browser</em> to <a href="https://blog.torproject.org/new-release-tor-browser-1005">10.0.5</a>.</p>
+
+<p><em>Tor Browser</em> 10.0.5 fixes the <a href="https://tails.boum.org/security/mcallgetproperty/index.en.html">critical vulnerability discovered last week
+in the JavaScript engine</a>.</p></li>
+<li><p>Update <em>Thunderbird</em> from 68.12 to <a href="https://www.thunderbird.net/en-US/thunderbird/78.4.2/releasenotes/">78.4.2</a>.</p>
+
+<p><em>Thunderbird</em> 78 replaces the <em>Enigmail</em> extension with built-in support for
+OpenPGP encryption.</p>
+
+<p>If you used <em>Enigmail</em> before Tails 4.13, follow our <a href="https://tails.boum.org/doc/anonymous_internet/thunderbird/openpgp_migration/index.en.html">instructions to
+migrate from <em>Enigmail</em> to <em>Thunderbird</em>
+78</a>.</p></li>
+<li><p>Add a button to restart Tails at the end of creating the Persistent Storage.
+(<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/16384">#16384</a>)</p></li>
+<li><p>Only include translations for languages that are available in the Welcome
+Screen. This reduces the size of the download by 5%. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17139">#17139</a>)</p></li>
+<li><p>Make the root directory of the Persistent Storage only readable by the <code>root</code>
+user. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/7465">#7465</a>)</p>
+
+<p>Users of the Dotfiles feature of the Persistent Storage can choose
+<strong>Places&nbsp;&#x25b8; Dotfiles</strong> to open the
+<em>/live/persistence/TailsData_unlocked/dotfiles folder</em> in the <em>Files</em>
+browser.</p></li>
+<li><p>Enable TCP timestamps. This might increase stability on slower Internet
+connections. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17491">#17491</a>)</p></li>
+</ul>
+
+
+<h1 id="fixes">Fixed problems</h1>
+
+
+<ul>
+<li><p>Fix the <strong>Upgrade</strong> button of <em>Tails Installer</em> when running Croatian,
+Danish, French, Hebrew, Macedonian, Simplified Chinese, and Turkish.
+(<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17982">#17982</a>)</p></li>
+<li><p>Allow raising the sound volume above 100%. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17322">#17322</a>)</p></li>
+</ul>
+
+
+<p>For more details, read our <a href="https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog">changelog</a>.</p>
+
+<h1 id="issues">Known issues</h1>
+
+
+<p>None specific to this release.</p>
+
+<p>See the list of <a href="https://tails.boum.org/support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1 id="get">Get Tails 4.13</h1>
+
+
+<h2>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from Tails 4.2 or later to 4.13.</p></li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/win/index.en.html">Install from Windows</a></li>
+<li><a href="https://tails.boum.org/install/mac/index.en.html">Install from macOS</a></li>
+<li><a href="https://tails.boum.org/install/linux/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.</p></div>
+
+
+<h2>To download only</h2>
+
+<p>If you don't need installation or upgrade instructions, you can download
+Tails 4.13 directly:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/download/index.en.html">For USB sticks (USB image)</a></li>
+<li><a href="https://tails.boum.org/install/download-iso/index.en.html">For DVDs and virtual machines (ISO image)</a></li>
+</ul>
+
+
+<h1 id="next">What's coming up?</h1>
+
+
+<p>Tails 4.14 is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for December 15.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="https://tails.boum.org/contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.13">donating</a> is only one of
+them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.13/index.en.html">https://tails.boum.org/news/version_4.13/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============8739919177368290050==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+IyBbVGFpbHMgNC4xMyBpcyBvdXRdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvbmV3cy92ZXJzaW9u
+XzQuMTMvaW5kZXguZW4uaHRtbCkKClRoaXMgcmVsZWFzZSBmaXhlcyBbbWFueSBzZWN1cml0eQp2
+dWxuZXJhYmlsaXRpZXNdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvc2VjdXJpdHkvTnVtZXJvdXNf
+c2VjdXJpdHlfaG9sZXNfaW5fNC4xMi8pLgpZb3Ugc2hvdWxkIHVwZ3JhZGUgYXMgc29vbiBhcyBw
+b3NzaWJsZS4KCiMgQ2hhbmdlcyBhbmQgdXBkYXRlcwoKICAqIFVwZGF0ZSBfVG9yIEJyb3dzZXJf
+IHRvIFsxMC4wLjVdKGh0dHBzOi8vYmxvZy50b3Jwcm9qZWN0Lm9yZy9uZXctcmVsZWFzZS10b3It
+YnJvd3Nlci0xMDA1KS4KCl9Ub3IgQnJvd3Nlcl8gMTAuMC41IGZpeGVzIHRoZSBbY3JpdGljYWwg
+dnVsbmVyYWJpbGl0eSBkaXNjb3ZlcmVkIGxhc3Qgd2VlayBpbgp0aGUgSmF2YVNjcmlwdAplbmdp
+bmVdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvc2VjdXJpdHkvbWNhbGxnZXRwcm9wZXJ0eS9pbmRl
+eC5lbi5odG1sKS4KCiAgKiBVcGRhdGUgX1RodW5kZXJiaXJkXyBmcm9tIDY4LjEyIHRvIFs3OC40
+LjJdKGh0dHBzOi8vd3d3LnRodW5kZXJiaXJkLm5ldC9lbi1VUy90aHVuZGVyYmlyZC83OC40LjIv
+cmVsZWFzZW5vdGVzLykuCgpfVGh1bmRlcmJpcmRfIDc4IHJlcGxhY2VzIHRoZSBfRW5pZ21haWxf
+IGV4dGVuc2lvbiB3aXRoIGJ1aWx0LWluIHN1cHBvcnQgZm9yCk9wZW5QR1AgZW5jcnlwdGlvbi4K
+CklmIHlvdSB1c2VkIF9FbmlnbWFpbF8gYmVmb3JlIFRhaWxzIDQuMTMsIGZvbGxvdyBvdXIgW2lu
+c3RydWN0aW9ucyB0byBtaWdyYXRlCmZyb20gX0VuaWdtYWlsXyB0byBfVGh1bmRlcmJpcmRfCjc4
+XShodHRwczovL3RhaWxzLmJvdW0ub3JnL2RvYy9hbm9ueW1vdXNfaW50ZXJuZXQvdGh1bmRlcmJp
+cmQvb3BlbnBncF9taWdyYXRpb24vaW5kZXguZW4uaHRtbCkuCgogICogQWRkIGEgYnV0dG9uIHRv
+IHJlc3RhcnQgVGFpbHMgYXQgdGhlIGVuZCBvZiBjcmVhdGluZyB0aGUgUGVyc2lzdGVudCBTdG9y
+YWdlLiAoWyMxNjM4NF0oaHR0cHM6Ly9naXRsYWIudGFpbHMuYm91bS5vcmcvdGFpbHMvdGFpbHMv
+LS9pc3N1ZXMvMTYzODQpKQoKICAqIE9ubHkgaW5jbHVkZSB0cmFuc2xhdGlvbnMgZm9yIGxhbmd1
+YWdlcyB0aGF0IGFyZSBhdmFpbGFibGUgaW4gdGhlIFdlbGNvbWUgU2NyZWVuLiBUaGlzIHJlZHVj
+ZXMgdGhlIHNpemUgb2YgdGhlIGRvd25sb2FkIGJ5IDUlLiAoWyMxNzEzOV0oaHR0cHM6Ly9naXRs
+YWIudGFpbHMuYm91bS5vcmcvdGFpbHMvdGFpbHMvLS9pc3N1ZXMvMTcxMzkpKQoKICAqIE1ha2Ug
+dGhlIHJvb3QgZGlyZWN0b3J5IG9mIHRoZSBQZXJzaXN0ZW50IFN0b3JhZ2Ugb25seSByZWFkYWJs
+ZSBieSB0aGUgYHJvb3RgIHVzZXIuIChbIzc0NjVdKGh0dHBzOi8vZ2l0bGFiLnRhaWxzLmJvdW0u
+b3JnL3RhaWxzL3RhaWxzLy0vaXNzdWVzLzc0NjUpKQoKVXNlcnMgb2YgdGhlIERvdGZpbGVzIGZl
+YXR1cmUgb2YgdGhlIFBlcnNpc3RlbnQgU3RvcmFnZSBjYW4gY2hvb3NlICoqUGxhY2VzICDilrgK
+RG90ZmlsZXMqKiB0byBvcGVuIHRoZSBfL2xpdmUvcGVyc2lzdGVuY2UvVGFpbHNEYXRhX3VubG9j
+a2VkL2RvdGZpbGVzIGZvbGRlcl8KaW4gdGhlIF9GaWxlc18gYnJvd3Nlci4KCiAgKiBFbmFibGUg
+VENQIHRpbWVzdGFtcHMuIFRoaXMgbWlnaHQgaW5jcmVhc2Ugc3RhYmlsaXR5IG9uIHNsb3dlciBJ
+bnRlcm5ldCBjb25uZWN0aW9ucy4gKFsjMTc0OTFdKGh0dHBzOi8vZ2l0bGFiLnRhaWxzLmJvdW0u
+b3JnL3RhaWxzL3RhaWxzLy0vaXNzdWVzLzE3NDkxKSkKCiMgRml4ZWQgcHJvYmxlbXMKCiAgKiBG
+aXggdGhlICoqVXBncmFkZSoqIGJ1dHRvbiBvZiBfVGFpbHMgSW5zdGFsbGVyXyB3aGVuIHJ1bm5p
+bmcgQ3JvYXRpYW4sIERhbmlzaCwgRnJlbmNoLCBIZWJyZXcsIE1hY2Vkb25pYW4sIFNpbXBsaWZp
+ZWQgQ2hpbmVzZSwgYW5kIFR1cmtpc2guIChbIzE3OTgyXShodHRwczovL2dpdGxhYi50YWlscy5i
+b3VtLm9yZy90YWlscy90YWlscy8tL2lzc3Vlcy8xNzk4MikpCgogICogQWxsb3cgcmFpc2luZyB0
+aGUgc291bmQgdm9sdW1lIGFib3ZlIDEwMCUuIChbIzE3MzIyXShodHRwczovL2dpdGxhYi50YWls
+cy5ib3VtLm9yZy90YWlscy90YWlscy8tL2lzc3Vlcy8xNzMyMikpCgpGb3IgbW9yZSBkZXRhaWxz
+LCByZWFkIG91cgpbY2hhbmdlbG9nXShodHRwczovL2dpdGxhYi50YWlscy5ib3VtLm9yZy90YWls
+cy90YWlscy8tL2Jsb2IvbWFzdGVyL2RlYmlhbi9jaGFuZ2Vsb2cpLgoKIyBLbm93biBpc3N1ZXMK
+Ck5vbmUgc3BlY2lmaWMgdG8gdGhpcyByZWxlYXNlLgoKU2VlIHRoZSBsaXN0IG9mIFtsb25nLXN0
+YW5kaW5nCmlzc3Vlc10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9zdXBwb3J0L2tub3duX2lzc3Vl
+cy9pbmRleC5lbi5odG1sKS4KCiMgR2V0IFRhaWxzIDQuMTMKCiMjIFRvIHVwZ3JhZGUgeW91ciBU
+YWlscyBVU0Igc3RpY2sgYW5kIGtlZXAgeW91ciBwZXJzaXN0ZW50IHN0b3JhZ2UKCiAgKiBBdXRv
+bWF0aWMgdXBncmFkZXMgYXJlIGF2YWlsYWJsZSBmcm9tIFRhaWxzIDQuMiBvciBsYXRlciB0byA0
+LjEzLgoKICAqIElmIHlvdSBjYW5ub3QgZG8gYW4gYXV0b21hdGljIHVwZ3JhZGUgb3IgaWYgVGFp
+bHMgZmFpbHMgdG8gc3RhcnQgYWZ0ZXIgYW4gYXV0b21hdGljIHVwZ3JhZGUsIHBsZWFzZSB0cnkg
+dG8gZG8gYSBbbWFudWFsIHVwZ3JhZGVdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvZG9jL3VwZ3Jh
+ZGUvaW5kZXguZW4uaHRtbCNtYW51YWwpLgoKIyMgVG8gaW5zdGFsbCBUYWlscyBvbiBhIG5ldyBV
+U0Igc3RpY2sKCkZvbGxvdyBvdXIgaW5zdGFsbGF0aW9uIGluc3RydWN0aW9uczoKCiAgKiBbSW5z
+dGFsbCBmcm9tIFdpbmRvd3NdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvaW5zdGFsbC93aW4vaW5k
+ZXguZW4uaHRtbCkKICAqIFtJbnN0YWxsIGZyb20gbWFjT1NdKGh0dHBzOi8vdGFpbHMuYm91bS5v
+cmcvaW5zdGFsbC9tYWMvaW5kZXguZW4uaHRtbCkKICAqIFtJbnN0YWxsIGZyb20gTGludXhdKGh0
+dHBzOi8vdGFpbHMuYm91bS5vcmcvaW5zdGFsbC9saW51eC9pbmRleC5lbi5odG1sKQoKVGhlIFBl
+cnNpc3RlbnQgU3RvcmFnZSBvbiB0aGUgVVNCIHN0aWNrIHdpbGwgYmUgbG9zdCBpZiB5b3UgaW5z
+dGFsbCBpbnN0ZWFkIG9mCnVwZ3JhZGluZy4KCiMjIFRvIGRvd25sb2FkIG9ubHkKCklmIHlvdSBk
+b24ndCBuZWVkIGluc3RhbGxhdGlvbiBvciB1cGdyYWRlIGluc3RydWN0aW9ucywgeW91IGNhbiBk
+b3dubG9hZCBUYWlscwo0LjEzIGRpcmVjdGx5OgoKICAqIFtGb3IgVVNCIHN0aWNrcyAoVVNCIGlt
+YWdlKV0oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9pbnN0YWxsL2Rvd25sb2FkL2luZGV4LmVuLmh0
+bWwpCiAgKiBbRm9yIERWRHMgYW5kIHZpcnR1YWwgbWFjaGluZXMgKElTTyBpbWFnZSldKGh0dHBz
+Oi8vdGFpbHMuYm91bS5vcmcvaW5zdGFsbC9kb3dubG9hZC1pc28vaW5kZXguZW4uaHRtbCkKCiMg
+V2hhdCdzIGNvbWluZyB1cD8KClRhaWxzIDQuMTQgaXMgW3NjaGVkdWxlZF0oaHR0cHM6Ly90YWls
+cy5ib3VtLm9yZy9jb250cmlidXRlL2NhbGVuZGFyLykgZm9yCkRlY2VtYmVyIDE1LgoKSGF2ZSBh
+IGxvb2sgYXQgb3VyIFtyb2FkbWFwXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2NvbnRyaWJ1dGUv
+cm9hZG1hcCkgdG8gc2VlCndoZXJlIHdlIGFyZSBoZWFkaW5nIHRvLgoKV2UgbmVlZCB5b3VyIGhl
+bHAgYW5kIHRoZXJlIGFyZSBtYW55IHdheXMgdG8gW2NvbnRyaWJ1dGUgdG8KVGFpbHNdKGh0dHBz
+Oi8vdGFpbHMuYm91bS5vcmcvY29udHJpYnV0ZS9pbmRleC5lbi5odG1sKQooW2RvbmF0aW5nXSho
+dHRwczovL3RhaWxzLmJvdW0ub3JnL2RvbmF0ZS8/cj00LjEzKSBpcyBvbmx5IG9uZSBvZiB0aGVt
+KS4gQ29tZQpbdGFsayB0byB1c10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9hYm91dC9jb250YWN0
+L2luZGV4LmVuLmh0bWwjdGFpbHMtZGV2KSEKClVSTDogPGh0dHBzOi8vdGFpbHMuYm91bS5vcmcv
+bmV3cy92ZXJzaW9uXzQuMTMvaW5kZXguZW4uaHRtbD4KCg==
+
+--===============8739919177368290050==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============0273059667624063582=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Deprecation of the Tails Verification extension
+Date: Wed, 09 Dec 2020 18:47:25 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/verification_extension_deprecation/index.en.html
+X-RSS-URL: https://tails.boum.org/news/verification_extension_deprecation/index.en.html
+X-RSS-TAGS: announce
+
+--===============0273059667624063582==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/verification_extension_deprecation/index.en.html">Deprecation of the Tails Verification extension</a></h1>
+<div id="body">
+<p>Today, we are retiring the <em>Tails Verification</em> browser extension that
+used to be advertised on our download page. We are replacing it with
+similar JavaScript code that now runs directly on the page.</p>
+
+<p>This new verification procedure is:</p>
+
+<ul>
+<li>Simpler and faster for first-time users</li>
+<li>Compatible with more web browsers, for example, Edge and Safari</li>
+<li>As secure as the <em>Tails Verification</em> extension</li>
+</ul>
+
+
+<p>From the logs on our website, it seems like only a minority of downloads are
+currently being verified. We believe that this simplified verification procedure will
+greatly increase the number of downloads being verified and improve the security of our users.</p>
+
+<p>Users of the <em>Tails Verification</em> extension can safely remove it from their
+browser. They will be reminded to do so on the download page.</p>
+
+<p>We will remove the <em>Tails Verification</em> extension from the Firefox and Chrome
+stores in a few days.</p>
+
+<p>The other 2 verification techniques are still available:</p>
+
+<ul>
+<li><p>If you download Tails using BitTorrent, your BitTorrent client
+automatically verifies the checksum of the Tails image when the
+download finishes.</p></li>
+<li><p>If you know OpenPGP, you can verify your Tails image using an OpenPGP
+signature.</p></li>
+</ul>
+
+
+<p>Special thanks to <a href="https://www.meixler-tech.com/">Mike Meixler</a> who donated his
+time to help us with the verification JavaScript!</p>
+
+<p>In the future, this simplification will allow us to further simplify the
+download page and installation instructions. We also want to research how to
+make the verification faster. If you know WebAssembly, see if you can help us
+<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/16905">speed up the checksum computation</a>.</p>
+
+<p>See also our <a href="https://tails.boum.org/contribute/design/download_verification/">design document on the security and threat model of the
+download verification</a>.</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/verification_extension_deprecation/index.en.html">https://tails.boum.org/news/verification_extension_deprecation/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============0273059667624063582==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+# [Deprecation of the Tails Verification
+extension](https://tails.boum.org/news/verification_extension_deprecation/index.en.html)
+
+Today, we are retiring the _Tails Verification_ browser extension that used to
+be advertised on our download page. We are replacing it with similar
+JavaScript code that now runs directly on the page.
+
+This new verification procedure is:
+
+  * Simpler and faster for first-time users
+  * Compatible with more web browsers, for example, Edge and Safari
+  * As secure as the _Tails Verification_ extension
+
+From the logs on our website, it seems like only a minority of downloads are
+currently being verified. We believe that this simplified verification
+procedure will greatly increase the number of downloads being verified and
+improve the security of our users.
+
+Users of the _Tails Verification_ extension can safely remove it from their
+browser. They will be reminded to do so on the download page.
+
+We will remove the _Tails Verification_ extension from the Firefox and Chrome
+stores in a few days.
+
+The other 2 verification techniques are still available:
+
+  * If you download Tails using BitTorrent, your BitTorrent client automatically verifies the checksum of the Tails image when the download finishes.
+
+  * If you know OpenPGP, you can verify your Tails image using an OpenPGP signature.
+
+Special thanks to [Mike Meixler](https://www.meixler-tech.com/) who donated
+his time to help us with the verification JavaScript!
+
+In the future, this simplification will allow us to further simplify the
+download page and installation instructions. We also want to research how to
+make the verification faster. If you know WebAssembly, see if you can help us
+[speed up the checksum
+computation](https://gitlab.tails.boum.org/tails/tails/-/issues/16905).
+
+See also our [design document on the security and threat model of the download
+verification](https://tails.boum.org/contribute/design/download_verification/).
+
+URL:
+<https://tails.boum.org/news/verification_extension_deprecation/index.en.html>
+
+
+--===============0273059667624063582==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============2339793940091729267=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Tails 4.14 is out
+Date: Thu, 24 Dec 2020 06:53:34 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/version_4.14/index.en.html
+X-RSS-URL: https://tails.boum.org/news/version_4.14/index.en.html
+X-RSS-TAGS: announce
+
+--===============2339793940091729267==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/version_4.14/index.en.html">Tails 4.14 is out</a></h1>
+<div id="body">
+<p>This release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_4.13/">many security
+vulnerabilities</a>. You should upgrade as soon as possible.</p>
+
+<h1 id="changes">Changes and updates</h1>
+
+
+<ul>
+<li><p>Add support for the Ledger hardware wallets in <em>Electrum</em>.
+(<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/15353">#15353</a>)</p></li>
+<li><p>Update <em>Tor Browser</em> to <a href="https://blog.torproject.org/new-release-tor-browser-1007">10.0.7</a>.</p></li>
+<li><p>Update <em>Thunderbird</em> to <a href="https://www.thunderbird.net/en-US/thunderbird/78.5.1/releasenotes/">78.5.1</a>.</p></li>
+<li><p>Update <em>Linux</em> to 5.9. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).</p></li>
+<li><p>Remove the <em>Unifont</em> font. (<a href="https://gitlab.tails.boum.org/tails/tails/-/merge_requests/263">!263</a>)</p></li>
+</ul>
+
+
+<h1 id="fixes">Fixed problems</h1>
+
+
+<ul>
+<li><p>Fix Additional Software by updating the APT key for
+<code>deb.torproject.org</code>. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/18042">#18042</a>)</p></li>
+<li><p>Fix changing the administration password stored in the Persistent
+Storage. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/18018">#18018</a>)</p></li>
+<li><p>Fix opening the Persistent Storage of another Tails USB stick in
+the <em>Files</em> browser. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/18050">#18050</a>)</p></li>
+<li><p>Restore automatically a <em>GnuPG</em> public keyring from its backup when it
+gets corrupt. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17807">#17807</a>)</p></li>
+</ul>
+
+
+<p>For more details, read our <a href="https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog">changelog</a>.</p>
+
+<h1 id="issues">Known issues</h1>
+
+
+<ul>
+<li><p>Ledger wallets are not detected by <em>Electrum</em>, with the following error
+message returned. (<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/18080">#18080</a>)</p>
+
+<pre><code>&quot;No hardware device detected&quot;
+</code></pre>
+
+<p> Please try to execute the following command in a <a href="https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html#open_root_terminal">root
+ terminal</a>
+ before starting <em>Electrum</em>:</p>
+
+<pre><code> apt update &amp;&amp; apt install python3-btchip/testing
+</code></pre></li>
+</ul>
+
+
+<p>See the list of <a href="https://tails.boum.org/support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1 id="get">Get Tails 4.14</h1>
+
+
+<h2>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from Tails 4.2 or later to 4.14.</p></li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/win/index.en.html">Install from Windows</a></li>
+<li><a href="https://tails.boum.org/install/mac/index.en.html">Install from macOS</a></li>
+<li><a href="https://tails.boum.org/install/linux/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.</p></div>
+
+
+<h2>To download only</h2>
+
+<p>If you don't need installation or upgrade instructions, you can download
+Tails 4.14 directly:</p>
+
+<ul>
+<li><a href="https://tails.boum.org/install/download/index.en.html">For USB sticks (USB image)</a></li>
+<li><a href="https://tails.boum.org/install/download-iso/index.en.html">For DVDs and virtual machines (ISO image)</a></li>
+</ul>
+
+
+<h1 id="next">What's coming up?</h1>
+
+
+<p>Tails 4.15 is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for January 26.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="https://tails.boum.org/contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.14">donating</a> is only one of
+them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.14/index.en.html">https://tails.boum.org/news/version_4.14/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============2339793940091729267==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+# [Tails 4.14 is out](https://tails.boum.org/news/version_4.14/index.en.html)
+
+This release fixes [many security
+vulnerabilities](https://tails.boum.org/security/Numerous_security_holes_in_4.13/).
+You should upgrade as soon as possible.
+
+# Changes and updates
+
+  * Add support for the Ledger hardware wallets in _Electrum_. ([#15353](https://gitlab.tails.boum.org/tails/tails/-/issues/15353))
+
+  * Update _Tor Browser_ to [10.0.7](https://blog.torproject.org/new-release-tor-browser-1007).
+
+  * Update _Thunderbird_ to [78.5.1](https://www.thunderbird.net/en-US/thunderbird/78.5.1/releasenotes/).
+
+  * Update _Linux_ to 5.9. This should improve the support for newer hardware (graphics, Wi-Fi, etc.).
+
+  * Remove the _Unifont_ font. ([!263](https://gitlab.tails.boum.org/tails/tails/-/merge_requests/263))
+
+# Fixed problems
+
+  * Fix Additional Software by updating the APT key for `deb.torproject.org`. ([#18042](https://gitlab.tails.boum.org/tails/tails/-/issues/18042))
+
+  * Fix changing the administration password stored in the Persistent Storage. ([#18018](https://gitlab.tails.boum.org/tails/tails/-/issues/18018))
+
+  * Fix opening the Persistent Storage of another Tails USB stick in the _Files_ browser. ([#18050](https://gitlab.tails.boum.org/tails/tails/-/issues/18050))
+
+  * Restore automatically a _GnuPG_ public keyring from its backup when it gets corrupt. ([#17807](https://gitlab.tails.boum.org/tails/tails/-/issues/17807))
+
+For more details, read our
+[changelog](https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog).
+
+# Known issues
+
+  * Ledger wallets are not detected by _Electrum_ , with the following error message returned. ([#18080](https://gitlab.tails.boum.org/tails/tails/-/issues/18080))
+    
+        "No hardware device detected"
+    
+
+Please try to execute the following command in a [root
+terminal](https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html#open_root_terminal)
+before starting _Electrum_ :
+
+    
+         apt update && apt install python3-btchip/testing
+    
+
+See the list of [long-standing
+issues](https://tails.boum.org/support/known_issues/index.en.html).
+
+# Get Tails 4.14
+
+## To upgrade your Tails USB stick and keep your persistent storage
+
+  * Automatic upgrades are available from Tails 4.2 or later to 4.14.
+
+  * If you cannot do an automatic upgrade or if Tails fails to start after an automatic upgrade, please try to do a [manual upgrade](https://tails.boum.org/doc/upgrade/index.en.html#manual).
+
+## To install Tails on a new USB stick
+
+Follow our installation instructions:
+
+  * [Install from Windows](https://tails.boum.org/install/win/index.en.html)
+  * [Install from macOS](https://tails.boum.org/install/mac/index.en.html)
+  * [Install from Linux](https://tails.boum.org/install/linux/index.en.html)
+
+The Persistent Storage on the USB stick will be lost if you install instead of
+upgrading.
+
+## To download only
+
+If you don't need installation or upgrade instructions, you can download Tails
+4.14 directly:
+
+  * [For USB sticks (USB image)](https://tails.boum.org/install/download/index.en.html)
+  * [For DVDs and virtual machines (ISO image)](https://tails.boum.org/install/download-iso/index.en.html)
+
+# What's coming up?
+
+Tails 4.15 is [scheduled](https://tails.boum.org/contribute/calendar/) for
+January 26.
+
+Have a look at our [roadmap](https://tails.boum.org/contribute/roadmap) to see
+where we are heading to.
+
+We need your help and there are many ways to [contribute to
+Tails](https://tails.boum.org/contribute/index.en.html)
+([donating](https://tails.boum.org/donate/?r=4.14) is only one of them). Come
+[talk to us](https://tails.boum.org/about/contact/index.en.html#tails-dev)!
+
+URL: <https://tails.boum.org/news/version_4.14/index.en.html>
+
+
+--===============2339793940091729267==--
+
+
+SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
+Content-Type: multipart/alternative; boundary="===============9173856115993975346=="
+MIME-Version: 1.0
+MIME-Version: 1.0
+From: "Tails - News: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Our achievements in 2020
+Date: Wed, 23 Dec 2020 18:09:46 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/tails/feed.rss
+X-RSS-ID: https://tails.boum.org/news/achievements_in_2020/index.en.html
+X-RSS-URL: https://tails.boum.org/news/achievements_in_2020/index.en.html
+X-RSS-TAGS: announce
+
+--===============9173856115993975346==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body>
+<div id="entry">
+<h1 class="header"><a href="https://tails.boum.org/news/achievements_in_2020/index.en.html">Our achievements in 2020</a></h1>
+<div id="body">
+<p>Despite everything, 2020 was a great year for Tails. We released major
+improvements that made Tails easier to use by the people who need it the most.</p>
+
+<p>If you enjoyed our work in 2020, take a minute now to
+<a href="https://tails.boum.org/donate/?r=at">donate and fight surveillance and censorship</a>!</p>
+
+<p>From the number of automatic upgrades, we know that Tails was used 20% more in
+2020 than in 2019, which is our largest increase since 2016. From March to May
+only, when the lockdown measures were the strictest worldwide, Tails got used
+10% more than ever before.</p>
+
+<p>Today, Tails is used close to 32&#x202f;000 times each day.</p>
+
+<p><img alt="" class="img" height="260" src="https://tails.boum.org/news/achievements_in_2020/users.png" width="622" /></p>
+
+<h1>Simplified starting procedure</h1>
+
+<p>We added support for <strong>Secure Boot</strong> in April. Secure Boot doesn't really make
+your computer any safer but it forced most users to edit their BIOS in
+complicated and risky ways to be able to use Tails (or Linux in general).
+Now you don't have to edit the BIOS anymore!</p>
+
+<p>We also documented the <strong>Shift+Restart</strong> procedure to start Tails from Windows
+8 or 10 using the <strong>Start <img alt="" class="img" height="16" src="https://tails.boum.org/lib/start.png" width="16" /></strong> menu.
+Now you don't have to hammer that Boot Menu key anymore!</p>
+
+<p>All this dramatically simplified our <a href="https://tails.boum.org/install/win/usb/index.en.html#start-tails">starting instructions for
+PCs</a>.</p>
+
+<p><img alt="" class="img" height="327" src="https://tails.boum.org/install/inc/screenshots/choose_an_option.png" width="581" /></p>
+
+<h1>Better upgrades</h1>
+
+<p>Because we know that upgrades are one of the most painful aspects of using
+Tails, we released significant improvements to automatic upgrades in January.
+We made automatic upgrades:</p>
+
+<ul>
+<li><p>Available <strong>from all prior versions</strong> to the latest version in a
+single upgrade.</p>
+
+<p>For example, you can upgrade from 4.10 to 4.14 directly, without
+having to first upgrade to 4.12 anymore.</p></li>
+<li><p>Available <strong>endlessly between minor versions</strong> of Tails.</p>
+
+<p>For example, you don't have to do a manual upgrade anymore after a few
+upgrades. You will only have to do a manual upgrade between major versions,
+for example to upgrade to Tails 5.0 at the end of 2021.</p></li>
+<li><p>Use less memory.</p></li>
+<li><p>Better documented, especially manual upgrades.</p></li>
+</ul>
+
+
+<h1>But also&hellip;</h1>
+
+<ul>
+<li><p>We completely redesigned our Home page to explain better what is Tails
+and why people should use it.</p>
+
+<p><img alt="" class="img" src="https://tails.boum.org/about/footprints.svg" width="300" /></p></li>
+<li><p>We made it possible to save the settings of the Welcome Screen in the
+Persistent Storage: language, keyboard, and additional settings.</p>
+
+<p><img alt="" class="img" height="430" src="https://tails.boum.org/news/version_4.8/welcome_screen.png" width="379" /></p></li>
+<li><p>We simplified the verification procedure on our download page by <a href="https://tails.boum.org/news/verification_extension_deprecation/index.en.html">replacing
+the <em>Tails Verification</em> extension</a> with
+similar JavaScript code that runs directly on the page.</p>
+
+<p>People without JavaScript are also now pointed to the checksum of the
+download.</p>
+
+<p><img alt="" class="img" height="151" src="https://tails.boum.org/news/achievements_in_2020/verify.png" width="559" /></p></li>
+<li><p>We added support for the <strong>hardware cryptocurrency wallets</strong> Trezor and
+Ledger.</p></li>
+</ul>
+
+
+<h1>Under the hood</h1>
+
+<p>Unfortunately, the biggest part of our work doesn't lead to such major
+changes for our users. Tails is an endless work of updates and
+maintenance: publishing a new release every 4 weeks to fix security
+vulnerabilities, adapting to new versions of the underlying software,
+keeping our website and development infrastructure secure and reliable,
+etc.</p>
+
+<ul>
+<li><p>We published <strong>more releases than ever</strong>. In 2020 we released 15 new versions
+of Tails to always have your back covered!</p>
+
+<p>At the end of 2019, Firefox switched from releasing a new version every 6
+weeks to releasing a new version every 4 weeks. And so did we.</p></li>
+<li><p>We streamlined our release process by automating its most time-consuming
+parts. This reduced the work needed to publish a new release of Tails from 2
+full days of work to only 1 day.</p>
+
+<p>In the long run, this will help us spend more time on what really
+matters to our users and allow us to react faster to emergencies
+in case of security vulnerabilities.</p></li>
+<li><p>We migrated to GitLab and saw many more of you jump in and give us a hand!</p></li>
+</ul>
+
+
+<h1>Help us fight surveillance and censorship</h1>
+
+<p><img alt="" class="img" height="339" src="https://tails.boum.org/donate/godzilla.png" width="400" /></p>
+
+<p>All our work is made possible by donations from people like you. We
+particularly appreciate monthly and yearly donations, even the smallest ones.
+Because they help us plan our work, they are the most valuable for the
+sustainability of Tails.</p>
+
+<p>If you enjoyed our work in 2020, take a minute now to donate and fight
+surveillance and censorship!</p>
+
+<div class="cfa"><a href="https://tails.boum.org/donate/?r=ab">Donate</a></div>
+</div>
+<div class="footer"><p>URL: <a href="https://tails.boum.org/news/achievements_in_2020/index.en.html">https://tails.boum.org/news/achievements_in_2020/index.en.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
+--===============9173856115993975346==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+IyBbT3VyIGFjaGlldmVtZW50cyBpbgoyMDIwXShodHRwczovL3RhaWxzLmJvdW0ub3JnL25ld3Mv
+YWNoaWV2ZW1lbnRzX2luXzIwMjAvaW5kZXguZW4uaHRtbCkKCkRlc3BpdGUgZXZlcnl0aGluZywg
+MjAyMCB3YXMgYSBncmVhdCB5ZWFyIGZvciBUYWlscy4gV2UgcmVsZWFzZWQgbWFqb3IKaW1wcm92
+ZW1lbnRzIHRoYXQgbWFkZSBUYWlscyBlYXNpZXIgdG8gdXNlIGJ5IHRoZSBwZW9wbGUgd2hvIG5l
+ZWQgaXQgdGhlIG1vc3QuCgpJZiB5b3UgZW5qb3llZCBvdXIgd29yayBpbiAyMDIwLCB0YWtlIGEg
+bWludXRlIG5vdyB0byBbZG9uYXRlIGFuZCBmaWdodApzdXJ2ZWlsbGFuY2UgYW5kIGNlbnNvcnNo
+aXBdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvZG9uYXRlLz9yPWF0KSEKCkZyb20gdGhlIG51bWJl
+ciBvZiBhdXRvbWF0aWMgdXBncmFkZXMsIHdlIGtub3cgdGhhdCBUYWlscyB3YXMgdXNlZCAyMCUg
+bW9yZSBpbgoyMDIwIHRoYW4gaW4gMjAxOSwgd2hpY2ggaXMgb3VyIGxhcmdlc3QgaW5jcmVhc2Ug
+c2luY2UgMjAxNi4gRnJvbSBNYXJjaCB0byBNYXkKb25seSwgd2hlbiB0aGUgbG9ja2Rvd24gbWVh
+c3VyZXMgd2VyZSB0aGUgc3RyaWN0ZXN0IHdvcmxkd2lkZSwgVGFpbHMgZ290IHVzZWQKMTAlIG1v
+cmUgdGhhbiBldmVyIGJlZm9yZS4KClRvZGF5LCBUYWlscyBpcyB1c2VkIGNsb3NlIHRvIDMyIDAw
+MCB0aW1lcyBlYWNoIGRheS4KCiFbXShodHRwczovL3RhaWxzLmJvdW0ub3JnL25ld3MvYWNoaWV2
+ZW1lbnRzX2luXzIwMjAvdXNlcnMucG5nKQoKIyBTaW1wbGlmaWVkIHN0YXJ0aW5nIHByb2NlZHVy
+ZQoKV2UgYWRkZWQgc3VwcG9ydCBmb3IgKipTZWN1cmUgQm9vdCoqIGluIEFwcmlsLiBTZWN1cmUg
+Qm9vdCBkb2Vzbid0IHJlYWxseSBtYWtlCnlvdXIgY29tcHV0ZXIgYW55IHNhZmVyIGJ1dCBpdCBm
+b3JjZWQgbW9zdCB1c2VycyB0byBlZGl0IHRoZWlyIEJJT1MgaW4KY29tcGxpY2F0ZWQgYW5kIHJp
+c2t5IHdheXMgdG8gYmUgYWJsZSB0byB1c2UgVGFpbHMgKG9yIExpbnV4IGluIGdlbmVyYWwpLiBO
+b3cKeW91IGRvbid0IGhhdmUgdG8gZWRpdCB0aGUgQklPUyBhbnltb3JlIQoKV2UgYWxzbyBkb2N1
+bWVudGVkIHRoZSAqKlNoaWZ0K1Jlc3RhcnQqKiBwcm9jZWR1cmUgdG8gc3RhcnQgVGFpbHMgZnJv
+bSBXaW5kb3dzCjggb3IgMTAgdXNpbmcgdGhlICoqU3RhcnQhW10oaHR0cHM6Ly90YWlscy5ib3Vt
+Lm9yZy9saWIvc3RhcnQucG5nKSoqIG1lbnUuIE5vdwp5b3UgZG9uJ3QgaGF2ZSB0byBoYW1tZXIg
+dGhhdCBCb290IE1lbnUga2V5IGFueW1vcmUhCgpBbGwgdGhpcyBkcmFtYXRpY2FsbHkgc2ltcGxp
+ZmllZCBvdXIgW3N0YXJ0aW5nIGluc3RydWN0aW9ucyBmb3IKUENzXShodHRwczovL3RhaWxzLmJv
+dW0ub3JnL2luc3RhbGwvd2luL3VzYi9pbmRleC5lbi5odG1sI3N0YXJ0LXRhaWxzKS4KCiFbXSho
+dHRwczovL3RhaWxzLmJvdW0ub3JnL2luc3RhbGwvaW5jL3NjcmVlbnNob3RzL2Nob29zZV9hbl9v
+cHRpb24ucG5nKQoKIyBCZXR0ZXIgdXBncmFkZXMKCkJlY2F1c2Ugd2Uga25vdyB0aGF0IHVwZ3Jh
+ZGVzIGFyZSBvbmUgb2YgdGhlIG1vc3QgcGFpbmZ1bCBhc3BlY3RzIG9mIHVzaW5nClRhaWxzLCB3
+ZSByZWxlYXNlZCBzaWduaWZpY2FudCBpbXByb3ZlbWVudHMgdG8gYXV0b21hdGljIHVwZ3JhZGVz
+IGluIEphbnVhcnkuCldlIG1hZGUgYXV0b21hdGljIHVwZ3JhZGVzOgoKICAqIEF2YWlsYWJsZSAq
+KmZyb20gYWxsIHByaW9yIHZlcnNpb25zKiogdG8gdGhlIGxhdGVzdCB2ZXJzaW9uIGluIGEgc2lu
+Z2xlIHVwZ3JhZGUuCgpGb3IgZXhhbXBsZSwgeW91IGNhbiB1cGdyYWRlIGZyb20gNC4xMCB0byA0
+LjE0IGRpcmVjdGx5LCB3aXRob3V0IGhhdmluZyB0bwpmaXJzdCB1cGdyYWRlIHRvIDQuMTIgYW55
+bW9yZS4KCiAgKiBBdmFpbGFibGUgKiplbmRsZXNzbHkgYmV0d2VlbiBtaW5vciB2ZXJzaW9ucyoq
+IG9mIFRhaWxzLgoKRm9yIGV4YW1wbGUsIHlvdSBkb24ndCBoYXZlIHRvIGRvIGEgbWFudWFsIHVw
+Z3JhZGUgYW55bW9yZSBhZnRlciBhIGZldwp1cGdyYWRlcy4gWW91IHdpbGwgb25seSBoYXZlIHRv
+IGRvIGEgbWFudWFsIHVwZ3JhZGUgYmV0d2VlbiBtYWpvciB2ZXJzaW9ucywKZm9yIGV4YW1wbGUg
+dG8gdXBncmFkZSB0byBUYWlscyA1LjAgYXQgdGhlIGVuZCBvZiAyMDIxLgoKICAqIFVzZSBsZXNz
+IG1lbW9yeS4KCiAgKiBCZXR0ZXIgZG9jdW1lbnRlZCwgZXNwZWNpYWxseSBtYW51YWwgdXBncmFk
+ZXMuCgojIEJ1dCBhbHNv4oCmCgogICogV2UgY29tcGxldGVseSByZWRlc2lnbmVkIG91ciBIb21l
+IHBhZ2UgdG8gZXhwbGFpbiBiZXR0ZXIgd2hhdCBpcyBUYWlscyBhbmQgd2h5IHBlb3BsZSBzaG91
+bGQgdXNlIGl0LgoKIVtdKGh0dHBzOi8vdGFpbHMuYm91bS5vcmcvYWJvdXQvZm9vdHByaW50cy5z
+dmcpCgogICogV2UgbWFkZSBpdCBwb3NzaWJsZSB0byBzYXZlIHRoZSBzZXR0aW5ncyBvZiB0aGUg
+V2VsY29tZSBTY3JlZW4gaW4gdGhlIFBlcnNpc3RlbnQgU3RvcmFnZTogbGFuZ3VhZ2UsIGtleWJv
+YXJkLCBhbmQgYWRkaXRpb25hbCBzZXR0aW5ncy4KCiFbXShodHRwczovL3RhaWxzLmJvdW0ub3Jn
+L25ld3MvdmVyc2lvbl80Ljgvd2VsY29tZV9zY3JlZW4ucG5nKQoKICAqIFdlIHNpbXBsaWZpZWQg
+dGhlIHZlcmlmaWNhdGlvbiBwcm9jZWR1cmUgb24gb3VyIGRvd25sb2FkIHBhZ2UgYnkgW3JlcGxh
+Y2luZyB0aGUgX1RhaWxzIFZlcmlmaWNhdGlvbl8gZXh0ZW5zaW9uXShodHRwczovL3RhaWxzLmJv
+dW0ub3JnL25ld3MvdmVyaWZpY2F0aW9uX2V4dGVuc2lvbl9kZXByZWNhdGlvbi9pbmRleC5lbi5o
+dG1sKSB3aXRoIHNpbWlsYXIgSmF2YVNjcmlwdCBjb2RlIHRoYXQgcnVucyBkaXJlY3RseSBvbiB0
+aGUgcGFnZS4KClBlb3BsZSB3aXRob3V0IEphdmFTY3JpcHQgYXJlIGFsc28gbm93IHBvaW50ZWQg
+dG8gdGhlIGNoZWNrc3VtIG9mIHRoZQpkb3dubG9hZC4KCiFbXShodHRwczovL3RhaWxzLmJvdW0u
+b3JnL25ld3MvYWNoaWV2ZW1lbnRzX2luXzIwMjAvdmVyaWZ5LnBuZykKCiAgKiBXZSBhZGRlZCBz
+dXBwb3J0IGZvciB0aGUgKipoYXJkd2FyZSBjcnlwdG9jdXJyZW5jeSB3YWxsZXRzKiogVHJlem9y
+IGFuZCBMZWRnZXIuCgojIFVuZGVyIHRoZSBob29kCgpVbmZvcnR1bmF0ZWx5LCB0aGUgYmlnZ2Vz
+dCBwYXJ0IG9mIG91ciB3b3JrIGRvZXNuJ3QgbGVhZCB0byBzdWNoIG1ham9yIGNoYW5nZXMKZm9y
+IG91ciB1c2Vycy4gVGFpbHMgaXMgYW4gZW5kbGVzcyB3b3JrIG9mIHVwZGF0ZXMgYW5kIG1haW50
+ZW5hbmNlOiBwdWJsaXNoaW5nCmEgbmV3IHJlbGVhc2UgZXZlcnkgNCB3ZWVrcyB0byBmaXggc2Vj
+dXJpdHkgdnVsbmVyYWJpbGl0aWVzLCBhZGFwdGluZyB0byBuZXcKdmVyc2lvbnMgb2YgdGhlIHVu
+ZGVybHlpbmcgc29mdHdhcmUsIGtlZXBpbmcgb3VyIHdlYnNpdGUgYW5kIGRldmVsb3BtZW50Cmlu
+ZnJhc3RydWN0dXJlIHNlY3VyZSBhbmQgcmVsaWFibGUsIGV0Yy4KCiAgKiBXZSBwdWJsaXNoZWQg
+Kiptb3JlIHJlbGVhc2VzIHRoYW4gZXZlcioqLiBJbiAyMDIwIHdlIHJlbGVhc2VkIDE1IG5ldyB2
+ZXJzaW9ucyBvZiBUYWlscyB0byBhbHdheXMgaGF2ZSB5b3VyIGJhY2sgY292ZXJlZCEKCkF0IHRo
+ZSBlbmQgb2YgMjAxOSwgRmlyZWZveCBzd2l0Y2hlZCBmcm9tIHJlbGVhc2luZyBhIG5ldyB2ZXJz
+aW9uIGV2ZXJ5IDYKd2Vla3MgdG8gcmVsZWFzaW5nIGEgbmV3IHZlcnNpb24gZXZlcnkgNCB3ZWVr
+cy4gQW5kIHNvIGRpZCB3ZS4KCiAgKiBXZSBzdHJlYW1saW5lZCBvdXIgcmVsZWFzZSBwcm9jZXNz
+IGJ5IGF1dG9tYXRpbmcgaXRzIG1vc3QgdGltZS1jb25zdW1pbmcgcGFydHMuIFRoaXMgcmVkdWNl
+ZCB0aGUgd29yayBuZWVkZWQgdG8gcHVibGlzaCBhIG5ldyByZWxlYXNlIG9mIFRhaWxzIGZyb20g
+MiBmdWxsIGRheXMgb2Ygd29yayB0byBvbmx5IDEgZGF5LgoKSW4gdGhlIGxvbmcgcnVuLCB0aGlz
+IHdpbGwgaGVscCB1cyBzcGVuZCBtb3JlIHRpbWUgb24gd2hhdCByZWFsbHkgbWF0dGVycyB0bwpv
+dXIgdXNlcnMgYW5kIGFsbG93IHVzIHRvIHJlYWN0IGZhc3RlciB0byBlbWVyZ2VuY2llcyBpbiBj
+YXNlIG9mIHNlY3VyaXR5CnZ1bG5lcmFiaWxpdGllcy4KCiAgKiBXZSBtaWdyYXRlZCB0byBHaXRM
+YWIgYW5kIHNhdyBtYW55IG1vcmUgb2YgeW91IGp1bXAgaW4gYW5kIGdpdmUgdXMgYSBoYW5kIQoK
+IyBIZWxwIHVzIGZpZ2h0IHN1cnZlaWxsYW5jZSBhbmQgY2Vuc29yc2hpcAoKIVtdKGh0dHBzOi8v
+dGFpbHMuYm91bS5vcmcvZG9uYXRlL2dvZHppbGxhLnBuZykKCkFsbCBvdXIgd29yayBpcyBtYWRl
+IHBvc3NpYmxlIGJ5IGRvbmF0aW9ucyBmcm9tIHBlb3BsZSBsaWtlIHlvdS4gV2UKcGFydGljdWxh
+cmx5IGFwcHJlY2lhdGUgbW9udGhseSBhbmQgeWVhcmx5IGRvbmF0aW9ucywgZXZlbiB0aGUgc21h
+bGxlc3Qgb25lcy4KQmVjYXVzZSB0aGV5IGhlbHAgdXMgcGxhbiBvdXIgd29yaywgdGhleSBhcmUg
+dGhlIG1vc3QgdmFsdWFibGUgZm9yIHRoZQpzdXN0YWluYWJpbGl0eSBvZiBUYWlscy4KCklmIHlv
+dSBlbmpveWVkIG91ciB3b3JrIGluIDIwMjAsIHRha2UgYSBtaW51dGUgbm93IHRvIGRvbmF0ZSBh
+bmQgZmlnaHQKc3VydmVpbGxhbmNlIGFuZCBjZW5zb3JzaGlwIQoKW0RvbmF0ZV0oaHR0cHM6Ly90
+YWlscy5ib3VtLm9yZy9kb25hdGUvP3I9YWIpCgpVUkw6IDxodHRwczovL3RhaWxzLmJvdW0ub3Jn
+L25ld3MvYWNoaWV2ZW1lbnRzX2luXzIwMjAvaW5kZXguZW4uaHRtbD4KCg==
+
+--===============9173856115993975346==--
+

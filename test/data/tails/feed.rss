@@ -1,0 +1,1219 @@
+<?xml version="1.0"?>
+<rss version="2.0"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dcterms="http://purl.org/dc/terms/" >
+<channel>
+<title>Tails - News</title>
+<link>https://tails.boum.org/news/index.en.html</link>
+
+<description>The Amnesic Incognito Live System</description>
+<generator>ikiwiki</generator>
+<pubDate>Thu, 24 Dec 2020 06:53:34 +0000</pubDate>
+<item>
+	<title>Our achievements in 2020</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/achievements_in_2020/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/achievements_in_2020/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Wed, 23 Dec 2020 18:02:12 +0000</pubDate>
+	<dcterms:modified>2020-12-23T18:09:46Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;Despite everything, 2020 was a great year for Tails. We released major
+improvements that made Tails easier to use by the people who need it the most.&lt;/p&gt;
+
+&lt;p&gt;If you enjoyed our work in 2020, take a minute now to
+&lt;a href=&quot;https://tails.boum.org/donate/?r=at&quot;&gt;donate and fight surveillance and censorship&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;From the number of automatic upgrades, we know that Tails was used 20% more in
+2020 than in 2019, which is our largest increase since 2016. From March to May
+only, when the lockdown measures were the strictest worldwide, Tails got used
+10% more than ever before.&lt;/p&gt;
+
+&lt;p&gt;Today, Tails is used close to 32&amp;#x202F;000 times each day.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; class=&quot;img&quot; height=&quot;260&quot; src=&quot;https://tails.boum.org/news/achievements_in_2020/users.png&quot; width=&quot;622&quot; /&gt;&lt;/p&gt;
+
+&lt;h1&gt;Simplified starting procedure&lt;/h1&gt;
+
+&lt;p&gt;We added support for &lt;strong&gt;Secure Boot&lt;/strong&gt; in April. Secure Boot doesn&amp;#39;t really make
+your computer any safer but it forced most users to edit their BIOS in
+complicated and risky ways to be able to use Tails (or Linux in general).
+Now you don&amp;#39;t have to edit the BIOS anymore!&lt;/p&gt;
+
+&lt;p&gt;We also documented the &lt;strong&gt;Shift+Restart&lt;/strong&gt; procedure to start Tails from Windows
+8 or 10 using the &lt;strong&gt;Start &lt;img alt=&quot;&quot; class=&quot;img&quot; height=&quot;16&quot; src=&quot;https://tails.boum.org/lib/start.png&quot; width=&quot;16&quot; /&gt;&lt;/strong&gt; menu.
+Now you don&amp;#39;t have to hammer that Boot Menu key anymore!&lt;/p&gt;
+
+&lt;p&gt;All this dramatically simplified our &lt;a href=&quot;https://tails.boum.org/install/win/usb/index.en.html#start-tails&quot;&gt;starting instructions for
+PCs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; class=&quot;img&quot; height=&quot;327&quot; src=&quot;https://tails.boum.org/install/inc/screenshots/choose_an_option.png&quot; width=&quot;581&quot; /&gt;&lt;/p&gt;
+
+&lt;h1&gt;Better upgrades&lt;/h1&gt;
+
+&lt;p&gt;Because we know that upgrades are one of the most painful aspects of using
+Tails, we released significant improvements to automatic upgrades in January.
+We made automatic upgrades:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Available &lt;strong&gt;from all prior versions&lt;/strong&gt; to the latest version in a
+single upgrade.&lt;/p&gt;
+
+&lt;p&gt;For example, you can upgrade from 4.10 to 4.14 directly, without
+having to first upgrade to 4.12 anymore.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Available &lt;strong&gt;endlessly between minor versions&lt;/strong&gt; of Tails.&lt;/p&gt;
+
+&lt;p&gt;For example, you don&amp;#39;t have to do a manual upgrade anymore after a few
+upgrades. You will only have to do a manual upgrade between major versions,
+for example to upgrade to Tails 5.0 at the end of 2021.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use less memory.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Better documented, especially manual upgrades.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;But also&amp;hellip;&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We completely redesigned our Home page to explain better what is Tails
+and why people should use it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; class=&quot;img&quot; src=&quot;https://tails.boum.org/about/footprints.svg&quot; width=&quot;300&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We made it possible to save the settings of the Welcome Screen in the
+Persistent Storage: language, keyboard, and additional settings.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; class=&quot;img&quot; height=&quot;430&quot; src=&quot;https://tails.boum.org/news/version_4.8/welcome_screen.png&quot; width=&quot;379&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We simplified the verification procedure on our download page by &lt;a href=&quot;https://tails.boum.org/news/verification_extension_deprecation/index.en.html&quot;&gt;replacing
+the &lt;em&gt;Tails Verification&lt;/em&gt; extension&lt;/a&gt; with
+similar JavaScript code that runs directly on the page.&lt;/p&gt;
+
+&lt;p&gt;People without JavaScript are also now pointed to the checksum of the
+download.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; class=&quot;img&quot; height=&quot;151&quot; src=&quot;https://tails.boum.org/news/achievements_in_2020/verify.png&quot; width=&quot;559&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We added support for the &lt;strong&gt;hardware cryptocurrency wallets&lt;/strong&gt; Trezor and
+Ledger.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Under the hood&lt;/h1&gt;
+
+&lt;p&gt;Unfortunately, the biggest part of our work doesn&amp;#39;t lead to such major
+changes for our users. Tails is an endless work of updates and
+maintenance: publishing a new release every 4 weeks to fix security
+vulnerabilities, adapting to new versions of the underlying software,
+keeping our website and development infrastructure secure and reliable,
+etc.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We published &lt;strong&gt;more releases than ever&lt;/strong&gt;. In 2020 we released 15 new versions
+of Tails to always have your back covered!&lt;/p&gt;
+
+&lt;p&gt;At the end of 2019, Firefox switched from releasing a new version every 6
+weeks to releasing a new version every 4 weeks. And so did we.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We streamlined our release process by automating its most time-consuming
+parts. This reduced the work needed to publish a new release of Tails from 2
+full days of work to only 1 day.&lt;/p&gt;
+
+&lt;p&gt;In the long run, this will help us spend more time on what really
+matters to our users and allow us to react faster to emergencies
+in case of security vulnerabilities.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We migrated to GitLab and saw many more of you jump in and give us a hand!&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Help us fight surveillance and censorship&lt;/h1&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; class=&quot;img&quot; height=&quot;339&quot; src=&quot;https://tails.boum.org/donate/godzilla.png&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All our work is made possible by donations from people like you. We
+particularly appreciate monthly and yearly donations, even the smallest ones.
+Because they help us plan our work, they are the most valuable for the
+sustainability of Tails.&lt;/p&gt;
+
+&lt;p&gt;If you enjoyed our work in 2020, take a minute now to donate and fight
+surveillance and censorship!&lt;/p&gt;
+
+&lt;div class=&quot;cfa&quot;&gt;&lt;a href=&quot;https://tails.boum.org/donate/?r=ab&quot;&gt;Donate&lt;/a&gt;&lt;/div&gt;
+
+</description>
+
+
+</item>
+<item>
+	<title>Tails 4.14 is out</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/version_4.14/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/version_4.14/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Tue, 15 Dec 2020 12:34:56 +0000</pubDate>
+	<dcterms:modified>2020-12-24T06:53:34Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;This release fixes &lt;a href=&quot;https://tails.boum.org/security/Numerous_security_holes_in_4.13/&quot;&gt;many security
+vulnerabilities&lt;/a&gt;. You should upgrade as soon as possible.&lt;/p&gt;
+
+&lt;h1 id=&quot;changes&quot;&gt;Changes and updates&lt;/h1&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Add support for the Ledger hardware wallets in &lt;em&gt;Electrum&lt;/em&gt;.
+(&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/15353&quot;&gt;#15353&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Tor Browser&lt;/em&gt; to &lt;a href=&quot;https://blog.torproject.org/new-release-tor-browser-1007&quot;&gt;10.0.7&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Thunderbird&lt;/em&gt; to &lt;a href=&quot;https://www.thunderbird.net/en-US/thunderbird/78.5.1/releasenotes/&quot;&gt;78.5.1&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Linux&lt;/em&gt; to 5.9. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Remove the &lt;em&gt;Unifont&lt;/em&gt; font. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/merge_requests/263&quot;&gt;!263&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1 id=&quot;fixes&quot;&gt;Fixed problems&lt;/h1&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Fix Additional Software by updating the APT key for
+&lt;code&gt;deb.torproject.org&lt;/code&gt;. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/18042&quot;&gt;#18042&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix changing the administration password stored in the Persistent
+Storage. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/18018&quot;&gt;#18018&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix opening the Persistent Storage of another Tails USB stick in
+the &lt;em&gt;Files&lt;/em&gt; browser. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/18050&quot;&gt;#18050&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Restore automatically a &lt;em&gt;GnuPG&lt;/em&gt; public keyring from its backup when it
+gets corrupt. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17807&quot;&gt;#17807&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;For more details, read our &lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;issues&quot;&gt;Known issues&lt;/h1&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Ledger wallets are not detected by &lt;em&gt;Electrum&lt;/em&gt;, with the following error
+message returned. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/18080&quot;&gt;#18080&lt;/a&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;No hardware device detected&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt; Please try to execute the following command in a &lt;a href=&quot;https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html#open_root_terminal&quot;&gt;root
+ terminal&lt;/a&gt;
+ before starting &lt;em&gt;Electrum&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; apt update &amp;amp;&amp;amp; apt install python3-btchip/testing
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;See the list of &lt;a href=&quot;https://tails.boum.org/support/known_issues/index.en.html&quot;&gt;long-standing issues&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;get&quot;&gt;Get Tails 4.14&lt;/h1&gt;
+
+
+&lt;h2&gt;To upgrade your Tails USB stick and keep your persistent storage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Automatic upgrades are available from Tails 4.2 or later to 4.14.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a &lt;a href=&quot;https://tails.boum.org/doc/upgrade/index.en.html#manual&quot;&gt;manual upgrade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To install Tails on a new USB stick&lt;/h2&gt;
+
+&lt;p&gt;Follow our installation instructions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/win/index.en.html&quot;&gt;Install from Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/mac/index.en.html&quot;&gt;Install from macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/linux/index.en.html&quot;&gt;Install from Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;caution&quot;&gt;&lt;p&gt;The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.&lt;/p&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;To download only&lt;/h2&gt;
+
+&lt;p&gt;If you don&amp;#39;t need installation or upgrade instructions, you can download
+Tails 4.14 directly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download/index.en.html&quot;&gt;For USB sticks (USB image)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download-iso/index.en.html&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1 id=&quot;next&quot;&gt;What&amp;#39;s coming up?&lt;/h1&gt;
+
+
+&lt;p&gt;Tails 4.15 is &lt;a href=&quot;https://tails.boum.org/contribute/calendar/&quot;&gt;scheduled&lt;/a&gt; for January 26.&lt;/p&gt;
+
+&lt;p&gt;Have a look at our &lt;a href=&quot;https://tails.boum.org/contribute/roadmap&quot;&gt;roadmap&lt;/a&gt; to see where we are heading to.&lt;/p&gt;
+
+&lt;p&gt;We need your help and there are many ways to &lt;a href=&quot;https://tails.boum.org/contribute/index.en.html&quot;&gt;contribute to
+Tails&lt;/a&gt; (&lt;a href=&quot;https://tails.boum.org/donate/?r=4.14&quot;&gt;donating&lt;/a&gt; is only one of
+them). Come &lt;a href=&quot;https://tails.boum.org/about/contact/index.en.html#tails-dev&quot;&gt;talk to us&lt;/a&gt;!&lt;/p&gt;
+</description>
+
+
+</item>
+<item>
+	<title>Deprecation of the Tails Verification extension</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/verification_extension_deprecation/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/verification_extension_deprecation/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Wed, 09 Dec 2020 12:34:56 +0000</pubDate>
+	<dcterms:modified>2020-12-09T18:47:25Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;Today, we are retiring the &lt;em&gt;Tails Verification&lt;/em&gt; browser extension that
+used to be advertised on our download page. We are replacing it with
+similar JavaScript code that now runs directly on the page.&lt;/p&gt;
+
+&lt;p&gt;This new verification procedure is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simpler and faster for first-time users&lt;/li&gt;
+&lt;li&gt;Compatible with more web browsers, for example, Edge and Safari&lt;/li&gt;
+&lt;li&gt;As secure as the &lt;em&gt;Tails Verification&lt;/em&gt; extension&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;From the logs on our website, it seems like only a minority of downloads are
+currently being verified. We believe that this simplified verification procedure will
+greatly increase the number of downloads being verified and improve the security of our users.&lt;/p&gt;
+
+&lt;p&gt;Users of the &lt;em&gt;Tails Verification&lt;/em&gt; extension can safely remove it from their
+browser. They will be reminded to do so on the download page.&lt;/p&gt;
+
+&lt;p&gt;We will remove the &lt;em&gt;Tails Verification&lt;/em&gt; extension from the Firefox and Chrome
+stores in a few days.&lt;/p&gt;
+
+&lt;p&gt;The other 2 verification techniques are still available:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;If you download Tails using BitTorrent, your BitTorrent client
+automatically verifies the checksum of the Tails image when the
+download finishes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you know OpenPGP, you can verify your Tails image using an OpenPGP
+signature.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;Special thanks to &lt;a href=&quot;https://www.meixler-tech.com/&quot;&gt;Mike Meixler&lt;/a&gt; who donated his
+time to help us with the verification JavaScript!&lt;/p&gt;
+
+&lt;p&gt;In the future, this simplification will allow us to further simplify the
+download page and installation instructions. We also want to research how to
+make the verification faster. If you know WebAssembly, see if you can help us
+&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/16905&quot;&gt;speed up the checksum computation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;See also our &lt;a href=&quot;https://tails.boum.org/contribute/design/download_verification/&quot;&gt;design document on the security and threat model of the
+download verification&lt;/a&gt;.&lt;/p&gt;
+</description>
+
+
+</item>
+<item>
+	<title>Tails 4.13 is out</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/version_4.13/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/version_4.13/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Tue, 17 Nov 2020 12:34:56 +0000</pubDate>
+	<dcterms:modified>2020-11-17T15:31:58Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;This release fixes &lt;a href=&quot;https://tails.boum.org/security/Numerous_security_holes_in_4.12/&quot;&gt;many security
+vulnerabilities&lt;/a&gt;. You should upgrade as soon as possible.&lt;/p&gt;
+
+&lt;h1 id=&quot;changes&quot;&gt;Changes and updates&lt;/h1&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Tor Browser&lt;/em&gt; to &lt;a href=&quot;https://blog.torproject.org/new-release-tor-browser-1005&quot;&gt;10.0.5&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Tor Browser&lt;/em&gt; 10.0.5 fixes the &lt;a href=&quot;https://tails.boum.org/security/mcallgetproperty/index.en.html&quot;&gt;critical vulnerability discovered last week
+in the JavaScript engine&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Thunderbird&lt;/em&gt; from 68.12 to &lt;a href=&quot;https://www.thunderbird.net/en-US/thunderbird/78.4.2/releasenotes/&quot;&gt;78.4.2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thunderbird&lt;/em&gt; 78 replaces the &lt;em&gt;Enigmail&lt;/em&gt; extension with built-in support for
+OpenPGP encryption.&lt;/p&gt;
+
+&lt;p&gt;If you used &lt;em&gt;Enigmail&lt;/em&gt; before Tails 4.13, follow our &lt;a href=&quot;https://tails.boum.org/doc/anonymous_internet/thunderbird/openpgp_migration/index.en.html&quot;&gt;instructions to
+migrate from &lt;em&gt;Enigmail&lt;/em&gt; to &lt;em&gt;Thunderbird&lt;/em&gt;
+78&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add a button to restart Tails at the end of creating the Persistent Storage.
+(&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/16384&quot;&gt;#16384&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Only include translations for languages that are available in the Welcome
+Screen. This reduces the size of the download by 5%. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17139&quot;&gt;#17139&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Make the root directory of the Persistent Storage only readable by the &lt;code&gt;root&lt;/code&gt;
+user. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/7465&quot;&gt;#7465&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Users of the Dotfiles feature of the Persistent Storage can choose
+&lt;strong&gt;Places&amp;nbsp;&amp;#x25B8; Dotfiles&lt;/strong&gt; to open the
+&lt;em&gt;/live/persistence/TailsData_unlocked/dotfiles folder&lt;/em&gt; in the &lt;em&gt;Files&lt;/em&gt;
+browser.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Enable TCP timestamps. This might increase stability on slower Internet
+connections. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17491&quot;&gt;#17491&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1 id=&quot;fixes&quot;&gt;Fixed problems&lt;/h1&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Fix the &lt;strong&gt;Upgrade&lt;/strong&gt; button of &lt;em&gt;Tails Installer&lt;/em&gt; when running Croatian,
+Danish, French, Hebrew, Macedonian, Simplified Chinese, and Turkish.
+(&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17982&quot;&gt;#17982&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Allow raising the sound volume above 100%. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17322&quot;&gt;#17322&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;For more details, read our &lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;issues&quot;&gt;Known issues&lt;/h1&gt;
+
+
+&lt;p&gt;None specific to this release.&lt;/p&gt;
+
+&lt;p&gt;See the list of &lt;a href=&quot;https://tails.boum.org/support/known_issues/index.en.html&quot;&gt;long-standing issues&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;get&quot;&gt;Get Tails 4.13&lt;/h1&gt;
+
+
+&lt;h2&gt;To upgrade your Tails USB stick and keep your persistent storage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Automatic upgrades are available from Tails 4.2 or later to 4.13.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a &lt;a href=&quot;https://tails.boum.org/doc/upgrade/index.en.html#manual&quot;&gt;manual upgrade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To install Tails on a new USB stick&lt;/h2&gt;
+
+&lt;p&gt;Follow our installation instructions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/win/index.en.html&quot;&gt;Install from Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/mac/index.en.html&quot;&gt;Install from macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/linux/index.en.html&quot;&gt;Install from Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;caution&quot;&gt;&lt;p&gt;The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.&lt;/p&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;To download only&lt;/h2&gt;
+
+&lt;p&gt;If you don&amp;#39;t need installation or upgrade instructions, you can download
+Tails 4.13 directly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download/index.en.html&quot;&gt;For USB sticks (USB image)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download-iso/index.en.html&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1 id=&quot;next&quot;&gt;What&amp;#39;s coming up?&lt;/h1&gt;
+
+
+&lt;p&gt;Tails 4.14 is &lt;a href=&quot;https://tails.boum.org/contribute/calendar/&quot;&gt;scheduled&lt;/a&gt; for December 15.&lt;/p&gt;
+
+&lt;p&gt;Have a look at our &lt;a href=&quot;https://tails.boum.org/contribute/roadmap&quot;&gt;roadmap&lt;/a&gt; to see where we are heading to.&lt;/p&gt;
+
+&lt;p&gt;We need your help and there are many ways to &lt;a href=&quot;https://tails.boum.org/contribute/index.en.html&quot;&gt;contribute to
+Tails&lt;/a&gt; (&lt;a href=&quot;https://tails.boum.org/donate/?r=4.13&quot;&gt;donating&lt;/a&gt; is only one of
+them). Come &lt;a href=&quot;https://tails.boum.org/about/contact/index.en.html#tails-dev&quot;&gt;talk to us&lt;/a&gt;!&lt;/p&gt;
+</description>
+
+
+</item>
+<item>
+	<title>Tails 4.12 is out</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/version_4.12/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/version_4.12/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Tue, 20 Oct 2020 12:34:56 +0000</pubDate>
+	<dcterms:modified>2020-11-10T21:46:23Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;This release fixes &lt;a href=&quot;https://tails.boum.org/security/Numerous_security_holes_in_4.11/&quot;&gt;many security
+vulnerabilities&lt;/a&gt;. You should upgrade as soon as possible.&lt;/p&gt;
+
+&lt;h1 id=&quot;changes&quot;&gt;Changes and updates&lt;/h1&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Tor Browser&lt;/em&gt; to &lt;a href=&quot;https://blog.torproject.org/new-release-tor-browser-1002&quot;&gt;10.0.2&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;tor&lt;/em&gt; to 0.4.4.5.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update Linux to 5.8 and most firmware packages. This should improve the
+support for newer hardware (graphics, Wi-Fi, etc.).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add a button to cancel an automated upgrade while downloading. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17310&quot;&gt;#17310&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1 id=&quot;fixes&quot;&gt;Fixed problems&lt;/h1&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Fix several internationalization issues in &lt;em&gt;Electrum&lt;/em&gt;, &lt;em&gt;Tails Installer&lt;/em&gt;, and
+&lt;em&gt;Tails Upgrader&lt;/em&gt;. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17958&quot;&gt;#17958&lt;/a&gt;, &lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17758&quot;&gt;#17758&lt;/a&gt;, and
+&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17961&quot;&gt;#17961&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Anonymize URLs in the technical details provided by &lt;em&gt;WhisperBack&lt;/em&gt;.
+(&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/10695&quot;&gt;#10695&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;For more details, read our &lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;known-issues&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;issues&quot;&gt;Known issues&lt;/h1&gt;
+
+
+
+
+
+
+
+&lt;p&gt;None specific to this release.&lt;/p&gt;
+
+&lt;p&gt;See the list of &lt;a href=&quot;https://tails.boum.org/support/known_issues/index.en.html&quot;&gt;long-standing issues&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;get&quot;&gt;Get Tails 4.12&lt;/h1&gt;
+
+
+&lt;h2&gt;To upgrade your Tails USB stick and keep your persistent storage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Automatic upgrades are available from Tails 4.2 or later to 4.12.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a &lt;a href=&quot;https://tails.boum.org/doc/upgrade/index.en.html#manual&quot;&gt;manual upgrade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To install Tails on a new USB stick&lt;/h2&gt;
+
+&lt;p&gt;Follow our installation instructions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/win/index.en.html&quot;&gt;Install from Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/mac/index.en.html&quot;&gt;Install from macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/linux/index.en.html&quot;&gt;Install from Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;caution&quot;&gt;&lt;p&gt;The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.&lt;/p&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;To download only&lt;/h2&gt;
+
+&lt;p&gt;If you don&amp;#39;t need installation or upgrade instructions, you can download
+Tails 4.12 directly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download/index.en.html&quot;&gt;For USB sticks (USB image)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download-iso/index.en.html&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1 id=&quot;next&quot;&gt;What&amp;#39;s coming up?&lt;/h1&gt;
+
+
+&lt;p&gt;Tails 4.13 is &lt;a href=&quot;https://tails.boum.org/contribute/calendar/&quot;&gt;scheduled&lt;/a&gt; for November 17.&lt;/p&gt;
+
+&lt;p&gt;Have a look at our &lt;a href=&quot;https://tails.boum.org/contribute/roadmap&quot;&gt;roadmap&lt;/a&gt; to see where we are heading to.&lt;/p&gt;
+
+&lt;p&gt;We need your help and there are many ways to &lt;a href=&quot;https://tails.boum.org/contribute/index.en.html&quot;&gt;contribute to
+Tails&lt;/a&gt; (&lt;a href=&quot;https://tails.boum.org/donate/?r=4.12&quot;&gt;donating&lt;/a&gt; is only one of
+them). Come &lt;a href=&quot;https://tails.boum.org/about/contact/index.en.html#tails-dev&quot;&gt;talk to us&lt;/a&gt;!&lt;/p&gt;
+</description>
+
+
+</item>
+<item>
+	<title>Tails 4.11 is out</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/version_4.11/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/version_4.11/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Tue, 22 Sep 2020 12:34:56 +0000</pubDate>
+	<dcterms:modified>2020-09-25T04:45:57Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;This release fixes &lt;a href=&quot;https://tails.boum.org/security/Numerous_security_holes_in_4.10/&quot;&gt;many security
+vulnerabilities&lt;/a&gt;. You should upgrade as soon as possible.&lt;/p&gt;
+
+&lt;h1&gt;New features&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We added a new feature of the Persistent Storage to save the settings
+from the Welcome Screen: language, keyboard, and additional settings.&lt;/p&gt;
+
+&lt;p&gt;To restore your settings when starting Tails, unlock your Persistent Storage
+in the Welcome Screen.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;new Welcome Screen feature in the Persistent Storage settings&quot; class=&quot;img&quot; height=&quot;428&quot; src=&quot;https://tails.boum.org/news/version_4.11/welcome_screen.png&quot; width=&quot;380&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Changes and updates&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Tor Browser&lt;/em&gt; to &lt;a href=&quot;https://blog.torproject.org/new-release-tor-browser-100&quot;&gt;10.0&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Thunderbird&lt;/em&gt; to &lt;a href=&quot;https://www.thunderbird.net/en-US/thunderbird/68.12.0/releasenotes/&quot;&gt;68.12&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Linux&lt;/em&gt; to 5.7.17. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Configure &lt;em&gt;KeePassXC&lt;/em&gt; to use the new default location &lt;em&gt;Passwords.kdbx&lt;/em&gt;. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17286&quot;&gt;#17286&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;span class=&quot;code&quot;&gt;python3-trezor&lt;/span&gt; to 0.12.2 to add
+compatibility with the new Trezor Model T.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Fixed problems&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Disable the feature to &lt;strong&gt;Turn on Wi-Fi Hotspot&lt;/strong&gt; in the Wi-Fi settings
+because it doesn&amp;#39;t work in Tails. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17887&quot;&gt;#17887&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;For more details, read our &lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;known-issues&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;Known issues&lt;/h1&gt;
+
+&lt;p&gt;None specific to this release.&lt;/p&gt;
+
+&lt;p&gt;See the list of &lt;a href=&quot;https://tails.boum.org/support/known_issues/index.en.html&quot;&gt;long-standing issues&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Get Tails 4.11&lt;/h1&gt;
+
+&lt;h2&gt;To upgrade your Tails USB stick and keep your persistent storage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Automatic upgrades are available from Tails 4.2 or later to 4.11.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a &lt;a href=&quot;https://tails.boum.org/doc/upgrade/index.en.html#manual&quot;&gt;manual upgrade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To install Tails on a new USB stick&lt;/h2&gt;
+
+&lt;p&gt;Follow our installation instructions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/win/index.en.html&quot;&gt;Install from Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/mac/index.en.html&quot;&gt;Install from macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/linux/index.en.html&quot;&gt;Install from Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;caution&quot;&gt;&lt;p&gt;The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.&lt;/p&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;To download only&lt;/h2&gt;
+
+&lt;p&gt;If you don&amp;#39;t need installation or upgrade instructions, you can download
+Tails 4.11 directly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download/index.en.html&quot;&gt;For USB sticks (USB image)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download-iso/index.en.html&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;What&amp;#39;s coming up?&lt;/h1&gt;
+
+&lt;p&gt;Tails 4.12 is &lt;a href=&quot;https://tails.boum.org/contribute/calendar/&quot;&gt;scheduled&lt;/a&gt; for October 20.&lt;/p&gt;
+
+&lt;p&gt;Have a look at our &lt;a href=&quot;https://tails.boum.org/contribute/roadmap&quot;&gt;roadmap&lt;/a&gt; to see where we are heading to.&lt;/p&gt;
+
+&lt;p&gt;We need your help and there are many ways to &lt;a href=&quot;https://tails.boum.org/contribute/index.en.html&quot;&gt;contribute to
+Tails&lt;/a&gt; (&lt;a href=&quot;https://tails.boum.org/donate/?r=4.11&quot;&gt;donating&lt;/a&gt; is only one of
+them). Come &lt;a href=&quot;https://tails.boum.org/about/contact/index.en.html#tails-dev&quot;&gt;talk to us&lt;/a&gt;!&lt;/p&gt;
+</description>
+
+
+</item>
+<item>
+	<title>Call for testing: 4.11~rc1</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/test_4.11-rc1/</guid>
+
+	<link>https://tails.boum.org/news/test_4.11-rc1/</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Sun, 06 Sep 2020 12:34:56 +0000</pubDate>
+	<dcterms:modified>2020-09-08T10:49:14Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;Tails 4.11, scheduled for September 22, will be the first version of
+Tails to include Tor Browser 10.0 and to support persistent settings
+on the Welcome Screen!&lt;/p&gt;
+
+&lt;p&gt;You can help Tails by testing the release candidate for Tails 4.11 now.&lt;/p&gt;
+
+&lt;h1&gt;Persistent settings on the Welcome Screen&lt;/h1&gt;
+
+&lt;p&gt;If you enable this persistence feature your Welcome Screen settings,
+like language selection and any administration password, will be
+automatically saved between sessions. While at the Welcome Screen the
+settings are restored as soon as you unlock your persistent encrypted
+volume. Please let us know if there are any problems!&lt;/p&gt;
+
+&lt;h1&gt;Tor Browser 10.0 (alpha 6)&lt;/h1&gt;
+
+&lt;p&gt;This new major release of Tor Browser is based on a brand new Firefox
+ESR series, version 78, which contains tons of changes, most under the
+hood. There&amp;#39;s a risk that some of these changes break some expected
+feature in Tails, so please pay close attention and report any such
+issues to us!&lt;/p&gt;
+
+&lt;h1&gt;Changelog&lt;/h1&gt;
+
+&lt;p&gt;For more details about what has changed in Tails 4.11~rc1, read our
+&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/raw/4.11-rc1/debian/changelog&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Known issues&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In Tor Browser, opening &lt;code&gt;file://&lt;/code&gt; URLs has a problem: opening any
+such local file will result in an infinite refresh loop like if you
+kept the F5 key pressed, so it will likely not display anything. At
+the moment this makes it impossible to read the offline
+documentation inside Tails, for instance. This will be fixed in
+Tails 4.11.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;See the list of &lt;a href=&quot;https://tails.boum.org/support/known_issues/index.en.html&quot;&gt;long-standing issues&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;How to test Tails 4.11~rc1?&lt;/h1&gt;
+
+&lt;p&gt;Keep in mind that this is a test image. We tested that it is not broken in
+obvious ways, but it might still contain undiscovered issues.&lt;/p&gt;
+
+&lt;p&gt;Please, report any new problem to &lt;a href=&quot;mailto:tails-testers@boum.org&quot;&gt;tails-testers@boum.org&lt;/a&gt; (public mailing list).&lt;/p&gt;
+
+&lt;h1&gt;Get Tails 4.11~rc1&lt;/h1&gt;
+
+&lt;h2&gt;To upgrade your Tails USB stick and keep your persistent storage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Automatic upgrades are available from 4.2 or later to 4.11~rc1.&lt;/p&gt;
+
+&lt;p&gt;To do an automatic upgrade to Tails 4.11~rc1:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Start Tails 4.2 or later and
+&lt;a href=&quot;https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html&quot;&gt;set an administration password&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Run this command in a &lt;em&gt;Terminal&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo TAILS_CHANNEL=\&amp;quot;alpha\&amp;quot; | sudo tee -a /etc/os-release &amp;amp;&amp;amp; \
+     tails-upgrade-frontend-wrapper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enter the administration password when asked for the &amp;quot;password
+for amnesia&amp;quot;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;After the upgrade is applied, restart Tails and choose
+&lt;strong&gt;Applications&amp;nbsp;&amp;#x25B8; Tails&amp;nbsp;&amp;#x25B8; About Tails&lt;/strong&gt;
+to verify that you are running Tails 4.11~rc1.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a &lt;a href=&quot;https://tails.boum.org/doc/upgrade/index.en.html#manual&quot;&gt;manual upgrade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To download 4.11~rc1&lt;/h2&gt;
+
+&lt;h3&gt;Direct download&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;use-mirror-pool&quot; href=&quot;http://dl.amnesia.boum.org/tails/alpha/tails-amd64-4.11~rc1/tails-amd64-4.11~rc1.img&quot;&gt;For USB sticks (USB image)&lt;/a&gt;
+(&lt;span class=&quot;createlink&quot;&gt;&lt;a href=&quot;https://tails.boum.org/ikiwiki.cgi?do=create&amp;amp;from=news%2Ftest_4.11-rc1&amp;amp;page=torrents%2Ffiles%2Ftails-amd64-4.11~rc1.img.sig&quot; rel=&quot;nofollow&quot;&gt;?&lt;/a&gt;OpenPGP signature&lt;/span&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;use-mirror-pool&quot; href=&quot;http://dl.amnesia.boum.org/tails/alpha/tails-amd64-4.11~rc1/tails-amd64-4.11~rc1.iso&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;
+(&lt;span class=&quot;createlink&quot;&gt;&lt;a href=&quot;https://tails.boum.org/ikiwiki.cgi?do=create&amp;amp;from=news%2Ftest_4.11-rc1&amp;amp;page=torrents%2Ffiles%2Ftails-amd64-4.11~rc1.iso.sig&quot; rel=&quot;nofollow&quot;&gt;?&lt;/a&gt;OpenPGP signature&lt;/span&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;BitTorrent download&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://tails.boum.org/torrents/files/tails-amd64-4.11~rc1.img.torrent&quot;&gt;For USB sticks (USB image)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://tails.boum.org/torrents/files/tails-amd64-4.11~rc1.iso.torrent&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To install Tails on a new USB stick&lt;/h2&gt;
+
+&lt;p&gt;Follow our installation instructions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/win/usb/index.en.html&quot;&gt;Install from Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/mac/usb/index.en.html&quot;&gt;Install from macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/linux/usb/index.en.html&quot;&gt;Install from Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;caution&quot;&gt;&lt;p&gt;All the data on this USB stick will be lost.&lt;/p&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;What&amp;#39;s coming up?&lt;/h1&gt;
+
+&lt;p&gt;Tails 4.11 is &lt;a href=&quot;https://tails.boum.org/contribute/calendar/&quot;&gt;scheduled&lt;/a&gt; for September 22.&lt;/p&gt;
+
+&lt;p&gt;Have a look at our &lt;a href=&quot;https://tails.boum.org/contribute/roadmap&quot;&gt;roadmap&lt;/a&gt; to see where we are heading to.&lt;/p&gt;
+
+&lt;p&gt;We need your help and there are many ways to &lt;a href=&quot;https://tails.boum.org/contribute/index.en.html&quot;&gt;contribute to
+Tails&lt;/a&gt; (&lt;a href=&quot;https://tails.boum.org/donate/?r=4.11-rc1&quot;&gt;donating&lt;/a&gt; is only one of
+them). Come &lt;a href=&quot;https://tails.boum.org/about/contact/index.en.html#tails-dev&quot;&gt;talk to us&lt;/a&gt;!&lt;/p&gt;
+</description>
+
+
+</item>
+<item>
+	<title>Tails 4.10 is out</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/version_4.10/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/version_4.10/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Tue, 25 Aug 2020 12:34:56 +0000</pubDate>
+	<dcterms:modified>2020-08-25T13:15:06Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;This release fixes &lt;a href=&quot;https://tails.boum.org/security/Numerous_security_holes_in_4.9/&quot;&gt;many security
+vulnerabilities&lt;/a&gt;. You should upgrade as soon as possible.&lt;/p&gt;
+
+&lt;h1&gt;Changes and updates&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Tor Browser&lt;/em&gt; to &lt;a href=&quot;https://blog.torproject.org/new-release-tor-browser-954&quot;&gt;9.5.4&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Tor&lt;/em&gt; to &lt;a href=&quot;https://gitweb.torproject.org/tor.git/tree/ChangeLog&quot;&gt;0.4.3.6&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Electrum&lt;/em&gt; from 3.3.8 to
+&lt;a href=&quot;https://github.com/spesmilo/electrum/blob/master/RELEASE-NOTES&quot;&gt;4.0.2&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Linux&lt;/em&gt; to 5.7.10. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hide the welcome message when starting Thunderbird.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Fixed problems&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Fix support for USB Wi-Fi adapters with Atheros AR9271 hardware.
+(&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17834&quot;&gt;#17834&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix USB tethering from iPhone. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17820&quot;&gt;#17820&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;For more details, read our &lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;known-issues&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;Known issues&lt;/h1&gt;
+
+
+
+
+&lt;p&gt;None specific to this release.&lt;/p&gt;
+
+&lt;p&gt;See the list of &lt;a href=&quot;https://tails.boum.org/support/known_issues/index.en.html&quot;&gt;long-standing issues&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Get Tails 4.10&lt;/h1&gt;
+
+&lt;h2&gt;To upgrade your Tails USB stick and keep your persistent storage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Automatic upgrades are available from Tails 4.2 or later to 4.10.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a &lt;a href=&quot;https://tails.boum.org/doc/upgrade/index.en.html#manual&quot;&gt;manual upgrade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To install Tails on a new USB stick&lt;/h2&gt;
+
+&lt;p&gt;Follow our installation instructions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/win/index.en.html&quot;&gt;Install from Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/mac/index.en.html&quot;&gt;Install from macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/linux/index.en.html&quot;&gt;Install from Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;caution&quot;&gt;&lt;p&gt;The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.&lt;/p&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;To download only&lt;/h2&gt;
+
+&lt;p&gt;If you don&amp;#39;t need installation or upgrade instructions, you can download
+Tails 4.10 directly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download/index.en.html&quot;&gt;For USB sticks (USB image)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download-iso/index.en.html&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;What&amp;#39;s coming up?&lt;/h1&gt;
+
+&lt;p&gt;Tails 4.11 is &lt;a href=&quot;https://tails.boum.org/contribute/calendar/&quot;&gt;scheduled&lt;/a&gt; for September 22.&lt;/p&gt;
+
+&lt;p&gt;Have a look at our &lt;a href=&quot;https://tails.boum.org/contribute/roadmap&quot;&gt;roadmap&lt;/a&gt; to see where we are heading to.&lt;/p&gt;
+
+&lt;p&gt;We need your help and there are many ways to &lt;a href=&quot;https://tails.boum.org/contribute/index.en.html&quot;&gt;contribute to
+Tails&lt;/a&gt; (&lt;a href=&quot;https://tails.boum.org/donate/?r=4.10&quot;&gt;donating&lt;/a&gt; is only one of
+them). Come &lt;a href=&quot;https://tails.boum.org/about/contact/index.en.html#tails-dev&quot;&gt;talk to us&lt;/a&gt;!&lt;/p&gt;
+</description>
+
+
+</item>
+<item>
+	<title>Tails 4.9 is out</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/version_4.9/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/version_4.9/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Tue, 28 Jul 2020 19:00:00 +0000</pubDate>
+	<dcterms:modified>2020-07-29T07:12:41Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;This release fixes &lt;a href=&quot;https://tails.boum.org/security/Numerous_security_holes_in_4.8/&quot;&gt;many security
+vulnerabilities&lt;/a&gt;. You should upgrade as soon as possible.&lt;/p&gt;
+
+&lt;h1&gt;Changes and updates&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Tor Browser&lt;/em&gt; to &lt;a href=&quot;https://blog.torproject.org/new-release-tor-browser-953&quot;&gt;9.5.3&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Thunderbird&lt;/em&gt; to &lt;a href=&quot;https://www.thunderbird.net/en-US/thunderbird/68.10.0/releasenotes/&quot;&gt;68.10.0&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Linux&lt;/em&gt; to 5.7.6. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Fixed problems&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Allow characters others than &lt;span class=&quot;code&quot;&gt;A&amp;ndash;Z&lt;/span&gt;,
+&lt;span class=&quot;code&quot;&gt;a&amp;ndash;z&lt;/span&gt;, &lt;span class=&quot;code&quot;&gt;1&amp;ndash;9&lt;/span&gt;, and &lt;span class=&quot;code&quot;&gt;_@%+=:,./-&lt;/span&gt; in
+the &lt;a href=&quot;https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html&quot;&gt;administration password&lt;/a&gt;.
+(&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17792&quot;&gt;#17792&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Apply the keyboard layout that is automatically selected when you change
+the language in the Welcome Screen. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17794&quot;&gt;#17794&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix starting Tails with the &lt;span class=&quot;code&quot;&gt;toram&lt;/span&gt; boot option.
+(&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17800&quot;&gt;#17800&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;For more details, read our &lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;known-issues&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;Known issues&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;USB Wi-Fi adapters with Atheros AR9271 hardware do not work with Linux
+5.7.6. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17834&quot;&gt;#17834&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;See the list of &lt;a href=&quot;https://tails.boum.org/support/known_issues/index.en.html&quot;&gt;long-standing issues&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Get Tails 4.9&lt;/h1&gt;
+
+&lt;h2&gt;To upgrade your Tails USB stick and keep your persistent storage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Automatic upgrades are available from Tails 4.2 or later to 4.9.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a &lt;a href=&quot;https://tails.boum.org/doc/upgrade/index.en.html#manual&quot;&gt;manual upgrade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To install Tails on a new USB stick&lt;/h2&gt;
+
+&lt;p&gt;Follow our installation instructions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/win/index.en.html&quot;&gt;Install from Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/mac/index.en.html&quot;&gt;Install from macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/linux/index.en.html&quot;&gt;Install from Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;caution&quot;&gt;&lt;p&gt;The Persistent Storage on the USB stick will be lost if
+you install instead of upgrading.&lt;/p&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;To download only&lt;/h2&gt;
+
+&lt;p&gt;If you don&amp;#39;t need installation or upgrade instructions, you can download
+Tails 4.9 directly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download/index.en.html&quot;&gt;For USB sticks (USB image)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download-iso/index.en.html&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;What&amp;#39;s coming up?&lt;/h1&gt;
+
+&lt;p&gt;Tails 4.10 is &lt;a href=&quot;https://tails.boum.org/contribute/calendar/&quot;&gt;scheduled&lt;/a&gt; for August 25.&lt;/p&gt;
+
+&lt;p&gt;Have a look at our &lt;a href=&quot;https://tails.boum.org/contribute/roadmap&quot;&gt;roadmap&lt;/a&gt; to see where we are heading to.&lt;/p&gt;
+
+&lt;p&gt;We need your help and there are many ways to &lt;a href=&quot;https://tails.boum.org/contribute/index.en.html&quot;&gt;contribute to
+Tails&lt;/a&gt; (&lt;a href=&quot;https://tails.boum.org/donate/?r=4.9&quot;&gt;donating&lt;/a&gt; is only one of
+them). Come &lt;a href=&quot;https://tails.boum.org/about/contact/index.en.html#tails-dev&quot;&gt;talk to us&lt;/a&gt;!&lt;/p&gt;
+</description>
+
+
+</item>
+<item>
+	<title>Tails 4.8 is out</title>
+
+	<guid isPermaLink="false">https://tails.boum.org/news/version_4.8/index.en.html</guid>
+
+	<link>https://tails.boum.org/news/version_4.8/index.en.html</link>
+
+
+
+	<category>announce</category>
+
+
+	<pubDate>Tue, 30 Jun 2020 12:34:56 +0000</pubDate>
+	<dcterms:modified>2020-07-08T00:50:45Z</dcterms:modified>
+
+
+	<description>&lt;p&gt;This release fixes &lt;a href=&quot;https://tails.boum.org/security/Numerous_security_holes_in_4.7/&quot;&gt;many security
+vulnerabilities&lt;/a&gt;. You should upgrade as soon as possible.&lt;/p&gt;
+
+&lt;h1&gt;New features&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We disabled the &lt;em&gt;Unsafe Browser&lt;/em&gt; by default and clarified that &lt;a href=&quot;https://tails.boum.org/doc/anonymous_internet/unsafe_browser/index.en.html#security&quot;&gt;the
+&lt;em&gt;Unsafe Browser&lt;/em&gt; can be used to deanonymize
+you&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;An attacker could exploit a security vulnerability in another
+application in Tails to start an invisible &lt;em&gt;Unsafe Browser&lt;/em&gt; and reveal
+your IP address, even if you are not using the &lt;em&gt;Unsafe Browser&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example, an attacker could exploit a security vulnerability in
+&lt;em&gt;Thunderbird&lt;/em&gt; by sending you a phishing email that could start an
+invisible &lt;em&gt;Unsafe Browser&lt;/em&gt; and reveal them your IP address.&lt;/p&gt;
+
+&lt;p&gt;Such an attack is very unlikely but could be performed by a strong
+attacker, such as a government or a hacking firm.&lt;/p&gt;
+
+&lt;p&gt;This is why we recommend that you:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Only enable the &lt;em&gt;Unsafe Browser&lt;/em&gt; if you need to log in to a captive
+portal.&lt;/li&gt;
+&lt;li&gt;Always upgrade to the latest version of Tails to fix known
+vulnerabilities as soon as possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We added a new feature of the Persistent Storage to save the settings
+from the Welcome Screen.&lt;/p&gt;
+
+&lt;p&gt;This feature is beta and only the additional setting to enable the
+&lt;em&gt;Unsafe Browser&lt;/em&gt; is made persistent. The other settings (language,
+keyboard, and other additional settings) will be made persistent in
+Tails 4.9 (July 28).&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;new Welcome Screen feature in the Persistent Storage settings&quot; class=&quot;img&quot; height=&quot;430&quot; src=&quot;https://tails.boum.org/news/version_4.8/welcome_screen.png&quot; width=&quot;379&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Changes and updates&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Tor Browser&lt;/em&gt; to &lt;a href=&quot;https://blog.torproject.org/new-release-tor-browser-951&quot;&gt;9.5.1&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Thunderbird&lt;/em&gt; to &lt;a href=&quot;https://www.thunderbird.net/en-US/thunderbird/68.9.0/releasenotes/&quot;&gt;68.9.0&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;em&gt;Linux&lt;/em&gt; to 5.6.0. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;Fixed problems&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Fix the &lt;em&gt;Find in page&lt;/em&gt; feature of &lt;em&gt;Thunderbird&lt;/em&gt;. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17328&quot;&gt;#17328&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix shutting down automatically the laptop when resuming from suspend
+with the Tails USB stick removed. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/16787&quot;&gt;#16787&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Notify always when &lt;a href=&quot;https://tails.boum.org/doc/first_steps/welcome_screen/mac_spoofing/index.en.html&quot;&gt;MAC address
+spoofing&lt;/a&gt; fails and the
+network interface is disabled. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17779&quot;&gt;#17779&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix the import of OpenPGP public keys in binary format (non armored)
+from the &lt;em&gt;Files&lt;/em&gt; browser.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;For more details, read our &lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/blob/master/debian/changelog&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;known-issues&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;Known issues&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Only use the following characters in the &lt;a href=&quot;https://tails.boum.org/doc/first_steps/welcome_screen/administration_password/index.en.html&quot;&gt;administration
+password&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;code&quot;&gt;a&amp;ndash;z&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;code&quot;&gt;A&amp;ndash;Z&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;code&quot;&gt;1&amp;ndash;9&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;code&quot;&gt;_@%+=:,./-&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;If you use spaces or other accentuated characters, like &lt;span class=&quot;code&quot;&gt;&amp;agrave;&amp;eacute;&amp;iuml;&amp;oslash;&amp;#x16F;&lt;/span&gt;, your will not be able to type your
+administration password again in your Tails session, unless you
+type single quotes &lt;span class=&quot;code&quot;&gt;&amp;#39;&lt;/span&gt; around it.&lt;/p&gt;
+
+&lt;p&gt;For example, if you set the administration password:
+&lt;span class=&quot;code&quot;&gt;n&amp;eacute;e entrep&amp;ocirc;t &amp;uuml;ber se&amp;ntilde;or&lt;/span&gt;, you would have to
+type &lt;span class=&quot;code&quot;&gt;&amp;#39;n&amp;eacute;e entrep&amp;ocirc;t &amp;uuml;ber se&amp;ntilde;or&amp;#39;&lt;/span&gt;.
+(&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17792&quot;&gt;#17792&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The keyboard layout is not applied to the Welcome Screen when
+automatically selected after you changed the language. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17794&quot;&gt;#17794&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;For example, setting the language to French seems to change the
+keyboard layout to French (AZERTY) but this change is not applied to
+the Welcome Screen. This can prevent you from typing the passphrase
+of your Persistent Storage.&lt;/p&gt;
+
+&lt;p&gt;To change the keyboard layout of the Welcome Screen, select your
+keyboard layout manually from the &lt;strong&gt;Keyboard Layout&lt;/strong&gt; drop-down menu.
+Do so even if they keyboard layout is automatically selected after you
+changed the language.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Tails fails to start with the &lt;span class=&quot;code&quot;&gt;toram&lt;/span&gt; boot
+option. (&lt;a href=&quot;https://gitlab.tails.boum.org/tails/tails/-/issues/17800&quot;&gt;#17800&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;To start with the &lt;span class=&quot;code&quot;&gt;toram&lt;/span&gt; boot option, specify
+both the &lt;span class=&quot;code&quot;&gt;toram&lt;/span&gt; and the
+&lt;span class=&quot;code&quot;&gt;fromiso=/dev/true&lt;/span&gt; &lt;a href=&quot;https://tails.boum.org/doc/advanced_topics/boot_options/index.en.html&quot;&gt;boot
+options&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;See the list of &lt;a href=&quot;https://tails.boum.org/support/known_issues/index.en.html&quot;&gt;long-standing issues&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Get Tails 4.8&lt;/h1&gt;
+
+&lt;h2&gt;To upgrade your Tails USB stick and keep your persistent storage&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Automatic upgrades are available from Tails 4.2 or later to 4.8.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a &lt;a href=&quot;https://tails.boum.org/doc/upgrade/index.en.html#manual&quot;&gt;manual upgrade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;To install Tails on a new USB stick&lt;/h2&gt;
+
+&lt;p&gt;Follow our installation instructions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/win/index.en.html&quot;&gt;Install from Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/mac/index.en.html&quot;&gt;Install from macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/linux/index.en.html&quot;&gt;Install from Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;caution&quot;&gt;&lt;p&gt;All the data on this USB stick will be lost if
+you install instead of upgrading.&lt;/p&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;To download only&lt;/h2&gt;
+
+&lt;p&gt;If you don&amp;#39;t need installation or upgrade instructions, you can download
+Tails 4.8 directly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download/index.en.html&quot;&gt;For USB sticks (USB image)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tails.boum.org/install/download-iso/index.en.html&quot;&gt;For DVDs and virtual machines (ISO image)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;What&amp;#39;s coming up?&lt;/h1&gt;
+
+&lt;p&gt;Tails 4.9 is &lt;a href=&quot;https://tails.boum.org/contribute/calendar/&quot;&gt;scheduled&lt;/a&gt; for July 28.&lt;/p&gt;
+
+&lt;p&gt;Have a look at our &lt;a href=&quot;https://tails.boum.org/contribute/roadmap&quot;&gt;roadmap&lt;/a&gt; to see where we are heading to.&lt;/p&gt;
+
+&lt;p&gt;We need your help and there are many ways to &lt;a href=&quot;https://tails.boum.org/contribute/index.en.html&quot;&gt;contribute to
+Tails&lt;/a&gt; (&lt;a href=&quot;https://tails.boum.org/donate/?r=4.8&quot;&gt;donating&lt;/a&gt; is only one of
+them). Come &lt;a href=&quot;https://tails.boum.org/about/contact/index.en.html#tails-dev&quot;&gt;talk to us&lt;/a&gt;!&lt;/p&gt;
+</description>
+
+
+</item>
+
+</channel>
+</rss>

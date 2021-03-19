@@ -36,6 +36,7 @@ from email.generator import BytesGenerator as _BytesGenerator
 import email.header as _email_header
 from email.header import Header as _Header
 from email.mime.text import MIMEText as _MIMEText
+from email.mime.multipart import MIMEMultipart
 from email.utils import formataddr as _formataddr
 from email.utils import parseaddr as _parseaddr
 import logging
@@ -49,6 +50,8 @@ import subprocess as _subprocess
 import sys as _sys
 import time as _time
 import os as _os
+
+import html2text
 
 from . import LOG as _LOG
 from . import config as _config
@@ -75,6 +78,35 @@ def guess_encoding(string, encodings=('US-ASCII', 'UTF-8')):
         else:
             return encoding
     raise _error.NoValidEncodingError(string=string, encodings=encodings)
+
+def _add_plain_multipart(guid: str, message, html: str):
+    headers = message.items()
+    msg = MIMEMultipart('alternative')
+    for name, value in headers:
+        if name.lower().startswith('content-'):
+            continue
+        msg[str(name)] = value
+
+    html_part = _MIMEText(html, _subtype='html')
+    msg.attach(html_part)
+
+    text_content = html2text.html2text(html=html, baseurl=guid)
+    text_part = _MIMEText(text_content)
+    msg.attach(text_part)
+    return msg
+
+def message_add_plain_multipart(guid, message, html):
+    if message.get_content_type() == 'text/html':
+        m = _add_plain_multipart(guid, message, html)
+        return m
+    if message.is_multipart():
+        # we could support multipart messages, but let's postpone it
+        # in fact, we don't expect any multipart message to arrive here
+        _LOG.warning("Couldn't add a text/plain part to this multipart message. "
+                "If you see this, it's probably a bug in rss2email."
+                )
+        return message
+    return message
 
 def get_message(sender, recipient, subject, body, content_type,
                 extra_headers=None, config=None, section='DEFAULT'):
@@ -150,6 +182,11 @@ def get_message(sender, recipient, subject, body, content_type,
         for key,value in extra_headers.items():
             encoding = guess_encoding(value, encodings)
             message[key] = _Header(value, encoding)
+    if config.getboolean(section, 'multipart-html'):
+        message = message_add_plain_multipart(
+                guid=str(message.get('x-rss-url', '')),
+                message=message,
+                html=body)
     return message
 
 def smtp_send(recipient, message, config=None, section='DEFAULT'):
