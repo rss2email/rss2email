@@ -16,6 +16,7 @@ UNRELEASED
     * Warnings about HTTP content-type being unexpected now properly display
     * Make the proxy parameter also affect https connections
     * Add a --clean argument on the run command to reduce the database size
+    * Set body element attribute dir=auto in HTML mail
 
 v3.12.2 (2020-08-31)
     * Fix bug `AttributeError: 'NoneType' object has no attribute 'close'` (#126)

@@ -18,7 +18,7 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/1
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/1">Re: new maintainer and mailing list for rss2email</a></h1>
 <div id="body">
@@ -80,7 +80,7 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/2
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/2">Re: new maintainer and mailing list for rss2email</a></h1>
 <div id="body">
@@ -132,7 +132,7 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/3
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/3">Re: new maintainer and mailing list for rss2email</a></h1>
 <div id="body">
@@ -168,7 +168,7 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/4
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/4">Re: new maintainer and mailing list for rss2email</a></h1>
 <div id="body">
@@ -207,7 +207,7 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/5
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/5">split massive package into modules</a></h1>
 <div id="body">

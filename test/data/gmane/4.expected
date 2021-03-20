@@ -23,7 +23,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/1">Re: new maintainer and mailing list for rss2email</a></h1>
 <div id="body">
@@ -136,7 +136,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/2">Re: new maintainer and mailing list for rss2email</a></h1>
 <div id="body">
@@ -229,7 +229,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/3">Re: new maintainer and mailing list for rss2email</a></h1>
 <div id="body">
@@ -289,7 +289,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/4">Re: new maintainer and mailing list for rss2email</a></h1>
 <div id="body">
@@ -356,7 +356,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/5">split massive package into modules</a></h1>
 <div id="body">
