@@ -488,6 +488,8 @@ class Feed (object):
             new_state = {} # type: Dict[str, Any]
         else:
             _LOG.debug('already seen {}'.format(guid))
+            if 'old' in old_state:
+                del old_state['old']
             if self.reply_changes:
                 if new_hash != old_state.get('hash'):
                     _LOG.debug('hash changed for {}'.format(guid))
@@ -879,7 +881,7 @@ class Feed (object):
         _email.send(recipient=self.to, message=message,
                     config=self.config, section=section)
 
-    def run(self, send=True):
+    def run(self, send=True, clean=False):
         """Fetch and process the feed, mailing entry emails.
 
         >>> feed = Feed(
@@ -894,7 +896,14 @@ class Feed (object):
         """
         if not self.to:
             raise _error.NoToEmailAddress(feed=self)
+        if clean:
+            self.etag = None
+            self.modified = None
         parsed = self._fetch()
+
+        if clean and len(parsed.entries) > 0:
+            for guid in self.seen:
+                self.seen[guid]['old'] = True
 
         if self.digest:
             digest = self._new_digest()
@@ -923,6 +932,35 @@ class Feed (object):
 
         self.etag = parsed.get('etag', None)
         self.modified = parsed.get('modified', None)
+
+        if clean and len(parsed.entries) > 0:
+            # A feed might only show the newest N entries, but if the feed
+            # author deletes a new entry, an older entry will reappear. Deleting
+            # all entries not in the feed could cause an old entry to be resent.
+            # To avoid this, the three newest entries no longer in the feed are
+            # kept, allowing up to three new entries to be deleted from the feed
+            # before anything would be resent.
+
+            # Entries from new feeds are added oldest to newest, and new entries
+            # are always inserted at the end. Entries no longer in the feed will
+            # have an 'old' key added above. This iterates over the entry keys
+            # (guid) from last to first, ignoring entries still in the feed. The
+            # three newest 'old' entries are skipped and all others are deleting.
+
+            # Python 3.7 guarantees Dict insertion order and CPython has done so
+            # since 3.5. It is unlikely older and other implementations would
+            # have stored the entries out-of-order, but if they did, the three
+            # entries kept won't be correct. And in the unlikely event the feed
+            # author deletes an entry, an old entry could be resent.
+
+            old = 3
+            for guid in reversed(list(self.seen)):
+                if 'old' in self.seen[guid]:
+                    if old > 0:
+                        del self.seen[guid]['old']
+                    else:
+                        del self.seen[guid]
+                    old = old - 1
 
     def _new_digest(self):
         digest = _MIMEMultipart('digest')
