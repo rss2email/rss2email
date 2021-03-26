@@ -134,6 +134,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         feed._send = TestEmails.Send()
         feed.run()
         generated = feed._send.as_string()
+        generated = self.clean_result(generated)
 
         expected_path = config_path.replace('config', 'expected')
         if not _os.path.exists(expected_path):
@@ -145,8 +146,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
                 raise ValueError('missing test; set FORCE_TESTDATA_CREATION=1 to create')
         else:
             with open(expected_path, 'r') as f:
-                expected = self.clean_result(f.read())
-        generated = self.clean_result(generated)
+                expected = f.read()
         if generated != expected:
             diff_lines = _difflib.unified_diff(
                 expected.splitlines(), generated.splitlines(),

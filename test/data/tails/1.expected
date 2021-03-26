@@ -7,7 +7,7 @@ To: a@b.com
 Subject: Tails 4.8 is out
 Date: Wed, 08 Jul 2020 00:50:45 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -131,7 +131,7 @@ To: a@b.com
 Subject: Tails 4.9 is out
 Date: Wed, 29 Jul 2020 07:12:41 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -222,7 +222,7 @@ To: a@b.com
 Subject: Tails 4.10 is out
 Date: Tue, 25 Aug 2020 13:15:06 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -315,7 +315,7 @@ To: a@b.com
 Subject: Call for testing: 4.11~rc1
 Date: Tue, 08 Sep 2020 10:49:14 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -415,7 +415,7 @@ To: a@b.com
 Subject: Tails 4.11 is out
 Date: Fri, 25 Sep 2020 04:45:57 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -516,7 +516,7 @@ To: a@b.com
 Subject: Tails 4.12 is out
 Date: Tue, 10 Nov 2020 21:46:23 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -607,7 +607,7 @@ To: a@b.com
 Subject: Tails 4.13 is out
 Date: Tue, 17 Nov 2020 15:31:58 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -696,7 +696,7 @@ To: a@b.com
 Subject: Deprecation of the Tails Verification extension
 Date: Wed, 09 Dec 2020 18:47:25 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -756,7 +756,7 @@ To: a@b.com
 Subject: Tails 4.14 is out
 Date: Thu, 24 Dec 2020 06:53:34 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -864,7 +864,7 @@ To: a@b.com
 Subject: Our achievements in 2020
 Date: Wed, 23 Dec 2020 18:09:46 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
