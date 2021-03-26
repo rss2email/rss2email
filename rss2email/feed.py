@@ -45,12 +45,14 @@
 """Define the ``Feed`` class for handling a single feed
 """
 
+import calendar as _calendar
 import collections as _collections
 import platform
 from email.message import Message
 from email.mime.message import MIMEMessage as _MIMEMessage
 from email.mime.multipart import MIMEMultipart as _MIMEMultipart
 from email.utils import formataddr as _formataddr
+from email.utils import formatdate as _formatdate
 from email.utils import parseaddr as _parseaddr
 import hashlib as _hashlib
 import html.parser as _html_parser
@@ -609,7 +611,7 @@ class Feed (object):
                 if entry.get(kind, None):
                     datetime = entry[kind]
                     break
-        return _time.strftime("%a, %d %b %Y %H:%M:%S -0000", datetime)
+        return _formatdate(_calendar.timegm(datetime))
 
     def _get_entry_name(self, parsed, entry):
         """Get the best name
