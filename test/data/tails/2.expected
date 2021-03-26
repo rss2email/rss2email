@@ -1,5 +1,5 @@
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============6279324619237534636=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -7,7 +7,7 @@ To: a@b.com
 Subject: Tails 4.8 is out
 Date: Wed, 08 Jul 2020 00:50:45 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -15,7 +15,7 @@ X-RSS-ID: https://tails.boum.org/news/version_4.8/index.en.html
 X-RSS-URL: https://tails.boum.org/news/version_4.8/index.en.html
 X-RSS-TAGS: announce
 
---===============6279324619237534636==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -197,7 +197,7 @@ them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-de
 </body>
 </html>
 
---===============6279324619237534636==
+--===============...==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -309,11 +309,11 @@ b21lClt0YWxrIHRvIHVzXShodHRwczovL3RhaWxzLmJvdW0ub3JnL2Fib3V0L2NvbnRhY3QvaW5k
 ZXguZW4uaHRtbCN0YWlscy1kZXYpIQoKVVJMOiA8aHR0cHM6Ly90YWlscy5ib3VtLm9yZy9uZXdz
 L3ZlcnNpb25fNC44L2luZGV4LmVuLmh0bWw+Cgo=
 
---===============6279324619237534636==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============6115117971066123553=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -321,7 +321,7 @@ To: a@b.com
 Subject: Tails 4.9 is out
 Date: Wed, 29 Jul 2020 07:12:41 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -329,7 +329,7 @@ X-RSS-ID: https://tails.boum.org/news/version_4.9/index.en.html
 X-RSS-URL: https://tails.boum.org/news/version_4.9/index.en.html
 X-RSS-TAGS: announce
 
---===============6115117971066123553==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -436,7 +436,7 @@ them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-de
 </body>
 </html>
 
---===============6115117971066123553==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -516,11 +516,11 @@ Tails](https://tails.boum.org/contribute/index.en.html)
 URL: <https://tails.boum.org/news/version_4.9/index.en.html>
 
 
---===============6115117971066123553==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============8031942330702480015=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -528,7 +528,7 @@ To: a@b.com
 Subject: Tails 4.10 is out
 Date: Tue, 25 Aug 2020 13:15:06 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -536,7 +536,7 @@ X-RSS-ID: https://tails.boum.org/news/version_4.10/index.en.html
 X-RSS-URL: https://tails.boum.org/news/version_4.10/index.en.html
 X-RSS-TAGS: announce
 
---===============8031942330702480015==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -640,7 +640,7 @@ them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-de
 </body>
 </html>
 
---===============8031942330702480015==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -722,11 +722,11 @@ Tails](https://tails.boum.org/contribute/index.en.html)
 URL: <https://tails.boum.org/news/version_4.10/index.en.html>
 
 
---===============8031942330702480015==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============7345762823933934779=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -734,7 +734,7 @@ To: a@b.com
 Subject: Call for testing: 4.11~rc1
 Date: Tue, 08 Sep 2020 10:49:14 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -742,7 +742,7 @@ X-RSS-ID: https://tails.boum.org/news/test_4.11-rc1/
 X-RSS-URL: https://tails.boum.org/news/test_4.11-rc1/
 X-RSS-TAGS: announce
 
---===============7345762823933934779==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -883,7 +883,7 @@ them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-de
 </body>
 </html>
 
---===============7345762823933934779==
+--===============...==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -971,11 +971,11 @@ bmx5IG9uZSBvZiB0aGVtKS4KQ29tZSBbdGFsayB0byB1c10oaHR0cHM6Ly90YWlscy5ib3VtLm9y
 Zy9hYm91dC9jb250YWN0L2luZGV4LmVuLmh0bWwjdGFpbHMtCmRldikhCgpVUkw6IDxodHRwczov
 L3RhaWxzLmJvdW0ub3JnL25ld3MvdGVzdF80LjExLXJjMS8+Cgo=
 
---===============7345762823933934779==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============4121300989519860214=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -983,7 +983,7 @@ To: a@b.com
 Subject: Tails 4.11 is out
 Date: Fri, 25 Sep 2020 04:45:57 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -991,7 +991,7 @@ X-RSS-ID: https://tails.boum.org/news/version_4.11/index.en.html
 X-RSS-URL: https://tails.boum.org/news/version_4.11/index.en.html
 X-RSS-TAGS: announce
 
---===============4121300989519860214==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1104,7 +1104,7 @@ them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-de
 </body>
 </html>
 
---===============4121300989519860214==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1194,11 +1194,11 @@ Tails](https://tails.boum.org/contribute/index.en.html)
 URL: <https://tails.boum.org/news/version_4.11/index.en.html>
 
 
---===============4121300989519860214==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============0994726738207884902=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -1206,7 +1206,7 @@ To: a@b.com
 Subject: Tails 4.12 is out
 Date: Tue, 10 Nov 2020 21:46:23 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -1214,7 +1214,7 @@ X-RSS-ID: https://tails.boum.org/news/version_4.12/index.en.html
 X-RSS-URL: https://tails.boum.org/news/version_4.12/index.en.html
 X-RSS-TAGS: announce
 
---===============0994726738207884902==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1325,7 +1325,7 @@ them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-de
 </body>
 </html>
 
---===============0994726738207884902==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1405,11 +1405,11 @@ Tails](https://tails.boum.org/contribute/index.en.html)
 URL: <https://tails.boum.org/news/version_4.12/index.en.html>
 
 
---===============0994726738207884902==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============8739919177368290050=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -1417,7 +1417,7 @@ To: a@b.com
 Subject: Tails 4.13 is out
 Date: Tue, 17 Nov 2020 15:31:58 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -1425,7 +1425,7 @@ X-RSS-ID: https://tails.boum.org/news/version_4.13/index.en.html
 X-RSS-URL: https://tails.boum.org/news/version_4.13/index.en.html
 X-RSS-TAGS: announce
 
---===============8739919177368290050==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1548,7 +1548,7 @@ them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-de
 </body>
 </html>
 
---===============8739919177368290050==
+--===============...==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -1625,11 +1625,11 @@ KS4gQ29tZQpbdGFsayB0byB1c10oaHR0cHM6Ly90YWlscy5ib3VtLm9yZy9hYm91dC9jb250YWN0
 L2luZGV4LmVuLmh0bWwjdGFpbHMtZGV2KSEKClVSTDogPGh0dHBzOi8vdGFpbHMuYm91bS5vcmcv
 bmV3cy92ZXJzaW9uXzQuMTMvaW5kZXguZW4uaHRtbD4KCg==
 
---===============8739919177368290050==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============0273059667624063582=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -1637,7 +1637,7 @@ To: a@b.com
 Subject: Deprecation of the Tails Verification extension
 Date: Wed, 09 Dec 2020 18:47:25 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -1645,7 +1645,7 @@ X-RSS-ID: https://tails.boum.org/news/verification_extension_deprecation/index.e
 X-RSS-URL: https://tails.boum.org/news/verification_extension_deprecation/index.en.html
 X-RSS-TAGS: announce
 
---===============0273059667624063582==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1709,7 +1709,7 @@ download verification</a>.</p>
 </body>
 </html>
 
---===============0273059667624063582==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1760,11 +1760,11 @@ URL:
 <https://tails.boum.org/news/verification_extension_deprecation/index.en.html>
 
 
---===============0273059667624063582==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============2339793940091729267=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -1772,7 +1772,7 @@ To: a@b.com
 Subject: Tails 4.14 is out
 Date: Thu, 24 Dec 2020 06:53:34 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -1780,7 +1780,7 @@ X-RSS-ID: https://tails.boum.org/news/version_4.14/index.en.html
 X-RSS-URL: https://tails.boum.org/news/version_4.14/index.en.html
 X-RSS-TAGS: announce
 
---===============2339793940091729267==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1903,7 +1903,7 @@ them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-de
 </body>
 </html>
 
---===============2339793940091729267==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -2000,11 +2000,11 @@ Tails](https://tails.boum.org/contribute/index.en.html)
 URL: <https://tails.boum.org/news/version_4.14/index.en.html>
 
 
---===============2339793940091729267==--
+--===============...==--
 
 
 SENT BY: "Tails - News: <author>" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============9173856115993975346=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "Tails - News: <author>" <user@rss2email.invalid>
@@ -2012,7 +2012,7 @@ To: a@b.com
 Subject: Our achievements in 2020
 Date: Wed, 23 Dec 2020 18:09:46 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/tails/feed.rss
@@ -2020,7 +2020,7 @@ X-RSS-ID: https://tails.boum.org/news/achievements_in_2020/index.en.html
 X-RSS-URL: https://tails.boum.org/news/achievements_in_2020/index.en.html
 X-RSS-TAGS: announce
 
---===============9173856115993975346==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -2156,7 +2156,7 @@ surveillance and censorship!</p>
 </body>
 </html>
 
---===============9173856115993975346==
+--===============...==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -2245,5 +2245,5 @@ bmQgZmlnaHQKc3VydmVpbGxhbmNlIGFuZCBjZW5zb3JzaGlwIQoKW0RvbmF0ZV0oaHR0cHM6Ly90
 YWlscy5ib3VtLm9yZy9kb25hdGUvP3I9YWIpCgpVUkw6IDxodHRwczovL3RhaWxzLmJvdW0ub3Jn
 L25ld3MvYWNoaWV2ZW1lbnRzX2luXzIwMjAvaW5kZXguZW4uaHRtbD4KCg==
 
---===============9173856115993975346==--
+--===============...==--
 

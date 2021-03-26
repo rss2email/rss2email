@@ -1,5 +1,5 @@
 SENT BY: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============6366544695990776699=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
@@ -7,14 +7,14 @@ To: a@b.com
 Subject: Re: new maintainer and mailing list for rss2email
 Date: Mon, 12 Nov 2012 21:20:22 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/1
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/1
 
---===============6366544695990776699==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -64,7 +64,7 @@ Done: https://github.com/rss2email/rss2email
 </body>
 </html>
 
---===============6366544695990776699==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -108,11 +108,11 @@ rss2email](http://permalink.gmane.org/gmane.mail.rss2email/1)
 URL: <http://permalink.gmane.org/gmane.mail.rss2email/1>
 
 
---===============6366544695990776699==--
+--===============...==--
 
 
 SENT BY: "gmane.mail.rss2email: Etienne Millon" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============0773536706208358327=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "gmane.mail.rss2email: Etienne Millon" <user@rss2email.invalid>
@@ -120,14 +120,14 @@ To: a@b.com
 Subject: Re: new maintainer and mailing list for rss2email
 Date: Tue, 13 Nov 2012 10:48:07 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/2
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/2
 
---===============0773536706208358327==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -167,7 +167,7 @@ mailing list (git send-email style) ?
 </body>
 </html>
 
---===============0773536706208358327==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -201,11 +201,11 @@ rss2email](http://permalink.gmane.org/gmane.mail.rss2email/2)
 URL: <http://permalink.gmane.org/gmane.mail.rss2email/2>
 
 
---===============0773536706208358327==--
+--===============...==--
 
 
 SENT BY: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============3249600699260733695=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
@@ -213,14 +213,14 @@ To: a@b.com
 Subject: Re: new maintainer and mailing list for rss2email
 Date: Tue, 13 Nov 2012 12:20:20 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/3
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/3
 
---===============3249600699260733695==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -244,7 +244,7 @@ send-email style, although I'll accept anything ;).
 </body>
 </html>
 
---===============3249600699260733695==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -261,11 +261,11 @@ rss2email](http://permalink.gmane.org/gmane.mail.rss2email/3)
 URL: <http://permalink.gmane.org/gmane.mail.rss2email/3>
 
 
---===============3249600699260733695==--
+--===============...==--
 
 
 SENT BY: "gmane.mail.rss2email: Etienne Millon" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============7894144789398170945=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "gmane.mail.rss2email: Etienne Millon" <user@rss2email.invalid>
@@ -273,14 +273,14 @@ To: a@b.com
 Subject: Re: new maintainer and mailing list for rss2email
 Date: Tue, 13 Nov 2012 12:42:13 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/4
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/4
 
---===============7894144789398170945==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -307,7 +307,7 @@ Also, confirming that the mailing list works.
 </body>
 </html>
 
---===============7894144789398170945==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -328,11 +328,11 @@ rss2email](http://permalink.gmane.org/gmane.mail.rss2email/4)
 URL: <http://permalink.gmane.org/gmane.mail.rss2email/4>
 
 
---===============7894144789398170945==--
+--===============...==--
 
 
 SENT BY: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
-Content-Type: multipart/alternative; boundary="===============8507399695493050288=="
+Content-Type: multipart/alternative; boundary="===============...=="
 MIME-Version: 1.0
 MIME-Version: 1.0
 From: "gmane.mail.rss2email: W. Trevor King" <user@rss2email.invalid>
@@ -340,14 +340,14 @@ To: a@b.com
 Subject: split massive package into modules
 Date: Tue, 13 Nov 2012 14:36:22 -0000
 Message-ID: <...@dev.null.invalid>
-User-Agent: rss2email/3.12.1 (https://github.com/rss2email/rss2email)
+User-Agent: rss2email/...
 List-ID: <test.localhost>
 List-Post: NO (posting not allowed on this list)
 X-RSS-Feed: data/gmane/feed.rss
 X-RSS-ID: http://permalink.gmane.org/gmane.mail.rss2email/5
 X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/5
 
---===============8507399695493050288==
+--===============...==
 Content-Type: text/html; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -373,7 +373,7 @@ https://github.com/rss2email/rss2email/commit/066602efa088b4a89d67e23011613b4459
 </body>
 </html>
 
---===============8507399695493050288==
+--===============...==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -393,5 +393,5 @@ modules](http://permalink.gmane.org/gmane.mail.rss2email/5)
 URL: <http://permalink.gmane.org/gmane.mail.rss2email/5>
 
 
---===============8507399695493050288==--
+--===============...==--
 
