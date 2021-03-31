@@ -1,4 +1,4 @@
-# Copyright (C) 2004-2020 Aaron Swartz
+# Copyright (C) 2004-2021 Aaron Swartz
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Brian Lalor
@@ -15,6 +15,7 @@
 #                         Profpatsch <mail@profpatsch.de>
 #                         Raphaël Droz <raphael.droz+floss@gmail.com>
 #                         W. Trevor King <wking@tremily.us>
+#                         ryneeverett <ryneeverett@gmail.com>
 #
 # This file is part of rss2email.
 #

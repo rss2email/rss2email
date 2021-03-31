@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 #
-# Copyright (C) 2012-2020 Arun Persaud <apersaud@lbl.gov>
+# Copyright (C) 2012-2021 Amir Yalon <git@please.nospammail.net>
+#                         Arun Persaud <apersaud@lbl.gov>
 #                         Dmitry Bogatov <KAction@gnu.org>
 #                         George Saunders <georgesaunders@gmail.com>
 #                         Jeff Backus <jeff@jsbackus.com>
@@ -11,6 +12,10 @@
 #                         Thibaut Girka <thib@sitedethib.com>
 #                         W. Trevor King <wking@tremily.us>
 #                         Yannik Sembritzki <yannik@sembritzki.me>
+#                         auouymous <5005204+auouymous@users.noreply.github.com>
+#                         auouymous <au@qzx.com>
+#                         boyska <piuttosto@logorroici.org>
+#                         ryneeverett <ryneeverett@gmail.com>
 #
 # This file is part of rss2email.
 #

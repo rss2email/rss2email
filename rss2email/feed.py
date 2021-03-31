@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2004-2020 Aaron Swartz
+# Copyright (C) 2004-2021 Aaron Swartz
+#                         Amir Yalon <105565+amiryal@users.noreply.github.com>
+#                         Amir Yalon <git@please.nospammail.net>
 #                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
@@ -22,10 +24,13 @@
 #                         Marcel Ackermann
 #                         Martin 'Joey' Schulze
 #                         Martin Monperrus <monperrus@users.noreply.github.com>
+#                         Martin Vietz <git@martin.vietz.eu>
 #                         Matej Cepl
 #                         Notkea <pacien@users.noreply.github.com>
 #                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
+#                         auouymous <5005204+auouymous@users.noreply.github.com>
+#                         auouymous <au@qzx.com>
 #                         shan3141 <xpoh434@users.noreply.github.com>
 #
 # This file is part of rss2email.

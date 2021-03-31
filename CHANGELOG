@@ -1,11 +1,15 @@
 UNRELEASED
+
+v3.13 (2021-04-01)
+    * Switch to feedparser 6
+    * Switch to poetry instead of requirements.txt
     * Improve log messages
     * Remove documentation of `smtp-ssl-protocol` as this option was dropped in 2016
     * Stop forging SMTP and sendmail envelope sender (#134)
     * Add sendmail_config option
     * Fix verbose configuration setting
     * Upgraded to feedparser v6.0 (https://github.com/kurtmckee/feedparser/)
-    * Drop support for Python 3.5
+    * Drop support for Python 3.5, add support for Python 3.9
     * Log sendmail output
     * Support multipart/alternative emails with both HTML and plain text parts with option `multipart-html`
     * Add inline-links option, allowing links to be sent to the bottom of the
@@ -17,6 +21,11 @@ UNRELEASED
     * Make the proxy parameter also affect https connections
     * Add a --clean argument on the run command to reduce the database size
     * Set body element attribute dir=auto in HTML mail
+    * Store the lock file in XDG_RUNTIME_DIR instead of /tmp
+
+v3.12.3 (2021-03-19)
+    * Make dependency on feedparser have an upper bound so that `pip install`
+      works again
 
 v3.12.2 (2020-08-31)
     * Fix bug `AttributeError: 'NoneType' object has no attribute 'close'` (#126)

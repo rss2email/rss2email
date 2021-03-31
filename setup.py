@@ -6,6 +6,8 @@
 #                         Profpatsch <mail@profpatsch.de>
 #                         Steven Siloti <ssiloti@gmail.com>
 #                         W. Trevor King <wking@tremily.us>
+#                         auouymous <5005204+auouymous@users.noreply.github.com>
+#                         auouymous <au@qzx.com>
 #
 # This file is part of rss2email.
 #

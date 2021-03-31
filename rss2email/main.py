@@ -1,10 +1,13 @@
-# Copyright (C) 2012-2020 Andrey Zelenchuk <azelenchuk@parallels.com>
+# Copyright (C) 2012-2021 Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Gregory Soutade <gregory@soutade.fr>
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
+#                         Lucas <lucas@sexy.is>
 #                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
+#                         auouymous <5005204+auouymous@users.noreply.github.com>
+#                         ryneeverett <ryneeverett@gmail.com>
 #
 # This file is part of rss2email.
 #
