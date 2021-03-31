@@ -24,7 +24,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/version_4.8/index.en.html">Tails 4.8 is out</a></h1>
 <div id="body">
@@ -338,7 +338,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/version_4.9/index.en.html">Tails 4.9 is out</a></h1>
 <div id="body">
@@ -545,7 +545,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/version_4.10/index.en.html">Tails 4.10 is out</a></h1>
 <div id="body">
@@ -751,7 +751,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/test_4.11-rc1/">Call for testing: 4.11~rc1</a></h1>
 <div id="body">
@@ -1000,7 +1000,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/version_4.11/index.en.html">Tails 4.11 is out</a></h1>
 <div id="body">
@@ -1223,7 +1223,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/version_4.12/index.en.html">Tails 4.12 is out</a></h1>
 <div id="body">
@@ -1434,7 +1434,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/version_4.13/index.en.html">Tails 4.13 is out</a></h1>
 <div id="body">
@@ -1654,7 +1654,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/verification_extension_deprecation/index.en.html">Deprecation of the Tails Verification extension</a></h1>
 <div id="body">
@@ -1789,7 +1789,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/version_4.14/index.en.html">Tails 4.14 is out</a></h1>
 <div id="body">
@@ -2029,7 +2029,7 @@ Content-Transfer-Encoding: 7bit
 <html>
   <head>
 </head>
-<body>
+<body dir="auto">
 <div id="entry">
 <h1 class="header"><a href="https://tails.boum.org/news/achievements_in_2020/index.en.html">Our achievements in 2020</a></h1>
 <div id="body">

@@ -810,7 +810,7 @@ class Feed (object):
                         ])
             lines.extend([
                     '</head>',
-                    '<body>',
+                    '<body dir="auto">',
                     '<div id="entry">',
                     '<h1 class="header"><a href="{}">{}</a></h1>'.format(
                         _saxutils.escape(link), _saxutils.escape(subject)),
