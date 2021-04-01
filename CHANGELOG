@@ -3,11 +3,11 @@ UNRELEASED
 v3.13 (2021-04-01)
     * Switch to feedparser 6
     * Switch to poetry instead of requirements.txt
+    * Make the `verbose` flag in the config file actually have an impact
     * Improve log messages
     * Remove documentation of `smtp-ssl-protocol` as this option was dropped in 2016
     * Stop forging SMTP and sendmail envelope sender (#134)
     * Add sendmail_config option
-    * Fix verbose configuration setting
     * Upgraded to feedparser v6.0 (https://github.com/kurtmckee/feedparser/)
     * Drop support for Python 3.5, add support for Python 3.9
     * Log sendmail output
