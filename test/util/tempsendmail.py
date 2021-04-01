@@ -14,7 +14,7 @@ class TemporarySendmail:
         with tempfile.NamedTemporaryFile(
                 dir=self._tmpdir.name, delete=False) as _bin:
             _bin.write(
-                b'''#!/usr/bin/env sh
+                b'''#!/bin/sh
                 echo "Sendmail failing for reasons..."
                 exit %s''' % bytes(str(exitcode), 'utf-8'))
         self.bin = Path(_bin.name)
