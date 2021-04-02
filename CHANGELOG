@@ -1,9 +1,9 @@
 UNRELEASED
 
-v3.13 (2021-04-01)
+v3.13 (2021-04-03)
     * Switch to feedparser 6
     * Switch to poetry instead of requirements.txt
-    * Make the `verbose` flag in the config file actually have an impact
+    * Make the `verbose` flag in the config file actually have an impact, and have it default to `info
     * Improve log messages
     * Remove documentation of `smtp-ssl-protocol` as this option was dropped in 2016
     * Stop forging SMTP and sendmail envelope sender (#134)

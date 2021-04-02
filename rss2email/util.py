@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2020 Dennis Keitzel <github@pinshot.net>
+# Copyright (C) 2012-2021 Dennis Keitzel <github@pinshot.net>
 #                         Karthikeyan Singaravelan <tir.karthi@gmail.com>
 #                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
