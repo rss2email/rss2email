@@ -52,7 +52,7 @@ Requirements
 Before you install rss2email, you'll need to make sure that a few
 things are in place.
 
-1. Ensure that a version of Python_ ≥3.4 is installed.
+1. Ensure that a version of Python_ ≥3.6 is installed.
 2. Install the required Python packages.
 
    * feedparser_
