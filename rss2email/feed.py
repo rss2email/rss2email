@@ -668,6 +668,7 @@ class Feed (object):
         if 'name' in feed.get('publisher_detail', []):
             data['publisher'] = feed.publisher_detail.name
         name = self.name_format.format(**data)
+        name = name.replace('\n', ' ')
         return _html.unescape(name)
 
     def _validate_email(self, email, default=None):
