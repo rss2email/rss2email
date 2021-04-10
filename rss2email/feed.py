@@ -404,9 +404,12 @@ class Feed (object):
 
     def _check_for_errors(self, parsed):
         warned = False
-        status = getattr(parsed, 'status', 200)
+        status = getattr(parsed, 'status', None)
         _LOG.debug('HTTP status {}'.format(status))
-        if status == 301:
+        if status is None:
+            # On non-HTTP schemes, like file://
+            pass
+        elif status == 301:
             _LOG.info('redirect {} from {} to {}'.format(
                     self.name, self.url, parsed['url']))
             self.url = parsed['url']
