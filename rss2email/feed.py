@@ -410,7 +410,7 @@ class Feed (object):
             _LOG.info('redirect {} from {} to {}'.format(
                     self.name, self.url, parsed['url']))
             self.url = parsed['url']
-        elif status not in [200, 302, 304, 307]:
+        elif status not in [200, 302, 304, 307, None]:
             raise _error.HTTPError(status=status, feed=self)
 
         http_headers = parsed.get('headers', {})
