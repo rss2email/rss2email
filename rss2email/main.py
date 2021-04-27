@@ -98,6 +98,10 @@ def run(*args, **kwargs):
     add_parser.add_argument(
         'email', nargs='?',
         help='target email for the new feed')
+    add_parser.add_argument(
+        '-f', '--fetch', dest='fetch',
+        default=False, action='store_const', const=True,
+        help="also fetch feed, but don't send email")
 
     run_parser = subparsers.add_parser(
         'run', help=_command.run.__doc__.splitlines()[0])
