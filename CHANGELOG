@@ -1,4 +1,5 @@
 UNRELEASED
+    * Fix crash on html-mail entries with no URL
 
 v3.13 (2021-04-03)
     * Switch to feedparser 6

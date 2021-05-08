@@ -191,7 +191,8 @@ Tails 4.8 directly:</p>
 Tails</a> (<a href="https://tails.boum.org/donate/?r=4.8">donating</a> is only one of
 them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.8/index.en.html">https://tails.boum.org/news/version_4.8/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/version_4.8/index.en.html">https://tails.boum.org/news/version_4.8/index.en.html</a></p>
 </div>
 </div>
 </body>
@@ -430,7 +431,8 @@ Tails 4.9 directly:</p>
 Tails</a> (<a href="https://tails.boum.org/donate/?r=4.9">donating</a> is only one of
 them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.9/index.en.html">https://tails.boum.org/news/version_4.9/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/version_4.9/index.en.html">https://tails.boum.org/news/version_4.9/index.en.html</a></p>
 </div>
 </div>
 </body>
@@ -634,7 +636,8 @@ Tails 4.10 directly:</p>
 Tails</a> (<a href="https://tails.boum.org/donate/?r=4.10">donating</a> is only one of
 them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.10/index.en.html">https://tails.boum.org/news/version_4.10/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/version_4.10/index.en.html">https://tails.boum.org/news/version_4.10/index.en.html</a></p>
 </div>
 </div>
 </body>
@@ -877,7 +880,8 @@ automatic upgrade, please try to do a <a href="https://tails.boum.org/doc/upgrad
 Tails</a> (<a href="https://tails.boum.org/donate/?r=4.11-rc1">donating</a> is only one of
 them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/test_4.11-rc1/">https://tails.boum.org/news/test_4.11-rc1/</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/test_4.11-rc1/">https://tails.boum.org/news/test_4.11-rc1/</a></p>
 </div>
 </div>
 </body>
@@ -1098,7 +1102,8 @@ Tails 4.11 directly:</p>
 Tails</a> (<a href="https://tails.boum.org/donate/?r=4.11">donating</a> is only one of
 them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.11/index.en.html">https://tails.boum.org/news/version_4.11/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/version_4.11/index.en.html">https://tails.boum.org/news/version_4.11/index.en.html</a></p>
 </div>
 </div>
 </body>
@@ -1319,7 +1324,8 @@ Tails 4.12 directly:</p>
 Tails</a> (<a href="https://tails.boum.org/donate/?r=4.12">donating</a> is only one of
 them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.12/index.en.html">https://tails.boum.org/news/version_4.12/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/version_4.12/index.en.html">https://tails.boum.org/news/version_4.12/index.en.html</a></p>
 </div>
 </div>
 </body>
@@ -1542,7 +1548,8 @@ Tails 4.13 directly:</p>
 Tails</a> (<a href="https://tails.boum.org/donate/?r=4.13">donating</a> is only one of
 them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.13/index.en.html">https://tails.boum.org/news/version_4.13/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/version_4.13/index.en.html">https://tails.boum.org/news/version_4.13/index.en.html</a></p>
 </div>
 </div>
 </body>
@@ -1703,7 +1710,8 @@ make the verification faster. If you know WebAssembly, see if you can help us
 <p>See also our <a href="https://tails.boum.org/contribute/design/download_verification/">design document on the security and threat model of the
 download verification</a>.</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/verification_extension_deprecation/index.en.html">https://tails.boum.org/news/verification_extension_deprecation/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/verification_extension_deprecation/index.en.html">https://tails.boum.org/news/verification_extension_deprecation/index.en.html</a></p>
 </div>
 </div>
 </body>
@@ -1897,7 +1905,8 @@ Tails 4.14 directly:</p>
 Tails</a> (<a href="https://tails.boum.org/donate/?r=4.14">donating</a> is only one of
 them). Come <a href="https://tails.boum.org/about/contact/index.en.html#tails-dev">talk to us</a>!</p>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/version_4.14/index.en.html">https://tails.boum.org/news/version_4.14/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/version_4.14/index.en.html">https://tails.boum.org/news/version_4.14/index.en.html</a></p>
 </div>
 </div>
 </body>
@@ -2150,7 +2159,8 @@ surveillance and censorship!</p>
 
 <div class="cfa"><a href="https://tails.boum.org/donate/?r=ab">Donate</a></div>
 </div>
-<div class="footer"><p>URL: <a href="https://tails.boum.org/news/achievements_in_2020/index.en.html">https://tails.boum.org/news/achievements_in_2020/index.en.html</a></p>
+<div class="footer">
+<p>URL: <a href="https://tails.boum.org/news/achievements_in_2020/index.en.html">https://tails.boum.org/news/achievements_in_2020/index.en.html</a></p>
 </div>
 </div>
 </body>
