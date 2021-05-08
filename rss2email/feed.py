@@ -827,7 +827,7 @@ class Feed (object):
                 lines.append(_saxutils.escape(content['value'].strip()))
             lines.append('</div>')
             lines.extend([
-                    '<div class="footer">'
+                    '<div class="footer">',
                     '<p>URL: <a href="{0}">{0}</a></p>'.format(_saxutils.escape(link)),
                     ])
             for enclosure in getattr(entry, 'enclosures', []):
