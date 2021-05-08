@@ -1,0 +1,15 @@
+feed.rss is a snapshot of
+
+  https://www.fastmailstatus.com/feed
+
+as of 2021-05-08.
+
+HTTP headers:
+
+  Server: nginx
+  Date: Sat, 08 May 2021 14:14:36 GMT
+  Content-Type: application/rss+xml; charset=utf-8
+  Content-Length: 4684
+  Connection: keep-alive
+  X-Powered-By: Perl Dancer 1.3513
+  X-Content-Type-Options: nosniff

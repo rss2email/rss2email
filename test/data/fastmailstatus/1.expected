@@ -1,0 +1,319 @@
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: General availability - Warning
+Date: Tue, 26 Jan 2021 18:35:15 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: 3BBE2C00-6005-11EB-9AA1-A5E048FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">General availability - Warning</a></h1>
+<div id="body">
+A small segment of customers are experiencing interrupted access to Fastmail services. We're looking into it.
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: General availability - Up
+Date: Tue, 26 Jan 2021 20:54:10 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: A3AE9CEC-6018-11EB-9AA1-A5E048FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">General availability - Up</a></h1>
+<div id="body">
+We've resolved the issue and access has been restored. No mail has been lost.
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Support System - Warning
+Date: Tue, 09 Mar 2021 03:59:37 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: DDE8438E-808B-11EB-A9D6-823F50FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">Support System - Warning</a></h1>
+<div id="body">
+Our customer support system is currently performing a scheduled upgrade expected to last two to three hours. During this time, our support team will not be responding to requests. Tickets emailed to support@fastmail.com will be delayed, but not lost.
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Support System - Up
+Date: Tue, 09 Mar 2021 05:09:40 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: A73D84DE-8095-11EB-A9D6-823F50FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">Support System - Up</a></h1>
+<div id="body">
+The scheduled upgrade to our customer support system is complete. No tickets were lost. Thanks for your patience!
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Support System - Down
+Date: Fri, 19 Mar 2021 01:49:49 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: 63DB21E8-8855-11EB-A9D6-823F50FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">Support System - Down</a></h1>
+<div id="body">
+Our customer support system will experience a brief downtime expected to last 10 to 30 minutes. During this time, our support team will not be responding to requests.  Tickets emailed to support@fastmail.com will be delayed, but not lost.
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Support System - Up
+Date: Fri, 19 Mar 2021 02:30:46 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: 1C464866-885B-11EB-A9D6-823F50FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">Support System - Up</a></h1>
+<div id="body">
+Access to the customer support system has been restored, and we're ready to assist you!
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Support System - Down
+Date: Fri, 19 Mar 2021 20:04:20 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: 4ADB3D56-88EE-11EB-A9D6-823F50FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">Support System - Down</a></h1>
+<div id="body">
+Our customer support system will experience a brief downtime expected to last 10 to 30 minutes. During this time, our support team will not be responding to requests. Tickets emailed to support@fastmail.com will be delayed, but not lost.
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Support System - Up
+Date: Fri, 19 Mar 2021 20:37:08 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: E017F5EA-88F2-11EB-A9D6-823F50FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">Support System - Up</a></h1>
+<div id="body">
+Access to the customer support system has been restored, and we're ready to assist you!
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Login & sessions - Warning
+Date: Tue, 20 Apr 2021 01:44:49 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: FE688B1E-A179-11EB-8CC4-B51653FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">Login &amp; sessions - Warning</a></h1>
+<div id="body">
+Customers are currently unable to log out. We've isolated the cause and expect it will be resolved within an hour.
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
+
+SENT BY: "Fastmail Status: <author>" <user@rss2email.invalid>
+MIME-Version: 1.0
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+From: "Fastmail Status: <author>" <user@rss2email.invalid>
+To: a@b.com
+Subject: Login & sessions - Up
+Date: Tue, 20 Apr 2021 02:43:26 -0000
+Message-ID: <...@dev.null.invalid>
+User-Agent: rss2email/...
+List-ID: <test.localhost>
+List-Post: NO (posting not allowed on this list)
+X-RSS-Feed: data/fastmailstatus/feed.rss
+X-RSS-ID: 2EC9D062-A182-11EB-8CC4-B51653FE9AF7
+
+<!DOCTYPE html>
+<html>
+  <head>
+</head>
+<body dir="auto">
+<div id="entry">
+<h1 class="header"><a href="">Login &amp; sessions - Up</a></h1>
+<div id="body">
+We've resolved the issue and the ability to log out has been restored. No mail has been lost.
+</div>
+<div class="footer">
+</div>
+</div>
+</body>
+</html>
+
