@@ -1,4 +1,6 @@
 UNRELEASED
+
+v3.13.1 (2021-05-15)
     * Fix crash on html-mail entries with no URL
 
 v3.13 (2021-04-03)
