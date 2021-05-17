@@ -22,6 +22,8 @@ v3.13 (2021-04-03)
     * Add a --clean argument on the run command to reduce the database size
     * Set body element attribute dir=auto in HTML mail
     * Store the lock file in XDG_RUNTIME_DIR instead of /tmp
+    * New argument `--only-new` on the `add` command to ignore entries in feed
+      when added, so only new entries will be sent.
 
 v3.12.3 (2021-03-19)
     * Make dependency on feedparser have an upper bound so that `pip install`

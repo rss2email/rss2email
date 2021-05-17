@@ -61,6 +61,8 @@ def add(feeds, args):
     _LOG.info('add new feed {}'.format(feed))
     if not feed.to:
         raise _error.NoToEmailAddress(feed=feed, feeds=feeds)
+    if args.only_new:
+        feed.run(send=False, clean=False)
     feeds.save()
 
 def run(feeds, args):

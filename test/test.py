@@ -192,6 +192,19 @@ def webserver_for_test_fetch(queue, num_requests, wait_time):
     finally:
         httpd.server_close()
 
+def webserver_for_test_if_fetch(queue, timeout):
+    """Span a webserver for `timeout` seconds"""
+    httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+    httpd.timeout = timeout
+    try:
+        port = httpd.server_address[1]
+        queue.put(port)
+
+        httpd.handle_request()
+        queue.put("done")
+    finally:
+        httpd.server_close()
+
 class TestFetch(unittest.TestCase):
     "Retrieving feeds from servers"
     def test_delay(self):
@@ -268,6 +281,28 @@ class TestFetch(unittest.TestCase):
                                                   "save feed data" in previous_line
                     previous_line = line
             self.assertTrue(finish_precedes_acquire)
+
+    def test_only_new(self):
+        "Add and fetch contents"
+
+        standard_cfg = """[DEFAULT]
+        to = example@example.com"""
+
+        queue = multiprocessing.Queue()
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_if_fetch, args=(queue, 10))
+        webserver_proc.start()
+        port = queue.get()
+
+        with ExecContext(standard_cfg) as ctx:
+            ctx.call("add", '--only-new', 'test', 'http://127.0.0.1:{port}/disqus/feed.rss'.format(port = port))
+            # check if data is written
+            self.assertTrue(_os.path.exists(ctx.data_path))
+            with ctx.data_path.open('r') as f:
+                content = json.load(f)
+                # check if entries in seen
+                self.assertIn("seen", content["feeds"][0])
+        self.assertEqual(queue.get(), "done")
+
 
 def webserver_for_test_send(queue):
     httpd = http.server.HTTPServer(('', 0), NoLogHandler)
