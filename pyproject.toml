@@ -7,7 +7,7 @@ license = "GPL-2.0-only"
 
 [tool.poetry.dependencies]
 python = "^3.6"
-feedparser = ">=6.0.0"
+feedparser = ">=6.0.5"
 html2text = ">=2020.1.16"
 
 [tool.poetry.dev-dependencies]
