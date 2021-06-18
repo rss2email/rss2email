@@ -44,7 +44,7 @@ def new(feeds, args):
         feeds.config['DEFAULT']['to'] = args.email
     if _os.path.exists(feeds.configfiles[-1]):
         raise _error.ConfigAlreadyExistsError(feeds=feeds)
-    feeds.save()
+    feeds.save_config()
 
 def email(feeds, args):
     "Update the default target email address"
@@ -53,7 +53,7 @@ def email(feeds, args):
     else:
         _LOG.info('set the default target email to {}'.format(args.email))
     feeds.config['DEFAULT']['to'] = args.email
-    feeds.save()
+    feeds.save_config()
 
 def add(feeds, args):
     "Add a new feed to the database"
@@ -63,7 +63,8 @@ def add(feeds, args):
         raise _error.NoToEmailAddress(feed=feed, feeds=feeds)
     if args.only_new:
         feed.run(send=False, clean=False)
-    feeds.save()
+    feeds.save_config()
+    feeds.save_feeds()
 
 def run(feeds, args):
     "Fetch feeds and send entry emails."
@@ -95,7 +96,7 @@ def run(feeds, args):
                     e.log()
                 last_server = current_server
     finally:
-        feeds.save()
+        feeds.save_feeds()
 
 def list(feeds, args):
     "List all the feeds in the database"
@@ -118,7 +119,7 @@ def _set_active(feeds, args, active=True):
         feed = feeds.index(index)
         _LOG.info('{} feed {}'.format(action, feed))
         feed.active = active
-    feeds.save()
+    feeds.save_config()
 
 def pause(feeds, args):
     "Pause a feed (disable fetching)"
@@ -137,7 +138,8 @@ def delete(feeds, args):
     for feed in to_remove:
         _LOG.info('deleting feed {}'.format(feed))
         feeds.remove(feed)
-    feeds.save()
+    feeds.save_config()
+    feeds.save_feeds()
 
 def reset(feeds, args):
     "Forget dynamic feed data (e.g. to re-send old entries)"
@@ -147,7 +149,7 @@ def reset(feeds, args):
         feed = feeds.index(index)
         _LOG.info('resetting feed {}'.format(feed))
         feed.reset()
-    feeds.save()
+    feeds.save_feeds()
 
 def opmlimport(feeds, args):
     "Import configuration from OPML."
@@ -175,7 +177,8 @@ def opmlimport(feeds, args):
                     name = name_slug_regexp.sub('-', text)
             feed = feeds.new_feed(name=name, url=url)
             _LOG.info('add new feed {}'.format(feed))
-    feeds.save()
+    feeds.save_config()
+    feeds.save_feeds()
 
 def opmlexport(feeds, args):
     "Export configuration to OPML."

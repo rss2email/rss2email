@@ -110,7 +110,7 @@ class Feeds (list):
     Tweak the feed configuration and save.
 
     >>> feeds[0].to = None
-    >>> feeds.save()
+    >>> feeds.save_config()
     >>> print(open(configfile, 'r').read().rstrip('\\n'))
     ... # doctest: +REPORT_UDIFF, +ELLIPSIS
     [DEFAULT]
@@ -319,7 +319,7 @@ class Feeds (list):
             'cannot convert data file from version {} to {}'.format(
                 version, self.datafile_version))
 
-    def save(self):
+    def save_config(self):
         dst_config_file = _os.path.realpath(self.configfiles[-1])
         _LOG.debug('save feed configuration to {}'.format(dst_config_file))
         for feed in self:
@@ -333,9 +333,8 @@ class Feeds (list):
             f.flush()
             _os.fsync(f.fileno())
         _os.replace(tmpfile, dst_config_file)
-        self._save_feeds()
 
-    def _save_feeds(self):
+    def save_feeds(self):
         _LOG.debug('save feed data to {}'.format(self.datafile_path))
         dirname = _os.path.dirname(self.datafile_path)
         if dirname and not _os.path.isdir(dirname):
