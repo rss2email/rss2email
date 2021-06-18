@@ -68,8 +68,11 @@ to, overriding the default address for this particular feed.  Repeat
 for each feed you want to subscribe to.
 .P
 .RS 4
-The \-\-only-new option will prevent entries already in the feed to be
-sent.
+The \-\-only-new option fetches the feed at addition time without
+sending the entries, making subsequent \fBrun\fR execution consider
+them as already having been sent. It should be used when one is only
+interested in entries that are not yet in the feed at the time of
+running \fBadd\fR.
 .RE
 .TP
 .B run \fR[\fI\-\-no-send\fR] \fR[\fI\-\-clean\fR] \fR[\fI<index>\fR [\fI<index>\fR ...]]
