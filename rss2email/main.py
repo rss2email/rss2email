@@ -101,7 +101,7 @@ def run(*args, **kwargs):
     add_parser.add_argument(
         '--only-new', dest='only_new',
         default=False, action='store_const', const=True,
-        help="entries in the feed now will be not sent")
+        help="entries in the feed now will not be sent")
 
     run_parser = subparsers.add_parser(
         'run', help=_command.run.__doc__.splitlines()[0])
