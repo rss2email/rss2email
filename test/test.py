@@ -193,7 +193,7 @@ def webserver_for_test_fetch(queue, num_requests, wait_time):
         httpd.server_close()
 
 def webserver_for_test_if_fetch(queue, timeout):
-    """Span a webserver for `timeout` seconds"""
+    """Spawn a webserver for `timeout` seconds"""
     httpd = http.server.HTTPServer(('', 0), NoLogHandler)
     httpd.timeout = timeout
     try:
