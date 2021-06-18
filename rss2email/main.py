@@ -99,8 +99,7 @@ def run(*args, **kwargs):
         'email', nargs='?',
         help='target email for the new feed')
     add_parser.add_argument(
-        '--only-new', dest='only_new',
-        default=False, action='store_const', const=True,
+        '--only-new', action='store_true',
         help="entries in the feed now will not be sent")
 
     run_parser = subparsers.add_parser(
