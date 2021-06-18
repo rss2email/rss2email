@@ -60,12 +60,20 @@ sets the default email address that mails are sent to.
 .B email \fR[\fI<email>\fR]
 Update the default target email address to \fI<email>\fR.
 .TP
-.B add \fI<name>\fR \fI<url>\fR [\fI<email>\fR]
+.B add \fR[\fI\-\-only-new\fR] \fI<name>\fR \fI<url>\fR [\fI<email>\fR]
 Subscribe to a feed. The \fI<name>\fR argument gives the feed a name
 for future manipulation. \fI<url>\fR is the URL of the feed.  The
 optional \fI<email>\fR argument is the email address to send new items
 to, overriding the default address for this particular feed.  Repeat
 for each feed you want to subscribe to.
+.P
+.RS 4
+The \-\-only-new option fetches the feed at addition time without
+sending the entries, making subsequent \fBrun\fR execution consider
+them as already having been sent. It should be used when one is only
+interested in entries that are not yet in the feed at the time of
+running \fBadd\fR.
+.RE
 .TP
 .B run \fR[\fI\-\-no-send\fR] \fR[\fI\-\-clean\fR] \fR[\fI<index>\fR [\fI<index>\fR ...]]
 Scan the feeds and send emails for new items. This can be run in a cron
