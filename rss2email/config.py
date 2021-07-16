@@ -195,10 +195,10 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
                 '  padding: 5px;\n'
                 '  margin-bottom: 0px;\n'
                 '}\n'
-                '#entry {\n'
+                '.entry {\n'
                 '  border: solid 4px #c3d9ff;\n'
                 '}\n'
-                '#body {\n'
+                '.body {\n'
                 '  margin-left: 5px;\n'
                 '  margin-right: 5px;\n'
                 '}\n')),
