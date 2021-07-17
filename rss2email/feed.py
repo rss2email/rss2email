@@ -813,14 +813,19 @@ class Feed (object):
                         _saxutils.escape(self.css),
                         '    </style>',
                         ])
+            # For backward compatibility, specify "body" and "entry"
+            # as both class and id.  Unlike the other elements
+            # (header, footer) they were used as ids, not classes,
+            # which was inconsistent as well as problemmatic
+            # in the config file (# is a comment character).
             lines.extend([
                     '</head>',
                     '<body dir="auto">',
-                    '<div id="entry">',
+                    '<div class="entry" id="entry">',
                     '<h1 class="header"><a href="{}">{}</a></h1>'.format(
                         _saxutils.escape(link) if link else '',
                         _saxutils.escape(subject)),
-                    '<div id="body">',
+                    '<div class="body" id="body">',
                     ])
             if content['type'] in ('text/html', 'application/xhtml+xml'):
                 lines.append(content['value'].strip())

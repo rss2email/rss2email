@@ -19,9 +19,9 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/1
   <head>
 </head>
 <body dir="auto">
-<div id="entry">
+<div class="entry" id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/1">Re: new maintainer and mailing list for rss2email</a></h1>
-<div id="body">
+<div class="body" id="body">
 <pre>Alrighty, this is the first email on the list and also my first
 production mlmmj list, so I've CCed you both directly.  Etienne, let
 me know if you get the direct email but not the list email, in which
@@ -82,9 +82,9 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/2
   <head>
 </head>
 <body dir="auto">
-<div id="entry">
+<div class="entry" id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/2">Re: new maintainer and mailing list for rss2email</a></h1>
-<div id="body">
+<div class="body" id="body">
 <pre>* W. Trevor King &lt;wking-vJI2gpByivqcqzYg7KEe8g&lt; at &gt;public.gmane.org&gt; [121112 23:18]:
 
 It seems to work, though it may have been grouped together with my
@@ -135,9 +135,9 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/3
   <head>
 </head>
 <body dir="auto">
-<div id="entry">
+<div class="entry" id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/3">Re: new maintainer and mailing list for rss2email</a></h1>
-<div id="body">
+<div class="body" id="body">
 <pre>
 send-email style, although I'll accept anything ;).
 
@@ -172,9 +172,9 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/4
   <head>
 </head>
 <body dir="auto">
-<div id="entry">
+<div class="entry" id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/4">Re: new maintainer and mailing list for rss2email</a></h1>
-<div id="body">
+<div class="body" id="body">
 <pre>* W. Trevor King &lt;wking-vJI2gpByivqcqzYg7KEe8g&lt; at &gt;public.gmane.org&gt; [121113 13:21]:
 
 Ack.
@@ -212,9 +212,9 @@ X-RSS-URL: http://permalink.gmane.org/gmane.mail.rss2email/5
   <head>
 </head>
 <body dir="auto">
-<div id="entry">
+<div class="entry" id="entry">
 <h1 class="header"><a href="http://permalink.gmane.org/gmane.mail.rss2email/5">split massive package into modules</a></h1>
-<div id="body">
+<div class="body" id="body">
 <pre>I just split the 1769-line rss2email.py module into a more manageable
 package with sub-modules:
 
