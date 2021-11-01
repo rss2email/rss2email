@@ -176,7 +176,7 @@ False: Just use the 'from' email instead.
 If empty, only use the feed email address rather than
 friendly name plus email address.  Available attributes may
 include 'feed', 'feed-name', 'feed-url', 'feed-title', 'author', and
-'publisher', but only 'feed', 'feed-name', and 'feed-url' are guaranteed.
+\'publisher', but only 'feed', 'feed-name', and 'feed-url' are guaranteed.
 .IP to
 Set this to default To email addresses.
 .RE
@@ -226,6 +226,9 @@ enabled, the usual 'post-process' hook gets to message the
 per-entry messages, but this hook is called with the full
 digest message before it is mailed.
 Example: digest-post-process = 'rss2email.post_process.downcase downcase_message'
+.IP subject-format
+The format for the Subject line.  Available attributes are
+\'feed', 'feed-name', 'feed-url', 'feed-title'.
 .RE
 .SS HTML conversion
 .IP html-mail

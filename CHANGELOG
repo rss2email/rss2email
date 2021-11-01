@@ -1,5 +1,6 @@
 UNRELEASED
     * Fix crash on html-mail entries with no URL
+    * Add a new `subject-format` setting, customise the subject line
 
 v3.13 (2021-04-03)
     * Switch to feedparser 6
