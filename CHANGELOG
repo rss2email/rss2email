@@ -1,5 +1,6 @@
 UNRELEASED
     * Fix crash on html-mail entries with no URL
+    * Fix exception when parsing a feed with a linebreak in its title
     * Add a new `subject-format` setting, customise the subject line
 
 v3.13 (2021-04-03)
