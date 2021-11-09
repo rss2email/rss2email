@@ -53,7 +53,7 @@ import html2text as _html2text
 
 class Config (_configparser.ConfigParser):
     def __init__(self, dict_type=_collections.OrderedDict,
-                 interpolation=_configparser.ExtendedInterpolation(),
+                 interpolation=None,
                  **kwargs):
         super(Config, self).__init__(
             dict_type=dict_type, interpolation=interpolation, **kwargs)
