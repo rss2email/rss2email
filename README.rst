@@ -252,7 +252,7 @@ to post bug reports, feature requests, comments, and patches. If you do
 not have a GitHub account and do not wish to acquire one, please come
 chat in the IRC channel.
 
-There is a developer chat on the `freenode IRC server`_, in the
+There is a developer chat on the `Libera IRC server`_, in the
 ``rss2email`` channel. Feel free to idle.
 
 Tips and tricks
@@ -289,4 +289,4 @@ checking it in.
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _windows scheduler: http://www.iopus.com/guides/winscheduler.htm
 .. _cron: http://en.wikipedia.org/wiki/Cron
-.. _freenode IRC server: https://freenode.net
+.. _Libera IRC server: https://libera.chat/
