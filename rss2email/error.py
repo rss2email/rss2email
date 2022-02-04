@@ -218,13 +218,13 @@ class DataFileError (FeedsError):
     def __init__(self, feeds, message=None):
         if message is None:
             message = 'problem with the feed data file {}'.format(
-                feeds.datafile)
+                feeds.datafile_path)
         super(DataFileError, self).__init__(feeds=feeds, message=message)
 
 
 class NoDataFile (DataFileError):
     def __init__(self, feeds):
-        message = 'feed data file {} does not exist'.format(feeds.datafile)
+        message = 'feed data file {} does not exist'.format(feeds.datafile_path)
         super(NoDataFile, self).__init__(feeds=feeds, message=message)
 
     def log(self):
