@@ -298,6 +298,11 @@ class Feeds (list):
             return order[feed.name]
         self.sort(key=key)
 
+    def close(self):
+        if self.datafile is not None:
+            self.datafile.close()
+            self.datafile = None
+
     def _load_pickled_data(self, stream):
         _LOG.info('try and load data file using Pickle')
         with open(self.datafile_path, 'rb') as f:
@@ -347,14 +352,10 @@ class Feeds (list):
         if UNIX:
             # Replace the file, then release the lock by closing the old one.
             _os.replace(tmpfile, self.datafile_path)
-            if self.datafile is not None:
-                self.datafile.close()  # release the lock
-                self.datafile = None
+            self.close()  # release the lock
         else:
             # On Windows we cannot replace the file while it is opened. And we have no lock.
-            if self.datafile is not None:
-                self.datafile.close()
-                self.datafile = None
+            self.close()
             _os.replace(tmpfile, self.datafile_path)
 
     def _save_feed_states(self, feeds, stream):
