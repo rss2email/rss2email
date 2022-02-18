@@ -2,9 +2,9 @@
 name: Docker build
 
 on:
-  release:
-    types:
-      - published
+  push:
+    tags:
+      - *
 
 jobs:
   docker:
