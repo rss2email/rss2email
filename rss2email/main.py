@@ -206,6 +206,8 @@ def run(*args, **kwargs):
             raise  # don't mask the traceback
         _sys.exit(1)
     finally:
+        if feeds is not None:
+            feeds.close()
         if lockfile is not None:
             lockfile.close()
 
