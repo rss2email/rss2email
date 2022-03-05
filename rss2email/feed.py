@@ -383,6 +383,7 @@ class Feed (object):
             kwargs['handlers'] = [
                 _urllib_request.ProxyHandler({ 'http': proxy, 'https': proxy })
             ]
+        kwargs['agent'] = config['user-agent']
         f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
         return f(self.url, self.etag, modified=self.modified, **kwargs)
 
