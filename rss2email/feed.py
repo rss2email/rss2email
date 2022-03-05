@@ -187,6 +187,9 @@ class Feed (object):
     _default_configured_attributes[
         _default_configured_attributes.index('user_agent')
         ] = '_user_agent'  # `user_agent` is a getter that does substitution
+    _default_configured_attributes[
+        _default_configured_attributes.index('http_user_agent')
+        ] = '_http_user_agent'  # `http_user_agent` is a getter that does substitution
     # all attributes that are saved/loaded from .config
     _configured_attributes = (
         _non_default_configured_attributes + _default_configured_attributes)
@@ -236,6 +239,12 @@ class Feed (object):
     @property
     def user_agent(self):
         return self._user_agent.\
+            replace('__VERSION__', __version__).\
+            replace('__URL__', __url__)
+
+    @property
+    def http_user_agent(self):
+        return self._http_user_agent.\
             replace('__VERSION__', __version__).\
             replace('__URL__', __url__)
 
@@ -384,7 +393,7 @@ class Feed (object):
                 _urllib_request.ProxyHandler({ 'http': proxy, 'https': proxy })
             ]
         f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
-        return f(self.url, self.etag, modified=self.modified, **kwargs)
+        return f(self.url, self.etag, modified=self.modified, agent=self.http_user_agent, **kwargs)
 
     def _process(self, parsed):
         _LOG.info('process {}'.format(self))

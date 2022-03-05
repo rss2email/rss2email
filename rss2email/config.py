@@ -88,6 +88,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('from', 'user@rss2email.invalid'),
         # The User-Agent default string (rss2email __VERSION__ and __URL__ is replaced)
         ('user-agent', 'rss2email/__VERSION__ (__URL__)'),
+        # The HTTP User-Agent default string (rss2email __VERSION__ and __URL__ is replaced)
+        ('http-user-agent', 'rss2email/__VERSION__ (__URL__)'),
         # Transfer-Encoding. For local mailing it is safe and
         # convenient to use 8bit.
         ('use-8bit', str(False)),
