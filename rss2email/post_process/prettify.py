@@ -44,7 +44,7 @@ then you can use::
 
 This means that your hook can live in any package in your
 ``PYTHONPATH``, in a package in your per-user site-packages
-(:pep:`307`), etc
+(:pep:`370`), etc
 
 The hook function itself has 5 arguments: ``feed``, ``parsed``,
 ``entry``, ``guid``, ``message`` and needs to return a ``message`` or
