@@ -192,6 +192,20 @@ def webserver_for_test_fetch(queue, num_requests, wait_time):
     finally:
         httpd.server_close()
 
+def webserver_for_test_user_agent(queue):
+    class AgentDumper(NoLogHandler):
+        def do_GET(self):
+            queue.put(self.headers["User-Agent"])
+            super().do_GET()
+
+    httpd = http.server.HTTPServer(('', 0), AgentDumper)
+    try:
+        port = httpd.server_address[1]
+        queue.put(port)
+        httpd.handle_request()
+    finally:
+        httpd.server_close()
+
 def webserver_for_test_if_fetch(queue, timeout):
     """Spawn a webserver for `timeout` seconds"""
     httpd = http.server.HTTPServer(('', 0), NoLogHandler)
@@ -231,6 +245,38 @@ class TestFetch(unittest.TestCase):
 
         if result == "too fast":
             raise Exception("r2e did not delay long enough!")
+
+    def test_http_user_agent_config(self):
+        http_user_agent = 'my-test-agent'
+        http_user_agent_cfg = """[DEFAULT]
+        to = example@example.com
+        user-agent = {}
+        """.format(http_user_agent)
+
+        queue = multiprocessing.Queue()
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_user_agent, args=(queue,))
+        webserver_proc.start()
+        port = queue.get()
+
+        with ExecContext(http_user_agent_cfg) as ctx:
+            ctx.call("add", 'test', 'http://127.0.0.1:{port}/dummy'.format(port = port))
+            ctx.call("run", "--no-send")
+        self.assertEqual(queue.get(), http_user_agent)
+
+    def test_default_http_user_agent(self):
+        http_default_agent_cfg = """[DEFAULT]
+        to = example@example.com
+        """
+
+        queue = multiprocessing.Queue()
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_user_agent, args=(queue,))
+        webserver_proc.start()
+        port = queue.get()
+
+        with ExecContext(http_default_agent_cfg) as ctx:
+            ctx.call("add", 'test', 'http://127.0.0.1:{port}/dummy'.format(port = port))
+            ctx.call("run", "--no-send")
+        self.assertIn('rss2email/', queue.get(), "rss2email should identify itself as the User-Agent by default")
 
     def test_fetch_parallel(self):
         if not UNIX:

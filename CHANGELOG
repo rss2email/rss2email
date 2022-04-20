@@ -3,6 +3,9 @@ UNRELEASED
     * Fix exception when parsing a feed with a linebreak in its title
     * Add a new `subject-format` setting, customise the subject line
     * Removed '$' interpolation in config file to allow URLs containing dollar signs. Interpolation was not fully supported, and the placeholder would not survive a second save. Config files with ${...} placeholders will need to be manually edited after upgrading, or a save forced by adding and removing a fake feed before upgrading.
+    * Fix default HTTP User-Agent to use `rss2email` instead of `feedparser`, and fix `user-agent` setting to consistently apply to both outgoing emails and HTTP requests. This introduces a couple of potentially breaking changes:
+       o Configurations that came to rely on the `feedparser` UA string should adjust to the updated UA string going forward.
+       o Configurations that came to rely on the unintended behaviour, that configuring the User-Agent header in emails does not affect HTTP requests, should use a custom `post-process` hook instead.
 
 v3.13 (2021-04-03)
     * Switch to feedparser 6
