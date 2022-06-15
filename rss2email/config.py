@@ -222,7 +222,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ### Mailing
         # Select protocol from: sendmail, smtp, imap
         ('email-protocol', 'sendmail'),
-        # True: Use SMTP_SERVER to send mail.
+        # Interpret username/password as names of environment variables containing their values
+        ('email-auth-from-env', str(False)),
         # Sendmail (or compatible) configuration
         ('sendmail', '/usr/sbin/sendmail'),  # Path to sendmail (or compatible)
         ('sendmail_config', ''),

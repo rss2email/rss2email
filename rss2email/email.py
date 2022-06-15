@@ -213,6 +213,9 @@ def smtp_send(recipient, message, config=None, section='DEFAULT'):
     if smtp_auth:
         username = config.get(section, 'smtp-username')
         password = config.get(section, 'smtp-password')
+        if config.getboolean(section, 'email-auth-from-env'):
+            username = _os.getenv(username, '')
+            password = _os.getenv(password, '')
         try:
             if not ssl:
                 smtp.starttls(context=context)
@@ -239,7 +242,10 @@ def imap_send(message, config=None, section='DEFAULT'):
     try:
         if config.getboolean(section, 'imap-auth'):
             username = config.get(section, 'imap-username')
-            password = config.get(section, 'imap-password')
+            password = config.get(section, 'imap-password') 
+            if config.getboolean(section, 'email-auth-from-env'):
+                username = _os.getenv(username, '')
+                password = _os.getenv(password, '')            
             try:
                 if not ssl:
                     imap.starttls()
