@@ -5,6 +5,7 @@ UNRELEASED
     * Fix exception when parsing a feed with a linebreak in its title
     * Add a new `subject-format` setting, customise the subject line
     * Removed '$' interpolation in config file to allow URLs containing dollar signs. Interpolation was not fully supported, and the placeholder would not survive a second save. Config files with ${...} placeholders will need to be manually edited after upgrading, or a save forced by adding and removing a fake feed before upgrading.
+    * Add a new `email-auth-from-env` setting, interpret username/password as env variable names
 
 v3.13 (2021-04-03)
     * Switch to feedparser 6
