@@ -242,7 +242,7 @@ def imap_send(message, config=None, section='DEFAULT'):
     try:
         if config.getboolean(section, 'imap-auth'):
             username = config.get(section, 'imap-username')
-            password = config.get(section, 'imap-password') 
+            password = config.get(section, 'imap-password')
             if config.getboolean(section, 'email-auth-from-env'):
                 username = _os.getenv(username, '')
                 password = _os.getenv(password, '')            
