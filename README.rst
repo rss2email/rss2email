@@ -1,16 +1,16 @@
 .. -*- coding: utf-8 -*-
 
-.. image:: https://pypip.in/download/rss2email/badge.png
+.. image:: https://img.shields.io/pypi/dm/rss2email
     :target: https://pypi.python.org/pypi/rss2email/
-    :alt: Downloads
+    :alt: Monthly Downloads
 
-.. image:: https://pypip.in/version/rss2email/badge.png
+.. image:: https://badge.fury.io/py/rss2email.svg
     :target: https://pypi.python.org/pypi/rss2email/
     :alt: Latest Version
 
-.. image:: https://pypip.in/license/rss2email/badge.png
+.. image:: https://img.shields.io/badge/License-GPL_v2-blue.svg
     :target: https://pypi.python.org/pypi/rss2email/
-    :alt: License
+    :alt: GPL v2.0 License
 
 ==============================
 Getting Started With rss2email
