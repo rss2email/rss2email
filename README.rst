@@ -175,12 +175,12 @@ You can make the email address whatever you want, but your mail server
 requires that the ``yoursite.com`` part actually exists.
 
 
-SMTP
-----
+SMTP/IMAP
+---------
 
 By default, rss2email uses sendmail (or an equivalent) to send
 outgoing email.  If you don't have such a program installed, or simply
-prefer to use SMTP__ directly, edit the configuration file and fill in
+prefer to use SMTP__ or IMAP__, edit the configuration file and fill in
 your outgoing email server's details::
 
   [DEFAULT]
@@ -197,6 +197,14 @@ If your server requires you to login, change ``smtp-auth = False`` to
   smtp-username = username
   smtp-password = password
 
+To avoid storing your credentials in the configuration file, you may
+optionally set ``email-auth-from-env = True`` and instead reference the names
+of environment variables containing them::
+
+  email-auth-from-env = True
+  smtp-username = RSS2EMAIL_USERNAME
+  smtp-password = RSS2EMAIL_PASSWORD
+
 If your server requires an `TLS/SSL`_ connection (SMTPS), change
 ``smtp-ssl = False`` to ``smtp-ssl = True``.  If your server does
 not require a SMTPS connection but you request authentication,
@@ -204,6 +212,7 @@ rss2email will use STARTTLS_ to encrypt the connection before sending
 your login credentials to the server.
 
 __ `Simple Mail Transport Protocol`_
+__ `Internet Message Access Protocol`_
 
 Post-processing
 ---------------
@@ -290,3 +299,4 @@ checking it in.
 .. _windows scheduler: http://www.iopus.com/guides/winscheduler.htm
 .. _cron: http://en.wikipedia.org/wiki/Cron
 .. _Libera IRC server: https://libera.chat/
+.. _Internet Message Access Protocol: https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol
