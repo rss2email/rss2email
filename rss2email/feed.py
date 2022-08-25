@@ -931,6 +931,9 @@ class Feed (object):
                 self.seen[guid]['old'] = True
 
         if self.digest:
+            type = self.digest_type
+            if type not in ['multipart/digest', 'multipart/mixed']:
+                raise _error.InvalidDigestType(type)
             digest = self._new_digest()
             seen = []
             for (guid, state, sender, message) in self._process(parsed):
@@ -988,7 +991,10 @@ class Feed (object):
                     old = old - 1
 
     def _new_digest(self):
-        digest = _MIMEMultipart('digest')
+        if self.digest_type == 'multipart/digest':
+            digest = _MIMEMultipart('digest')
+        else:
+            digest = _MIMEMultipart('mixed')
         digest['To'] = _formataddr(_parseaddr(self.to))  # Encodes with utf-8 as necessary
         digest['Subject'] = 'digest for {}'.format(self.name)
         digest['Message-ID'] = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
@@ -999,9 +1005,13 @@ class Feed (object):
         return digest
 
     def _append_to_digest(self, digest, message):
-        part = _MIMEMessage(message)
-        part.add_header('Content-Disposition', 'attachment')
-        digest.attach(part)
+        if self.digest_type == 'multipart/digest':
+            part = _MIMEMessage(message)
+            part.add_header('Content-Disposition', 'attachment')
+            digest.attach(part)
+        else:
+            # multipart/mixed
+            digest.attach(message)
 
     def _send_digest(self, digest, sender):
         """Send a digest message
@@ -1011,8 +1021,12 @@ class Feed (object):
         any messages in the digest, don't call this function.
         """
         digest['From'] = sender
-        last_part = digest.get_payload()[-1]
-        last_message = last_part.get_payload()[0]
+        if self.digest_type == 'multipart/digest':
+            last_part = digest.get_payload()[-1]
+            last_message = last_part.get_payload()[0]
+        else:
+            # multipart/mixed
+            last_message = digest.get_payload()[-1]
         digest['Date'] = last_message['Date']
         self._send(sender=sender, message=digest)
 

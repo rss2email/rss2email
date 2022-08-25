@@ -193,6 +193,10 @@ False: Don't fetch, process, or email feeds
 .IP digest
 True: Send a single, multi-entry email per feed per rss2email run.
 False: Send a single email per entry.
+.IP digest-type
+Message content-type for digests.  Valid values are 'multipart/digest'
+and 'multipart/mixed'.  The former is the default, but many mail user agents
+do not support it.
 .IP date-header
 True: Generate Date header based on item's date, when possible.
 False: Generate Date header based on time sent.

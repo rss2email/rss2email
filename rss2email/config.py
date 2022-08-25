@@ -120,6 +120,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # True: Send a single, multi-entry email per feed per rss2email run.
         # False: Send a single email per entry.
         ('digest', str(False)),
+        # multipart/digest: use Content-type: multipart/digest
+        # multipart/mixed: use Content-type: multipart/mixed
+        ('digest-type', 'multipart/digest'),
         # True: Generate Date header based on item's date, when possible.
         # False: Generate Date header based on time sent.
         ('date-header', str(False)),
