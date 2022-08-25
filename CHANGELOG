@@ -1,4 +1,5 @@
 UNRELEASED
+    * New `digest-type` configuration adds optional more widely supported `multipart/mixed` format
     * New argument `--only-new` on the `add` command to ignore entries in feed
       when added, so only new entries will be sent.
     * Fix crash on html-mail entries with no URL

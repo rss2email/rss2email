@@ -266,3 +266,8 @@ class ConfigAlreadyExistsError (FeedsError):
     def __init__(self, feeds=None):
         message = 'configuration file already exists'
         super().__init__(feeds=feeds, message=message)
+
+class InvalidDigestType (RSS2EmailError):
+    def __init__(self, value):
+        message = "invalid digest-type value '{value}'".format(value=value)
+        super(InvalidDigestType, self).__init__(message=message)
