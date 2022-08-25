@@ -257,9 +257,6 @@ Wrap long lines at position. Any negative value for no wrapping, 0 for 78 width
 Select protocol from: sendmail, smtp, imap, maildir
 .IP sendmail
 Path to sendmail (or compatible)
-.IP user-agent
-String to use as User-Agent in outgoing emails. If present, __VERSION__ and
-__URL__ are replaced with rss2email version number and webpage
 .RE
 .SS SMTP configuration
 .IP smtp-auth
@@ -296,6 +293,10 @@ Path of maildir to write messages into
 Mailbox within maildir-path to write messages into
 .RE
 .SS Miscellaneous
+.IP user-agent
+String to use as HTTP User-Agent in web requests and as the User-Agent header in
+outgoing emails. If present, __VERSION__ and __URL__ are replaced with rss2email
+version number and webpage.
 .IP verbose
 Verbosity (one of 'error', 'warning', 'info', or 'debug').
 .RE

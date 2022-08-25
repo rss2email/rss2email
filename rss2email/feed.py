@@ -384,7 +384,7 @@ class Feed (object):
                 _urllib_request.ProxyHandler({ 'http': proxy, 'https': proxy })
             ]
         f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
-        return f(self.url, self.etag, modified=self.modified, **kwargs)
+        return f(self.url, self.etag, modified=self.modified, agent=self.user_agent, **kwargs)
 
     def _process(self, parsed):
         _LOG.info('process {}'.format(self))
