@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2004-2021 Aaron Swartz
-#                         Amir Yalon <105565+amiryal@users.noreply.github.com>
+# Copyright (C) 2004-2022 Aaron Swartz
 #                         Amir Yalon <git@please.nospammail.net>
 #                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
@@ -8,6 +7,7 @@
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dennis Keitzel <github@pinshot.net>
+#                         Ellen Wang <squeakbat@users.noreply.github.com>
 #                         Emil Oppeln-Bronikowski <emil@fuse.pl>
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
@@ -17,6 +17,7 @@
 #                         Jakub Wilk <jwilk@jwilk.net>
 #                         Joey Hess
 #                         Jonathan Kamens <jik@kamens.us>
+#                         Josh Wainwright <git@jawainwright.co.uk>
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Karthikeyan Singaravelan <tir.karthi@gmail.com>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
@@ -28,8 +29,8 @@
 #                         Matej Cepl
 #                         Notkea <pacien@users.noreply.github.com>
 #                         Profpatsch <mail@profpatsch.de>
+#                         Steve Mokris <smokris@softpixel.com>
 #                         W. Trevor King <wking@tremily.us>
-#                         auouymous <5005204+auouymous@users.noreply.github.com>
 #                         auouymous <au@qzx.com>
 #                         shan3141 <xpoh434@users.noreply.github.com>
 #

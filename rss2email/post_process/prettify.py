@@ -1,8 +1,9 @@
-# Copyright (C) 2013-2020 Arun Persaud <apersaud@lbl.gov>
+# Copyright (C) 2013-2022 Arun Persaud <apersaud@lbl.gov>
 #                         Etienne Millon <me@emillon.org>
 #                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
+#                         auouymous <au@qzx.com>
 #
 # This file is part of rss2email.
 #

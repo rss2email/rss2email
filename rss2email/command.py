@@ -1,4 +1,5 @@
 # Copyright (C) 2012-2021 Etienne Millon <me@emillon.org>
+#                         Faye Duxovni <duxovni@duxovni.org>
 #                         Gregory Soutade <gregory@soutade.fr>
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Karthikeyan Singaravelan <tir.karthi@gmail.com>
@@ -6,8 +7,9 @@
 #                         Martin Monperrus <monperrus@users.noreply.github.com>
 #                         Nicolas KAROLAK <nicolas@karolak.fr>
 #                         Profpatsch <mail@profpatsch.de>
+#                         Timendum <timedum@gmail.com>
 #                         W. Trevor King <wking@tremily.us>
-#                         auouymous <5005204+auouymous@users.noreply.github.com>
+#                         auouymous <au@qzx.com>
 #
 # This file is part of rss2email.
 #

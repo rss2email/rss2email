@@ -1,4 +1,4 @@
-# Copyright (C) 2004-2021 Aaron Swartz
+# Copyright (C) 2004-2022 Aaron Swartz
 #                         Alyssa Ross <hi@alyssa.is>
 #                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
@@ -6,12 +6,14 @@
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dmitry Bogatov <KAction@gnu.org>
+#                         Ellen Wang <squeakbat@users.noreply.github.com>
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
 #                         François Boulogne <fboulogne sciunto org>
 #                         George Saunders <georgesaunders@gmail.com>
 #                         Jakub Wilk <jwilk@jwilk.net>
 #                         Joey Hess
+#                         Josh Wainwright <git@jawainwright.co.uk>
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
 #                         Léo Gaspard <leo@gaspard.io>
@@ -24,7 +26,6 @@
 #                         Thibaut Girka <thib@sitedethib.com>
 #                         W. Trevor King <wking@tremily.us>
 #                         Yannik Sembritzki <yannik@sembritzki.me>
-#                         auouymous <5005204+auouymous@users.noreply.github.com>
 #                         auouymous <au@qzx.com>
 #                         boyska <piuttosto@logorroici.org>
 #                         ryneeverett <ryneeverett@gmail.com>

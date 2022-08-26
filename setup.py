@@ -1,4 +1,5 @@
 # Copyright (C) 2012-2021 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
+#                         Amir Yalon <git@please.nospammail.net>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Arun Persaud <apersaud@lbl.gov>
 #                         Léo Gaspard <leo@gaspard.io>
@@ -6,7 +7,6 @@
 #                         Profpatsch <mail@profpatsch.de>
 #                         Steven Siloti <ssiloti@gmail.com>
 #                         W. Trevor King <wking@tremily.us>
-#                         auouymous <5005204+auouymous@users.noreply.github.com>
 #                         auouymous <au@qzx.com>
 #
 # This file is part of rss2email.

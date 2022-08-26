@@ -12,7 +12,6 @@
 #                         Thibaut Girka <thib@sitedethib.com>
 #                         W. Trevor King <wking@tremily.us>
 #                         Yannik Sembritzki <yannik@sembritzki.me>
-#                         auouymous <5005204+auouymous@users.noreply.github.com>
 #                         auouymous <au@qzx.com>
 #                         boyska <piuttosto@logorroici.org>
 #                         ryneeverett <ryneeverett@gmail.com>

@@ -1,8 +1,10 @@
-# Copyright (C) 2012-2021 Etienne Millon <me@emillon.org>
+# Copyright (C) 2012-2022 Ellen Wang <squeakbat@users.noreply.github.com>
+#                         Etienne Millon <me@emillon.org>
+#                         Julien Palard <julien@palard.fr>
 #                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
 #                         W. Trevor King <wking@tremily.us>
-#                         auouymous <5005204+auouymous@users.noreply.github.com>
+#                         auouymous <au@qzx.com>
 #                         ryneeverett <ryneeverett@gmail.com>
 #
 # This file is part of rss2email.

@@ -1,10 +1,11 @@
-# Copyright (C) 2004-2021 Aaron Swartz
+# Copyright (C) 2004-2022 Aaron Swartz
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Erik Hetzner
 #                         Etienne Millon <me@emillon.org>
+#                         Faye Duxovni <duxovni@duxovni.org>
 #                         Joey Hess
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>
 #                         Lindsey Smith <lindsey.smith@gmail.com>
@@ -15,6 +16,7 @@
 #                         Profpatsch <mail@profpatsch.de>
 #                         Raphaël Droz <raphael.droz+floss@gmail.com>
 #                         W. Trevor King <wking@tremily.us>
+#                         auouymous <au@qzx.com>
 #                         ryneeverett <ryneeverett@gmail.com>
 #
 # This file is part of rss2email.
