@@ -1,4 +1,5 @@
-# Copyright (C) 2012-2022 Ellen Wang <squeakbat@users.noreply.github.com>
+# Copyright (C) 2012-2022 Amir Yalon <git@please.nospammail.net>
+#                         Ellen Wang <squeakbat@users.noreply.github.com>
 #                         Etienne Millon <me@emillon.org>
 #                         Julien Palard <julien@palard.fr>
 #                         Léo Gaspard <leo@gaspard.io>

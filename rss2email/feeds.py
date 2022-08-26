@@ -1,4 +1,5 @@
 # Copyright (C) 2004-2022 Aaron Swartz
+#                         Amir Yalon <git@please.nospammail.net>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Brian Lalor

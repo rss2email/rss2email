@@ -1,4 +1,5 @@
-# Copyright (C) 2012-2022 Andrey Zelenchuk <azelenchuk@parallels.com>
+# Copyright (C) 2012-2022 Amir Yalon <git@please.nospammail.net>
+#                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Gregory Soutade <gregory@soutade.fr>
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>

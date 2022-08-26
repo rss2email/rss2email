@@ -1,4 +1,5 @@
-# Copyright (C) 2012-2021 Etienne Millon <me@emillon.org>
+# Copyright (C) 2012-2022 Amir Yalon <git@please.nospammail.net>
+#                         Etienne Millon <me@emillon.org>
 #                         Faye Duxovni <duxovni@duxovni.org>
 #                         Gregory Soutade <gregory@soutade.fr>
 #                         Kaashif Hymabaccus <kaashif@kaashif.co.uk>

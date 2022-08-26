@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 #
-# Copyright (C) 2012-2021 Amir Yalon <git@please.nospammail.net>
+# Copyright (C) 2012-2022 Amir Yalon <git@please.nospammail.net>
 #                         Arun Persaud <apersaud@lbl.gov>
 #                         Dmitry Bogatov <KAction@gnu.org>
 #                         George Saunders <georgesaunders@gmail.com>

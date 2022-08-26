@@ -1,5 +1,6 @@
 # Copyright (C) 2004-2022 Aaron Swartz
 #                         Alyssa Ross <hi@alyssa.is>
+#                         Amir Yalon <git@please.nospammail.net>
 #                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>

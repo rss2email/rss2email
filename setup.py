@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2021 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
+# Copyright (C) 2012-2022 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
 #                         Amir Yalon <git@please.nospammail.net>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
 #                         Arun Persaud <apersaud@lbl.gov>

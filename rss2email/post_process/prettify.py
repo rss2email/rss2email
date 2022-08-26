@@ -1,4 +1,5 @@
-# Copyright (C) 2013-2022 Arun Persaud <apersaud@lbl.gov>
+# Copyright (C) 2013-2022 Amir Yalon <git@please.nospammail.net>
+#                         Arun Persaud <apersaud@lbl.gov>
 #                         Etienne Millon <me@emillon.org>
 #                         Léo Gaspard <leo@gaspard.io>
 #                         Profpatsch <mail@profpatsch.de>
