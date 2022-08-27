@@ -384,6 +384,16 @@ class Feed (object):
             kwargs['handlers'] = [
                 _urllib_request.ProxyHandler({ 'http': proxy, 'https': proxy })
             ]
+        extra_headers = {}
+        custom_headers = config['http-header']
+        if custom_headers:
+            for header in custom_headers.splitlines():
+                if ':' in header:
+                    key,value = header.split(':', 1)
+                    extra_headers[key.strip()] = value.strip()
+                else:
+                    _LOG.warning('malformed http-header: {}'.format(header))
+        kwargs['request_headers'] = extra_headers
         f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
         return f(self.url, self.etag, modified=self.modified, agent=self.user_agent, **kwargs)
 
