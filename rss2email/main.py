@@ -183,7 +183,8 @@ def run(*args, **kwargs):
         from pathlib import Path as _Path
         dir = _os.environ.get("XDG_RUNTIME_DIR")
         if dir is None:
-            dir = _os.path.join("/tmp", "rss2email-{}".format(_os.getuid()))
+            import tempfile
+            dir = _os.path.join(tempfile.gettempdir(), "rss2email-{}".format(_os.getuid()))
             _Path(dir).mkdir(mode=0o700, parents=True, exist_ok=True)
         lockfile_path = _os.path.join(dir, "rss2email.lock")
         lockfile = open(lockfile_path, "w")
