@@ -411,6 +411,10 @@ class Feed (object):
             _LOG.info('redirect {} from {} to {}'.format(
                     self.name, self.url, parsed['url']))
             self.url = parsed['url']
+        elif status == 410:
+            _LOG.info('deactivate {} because {} is gone'.format(
+                    self.name, self.url))
+            self.active = False
         elif status >= 400:
             raise _error.HTTPError(status=status, feed=self)
 
