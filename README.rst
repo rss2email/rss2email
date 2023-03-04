@@ -80,7 +80,7 @@ from several equivalent formats.
 
 3. A Git_ checkout (suggested for developers)::
 
-    $ git clone git://github.com/rss2email/rss2email.git
+    $ git clone https://github.com/rss2email/rss2email.git
 
 Install
 ~~~~~~~
