@@ -11,6 +11,7 @@ FROM gcr.io/distroless/python3-debian11:nonroot
 COPY --from=build-venv --chown=nonroot:nonroot /venv /venv
 VOLUME /config
 VOLUME /data
+ENV PATH=/venv/bin:$PATH
 ENV XDG_CONFIG_HOME=/config
 ENV XDG_DATA_HOME=/data
-ENTRYPOINT ["/venv/bin/r2e"]
+ENTRYPOINT ["r2e"]
