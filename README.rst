@@ -53,6 +53,8 @@ A docker package exists for this project::
 Then it can be used like::
 
   $ docker run  -v ./data:/data -v ./config:/config rss2email list
+  
+You need to create the config file and have some kind of SMTP server set up in the config file. With ``--net host`` option you can use SMTP server on the host.
 
 Docker compose
 ~~~~~~~~~~~~~~
@@ -69,6 +71,7 @@ Here is an example docker-compose.yaml::
       entrypoint: "/venv/bin/python3 -c 'import threading; threading.Event().wait()'"
       labels:
         chadburn.enabled: "true"
+        chadburn.job-exec.rss2email.no-overlap: "true"
         chadburn.job-exec.rss2email.schedule: "@every 5m"
         chadburn.job-exec.rss2email.command: "r2e run"
 
