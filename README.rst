@@ -46,11 +46,11 @@ __ `Ubuntu package`_
 Docker
 ------
 
-A docker package exists for this project: 
+A docker package exists for this project::
 
   $ git pull ghcr.io/rss2email/rss2email:master
 
-docker-compose.yaml
+docker-compose.yaml::yaml
 ~~~~~~~~~~~~~~~~~~~
   version: '2'
   services:
@@ -69,7 +69,7 @@ The example docker-compose snippet sets up chadburn (or ofelia) job scheduler to
 
 You need to run `chown 65532:65532 config data` to have the correct ownership of files for this rootless docker image.
 
-To use r2e commands, for listing subscribed feeds for example:
+To use r2e commands, for listing subscribed feeds for example::
 
   docker-compose exec rss2email r2e list
 
