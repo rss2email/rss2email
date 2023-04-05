@@ -54,6 +54,7 @@ import subprocess as _subprocess
 import sys as _sys
 import time as _time
 import os as _os
+import hashlib
 
 import html2text
 
@@ -165,6 +166,7 @@ def get_message(sender, recipient, subject, body, content_type,
     message = _MIMEText(body, content_type, body_encoding)
     message['From'] = sender
     message['To'] = ', '.join(recipient_list)
+    message['References'] = hashlib.sha256(sender.encode('utf8')).hexdigest()
     message['Subject'] = _Header(subject, subject_encoding)
     if config.getboolean(section, 'use-8bit'):
         del message['Content-Transfer-Encoding']
