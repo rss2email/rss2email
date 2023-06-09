@@ -53,7 +53,7 @@ A docker package exists for this project::
 Then it can be used like::
 
   $ docker run  -v ./data:/data -v ./config:/config rss2email list
-  
+
 You need to create the config file and have some kind of SMTP server set up in the config file. With ``--net host`` option you can use SMTP server on the host.
 
 Docker compose
@@ -68,14 +68,21 @@ Here is an example docker-compose.yaml::
       volumes:
         - ./config:/config
         - ./data:/data
-      entrypoint: "/venv/bin/python3 -c 'import threading; threading.Event().wait()'"
+      entrypoint: ["/venv/bin/python3", "-c", "import threading; threading.Event().wait()"]
       labels:
         chadburn.enabled: "true"
         chadburn.job-exec.rss2email.no-overlap: "true"
-        chadburn.job-exec.rss2email.schedule: "@every 5m"
+        chadburn.job-exec.rss2email.schedule: "0 23 1 * * *"
         chadburn.job-exec.rss2email.command: "r2e run"
 
-The example docker-compose snippet sets up chadburn (or ofelia) job scheduler to run r2e periodically. 
+    chadburn:
+      image: premoweb/chadburn:latest
+      command: daemon
+      restart: unless-stopped
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock:ro
+
+The example docker-compose snippet sets up chadburn (or ofelia) job scheduler to run r2e every night at 1:23 am.
 
 Some background for entrypoint override: For the labels to be picked up, it is required that the container keeps running which is ensured with the entrypoint. Python's Event().wait() was used as there is no shell and this method should use less cpu than sleeping or looping (with sleep). You can of course abandon this and just call r2e from any other job scheduler as this entrypoint only circumvents chadburn/ofelia limitations.
 
