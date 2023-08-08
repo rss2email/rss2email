@@ -178,6 +178,7 @@ class Feed (object):
     # attributes that aren't in DEFAULT
     _non_default_configured_attributes = [
         'url',
+        'filter_subject',
         ]
     # attributes that are in DEFAULT
     _default_configured_attributes = [
@@ -511,6 +512,19 @@ class Feed (object):
 
         sender = self._get_entry_email(parsed=parsed, entry=entry)
         subject = self._get_entry_subject(entry=entry)
+
+        try:
+            filter_subject = self.config[self.section]['filter_subject']
+
+            match = False
+            if (_re.compile(filter_subject)).search(subject) is not None:
+                _LOG.info('Filter {} matched in {}, {}'.format(filter_subject, self.section, subject))
+                match = True
+
+            if not match :
+                return None
+        except KeyError:
+            _LOG.info('No subject filter found for feed {}'.format(self.section))
 
         message_id = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
         in_reply_to = old_state.get('message_id') if old_state is not None else None
