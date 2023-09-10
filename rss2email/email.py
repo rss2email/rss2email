@@ -224,6 +224,33 @@ def smtp_send(recipient, message, config=None, section='DEFAULT'):
     smtp.send_message(message, config.get(section, 'from'), recipient.split(','))
     smtp.quit()
 
+def lmtp_send(recipient, message, config=None, section='DEFAULT'):
+    if config is None:
+        config = _config.CONFIG
+    server = config.get(section, 'lmtp-server')
+    port = config.getint(section, 'lmtp-port')
+
+    _LOG.debug('sending message to {} via {}'.format(recipient, server))
+    lmtp_auth = config.getboolean(section, 'lmtp-auth')
+    try:
+        lmtp = _smtplib.LMTP(host=server, port=port)
+    except KeyboardInterrupt:
+        raise
+    except Exception as e:
+        raise _error.SMTPConnectionError(server=server) from e
+    if lmtp_auth:
+        username = config.get(section, 'lmtp-username')
+        password = config.get(section, 'lmtp-password')
+        try:
+            lmtp.login(username, password)
+        except KeyboardInterrupt:
+            raise
+        except Exception as e:
+            raise _error.SMTPAuthenticationError(
+                server=server, username=username)
+    lmtp.send_message(message, config.get(section, 'from'), recipient.split(','))
+    lmtp.quit()
+
 def imap_send(message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
@@ -406,6 +433,10 @@ def send(recipient, message, config=None, section='DEFAULT'):
     protocol = config.get(section, 'email-protocol')
     if protocol == 'smtp':
         smtp_send(
+            recipient=recipient, message=message,
+            config=config, section=section)
+    elif protocol == 'lmtp':
+        lmtp_send(
             recipient=recipient, message=message,
             config=config, section=section)
     elif protocol == 'imap':

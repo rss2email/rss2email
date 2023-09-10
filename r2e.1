@@ -276,6 +276,19 @@ SMTP server
 .IP smtp-ssl
 Connect to the SMTP server using SSL
 .RE
+.SS LMTP configuration
+.IP lmtp-auth
+Set to True to use SMTP AUTH for LMTP
+.IP lmtp-username
+username for SMTP AUTH
+.IP lmtp-password
+password for SMTP AUTH
+.IP lmtp-server
+LMTP server. To specify a Unix socket, you must use an absolute path starting
+with '/'.
+.IP lmtp-port
+LMTP port
+.RE
 .SS IMAP configuration
 .IP imap-auth
 set to True to use IMAP auth.

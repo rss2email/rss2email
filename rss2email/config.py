@@ -225,7 +225,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('body-width', str(0)),
 
         ### Mailing
-        # Select protocol from: sendmail, smtp, imap
+        # Select protocol from: sendmail, smtp, lmtp, imap
         ('email-protocol', 'sendmail'),
         # True: Use SMTP_SERVER to send mail.
         # Sendmail (or compatible) configuration
@@ -238,6 +238,12 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('smtp-server', 'smtp.example.net'),
         ('smtp-port', '465'),
         ('smtp-ssl', str(False)),       # Connect to the SMTP server using SSL
+        # LMTP configuration
+        ('lmtp-auth', str(False)),      # set to True to use SMTP AUTH for LMTP authentication
+        ('lmtp-username', 'username'),  # username for SMTP AUTH
+        ('lmtp-password', 'password'),  # password for SMTP AUTH
+        ('lmtp-server', '/path/to/lmtp.socket'), # Unix socket or server address
+        ('lmtp-port', '2003'),
         # IMAP configuration
         ('imap-auth', str(False)),      # set to True to use IMAP auth.
         ('imap-username', 'username'),  # username for IMAP authentication

@@ -205,6 +205,37 @@ your login credentials to the server.
 
 __ `Simple Mail Transport Protocol`_
 
+LMTP
+----
+
+LMTP__ is an alternative to SMTP where the receiving side does not have
+a mail queue and is mainly used to deliver mail when the target mail
+server is located on the same machine as the sending site. If you want
+to use LMTP, edit the configuration file and fill in your mail server's
+details::
+
+  [DEFAULT]
+  ...
+  email-protocol = lmtp
+  lmtp-server = /path/to/lmtp.socket
+  lmtp-auth = False
+  ...
+
+If your server exposes LMTP via a TCP socket, specify the server and
+port via ``lmtp-server`` and ``lmtp-port``::
+
+  lmtp-server = 127.0.0.1
+  lmtp-port = 2003
+
+If your server requires you to login, change ``lmtp-auth = False`` to
+``lmtp-auth = True`` and enter your username and password::
+
+  lmtp-auth = True
+  lmtp-username = username
+  lmtp-password = password
+
+__ `Local Mail Transport Protocol`_
+
 Post-processing
 ---------------
 
