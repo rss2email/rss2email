@@ -1,4 +1,5 @@
 UNRELEASED
+    * Support sending mail via LMTP
 
 v3.14 (2022-08-26)
     * New `digest-type` configuration adds optional more widely supported `multipart/mixed` format
