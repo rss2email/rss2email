@@ -60,6 +60,7 @@ from email.mime.multipart import MIMEMultipart as _MIMEMultipart
 from email.utils import formataddr as _formataddr
 from email.utils import formatdate as _formatdate
 from email.utils import parseaddr as _parseaddr
+import quopri
 import hashlib as _hashlib
 import html.parser as _html_parser
 import re as _re
@@ -731,6 +732,9 @@ class Feed (object):
         """Get the best From email address ('John <jdoe@a.com>')
         """
         name = self._get_entry_name(parsed=parsed, entry=entry)
+        # encode the name, otherwise MIMETEXT will later encode the whole From header, incl. the address
+        # which makes it incorrect and rejected by some domainss
+        name = "=?utf-8?q?" + quopri.encodestring(name.encode('utf-8')).decode("utf-8") + "?="
         address = self._get_entry_address(parsed=parsed, entry=entry)
         return _formataddr((name, address))
 
