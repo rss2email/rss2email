@@ -17,6 +17,8 @@ import http.server
 import time
 import sys
 import json
+import tempfile
+import shutil
 from pathlib import Path
 from typing import List
 
@@ -353,10 +355,8 @@ class TestFetch(unittest.TestCase):
     def test_only_new_through_config(self):
         "Add and fetch contents without sending initial entries"
 
-        queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver_for_test_if_fetch, args=(queue, 10))
-        webserver_proc.start()
-        port = queue.get()
+        self.tmpdir = tempfile.TemporaryDirectory()
+        self.feed_path = Path(self.tmpdir.name, "feed.xml")
 
         with TemporaryMaildir() as maildir:
             standard_cfg = """[DEFAULT]
@@ -367,9 +367,10 @@ class TestFetch(unittest.TestCase):
                 only-new = True
 
                 [feed.test]
-                url = http://127.0.0.1:{port}/disqus/feed.rss""".format(maildir_path=maildir.path,
-                                                                        maildir_mailbox=maildir.inbox_name,
-                                                                        port = port)
+                url = file:{url}""".format(maildir_path=maildir.path,
+                                           maildir_mailbox=maildir.inbox_name,
+                                           url = self.feed_path.absolute())
+            shutil.copyfile("data/nodejs/feed3.xml", str(self.feed_path))
 
             with ExecContext(standard_cfg) as ctx:
                 ctx.call("run")
@@ -380,10 +381,21 @@ class TestFetch(unittest.TestCase):
                     # check if entries in seen
                     self.assertIn("seen", content["feeds"][0])
 
-            msgs = maildir.inbox.values()
-            self.assertEqual(len(msgs), 0)
+                msgs = maildir.inbox.values()
+                self.assertEqual(len(msgs), 0)
 
-        self.assertEqual(queue.get(), "done")
+                shutil.copyfile("data/nodejs/feed4.xml", str(self.feed_path))
+            
+                ctx.call("run")
+                # check if data is written
+                self.assertTrue(_os.path.exists(ctx.data_path))
+                with ctx.data_path.open('r') as f:
+                    content = json.load(f)
+                    # check if entries in seen
+                    self.assertIn("seen", content["feeds"][0])
+
+                msgs = maildir.inbox.values()
+                self.assertEqual(len(msgs), 1)
 
 
 def webserver_for_test_send(queue):
