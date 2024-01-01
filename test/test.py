@@ -350,6 +350,42 @@ class TestFetch(unittest.TestCase):
         self.assertEqual(queue.get(), "done")
 
 
+    def test_only_new_through_config(self):
+        "Add and fetch contents without sending initial entries"
+
+        queue = multiprocessing.Queue()
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_if_fetch, args=(queue, 10))
+        webserver_proc.start()
+        port = queue.get()
+
+        with TemporaryMaildir() as maildir:
+            standard_cfg = """[DEFAULT]
+                to = example@example.com
+                email-protocol = maildir
+                maildir-path = {maildir_path}
+                maildir-mailbox = {maildir_mailbox}
+                only-new = True
+
+                [feed.test]
+                url = http://127.0.0.1:{port}/disqus/feed.rss""".format(maildir_path=maildir.path,
+                                                                        maildir_mailbox=maildir.inbox_name,
+                                                                        port = port)
+
+            with ExecContext(standard_cfg) as ctx:
+                ctx.call("run")
+                # check if data is written
+                self.assertTrue(_os.path.exists(ctx.data_path))
+                with ctx.data_path.open('r') as f:
+                    content = json.load(f)
+                    # check if entries in seen
+                    self.assertIn("seen", content["feeds"][0])
+
+            msgs = maildir.inbox.values()
+            self.assertEqual(len(msgs), 0)
+
+        self.assertEqual(queue.get(), "done")
+
+
 def webserver_for_test_send(queue):
     httpd = http.server.HTTPServer(('', 0), NoLogHandler)
     try:
