@@ -121,7 +121,7 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('active', str(True)),
         # True: Entries at the time of adding are not sent.
         # False: Entries at the time of adding are all sent.
-        ('only-new', str(True)),
+        ('only-new', str(False)),
         # True: Send a single, multi-entry email per feed per rss2email run.
         # False: Send a single email per entry.
         ('digest', str(False)),
