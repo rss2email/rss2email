@@ -385,7 +385,7 @@ class TestFetch(unittest.TestCase):
                 self.assertEqual(len(msgs), 0)
 
                 shutil.copyfile("data/nodejs/feed4.xml", str(self.feed_path))
-            
+
                 ctx.call("run")
                 # check if data is written
                 self.assertTrue(_os.path.exists(ctx.data_path))
