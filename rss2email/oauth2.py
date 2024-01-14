@@ -73,7 +73,7 @@ def get_refresh_token(
 
     Makes two requests to the oauth2 provider to generate a refresh token.
 
-    Refresh tokens are then used to generate authorization tockens for
+    Refresh tokens are then used to generate authorization tokens for
     every login attempt.
 
     """
