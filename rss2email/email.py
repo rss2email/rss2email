@@ -254,11 +254,11 @@ def lmtp_send(recipient, message, config=None, section='DEFAULT'):
 def imap_send(message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
-    server = config.get(section, "imap-server")
-    port = config.getint(section, "imap-port")
-    _LOG.debug("sending message to {}:{}".format(server, port))
-    ssl = config.getboolean(section, "imap-ssl")
-    oauth2 = config.getboolean(section, "imap-oauth2")
+    server = config.get(section, 'imap-server')
+    port = config.getint(section, 'imap-port')
+    _LOG.debug('sending message to {}:{}'.format(server, port))
+    ssl = config.getboolean(section, 'imap-ssl')
+    oauth2 = config.getboolean(section, 'imap-oauth2')
     if oauth2:
         imap = _imaplib.IMAP4_SSL(server, ssl_context=_ssl.create_default_context())
     elif ssl:
@@ -266,21 +266,21 @@ def imap_send(message, config=None, section='DEFAULT'):
     else:
         imap = _imaplib.IMAP4(server, port)
     try:
-        if oauth2:
-            username = config.get(section, "imap-username")
-            client_id = config.get(section, "imap-clientid")
-            client_secret = config.get(section, "imap-clientsecret")
-            refresh_token = config.get(section, "imap-refreshtoken")
+        if oauth2:%
+            username = config.get(section, 'imap-username')
+            client_id = config.get(section, 'imap-clientid')
+            client_secret = config.get(section, 'imap-clientsecret')
+            refresh_token = config.get(section, 'imap-refreshtoken')
             auth_string = _oauth2.get_oauth2_auth_string(
                 client_id,
                 client_secret,
                 refresh_token,
                 username,
             )
-            imap.authenticate("XOAUTH2", lambda x: auth_string)
-        elif config.getboolean(section, "imap-auth"):
-            username = config.get(section, "imap-username")
-            password = config.get(section, "imap-password")
+            imap.authenticate('XOAUTH2', lambda x: auth_string)
+        elif config.getboolean(section, 'imap-auth'):
+            username = config.get(section, 'imap-username')
+            password = config.get(section, 'imap-password')
             try:
                 if not ssl:
                     imap.starttls()
