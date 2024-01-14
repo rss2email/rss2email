@@ -407,11 +407,15 @@ class Feed (object):
         warned = False
         status = getattr(parsed, 'status', 200)
         _LOG.debug('HTTP status {}'.format(status))
-        if status == 301:
+        if status in [301, 308]:
             _LOG.info('redirect {} from {} to {}'.format(
                     self.name, self.url, parsed['url']))
             self.url = parsed['url']
-        elif status not in [200, 302, 304, 307]:
+        elif status == 410:
+            _LOG.info('deactivate {} because {} is gone'.format(
+                    self.name, self.url))
+            self.active = False
+        elif status >= 400:
             raise _error.HTTPError(status=status, feed=self)
 
         http_headers = parsed.get('headers', {})
