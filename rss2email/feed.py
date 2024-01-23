@@ -412,11 +412,16 @@ class Feed (object):
                     self.name, self.url, parsed['url']))
             self.url = parsed['url']
             # TODO: `url` is not saved -- add config option to call feeds.save_config() in run command
+        elif status == 304:
+            _LOG.info('skipping {}: feed was not modified since last update'.format(
+                    self.name, self.url))
+            return
         elif status == 410:
-            _LOG.info('deactivate {} because {} is gone'.format(
+            _LOG.warning('deactivate {} because {} is gone'.format(
                     self.name, self.url))
             self.active = False
             # TODO: `active` is not saved -- add config option to call feeds.save_config() in run command
+            return
         elif status >= 400:
             raise _error.HTTPError(status=status, feed=self)
 
