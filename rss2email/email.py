@@ -60,6 +60,7 @@ import html2text
 from . import LOG as _LOG
 from . import config as _config
 from . import error as _error
+from . import oauth2 as _oauth2
 
 
 def guess_encoding(string, encodings=('US-ASCII', 'UTF-8')):
@@ -266,7 +267,7 @@ def imap_send(message, config=None, section='DEFAULT'):
     else:
         imap = _imaplib.IMAP4(server, port)
     try:
-        if oauth2:%
+        if oauth2:
             username = config.get(section, 'imap-username')
             client_id = config.get(section, 'imap-clientid')
             client_secret = config.get(section, 'imap-clientsecret')
