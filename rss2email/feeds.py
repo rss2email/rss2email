@@ -295,7 +295,7 @@ class Feeds (list):
                     _LOG.debug(
                         ('feed {} not found in feed file, '
                          'initializing from config').format(name))
-                    self.append(_feed.Feed(name=name, config=self.config))
+                    self.append(_feed.Feed(name=name, config=self.config, is_new=True))
                     feed_names.add(name)
         def key(feed):
             return order[feed.name]
@@ -398,6 +398,6 @@ class Feeds (list):
         elif name in feed_names:
             feed = self[name]
             raise _error.DuplicateFeedName(name=feed.name, feed=feed)
-        feed = _feed.Feed(name=name, **kwargs)
+        feed = _feed.Feed(name=name, is_new=True, **kwargs)
         self.append(feed)
         return feed
