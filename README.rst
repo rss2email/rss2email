@@ -87,7 +87,7 @@ Install
 
 From the unpacked directory, run::
 
-  $ python setup.py install
+  $ pip install .
 
 You can pass all the usual options to the ``install`` command,
 including ``--user``.  If you don't want to install rss2email, you can
