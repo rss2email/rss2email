@@ -182,6 +182,16 @@ def get_message(sender, recipient, subject, body, content_type,
                 html=body)
     return message
 
+def wrap_lines(content, max_length=998):
+    """Wrap lines to ensure no line exceeds max_length characters."""
+    wrapped_lines = []
+    for line in content.splitlines():
+        while len(line) > max_length:
+            wrapped_lines.append(line[:max_length])
+            line = line[max_length:]
+        wrapped_lines.append(line)
+    return '\r\n'.join(wrapped_lines)
+
 def smtp_send(recipient, message, config=None, section='DEFAULT'):
     if config is None:
         config = _config.CONFIG
@@ -221,7 +231,10 @@ def smtp_send(recipient, message, config=None, section='DEFAULT'):
         except Exception as e:
             raise _error.SMTPAuthenticationError(
                 server=server, username=username)
-    smtp.send_message(message, config.get(section, 'from'), recipient.split(','))
+    message_str = message.as_string()
+    wrapped_message_str = wrap_lines(message_str)
+    wrapped_message = _email.message_from_string(wrapped_message_str)
+    smtp.send_message(wrapped_message, config.get(section, 'from'), recipient.split(','))
     smtp.quit()
 
 def lmtp_send(recipient, message, config=None, section='DEFAULT'):
