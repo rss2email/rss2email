@@ -90,9 +90,6 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('from', 'user@rss2email.invalid'),
         # The User-Agent default string (rss2email __VERSION__ and __URL__ is replaced)
         ('user-agent', 'rss2email/__VERSION__ (__URL__)'),
-        # Transfer-Encoding. For local mailing it is safe and
-        # convenient to use 8bit.
-        ('use-8bit', str(False)),
         # True: Only use the 'from' address. Overrides the use-publisher-email setting.
         # False: Use the email address specified by the feed, when possible.
         ('force-from', str(False)),
@@ -148,10 +145,6 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # If 'trust-guid' or 'trust-link' is True, this setting allows to receive
         # a new email message in reply to the previous one when the post changes.
         ('reply-changes', str(False)),
-        # To most correctly encode emails with international
-        # characters, we iterate through the list below and use the
-        # first character set that works.
-        ('encodings', 'US-ASCII, ISO-8859-1, UTF-8, BIG5, ISO-2022-JP'),
         # User processing hooks.  Note the space after the module name.
         # Example: post-process = 'rss2email.post_process.downcase downcase_message'
         ('post-process', ''),

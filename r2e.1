@@ -163,9 +163,6 @@ You can configure the following items:
 .SS Addressing
 .IP from
 The email address messages are from by default
-.IP use-8bit
-Transfer-Encoding. For local mailing it is safe and
-convenient to use 8bit.
 .IP force-from
 True: Only use the 'from' address.
 False: Use the email address specified by the feed, when possible.
@@ -219,10 +216,6 @@ False: Defer to trust-guid preference.
 Toggling this for existing feeds may result in duplicates,
 because the old entries will not be recorded under their new
 link-based ids.
-.IP encodings
-To most correctly encode emails with international
-characters, we iterate through the list below and use the
-first character set that works.
 .IP post-process
 User processing hooks.  Note the space after the module name.
 Example: post-process = 'rss2email.post_process.downcase downcase_message'
