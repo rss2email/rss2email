@@ -62,27 +62,6 @@ from . import config as _config
 from . import error as _error
 
 
-def guess_encoding(string, encodings=('US-ASCII', 'UTF-8')):
-    """Find an encoding capable of encoding `string`.
-
-    >>> guess_encoding('alpha', encodings=('US-ASCII', 'UTF-8'))
-    'US-ASCII'
-    >>> guess_encoding('α', encodings=('US-ASCII', 'UTF-8'))
-    'UTF-8'
-    >>> guess_encoding('α', encodings=('US-ASCII', 'ISO-8859-1'))
-    Traceback (most recent call last):
-      ...
-    rss2email.error.NoValidEncodingError: no valid encoding for α in ('US-ASCII', 'ISO-8859-1')
-    """
-    for encoding in encodings:
-        try:
-            string.encode(encoding)
-        except (UnicodeError, LookupError):
-            pass
-        else:
-            return encoding
-    raise _error.NoValidEncodingError(string=string, encodings=encodings)
-
 def _add_plain_multipart(guid: str, message, html: str):
     headers = message.items()
     msg = MIMEMultipart('alternative')
@@ -148,33 +127,20 @@ def get_message(sender, recipient, subject, body, content_type,
         config = _config.CONFIG
     if section not in config.sections():
         section = 'DEFAULT'
-    encodings = [
-        x.strip() for x in config.get(section, 'encodings').split(',')]
 
     # Split real name (which is optional) and email address parts
     recipient_list = []
     for recipient_name, recipient_addr in _getaddresses([recipient]):
-        recipient_encoding = guess_encoding(recipient_name, encodings)
-        recipient_list.append(_formataddr((recipient_name, recipient_addr),
-                                          charset=recipient_encoding))
-
-    subject_encoding = guess_encoding(subject, encodings)
-    body_encoding = guess_encoding(body, encodings)
+        recipient_list.append(_formataddr((recipient_name, recipient_addr)))
 
     # Create the message ('plain' stands for Content-Type: text/plain)
-    message = _MIMEText(body, content_type, body_encoding)
+    message = _MIMEText(body, content_type, "UTF-8")
     message['From'] = sender
     message['To'] = ', '.join(recipient_list)
-    message['Subject'] = _Header(subject, subject_encoding)
-    if config.getboolean(section, 'use-8bit'):
-        del message['Content-Transfer-Encoding']
-        charset = _Charset(body_encoding)
-        charset.body_encoding = _email_encoders.encode_7or8bit
-        message.set_payload(body, charset=charset)
+    message['Subject'] = _Header(subject, "UTF-8")
     if extra_headers:
         for key,value in extra_headers.items():
-            encoding = guess_encoding(value, ['US-ASCII'] + encodings)
-            message[key] = _Header(value, encoding)
+            message[key] = _Header(value, "UTF-8")
     if config.getboolean(section, 'multipart-html'):
         message = message_add_plain_multipart(
                 guid=str(message.get('x-rss-url', '')),
@@ -320,7 +286,11 @@ def _flatten(message):
     >>> config = rss2email.config.Config()
     >>> config.read_dict(rss2email.config.CONFIG)
 
-    Here's a 7-bit, base64 version:
+    Body is always encoded in base64 so it's naturally
+    wrapped. Without wrapping the body, very long HTML lines could
+    have an email rejected.
+
+    Example:
 
     >>> message = get_message(
     ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
@@ -340,46 +310,6 @@ def _flatten(message):
     b'WW91J3JlIGdyZWF0LCDOls61z43PgiEK'
     b''
 
-    Here's an 8-bit version:
-
-    >>> config.set('DEFAULT', 'use-8bit', str(True))
-    >>> message = get_message(
-    ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
-    ...     subject='Homage',
-    ...     body="You're great, Ζεύς!\n",
-    ...     content_type='plain',
-    ...     config=config)
-    >>> for line in _flatten(message).split(b'\n'):
-    ...     print(line)  # doctest: +REPORT_UDIFF
-    b'MIME-Version: 1.0'
-    b'Content-Type: text/plain; charset="utf-8"'
-    b'From: John <jdoe@a.com>'
-    b'To: =?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>'
-    b'Subject: Homage'
-    b'Content-Transfer-Encoding: 8bit'
-    b''
-    b"You're great, \xce\x96\xce\xb5\xcf\x8d\xcf\x82!"
-    b''
-
-    Here's an 8-bit version in UTF-16:
-
-    >>> config.set('DEFAULT', 'encodings', 'US-ASCII, UTF-16-LE')
-    >>> message = get_message(
-    ...     sender='John <jdoe@a.com>', recipient='Ζεύς <z@olympus.org>',
-    ...     subject='Homage',
-    ...     body="You're great, Ζεύς!\n",
-    ...     content_type='plain',
-    ...     config=config)
-    >>> for line in _flatten(message).split(b'\n'):
-    ...     print(line)  # doctest: +REPORT_UDIFF
-    b'MIME-Version: 1.0'
-    b'Content-Type: text/plain; charset="utf-16-le"'
-    b'From: John <jdoe@a.com>'
-    b'To: =?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>'
-    b'Subject: Homage'
-    b'Content-Transfer-Encoding: 8bit'
-    b''
-    b"\x00Y\x00o\x00u\x00'\x00r\x00e\x00 \x00g\x00r\x00e\x00a\x00t\x00,\x00 \x00\x96\x03\xb5\x03\xcd\x03\xc2\x03!\x00\n\x00"
     """
     bytesio = _io.BytesIO()
     # TODO: use policies argument instead of policy set in `message`

@@ -226,7 +226,6 @@ class Feed (object):
 
     _list_attributes = [
         'date_header_order',
-        'encodings',
         ]
 
     _function_attributes = [
