@@ -55,14 +55,14 @@ class TimeoutError (RSS2EmailError):
         else:
             message = '{} second timeout exceeded in {}'.format(
                 time_limited_function.timeout, time_limited_function.name)
-        super(TimeoutError, self).__init__(message=message)
+        super(TimeoutError, self).__init__(message)
         self.time_limited_function = time_limited_function
 
 
 class NoValidEncodingError (RSS2EmailError, ValueError):
     def __init__(self, string, encodings):
         message = 'no valid encoding for {} in {}'.format(string, encodings)
-        super(NoValidEncodingError, self).__init__(message=message)
+        super(NoValidEncodingError, self).__init__(message)
         self.string = string
         self.encodings = encodings
 
@@ -71,7 +71,7 @@ class SMTPConnectionError (RSS2EmailError, ValueError):
     def __init__(self, server, message=None):
         if message is None:
             message = 'could not connect to mail server {}'.format(server)
-        super(SMTPConnectionError, self).__init__(message=message)
+        super(SMTPConnectionError, self).__init__(message)
         self.server = server
 
     def log(self):
@@ -98,7 +98,7 @@ class IMAPConnectionError (ValueError, RSS2EmailError):
         if message is None:
             message = 'could not connect to mail server {}:{}'.format(
                 server, port)
-        super(IMAPConnectionError, self).__init__(message=message)
+        super(IMAPConnectionError, self).__init__(message)
         self.server = server
         self.port = port
 
@@ -127,7 +127,7 @@ class SendmailError (RSS2EmailError):
             message = 'sendmail exited with code {}'.format(status)
         else:
             message = ''
-        super(SendmailError, self).__init__(message=message)
+        super(SendmailError, self).__init__(message)
 
     def log(self):
         super(SendmailError, self).log()
@@ -142,7 +142,7 @@ class FeedError (RSS2EmailError):
     def __init__(self, feed, message=None, **kwargs):
         if message is None:
             message = 'error with feed {}'.format(feed.name)
-        super(FeedError, self).__init__(message=message, **kwargs)
+        super(FeedError, self).__init__(message, **kwargs)
         self.feed = feed
 
 
@@ -213,7 +213,7 @@ class FeedsError (RSS2EmailError):
     def __init__(self, feeds=None, message=None, **kwargs):
         if message is None:
             message = 'error with feeds'
-        super(FeedsError, self).__init__(message=message, **kwargs)
+        super(FeedsError, self).__init__(message, **kwargs)
         self.feeds = feeds
 
 
@@ -262,7 +262,7 @@ class FeedIndexError (FeedsError, IndexError):
 class OPMLReadError (RSS2EmailError):
     def __init__(self, **kwargs):
         message = 'error reading OPML'
-        super(OPMLReadError, self).__init__(message=message, **kwargs)
+        super(OPMLReadError, self).__init__(message, **kwargs)
 
 
 class ConfigAlreadyExistsError (FeedsError):
@@ -273,4 +273,4 @@ class ConfigAlreadyExistsError (FeedsError):
 class InvalidDigestType (RSS2EmailError):
     def __init__(self, value):
         message = "invalid digest-type value '{value}'".format(value=value)
-        super(InvalidDigestType, self).__init__(message=message)
+        super(InvalidDigestType, self).__init__(message)
