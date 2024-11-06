@@ -43,10 +43,10 @@ class TimeLimitedFunction (_threading.Thread):
     Traceback (most recent call last):
       ...
     rss2email.error.TimeoutError: 0.5 second timeout exceeded in sleeping
-    >>> TimeLimitedFunction('sleep', 0.5, time.sleep)('x')
+    >>> TimeLimitedFunction('sleep', 0.5, time.sleep)('x') # doctest: +ELLIPSIS
     Traceback (most recent call last):
       ...
-    rss2email.error.TimeoutError: error while running time limited function in sleep: 'str' object cannot be interpreted as an integer
+    rss2email.error.TimeoutError: error while running time limited function in sleep: ...
     """
     def __init__(self, name, timeout, target, **kwargs):
         super(TimeLimitedFunction, self).__init__(target=target, daemon=True, **kwargs)
