@@ -120,7 +120,6 @@ class Feed (object):
     [DEFAULT]
     from = user@rss2email.invalid
     ...
-    verbose = warning
     <BLANKLINE>
     [feed.test-feed]
     url = http://example.com/feed.atom
@@ -155,7 +154,7 @@ class Feed (object):
     >>> Feed(name='feed-without-a-url', to='a@b.com').run(send=False)
     Traceback (most recent call last):
       ...
-    rss2email.error.InvalidFeedConfig: invalid feed configuration {'url': None}
+    rss2email.error.InvalidFeedConfig: invalid feed configuration 'None' in feed-without-a-url (None -> a@b.com)
 
 
     Cleanup `CONFIG`.
