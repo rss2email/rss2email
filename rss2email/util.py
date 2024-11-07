@@ -43,10 +43,10 @@ class TimeLimitedFunction (_threading.Thread):
     Traceback (most recent call last):
       ...
     rss2email.error.TimeoutError: 0.5 second timeout exceeded in sleeping
-    >>> TimeLimitedFunction('sleep', 0.5, time.sleep)('x')
+    >>> TimeLimitedFunction('sleep', 0.5, time.sleep)('x') # doctest: +ELLIPSIS
     Traceback (most recent call last):
       ...
-    rss2email.error.TimeoutError: error while running time limited function in sleep: a float is required
+    rss2email.error.TimeoutError: error while running time limited function in sleep: ...
     """
     def __init__(self, name, timeout, target, **kwargs):
         super(TimeLimitedFunction, self).__init__(target=target, daemon=True, **kwargs)
@@ -112,11 +112,11 @@ def import_function(name):
     >>> import_function('rss2email.util does_not_exist')
     Traceback (most recent call last):
       ...
-    AttributeError: 'module' object has no attribute 'does_not_exist'
+    AttributeError: module 'rss2email.util' has no attribute 'does_not_exist'
     >>> import_function('rss2email.util has invalid syntax')
     Traceback (most recent call last):
       ...
-    AttributeError: 'module' object has no attribute 'has invalid syntax'
+    AttributeError: module 'rss2email.util' has no attribute 'has invalid syntax'
     >>> import_function('rss2email.util.no_space')
     Traceback (most recent call last):
       ...

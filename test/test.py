@@ -31,9 +31,28 @@ test_dir = str(Path(__file__).absolute().parent.joinpath("data"))
 # Ensure we import the local (not system-wide) rss2email module
 sys.path.insert(0, _os.path.dirname(r2e_path))
 import rss2email as _rss2email
+import rss2email.command as _rss2email_command
 import rss2email.config as _rss2email_config
+import rss2email.email as _rss2email_email
+import rss2email.error as _rss2email_error
 import rss2email.feed as _rss2email_feed
+import rss2email.feeds as _rss2email_feeds
+import rss2email.post_process as _rss2email_post_process
+import rss2email.util as _rss2email_util
 from rss2email.feeds import UNIX
+
+# runs all doctests in submodules
+import doctest
+def load_tests(loader, tests, ignore):
+    tests.addTests(doctest.DocTestSuite(_rss2email_command))
+    tests.addTests(doctest.DocTestSuite(_rss2email_config))
+    tests.addTests(doctest.DocTestSuite(_rss2email_email))
+    tests.addTests(doctest.DocTestSuite(_rss2email_error))
+    tests.addTests(doctest.DocTestSuite(_rss2email_feed))
+    tests.addTests(doctest.DocTestSuite(_rss2email_feeds))
+    tests.addTests(doctest.DocTestSuite(_rss2email_post_process))
+    tests.addTests(doctest.DocTestSuite(_rss2email_util))
+    return tests
 
 # This metaclass lets us generate the tests for each feed directory
 # separately. This lets us see which tests are being run more clearly than

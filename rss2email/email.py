@@ -375,11 +375,12 @@ def _flatten(message):
     b'MIME-Version: 1.0'
     b'Content-Type: text/plain; charset="utf-16-le"'
     b'From: John <jdoe@a.com>'
-    b'To: =?utf-8?b?zpbOtc+Nz4I=?= <z@olympus.org>'
+    b'To: =?utf-16-le?b?lgO1A80DwgM=?= <z@olympus.org>'
     b'Subject: Homage'
     b'Content-Transfer-Encoding: 8bit'
     b''
-    b"\x00Y\x00o\x00u\x00'\x00r\x00e\x00 \x00g\x00r\x00e\x00a\x00t\x00,\x00 \x00\x96\x03\xb5\x03\xcd\x03\xc2\x03!\x00\n\x00"
+    b"Y\x00o\x00u\x00'\x00r\x00e\x00 \x00g\x00r\x00e\x00a\x00t\x00,\x00 \x00\x96\x03\xb5\x03\xcd\x03\xc2\x03!\x00"
+    b'\x00'
     """
     bytesio = _io.BytesIO()
     # TODO: use policies argument instead of policy set in `message`

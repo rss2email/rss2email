@@ -90,7 +90,7 @@ class Feeds (list):
     ...                 ],
     ...             }, f)
 
-    >>> feeds = Feeds(configfiles=[configfile,], datafile=datafile)
+    >>> feeds = Feeds(configfiles=[configfile,], datafile_path=datafile)
     >>> feeds.load()
     >>> for feed in feeds:
     ...     print(feed)
@@ -119,8 +119,6 @@ class Feeds (list):
     [DEFAULT]
     from = user@rss2email.invalid
     ...
-    verbose = warning
-    <BLANKLINE>
     [feed.f1]
     url = http://a.net/feed.atom
     <BLANKLINE>
