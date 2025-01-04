@@ -114,6 +114,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('feed-timeout', str(60)),
         # Set the sleep interval (in seconds) between consecutive fetches from the same server
         ('same-server-fetch-interval', str(0)),
+        # Never send etag or modified back to server
+        ('ignore-etag', str(False)),
+        ('ignore-modified', str(False)),
 
         ### Processing
         # True: Fetch, process, and email feeds.
