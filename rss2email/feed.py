@@ -216,6 +216,8 @@ class Feed (object):
         'links_after_each_paragraph',
         'use_smtp',
         'smtp_ssl',
+        'ignore-etag',
+        'ignore-modified',
         ]
 
     _integer_attributes = [
@@ -384,6 +386,10 @@ class Feed (object):
                 _urllib_request.ProxyHandler({ 'http': proxy, 'https': proxy })
             ]
         f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
+        if config.getboolean('ignore-etag'):
+            self.etag=None
+        if config.getboolean('ignore-modified'):
+            self.modified=None
         return f(self.url, self.etag, modified=self.modified, agent=self.user_agent, **kwargs)
 
     def _process(self, parsed):
