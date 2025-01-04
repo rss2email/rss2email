@@ -29,4 +29,4 @@ jobs:
     - name: Test
       run: |
         cd ./test
-        poetry run python -m unittest
+        poetry run python -m unittest -v
