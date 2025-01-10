@@ -43,6 +43,54 @@ __ `OpenBSD package`_
 __ `openSUSE package`_
 __ `Ubuntu package`_
 
+Docker
+------
+
+A docker package exists for this project::
+
+  $ git pull ghcr.io/rss2email/rss2email:master
+
+Then it can be used like::
+
+  $ docker run  -v ./data:/data -v ./config:/config rss2email list
+
+You need to create the config file and have some kind of SMTP server set up in the config file. With ``--net host`` option you can use SMTP server on the host.
+
+Docker compose
+~~~~~~~~~~~~~~
+
+Here is an example docker-compose.yaml::
+
+  version: '2'
+  services:
+    rss2email:
+      image: ghcr.io/rss2email/rss2email:master
+      volumes:
+        - ./config:/config
+        - ./data:/data
+      entrypoint: ["/venv/bin/python3", "-c", "import threading; threading.Event().wait()"]
+      labels:
+        chadburn.enabled: "true"
+        chadburn.job-exec.rss2email.no-overlap: "true"
+        chadburn.job-exec.rss2email.schedule: "0 23 1 * * *"
+        chadburn.job-exec.rss2email.command: "r2e run"
+
+    chadburn:
+      image: premoweb/chadburn:latest
+      command: daemon
+      restart: unless-stopped
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock:ro
+
+The example docker-compose snippet sets up chadburn (or ofelia) job scheduler to run r2e every night at 1:23 am.
+
+You need to run ``chown 65532:65532 config data`` to have the correct ownership of files for this rootless docker image.
+
+To use r2e commands, for listing subscribed feeds for example::
+
+  docker-compose exec rss2email r2e list
+
+
 Installing by hand
 ------------------
 
