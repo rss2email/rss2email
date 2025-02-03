@@ -177,6 +177,7 @@ class Feed (object):
     # attributes that aren't in DEFAULT
     _non_default_configured_attributes = [
         'url',
+        'category',
         ]
     # attributes that are in DEFAULT
     _default_configured_attributes = [
@@ -536,6 +537,8 @@ class Feed (object):
                 ('X-RSS-URL', self._get_entry_link(entry)),
                 ('X-RSS-TAGS', self._get_entry_tags(entry)),
                 ))
+        if self.category:
+            extra_headers['X-RSS-Category'] = self.category
         # remove empty tags, etc.
         keys = {k for k, v in extra_headers.items() if v is None}
         for key in keys:
