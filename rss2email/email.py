@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 #
-# Copyright (C) 2012-2022 Amir Yalon <git@please.nospammail.net>
+# Copyright (C) 2012-2024 Amir Yalon <git@please.nospammail.net>
 #                         Arun Persaud <apersaud@lbl.gov>
 #                         Dmitry Bogatov <KAction@gnu.org>
 #                         George Saunders <georgesaunders@gmail.com>
@@ -60,6 +60,7 @@ import html2text
 from . import LOG as _LOG
 from . import config as _config
 from . import error as _error
+from . import oauth2 as _oauth2
 
 
 def guess_encoding(string, encodings=('US-ASCII', 'UTF-8')):
@@ -258,12 +259,27 @@ def imap_send(message, config=None, section='DEFAULT'):
     port = config.getint(section, 'imap-port')
     _LOG.debug('sending message to {}:{}'.format(server, port))
     ssl = config.getboolean(section, 'imap-ssl')
-    if ssl:
+    oauth2 = config.getboolean(section, 'imap-oauth2')
+    if oauth2:
+        imap = _imaplib.IMAP4_SSL(server, ssl_context=_ssl.create_default_context())
+    elif ssl:
         imap = _imaplib.IMAP4_SSL(server, port)
     else:
         imap = _imaplib.IMAP4(server, port)
     try:
-        if config.getboolean(section, 'imap-auth'):
+        if oauth2:
+            username = config.get(section, 'imap-username')
+            client_id = config.get(section, 'imap-clientid')
+            client_secret = config.get(section, 'imap-clientsecret')
+            refresh_token = config.get(section, 'imap-refreshtoken')
+            auth_string = _oauth2.get_oauth2_auth_string(
+                client_id,
+                client_secret,
+                refresh_token,
+                username,
+            )
+            imap.authenticate('XOAUTH2', lambda x: auth_string)
+        elif config.getboolean(section, 'imap-auth'):
             username = config.get(section, 'imap-username')
             password = config.get(section, 'imap-password')
             try:

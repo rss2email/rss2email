@@ -4,6 +4,7 @@
 #                         Anders Damsgaard <anders@adamsgaard.dk>
 #                         Andrey Zelenchuk <azelenchuk@parallels.com>
 #                         Andrey Zelenchuk <azelenchuk@plesk.com>
+#			  Arun Persaud <apersaud@lbl.gov>
 #                         Brian Lalor
 #                         Dean Jackson
 #                         Dmitry Bogatov <KAction@gnu.org>
@@ -238,6 +239,11 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         ('smtp-server', 'smtp.example.net'),
         ('smtp-port', '465'),
         ('smtp-ssl', str(False)),       # Connect to the SMTP server using SSL
+        # OAuth2 configuration
+        ("imap-oauth2", str(False)),  # set to True to use Oauth2
+        ("imap-clientid", "client-ID"),
+        ("imap-clientsecret", "client-secret"),
+        ("imap-refreshtoken", "refresh-token"),
         # LMTP configuration
         ('lmtp-auth', str(False)),      # set to True to use SMTP AUTH for LMTP authentication
         ('lmtp-username', 'username'),  # username for SMTP AUTH
