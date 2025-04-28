@@ -82,7 +82,7 @@ def pretty(feed, parsed, entry, guid, message):
     content = str(message.get_payload(decode=True), encoding)
 
     # modify content
-    soup = BeautifulSoup(content)
+    soup = BeautifulSoup(content, "lxml")
     content = soup.prettify()
 
     # BeautifulSoup uses unicode, so we perhaps have to adjust the encoding.
