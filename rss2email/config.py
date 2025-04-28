@@ -119,6 +119,9 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # True: Fetch, process, and email feeds.
         # False: Don't fetch, process, or email feeds
         ('active', str(True)),
+        # True: Entries at the time of feed addition are not sent.
+        # False: Entries at the time of feed addition are all sent.
+        ('only-new', str(False)),
         # True: Send a single, multi-entry email per feed per rss2email run.
         # False: Send a single email per entry.
         ('digest', str(False)),

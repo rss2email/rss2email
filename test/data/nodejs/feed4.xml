@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+	<channel>
+		<title>
+			<![CDATA[Node.js Blog: Vulnerability Reports]]>
+		</title>
+		<description>
+			<![CDATA[Node.js Blog: Vulnerability Reports]]>
+		</description>
+		<link>https://nodejs.org/en/</link>
+		<generator>metalsmith-feed</generator>
+		<lastBuildDate>Fri, 15 May 2020 05:23:25 GMT</lastBuildDate>
+		<atom:link href="https://nodejs.org/en/feed/vulnerability.xml" rel="self" type="application/rss+xml"/>
+		<author>
+			<![CDATA[Node.js]]>
+		</author>
+		<language>
+			<![CDATA[English]]>
+		</language>
+		<docs/>
+
+		<item>
+			<title>
+			OpenSSL security releases do not require Node.js security releases
+			</title>
+			<link>https://nodejs.org/en/blog/vulnerability/april-2020-openssl-updates</link>
+			<guid>/blog/vulnerability/april-2020-openssl-updates</guid>
+			<pubDate>Tue, 21 Apr 2020 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>
+				<![CDATA[February 2020 Security Releases]]>
+			</title>
+			<description>
+				<![CDATA[<h2><em>(Update 19-May-2020)</em> Test</h2><p>Test</p>
+<hr>
+<h2 id="header-update-6-february-2020-security-releases-available"><em>(Update 6-February-2020)</em> Security releases available<a id="update-6-february-2020-security-releases-available" class="anchor" href="#update-6-february-2020-security-releases-available" aria-labelledby="header-update-6-february-2020-security-releases-available"></a></h2><p>Updates are now available for all active Node.js release lines for the following issues.</p>
+<h3 id="header-http-request-smuggling-using-malformed-transfer-encoding-header-critical-cve-2019-15605">HTTP request smuggling using malformed Transfer-Encoding header (Critical) (CVE-2019-15605)<a id="http-request-smuggling-using-malformed-transfer-encoding-header-critical-cve-2019-15605" class="anchor" href="#http-request-smuggling-using-malformed-transfer-encoding-header-critical-cve-2019-15605" aria-labelledby="header-http-request-smuggling-using-malformed-transfer-encoding-header-critical-cve-2019-15605"></a></h3><p>Affected Node.js versions can be exploited to perform HTTP desync attacks and deliver malicious payloads to unsuspecting users. The payloads can be crafted by an attacker to hijack user sessions, poison cookies, perform clickjacking, and a multitude of other attacks depending on the architecture of the underlying system.</p>
+<p>Reported by Ethan Rubinson, a software engineer at eBay.</p>
+<h3 id="header-http-header-values-do-not-have-trailing-ows-trimmed-high-cve-2019-15606">HTTP header values do not have trailing OWS trimmed (High) (CVE-2019-15606)<a id="http-header-values-do-not-have-trailing-ows-trimmed-high-cve-2019-15606" class="anchor" href="#http-header-values-do-not-have-trailing-ows-trimmed-high-cve-2019-15606" aria-labelledby="header-http-header-values-do-not-have-trailing-ows-trimmed-high-cve-2019-15606"></a></h3><p>Optional whitespace should be trimmed from HTTP header values. Its presence may allow attackers to bypass security checks based on HTTP header values.</p>
+<p>Reported by Alyssa Wilk from Google.</p>
+<h3 id="header-remotely-trigger-an-assertion-on-a-tls-server-with-a-malformed-certificate-string-high-cve-2019-15604">Remotely trigger an assertion on a TLS server with a malformed certificate string (High) (CVE-2019-15604)<a id="remotely-trigger-an-assertion-on-a-tls-server-with-a-malformed-certificate-string-high-cve-2019-15604" class="anchor" href="#remotely-trigger-an-assertion-on-a-tls-server-with-a-malformed-certificate-string-high-cve-2019-15604" aria-labelledby="header-remotely-trigger-an-assertion-on-a-tls-server-with-a-malformed-certificate-string-high-cve-2019-15604"></a></h3><p>Connecting to a NodeJS TLS server with a client certificate that has a type 19 string in its subjectAltName will crash the TLS server if it tries to read the peer certificate.</p>
+<p>Reported by Rogier Schouten and Melvin Groenhoff.</p>
+<h2 id="header-strict-http-header-parsing-none">Strict HTTP header parsing (None)<a id="strict-http-header-parsing-none" class="anchor" href="#strict-http-header-parsing-none" aria-labelledby="header-strict-http-header-parsing-none"></a></h2><p>Increase the strictness of HTTP header parsing. There are no known vulnerabilities addressed, but lax HTTP parsing has historically been a source of problems. Some commonly used sites are known to generate invalid HTTP headers, a <code>--insecure-http-parser</code> CLI option or <code>insecureHTTPParser</code> http option can be used if necessary for interoperability, but is not recommended.</p>
+<h2 id="header-downloads-release-details">Downloads &amp; release details<a id="downloads-release-details" class="anchor" href="#downloads-release-details" aria-labelledby="header-downloads-release-details"></a></h2><ul>
+<li><a href="https://nodejs.org/en/blog/release/v10.19.0/">Node.js v10.19.0 (LTS)</a></li>
+<li><a href="https://nodejs.org/en/blog/release/v12.15.0/">Node.js v12.15.0 (LTS)</a></li>
+<li><a href="https://nodejs.org/en/blog/release/v13.8.0/">Node.js v13.8.0 (Current)</a></li>
+</ul>
+<hr>
+<h2 id="header-summary">Summary<a id="summary" class="anchor" href="#summary" aria-labelledby="header-summary"></a></h2><p>The Node.js project will release new versions of all supported release lines on or shortly after Tuesday, February 4th, 2020.</p>
+<p>One Critical severity and two High severity issues will be fixed. The release also includes stricter HTTP parsing.</p>
+<h2 id="header-impact">Impact<a id="impact" class="anchor" href="#impact" aria-labelledby="header-impact"></a></h2><p>All supported versions (10.x, 12.x, and 13.x) of Node.js are vulnerable.</p>
+<h2 id="header-release-timing">Release timing<a id="release-timing" class="anchor" href="#release-timing" aria-labelledby="header-release-timing"></a></h2><p>Releases will be available at, or shortly after, Tuesday, February 4th, 2020.</p>
+<h2 id="header-contact-and-future-updates">Contact and future updates<a id="contact-and-future-updates" class="anchor" href="#contact-and-future-updates" aria-labelledby="header-contact-and-future-updates"></a></h2><p>The current Node.js security policy can be found at <a href="https://nodejs.org/en/security/">https://nodejs.org/en/security/</a>. Please follow the process outlined in <a href="https://github.com/nodejs/node/blob/master/SECURITY.md">https://github.com/nodejs/node/blob/master/SECURITY.md</a> if you wish to report a vulnerability in Node.js.</p>
+<p>Subscribe to the low-volume announcement-only nodejs-sec mailing list at <a href="https://groups.google.com/forum/#!forum/nodejs-sec">https://groups.google.com/forum/#!forum/nodejs-sec</a> to stay up to date on security vulnerabilities and security-related releases of Node.js and the projects maintained in the nodejs GitHub organization.</p>
+]]>
+			</description>
+			<link>https://nodejs.org/en/blog/vulnerability/february-2020-security-releases</link>
+			<guid isPermaLink="true">https://nodejs.org/en/blog/vulnerability/february-2020-security-releases</guid>
+			<dc:creator>
+				<![CDATA[Sam Roberts]]>
+			</dc:creator>
+			<pubDate>Thu, 06 Feb 2020 12:00:00 GMT</pubDate>
+		</item>
+	</channel>
+</rss>

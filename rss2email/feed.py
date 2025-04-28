@@ -206,6 +206,7 @@ class Feed (object):
         'force_from',
         'use_publisher_email',
         'active',
+        'only_new',
         'date_header',
         'trust_guid',
         'trust_link',
@@ -239,7 +240,7 @@ class Feed (object):
             replace('__VERSION__', __version__).\
             replace('__URL__', __url__)
 
-    def __init__(self, name=None, url=None, to=None, config=None):
+    def __init__(self, name=None, url=None, to=None, config=None, is_new=False):
         self._set_name(name=name)
         self.reset()
         self.__setstate__(dict(
@@ -247,6 +248,7 @@ class Feed (object):
                 for attr in self._dynamic_attributes))
         self.load_from_config(config=config)
         self._fix_user_agent() # Fix feeds broken by user agent change in 3.11
+        self.is_new = is_new
         if url:
             self.url = url
         if to:
@@ -936,6 +938,9 @@ class Feed (object):
             self.etag = None
             self.modified = None
         parsed = self._fetch()
+
+        if self.is_new and self.only_new:
+            send = False
 
         if clean and len(parsed.entries) > 0:
             for guid in self.seen:
