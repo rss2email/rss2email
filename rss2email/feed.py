@@ -658,6 +658,48 @@ class Feed (object):
         >>> f.name_format = '{author} ({feed.name})'
         >>> f._get_entry_name(parsed, entry)
         'Example author (test-feed)'
+        >>> parsed = feedparser.parse(
+        ...     '<?xml version="1.0" encoding="UTF-8"?>'
+        ...     '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">'
+        ...     '	<channel>'
+        ...     '		<title>'
+        ...     '			<![CDATA[Node.js Blog: Vulnerability Reports]]>'
+        ...     '		</title>'
+        ...     '		<item>'
+        ...     '			<title>'
+        ...     '				<![CDATA[February 2020 Security Releases]]>'
+        ...     '			</title>'
+        ...     '			<description>'
+        ...     '				<![CDATA[foo]]>'
+        ...     '			</description>'
+        ...     '			<link>https://nodejs.org/en/blog/vulnerability/february-2020-security-releases</link>'
+        ...     '			<guid isPermaLink="true">https://nodejs.org/en/blog/vulnerability/february-2020-security-releases</guid>'
+        ...     '			<dc:creator>'
+        ...     '				<![CDATA[Sam Roberts]]>'
+        ...     '			</dc:creator>'
+        ...     '			<dc:creator>'
+        ...     '				<![CDATA[Jane Doe]]>'
+        ...     '			</dc:creator>'
+        ...     '			<pubDate>Thu, 06 Feb 2020 12:00:00 GMT</pubDate>'
+        ...     '		</item>'
+        ...     '	</channel>'
+        ...     '</rss>'
+        ...     )
+        >>> entry = parsed.entries[0]
+        >>> entry.summary_detail
+        {'type': 'text/html', 'language': None, 'base': '', 'value': 'foo'}
+        >>> f._get_entry_content(entry)
+        {'type': 'text/html', 'language': None, 'base': '', 'value': 'foo'}
+        >>> f._process_entry_content(entry, f._get_entry_content(entry),  f._get_entry_subject(entry))
+        {'language': None, 'base': '', 'type': 'text/plain', 'value': 'foo\\n\\n\\nAuthors: Sam Roberts, Jane Doe\\n\\nURL: https://nodejs.org/en/blog/vulnerability/february-2020-security-releases'}
+        >>> f.html_mail = True
+        >>> f._get_entry_content(entry)
+        {'type': 'text/html', 'language': None, 'base': '', 'value': 'foo'}
+        >>> f._process_entry_content(entry, f._get_entry_content(entry),  f._get_entry_subject(entry))
+        {'language': None, 'base': '', 'type': 'text/html', 'value': '<!DOCTYPE html>\\n<html>\\n  <head>\\n</head>\\n<body dir="auto">\\n<div class="entry" id="entry">\\n<h1 class="header"><a href="https://nodejs.org/en/blog/vulnerability/february-2020-security-releases">February 2020 Security Releases</a></h1>\\n<div class="body" id="body">\\nfoo\\n</div>\\n<div class="footer">\\n<p>URL: <a href="https://nodejs.org/en/blog/vulnerability/february-2020-security-releases">https://nodejs.org/en/blog/vulnerability/february-2020-security-releases</a></p>\\n<p>Authors: Sam Roberts, Jane Doe</p>\\n</div>\\n</div>\\n</body>\\n</html>\\n'}
+        >>> f.name_format = ''
+        >>> f._get_entry_name(parsed, entry)
+        ''
         """
         if not self.name_format:
             return ''
@@ -823,6 +865,10 @@ class Feed (object):
     def _process_entry_content(self, entry, content, subject):
         "Convert entry content to the requested format."
         link = self._get_entry_link(entry)
+        # the function is now stateless, it's backward compatible and it improves much testability
+        result = {}
+        result['language'] = content["language"]
+        result['base'] = content["base"]
         if self.html_mail:
             lines = [
                 '<!DOCTYPE html>',
@@ -859,6 +905,10 @@ class Feed (object):
                 lines.append(
                     '<p>URL: <a href="{0}">{0}</a></p>'.format(
                         _saxutils.escape(link)))
+            if getattr(entry, 'authors', []):
+                lines.append(
+                        '<p>Authors: {0}</p>'.format(_saxutils.escape(", ".join([x.name for x in entry.authors])))
+                        )
             for enclosure in getattr(entry, 'enclosures', []):
                 if getattr(enclosure, 'url', None):
                     lines.append(
@@ -882,9 +932,7 @@ class Feed (object):
                     '</body>',
                     '</html>',
                     ''])
-            content['type'] = 'text/html'
-            content['value'] = '\n'.join(lines)
-            return content
+            result['type'] = 'text/html'
         else:  # not self.html_mail
             if content['type'] in ('text/html', 'application/xhtml+xml'):
                 try:
@@ -893,6 +941,10 @@ class Feed (object):
                     raise _error.ProcessingError(parsed=None, feed=self)
             else:
                 lines = [content['value']]
+            if getattr(entry, 'authors', []):
+                lines.append(
+                        'Authors: {0}'.format(_saxutils.escape(", ".join([x.name for x in entry.authors])))
+                        )
             lines.append('')
             lines.append('URL: {}'.format(link))
             for enclosure in getattr(entry, 'enclosures', []):
@@ -905,9 +957,9 @@ class Feed (object):
                     url = elink['href']
                     title = elink.get('title', url)
                     lines.append('Via: {} {}'.format(title, url))
-            content['type'] = 'text/plain'
-            content['value'] = '\n'.join(lines)
-            return content
+            result['type'] = 'text/plain'
+        result['value'] = '\n'.join(lines)
+        return result
 
     def _send(self, sender, message):
         _LOG.info('send message for {}'.format(self))
