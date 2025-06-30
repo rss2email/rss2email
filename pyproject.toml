@@ -1,21 +1,59 @@
-[tool.poetry]
-name = "rss2email"
-version = "3.12.2"
-description = "Forward RSS feeds to your email address"
-authors = ["Your Name <you@example.com>"]
-license = "GPL-2.0-only"
-
-[tool.poetry.dependencies]
-python = "^3.6"
-feedparser = ">=6.0.5"
-html2text = ">=2020.1.16"
-
-[tool.poetry.group.dev.dependencies]
-update-copyright = ">=0.6.2"
-
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry.scripts]
+[project]
+name = "rss2email"
+dynamic = ["version"]
+description = "A python script that converts RSS/Atom newsfeeds to email"
+readme = "README.rst"
+authors = [
+  { name = "Adam Mokhtari", email = "2553423+uutari@users.noreply.github.com" },
+  { name = "W. Trevor King", email = "wking@tremily.us" },
+  { name = "Amir Yalon", email = "git@please.nospammail.net" },
+]
+maintainers = [
+  { name = "Adam Mokhtari", email = "2553423+uutari@users.noreply.github.com" },
+]
+license = "GPL-2.0-or-later"
+requires-python = ">=3.6"
+keywords = ["rss", "atom", "feed", "email"]
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'Environment :: Console',
+    'Intended Audience :: End Users/Desktop',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Topic :: Communications :: Email',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+]
+dependencies = [
+    "feedparser>=6.0.5",
+    "html2text>=2020.1.16",
+]
+
+[project.optional-dependencies]
+dev = [
+    "update-copyright>=0.6.2",
+]
+
+[project.scripts]
 r2e = "rss2email.main:run"
+
+[project.urls]
+Homepage = "https://github.com/rss2email/rss2email"
+Repository = "https://github.com/rss2email/rss2email"
+"Bug Tracker" = "https://github.com/rss2email/rss2email/issues"
+
+[tool.setuptools]
+packages = ["rss2email", "rss2email.post_process"]
+
+[tool.setuptools.dynamic]
+version = {attr = "rss2email.__version__"}
