@@ -112,8 +112,8 @@ def run(*args, **kwargs):
         default=True, action='store_const', const=False,
         help="fetch feeds, but don't send email")
     run_parser.add_argument(
-        '--clean', action='store_true',
-        help='clean old feed entries')
+        '--save-config', action='store_true',
+        help='save feed configuration changes (e.g. new URL after a redirect)')
     run_parser.add_argument(
         'index', nargs='*',
         help='feeds to fetch (defaults to fetching all feeds)')

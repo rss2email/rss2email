@@ -386,9 +386,9 @@ class Feed (object):
         f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
         return f(self.url, self.etag, modified=self.modified, agent=self.user_agent, **kwargs)
 
-    def _process(self, parsed):
+    def _process(self, parsed, save_config=False):
         _LOG.info('process {}'.format(self))
-        self._check_for_errors(parsed)
+        self._check_for_errors(parsed, save_config=save_config)
         for entry in reversed(parsed.entries):
             _LOG.debug('processing {}'.format(entry.get('id', 'no-id')))
             processed = self._process_entry(parsed=parsed, entry=entry)
@@ -402,7 +402,7 @@ class Feed (object):
                         continue
                 yield processed
 
-    def _check_for_errors(self, parsed):
+    def _check_for_errors(self, parsed, save_config=False):
         warned = False
         status = getattr(parsed, 'status', 200)
         _LOG.debug('HTTP status {}'.format(status))
@@ -410,7 +410,8 @@ class Feed (object):
             _LOG.info('redirect {} from {} to {}'.format(
                     self.name, self.url, parsed['url']))
             self.url = parsed['url']
-            # TODO: `url` is not saved -- add config option to call feeds.save_config() in run command
+            if save_config:
+                self.save_to_config()
         elif status == 304:
             _LOG.info('skipping {}: feed was not modified since last update'.format(
                     self.name, self.url))
@@ -917,7 +918,7 @@ class Feed (object):
         _email.send(recipient=self.to, message=message,
                     config=self.config, section=section)
 
-    def run(self, send=True, clean=False):
+    def run(self, send=True, clean=False, save_config=False):
         """Fetch and process the feed, mailing entry emails.
 
         >>> feed = Feed(
@@ -947,7 +948,7 @@ class Feed (object):
                 raise _error.InvalidDigestType(type)
             digest = self._new_digest()
             seen = []
-            for (guid, state, sender, message) in self._process(parsed):
+            for (guid, state, sender, message) in self._process(parsed, save_config=save_config):
                 _LOG.debug('new message: {}'.format(message['Subject']))
                 seen.append((guid, state))
                 self._append_to_digest(digest=digest, message=message)
@@ -962,7 +963,7 @@ class Feed (object):
                 for (guid, state) in seen:
                     self.seen[guid] = state
         else:
-            for (guid, state, sender, message) in self._process(parsed):
+            for (guid, state, sender, message) in self._process(parsed, save_config=save_config):
                 _LOG.debug('new message: {}'.format(message['Subject']))
                 if send:
                     self._send(sender=sender, message=message)
