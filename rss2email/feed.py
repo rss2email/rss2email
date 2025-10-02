@@ -171,6 +171,8 @@ class Feed(object):
         "etag",
         "modified",
         "seen",
+        "max_age",
+        "last_checked",
     ]
 
     ## saved/loaded from ConfigParser instance
@@ -366,6 +368,8 @@ class Feed(object):
         self.etag = None
         self.modified = None
         self.seen = {}  # type: Dict[str, Dict[str, Any]]
+        self.max_age = None
+        self.last_checked = None
 
     def _set_name(self, name):
         if not self._name_regexp.match(name):
@@ -383,6 +387,16 @@ class Feed(object):
         >>> parsed.status
         200
         """
+        if (
+            self.max_age is not None
+            and self.last_checked is not None
+            and _time.time() < self.last_checked + self.max_age
+        ):
+            _LOG.info("skipping {}: cache has not expired".format(self.name))
+            parsed = _feedparser.FeedParserDict()
+            parsed["status"] = 304
+            return parsed
+
         _LOG.info("fetch {}".format(self))
         if not self.url:
             raise _error.InvalidFeedConfig(setting="url", feed=self)
@@ -971,6 +985,19 @@ class Feed(object):
             self.etag = None
             self.modified = None
         parsed = self._fetch()
+
+        if getattr(parsed, "status", 200) == 304:
+            return
+
+        self.last_checked = _time.time()
+        if "cache-control" in parsed.headers:
+            match = _re.search(r"max-age=(\d+)", parsed.headers["cache-control"])
+            if match:
+                self.max_age = int(match.group(1))
+            else:
+                self.max_age = None
+        else:
+            self.max_age = None
 
         if clean and len(parsed.entries) > 0:
             for guid in self.seen:
