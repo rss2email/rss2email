@@ -249,6 +249,22 @@ def webserver_for_test_if_fetch(queue, timeout):
     finally:
         httpd.server_close()
 
+def webserver_for_test_redirect(queue, status_code):
+    class RedirectHandler(NoLogHandler):
+        def do_GET(self):
+            self.send_response(status_code)
+            self.send_header('Location', '/disqus/feed.rss')
+            self.end_headers()
+
+    httpd = http.server.HTTPServer(('', 0), RedirectHandler)
+    try:
+        port = httpd.server_address[1]
+        queue.put(port)
+        while queue.get() != "stop":
+            httpd.handle_request()
+    finally:
+        httpd.server_close()
+
 class TestFetch(unittest.TestCase):
     "Retrieving feeds from servers"
     def test_delay(self):
@@ -379,6 +395,27 @@ class TestFetch(unittest.TestCase):
                 self.assertIn("seen", content["feeds"][0])
         self.assertEqual(queue.get(), "done")
 
+    def test_redirect(self):
+        "Saves feed URL on redirect"
+        cfg = """[DEFAULT]
+        to = example@example.com"""
+
+        queue = multiprocessing.Queue()
+        webserver_proc = multiprocessing.Process(target=webserver_for_test_redirect, args=(queue, 301))
+        webserver_proc.start()
+        port = queue.get()
+
+        with ExecContext(cfg) as ctx:
+            ctx.call("add", 'test', 'http://127.0.0.1:{port}/redirect'.format(port = port))
+
+            queue.put("next")
+            ctx.call("run", "--no-send", "--save-config")
+
+            with open(ctx.cfg_path, 'r') as f:
+                config = f.read()
+                self.assertIn("url = http://127.0.0.1:{port}/disqus/feed.rss".format(port=port), config)
+
+        queue.put("stop")
 
 def webserver_for_test_send(queue):
     httpd = http.server.HTTPServer(('', 0), NoLogHandler)
