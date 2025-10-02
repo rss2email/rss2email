@@ -59,6 +59,53 @@ def load_tests(loader, tests, ignore):
 # This metaclass lets us generate the tests for each feed directory
 # separately. This lets us see which tests are being run more clearly than
 # if we had one big test that ran everything.
+MESSAGE_ID_REGEXP = _re.compile(
+    r"^Message-ID: <(.*)@{}>$".format(_re.escape(platform.node())), _re.MULTILINE
+)
+USER_AGENT_REGEXP = _re.compile(
+    r"^User-Agent: rss2email/{0} \({1}\)$".format(
+        _re.escape(_rss2email.__version__), _re.escape(_rss2email.__url__)
+    ),
+    _re.MULTILINE,
+)
+BOUNDARY_REGEXP = _re.compile("===============[^=]+==")
+
+
+def clean_result(text, regexes=None):
+    """Cleanup dynamic portions of the generated email headers
+
+    >>> text = (
+    ...      'Content-Type: multipart/digest;\\n'
+    ...      '  boundary="===============7509425281347501533=="\\n'
+    ...      'MIME-Version: 1.0\\n'
+    ...      'Date: Tue, 23 Aug 2011 15:57:37 -0000\\n'
+    ...      'Message-ID: <9dff03db-f5a7@mail.example>\\n'
+    ...      'User-Agent: rss2email/3.5 (https://github.com/rss2email/rss2email)\\n'
+    ...      )
+    >>> regexes = [
+    ...     (_re.compile(r'^Message-ID: <.*>$', _re.MULTILINE), 'Message-ID: <...@dev.null.invalid>'),
+    ...     (_re.compile(r'^User-Agent: .*$', _re.MULTILINE), 'User-Agent: rss2email/...'),
+    ...     (_re.compile('===============[^=]+=='), '===============...=='),
+    ... ]
+    >>> print(clean_result(text, regexes).rstrip())
+    Content-Type: multipart/digest;
+      boundary="===============...=="
+    MIME-Version: 1.0
+    Date: Tue, 23 Aug 2011 15:57:37 -0000
+    Message-ID: <...@dev.null.invalid>
+    User-Agent: rss2email/...
+    """
+    if regexes is None:
+        regexes = [
+            (MESSAGE_ID_REGEXP, "Message-ID: <...@dev.null.invalid>"),
+            (USER_AGENT_REGEXP, "User-Agent: rss2email/..."),
+            (BOUNDARY_REGEXP, "===============...=="),
+        ]
+    for regexp, replacement in regexes:
+        text = regexp.sub(replacement, text)
+    return text
+
+
 class TestEmailsMeta(type):
     def __new__(cls, name, bases, attrs):
         # no paths on the command line, find all subdirectories
@@ -165,7 +212,7 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         feed._send = TestEmails.Send()
         feed.run()
         generated = feed._send.as_string()
-        generated = self.clean_result(generated)
+        generated = clean_result(generated)
 
         expected_path = config_path.replace("config", "expected")
         if not _os.path.exists(expected_path):
