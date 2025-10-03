@@ -20,11 +20,9 @@ class TestReplyChanges(unittest.TestCase):
         self.tmpdir = tempfile.TemporaryDirectory()
         self.feed_path = Path(self.tmpdir.name, "feed.xml")
 
-
     def tearDown(self) -> None:
         self.maildir.cleanup()
         self.tmpdir.cleanup()
-
 
     def test_default(self):
         config = self._config()
@@ -32,8 +30,7 @@ class TestReplyChanges(unittest.TestCase):
 
         messages = self.maildir.inbox_messages()
         self.assertEqual(1, len(messages))
-        self.assertIsNone(messages[0]['In-Reply-To'])
-
+        self.assertIsNone(messages[0]["In-Reply-To"])
 
     def test_off(self):
         config = self._config({"reply-changes": False})
@@ -41,8 +38,7 @@ class TestReplyChanges(unittest.TestCase):
 
         messages = self.maildir.inbox_messages()
         self.assertEqual(1, len(messages))
-        self.assertIsNone(messages[0]['In-Reply-To'])
-
+        self.assertIsNone(messages[0]["In-Reply-To"])
 
     def test_on(self):
         config = self._config({"reply-changes": True})
@@ -50,9 +46,8 @@ class TestReplyChanges(unittest.TestCase):
 
         messages = self.maildir.inbox_messages()
         self.assertEqual(2, len(messages))
-        self.assertIsNone(messages[0]['In-Reply-To'])
-        self.assertEqual(messages[0]['Message-ID'], messages[1]['In-Reply-To'])
-
+        self.assertIsNone(messages[0]["In-Reply-To"])
+        self.assertEqual(messages[0]["Message-ID"], messages[1]["In-Reply-To"])
 
     def _call(self, config: str):
         with ExecContext(config) as ctx:
@@ -60,7 +55,6 @@ class TestReplyChanges(unittest.TestCase):
             ctx.call("run")
             shutil.copyfile("data/nodejs/feed2.xml", str(self.feed_path))
             ctx.call("run")
-
 
     def test_switch(self):
         config = self._config({"reply-changes": False})
@@ -72,11 +66,10 @@ class TestReplyChanges(unittest.TestCase):
             shutil.copyfile("data/nodejs/feed2.xml", str(self.feed_path))
             ctx.call("run")
 
-        messages = self.maildir.inbox_messages() # type: List[mailbox.MaildirMessage]
+        messages = self.maildir.inbox_messages()  # type: List[mailbox.MaildirMessage]
         self.assertEqual(2, len(messages))
-        self.assertIsNone(messages[0]['In-Reply-To'])
-        self.assertEqual(messages[0]['Message-ID'], messages[1]['In-Reply-To'])
-
+        self.assertIsNone(messages[0]["In-Reply-To"])
+        self.assertEqual(messages[0]["Message-ID"], messages[1]["In-Reply-To"])
 
     def test_no_send(self):
         config = self._config({"reply-changes": True})
@@ -88,29 +81,36 @@ class TestReplyChanges(unittest.TestCase):
             shutil.copyfile("data/nodejs/feed3.xml", str(self.feed_path))
             ctx.call("run")
 
-        messages = self.maildir.inbox_messages() # type: List[mailbox.MaildirMessage]
+        messages = self.maildir.inbox_messages()  # type: List[mailbox.MaildirMessage]
         self.assertEqual(2, len(messages))
-        self.assertIsNone(messages[0]['In-Reply-To'])
-        self.assertEqual(messages[0]['Message-ID'], messages[1]['In-Reply-To'])
-
+        self.assertIsNone(messages[0]["In-Reply-To"])
+        self.assertEqual(messages[0]["Message-ID"], messages[1]["In-Reply-To"])
 
     def _config(self, options: Optional[Dict[str, Any]] = None):
-        config = dedent("""\
+        config = dedent(
+            """\
             [DEFAULT]
             to = mbox@mail.example
             email-protocol = maildir
             maildir-path = {maildir_path}
             maildir-mailbox = {maildir_mailbox}
-            """).format(maildir_path=self.maildir.path,
-                        maildir_mailbox=self.maildir.inbox_name,
-                        url=self.feed_path.absolute())
+            """
+        ).format(
+            maildir_path=self.maildir.path,
+            maildir_mailbox=self.maildir.inbox_name,
+            url=self.feed_path.absolute(),
+        )
 
         if options is not None:
-            config += "".join("{0} = {1}\n".format(name, value) for name, value in options.items())
+            config += "".join(
+                "{0} = {1}\n".format(name, value) for name, value in options.items()
+            )
 
-        config += dedent("""\
+        config += dedent(
+            """\
             [feed.test-feed]
             url = file:{url}
-            """).format(url=self.feed_path.absolute())
+            """
+        ).format(url=self.feed_path.absolute())
 
         return config

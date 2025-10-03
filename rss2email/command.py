@@ -94,7 +94,7 @@ def run(feeds, args):
                             interval = interval
                         ))
                         _time.sleep(interval)
-                    feed.run(send=args.send, clean=args.clean)
+                    feed.run(send=args.send, clean=args.clean, save_config=args.save_config)
                 except _error.RSS2EmailError as e:
                     e.log()
                 last_server = current_server
