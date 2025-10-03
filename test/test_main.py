@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-"""Test processing logic on known feeds.
-"""
+"""Test processing logic on known feeds."""
 
 import difflib as _difflib
 import glob as _glob
@@ -43,6 +42,8 @@ from rss2email.feeds import UNIX
 
 # runs all doctests in submodules
 import doctest
+
+
 def load_tests(loader, tests, ignore):
     tests.addTests(doctest.DocTestSuite(_rss2email_command))
     tests.addTests(doctest.DocTestSuite(_rss2email_config))
@@ -53,6 +54,7 @@ def load_tests(loader, tests, ignore):
     tests.addTests(doctest.DocTestSuite(_rss2email_post_process))
     tests.addTests(doctest.DocTestSuite(_rss2email_util))
     return tests
+
 
 # This metaclass lets us generate the tests for each feed directory
 # separately. This lets us see which tests are being run more clearly than
@@ -79,18 +81,21 @@ class TestEmailsMeta(type):
                 self.run_single_test(dirname=test_path)
             else:
                 self.run_single_test(config_path=test_path)
+
         return fn
 
+
 class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
-    class Send (list):
+    class Send(list):
         def __call__(self, sender, message):
             self.append((sender, message))
 
         def as_string(self):
             chunks = [
-                'SENT BY: {}\n{}\n'.format(sender, message.as_string())
-                for sender,message in self]
-            return '\n'.join(chunks)
+                "SENT BY: {}\n{}\n".format(sender, message.as_string())
+                for sender, message in self
+            ]
+            return "\n".join(chunks)
 
     def __init__(self, *args, **kwargs):
         super(TestEmails, self).__init__(*args, **kwargs)
@@ -102,11 +107,16 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         del _stringio
 
         self.MESSAGE_ID_REGEXP = _re.compile(
-            r'^Message-ID: <(.*)@{}>$'.format(_re.escape(platform.node())), _re.MULTILINE)
+            r"^Message-ID: <(.*)@{}>$".format(_re.escape(platform.node())),
+            _re.MULTILINE,
+        )
         self.USER_AGENT_REGEXP = _re.compile(
-            r'^User-Agent: rss2email/{0} \({1}\)$'.format(_re.escape(_rss2email.__version__), _re.escape(_rss2email.__url__)),
-            _re.MULTILINE)
-        self.BOUNDARY_REGEXP = _re.compile('===============[^=]+==')
+            r"^User-Agent: rss2email/{0} \({1}\)$".format(
+                _re.escape(_rss2email.__version__), _re.escape(_rss2email.__url__)
+            ),
+            _re.MULTILINE,
+        )
+        self.BOUNDARY_REGEXP = _re.compile("===============[^=]+==")
 
     def clean_result(self, text):
         """Cleanup dynamic portions of the generated email headers
@@ -127,10 +137,10 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         Message-ID: <...@dev.null.invalid>
         User-Agent: rss2email/...
         """
-        for regexp,replacement in [
-                (self.MESSAGE_ID_REGEXP, 'Message-ID: <...@dev.null.invalid>'),
-                (self.USER_AGENT_REGEXP, 'User-Agent: rss2email/...'),
-                (self.BOUNDARY_REGEXP, '===============...=='),
+        for regexp, replacement in [
+            (self.MESSAGE_ID_REGEXP, "Message-ID: <...@dev.null.invalid>"),
+            (self.USER_AGENT_REGEXP, "User-Agent: rss2email/..."),
+            (self.BOUNDARY_REGEXP, "===============...=="),
         ]:
             text = regexp.sub(replacement, text)
         return text
@@ -139,49 +149,60 @@ class TestEmails(unittest.TestCase, metaclass=TestEmailsMeta):
         if dirname is None:
             dirname = _os.path.dirname(config_path)
         if config_path is None:
-            _rss2email.LOG.info('testing {}'.format(dirname))
-            for config_path in _glob.glob(_os.path.join(dirname, '*.config')):
+            _rss2email.LOG.info("testing {}".format(dirname))
+            for config_path in _glob.glob(_os.path.join(dirname, "*.config")):
                 self.run_single_test(dirname=dirname, config_path=config_path)
             return
-        feed_path = _glob.glob(_os.path.join(dirname, 'feed.*'))[0]
+        feed_path = _glob.glob(_os.path.join(dirname, "feed.*"))[0]
 
-        _rss2email.LOG.info('testing {}'.format(config_path))
+        _rss2email.LOG.info("testing {}".format(config_path))
         config = _rss2email_config.Config()
         config.read_string(self.BASE_CONFIG_STRING)
         read_paths = config.read([config_path])
-        feed = _rss2email_feed.Feed(name='test', url=Path(feed_path).as_posix(), config=config)
+        feed = _rss2email_feed.Feed(
+            name="test", url=Path(feed_path).as_posix(), config=config
+        )
         feed._send = TestEmails.Send()
         feed.run()
         generated = feed._send.as_string()
         generated = self.clean_result(generated)
 
-        expected_path = config_path.replace('config', 'expected')
+        expected_path = config_path.replace("config", "expected")
         if not _os.path.exists(expected_path):
-            if _os.environ.get('FORCE_TESTDATA_CREATION', '') == '1':
-                with open(expected_path, 'w') as f:
+            if _os.environ.get("FORCE_TESTDATA_CREATION", "") == "1":
+                with open(expected_path, "w") as f:
                     f.write(generated)
-                raise ValueError('missing expected test data, now created')
+                raise ValueError("missing expected test data, now created")
             else:
-                raise ValueError('missing test; set FORCE_TESTDATA_CREATION=1 to create')
+                raise ValueError(
+                    "missing test; set FORCE_TESTDATA_CREATION=1 to create"
+                )
         else:
-            with open(expected_path, 'r') as f:
+            with open(expected_path, "r") as f:
                 expected = f.read()
         if generated != expected:
             diff_lines = _difflib.unified_diff(
-                expected.splitlines(), generated.splitlines(),
-                'expected', 'generated', lineterm='')
+                expected.splitlines(),
+                generated.splitlines(),
+                "expected",
+                "generated",
+                lineterm="",
+            )
             raise ValueError(
-                'error processing {}\n{}'.format(
-                    config_path,
-                    '\n'.join(diff_lines)))
+                "error processing {}\n{}".format(config_path, "\n".join(diff_lines))
+            )
+
 
 class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     "No logging handler serving test feed data from test_dir"
 
     if sys.version_info >= (3, 7):
+
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs, directory=test_dir)
+
     else:
+
         def translate_path(self, path):
             cwd = _os.getcwd()
             try:
@@ -193,8 +214,9 @@ class NoLogHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         return
 
+
 def webserver_for_test_fetch(queue, num_requests, wait_time):
-    httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+    httpd = http.server.HTTPServer(("", 0), NoLogHandler)
     try:
         port = httpd.server_address[1]
         queue.put(port)
@@ -211,13 +233,14 @@ def webserver_for_test_fetch(queue, num_requests, wait_time):
     finally:
         httpd.server_close()
 
+
 def webserver_for_test_user_agent(queue):
     class AgentDumper(NoLogHandler):
         def do_GET(self):
             queue.put(self.headers["User-Agent"])
             super().do_GET()
 
-    httpd = http.server.HTTPServer(('', 0), AgentDumper)
+    httpd = http.server.HTTPServer(("", 0), AgentDumper)
     try:
         port = httpd.server_address[1]
         queue.put(port)
@@ -225,9 +248,10 @@ def webserver_for_test_user_agent(queue):
     finally:
         httpd.server_close()
 
+
 def webserver_for_test_if_fetch(queue, timeout):
     """Spawn a webserver for `timeout` seconds"""
-    httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+    httpd = http.server.HTTPServer(("", 0), NoLogHandler)
     httpd.timeout = timeout
     try:
         port = httpd.server_address[1]
@@ -238,26 +262,36 @@ def webserver_for_test_if_fetch(queue, timeout):
     finally:
         httpd.server_close()
 
+
 class TestFetch(unittest.TestCase):
     "Retrieving feeds from servers"
+
     def test_delay(self):
         "Waits before fetching repeatedly from the same server"
         wait_time = 0.3
         delay_cfg = """[DEFAULT]
         to = example@example.com
         same-server-fetch-interval = {}
-        """.format(wait_time)
+        """.format(
+            wait_time
+        )
 
         num_requests = 3
 
         queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver_for_test_fetch, args=(queue, num_requests, wait_time))
+        webserver_proc = multiprocessing.Process(
+            target=webserver_for_test_fetch, args=(queue, num_requests, wait_time)
+        )
         webserver_proc.start()
         port = queue.get()
 
         with ExecContext(delay_cfg) as ctx:
             for i in range(num_requests):
-                ctx.call("add", 'test{i}'.format(i = i), 'http://127.0.0.1:{port}/disqus/feed.rss'.format(port = port))
+                ctx.call(
+                    "add",
+                    "test{i}".format(i=i),
+                    "http://127.0.0.1:{port}/disqus/feed.rss".format(port=port),
+                )
             ctx.call("run", "--no-send")
 
         result = queue.get()
@@ -266,19 +300,23 @@ class TestFetch(unittest.TestCase):
             raise Exception("r2e did not delay long enough!")
 
     def test_http_user_agent_config(self):
-        http_user_agent = 'my-test-agent'
+        http_user_agent = "my-test-agent"
         http_user_agent_cfg = """[DEFAULT]
         to = example@example.com
         user-agent = {}
-        """.format(http_user_agent)
+        """.format(
+            http_user_agent
+        )
 
         queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver_for_test_user_agent, args=(queue,))
+        webserver_proc = multiprocessing.Process(
+            target=webserver_for_test_user_agent, args=(queue,)
+        )
         webserver_proc.start()
         port = queue.get()
 
         with ExecContext(http_user_agent_cfg) as ctx:
-            ctx.call("add", 'test', 'http://127.0.0.1:{port}/dummy'.format(port = port))
+            ctx.call("add", "test", "http://127.0.0.1:{port}/dummy".format(port=port))
             ctx.call("run", "--no-send")
         self.assertEqual(queue.get(), http_user_agent)
 
@@ -288,14 +326,20 @@ class TestFetch(unittest.TestCase):
         """
 
         queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver_for_test_user_agent, args=(queue,))
+        webserver_proc = multiprocessing.Process(
+            target=webserver_for_test_user_agent, args=(queue,)
+        )
         webserver_proc.start()
         port = queue.get()
 
         with ExecContext(http_default_agent_cfg) as ctx:
-            ctx.call("add", 'test', 'http://127.0.0.1:{port}/dummy'.format(port = port))
+            ctx.call("add", "test", "http://127.0.0.1:{port}/dummy".format(port=port))
             ctx.call("run", "--no-send")
-        self.assertIn('rss2email/', queue.get(), "rss2email should identify itself as the User-Agent by default")
+        self.assertIn(
+            "rss2email/",
+            queue.get(),
+            "rss2email should identify itself as the User-Agent by default",
+        )
 
     def test_fetch_parallel(self):
         if not UNIX:
@@ -316,13 +360,21 @@ class TestFetch(unittest.TestCase):
             # always does the copy/replace, it must be sequenced correctly or
             # some processes will exit with a failure since their temp data
             # file was moved out from under them. Proper locking prevents that.
-            command = [sys.executable, r2e_path, "-VVVVV",
-                       "-c", str(ctx.cfg_path),
-                       "-d", str(ctx.data_path),
-                       "run", "--no-send"]
+            command = [
+                sys.executable,
+                r2e_path,
+                "-VVVVV",
+                "-c",
+                str(ctx.cfg_path),
+                "-d",
+                str(ctx.data_path),
+                "run",
+                "--no-send",
+            ]
             processes = [
-                subprocess.Popen(command, stdout=output_fd, stderr=output_fd,
-                                 close_fds=True)
+                subprocess.Popen(
+                    command, stdout=output_fd, stderr=output_fd, close_fds=True
+                )
                 for _ in range(num_processes)
             ]
             _os.close(output_fd)
@@ -339,11 +391,13 @@ class TestFetch(unittest.TestCase):
             # the data file while another has it open.
             previous_line = None
             finish_precedes_acquire = True
-            with _io.open(input_fd, 'r', buffering=1) as file:
+            with _io.open(input_fd, "r", buffering=1) as file:
                 for line in file:
                     if "acquired lock" in line and previous_line is not None:
-                        finish_precedes_acquire = finish_precedes_acquire and \
-                                                  "save feed data" in previous_line
+                        finish_precedes_acquire = (
+                            finish_precedes_acquire
+                            and "save feed data" in previous_line
+                        )
                     previous_line = line
             self.assertTrue(finish_precedes_acquire)
 
@@ -354,15 +408,22 @@ class TestFetch(unittest.TestCase):
         to = example@example.com"""
 
         queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver_for_test_if_fetch, args=(queue, 10))
+        webserver_proc = multiprocessing.Process(
+            target=webserver_for_test_if_fetch, args=(queue, 10)
+        )
         webserver_proc.start()
         port = queue.get()
 
         with ExecContext(standard_cfg) as ctx:
-            ctx.call("add", '--only-new', 'test', 'http://127.0.0.1:{port}/disqus/feed.rss'.format(port = port))
+            ctx.call(
+                "add",
+                "--only-new",
+                "test",
+                "http://127.0.0.1:{port}/disqus/feed.rss".format(port=port),
+            )
             # check if data is written
             self.assertTrue(_os.path.exists(ctx.data_path))
-            with ctx.data_path.open('r') as f:
+            with ctx.data_path.open("r") as f:
                 content = json.load(f)
                 # check if entries in seen
                 self.assertIn("seen", content["feeds"][0])
@@ -370,7 +431,7 @@ class TestFetch(unittest.TestCase):
 
 
 def webserver_for_test_send(queue):
-    httpd = http.server.HTTPServer(('', 0), NoLogHandler)
+    httpd = http.server.HTTPServer(("", 0), NoLogHandler)
     try:
         port = httpd.server_address[1]
         queue.put(port)
@@ -382,12 +443,16 @@ def webserver_for_test_send(queue):
     finally:
         httpd.server_close()
 
+
 class TestSend(unittest.TestCase):
     "Send email using the various email-protocol choices"
+
     def setUp(self):
         "Starts web server to serve feeds"
         self.httpd_queue = multiprocessing.Queue()
-        webserver_proc = multiprocessing.Process(target=webserver_for_test_send, args=(self.httpd_queue,))
+        webserver_proc = multiprocessing.Process(
+            target=webserver_for_test_send, args=(self.httpd_queue,)
+        )
         webserver_proc.start()
         self.httpd_port = self.httpd_queue.get()
 
@@ -404,23 +469,49 @@ class TestSend(unittest.TestCase):
                 email-protocol = maildir
                 maildir-path = {maildir_path}
                 maildir-mailbox = {maildir_mailbox}
-                """.format(maildir_path=maildir.path,
-                           maildir_mailbox=maildir.inbox_name)
+                """.format(
+                maildir_path=maildir.path, maildir_mailbox=maildir.inbox_name
+            )
 
             with ExecContext(maildir_cfg) as ctx:
                 self.httpd_queue.put("next")
-                ctx.call("add", 'test', 'http://127.0.0.1:{port}/gmane/feed.rss'.format(port = self.httpd_port))
+                ctx.call(
+                    "add",
+                    "test",
+                    "http://127.0.0.1:{port}/gmane/feed.rss".format(
+                        port=self.httpd_port
+                    ),
+                )
                 ctx.call("run")
 
             # quick check to make sure right number of messages sent
             # and subjects are right
-            msgs = maildir.inbox.values() # type: List[mailbox.MaildirMessage]
+            msgs = maildir.inbox.values()  # type: List[mailbox.MaildirMessage]
 
             self.assertEqual(len(msgs), 5)
-            self.assertEqual(len([msg for msg in msgs if msg["subject"] == "split massive package into modules"]), 1)
-            self.assertEqual(len([msg for msg in msgs if msg["subject"] == "Re: new maintainer and mailing list for rss2email"]), 4)
+            self.assertEqual(
+                len(
+                    [
+                        msg
+                        for msg in msgs
+                        if msg["subject"] == "split massive package into modules"
+                    ]
+                ),
+                1,
+            )
+            self.assertEqual(
+                len(
+                    [
+                        msg
+                        for msg in msgs
+                        if msg["subject"]
+                        == "Re: new maintainer and mailing list for rss2email"
+                    ]
+                ),
+                4,
+            )
 
-    def _test_sendmail(self, exitcode, shouldlog, verbose='error'):
+    def _test_sendmail(self, exitcode, shouldlog, verbose="error"):
         with TemporarySendmail(exitcode) as sendmail:
             cfg = """\
             [DEFAULT]
@@ -429,17 +520,18 @@ class TestSend(unittest.TestCase):
             sendmail_config = {sendmail_config}
             verbose = {verbose}
             """.format(
-                sendmail=sendmail.bin,
-                sendmail_config=sendmail.config,
-                verbose=verbose)
+                sendmail=sendmail.bin, sendmail_config=sendmail.config, verbose=verbose
+            )
 
             with ExecContext(cfg) as ctx:
                 self.httpd_queue.put("next")
                 ctx.call(
                     "add",
-                    'test',
-                    'http://127.0.0.1:{port}/gmane/feed.rss'.format(
-                        port=self.httpd_port))
+                    "test",
+                    "http://127.0.0.1:{port}/gmane/feed.rss".format(
+                        port=self.httpd_port
+                    ),
+                )
                 p = ctx.call("run")
 
         assertion = self.assertIn if shouldlog else self.assertNotIn
@@ -452,7 +544,7 @@ class TestSend(unittest.TestCase):
         self._test_sendmail(exitcode=1, shouldlog=True)
 
     def test_sendmail_debug(self):
-        self._test_sendmail(exitcode=0, shouldlog=True, verbose='debug')
+        self._test_sendmail(exitcode=0, shouldlog=True, verbose="debug")
 
 
 class TestFeedConfig(unittest.TestCase):
@@ -513,7 +605,7 @@ class TestFeedConfig(unittest.TestCase):
         """
         with ExecContext(cfg) as ctx:
             p = ctx.call("run", "--no-send")
-        self.assertIn('[DEBUG]', p.stderr)
+        self.assertIn("[DEBUG]", p.stderr)
 
     def test_verbose_setting_info(self):
         "Verbose setting set to info in configuration should be respected"
@@ -522,7 +614,7 @@ class TestFeedConfig(unittest.TestCase):
         """
         with ExecContext(cfg) as ctx:
             p = ctx.call("run", "--no-send")
-        self.assertNotIn('[DEBUG]', p.stderr)
+        self.assertNotIn("[DEBUG]", p.stderr)
 
 
 class TestOPML(unittest.TestCase):
@@ -541,7 +633,9 @@ class TestOPML(unittest.TestCase):
 <outline type="rss" text="{}" xmlUrl="{}"/>
 </body>
 </opml>
-""".format(self.feed_name, self.feed_url).encode()
+""".format(
+            self.feed_name, self.feed_url
+        ).encode()
 
     def test_opml_export(self):
         with ExecContext(self.cfg) as ctx:
@@ -569,10 +663,11 @@ class TestOPML(unittest.TestCase):
             ctx.opml_path.write_bytes(self.opml_content)
             ctx.call("opmlimport", str(ctx.opml_path))
 
-            with ctx.data_path.open('r') as f:
+            with ctx.data_path.open("r") as f:
                 content = json.load(f)
 
             self.assertEqual(content["feeds"][0]["name"], self.feed_name)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
