@@ -114,7 +114,8 @@ class Feeds (list):
 
     >>> feeds[0].to = None
     >>> feeds.save_config()
-    >>> print(open(configfile, 'r').read().rstrip('\\n'))
+    >>> with open(configfile, 'r') as f:
+    ...     print(f.read().rstrip('\\n'))
     ... # doctest: +REPORT_UDIFF, +ELLIPSIS
     [DEFAULT]
     from = user@rss2email.invalid
@@ -127,6 +128,7 @@ class Feeds (list):
 
     Cleanup the temporary directory.
 
+    >>> feeds.close()
     >>> tmpdir.cleanup()
     """
     datafile_version = 2

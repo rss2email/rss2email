@@ -5,6 +5,11 @@ description = "Forward RSS feeds to your email address"
 authors = ["Your Name <you@example.com>"]
 license = "GPL-2.0-only"
 
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore:.*'count' is passed as positional argument:DeprecationWarning:feedparser\\.html",
+]
+
 [tool.poetry.dependencies]
 python = "^3.6"
 feedparser = ">=6.0.5"
