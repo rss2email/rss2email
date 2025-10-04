@@ -4,6 +4,15 @@
 
 import multiprocessing
 import unittest
+import urllib.request
+
+if multiprocessing.get_start_method(allow_none=True) is None:
+    multiprocessing.set_start_method("spawn", force=True)
+
+from test.util.tempsendmail import TemporarySendmail
+from test.util.execcontext import ExecContext, r2e_path
+from rss2email import feed
+from rss2email import util
 import http.server
 import io
 import subprocess
@@ -13,16 +22,7 @@ import json
 import os as _os
 from pathlib import Path
 
-sys.path.insert(0, _os.path.dirname(__file__))
-from util.execcontext import ExecContext, r2e_path
 
-sys.path.insert(
-    0,
-    _os.path.dirname(
-        Path(__file__).absolute().parent.joinpath("util").joinpath("execcontext.py")
-    ),
-)
-import rss2email as _rss2email
 from rss2email.feeds import UNIX
 
 # Directory containing test feed data/configs
@@ -97,6 +97,13 @@ def webserver_for_test_if_fetch(queue, timeout):
         queue.put("done")
     finally:
         httpd.server_close()
+
+
+import urllib.request
+
+from test.util.tempsendmail import TemporarySendmail
+from rss2email import feed
+from rss2email import util
 
 
 class TestFetch(unittest.TestCase):
