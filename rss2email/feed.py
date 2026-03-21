@@ -1007,7 +1007,7 @@ class Feed (object):
         else:
             digest = _MIMEMultipart('mixed')
         digest['To'] = _formataddr(_parseaddr(self.to))  # Encodes with utf-8 as necessary
-        digest['Subject'] = 'digest for {}'.format(self.name)
+        digest['Subject'] = self.digest_subject.format(**{'feed-name': self.name})
         digest['Message-ID'] = '<{0}@{1}>'.format(_uuid.uuid4(), platform.node())
         digest['User-Agent'] = self.user_agent
         digest['List-ID'] = '<{}.localhost>'.format(self.name)
