@@ -164,6 +164,8 @@ CONFIG['DEFAULT'] = _collections.OrderedDict((
         # The format for the Subject line.  Available attributes are
         # 'feed', 'feed-name', 'feed-url', 'feed-title'.
         ('subject-format', '{feed-title}'),
+        # The Subject line when digest is on.
+        ('digest-subject', 'digest for {feed-name}'),
 
         ## HTML conversion
         # True: Send text/html messages when possible.
